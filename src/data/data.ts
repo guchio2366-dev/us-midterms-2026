@@ -1,4 +1,8 @@
 import type { Election, EventItem, Profile, Seat, Source, State, VicePresident } from './model';
+import { civicSources } from './civics';
+import { contextSources, soybeanTrade, stateContexts } from './state-context';
+import { houseSources } from './house';
+import { senateRaceDetails, senateRaceSources } from './senate-races';
 import { ROSTER_SOURCE_UPDATED_AT, ROSTER_VERIFIED_AT, verifiedRoster } from './verified-roster';
 
 type StateSeed = [fips:string, abbr:string, nameJa:string, nameEn:string, classes:[1|2|3,1|2|3]];
@@ -68,6 +72,7 @@ export const states: State[] = stateSeeds.map(([fips,abbr,nameJa,nameEn,classes]
 }));
 
 const rosterBySeat = new Map(verifiedRoster.map(member => [member.seatId,member]));
+const raceBySeat = new Map(senateRaceDetails.map(race => [race.seatId,race]));
 export const seats: Seat[] = states.flatMap(state => state.classes.map(senateClass => {
   const seatId = `${state.abbr}-${senateClass}`;
   const member = rosterBySeat.get(seatId);
@@ -92,7 +97,10 @@ export const seats: Seat[] = states.flatMap(state => state.classes.map(senateCla
   };
 }));
 
-const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: Election['attributeSourceIds'], termStartRule: string|null = null): Election => ({
+const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: Election['attributeSourceIds'], termStartRule: string|null = null): Election => {
+  const race = raceBySeat.get(seat.seatId);
+  if (!race) throw new Error(`Reviewed race data is missing ${seat.seatId}`);
+  return ({
   electionId: `2026-${seat.seatId}-${type}`,
   seatId: seat.seatId,
   year: 2026,
@@ -104,16 +112,19 @@ const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: El
   termStartRule,
   termEnd: type === 'regular' ? '2033-01-03' : '2029-01-03',
   congressAsOf: '2027-01-03',
-  candidates: [],
-  candidateResearchStatus: 'not-started',
-  rating: {raw:null,category:'unavailable',organization:null,ratedAt:null,retrievedAt:null,sourceIds:[]},
-  electionRelevance: '候補者調査は未着手、情勢評価は未取得です。',
+  primaryDate: race.primaryDate,
+  contestStatus: race.contestStatus,
+  candidates: race.candidates,
+  candidateResearchStatus: race.contestStatus === 'general-ballot' ? 'complete' : 'partial',
+  rating: {raw:race.ratingRaw,category:race.rating,organization:"Sabato's Crystal Ball",ratedAt:'2026-08-26',retrievedAt:'2026-09-09',sourceIds:['sabato-senate-2026']},
+  electionRelevance: race.relevance,
   // Verification covers election type, date, seat and term rules, not candidates or ratings.
   verificationStatus: 'confirmed',
   verifiedAt: '2026-09-09',
   attributeSourceIds,
-  sourceIds: [...new Set(Object.values(attributeSourceIds).flat())],
-});
+  sourceIds: [...new Set([...Object.values(attributeSourceIds).flat(),...race.sourceIds,...race.candidates.flatMap(candidate => candidate.sourceIds)])],
+  });
+};
 
 const regularElections = seats.filter(seat => seat.senateClass === 2).map(seat => electionBase(seat,'regular',{
   seatId:['senate-class-2'], type:['senate-class-2'], date:['federal-election-date'],
@@ -166,22 +177,57 @@ export const sources: Source[] = [
   checked({sourceId:'fl-vacancy-law',title:'Florida Statutes 100.161 — Senate vacancies',publisher:'Florida Legislature',url:'https://www.flsenate.gov/Laws/Statutes/2026/100.161',publishedAt:null,referencePeriod:'2026年版。次回一般選挙での補充と暫定任命の規定'}),
   checked({sourceId:'oh-election-schedule',title:'2026 Election Schedule with Candidate Requirements',publisher:'Franklin County Board of Elections, Ohio',url:'https://vote.franklincountyohio.gov/getmedia/5a24ba93-6eaa-4cfe-ad8c-77c5aed0e496/2026-Election-Schedule-with-Candidate-Requirements-6',publishedAt:null,updatedAt:'2026-05-28',referencePeriod:'p.1：一般選挙11月3日、Hustedの連邦上院残任期は2029年1月3日まで'}),
   checked({sourceId:'oh-vacancy-law',title:'Ohio Revised Code 3521.02 — Senate vacancies',publisher:'Ohio Laws',url:'https://codes.ohio.gov/ohio-revised-code/section-3521.02',publishedAt:null,referencePeriod:'1995-08-22施行の現行規定。特別選挙と暫定任命の12月15日期限'}),
+  ...senateRaceSources,
+  ...civicSources,
+  ...contextSources,
+  ...houseSources,
   {sourceId:'census-profile',title:'Data Profiles | American Community Survey',publisher:'U.S. Census Bureau',url:'https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/',publishedAt:null,referencePeriod:'州別人口・社会属性',retrievedAt:null,contentVerifiedAt:null},
   {sourceId:'bls-qcew',title:'Quarterly Census of Employment and Wages',publisher:'U.S. Bureau of Labor Statistics',url:'https://www.bls.gov/cew/',publishedAt:null,referencePeriod:'州別産業雇用・賃金',retrievedAt:null,contentVerifiedAt:null},
   {sourceId:'bea-state',title:'GDP by State',publisher:'U.S. Bureau of Economic Analysis',url:'https://www.bea.gov/data/gdp/gdp-state',publishedAt:null,referencePeriod:'州別・産業別GDP',retrievedAt:null,contentVerifiedAt:null},
   {sourceId:'atlas',title:'us-atlas states-10m',publisher:'TopoJSON',url:'https://github.com/topojson/us-atlas',publishedAt:'2021-06-05',referencePeriod:'2020 Census cartographic boundary files',retrievedAt:null,contentVerifiedAt:null},
 ];
 
-export const profiles: Profile[] = states.map(state => ({
-  stateFips: state.fips,
-  asOf: '2026-09-09',
-  contentStatus: '未作成',
-  politicalBase: {text:`${state.nameJa}の地域別選挙結果と人口構成を対応させた確認済み原稿は準備中です。`,sourceIds:[]},
-  industryAndIssues: {text:'州別QCEW・BEA表の対象年と指標を確認したうえで掲載します。未確認の産業構成から党派支持を推定しません。',sourceIds:['bls-qcew','bea-state']},
-  historicalTrajectory: {text:'同種選挙の公式結果を用いた時系列比較は未作成です。異なる選挙種別の得票差を連続した指標として扱いません。',sourceIds:[]},
-  electionMeaning: {text:elections.some(election => election.seatId.startsWith(`${state.abbr}-`))?'2026年の選挙がありますが、候補者と情勢の説明は未確認です。':'2026年の対象選挙はありません。州政治の背景説明は調査中です。',sourceIds:[]},
-  eventIds: [],
-}));
-export const events: EventItem[] = [];
+const contextByFips = new Map(stateContexts.map(context => [context.stateFips,context]));
+const stateEventIds = (state: State) => {
+  const context = contextByFips.get(state.fips)!;
+  const ids = [`population-${state.fips}`,`presidential-${state.fips}`];
+  if (electionByStateData(state).length) ids.push(`senate-${state.fips}`);
+  if (context.soybeanRank2026 && context.soybeanRank2026 <= 10) ids.push(`soybean-${state.fips}`);
+  return ids;
+};
+const electionByStateData = (state: State) => elections.filter(election => election.seatId.startsWith(`${state.abbr}-`));
+const electionStatusText = (election: Election) => election.contestStatus === 'general-ballot'
+  ? `${election.candidates.length}人の本選掲載候補を確認、情勢は${election.rating.category}`
+  : election.contestStatus === 'primary-pending' ? '予備選前で本選候補未確定' : '予備選投票日で結果確定待ち';
+
+export const profiles: Profile[] = states.map(state => {
+  const context = contextByFips.get(state.fips)!;
+  const stateElections = electionByStateData(state);
+  const winner = context.presidentialWinner2024 === 'R' ? '共和党候補' : '民主党候補';
+  const growth = context.populationChange2020to2025 >= 0 ? `${context.populationChange2020to2025}%増` : `${Math.abs(context.populationChange2020to2025)}%減`;
+  const soybean = context.soybeanRank2026
+    ? ` USDAの2026年8月予測では大豆${context.soybeanProduction2026!.toLocaleString('en-US')}千ブッシェル、全米${context.soybeanRank2026}位です。`
+    : ' USDA州別表に大豆生産量の掲載はありません。';
+  return {
+    stateFips:state.fips,asOf:'2026-09-09',contentStatus:'確認済み',
+    politicalBase:{text:`2024年大統領選は${winner}が二大候補票で${context.presidentialMargin2024!.toFixed(1)}ポイント上回りました。2025年推計人口は${context.population2025.toLocaleString('en-US')}人です。`,sourceIds:['fec-pres-2024','census-pop-2025']},
+    industryAndIssues:{text:`2025年の民間GDPで最大の2桁産業は${context.topPrivateIndustry2025}（民間GDPの${context.topPrivateIndustryShare2025.toFixed(1)}%）です。${soybean}`,sourceIds:['bea-sagdp-2025',...(context.soybeanProduction2026 === null ? [] : ['nass-soy-2026'])]},
+    historicalTrajectory:{text:`2020年基準から2025年までの人口変化は${growth}です。人口・産業・過去の得票は背景指標であり、個々の有権者の投票理由を直接示しません。`,sourceIds:['census-pop-2025','fec-pres-2024']},
+    electionMeaning:{text:stateElections.length ? `2026年上院選：${stateElections.map(electionStatusText).join('／')}。下院は全選挙区が改選されます。` : '2026年の上院選はありません。下院は州内の全選挙区が改選されます。',sourceIds:stateElections.length ? [...new Set(stateElections.flatMap(election => election.sourceIds))] : ['house-consensus-2026']},
+    eventIds:stateEventIds(state),
+  };
+});
+
+export const events: EventItem[] = states.flatMap(state => {
+  const context = contextByFips.get(state.fips)!;
+  const stateElections = electionByStateData(state);
+  const items: EventItem[] = [
+    {eventId:`population-${state.fips}`,stateFips:[state.fips],relatedElectionIds:[],period:'2020–2025',precision:'range',title:'人口推計の変化',eventText:`2025年人口は${context.population2025.toLocaleString('en-US')}人。2020年基準比${context.populationChange2020to2025 >= 0 ? '+' : ''}${context.populationChange2020to2025.toFixed(1)}%。`,localEffect:'人口増減は住宅、公共サービス、労働市場、選挙運営の規模に関係します。',observedPoliticalChange:null,causalInterpretation:{text:'人口変化から党派支持の変化を推定しません。',evidenceStatus:'interpretation'},sourceIds:['census-pop-2025']},
+    {eventId:`presidential-${state.fips}`,stateFips:[state.fips],relatedElectionIds:[],period:'2024-11-05',precision:'day',title:'2024年大統領選',eventText:`${context.presidentialWinner2024 === 'R' ? '共和党' : '民主党'}候補が二大候補票で${context.presidentialMargin2024!.toFixed(1)}ポイント上回りました。`,localEffect:null,observedPoliticalChange:'同じ州の直近大統領選の基準点として表示します。',causalInterpretation:{text:'大統領選と中間選挙は候補・投票率が異なり、そのまま予測には使えません。',evidenceStatus:'interpretation'},sourceIds:['fec-pres-2024']},
+  ];
+  if (stateElections.length) items.push({eventId:`senate-${state.fips}`,stateFips:[state.fips],relatedElectionIds:stateElections.map(election => election.electionId),period:'2026-11-03',precision:'day',title:'2026年上院選',eventText:stateElections.map(election => `${election.type === 'special' ? '特別' : '通常'}選挙：${electionStatusText(election)}`).join('／'),localEffect:'当選者の会派は2027年上院の多数派判定に直接1議席として加わります。',observedPoliticalChange:null,causalInterpretation:{text:'情勢分類は評価であり、当選確率や確定結果ではありません。',evidenceStatus:'confirmed'},sourceIds:[...new Set(stateElections.flatMap(election => election.sourceIds))]});
+  if (context.soybeanRank2026 && context.soybeanRank2026 <= 10) items.push({eventId:`soybean-${state.fips}`,stateFips:[state.fips],relatedElectionIds:stateElections.map(election => election.electionId),period:'2026-08-12',precision:'day',title:'大豆生産予測',eventText:`2026年生産予測は${context.soybeanProduction2026!.toLocaleString('en-US')}千ブッシェルで全米${context.soybeanRank2026}位。`,localEffect:'対中需要、価格、投入費の変化にさらされる生産基盤の大きさを示します。',observedPoliticalChange:null,causalInterpretation:{text:'生産量は政策への賛否や投票先を直接示しません。',evidenceStatus:'interpretation'},sourceIds:['nass-soy-2026',...soybeanTrade.sourceIds]});
+  return items;
+});
 export const DATA_AS_OF = '2026-09-09';
-export const APP_VERSION = 'verified01-2026-09-09';
+export const APP_VERSION = 'complete06-2026-09-09';
