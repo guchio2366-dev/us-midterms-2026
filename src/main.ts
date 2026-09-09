@@ -3,7 +3,7 @@ import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
 import type { Topology } from 'topojson-specification';
 import './style.css';
-import { DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
+import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import type { Caucus, Election, Rating, State } from './data/model';
 import { currentCaucusCounts,majorityText,simulatedCounts,uniqueElectionSeatIds,type Assumptions } from './logic';
 
@@ -30,7 +30,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="mast">
   <div class="eyebrow">2026 UNITED STATES SENATE</div><h1>上院の行方</h1>
   <p class="dek">改選議席の現在地から、州の背景、多数派への道まで。予測ではなく、確認済みデータと未確認項目を分けて示します。</p>
-  <div class="dateline"><span>データ基準日 ${DATA_AS_OF}</span><span>通常 ${regularCount}件</span><span>特別 ${specialCount}件</span><span>対象 ${targetSeatIds.length}議席</span></div>
+  <div class="dateline"><span>データ基準日 ${DATA_AS_OF}</span><span>通常 ${regularCount}件</span><span>特別 ${specialCount}件</span><span>対象 ${targetSeatIds.length}議席</span><span>版 ${APP_VERSION}</span><button id="reload-app" class="reload-app" type="button">最新版を再読み込み</button></div>
 </header>
 <main>
   <div class="data-caution" role="note"><strong>一次資料の再確認待ち</strong><span>現職名・党籍・会派と特別選挙は実装基準値を表示していますが、この環境では一次資料を取得できず、確認完了とはしていません。</span></div>
@@ -149,4 +149,9 @@ document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => bu
 document.querySelector<HTMLInputElement>('#competitive')!.onchange = event => { competitive = (event.target as HTMLInputElement).checked; renderMap(); };
 document.querySelector<HTMLSelectElement>('#state-search')!.onchange = event => { const state = stateByFips.get((event.target as HTMLSelectElement).value); if (state) selectState(state,event.target as HTMLElement); };
 document.querySelector<HTMLButtonElement>('#reset')!.onclick = () => { assumptions = {}; renderSim(); };
+document.querySelector<HTMLButtonElement>('#reload-app')!.onclick = () => {
+  const url = new URL(window.location.href);
+  url.searchParams.set('refresh',Date.now().toString());
+  window.location.replace(url.toString());
+};
 renderCounts(); renderSim(); initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; });

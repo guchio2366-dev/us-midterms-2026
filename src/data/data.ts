@@ -144,3 +144,4 @@ export const profiles: Profile[] = states.map(state => ({
 }));
 export const events: EventItem[] = [];
 export const DATA_AS_OF = '2026-09-09';
+export const APP_VERSION = 'task01-2026-09-09';
