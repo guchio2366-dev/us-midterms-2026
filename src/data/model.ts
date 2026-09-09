@@ -1,6 +1,9 @@
 export type Party = 'D' | 'R' | 'I' | 'other' | 'vacant' | 'unknown';
 export type Caucus = 'Democratic' | 'Republican' | 'none' | 'unconfirmed' | 'vacant';
 export type VerificationStatus = 'confirmed' | 'primary-source-recheck-required';
+export type SeatField = 'incumbent'|'party'|'caucus'|'vacant'|'senateClass'|'termStart'|'termEnd';
+export type ElectionField = 'seatId'|'type'|'date'|'termStart'|'termEnd';
+export type AttributeSources<T extends string> = Partial<Record<T,string[]>>;
 export type Rating = 'Solid D'|'Likely D'|'Lean D'|'Toss Up'|'Lean R'|'Likely R'|'Solid R'|'unavailable';
 
 export interface State {
@@ -22,6 +25,8 @@ export interface Seat {
   termStart: string|null;
   termEnd: string|null;
   verificationStatus: VerificationStatus;
+  verifiedAt: string|null;
+  attributeSourceIds: AttributeSources<SeatField>;
   sourceIds: string[];
 }
 
@@ -41,6 +46,8 @@ export interface Election {
   type: 'regular'|'special';
   termStart: string|null;
   termStartLabel: string;
+  termStartStatus: 'scheduled'|'pending-inauguration';
+  termStartRule: string|null;
   termEnd: string;
   congressAsOf: '2027-01-03';
   candidates: Candidate[];
@@ -55,6 +62,8 @@ export interface Election {
   };
   electionRelevance: string;
   verificationStatus: VerificationStatus;
+  verifiedAt: string|null;
+  attributeSourceIds: AttributeSources<ElectionField>;
   sourceIds: string[];
 }
 
@@ -64,6 +73,7 @@ export interface Source {
   publisher: string;
   url: string;
   publishedAt: string|null;
+  updatedAt?: string|null;
   referencePeriod: string;
   retrievedAt: string|null;
   contentVerifiedAt: string|null;
@@ -74,6 +84,8 @@ export interface VicePresident {
   party: 'D'|'R'|'unknown';
   asOf: string;
   verificationStatus: VerificationStatus;
+  verifiedAt: string|null;
+  attributeSourceIds: AttributeSources<'name'|'party'>;
   sourceIds: string[];
 }
 

@@ -1,61 +1,60 @@
 import type { Election, EventItem, Profile, Seat, Source, State, VicePresident } from './model';
+import { ROSTER_SOURCE_UPDATED_AT, ROSTER_VERIFIED_AT, verifiedRoster } from './verified-roster';
 
-type StateSeed = [fips:string, abbr:string, nameJa:string, nameEn:string, seats:[[1|2|3,string,Seat['party'],Seat['caucus']],[1|2|3,string,Seat['party'],Seat['caucus']]]];
+type StateSeed = [fips:string, abbr:string, nameJa:string, nameEn:string, classes:[1|2|3,1|2|3]];
 
-// Names and affiliations are an implementation baseline for the requested 2026-09-09 snapshot.
-// Network access to the primary pages was unavailable during this task, so every seat remains
-// explicitly marked primary-source-recheck-required rather than being represented as verified.
+// Geography is separate from the dated, reviewed membership snapshot.
 const stateSeeds: StateSeed[] = [
-  ['01','AL','アラバマ','Alabama',[[2,'Tommy Tuberville','R','Republican'],[3,'Katie Britt','R','Republican']]],
-  ['02','AK','アラスカ','Alaska',[[2,'Dan Sullivan','R','Republican'],[3,'Lisa Murkowski','R','Republican']]],
-  ['04','AZ','アリゾナ','Arizona',[[1,'Ruben Gallego','D','Democratic'],[3,'Mark Kelly','D','Democratic']]],
-  ['05','AR','アーカンソー','Arkansas',[[2,'Tom Cotton','R','Republican'],[3,'John Boozman','R','Republican']]],
-  ['06','CA','カリフォルニア','California',[[1,'Adam Schiff','D','Democratic'],[3,'Alex Padilla','D','Democratic']]],
-  ['08','CO','コロラド','Colorado',[[2,'John Hickenlooper','D','Democratic'],[3,'Michael Bennet','D','Democratic']]],
-  ['09','CT','コネティカット','Connecticut',[[1,'Chris Murphy','D','Democratic'],[3,'Richard Blumenthal','D','Democratic']]],
-  ['10','DE','デラウェア','Delaware',[[1,'Lisa Blunt Rochester','D','Democratic'],[2,'Chris Coons','D','Democratic']]],
-  ['12','FL','フロリダ','Florida',[[1,'Rick Scott','R','Republican'],[3,'Ashley Moody','R','Republican']]],
-  ['13','GA','ジョージア','Georgia',[[2,'Jon Ossoff','D','Democratic'],[3,'Raphael Warnock','D','Democratic']]],
-  ['15','HI','ハワイ','Hawaii',[[1,'Mazie Hirono','D','Democratic'],[3,'Brian Schatz','D','Democratic']]],
-  ['16','ID','アイダホ','Idaho',[[2,'Jim Risch','R','Republican'],[3,'Mike Crapo','R','Republican']]],
-  ['17','IL','イリノイ','Illinois',[[2,'Dick Durbin','D','Democratic'],[3,'Tammy Duckworth','D','Democratic']]],
-  ['18','IN','インディアナ','Indiana',[[1,'Jim Banks','R','Republican'],[3,'Todd Young','R','Republican']]],
-  ['19','IA','アイオワ','Iowa',[[2,'Joni Ernst','R','Republican'],[3,'Chuck Grassley','R','Republican']]],
-  ['20','KS','カンザス','Kansas',[[2,'Roger Marshall','R','Republican'],[3,'Jerry Moran','R','Republican']]],
-  ['21','KY','ケンタッキー','Kentucky',[[2,'Mitch McConnell','R','Republican'],[3,'Rand Paul','R','Republican']]],
-  ['22','LA','ルイジアナ','Louisiana',[[2,'Bill Cassidy','R','Republican'],[3,'John Kennedy','R','Republican']]],
-  ['23','ME','メーン','Maine',[[1,'Angus King','I','Democratic'],[2,'Susan Collins','R','Republican']]],
-  ['24','MD','メリーランド','Maryland',[[1,'Angela Alsobrooks','D','Democratic'],[3,'Chris Van Hollen','D','Democratic']]],
-  ['25','MA','マサチューセッツ','Massachusetts',[[1,'Elizabeth Warren','D','Democratic'],[2,'Ed Markey','D','Democratic']]],
-  ['26','MI','ミシガン','Michigan',[[1,'Elissa Slotkin','D','Democratic'],[2,'Gary Peters','D','Democratic']]],
-  ['27','MN','ミネソタ','Minnesota',[[1,'Amy Klobuchar','D','Democratic'],[2,'Tina Smith','D','Democratic']]],
-  ['28','MS','ミシシッピ','Mississippi',[[1,'Roger Wicker','R','Republican'],[2,'Cindy Hyde-Smith','R','Republican']]],
-  ['29','MO','ミズーリ','Missouri',[[1,'Josh Hawley','R','Republican'],[3,'Eric Schmitt','R','Republican']]],
-  ['30','MT','モンタナ','Montana',[[1,'Tim Sheehy','R','Republican'],[2,'Steve Daines','R','Republican']]],
-  ['31','NE','ネブラスカ','Nebraska',[[1,'Deb Fischer','R','Republican'],[2,'Pete Ricketts','R','Republican']]],
-  ['32','NV','ネバダ','Nevada',[[1,'Jacky Rosen','D','Democratic'],[3,'Catherine Cortez Masto','D','Democratic']]],
-  ['33','NH','ニューハンプシャー','New Hampshire',[[2,'Jeanne Shaheen','D','Democratic'],[3,'Maggie Hassan','D','Democratic']]],
-  ['34','NJ','ニュージャージー','New Jersey',[[1,'Andy Kim','D','Democratic'],[2,'Cory Booker','D','Democratic']]],
-  ['35','NM','ニューメキシコ','New Mexico',[[1,'Martin Heinrich','D','Democratic'],[2,'Ben Ray Luján','D','Democratic']]],
-  ['36','NY','ニューヨーク','New York',[[1,'Kirsten Gillibrand','D','Democratic'],[3,'Chuck Schumer','D','Democratic']]],
-  ['37','NC','ノースカロライナ','North Carolina',[[2,'Thom Tillis','R','Republican'],[3,'Ted Budd','R','Republican']]],
-  ['38','ND','ノースダコタ','North Dakota',[[1,'Kevin Cramer','R','Republican'],[3,'John Hoeven','R','Republican']]],
-  ['39','OH','オハイオ','Ohio',[[1,'Bernie Moreno','R','Republican'],[3,'Jon Husted','R','Republican']]],
-  ['40','OK','オクラホマ','Oklahoma',[[2,'Markwayne Mullin','R','Republican'],[3,'James Lankford','R','Republican']]],
-  ['41','OR','オレゴン','Oregon',[[2,'Jeff Merkley','D','Democratic'],[3,'Ron Wyden','D','Democratic']]],
-  ['42','PA','ペンシルベニア','Pennsylvania',[[1,'Dave McCormick','R','Republican'],[3,'John Fetterman','D','Democratic']]],
-  ['44','RI','ロードアイランド','Rhode Island',[[1,'Sheldon Whitehouse','D','Democratic'],[2,'Jack Reed','D','Democratic']]],
-  ['45','SC','サウスカロライナ','South Carolina',[[2,'Lindsey Graham','R','Republican'],[3,'Tim Scott','R','Republican']]],
-  ['46','SD','サウスダコタ','South Dakota',[[2,'Mike Rounds','R','Republican'],[3,'John Thune','R','Republican']]],
-  ['47','TN','テネシー','Tennessee',[[1,'Marsha Blackburn','R','Republican'],[2,'Bill Hagerty','R','Republican']]],
-  ['48','TX','テキサス','Texas',[[1,'Ted Cruz','R','Republican'],[2,'John Cornyn','R','Republican']]],
-  ['49','UT','ユタ','Utah',[[1,'John Curtis','R','Republican'],[3,'Mike Lee','R','Republican']]],
-  ['50','VT','バーモント','Vermont',[[1,'Bernie Sanders','I','Democratic'],[3,'Peter Welch','D','Democratic']]],
-  ['51','VA','バージニア','Virginia',[[1,'Tim Kaine','D','Democratic'],[2,'Mark Warner','D','Democratic']]],
-  ['53','WA','ワシントン','Washington',[[1,'Maria Cantwell','D','Democratic'],[3,'Patty Murray','D','Democratic']]],
-  ['54','WV','ウェストバージニア','West Virginia',[[1,'Jim Justice','R','Republican'],[2,'Shelley Moore Capito','R','Republican']]],
-  ['55','WI','ウィスコンシン','Wisconsin',[[1,'Tammy Baldwin','D','Democratic'],[3,'Ron Johnson','R','Republican']]],
-  ['56','WY','ワイオミング','Wyoming',[[1,'John Barrasso','R','Republican'],[2,'Cynthia Lummis','R','Republican']]],
+  ["01","AL","アラバマ","Alabama",[2,3]],
+  ["02","AK","アラスカ","Alaska",[2,3]],
+  ["04","AZ","アリゾナ","Arizona",[1,3]],
+  ["05","AR","アーカンソー","Arkansas",[2,3]],
+  ["06","CA","カリフォルニア","California",[1,3]],
+  ["08","CO","コロラド","Colorado",[2,3]],
+  ["09","CT","コネティカット","Connecticut",[1,3]],
+  ["10","DE","デラウェア","Delaware",[1,2]],
+  ["12","FL","フロリダ","Florida",[1,3]],
+  ["13","GA","ジョージア","Georgia",[2,3]],
+  ["15","HI","ハワイ","Hawaii",[1,3]],
+  ["16","ID","アイダホ","Idaho",[2,3]],
+  ["17","IL","イリノイ","Illinois",[2,3]],
+  ["18","IN","インディアナ","Indiana",[1,3]],
+  ["19","IA","アイオワ","Iowa",[2,3]],
+  ["20","KS","カンザス","Kansas",[2,3]],
+  ["21","KY","ケンタッキー","Kentucky",[2,3]],
+  ["22","LA","ルイジアナ","Louisiana",[2,3]],
+  ["23","ME","メーン","Maine",[1,2]],
+  ["24","MD","メリーランド","Maryland",[1,3]],
+  ["25","MA","マサチューセッツ","Massachusetts",[1,2]],
+  ["26","MI","ミシガン","Michigan",[1,2]],
+  ["27","MN","ミネソタ","Minnesota",[1,2]],
+  ["28","MS","ミシシッピ","Mississippi",[1,2]],
+  ["29","MO","ミズーリ","Missouri",[1,3]],
+  ["30","MT","モンタナ","Montana",[1,2]],
+  ["31","NE","ネブラスカ","Nebraska",[1,2]],
+  ["32","NV","ネバダ","Nevada",[1,3]],
+  ["33","NH","ニューハンプシャー","New Hampshire",[2,3]],
+  ["34","NJ","ニュージャージー","New Jersey",[1,2]],
+  ["35","NM","ニューメキシコ","New Mexico",[1,2]],
+  ["36","NY","ニューヨーク","New York",[1,3]],
+  ["37","NC","ノースカロライナ","North Carolina",[2,3]],
+  ["38","ND","ノースダコタ","North Dakota",[1,3]],
+  ["39","OH","オハイオ","Ohio",[1,3]],
+  ["40","OK","オクラホマ","Oklahoma",[2,3]],
+  ["41","OR","オレゴン","Oregon",[2,3]],
+  ["42","PA","ペンシルベニア","Pennsylvania",[1,3]],
+  ["44","RI","ロードアイランド","Rhode Island",[1,2]],
+  ["45","SC","サウスカロライナ","South Carolina",[2,3]],
+  ["46","SD","サウスダコタ","South Dakota",[2,3]],
+  ["47","TN","テネシー","Tennessee",[1,2]],
+  ["48","TX","テキサス","Texas",[1,2]],
+  ["49","UT","ユタ","Utah",[1,3]],
+  ["50","VT","バーモント","Vermont",[1,3]],
+  ["51","VA","バージニア","Virginia",[1,2]],
+  ["53","WA","ワシントン","Washington",[1,3]],
+  ["54","WV","ウェストバージニア","West Virginia",[1,2]],
+  ["55","WI","ウィスコンシン","Wisconsin",[1,3]],
+  ["56","WY","ワイオミング","Wyoming",[1,2]],
 ];
 
 const termByClass: Record<1|2|3, [string,string]> = {
@@ -64,48 +63,75 @@ const termByClass: Record<1|2|3, [string,string]> = {
   3: ['2023-01-03','2029-01-03'],
 };
 
-export const states: State[] = stateSeeds.map(([fips,abbr,nameJa,nameEn,stateSeats]) => ({
-  fips, abbr, nameJa, nameEn, classes: [stateSeats[0][0],stateSeats[1][0]],
+export const states: State[] = stateSeeds.map(([fips,abbr,nameJa,nameEn,classes]) => ({
+  fips, abbr, nameJa, nameEn, classes,
 }));
 
-export const seats: Seat[] = stateSeeds.flatMap(([fips,abbr,,,stateSeats]) => stateSeats.map(([senateClass,incumbent,party,caucus]) => ({
-  seatId: `${abbr}-${senateClass}`,
-  stateFips: fips,
-  senateClass,
-  incumbent,
-  party,
-  caucus,
-  vacant: false,
-  termStart: termByClass[senateClass][0],
-  termEnd: termByClass[senateClass][1],
-  verificationStatus: 'primary-source-recheck-required',
-  sourceIds: ['senate-members','senate-classes','senate-party-division'],
-})));
+const rosterBySeat = new Map(verifiedRoster.map(member => [member.seatId,member]));
+export const seats: Seat[] = states.flatMap(state => state.classes.map(senateClass => {
+  const seatId = `${state.abbr}-${senateClass}`;
+  const member = rosterBySeat.get(seatId);
+  if (!member) throw new Error(`Reviewed roster is missing ${seatId}`);
+  const classSource = `senate-class-${senateClass}`;
+  const attributeSourceIds: Seat['attributeSourceIds'] = {
+    incumbent: ['senate-members','senate-members-xml'],
+    party: ['senate-members','senate-members-xml'],
+    caucus: [member.caucusSourceId],
+    vacant: ['senate-members'],
+    senateClass: [classSource,'senate-members-xml'],
+    termStart: [classSource],
+    termEnd: [classSource],
+  };
+  return {
+    seatId, stateFips:state.fips, senateClass,
+    incumbent:member.incumbent, party:member.party, caucus:member.caucus, vacant:false,
+    // These are the seat's six-year cycle dates, not the incumbent's personal tenure.
+    termStart:termByClass[senateClass][0], termEnd:termByClass[senateClass][1],
+    verificationStatus:'confirmed', verifiedAt:ROSTER_VERIFIED_AT,
+    attributeSourceIds, sourceIds:[...new Set(Object.values(attributeSourceIds).flat())],
+  };
+}));
 
-const unresearchedElection = (seat: Seat, type: Election['type'], sourceIds: string[]): Election => ({
+const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: Election['attributeSourceIds'], termStartRule: string|null = null): Election => ({
   electionId: `2026-${seat.seatId}-${type}`,
   seatId: seat.seatId,
   year: 2026,
   date: '2026-11-03',
   type,
   termStart: type === 'regular' ? '2027-01-03' : null,
-  termStartLabel: type === 'regular' ? '2027-01-03' : '当選者の就任後（開始日未確認）',
+  termStartLabel: type === 'regular' ? '2027-01-03' : '当選者の就任時（就任日未定）',
+  termStartStatus: type === 'regular' ? 'scheduled' : 'pending-inauguration',
+  termStartRule,
   termEnd: type === 'regular' ? '2033-01-03' : '2029-01-03',
   congressAsOf: '2027-01-03',
   candidates: [],
   candidateResearchStatus: 'not-started',
   rating: {raw:null,category:'unavailable',organization:null,ratedAt:null,retrievedAt:null,sourceIds:[]},
   electionRelevance: '候補者調査は未着手、情勢評価は未取得です。',
-  verificationStatus: 'primary-source-recheck-required',
-  sourceIds,
+  // Verification covers election type, date, seat and term rules, not candidates or ratings.
+  verificationStatus: 'confirmed',
+  verifiedAt: '2026-09-09',
+  attributeSourceIds,
+  sourceIds: [...new Set(Object.values(attributeSourceIds).flat())],
 });
 
-const regularElections = seats.filter(seat => seat.senateClass === 2).map(seat => unresearchedElection(seat,'regular',['senate-classes','federal-election-date']));
+const regularElections = seats.filter(seat => seat.senateClass === 2).map(seat => electionBase(seat,'regular',{
+  seatId:['senate-class-2'], type:['senate-class-2'], date:['federal-election-date'],
+  termStart:['senate-class-2','senate-constitution'], termEnd:['senate-class-2','senate-constitution'],
+}));
 const specialSeatIds = ['FL-3','OH-3'];
 const specialElections = specialSeatIds.map(seatId => {
   const seat = seats.find(item => item.seatId === seatId);
   if (!seat) throw new Error(`Missing special-election seat: ${seatId}`);
-  return unresearchedElection(seat,'special',[seatId === 'FL-3' ? 'fl-election-dates' : 'oh-election-calendar']);
+  if (seatId === 'FL-3') return electionBase(seat,'special',{
+    seatId:['fl-offices-2026','fl-ballot-2026','senate-class-3','fl-vacancy-law'],
+    type:['fl-offices-2026','fl-vacancy-law'], date:['fl-election-dates'],
+    termStart:['fl-vacancy-law'], termEnd:['senate-class-3'],
+  },'州法は次の一般選挙で欠員を補充し、それまでの暫定任命を認めています。当選者の具体的な就任日は確定後に更新します。');
+  return electionBase(seat,'special',{
+    seatId:['oh-election-schedule','senate-class-3'], type:['oh-election-schedule','oh-vacancy-law'],
+    date:['oh-election-schedule'], termStart:['oh-vacancy-law'], termEnd:['oh-election-schedule','senate-class-3'],
+  },'州法上、暫定任命の在職期限は対象選挙後の12月15日です。当選者の具体的な宣誓・就任日は未定であり、通常選挙の任期開始日とは区別します。');
 });
 export const elections: Election[] = [...regularElections,...specialElections];
 
@@ -113,19 +139,33 @@ export const vicePresident: VicePresident = {
   name: 'JD Vance',
   party: 'R',
   asOf: '2026-09-09',
-  verificationStatus: 'primary-source-recheck-required',
-  sourceIds: ['white-house-administration','senate-vice-president'],
+  verificationStatus: 'confirmed',
+  verifiedAt: '2026-09-09',
+  attributeSourceIds: {name:['white-house-vance'],party:['white-house-vance']},
+  sourceIds: ['white-house-vance','senate-vice-president'],
 };
 
+// Only sources whose relevant contents were actually read in this verification pass use checked().
+const checked = (source: Omit<Source,'retrievedAt'|'contentVerifiedAt'>): Source => ({
+  ...source, retrievedAt:'2026-09-09', contentVerifiedAt:'2026-09-09',
+});
 export const sources: Source[] = [
-  {sourceId:'senate-members',title:'U.S. Senators',publisher:'U.S. Senate',url:'https://www.senate.gov/senators/',publishedAt:null,referencePeriod:'現職・党籍・州',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'senate-classes',title:'Classes of United States Senators',publisher:'U.S. Senate',url:'https://www.senate.gov/senators/Classes.htm',publishedAt:null,referencePeriod:'上院議席のClass・任期',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'senate-party-division',title:'Party Division',publisher:'U.S. Senate',url:'https://www.senate.gov/history/partydiv.htm',publishedAt:null,referencePeriod:'党派・会派構成',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'senate-vice-president',title:'Vice President of the United States',publisher:'U.S. Senate',url:'https://www.senate.gov/about/officers-staff/vice-president.htm',publishedAt:null,referencePeriod:'副大統領の決裁票',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'white-house-administration',title:'The Administration',publisher:'The White House',url:'https://www.whitehouse.gov/administration/',publishedAt:null,referencePeriod:'副大統領の氏名・党籍',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'federal-election-date',title:'Federal law establishing the federal election date',publisher:'U.S. House of Representatives, Office of the Law Revision Counsel',url:'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title2-section7',publishedAt:null,referencePeriod:'2026年連邦一般選挙日',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'fl-election-dates',title:'Election Dates',publisher:'Florida Department of State, Division of Elections',url:'https://dos.fl.gov/elections/for-voters/election-dates/',publishedAt:null,referencePeriod:'2026年フロリダ州選挙日程・特別選挙',retrievedAt:null,contentVerifiedAt:null},
-  {sourceId:'oh-election-calendar',title:'2026 Elections Calendar',publisher:'Ohio Secretary of State',url:'https://www.ohiosos.gov/elections/voters/current-voting-schedule/',publishedAt:null,referencePeriod:'2026年オハイオ州選挙日程・特別選挙',retrievedAt:null,contentVerifiedAt:null},
+  checked({sourceId:'senate-members',title:'U.S. Senators — current roster',publisher:'U.S. Senate',url:'https://www.senate.gov/senators/',publishedAt:null,referencePeriod:'2026-09-09閲覧時点の100人・党籍・州・空席照合'}),
+  checked({sourceId:'senate-members-xml',title:'Senators contact information — XML roster',publisher:'U.S. Senate',url:'https://www.senate.gov/general/contact_information/senators_cfm.xml',publishedAt:null,updatedAt:ROSTER_SOURCE_UPDATED_AT,referencePeriod:'現職の原表記・Bioguide ID・党籍・州・Class。HTML名簿と照合'}),
+  ...([1,2,3] as const).map(senateClass => checked({sourceId:`senate-class-${senateClass}`,title:`Class ${['I','II','III'][senateClass-1]} — Senators and terms`,publisher:'U.S. Senate',url:`https://www.senate.gov/senators/Class_${['I','II','III'][senateClass-1]}.htm`,publishedAt:null,referencePeriod:`Class ${senateClass}の議席一覧と6年任期 ${termByClass[senateClass].join('〜')}`})),
+  checked({sourceId:'democratic-caucus',title:'Our Caucus — Senate Democrats',publisher:'Senate Democratic Caucus',url:'https://www.democrats.senate.gov/about-senate-dems/our-caucus',publishedAt:null,referencePeriod:'2026-09-09閲覧時点の47人。King・Sandersの会派所属も個別照合'}),
+  checked({sourceId:'republican-conference',title:'Senate Republicans — member directory',publisher:'Senate Republican Conference',url:'https://www.republican.senate.gov/',publishedAt:null,referencePeriod:'2026-09-09閲覧時点の53人の会派所属。ページ内の議員一覧を参照'}),
+  checked({sourceId:'senate-party-division',title:'Party Division — 119th Congress',publisher:'U.S. Senate',url:'https://www.senate.gov/history/partydiv.htm',publishedAt:null,referencePeriod:'119th Congressの党籍合計 R53・D45・I2。個人の会派判定には使用しない'}),
+  checked({sourceId:'senate-constitution',title:'U.S. Constitution — Amendments XVII and XX',publisher:'U.S. Senate',url:'https://www.senate.gov/about/origins-foundations/senate-and-constitution/constitution.htm',publishedAt:null,referencePeriod:'上院の6年任期と通常任期が1月3日正午に交代する規定'}),
+  checked({sourceId:'senate-vice-president',title:'Vice President of the United States',publisher:'U.S. Senate',url:'https://www.senate.gov/about/officers-staff/vice-president.htm',publishedAt:null,referencePeriod:'上院で賛否同数の場合の副大統領決裁票'}),
+  checked({sourceId:'white-house-vance',title:'Vice President JD Vance',publisher:'The White House',url:'https://www.whitehouse.gov/administration/jd-vance/',publishedAt:null,referencePeriod:'2026-09-09閲覧時点の現副大統領・共和党所属。将来の在職は別途仮定'}),
+  checked({sourceId:'federal-election-date',title:'2026 Congressional Primary Dates and Candidate Filing Deadlines',publisher:'Federal Election Commission',url:'https://www.fec.gov/resources/cms-content/documents/2026pdates.pdf',publishedAt:null,updatedAt:'2026-05-18',referencePeriod:'2026年連邦一般選挙日 11月3日。予備選日程の更新判定には使用しない'}),
+  checked({sourceId:'fl-election-dates',title:'Election Dates — 2026',publisher:'Florida Department of State, Division of Elections',url:'https://dos.fl.gov/elections/for-voters/election-dates/',publishedAt:null,referencePeriod:'2026年一般選挙日 11月3日'}),
+  checked({sourceId:'fl-offices-2026',title:'Offices Up for Election and Retention in 2026',publisher:'Florida Department of State, Division of Elections',url:'https://dos.fl.gov/elections/candidates-committees/offices-up-for-election/',publishedAt:null,updatedAt:'2025-04-14',referencePeriod:'2026年に連邦上院1議席が選挙対象。Class一覧・補充規定と併用'}),
+  checked({sourceId:'fl-ballot-2026',title:'Official General Election Ballot — November 3, 2026',publisher:'Miami-Dade County Elections',url:'https://www.miamidade.gov/elections/library/2026-11-03-general-election-master-ballot.pdf',publishedAt:null,referencePeriod:'p.1の連邦上院選挙。Moodyの現職議席・Class IIIとの対応照合に使用'}),
+  checked({sourceId:'fl-vacancy-law',title:'Florida Statutes 100.161 — Senate vacancies',publisher:'Florida Legislature',url:'https://www.flsenate.gov/Laws/Statutes/2026/100.161',publishedAt:null,referencePeriod:'2026年版。次回一般選挙での補充と暫定任命の規定'}),
+  checked({sourceId:'oh-election-schedule',title:'2026 Election Schedule with Candidate Requirements',publisher:'Franklin County Board of Elections, Ohio',url:'https://vote.franklincountyohio.gov/getmedia/5a24ba93-6eaa-4cfe-ad8c-77c5aed0e496/2026-Election-Schedule-with-Candidate-Requirements-6',publishedAt:null,updatedAt:'2026-05-28',referencePeriod:'p.1：一般選挙11月3日、Hustedの連邦上院残任期は2029年1月3日まで'}),
+  checked({sourceId:'oh-vacancy-law',title:'Ohio Revised Code 3521.02 — Senate vacancies',publisher:'Ohio Laws',url:'https://codes.ohio.gov/ohio-revised-code/section-3521.02',publishedAt:null,referencePeriod:'1995-08-22施行の現行規定。特別選挙と暫定任命の12月15日期限'}),
   {sourceId:'census-profile',title:'Data Profiles | American Community Survey',publisher:'U.S. Census Bureau',url:'https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/',publishedAt:null,referencePeriod:'州別人口・社会属性',retrievedAt:null,contentVerifiedAt:null},
   {sourceId:'bls-qcew',title:'Quarterly Census of Employment and Wages',publisher:'U.S. Bureau of Labor Statistics',url:'https://www.bls.gov/cew/',publishedAt:null,referencePeriod:'州別産業雇用・賃金',retrievedAt:null,contentVerifiedAt:null},
   {sourceId:'bea-state',title:'GDP by State',publisher:'U.S. Bureau of Economic Analysis',url:'https://www.bea.gov/data/gdp/gdp-state',publishedAt:null,referencePeriod:'州別・産業別GDP',retrievedAt:null,contentVerifiedAt:null},
@@ -144,4 +184,4 @@ export const profiles: Profile[] = states.map(state => ({
 }));
 export const events: EventItem[] = [];
 export const DATA_AS_OF = '2026-09-09';
-export const APP_VERSION = 'task01-2026-09-09';
+export const APP_VERSION = 'verified01-2026-09-09';
