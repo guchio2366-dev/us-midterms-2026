@@ -1,4 +1,4 @@
-import type { Caucus, Election, Seat, Source, State, VerificationStatus, VicePresident } from './data/model';
+import type { Caucus, Election, EventItem, HouseDistrict, IssueCategory, PowerRule, Profile, Seat, Source, State, StateContext, VerificationStatus, VicePresident } from './data/model';
 
 export type Assumptions = Record<string,Caucus>;
 export type CaucusCounts = Record<Caucus,number>;
@@ -41,8 +41,19 @@ export function validateData(states: State[], seats: Seat[], elections: Election
   }
   for (const election of elections) {
     if (!isDate(election.date) || !isDate(election.termEnd)) errors.push(`${election.electionId}: invalid election date/term`);
+    if (!isDate(election.primaryDate)) errors.push(`${election.electionId}: invalid primary date`);
     if (election.termStartStatus === 'scheduled' && (!isDate(election.termStart) || election.termStart! >= election.termEnd)) errors.push(`${election.electionId}: invalid scheduled term`);
     if (election.termStartStatus === 'pending-inauguration' && (election.type !== 'special' || election.termStart !== null || !election.termStartRule?.trim())) errors.push(`${election.electionId}: pending inauguration needs a rule and no invented date`);
+    if (!election.candidates.length || election.candidateResearchStatus === 'not-started') errors.push(`${election.electionId}: candidates not researched`);
+    for (const candidate of election.candidates) {
+      if (!candidate.name.trim() || !candidate.partyLabel.trim() || !candidate.sourceIds.length) errors.push(`${election.electionId}: incomplete candidate`);
+      if (candidate.status !== 'confirmed') errors.push(`${election.electionId}: unconfirmed candidate`);
+      if (candidate.party === 'D' && candidate.caucusIntent !== 'Democratic') errors.push(`${election.electionId}: Democratic candidate caucus mismatch`);
+      if (candidate.party === 'R' && candidate.caucusIntent !== 'Republican') errors.push(`${election.electionId}: Republican candidate caucus mismatch`);
+    }
+    if (election.contestStatus === 'general-ballot' && (election.candidateResearchStatus !== 'complete' || election.candidates.some(candidate => candidate.ballotStage === 'primary-ballot'))) errors.push(`${election.electionId}: inconsistent general ballot`);
+    if (election.contestStatus !== 'general-ballot' && election.candidateResearchStatus !== 'partial') errors.push(`${election.electionId}: pending primary must remain partial`);
+    if (election.rating.category === 'unavailable' || !election.rating.organization || !isDate(election.rating.ratedAt) || !isDate(election.rating.retrievedAt)) errors.push(`${election.electionId}: rating not verified`);
   }
   if (sources.length) {
     const byId = new Map(sources.map(source => [source.sourceId,source]));
@@ -117,4 +128,83 @@ export function majorityText(counts: CaucusCounts, vicePresident: VicePresident|
   if (unresolved > 0) return `未確定・非所属・空席の${unresolved}議席次第`;
   if (counts.Democratic === 50 && counts.Republican === 50 && (!confirmedVicePresident || confirmedVicePresident.party === 'unknown')) return '50対50：副大統領の前提が未確認のため判定できません';
   return 'いずれの会派も単純多数の目安を確保していません';
+}
+
+export type HouseOutcome = 'Democratic'|'Republican'|'unconfirmed';
+export type HouseAssumptions = Record<string,HouseOutcome>;
+export type HouseCounts = Record<HouseOutcome,number>;
+
+export function houseRatingOutcome(district: HouseDistrict): HouseOutcome {
+  if (district.rating.endsWith('D')) return 'Democratic';
+  if (district.rating.endsWith('R')) return 'Republican';
+  return 'unconfirmed';
+}
+
+export function simulatedHouseCounts(districts: HouseDistrict[], assumptions: HouseAssumptions): HouseCounts {
+  return districts.reduce<HouseCounts>((counts,district) => {
+    counts[assumptions[district.districtId] ?? houseRatingOutcome(district)] += 1;
+    return counts;
+  },{Democratic:0,Republican:0,unconfirmed:0});
+}
+
+export function houseMajorityText(counts: HouseCounts): string {
+  if (counts.Democratic >= 218) return '民主党が下院多数派を確保する仮定';
+  if (counts.Republican >= 218) return '共和党が下院多数派を確保する仮定';
+  if (counts.unconfirmed) return `未確定${counts.unconfirmed}議席の配分で多数派が決まります`;
+  return '218議席に達する党がなく、欠員・第三党を含む運営協議が必要です';
+}
+
+export function validateHouseData(districts: HouseDistrict[], states: State[] = [], sources: Source[] = []): string[] {
+  const errors: string[] = [];
+  if (districts.length !== 435) errors.push(`house districts=${districts.length}`);
+  if (new Set(districts.map(district => district.districtId)).size !== districts.length) errors.push('duplicate house district_id');
+  for (const district of districts) {
+    if (!/^\d{2}$/.test(district.stateFips)) errors.push(`${district.districtId}: invalid state FIPS`);
+    if (states.length && !states.some(state => state.fips === district.stateFips)) errors.push(`${district.districtId}: unknown state`);
+    if (district.rating === 'unavailable') errors.push(`${district.districtId}: missing rating`);
+    if (!district.sourceIds.length) errors.push(`${district.districtId}: missing sources`);
+    if (sources.length) for (const sourceId of district.sourceIds) if (!sources.some(source => source.sourceId === sourceId)) errors.push(`${district.districtId}: unknown source ${sourceId}`);
+  }
+  const total = Object.values(simulatedHouseCounts(districts,{})).reduce((sum,value) => sum + value,0);
+  if (total !== 435) errors.push(`house forecast total=${total}`);
+  return errors;
+}
+
+export function validateEditorialData(
+  states: State[], profiles: Profile[], events: EventItem[], contexts: StateContext[],
+  powers: PowerRule[], issues: IssueCategory[], sources: Source[],
+): string[] {
+  const errors: string[] = [];
+  const stateIds = new Set(states.map(state => state.fips));
+  const sourceIds = new Set(sources.map(source => source.sourceId));
+  const eventIds = new Set(events.map(event => event.eventId));
+  const powerIds = new Set(powers.map(power => power.powerId));
+  if (profiles.length !== 50) errors.push(`profiles=${profiles.length}`);
+  if (contexts.length !== 50) errors.push(`contexts=${contexts.length}`);
+  if (new Set(profiles.map(profile => profile.stateFips)).size !== profiles.length) errors.push('duplicate profile state');
+  if (new Set(contexts.map(context => context.stateFips)).size !== contexts.length) errors.push('duplicate context state');
+  if (eventIds.size !== events.length) errors.push('duplicate event_id');
+  if (powers.length !== 8 || powerIds.size !== powers.length) errors.push('power taxonomy must contain 8 unique rules');
+  if (issues.length !== 8 || new Set(issues.map(issue => issue.issueId)).size !== issues.length) errors.push('issue taxonomy must contain 8 unique primary categories');
+  for (const state of states) {
+    const profile = profiles.find(item => item.stateFips === state.fips);
+    const context = contexts.find(item => item.stateFips === state.fips);
+    if (!profile || profile.contentStatus !== '確認済み') errors.push(`${state.abbr}: incomplete profile`);
+    if (!context) errors.push(`${state.abbr}: missing context`);
+    if (profile && (profile.eventIds.length < 2 || profile.eventIds.length > 4)) errors.push(`${state.abbr}: events=${profile.eventIds.length}`);
+    if (profile) {
+      for (const eventId of profile.eventIds) if (!eventIds.has(eventId)) errors.push(`${state.abbr}: unknown event ${eventId}`);
+      for (const sourceId of [profile.politicalBase,profile.industryAndIssues,profile.historicalTrajectory,profile.electionMeaning].flatMap(item => item.sourceIds)) if (!sourceIds.has(sourceId)) errors.push(`${state.abbr}: unknown source ${sourceId}`);
+    }
+  }
+  for (const event of events) {
+    if (!event.stateFips.length || event.stateFips.some(id => !stateIds.has(id))) errors.push(`${event.eventId}: unknown state`);
+    for (const sourceId of event.sourceIds) if (!sourceIds.has(sourceId)) errors.push(`${event.eventId}: unknown source ${sourceId}`);
+  }
+  for (const issue of issues) {
+    if (!issue.indicatorLabels.length || !issue.relatedPowerIds.length) errors.push(`${issue.issueId}: missing analytical links`);
+    for (const powerId of issue.relatedPowerIds) if (!powerIds.has(powerId)) errors.push(`${issue.issueId}: unknown power ${powerId}`);
+    for (const sourceId of issue.sourceIds) if (!sourceIds.has(sourceId)) errors.push(`${issue.issueId}: unknown source ${sourceId}`);
+  }
+  return errors;
 }

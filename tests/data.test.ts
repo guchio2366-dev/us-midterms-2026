@@ -1,8 +1,12 @@
 import { describe,expect,it } from 'vitest';
-import { elections,seats,sources,states,vicePresident } from '../src/data/data';
+import houseTopology from '../public/data/house-2026-topo.json';
+import { elections,events,profiles,seats,sources,states,vicePresident } from '../src/data/data';
+import { issueCategories,powerRules } from '../src/data/civics';
+import { houseDistricts,houseSnapshot } from '../src/data/house';
+import { soybeanTrade,stateContexts } from '../src/data/state-context';
 import { verifiedRoster } from '../src/data/verified-roster';
 import type { Election, Seat, VicePresident } from '../src/data/model';
-import { currentCaucusCounts,majorityText,simulatedCounts,uniqueElectionSeatIds,validateData } from '../src/logic';
+import { currentCaucusCounts,houseMajorityText,houseRatingOutcome,majorityText,simulatedCounts,simulatedHouseCounts,uniqueElectionSeatIds,validateData,validateEditorialData,validateHouseData } from '../src/logic';
 
 const total = (counts: ReturnType<typeof currentCaucusCounts>) => Object.values(counts).reduce((sum,value) => sum + value,0);
 
@@ -140,8 +144,15 @@ describe('primary-source verification',() => {
     expect(validateData(states,seats,elections.map(election => election === special ? {...special,termStart:'2027-01-03'} : election),sources)).toContain(`${special.electionId}: pending inauguration needs a rule and no invented date`);
   });
 
-  it('does not promote unfinished candidate, rating or statistical research when the baseline is confirmed',() => {
-    expect(elections.every(election => election.candidateResearchStatus === 'not-started' && election.candidates.length === 0 && election.rating.category === 'unavailable')).toBe(true);
+  it('separates completed general ballots from the two still-pending September primaries',() => {
+    expect(elections.flatMap(election => election.candidates)).toHaveLength(112);
+    expect(elections.filter(election => election.contestStatus === 'general-ballot')).toHaveLength(33);
+    expect(elections.filter(election => election.candidateResearchStatus === 'complete')).toHaveLength(33);
+    expect(elections.find(election => election.seatId === 'DE-2')).toMatchObject({primaryDate:'2026-09-15',contestStatus:'primary-pending',candidateResearchStatus:'partial'});
+    expect(elections.find(election => election.seatId === 'RI-2')).toMatchObject({primaryDate:'2026-09-09',contestStatus:'primary-result-pending',candidateResearchStatus:'partial'});
+    expect(elections.every(election => election.candidates.length > 0 && election.rating.category !== 'unavailable' && election.rating.organization === "Sabato's Crystal Ball")).toBe(true);
+    expect(elections.find(election => election.seatId === 'OH-3')?.rating.category).toBe('Toss Up');
+    expect(elections.find(election => election.seatId === 'NC-2')?.rating.category).toBe('Lean D');
     for (const sourceId of ['census-profile','bls-qcew','bea-state']) {
       const source = sources.find(item => item.sourceId === sourceId)!;
       expect(source.retrievedAt).toBeNull();
@@ -150,6 +161,59 @@ describe('primary-source verification',() => {
     const xml = sources.find(source => source.sourceId === 'senate-members-xml')!;
     expect(xml.updatedAt).toBe('2026-08-03T09:54-05:00');
     expect(xml.retrievedAt).toBe('2026-09-09');
+  });
+});
+
+describe('editorial research and issue model',() => {
+  it('covers all 50 states with sourced context, four-part briefs and two to four events',() => {
+    expect(validateEditorialData(states,profiles,events,stateContexts,powerRules,issueCategories,sources)).toEqual([]);
+    expect(stateContexts).toHaveLength(50);
+    expect(profiles).toHaveLength(50);
+    expect(events).toHaveLength(145);
+    expect(profiles.every(profile => profile.contentStatus === '確認済み' && profile.eventIds.length >= 2 && profile.eventIds.length <= 4)).toBe(true);
+    expect(stateContexts.find(context => context.stateFips === '17')).toMatchObject({soybeanRank2026:1,soybeanProduction2026:698810});
+    expect(stateContexts.find(context => context.stateFips === '55')).toMatchObject({presidentialWinner2024:'R',presidentialMargin2024:.9});
+  });
+
+  it('uses eight mutually exclusive primary issue domains and links each to powers and indicators',() => {
+    expect(issueCategories).toHaveLength(8);
+    expect(powerRules).toHaveLength(8);
+    expect(new Set(issueCategories.map(issue => issue.issueId)).size).toBe(8);
+    expect(issueCategories.every(issue => issue.relatedPowerIds.length > 0 && issue.indicatorLabels.length > 0)).toBe(true);
+    expect(powerRules.find(rule => rule.powerId === 'veto-override')?.nominalSeats).toContain('下院290／上院67');
+    expect(powerRules.find(rule => rule.powerId === 'nominations')?.nominalSeats).toContain('上院51');
+  });
+
+  it('preserves the soybean exposure calculation and its causal caveat inputs',() => {
+    expect(soybeanTrade).toMatchObject({chinaMetricTons:12356115,priorYearChinaMetricTons:21598375.9,yearOverYearPercent:-42.8,chinaSharePercent:33.6});
+    expect(stateContexts.filter(context => context.soybeanRank2026 !== null && context.soybeanRank2026 <= 10)).toHaveLength(10);
+  });
+});
+
+describe('2026 House model',() => {
+  it('contains 435 unique, sourced districts and all seven rating categories',() => {
+    expect(validateHouseData(houseDistricts,states,sources)).toEqual([]);
+    expect(houseDistricts).toHaveLength(435);
+    expect(new Set(houseDistricts.map(district => district.districtId)).size).toBe(435);
+    expect(Object.fromEntries(['Solid D','Likely D','Lean D','Toss Up','Lean R','Likely R','Solid R'].map(rating => [rating,houseDistricts.filter(district => district.rating === rating).length]))).toEqual({'Solid D':182,'Likely D':14,'Lean D':12,'Toss Up':20,'Lean R':10,'Likely R':30,'Solid R':167});
+    expect(houseSnapshot).toMatchObject({total:435,Democratic:214,Republican:218,Independent:1,vacant:2});
+  });
+
+  it('keeps simulations at 435 and changes exactly one seat per override',() => {
+    const baseline = simulatedHouseCounts(houseDistricts,{});
+    expect(baseline).toEqual({Democratic:208,Republican:207,unconfirmed:20});
+    expect(houseMajorityText(baseline)).toContain('未確定20議席');
+    const tossup = houseDistricts.find(district => houseRatingOutcome(district) === 'unconfirmed')!;
+    const changed = simulatedHouseCounts(houseDistricts,{[tossup.districtId]:'Democratic'});
+    expect(changed).toEqual({Democratic:209,Republican:207,unconfirmed:19});
+    expect(Object.values(changed).reduce((sum,value) => sum + value,0)).toBe(435);
+  });
+
+  it('ships one 2026 boundary geometry for every modeled district',() => {
+    const geometries = houseTopology.objects.districts.geometries.filter(geometry => geometry.properties?.election === '2026');
+    const modelIds = new Set(houseDistricts.map(district => `${district.stateFips}${district.districtId.endsWith('-AL') ? '00' : String(district.district).padStart(2,'0')}`));
+    expect(geometries).toHaveLength(435);
+    expect(new Set(geometries.map(geometry => String(geometry.properties?.GEOID).padStart(4,'0')))).toEqual(modelIds);
   });
 });
 

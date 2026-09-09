@@ -31,9 +31,11 @@ export interface Seat {
 }
 
 export interface Candidate {
-  name: string|null;
+  name: string;
   party: Party;
-  status: 'confirmed'|'unconfirmed'|'none';
+  partyLabel: string;
+  status: 'confirmed'|'unconfirmed';
+  ballotStage: 'general-ballot'|'primary-ballot'|'write-in';
   caucusIntent: Caucus;
   sourceIds: string[];
 }
@@ -50,6 +52,8 @@ export interface Election {
   termStartRule: string|null;
   termEnd: string;
   congressAsOf: '2027-01-03';
+  primaryDate: string|null;
+  contestStatus: 'general-ballot'|'primary-pending'|'primary-result-pending';
   candidates: Candidate[];
   candidateResearchStatus: 'not-started'|'partial'|'complete';
   rating: {
@@ -91,3 +95,54 @@ export interface VicePresident {
 
 export interface Profile { stateFips:string; asOf:string; contentStatus:'確認済み'|'一部未確認'|'未作成'; politicalBase:{text:string;sourceIds:string[]}; industryAndIssues:{text:string;sourceIds:string[]}; historicalTrajectory:{text:string;sourceIds:string[]}; electionMeaning:{text:string;sourceIds:string[]}; eventIds:string[] }
 export interface EventItem { eventId:string; stateFips:string[]; relatedElectionIds:string[]; period:string; precision:'day'|'month'|'year'|'range'; title:string; eventText:string; localEffect:string|null; observedPoliticalChange:string|null; causalInterpretation:{text:string;evidenceStatus:'confirmed'|'interpretation'|'unconfirmed'}; sourceIds:string[] }
+
+export interface PowerRule {
+  powerId: string;
+  domain: 'law'|'money'|'oversight'|'appointments'|'treaties'|'impeachment'|'veto';
+  action: string;
+  house: string;
+  senate: string;
+  threshold: string;
+  nominalSeats: string;
+  presidentialConstraint: string;
+  sourceIds: string[];
+}
+
+export interface IssueCategory {
+  issueId: string;
+  label: string;
+  scope: string;
+  voterQuestion: string;
+  presidentialLevers: string;
+  congressionalChecks: string;
+  indicatorLabels: string[];
+  relatedPowerIds: string[];
+  sourceIds: string[];
+}
+
+export interface StateContext {
+  stateFips: string;
+  region: 'Northeast'|'Midwest'|'South'|'West';
+  population2025: number;
+  populationChange2020to2025: number;
+  presidentialWinner2024: 'D'|'R';
+  presidentialMargin2024: number|null;
+  topPrivateIndustry2025: string;
+  topPrivateIndustryShare2025: number;
+  soybeanProduction2026: number|null;
+  soybeanRank2026: number|null;
+  sourceIds: string[];
+}
+
+export interface HouseDistrict {
+  districtId: string;
+  stateFips: string;
+  stateAbbr: string;
+  district: number;
+  incumbent: string|null;
+  currentParty: Party;
+  vacant: boolean;
+  ratingRaw: string;
+  rating: Rating;
+  sourceIds: string[];
+}
