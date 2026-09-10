@@ -85,7 +85,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <section id="senate" class="summary" aria-labelledby="current-heading"><div><p class="kicker">現在の上院会派構成</p><h2 id="current-heading">100議席の内訳</h2></div><div id="current-counts" class="counts"></div></section>
   <section class="workspace" aria-label="上院州別地図と詳細">
     <div class="map-column">
-      <div class="controls" aria-label="地図表示設定"><div class="segmented"><button data-mode="holder" class="active">現保有党</button><button data-mode="rating">選挙情勢</button></div><label class="switch"><input id="competitive" type="checkbox" ${hasRatings?'':'disabled'}><span>激戦のみ強調</span></label></div>
+      <div class="controls" aria-label="地図表示設定"><div class="segmented"><button data-mode="current">投票前の議席</button><button data-mode="rating" class="active">選挙情勢</button></div><label class="switch"><input id="competitive" type="checkbox" ${hasRatings?'':'disabled'}><span>激戦のみ強調</span></label></div>
       ${hasRatings?'':'<p class="control-note" id="competitive-note">情勢評価が未取得のため、激戦強調は利用できません。</p>'}
       <div class="search-wrap"><label for="state-search">州を検索・選択</label><select id="state-search"><option value="">50州から選ぶ</option>${states.map(state => `<option value="${state.fips}">${state.nameJa} / ${state.nameEn} (${state.abbr})</option>`).join('')}</select></div>
       <div class="map-head"><div><p class="kicker">SENATE MAP</p><h2 id="map-heading">2026年の上院選挙</h2></div><p id="mode-note">色は対象議席の現保有党。州全体の支持傾向や勝敗予測ではありません。</p></div>
