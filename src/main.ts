@@ -269,6 +269,13 @@ function enhanceLayout() {
       const warning = sim.querySelector('.warning');
       sim.insertBefore(workspace, warning ?? null);
     }
+    const movedHolderButton = sim.querySelector<HTMLButtonElement>('[data-mode="holder"]');
+    if (movedHolderButton) {
+      movedHolderButton.dataset.mode = 'current';
+      movedHolderButton.textContent = '投票前の議席';
+    }
+    const movedRatingButton = sim.querySelector<HTMLButtonElement>('[data-mode="rating"]');
+    if (movedRatingButton) movedRatingButton.textContent = '選挙情勢';
     if (house && !sim.contains(house)) {
       const houseReference = document.createElement('details');
       houseReference.id = 'house-reference';
