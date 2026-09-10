@@ -2,6 +2,7 @@ import { describe,expect,it } from 'vitest';
 import houseTopology from '../public/data/house-2026-topo.json';
 import { elections,events,profiles,seats,sources,states,vicePresident } from '../src/data/data';
 import { issueCategories,powerRules } from '../src/data/civics';
+import { guideContent,issueReports,newsItems } from '../src/data/content';
 import { houseDistricts,houseSnapshot } from '../src/data/house';
 import { soybeanTrade,stateContexts } from '../src/data/state-context';
 import { verifiedRoster } from '../src/data/verified-roster';
@@ -236,5 +237,21 @@ describe('majority guide',() => {
   it('uses the verified current vice president for the explicitly stated continuation assumption',() => {
     expect(vicePresident).toMatchObject({name:'JD Vance',party:'R',verificationStatus:'confirmed',verifiedAt:'2026-09-09'});
     expect(majorityText({Democratic:50,Republican:50,none:0,unconfirmed:0,vacant:0},vicePresident)).toContain('共和党会派');
+  });
+});
+
+describe('replaceable editorial UI content',() => {
+  it('provides more than one ten-item news page with stable sourced identifiers',() => {
+    expect(newsItems.length).toBeGreaterThan(10);
+    expect(new Set(newsItems.map(item => item.newsId)).size).toBe(newsItems.length);
+    expect(newsItems.every(item => item.status === 'published' && item.sourceIds.length > 0)).toBe(true);
+    expect(Math.ceil(newsItems.length / 10)).toBeGreaterThan(1);
+  });
+
+  it('keeps the first-visit introduction and all eight report replacement slots',() => {
+    expect(guideContent.intro).toContain('ニュース');
+    expect(guideContent.sections.some(section => section.title === '中間選挙')).toBe(true);
+    expect(Object.keys(issueReports).sort()).toEqual(issueCategories.map(issue => issue.issueId).sort());
+    expect(Object.values(issueReports).every(report => report.status === 'preparing')).toBe(true);
   });
 });

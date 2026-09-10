@@ -5,13 +5,16 @@ import type { Topology } from 'topojson-specification';
 import './style.css';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
+import { guideContent,issueReports,newsEditorialNote,newsItems } from './data/content';
 import { houseDistricts,houseSnapshot } from './data/house';
 import { soybeanTrade,stateContexts } from './data/state-context';
 import type { Caucus, Election, HouseDistrict, Rating, Seat, State } from './data/model';
 import { baselineCaucus,currentCaucusCounts,houseMajorityText,houseRatingOutcome,majorityText,simulatedCounts,simulatedHouseCounts,uniqueElectionSeatIds,type Assumptions,type HouseAssumptions } from './logic';
 
-type Mode = 'holder'|'rating';
-let mode: Mode = 'holder';
+type Mode = 'current'|'rating';
+type SimulatorMode = 'target'|'rating'|'current';
+let mode: Mode = 'rating';
+let simulatorMode: SimulatorMode = 'rating';
 let competitive = false;
 let selected: State|null = null;
 let assumptions: Assumptions = {};
@@ -20,6 +23,17 @@ let selectedHouseDistrict: HouseDistrict|null = null;
 let houseAssumptions: HouseAssumptions = {};
 let activeIssueId = 'trade-industry';
 let soySort: 'production'|'competitive'|'margin' = 'production';
+let newsPage = 0;
+let targetActionId = 'ordinary-law';
+let targetParty: 'Democratic'|'Republican' = 'Republican';
+let overlayKind: 'guide'|'issues'|'news'|null = null;
+let overlayNewsId: string|null = null;
+let overlayReturnFocus: HTMLElement|null = null;
+let overlayReturnScrollY = 0;
+let overviewSection: HTMLElement|null = null;
+let issuesSection: HTMLElement|null = null;
+const NEWS_PAGE_SIZE = 10;
+const POWER_DISCLOSURE_KEY = 'us-midterms-2026:power-disclosure:v1';
 const stateByFips = new Map(states.map(state => [state.fips,state]));
 const seatById = new Map(seats.map(seat => [seat.seatId,seat]));
 const profileByFips = new Map(profiles.map(profile => [profile.stateFips,profile]));
@@ -71,7 +85,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <section id="senate" class="summary" aria-labelledby="current-heading"><div><p class="kicker">現在の上院会派構成</p><h2 id="current-heading">100議席の内訳</h2></div><div id="current-counts" class="counts"></div></section>
   <section class="workspace" aria-label="上院州別地図と詳細">
     <div class="map-column">
-      <div class="controls" aria-label="地図表示設定"><div class="segmented"><button data-mode="holder" class="active">現保有党</button><button data-mode="rating">選挙情勢</button></div><label class="switch"><input id="competitive" type="checkbox" ${hasRatings?'':'disabled'}><span>激戦のみ強調</span></label></div>
+      <div class="controls" aria-label="地図表示設定"><div class="segmented"><button data-mode="current">投票前の議席</button><button data-mode="rating" class="active">選挙情勢</button></div><label class="switch"><input id="competitive" type="checkbox" ${hasRatings?'':'disabled'}><span>激戦のみ強調</span></label></div>
       ${hasRatings?'':'<p class="control-note" id="competitive-note">情勢評価が未取得のため、激戦強調は利用できません。</p>'}
       <div class="search-wrap"><label for="state-search">州を検索・選択</label><select id="state-search"><option value="">50州から選ぶ</option>${states.map(state => `<option value="${state.fips}">${state.nameJa} / ${state.nameEn} (${state.abbr})</option>`).join('')}</select></div>
       <div class="map-head"><div><p class="kicker">SENATE MAP</p><h2 id="map-heading">2026年の上院選挙</h2></div><p id="mode-note">色は対象議席の現保有党。州全体の支持傾向や勝敗予測ではありません。</p></div>
@@ -130,11 +144,617 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <section class="method"><p class="kicker">READING THE DATA</p><h2>表示の読み方</h2><div class="method-grid"><article><b>事実・評価・仮定を分離</b><p>現職と公式統計は事実、情勢分類は評価機関の判断、シミュレーションは利用者の仮定として表示します。</p></article><article><b>時点の違いを表示</b><p>候補者は9月9日、上院情勢は8月26日、下院合意情勢は8月31日のスナップショットです。</p></article><article><b>地域指標は因果を示さない</b><p>人口、産業、大豆生産、過去の得票は政策への曝露や背景です。それだけで投票理由を断定しません。</p></article></div><details class="source-panel"><summary>全データソース（${sources.length}件）</summary>${refs(sources.map(source => source.sourceId))}</details></section>
 </main><footer>静的データ版 ${APP_VERSION}。表示ごとに資料名、対象期間、取得日、内容確認日を記録しています。</footer>`;
 
+function enhanceLayout() {
+  const main = document.querySelector<HTMLElement>('main');
+  if (!main || document.querySelector('#news')) return;
+  const caution = main.querySelector<HTMLElement>('.data-caution');
+  const overview = main.querySelector<HTMLElement>('#overview');
+  const powers = main.querySelector<HTMLElement>('#powers');
+  const senate = main.querySelector<HTMLElement>('#senate');
+  const workspace = main.querySelector<HTMLElement>('.workspace');
+  const sim = main.querySelector<HTMLElement>('.sim');
+  const issues = main.querySelector<HTMLElement>('#issues');
+  const house = main.querySelector<HTMLElement>('#house');
+  const method = main.querySelector<HTMLElement>('.method');
+  overviewSection = overview;
+  issuesSection = issues;
+
+  const nav = document.querySelector<HTMLElement>('.jump-nav');
+  if (nav) {
+    nav.innerHTML = '<a href="#news">ニュース</a><a href="#powers">議席と権限</a><a href="#simulator">シミュレーション</a><a href="#sources">出典</a>';
+  }
+  const mast = document.querySelector<HTMLElement>('.mast');
+  if (mast && !document.querySelector('#open-guide')) {
+    const links = document.createElement('div');
+    links.className = 'quick-links';
+    links.setAttribute('aria-label', '解説パネル');
+    links.innerHTML = '<button id="open-guide" class="quick-link" type="button">初めて開いた方へ</button><button id="open-issues" class="quick-link" type="button">8つの論点から選挙を見る</button>';
+    mast.insertBefore(links, mast.querySelector('.dateline'));
+  }
+
+  const news = document.createElement('section');
+  news.id = 'news';
+  news.className = 'section-block news-section';
+  news.setAttribute('aria-labelledby', 'news-heading');
+  news.innerHTML = '<div class="section-heading"><div><p class="kicker">NEWS & EVENTS</p><h2 id="news-heading">選挙を動かしうるニュース</h2></div><p>カードをタップすると、概略・考えうる影響・出典を主画面上のパネルで確認できます。枠内は独立してスクロールします。</p></div><p class="news-editorial-note"></p><div class="news-frame"><div id="news-list" class="news-list" tabindex="0" aria-label="ニュース一覧"></div><div id="news-scrollbar" class="custom-scrollbar" role="scrollbar" aria-controls="news-list" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div><div class="news-pagination"><span id="news-page-status" aria-live="polite"></span><div><button id="news-prev" type="button">前の10件</button><button id="news-next" type="button">次の10件</button></div></div>';
+  const newsNote = news.querySelector<HTMLElement>('.news-editorial-note');
+  if (newsNote) newsNote.textContent = newsEditorialNote;
+  if (caution) main.insertBefore(news, caution.nextSibling);
+  else main.insertBefore(news, main.firstChild);
+
+  if (powers) {
+    const heading = powers.querySelector<HTMLElement>('.section-heading');
+    const disclosure = document.createElement('details');
+    disclosure.id = 'power-disclosure';
+    disclosure.open = true;
+    try {
+      disclosure.open = localStorage.getItem(POWER_DISCLOSURE_KEY) !== 'closed';
+    } catch {
+      disclosure.open = true;
+    }
+    const summary = document.createElement('summary');
+    summary.className = 'section-summary';
+    summary.innerHTML = '<div class="summary-main">' + (heading?.innerHTML ?? '<p class="kicker">CHECKS ON THE PRESIDENT</p><h2 id="powers-heading">議会の権限と必要票</h2>') + '</div><span class="summary-hint">タイトルをタップして開閉</span>';
+    disclosure.append(summary);
+    heading?.remove();
+    while (powers.firstChild) disclosure.append(powers.firstChild);
+    powers.append(disclosure);
+    disclosure.addEventListener('toggle', () => {
+      try {
+        localStorage.setItem(POWER_DISCLOSURE_KEY, disclosure.open ? 'open' : 'closed');
+      } catch {
+        // Private browsing can reject localStorage; the open state still works for this visit.
+      }
+    });
+    const table = powers.querySelector<HTMLTableElement>('.power-table');
+    if (table && !table.dataset.actionsAdded) {
+      table.dataset.actionsAdded = 'true';
+      const header = table.tHead?.rows[0];
+      if (header) {
+        const cell = document.createElement('th');
+        cell.textContent = '逆算';
+        header.append(cell);
+      }
+      [...(table.tBodies[0]?.rows ?? [])].forEach((row, index) => {
+        const rule = powerRules[index];
+        if (!rule) return;
+        const cell = document.createElement('td');
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'power-target-button';
+        button.dataset.powerTarget = rule.powerId;
+        button.textContent = '条件を確認';
+        cell.append(button);
+        row.append(cell);
+      });
+    }
+    main.insertBefore(powers, news.nextSibling);
+  }
+
+  if (sim) {
+    sim.id = 'simulator';
+    sim.setAttribute('aria-labelledby', 'sim-heading');
+    const simTitle = sim.querySelector<HTMLElement>('.sim-title');
+    const tabs = document.createElement('div');
+    tabs.className = 'sim-tabs';
+    tabs.setAttribute('role', 'tablist');
+    tabs.setAttribute('aria-label', 'シミュレーション表示');
+    tabs.innerHTML = '<button type="button" role="tab" data-sim-mode="target">権限から逆算</button><button type="button" role="tab" data-sim-mode="rating" aria-selected="true" class="active">現在の選挙情勢</button><button type="button" role="tab" data-sim-mode="current">投票前の議席構成</button>';
+    const targetPanel = document.createElement('div');
+    targetPanel.id = 'target-sim-panel';
+    targetPanel.className = 'target-sim-panel';
+    targetPanel.hidden = true;
+    if (simTitle) {
+      simTitle.after(tabs);
+      tabs.after(targetPanel);
+    } else {
+      sim.prepend(targetPanel);
+      targetPanel.before(tabs);
+    }
+    const holderButton = sim.querySelector<HTMLButtonElement>('[data-mode="holder"]');
+    if (holderButton) {
+      holderButton.dataset.mode = 'current';
+      holderButton.textContent = '投票前の議席';
+    }
+    const ratingButton = sim.querySelector<HTMLButtonElement>('[data-mode="rating"]');
+    if (ratingButton) {
+      ratingButton.textContent = '選挙情勢';
+      ratingButton.classList.add('active');
+    }
+    if (senate && !sim.contains(senate)) {
+      const warning = sim.querySelector('.warning');
+      sim.insertBefore(senate, warning ?? null);
+    }
+    if (workspace && !sim.contains(workspace)) {
+      const warning = sim.querySelector('.warning');
+      sim.insertBefore(workspace, warning ?? null);
+    }
+    const movedHolderButton = sim.querySelector<HTMLButtonElement>('[data-mode="holder"]');
+    if (movedHolderButton) {
+      movedHolderButton.dataset.mode = 'current';
+      movedHolderButton.textContent = '投票前の議席';
+    }
+    const movedRatingButton = sim.querySelector<HTMLButtonElement>('[data-mode="rating"]');
+    if (movedRatingButton) movedRatingButton.textContent = '選挙情勢';
+    if (house && !sim.contains(house)) {
+      const houseReference = document.createElement('details');
+      houseReference.id = 'house-reference';
+      houseReference.className = 'reference-block';
+      const houseSummary = document.createElement('summary');
+      houseSummary.textContent = '下院435議席の地図と補助シミュレーション';
+      houseReference.append(houseSummary, house);
+      sim.append(houseReference);
+    }
+    main.insertBefore(sim, powers?.nextSibling ?? news.nextSibling);
+  }
+  if (overview) overview.remove();
+  if (issues) issues.remove();
+  if (method) {
+    method.id = 'sources';
+    method.classList.add('section-block');
+  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'overlay-root';
+  overlay.className = 'overlay-root';
+  overlay.hidden = true;
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.innerHTML = '<div class="overlay-backdrop" data-overlay-close></div><section class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="overlay-heading"><header class="overlay-header"><div><p id="overlay-kicker" class="kicker">PANEL</p><h2 id="overlay-heading">解説</h2></div><button id="overlay-close" class="close overlay-close" type="button" aria-label="パネルを閉じる">×</button></header><div class="overlay-body"><div id="overlay-content" class="overlay-content" tabindex="0"></div><div id="overlay-scrollbar" class="custom-scrollbar" role="scrollbar" aria-controls="overlay-content" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div></section>';
+  document.body.append(overlay);
+  document.querySelector<HTMLElement>('[data-overlay-close]')?.addEventListener('click', () => closeOverlay());
+  document.querySelector<HTMLButtonElement>('#overlay-close')?.addEventListener('click', () => closeOverlay());
+  document.querySelector<HTMLButtonElement>('#open-guide')?.addEventListener('click', () => openOverlay('guide'));
+  document.querySelector<HTMLButtonElement>('#open-issues')?.addEventListener('click', () => openOverlay('issues'));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && overlayKind) closeOverlay();
+  });
+  document.querySelector<HTMLButtonElement>('#news-prev')?.addEventListener('click', () => {
+    newsPage = Math.max(0, newsPage - 1);
+    renderNewsList();
+  });
+  document.querySelector<HTMLButtonElement>('#news-next')?.addEventListener('click', () => {
+    newsPage += 1;
+    renderNewsList();
+  });
+}
+
+const NEWS_KIND_LABEL: Record<string, string> = {
+  policy: '政策',
+  speech: '発言',
+  protest: '社会行動',
+  election: '選挙',
+  economy: '経済',
+  'data-update': 'データ更新',
+};
+
+function setupScrollIndicator(scrollId: string, trackId: string) {
+  const scroll = document.querySelector<HTMLElement>('#' + scrollId);
+  const track = document.querySelector<HTMLElement>('#' + trackId);
+  const thumb = track?.querySelector<HTMLElement>('.scroll-thumb');
+  if (!scroll || !track || !thumb) return;
+  const sync = () => {
+    const max = Math.max(0, scroll.scrollHeight - scroll.clientHeight);
+    const ratio = scroll.scrollHeight ? Math.min(1, scroll.clientHeight / scroll.scrollHeight) : 1;
+    track.hidden = ratio >= 0.999;
+    thumb.style.height = Math.max(24, Math.round(track.clientHeight * ratio)) + 'px';
+    const available = Math.max(0, track.clientHeight - thumb.offsetHeight);
+    thumb.style.transform = 'translateY(' + (max ? Math.round(available * scroll.scrollTop / max) : 0) + 'px)';
+    track.setAttribute('aria-valuenow', String(max ? Math.round(scroll.scrollTop / max * 100) : 0));
+  };
+  if (track.dataset.bound !== 'true') {
+    track.dataset.bound = 'true';
+    scroll.addEventListener('scroll', sync, {passive: true});
+    track.addEventListener('pointerdown', event => {
+      const rect = track.getBoundingClientRect();
+      const point = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+      scroll.scrollTop = (scroll.scrollHeight - scroll.clientHeight) * point;
+    });
+    track.addEventListener('keydown', event => {
+      if (!['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      if (event.key === 'Home') scroll.scrollTop = 0;
+      else if (event.key === 'End') scroll.scrollTop = scroll.scrollHeight;
+      else scroll.scrollTop += event.key.includes('Down') ? scroll.clientHeight : -scroll.clientHeight;
+    });
+    if ('ResizeObserver' in window) new ResizeObserver(sync).observe(scroll);
+  }
+  sync();
+}
+
+function renderNewsList() {
+  const list = document.querySelector<HTMLElement>('#news-list');
+  const status = document.querySelector<HTMLElement>('#news-page-status');
+  const previous = document.querySelector<HTMLButtonElement>('#news-prev');
+  const next = document.querySelector<HTMLButtonElement>('#news-next');
+  if (!list || !status || !previous || !next) return;
+  const pageCount = Math.max(1, Math.ceil(newsItems.length / NEWS_PAGE_SIZE));
+  newsPage = Math.min(Math.max(0, newsPage), pageCount - 1);
+  const start = newsPage * NEWS_PAGE_SIZE;
+  const pageItems = newsItems.slice(start, start + NEWS_PAGE_SIZE);
+  list.innerHTML = '';
+  list.scrollTop = 0;
+  if (!pageItems.length) {
+    const empty = document.createElement('p');
+    empty.className = 'news-empty';
+    empty.textContent = '表示できるニュースがありません。';
+    list.append(empty);
+  }
+  pageItems.forEach(item => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'news-card';
+    card.dataset.newsId = item.newsId;
+    card.setAttribute('aria-label', item.headline + 'の詳細を開く');
+    const meta = document.createElement('span');
+    meta.className = 'news-meta';
+    meta.textContent = (NEWS_KIND_LABEL[item.kind] ?? 'ニュース') + ' · ' + item.eventDate + (item.location.label ? ' · ' + item.location.label : '');
+    const headline = document.createElement('strong');
+    headline.textContent = item.headline;
+    const summary = document.createElement('span');
+    summary.className = 'news-summary';
+    summary.textContent = item.summary;
+    card.append(meta, headline, summary);
+    card.addEventListener('click', () => openOverlay('news', item.newsId));
+    list.append(card);
+  });
+  status.textContent = newsItems.length ? (newsPage + 1) + ' / ' + pageCount + 'ページ · ' + (start + 1) + '–' + Math.min(start + pageItems.length, newsItems.length) + '件' : '0件';
+  previous.disabled = newsPage === 0;
+  next.disabled = newsPage >= pageCount - 1;
+  setupScrollIndicator('news-list', 'news-scrollbar');
+}
+
+function renderNewsDetail(newsId: string) {
+  const content = document.querySelector<HTMLElement>('#overlay-content');
+  const item = newsItems.find(entry => entry.newsId === newsId);
+  if (!content || !item) return;
+  content.innerHTML = '';
+  const article = document.createElement('article');
+  article.className = 'news-detail';
+  const meta = document.createElement('p');
+  meta.className = 'news-meta';
+  meta.textContent = (NEWS_KIND_LABEL[item.kind] ?? 'ニュース') + ' · 発生日 ' + item.eventDate + ' · 公開日 ' + item.publishedAt;
+  const title = document.createElement('h3');
+  title.textContent = item.headline;
+  const summary = document.createElement('p');
+  summary.className = 'news-long-text';
+  summary.textContent = item.summary;
+  const impactHeading = document.createElement('h4');
+  impactHeading.textContent = '考えうる影響';
+  const impact = document.createElement('p');
+  impact.className = 'news-long-text';
+  impact.textContent = item.possibleImpact;
+  article.append(meta, title, summary, impactHeading, impact);
+  if (item.location.mapMode !== 'none') {
+    const mapSection = document.createElement('section');
+    mapSection.className = 'news-mini-section';
+    const mapTitle = document.createElement('h4');
+    mapTitle.textContent = item.location.mapMode === 'points' ? '発生地点' : '関連州（☆は州の代表位置）';
+    const mapHost = document.createElement('div');
+    mapHost.id = 'news-mini-map';
+    mapHost.className = 'news-mini-map';
+    mapSection.append(mapTitle, mapHost);
+    article.append(mapSection);
+  }
+  if (item.issueIds.length) {
+    const issueNav = document.createElement('div');
+    issueNav.className = 'news-issue-links';
+    const issueLabel = document.createElement('b');
+    issueLabel.textContent = '関連する論点';
+    issueNav.append(issueLabel);
+    item.issueIds.forEach(issueId => {
+      const issue = issueCategories.find(entry => entry.issueId === issueId);
+      if (!issue) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = issue.label;
+      button.addEventListener('click', () => {
+        activeIssueId = issueId;
+        openOverlay('issues');
+      });
+      issueNav.append(button);
+    });
+    article.append(issueNav);
+  }
+  const sourceDetails = document.createElement('details');
+  sourceDetails.className = 'source-panel';
+  sourceDetails.open = true;
+  sourceDetails.innerHTML = '<summary>出典</summary>' + refs(item.sourceIds);
+  article.append(sourceDetails);
+  content.append(article);
+  renderNewsMiniMap(item);
+  setupScrollIndicator('overlay-content', 'overlay-scrollbar');
+}
+
+function renderNewsMiniMap(item: typeof newsItems[number]) {
+  const host = document.querySelector<HTMLElement>('#news-mini-map');
+  if (!host) return;
+  host.innerHTML = '';
+  if (!geoFeatures.length) {
+    host.textContent = '州境データを読み込み中です。';
+    return;
+  }
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 975 610');
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', 'ニュースに関連する地域の小地図');
+  const projection = geoAlbersUsa().scale(1275).translate([487.5, 305]);
+  const path = geoPath(projection);
+  const statesInNews = new Set(item.location.stateFips ?? []);
+  geoFeatures.forEach(featureItem => {
+    const fips = String(featureItem.id).padStart(2, '0');
+    const statePath = document.createElementNS(svg.namespaceURI, 'path');
+    statePath.setAttribute('d', path(featureItem) || '');
+    statePath.setAttribute('class', statesInNews.has(fips) ? 'news-region' : 'news-region-muted');
+    svg.append(statePath);
+    if (item.location.mapMode === 'region' && statesInNews.has(fips) && !(item.location.points ?? []).length) {
+      const [x, y] = path.centroid(featureItem);
+      const marker = document.createElementNS(svg.namespaceURI, 'text');
+      marker.textContent = '☆';
+      marker.setAttribute('x', String(x));
+      marker.setAttribute('y', String(y));
+      marker.setAttribute('class', 'news-star');
+      marker.setAttribute('aria-label', (stateByFips.get(fips)?.nameJa ?? '関連州') + 'の代表位置（地点未特定）');
+      svg.append(marker);
+    }
+  });
+  (item.location.points ?? []).forEach(point => {
+    const projected = projection([point.longitude, point.latitude]);
+    if (!projected) return;
+    const marker = document.createElementNS(svg.namespaceURI, 'text');
+    marker.textContent = '☆';
+    marker.setAttribute('x', String(projected[0]));
+    marker.setAttribute('y', String(projected[1]));
+    marker.setAttribute('class', 'news-star');
+    marker.setAttribute('aria-label', point.label);
+    svg.append(marker);
+  });
+  host.append(svg);
+  if (item.location.label) {
+    const label = document.createElement('p');
+    label.className = 'news-map-label';
+    label.textContent = item.location.label;
+    host.append(label);
+  }
+}
+
+function renderGuidePanel() {
+  const content = document.querySelector<HTMLElement>('#overlay-content');
+  if (!content) return;
+  content.innerHTML = '';
+  const intro = document.createElement('p');
+  intro.className = 'guide-intro';
+  intro.textContent = guideContent.intro;
+  content.append(intro);
+  guideContent.sections.forEach(section => {
+    const article = document.createElement('article');
+    article.className = 'guide-section';
+    const heading = document.createElement('h3');
+    heading.textContent = section.title;
+    const body = document.createElement('p');
+    body.textContent = section.body;
+    article.append(heading, body);
+    content.append(article);
+  });
+  if (overviewSection) {
+    const heading = document.createElement('h3');
+    heading.className = 'guide-existing-heading';
+    heading.textContent = '基礎知識の詳細';
+    content.append(heading, overviewSection);
+  }
+  setupScrollIndicator('overlay-content', 'overlay-scrollbar');
+}
+
+function renderIssueReportNotice() {
+  const detail = document.querySelector<HTMLElement>('#issue-detail');
+  if (!detail) return;
+  detail.parentElement?.querySelector('.issue-report-notice')?.remove();
+  const report = issueReports[activeIssueId];
+  if (!report) return;
+  const notice = document.createElement('p');
+  notice.className = 'issue-report-notice pending';
+  notice.textContent = report.note;
+  detail.before(notice);
+}
+
+function bindIssueTabs() {
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-issue]')];
+  buttons.forEach((button, index) => {
+    button.onclick = () => {
+      activeIssueId = button.dataset.issue ?? activeIssueId;
+      renderIssueDetail();
+      renderIssueReportNotice();
+      bindIssuePowerLinks();
+    };
+    button.onkeydown = event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + buttons.length) % buttons.length;
+      buttons[nextIndex].click();
+      buttons[nextIndex].focus();
+    };
+  });
+}
+
+function bindIssuePowerLinks() {
+  document.querySelectorAll<HTMLAnchorElement>('#issue-detail a[href="#powers"]').forEach(link => {
+    link.onclick = event => {
+      event.preventDefault();
+      closeOverlay();
+      setSimulatorMode('target');
+      document.querySelector('#simulator')?.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    };
+  });
+}
+
+function renderIssuesPanel() {
+  const content = document.querySelector<HTMLElement>('#overlay-content');
+  if (!content) return;
+  content.innerHTML = '';
+  if (issuesSection) content.append(issuesSection);
+  renderIssueDetail();
+  renderSoyTable();
+  renderIssueReportNotice();
+  bindIssueTabs();
+  bindIssuePowerLinks();
+  const soySortSelect = document.querySelector<HTMLSelectElement>('#soy-sort');
+  if (soySortSelect) soySortSelect.onchange = event => {
+    soySort = (event.target as HTMLSelectElement).value as typeof soySort;
+    renderSoyTable();
+  };
+  setupScrollIndicator('overlay-content', 'overlay-scrollbar');
+}
+
+function openOverlay(kind: 'guide'|'issues'|'news', newsId?: string) {
+  const root = document.querySelector<HTMLElement>('#overlay-root');
+  const content = document.querySelector<HTMLElement>('#overlay-content');
+  const heading = document.querySelector<HTMLElement>('#overlay-heading');
+  const kicker = document.querySelector<HTMLElement>('#overlay-kicker');
+  const close = document.querySelector<HTMLButtonElement>('#overlay-close');
+  if (!root || !content || !heading || !kicker) return;
+  if (!overlayKind) {
+    overlayReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    overlayReturnScrollY = window.scrollY;
+  }
+  overlayKind = kind;
+  overlayNewsId = newsId ?? null;
+  root.hidden = false;
+  root.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('overlay-open');
+  if (kind === 'guide') {
+    kicker.textContent = 'FIRST VISIT';
+    heading.textContent = '初めて開いた方へ';
+    renderGuidePanel();
+  } else if (kind === 'issues') {
+    kicker.textContent = 'ISSUE LENS';
+    heading.textContent = '8つの論点から選挙を見る';
+    renderIssuesPanel();
+  } else {
+    kicker.textContent = 'NEWS DETAIL';
+    heading.textContent = 'ニュースの詳細';
+    if (newsId) renderNewsDetail(newsId);
+  }
+  close?.focus();
+}
+
+function closeOverlay() {
+  const root = document.querySelector<HTMLElement>('#overlay-root');
+  if (!root || !overlayKind) return;
+  root.hidden = true;
+  root.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('overlay-open');
+  overlayKind = null;
+  overlayNewsId = null;
+  window.scrollTo({top: overlayReturnScrollY, behavior: 'auto'});
+  if (overlayReturnFocus?.isConnected) overlayReturnFocus.focus();
+  overlayReturnFocus = null;
+}
+
+function renderTargetSim() {
+  const host = document.querySelector<HTMLElement>('#target-sim-panel');
+  if (!host) return;
+  host.hidden = simulatorMode !== 'target';
+  if (simulatorMode !== 'target') return;
+  const rule = powerRules.find(item => item.powerId === targetActionId) ?? powerRules[0];
+  host.innerHTML = '<div class="target-grid"><div class="target-controls"><p class="kicker">REVERSE PATH</p><h3>権限から必要な議席を確認</h3><p>行使したい権限と党を選ぶと、制度上の必要票と現在の議席を並べます。</p></div><div class="target-rule"></div></div>';
+  const controls = host.querySelector<HTMLElement>('.target-controls');
+  const ruleHost = host.querySelector<HTMLElement>('.target-rule');
+  if (!controls || !ruleHost || !rule) return;
+  const actionLabel = document.createElement('label');
+  actionLabel.className = 'target-field';
+  actionLabel.textContent = '権限';
+  const actionSelect = document.createElement('select');
+  actionSelect.id = 'target-power';
+  powerRules.forEach(item => {
+    const option = document.createElement('option');
+    option.value = item.powerId;
+    option.textContent = item.action;
+    option.selected = item.powerId === targetActionId;
+    actionSelect.append(option);
+  });
+  actionSelect.onchange = () => {
+    targetActionId = actionSelect.value;
+    renderTargetSim();
+  };
+  actionLabel.append(actionSelect);
+  const partyLabelElement = document.createElement('label');
+  partyLabelElement.className = 'target-field';
+  partyLabelElement.textContent = '想定する党';
+  const partySelect = document.createElement('select');
+  partySelect.id = 'target-party';
+  [['Democratic', '民主党会派'], ['Republican', '共和党会派']].forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    option.selected = value === targetParty;
+    partySelect.append(option);
+  });
+  partySelect.onchange = () => {
+    targetParty = partySelect.value as typeof targetParty;
+    renderTargetSim();
+  };
+  partyLabelElement.append(partySelect);
+  controls.append(actionLabel, partyLabelElement);
+  const current = currentCaucusCounts(seats);
+  const currentLine = document.createElement('p');
+  currentLine.className = 'target-current';
+  currentLine.textContent = '現在の会派：民主党 ' + current.Democratic + '／共和党 ' + current.Republican + '。想定党：' + (targetParty === 'Democratic' ? '民主党会派' : '共和党会派') + '。';
+  const ruleHeading = document.createElement('h3');
+  ruleHeading.textContent = rule.action;
+  const ruleText = document.createElement('p');
+  ruleText.className = 'target-rule-text';
+  ruleText.textContent = '下院：' + rule.house + '／上院：' + rule.senate;
+  const threshold = document.createElement('p');
+  threshold.className = 'target-threshold';
+  threshold.textContent = '必要票の目安：' + rule.nominalSeats + '。' + rule.threshold;
+  const pending = document.createElement('p');
+  pending.className = 'issue-report-notice pending';
+  pending.textContent = '自動的な州の組合せ、境界州の論点、当選確率は研究中です。検証済みの因果係数が揃うまで、未確認の経路を結果として表示しません。';
+  const manual = document.createElement('button');
+  manual.type = 'button';
+  manual.className = 'target-manual-button';
+  manual.textContent = '手動の議席仮定を開く';
+  manual.onclick = () => {
+    const details = document.querySelector<HTMLDetailsElement>('#seat-controls')?.closest('details');
+    if (details) details.open = true;
+    document.querySelector('#seat-controls')?.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  };
+  ruleHost.append(currentLine, ruleHeading, ruleText, threshold, pending, manual);
+}
+
+function setSimulatorMode(next: SimulatorMode) {
+  simulatorMode = next;
+  mode = next === 'current' ? 'current' : 'rating';
+  if (next === 'current') competitive = false;
+  document.querySelectorAll<HTMLButtonElement>('[data-sim-mode]').forEach(button => {
+    const active = button.dataset.simMode === next;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.classList.toggle('active', button.dataset.mode === mode));
+  const competitiveInput = document.querySelector<HTMLInputElement>('#competitive');
+  if (competitiveInput) {
+    competitiveInput.disabled = mode === 'current' || !hasRatings;
+    competitiveInput.checked = competitive;
+  }
+  const note = document.querySelector<HTMLElement>('#mode-note');
+  if (note) note.textContent = mode === 'current' ? '色は投票前の現職会派です。選挙情勢や当選確率ではありません。' : '色は評価機関による2026年8月26日の情勢分類です。勝率や確定結果ではありません。';
+  const heading = document.querySelector<HTMLElement>('#map-heading');
+  if (heading) heading.textContent = mode === 'current' ? '投票前の上院議席構成' : '2026年の上院選挙情勢';
+  renderTargetSim();
+  renderMap();
+}
+
 function holderFor(state: State) {
   const stateElections = electionByState(state);
   if (!stateElections.length) return 'none';
   const parties = [...new Set(stateElections.map(election => { const seat = seatById.get(election.seatId)!; return seat.verificationStatus === 'confirmed' && seat.verifiedAt ? seat.party : 'unknown'; }))];
   return parties.length === 1 ? parties[0] : 'mixed';
+}
+function caucusForState(state: State): Caucus|'mixed'|'none' {
+  const stateSeats = seats.filter(seat => seat.stateFips === state.fips);
+  if (!stateSeats.length) return 'none';
+  const caucuses = [...new Set(stateSeats.map(seat => seat.caucus))];
+  return caucuses.length === 1 ? caucuses[0] : 'mixed';
 }
 function ratingFor(state: State): Rating|'none'|'mixed' {
   const stateElections = electionByState(state);
@@ -144,7 +764,7 @@ function ratingFor(state: State): Rating|'none'|'mixed' {
 }
 function isCompetitive(state: State) { return electionByState(state).some(election => ['Toss Up','Lean D','Lean R'].includes(election.rating.category)); }
 function fill(state: State) {
-  if (mode === 'holder') return ({D:'#2166ac',R:'#b52b35',I:'#7b5b97',other:'#736a62',vacant:'#f2c14e',unknown:'#b8b7b3',none:'#ececea',mixed:'#725f4c'} as Record<string,string>)[holderFor(state)];
+  if (mode === 'current') return ({Democratic:'#2166ac',Republican:'#b52b35',none:'#ececea',mixed:'#725f4c',vacant:'#f2c14e',unconfirmed:'#b8b7b3'} as Record<string,string>)[caucusForState(state)];
   const rating = ratingFor(state);
   return rating === 'none' ? '#ececea' : rating === 'mixed' ? '#725f4c' : ratingColors[rating];
 }
@@ -160,6 +780,7 @@ async function initMap() {
   const collection = feature(topology,topology.objects.states) as unknown as FeatureCollection;
   geoFeatures = collection.features.filter(item => stateByFips.has(String(item.id).padStart(2,'0')));
   renderMap();
+  if (overlayKind === 'news' && overlayNewsId) renderNewsMiniMap(newsItems.find(item => item.newsId === overlayNewsId)!);
 }
 function renderMap() {
   const host = document.querySelector('#map')!;
@@ -174,7 +795,7 @@ function renderMap() {
     const statePath = document.createElementNS(svg.namespaceURI,'path');
     statePath.setAttribute('d',path(item) || ''); statePath.setAttribute('fill',fill(state));
     statePath.setAttribute('data-state-fips',fips);
-    statePath.setAttribute('class',`${selected?.fips === fips ? 'selected ' : ''}${competitive && !isCompetitive(state) ? 'muted' : ''}`);
+    statePath.setAttribute('class',`${selected?.fips === fips ? 'selected ' : ''}${competitive && mode === 'rating' && !isCompetitive(state) ? 'muted' : ''}`);
     statePath.setAttribute('tabindex','0'); statePath.setAttribute('role','button');
     statePath.setAttribute('aria-label',`${state.nameJa}、${electionByState(state).length ? '2026年選挙あり' : '2026年選挙なし'}${hasSpecial ? '、特別選挙あり' : ''}`);
     statePath.addEventListener('click',event => selectState(state,event.currentTarget as HTMLElement));
@@ -185,11 +806,16 @@ function renderMap() {
       const star = document.createElementNS(svg.namespaceURI,'text'); star.textContent = '★'; star.setAttribute('x',String(x)); star.setAttribute('y',String(y)); star.setAttribute('class','special-star'); star.setAttribute('aria-hidden','true'); svg.append(star);
     }
   });
-  host.append(svg); renderLegend();
+  host.append(svg);
+  const heading = document.querySelector<HTMLElement>('#map-heading');
+  if (heading) heading.textContent = mode === 'current' ? '投票前の上院議席構成' : '2026年の上院選挙情勢';
+  const note = document.querySelector<HTMLElement>('#mode-note');
+  if (note) note.textContent = mode === 'current' ? '色は投票前の現職会派です。選挙情勢や当選確率ではありません。' : '色は評価機関による2026年8月26日の情勢分類です。勝率や確定結果ではありません。';
+  renderLegend();
 }
 function renderLegend() {
-  const items = mode === 'holder'
-    ? [['#2166ac','民主党保有'],['#b52b35','共和党保有'],['#7b5b97','無所属'],['#ececea','選挙なし'],['#b8b7b3','未確認'],['transparent','★ 特別選挙']]
+  const items = mode === 'current'
+    ? [['#2166ac','民主党会派'],['#b52b35','共和党会派'],['#725f4c','州内で会派が分かれる'],['#b8b7b3','未確認'],['transparent','★ 特別選挙']]
     : [['#174f9e','Solid D'],['#93b7dc','Lean D'],['#8a8178','Toss Up'],['#e59a9a','Lean R'],['#a5262e','Solid R'],['#d9d8d4','未取得'],['#ececea','選挙なし'],['transparent','★ 特別選挙']];
   document.querySelector('#legend')!.innerHTML = items.map(([color,label]) => `<span>${label.startsWith('★') ? '<b aria-hidden="true">★</b>' : `<i style="background:${color}"></i>`}${label}</span>`).join('');
 }
@@ -219,7 +845,7 @@ function selectState(state: State, trigger?: HTMLElement) {
   const ids = [...profile.politicalBase.sourceIds,...profile.industryAndIssues.sourceIds,...profile.historicalTrajectory.sourceIds,...profile.electionMeaning.sourceIds,...stateSeats.flatMap(seat => seat.sourceIds),...stateElections.flatMap(election => election.sourceIds)];
   const timeline = events.filter(event => profile.eventIds.includes(event.eventId));
   document.querySelector('#detail')!.innerHTML = `<button class="close" aria-label="州詳細を閉じる">×</button><p class="kicker">STATE BRIEFING</p><h2>${state.nameJa}</h2><p class="en">${state.nameEn} · ${state.abbr}</p><div class="status">州解説：${profile.contentStatus} · 基準日 ${profile.asOf}</div><div class="race-summary">${stateElections.length ? stateElections.map(electionCard).join('') : '<strong>2026年の上院選挙なし（下院は全区改選）</strong>'}</div><section class="brief"><h3>州の要約</h3><p>${profile.politicalBase.text}</p><p>${profile.industryAndIssues.text}</p><p>${profile.historicalTrajectory.text}</p><p>${profile.electionMeaning.text}</p></section><details open><summary>確認できる変化</summary>${timeline.map(event => `<article class="timeline-item"><time>${event.period}</time><b>${event.title}</b><p>${event.eventText}</p>${event.localEffect ? `<small>${event.localEffect}</small>` : ''}<em>${event.causalInterpretation.text}</em></article>`).join('')}</details><details open><summary>現職・議席情報</summary><p class="missing">議席の6年任期を表示しています。途中就任した現職本人の在職開始日とは異なります。</p>${stateSeats.map(seatCard).join('')}</details><details><summary>出典・情報時点</summary>${refs(ids)}</details>`;
-  document.querySelector<HTMLButtonElement>('.close')!.onclick = () => {
+  document.querySelector<HTMLButtonElement>('#detail .close')!.onclick = () => {
     const focusTarget = returnFocus;
     selected = null; renderMap();
     document.querySelector<HTMLSelectElement>('#state-search')!.value = '';
@@ -270,134 +896,4 @@ function renderSoyTable() {
     const state = stateByFips.get(context.stateFips)!;
     const race = electionByState(state)[0];
     const winner = context.presidentialWinner2024 === 'R' ? 'Trump R' : 'Harris D';
-    return `<tr><th><button type="button" data-soy-state="${state.fips}">${state.nameJa}<small>${state.abbr}・全米${context.soybeanRank2026}位</small></button></th><td><b>${context.soybeanProduction2026!.toLocaleString('en-US')}千bu</b><span class="soy-bar"><i style="width:${Math.round(context.soybeanProduction2026! / maxProduction * 100)}%"></i></span></td><td>${winner}<small>${context.presidentialMargin2024!.toFixed(1)}pt差</small></td><td>${race ? `<span class="rating-pill rating-${race.rating.category.replaceAll(' ','-')}">${race.rating.category}</span><small>${race.contestStatus === 'general-ballot' ? '本選候補確定' : '予備選確定待ち'}</small>` : '<span>上院選なし</span><small>下院は全区改選</small>'}</td><td>${race ? '関税・輸出市場・農家支援への候補者の立場を州詳細から確認' : '下院候補・農業団体の発言と、地域別価格・所得を追加確認'}</td></tr>`;
-  }).join('')}</tbody></table></div>`;
-  document.querySelectorAll<HTMLButtonElement>('[data-soy-state]').forEach(button => button.onclick = () => {
-    const state = stateByFips.get(button.dataset.soyState!);
-    if (!state) return;
-    document.querySelector<HTMLSelectElement>('#state-search')!.value = state.fips;
-    selectState(state,button);
-    document.querySelector('#senate')!.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-  });
-}
-
-type HouseGeoProperties = {STATEFP:string;DIST:string;GEOID:string|number;election:string};
-let houseGeoFeatures: Feature<Geometry,HouseGeoProperties>[] = [];
-const houseDistrictLabel = (district: HouseDistrict) => {
-  const state = stateByFips.get(district.stateFips)!;
-  return `${state.nameJa} ${district.districtId.endsWith('-AL') ? '全州区' : `第${district.district}区`}`;
-};
-function renderHouseDistrictOptions(stateFips: string, selectedId = '') {
-  const select = document.querySelector<HTMLSelectElement>('#house-district-search')!;
-  const districts = houseDistricts.filter(district => district.stateFips === stateFips).sort((a,b) => a.district - b.district);
-  select.disabled = !districts.length;
-  select.innerHTML = districts.length ? `<option value="">選挙区を選ぶ</option>${districts.map(district => `<option value="${district.districtId}" ${district.districtId === selectedId ? 'selected' : ''}>${district.districtId.endsWith('-AL') ? '全州区' : `第${district.district}区`} · ${district.rating}</option>`).join('')}` : '<option value="">先に州を選ぶ</option>';
-}
-function renderHouseMap() {
-  const host = document.querySelector('#house-map')!;
-  host.innerHTML = '';
-  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-  svg.setAttribute('viewBox','0 0 975 610');
-  svg.setAttribute('role','img');
-  svg.setAttribute('aria-label','2026年の連邦下院選挙区情勢地図。州と選挙区のセレクトでも全435区を選べます');
-  const path = geoPath(geoAlbersUsa().scale(1275).translate([487.5,305]));
-  for (const item of houseGeoFeatures) {
-    const district = houseByCombo.get(String(item.properties.GEOID).padStart(4,'0'));
-    if (!district) continue;
-    const districtPath = document.createElementNS(svg.namespaceURI,'path');
-    districtPath.setAttribute('d',path(item) || '');
-    districtPath.setAttribute('fill',ratingColors[district.rating]);
-    districtPath.setAttribute('class',selectedHouseDistrict?.districtId === district.districtId ? 'selected' : '');
-    districtPath.setAttribute('data-house-district',district.districtId);
-    districtPath.setAttribute('aria-label',`${houseDistrictLabel(district)}、${district.rating}`);
-    districtPath.addEventListener('click',() => selectHouseDistrict(district));
-    const title = document.createElementNS(svg.namespaceURI,'title');
-    title.textContent = `${houseDistrictLabel(district)}・${district.rating}`;
-    districtPath.append(title);
-    svg.append(districtPath);
-  }
-  host.append(svg);
-}
-async function initHouseMap() {
-  const topology = await fetch(`${import.meta.env.BASE_URL}data/house-2026-topo.json`).then(response => {
-    if (!response.ok) throw new Error(`House map ${response.status}`);
-    return response.json();
-  }) as Topology;
-  const collection = feature(topology,topology.objects.districts) as unknown as FeatureCollection<Geometry,HouseGeoProperties>;
-  houseGeoFeatures = collection.features.filter(item => item.properties.election === '2026' && houseByCombo.has(String(item.properties.GEOID).padStart(4,'0')));
-  renderHouseMap();
-}
-function renderHouseDetail() {
-  const host = document.querySelector('#house-detail')!;
-  if (!selectedHouseDistrict) {
-    host.innerHTML = '<p class="kicker">DISTRICT BRIEFING</p><h3>選挙区を選択</h3><p>地図またはセレクトから情勢と仮定を確認できます。</p>';
-    return;
-  }
-  const district = selectedHouseDistrict;
-  const outcome = houseAssumptions[district.districtId] ?? houseRatingOutcome(district);
-  const referenceParty = district.currentParty === 'unknown' ? '未設定' : partyLabel[district.currentParty];
-  host.innerHTML = `<p class="kicker">DISTRICT BRIEFING</p><h3>${houseDistrictLabel(district)}</h3><div class="rating-badge"><span>${district.rating}</span><small>合意情勢・2026-08-31</small></div><dl><div><dt>評価表の参照現職</dt><dd>${district.incumbent ?? '未設定（新設区・空席等を含む）'}</dd></div><div><dt>参照党派</dt><dd>${referenceParty}</dd></div></dl><label class="district-assumption">この区の仮定<select data-house-detail-assumption><option value="Democratic" ${outcome === 'Democratic' ? 'selected' : ''}>民主党</option><option value="Republican" ${outcome === 'Republican' ? 'selected' : ''}>共和党</option><option value="unconfirmed" ${outcome === 'unconfirmed' ? 'selected' : ''}>未確定</option></select></label><p class="missing">現職欄は情勢表の参照ラベルです。公式の現議会総数とは時点・区割りが異なるため、現在の議席構成には使いません。</p>${refs(district.sourceIds)}`;
-  document.querySelector<HTMLSelectElement>('[data-house-detail-assumption]')!.onchange = event => {
-    houseAssumptions[district.districtId] = (event.target as HTMLSelectElement).value as HouseAssumptions[string];
-    renderHouseSim();
-    renderHouseDetail();
-  };
-}
-function selectHouseDistrict(district: HouseDistrict) {
-  selectedHouseDistrict = district;
-  document.querySelector<HTMLSelectElement>('#house-state-search')!.value = district.stateFips;
-  renderHouseDistrictOptions(district.stateFips,district.districtId);
-  renderHouseMap();
-  renderHouseDetail();
-  if (window.innerWidth < 800) document.querySelector('#house-detail')!.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
-}
-function renderHouseSim() {
-  const activeDistrictId = (document.activeElement as HTMLElement | null)?.dataset.houseSeat;
-  const counts = simulatedHouseCounts(houseDistricts,houseAssumptions);
-  const adjustable = houseDistricts.filter(district => !district.rating.startsWith('Solid'));
-  const changes = Object.entries(houseAssumptions).filter(([districtId,outcome]) => houseRatingOutcome(houseDistricts.find(district => district.districtId === districtId)!) !== outcome);
-  document.querySelector('#house-sim-result')!.innerHTML = `<div class="projected house-projected"><div><strong>${counts.Democratic}</strong><span>民主党</span></div><div><strong>${counts.Republican}</strong><span>共和党</span></div><div><strong>${counts.unconfirmed}</strong><span>未確定</span></div><div class="majority"><b>${houseMajorityText(counts)}</b><small>情勢分類を議席結果へ機械的に置き換えた仮定です。勝率ではありません。</small></div></div><p class="changes">初期分類から変更：${changes.length ? changes.map(([id,value]) => `${id} → ${value === 'Democratic' ? '民主党' : value === 'Republican' ? '共和党' : '未確定'}`).join('、') : 'なし'}</p>`;
-  document.querySelector('#house-controls')!.innerHTML = adjustable.map(district => {
-    const value = houseAssumptions[district.districtId] ?? houseRatingOutcome(district);
-    return `<label><span>${houseDistrictLabel(district)}<small>${district.rating}</small></span><select data-house-seat="${district.districtId}"><option value="Democratic" ${value === 'Democratic' ? 'selected' : ''}>民主党</option><option value="Republican" ${value === 'Republican' ? 'selected' : ''}>共和党</option><option value="unconfirmed" ${value === 'unconfirmed' ? 'selected' : ''}>未確定</option></select></label>`;
-  }).join('');
-  document.querySelectorAll<HTMLSelectElement>('[data-house-seat]').forEach(element => element.onchange = () => {
-    houseAssumptions[element.dataset.houseSeat!] = element.value as HouseAssumptions[string];
-    renderHouseSim();
-    if (selectedHouseDistrict?.districtId === element.dataset.houseSeat) renderHouseDetail();
-  });
-  if (activeDistrictId) document.querySelector<HTMLElement>(`[data-house-seat="${activeDistrictId}"]`)?.focus();
-}
-
-document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.onclick = () => { mode = button.dataset.mode as Mode; document.querySelectorAll('[data-mode]').forEach(item => item.classList.toggle('active',item === button)); document.querySelector('#mode-note')!.textContent = mode === 'holder' ? '色は対象議席の現保有党。州全体の支持傾向や勝敗予測ではありません。' : "色はSabato's Crystal Ballの2026年8月26日評価です。勝率や確定結果ではありません。"; renderMap(); });
-document.querySelector<HTMLInputElement>('#competitive')!.onchange = event => { competitive = (event.target as HTMLInputElement).checked; renderMap(); };
-document.querySelector<HTMLSelectElement>('#state-search')!.onchange = event => { const state = stateByFips.get((event.target as HTMLSelectElement).value); if (state) selectState(state,event.target as HTMLElement); };
-document.querySelector<HTMLButtonElement>('#reset')!.onclick = () => { assumptions = {}; renderSim(); };
-document.querySelectorAll<HTMLButtonElement>('[data-issue]').forEach((button,index,buttons) => {
-  button.onclick = () => { activeIssueId = button.dataset.issue!; renderIssueDetail(); };
-  button.onkeydown = event => {
-    if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
-    event.preventDefault();
-    const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? buttons.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + buttons.length) % buttons.length;
-    buttons[nextIndex].click(); buttons[nextIndex].focus();
-  };
-});
-document.querySelector<HTMLSelectElement>('#soy-sort')!.onchange = event => { soySort = (event.target as HTMLSelectElement).value as typeof soySort; renderSoyTable(); };
-document.querySelector<HTMLSelectElement>('#house-state-search')!.onchange = event => {
-  selectedHouseDistrict = null;
-  renderHouseDistrictOptions((event.target as HTMLSelectElement).value);
-  renderHouseMap(); renderHouseDetail();
-};
-document.querySelector<HTMLSelectElement>('#house-district-search')!.onchange = event => {
-  const district = houseDistricts.find(item => item.districtId === (event.target as HTMLSelectElement).value);
-  if (district) selectHouseDistrict(district);
-};
-document.querySelector<HTMLButtonElement>('#house-reset')!.onclick = () => { houseAssumptions = {}; renderHouseSim(); renderHouseDetail(); };
-document.querySelector<HTMLButtonElement>('#reload-app')!.onclick = () => {
-  const url = new URL(window.location.href);
-  url.searchParams.set('refresh',Date.now().toString());
-  window.location.replace(url.toString());
-};
-renderCounts(); renderSim(); renderIssueDetail(); renderSoyTable(); renderHouseSim();
-initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; });
-initHouseMap().catch(() => { document.querySelector('#house-map')!.innerHTML = '<p class="error">同梱された下院選挙区データを読み込めませんでした。</p>'; });
+    return `<tr><th><button type="button" data-soy-state="${state.fips}">${state.nameJa}<small>${state.abbr}・全米${context.soybeanRank2026}位</small></button></th><td><b>${context.soybeanProduction2026!.toLocaleString('en-US')}千bu</b><span class="soy-bar"><i style="width:${Math.round(context.soybeanProduction2026! / maxProd
