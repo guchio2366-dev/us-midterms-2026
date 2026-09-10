@@ -896,4 +896,155 @@ function renderSoyTable() {
     const state = stateByFips.get(context.stateFips)!;
     const race = electionByState(state)[0];
     const winner = context.presidentialWinner2024 === 'R' ? 'Trump R' : 'Harris D';
-    return `<tr><th><button type="button" data-soy-state="${state.fips}">${state.nameJa}<small>${state.abbr}・全米${context.soybeanRank2026}位</small></button></th><td><b>${context.soybeanProduction2026!.toLocaleString('en-US')}千bu</b><span class="soy-bar"><i style="width:${Math.round(context.soybeanProduction2026! / maxProd
+    return `<tr><th><button type="button" data-soy-state="${state.fips}">${state.nameJa}<small>${state.abbr}・全米${context.soybeanRank2026}位</small></button></th><td><b>${context.soybeanProduction2026!.toLocaleString('en-US')}千bu</b><span class="soy-bar"><i style="width:${Math.round(context.soybeanProduction2026! / maxProduction * 100)}%"></i></span></td><td>${winner}<small>${context.presidentialMargin2024!.toFixed(1)}pt差</small></td><td>${race ? `<span class="rating-pill rating-${race.rating.category.replaceAll(' ','-')}">${race.rating.category}</span><small>${race.contestStatus === 'general-ballot' ? '本選候補確定' : '予備選確定待ち'}</small>` : '<span>上院選なし</span><small>下院は全区改選</small>'}</td><td>${race ? '関税・輸出市場・農家支援への候補者の立場を州詳細から確認' : '下院候補・農業団体の発言と、地域別価格・所得を追加確認'}</td></tr>`;
+  }).join('')}</tbody></table></div>`;
+  document.querySelectorAll<HTMLButtonElement>('[data-soy-state]').forEach(button => button.onclick = () => {
+    const state = stateByFips.get(button.dataset.soyState!);
+    if (!state) return;
+    document.querySelector<HTMLSelectElement>('#state-search')!.value = state.fips;
+    selectState(state,button);
+    document.querySelector('#senate')!.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  });
+}
+
+type HouseGeoProperties = {STATEFP:string;DIST:string;GEOID:string|number;election:string};
+let houseGeoFeatures: Feature<Geometry,HouseGeoProperties>[] = [];
+const houseDistrictLabel = (district: HouseDistrict) => {
+  const state = stateByFips.get(district.stateFips)!;
+  return `${state.nameJa} ${district.districtId.endsWith('-AL') ? '全州区' : `第${district.district}区`}`;
+};
+function renderHouseDistrictOptions(stateFips: string, selectedId = '') {
+  const select = document.querySelector<HTMLSelectElement>('#house-district-search')!;
+  const districts = houseDistricts.filter(district => district.stateFips === stateFips).sort((a,b) => a.district - b.district);
+  select.disabled = !districts.length;
+  select.innerHTML = districts.length ? `<option value="">選挙区を選ぶ</option>${districts.map(district => `<option value="${district.districtId}" ${district.districtId === selectedId ? 'selected' : ''}>${district.districtId.endsWith('-AL') ? '全州区' : `第${district.district}区`} · ${district.rating}</option>`).join('')}` : '<option value="">先に州を選ぶ</option>';
+}
+function renderHouseMap() {
+  const host = document.querySelector('#house-map')!;
+  host.innerHTML = '';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('viewBox','0 0 975 610');
+  svg.setAttribute('role','img');
+  svg.setAttribute('aria-label','2026年の連邦下院選挙区情勢地図。州と選挙区のセレクトでも全435区を選べます');
+  const path = geoPath(geoAlbersUsa().scale(1275).translate([487.5,305]));
+  for (const item of houseGeoFeatures) {
+    const district = houseByCombo.get(String(item.properties.GEOID).padStart(4,'0'));
+    if (!district) continue;
+    const districtPath = document.createElementNS(svg.namespaceURI,'path');
+    districtPath.setAttribute('d',path(item) || '');
+    districtPath.setAttribute('fill',ratingColors[district.rating]);
+    districtPath.setAttribute('class',selectedHouseDistrict?.districtId === district.districtId ? 'selected' : '');
+    districtPath.setAttribute('data-house-district',district.districtId);
+    districtPath.setAttribute('aria-label',`${houseDistrictLabel(district)}、${district.rating}`);
+    districtPath.addEventListener('click',() => selectHouseDistrict(district));
+    const title = document.createElementNS(svg.namespaceURI,'title');
+    title.textContent = `${houseDistrictLabel(district)}・${district.rating}`;
+    districtPath.append(title);
+    svg.append(districtPath);
+  }
+  host.append(svg);
+}
+async function initHouseMap() {
+  const topology = await fetch(`${import.meta.env.BASE_URL}data/house-2026-topo.json`).then(response => {
+    if (!response.ok) throw new Error(`House map ${response.status}`);
+    return response.json();
+  }) as Topology;
+  const collection = feature(topology,topology.objects.districts) as unknown as FeatureCollection<Geometry,HouseGeoProperties>;
+  houseGeoFeatures = collection.features.filter(item => item.properties.election === '2026' && houseByCombo.has(String(item.properties.GEOID).padStart(4,'0')));
+  renderHouseMap();
+}
+function renderHouseDetail() {
+  const host = document.querySelector('#house-detail')!;
+  if (!selectedHouseDistrict) {
+    host.innerHTML = '<p class="kicker">DISTRICT BRIEFING</p><h3>選挙区を選択</h3><p>地図またはセレクトから情勢と仮定を確認できます。</p>';
+    return;
+  }
+  const district = selectedHouseDistrict;
+  const outcome = houseAssumptions[district.districtId] ?? houseRatingOutcome(district);
+  const referenceParty = district.currentParty === 'unknown' ? '未設定' : partyLabel[district.currentParty];
+  host.innerHTML = `<p class="kicker">DISTRICT BRIEFING</p><h3>${houseDistrictLabel(district)}</h3><div class="rating-badge"><span>${district.rating}</span><small>合意情勢・2026-08-31</small></div><dl><div><dt>評価表の参照現職</dt><dd>${district.incumbent ?? '未設定（新設区・空席等を含む）'}</dd></div><div><dt>参照党派</dt><dd>${referenceParty}</dd></div></dl><label class="district-assumption">この区の仮定<select data-house-detail-assumption><option value="Democratic" ${outcome === 'Democratic' ? 'selected' : ''}>民主党</option><option value="Republican" ${outcome === 'Republican' ? 'selected' : ''}>共和党</option><option value="unconfirmed" ${outcome === 'unconfirmed' ? 'selected' : ''}>未確定</option></select></label><p class="missing">現職欄は情勢表の参照ラベルです。公式の現議会総数とは時点・区割りが異なるため、現在の議席構成には使いません。</p>${refs(district.sourceIds)}`;
+  document.querySelector<HTMLSelectElement>('[data-house-detail-assumption]')!.onchange = event => {
+    houseAssumptions[district.districtId] = (event.target as HTMLSelectElement).value as HouseAssumptions[string];
+    renderHouseSim();
+    renderHouseDetail();
+  };
+}
+function selectHouseDistrict(district: HouseDistrict) {
+  selectedHouseDistrict = district;
+  document.querySelector<HTMLSelectElement>('#house-state-search')!.value = district.stateFips;
+  renderHouseDistrictOptions(district.stateFips,district.districtId);
+  renderHouseMap();
+  renderHouseDetail();
+  if (window.innerWidth < 800) document.querySelector('#house-detail')!.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}
+function renderHouseSim() {
+  const activeDistrictId = (document.activeElement as HTMLElement | null)?.dataset.houseSeat;
+  const counts = simulatedHouseCounts(houseDistricts,houseAssumptions);
+  const adjustable = houseDistricts.filter(district => !district.rating.startsWith('Solid'));
+  const changes = Object.entries(houseAssumptions).filter(([districtId,outcome]) => houseRatingOutcome(houseDistricts.find(district => district.districtId === districtId)!) !== outcome);
+  document.querySelector('#house-sim-result')!.innerHTML = `<div class="projected house-projected"><div><strong>${counts.Democratic}</strong><span>民主党</span></div><div><strong>${counts.Republican}</strong><span>共和党</span></div><div><strong>${counts.unconfirmed}</strong><span>未確定</span></div><div class="majority"><b>${houseMajorityText(counts)}</b><small>情勢分類を議席結果へ機械的に置き換えた仮定です。勝率ではありません。</small></div></div><p class="changes">初期分類から変更：${changes.length ? changes.map(([id,value]) => `${id} → ${value === 'Democratic' ? '民主党' : value === 'Republican' ? '共和党' : '未確定'}`).join('、') : 'なし'}</p>`;
+  document.querySelector('#house-controls')!.innerHTML = adjustable.map(district => {
+    const value = houseAssumptions[district.districtId] ?? houseRatingOutcome(district);
+    return `<label><span>${houseDistrictLabel(district)}<small>${district.rating}</small></span><select data-house-seat="${district.districtId}"><option value="Democratic" ${value === 'Democratic' ? 'selected' : ''}>民主党</option><option value="Republican" ${value === 'Republican' ? 'selected' : ''}>共和党</option><option value="unconfirmed" ${value === 'unconfirmed' ? 'selected' : ''}>未確定</option></select></label>`;
+  }).join('');
+  document.querySelectorAll<HTMLSelectElement>('[data-house-seat]').forEach(element => element.onchange = () => {
+    houseAssumptions[element.dataset.houseSeat!] = element.value as HouseAssumptions[string];
+    renderHouseSim();
+    if (selectedHouseDistrict?.districtId === element.dataset.houseSeat) renderHouseDetail();
+  });
+  if (activeDistrictId) document.querySelector<HTMLElement>(`[data-house-seat="${activeDistrictId}"]`)?.focus();
+}
+
+enhanceLayout();
+document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.onclick = () => {
+  const next = button.dataset.mode as 'current'|'rating';
+  setSimulatorMode(next);
+});
+document.querySelectorAll<HTMLButtonElement>('[data-sim-mode]').forEach(button => button.onclick = () => {
+  const next = button.dataset.simMode as SimulatorMode;
+  setSimulatorMode(next);
+});
+document.querySelectorAll<HTMLButtonElement>('[data-power-target]').forEach(button => button.onclick = () => {
+  targetActionId = button.dataset.powerTarget ?? targetActionId;
+  setSimulatorMode('target');
+  document.querySelector('#simulator')?.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+});
+document.querySelector<HTMLInputElement>('#competitive')!.onchange = event => {
+  competitive = (event.target as HTMLInputElement).checked;
+  renderMap();
+};
+document.querySelector<HTMLSelectElement>('#state-search')!.onchange = event => {
+  const state = stateByFips.get((event.target as HTMLSelectElement).value);
+  if (state) selectState(state,event.target as HTMLElement);
+};
+document.querySelector<HTMLButtonElement>('#reset')!.onclick = () => {
+  assumptions = {};
+  renderSim();
+};
+document.querySelector<HTMLSelectElement>('#house-state-search')!.onchange = event => {
+  selectedHouseDistrict = null;
+  renderHouseDistrictOptions((event.target as HTMLSelectElement).value);
+  renderHouseMap();
+  renderHouseDetail();
+};
+document.querySelector<HTMLSelectElement>('#house-district-search')!.onchange = event => {
+  const district = houseDistricts.find(item => item.districtId === (event.target as HTMLSelectElement).value);
+  if (district) selectHouseDistrict(district);
+};
+document.querySelector<HTMLButtonElement>('#house-reset')!.onclick = () => {
+  houseAssumptions = {};
+  renderHouseSim();
+  renderHouseDetail();
+};
+document.querySelector<HTMLButtonElement>('#reload-app')!.onclick = () => {
+  const url = new URL(window.location.href);
+  url.searchParams.set('refresh',Date.now().toString());
+  window.location.replace(url.toString());
+};
+renderCounts();
+renderNewsList();
+renderSim();
+renderHouseSim();
+setSimulatorMode('rating');
+initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; });
+initHouseMap().catch(() => { document.querySelector('#house-map')!.innerHTML = '<p class="error">同梱された下院選挙区データを読み込めませんでした。</p>'; });
