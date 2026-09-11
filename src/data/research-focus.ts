@@ -1,0 +1,227 @@
+import type { CandidateBrief, IssueCaseStudy, Poll, RaceBrief, RatingObservation, RollCallVote } from './research-model';
+
+export const focusPolls: Poll[] = [
+  {
+    pollId:'poll-me-yougov-2026-09',electionId:'2026-ME-2-regular',pollster:'YouGov',sponsor:null,
+    fieldStart:'2026-09-02',fieldEnd:'2026-09-08',population:'LV',populationLabel:'投票予定者',sampleSize:1335,
+    method:'州の有権者名簿からSMSで招待したオンライン調査。投票可能性を用いたLV集計。',question:'連邦上院選の候補者選択',questionExact:false,precisionLabel:'±4.9ポイント',
+    results:[{label:'Troy D. Jackson',candidateId:'cand-me-troy-d-jackson',party:'D',value:48,category:'candidate'},{label:'Susan M. Collins',candidateId:'cand-me-susan-m-collins',party:'R',value:44,category:'candidate'},{label:'その他',value:1,category:'other'},{label:'未定',value:6,category:'undecided'},{label:'投票しない',value:0,category:'not-voting'}],
+    notes:['公表値の合計99%は整数への丸めによるものです。','メーン州の連邦上院本選には順位選択投票が適用されますが、この表示は公表された候補者選択の値です。'],residualTreatment:'rounding',
+    sourceIds:['poll-yougov-me-2026-09'],evidenceIds:['ev-me-yougov-poll'],status:'published',
+  },
+  {
+    pollId:'poll-me-cnn-ssrs-2026-09',electionId:'2026-ME-2-regular',pollster:'SSRS',sponsor:'CNN',
+    fieldStart:'2026-08-31',fieldEnd:'2026-09-06',population:'LV',populationLabel:'投票予定者',sampleSize:880,
+    method:'登録有権者にオンラインとライブ電話で調査し、予測投票可能性からLVをモデル化。',question:'連邦上院選の候補者選択',questionExact:false,precisionLabel:'標本誤差 ±3.7ポイント',
+    results:[{label:'Troy D. Jackson',candidateId:'cand-me-troy-d-jackson',party:'D',value:48,category:'candidate'},{label:'Susan M. Collins',candidateId:'cand-me-susan-m-collins',party:'R',value:45,category:'candidate'}],
+    notes:['アクセス可能な公表値では残り7%を個別分類できないため「内訳未掲載」とします。'],residualTreatment:'unreported',completeness:'partial',
+    sourceIds:['poll-ssrs-me-mi-2026-09','poll-cnn-me-2026-09'],evidenceIds:['ev-ssrs-me-mi-method','ev-me-cnn-poll'],status:'published',
+  },
+  {
+    pollId:'poll-me-fox-2026-08',electionId:'2026-ME-2-regular',pollster:'Beacon Research / Shaw & Company Research',sponsor:'Fox News',
+    fieldStart:'2026-08-06',fieldEnd:'2026-08-10',population:'RV',populationLabel:'登録有権者',sampleSize:1000,
+    method:'固定電話128、携帯電話626、SMS-to-web 246。',question:'連邦上院選の候補者選択',questionExact:false,precisionLabel:'標本誤差 ±3.0ポイント',
+    results:[{label:'Troy D. Jackson',candidateId:'cand-me-troy-d-jackson',party:'D',value:48,category:'candidate'},{label:'Susan M. Collins',candidateId:'cand-me-susan-m-collins',party:'R',value:46,category:'candidate'},{label:'その他',value:1,category:'other'},{label:'未定',value:4,category:'undecided'}],
+    notes:['「投票しない」は0.5%未満。公表された整数値の残りは、丸めと0.5%未満の回答を含みます。'],residualTreatment:'unreported',completeness:'partial',
+    sourceIds:['poll-fox-me-2026-08'],evidenceIds:['ev-me-fox-poll'],status:'published',
+  },
+  {
+    pollId:'poll-oh-fox-2026-08',electionId:'2026-OH-3-special',pollster:'Beacon Research / Shaw & Company Research',sponsor:'Fox News',
+    fieldStart:'2026-08-06',fieldEnd:'2026-08-10',population:'RV',populationLabel:'登録有権者',sampleSize:1008,
+    method:'固定電話・携帯電話・SMS-to-webを併用。',question:'連邦上院特別選挙の候補者選択',questionExact:false,precisionLabel:'標本誤差 ±3.0ポイント',
+    results:[{label:'Sherrod Brown',candidateId:'cand-oh-sherrod-brown',party:'D',value:53,category:'candidate'},{label:'Jon Husted',candidateId:'cand-oh-jon-husted',party:'R',value:45,category:'candidate'},{label:'未定',value:2,category:'undecided'}],
+    notes:['その他候補と「投票しない」はそれぞれ0.5%未満のため、整数の棒には加えていません。'],residualTreatment:'none',
+    sourceIds:['poll-fox-oh-2026-08'],evidenceIds:['ev-oh-fox-poll'],status:'published',
+  },
+  {
+    pollId:'poll-oh-aarp-2026-06',electionId:'2026-OH-3-special',pollster:'Fabrizio Ward / Impact Research',sponsor:'AARP',
+    fieldStart:'2026-06-14',fieldEnd:'2026-06-16',population:'LV',populationLabel:'投票予定者',sampleSize:800,
+    method:'電話とオンラインを併用。',question:'連邦上院特別選挙の候補者選択',questionExact:false,precisionLabel:'標本誤差 ±3.5ポイント',
+    results:[{label:'Sherrod Brown',candidateId:'cand-oh-sherrod-brown',party:'D',value:48,category:'candidate'},{label:'Jon Husted',candidateId:'cand-oh-jon-husted',party:'R',value:45,category:'candidate'},{label:'その他',value:1,category:'other'},{label:'未定',value:7,category:'undecided'}],
+    notes:['公表された整数値は丸めにより合計101%です。'],residualTreatment:'rounding',
+    sourceIds:['poll-aarp-oh-2026-06'],evidenceIds:['ev-oh-aarp-poll'],status:'published',
+  },
+  {
+    pollId:'poll-tx-aarp-2026-09',electionId:'2026-TX-2-regular',pollster:'Fabrizio Ward / Impact Research',sponsor:'AARP',
+    fieldStart:'2026-08-30',fieldEnd:'2026-09-01',population:'LV',populationLabel:'投票予定者',sampleSize:895,
+    method:'ライブ携帯40%、ライブ固定15%、SMS-to-web 45%。州有権者名簿から抽出し英語・スペイン語で実施。',question:'2026年連邦上院選のballot test',questionExact:false,precisionLabel:'標本誤差 ±3.3ポイント（95%信頼水準）',
+    results:[{label:'James Talarico',candidateId:'cand-tx-james-talarico',party:'D',value:48,category:'candidate'},{label:'Ken Paxton',candidateId:'cand-tx-ken-paxton',party:'R',value:44,category:'candidate'},{label:'未定',value:8,category:'undecided'}],
+    notes:['4ポイント差と各候補の標本誤差を併記し、勝敗確定とは扱いません。'],resultStage:'base',conditionLabel:'初回候補者選択',residualTreatment:'none',
+    sourceIds:['poll-aarp-tx-september-2026'],evidenceIds:['ev-tx-aarp-topline-2026-09','ev-tx-aarp-method-2026-09'],status:'published',
+  },
+  {
+    pollId:'poll-tx-overton-2026-08-base',studyId:'study-tx-overton-2026-08',electionId:'2026-TX-2-regular',pollster:'Overton Insights',sponsor:'Texas Public Policy Foundation',
+    fieldStart:'2026-08-24',fieldEnd:'2026-08-26',population:'LV',populationLabel:'投票予定者',sampleSize:1167,
+    method:'州有権者名簿に照合した携帯番号へMMSで招待した英語のオンライン調査。',question:'If the election for U.S. Senate were held today, who would you vote for?',questionExact:true,precisionLabel:'推定標本誤差 ±2.9ポイント',
+    results:[{label:'James Talarico',candidateId:'cand-tx-james-talarico',party:'D',value:44,category:'candidate'},{label:'Ken Paxton',candidateId:'cand-tx-ken-paxton',party:'R',value:43.4,category:'candidate'},{label:'未定',value:12.6,category:'undecided'}],
+    notes:['初回質問の値です。未定者を候補へ割り当てていません。'],resultStage:'base',conditionLabel:'初回候補者選択',residualTreatment:'none',
+    sourceIds:['poll-overton-tx-august-2026'],evidenceIds:['ev-tx-overton-base-2026-08','ev-tx-overton-method-2026-08'],status:'published',
+  },
+  {
+    pollId:'poll-tx-overton-2026-08-with-leaners',studyId:'study-tx-overton-2026-08',electionId:'2026-TX-2-regular',pollster:'Overton Insights',sponsor:'Texas Public Policy Foundation',
+    fieldStart:'2026-08-24',fieldEnd:'2026-08-26',population:'LV',populationLabel:'投票予定者',sampleSize:1167,
+    method:'初回未定者に「今日選ぶならどちらへ傾くか」を追質問し、その回答を初回結果へ加算。',question:'初回未定者へのleaner追質問を反映した累積値',questionExact:false,precisionLabel:'推定標本誤差 ±2.9ポイント（調査全体の公表値）',
+    results:[{label:'Ken Paxton',candidateId:'cand-tx-ken-paxton',party:'R',value:50,category:'candidate'},{label:'James Talarico',candidateId:'cand-tx-james-talarico',party:'D',value:50,category:'candidate'}],
+    notes:['50対50は初回ballot testではなく、未定者の追質問を割り当てた後の値です。'],resultStage:'cumulative-with-leaners',conditionLabel:'未定者のleaner回答を割当後',residualTreatment:'none',
+    sourceIds:['poll-overton-tx-august-2026'],evidenceIds:['ev-tx-overton-leaners-2026-08','ev-tx-overton-method-2026-08'],status:'published',
+  },
+  {
+    pollId:'poll-tx-emerson-2026-08',electionId:'2026-TX-2-regular',pollster:'Emerson College Polling',sponsor:'Nexstar Media',
+    fieldStart:'2026-08-09',fieldEnd:'2026-08-10',population:'LV',populationLabel:'投票予定者',sampleSize:1000,
+    method:'probability panelへのMMS text-to-webと追加オンラインパネル。英語で実施。',question:'If the election for U.S. Senate were held today, for whom would you vote?',questionExact:true,precisionLabel:'credibility interval ±3.0ポイント（95%信頼水準）',
+    results:[{label:'Ken Paxton',candidateId:'cand-tx-ken-paxton',party:'R',value:47.2,category:'candidate'},{label:'James Talarico',candidateId:'cand-tx-james-talarico',party:'D',value:46.2,category:'candidate'},{label:'Someone else',value:2,category:'other'},{label:'未定',value:4.5,category:'undecided'}],
+    notes:['記事見出しの整数値ではなく、full resultsの小数値を表示します。','合計99.9%は丸めによるものです。'],resultStage:'base',conditionLabel:'初回候補者選択',residualTreatment:'rounding',
+    sourceIds:['poll-emerson-tx-august-2026'],evidenceIds:['ev-tx-emerson-topline-2026-08','ev-tx-emerson-method-2026-08'],status:'published',
+  },
+  {
+    pollId:'poll-ak-asr-2026-08-final',electionId:'2026-AK-2-regular',pollster:'Alaska Survey Research',sponsor:null,
+    fieldStart:'2026-08-20',fieldEnd:'2026-08-23',population:'LV',populationLabel:'最終ラウンド対象の投票予定者subset',sampleSize:1495,
+    method:'text-to-webとASR panel。アクセス可能な公式投稿では全候補・初回ラウンド・重み付け仕様は確認できません。',question:'順位付け設問の最終RCVラウンド',questionExact:false,precisionLabel:'最終ラウンド ±3.0ポイント',
+    results:[{label:'Mary Peltola',candidateId:'cand-ak-mary-peltola',party:'D',value:50.6,category:'candidate'},{label:'Dan S. Sullivan（現職）',candidateId:'cand-ak-dan-s-sullivan',party:'R',value:49.4,category:'candidate'}],
+    notes:['第一選択ではありません。全体2,063人の登録有権者調査から、最終ラウンド対象1,495人を表示します。','方法の完全な原表が公開されていないため部分公開です。'],resultStage:'final',conditionLabel:'最終RCVラウンド',completeness:'partial',residualTreatment:'none',
+    sourceIds:['poll-asr-ak-august-2026'],evidenceIds:['ev-ak-asr-final-round-2026-08'],status:'published',
+  },
+  {
+    pollId:'poll-ak-dfp-2026-08-first',studyId:'study-ak-dfp-2026-08',electionId:'2026-AK-2-regular',pollster:'Data for Progress',sponsor:null,
+    fieldStart:'2026-07-28',fieldEnd:'2026-08-04',population:'LV',populationLabel:'投票予定者',sampleSize:605,
+    method:'SMSとweb panel。年齢、性別、教育、人種、地域、自己申告の過去投票で重み付け。',question:'4候補を示した仮想順位選択投票',questionExact:false,precisionLabel:'標本誤差 ±4ポイント',
+    results:[{label:'Mary Peltola',candidateId:'cand-ak-mary-peltola',party:'D',value:47,category:'candidate'},{label:'Dan S. Sullivan（現職）',candidateId:'cand-ak-dan-s-sullivan',party:'R',value:41,category:'candidate'},{label:'Daniel J. Sullivan Jr.',candidateId:'cand-ak-daniel-j-sullivan-jr',party:'R',value:4,category:'other-candidate'},{label:'Gerald L. Heikes',candidateId:'cand-ak-gerald-l-heikes',party:'R',value:3,category:'other-candidate'}],
+    notes:['残り5%は公表記事で内訳を確認できません。'],resultStage:'first-choice',conditionLabel:'第1選択',completeness:'partial',residualTreatment:'unreported',
+    sourceIds:['poll-dfp-ak-august-2026'],evidenceIds:['ev-ak-dfp-rcv-2026-08','ev-ak-dfp-method-2026-08'],status:'published',
+  },
+  {
+    pollId:'poll-ak-dfp-2026-08-final',studyId:'study-ak-dfp-2026-08',electionId:'2026-AK-2-regular',pollster:'Data for Progress',sponsor:null,
+    fieldStart:'2026-07-28',fieldEnd:'2026-08-04',population:'LV',populationLabel:'投票予定者',sampleSize:605,
+    method:'同じ4候補順位選択投票の移転後シミュレーション。',question:'仮想順位選択投票の最終ラウンド',questionExact:false,precisionLabel:'標本誤差 ±4ポイント',
+    results:[{label:'Mary Peltola',candidateId:'cand-ak-mary-peltola',party:'D',value:53,category:'candidate'},{label:'Dan S. Sullivan（現職）',candidateId:'cand-ak-dan-s-sullivan',party:'R',value:47,category:'candidate'}],
+    notes:['同調査の第1選択47対41とは別段階です。'],resultStage:'final',conditionLabel:'移転後の仮想最終ラウンド',residualTreatment:'none',
+    sourceIds:['poll-dfp-ak-august-2026'],evidenceIds:['ev-ak-dfp-rcv-2026-08','ev-ak-dfp-method-2026-08'],status:'published',
+  },
+  {
+    pollId:'poll-ak-asr-2026-03-first',electionId:'2026-AK-2-regular',pollster:'Alaska Survey Research',sponsor:null,
+    fieldStart:'2026-03-19',fieldEnd:'2026-03-22',population:'general-voters',populationLabel:'一般選挙設問の回答者',sampleSize:1340,
+    method:'text-to-onlineとASR survey panel。',question:'Rank the following candidates for US Senate in the numerical order of your preference.',questionExact:true,precisionLabel:'公表レンジ ±2.5〜3.0ポイント',
+    results:[{label:'Mary Peltola',candidateId:'cand-ak-mary-peltola',party:'D',value:48.8,category:'candidate'},{label:'Dan S. Sullivan（現職）',candidateId:'cand-ak-dan-s-sullivan',party:'R',value:43.5,category:'candidate'},{label:'Christopher Miklos',party:'R',value:5.2,category:'other-candidate'},{label:'Ann Diener',party:'R',value:2.4,category:'other-candidate'}],
+    notes:['当時の仮想候補を使った第1選択です。2026年9月の認証済み本選候補一覧とは異なります。','合計99.9%は丸めによるものです。'],resultStage:'first-choice',conditionLabel:'第1選択',residualTreatment:'rounding',
+    sourceIds:['poll-asr-ak-march-2026'],evidenceIds:['ev-ak-asr-march-rcv-2026','ev-ak-asr-march-method-2026'],status:'published',
+  },
+];
+
+export const focusRatingObservations: RatingObservation[] = [
+  {ratingId:'rating-me-cook-2026-08-20',electionId:'2026-ME-2-regular',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-08-20',retrievedAt:'2026-09-11',sourceIds:['cook-me-race-2026'],evidenceIds:['ev-me-cook-rating'],status:'published'},
+  {ratingId:'rating-me-inside-2025-07-24',electionId:'2026-ME-2-regular',organization:'Inside Elections',ratingRaw:'Tilt Republican',category:'Tilt R',ratedAt:'2025-07-24',retrievedAt:'2026-09-11',sourceIds:['inside-me-race-2026'],evidenceIds:['ev-me-inside-rating'],status:'published'},
+  {ratingId:'rating-me-fox-2026-07-22',electionId:'2026-ME-2-regular',organization:'Fox News Power Rankings',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-07-22',retrievedAt:'2026-09-11',sourceIds:['fox-me-rating-2026'],evidenceIds:['ev-me-fox-rating'],status:'published'},
+  {ratingId:'rating-oh-cook-2025-08-18',electionId:'2026-OH-3-special',organization:'The Cook Political Report',ratingRaw:'Lean Republican',category:'Lean R',ratedAt:'2025-08-18',retrievedAt:'2026-09-11',sourceIds:['cook-oh-race-2026'],evidenceIds:['ev-oh-cook-rating'],status:'published'},
+  {ratingId:'rating-oh-cook-2026-04-13',electionId:'2026-OH-3-special',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-04-13',retrievedAt:'2026-09-11',sourceIds:['cook-oh-race-2026'],evidenceIds:['ev-oh-cook-rating'],status:'published'},
+  {ratingId:'rating-oh-inside-2026-08-06',electionId:'2026-OH-3-special',organization:'Inside Elections',ratingRaw:'Tilt Republican',category:'Tilt R',ratedAt:'2026-08-06',retrievedAt:'2026-09-11',sourceIds:['inside-oh-race-2026'],evidenceIds:['ev-oh-inside-rating'],status:'published'},
+  {ratingId:'rating-oh-inside-2026-09-03',electionId:'2026-OH-3-special',organization:'Inside Elections',ratingRaw:'Toss-up',category:'Toss Up',ratedAt:'2026-09-03',retrievedAt:'2026-09-11',sourceIds:['inside-oh-race-2026'],evidenceIds:['ev-oh-inside-rating'],status:'published'},
+  {ratingId:'rating-oh-sabato-2026-06-11',electionId:'2026-OH-3-special',organization:"Sabato's Crystal Ball",ratingRaw:'Toss-up',category:'Toss Up',ratedAt:'2026-06-11',retrievedAt:'2026-09-11',sourceIds:['sabato-oh-change-2026'],evidenceIds:['ev-oh-sabato-rating'],status:'published'},
+  {ratingId:'rating-ak-cook-2026-01-12',electionId:'2026-AK-2-regular',organization:'The Cook Political Report',ratingRaw:'Lean Republican',category:'Lean R',ratedAt:'2026-01-12',retrievedAt:'2026-09-11',sourceIds:['cook-ak-race-2026'],evidenceIds:['ev-ak-cook-rating-path-2026'],status:'published'},
+  {ratingId:'rating-ak-cook-2026-07-01',electionId:'2026-AK-2-regular',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-07-01',retrievedAt:'2026-09-11',sourceIds:['cook-ak-race-2026'],evidenceIds:['ev-ak-cook-rating-path-2026'],status:'published'},
+  {ratingId:'rating-ak-inside-2025-01-09',electionId:'2026-AK-2-regular',organization:'Inside Elections',ratingRaw:'Solid Republican',category:'Solid R',ratedAt:'2025-01-09',retrievedAt:'2026-09-11',sourceIds:['inside-ak-race-2026'],evidenceIds:['ev-ak-inside-rating-path-2026'],status:'published'},
+  {ratingId:'rating-ak-inside-2026-01-12',electionId:'2026-AK-2-regular',organization:'Inside Elections',ratingRaw:'Lean Republican',category:'Lean R',ratedAt:'2026-01-12',retrievedAt:'2026-09-11',sourceIds:['inside-ak-race-2026'],evidenceIds:['ev-ak-inside-rating-path-2026'],status:'published'},
+  {ratingId:'rating-tx-cook-2025-07-17',electionId:'2026-TX-2-regular',organization:'The Cook Political Report',ratingRaw:'Likely Republican',category:'Likely R',ratedAt:'2025-07-17',retrievedAt:'2026-09-11',sourceIds:['cook-tx-race-2026'],evidenceIds:['ev-tx-cook-rating-path-2026'],status:'published'},
+  {ratingId:'rating-tx-cook-2026-05-26',electionId:'2026-TX-2-regular',organization:'The Cook Political Report',ratingRaw:'Lean Republican',category:'Lean R',ratedAt:'2026-05-26',retrievedAt:'2026-09-11',sourceIds:['cook-tx-race-2026'],evidenceIds:['ev-tx-cook-rating-path-2026'],status:'published'},
+  {ratingId:'rating-tx-cook-2026-08-20',electionId:'2026-TX-2-regular',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-08-20',retrievedAt:'2026-09-11',sourceIds:['cook-tx-race-2026'],evidenceIds:['ev-tx-cook-rating-path-2026'],status:'published'},
+  {ratingId:'rating-tx-inside-2025-07-24',electionId:'2026-TX-2-regular',organization:'Inside Elections',ratingRaw:'Likely Republican',category:'Likely R',ratedAt:'2025-07-24',retrievedAt:'2026-09-11',sourceIds:['inside-tx-race-2026'],evidenceIds:['ev-tx-inside-rating-path-2026'],status:'published'},
+  {ratingId:'rating-tx-inside-2026-08-06',electionId:'2026-TX-2-regular',organization:'Inside Elections',ratingRaw:'Lean Republican',category:'Lean R',ratedAt:'2026-08-06',retrievedAt:'2026-09-11',sourceIds:['inside-tx-race-2026'],evidenceIds:['ev-tx-inside-rating-path-2026'],status:'published'},
+];
+
+export const focusRaceBriefs: RaceBrief[] = [
+  {
+    electionId:'2026-ME-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
+    headline:'三つの直近調査はJacksonが先行し、評価機関はToss UpとTilt Rに分かれる',
+    summary:'YouGovとCNN/SSRSはいずれもJackson 48%でCollinsを3〜4ポイント上回り、Foxも48%対46%でした。一方、CookとFoxはToss Up、Inside ElectionsはTilt Republicanです。7月の民主党候補交代と順位選択投票の仕組みも結果の読み方に関係します。',
+    balance:'直近三調査はいずれもJacksonが先頭ですが、差は2〜4ポイントで、各調査の公表精度幅と同程度です。現職Collinsの個人票、Jacksonへの候補交代、順位移転を一つの数字へ畳み込まず追います。',
+    keyIssues:['生活費・医療','現職の超党派票と候補者個人評価','順位選択投票と候補交代'],
+    analysis:[
+      {heading:'候補交代と選挙制度',body:'民主党予備選勝者Graham Platnerは7月10日に辞退し、州党の後任指名でTroy D. Jacksonが本選候補となりました。連邦上院本選は順位選択投票で行われます。',evidenceKind:'observed',evidenceIds:['ev-me-replacement','ev-me-rcv','ev-me-official-candidates']},
+      {heading:'多数派票と個別政策票',body:'Collinsは共和党会派の議席として多数派計算に入る一方、S.J.Res.37では賛成、H.R.1最終採決では反対しました。将来の政策票は党派だけで固定しません。',evidenceKind:'observed',evidenceIds:['ev-rollcall-160-republicans','ev-hr1-rollcall']},
+    ],
+    supportChange:'横断調査の差だけでは同じ人の支持変更を特定できません。候補交代前後の設問と候補者名を区別します。',
+    turnout:'YouGovとCNN/SSRSのLV、FoxのRVは母集団が異なります。順位選択のラウンドも投票参加とは別です。',
+    updateConditions:['新しい州全体調査で第1選択と順位移転が公表されたとき','評価機関が分類を変更したとき','候補者の主要政策・採決情報が更新されたとき'],
+    pollIds:['poll-me-yougov-2026-09','poll-me-cnn-ssrs-2026-09','poll-me-fox-2026-08'],ratingIds:['rating-me-cook-2026-08-20','rating-me-inside-2025-07-24','rating-me-fox-2026-07-22'],relatedIssueIds:['household-economy','health-family','trade-industry','rights-institutions'],
+    sourceIds:['me-candidate-list-2026','me-replacements-2026','me-election-guide-2026','poll-yougov-me-2026-09','poll-cnn-me-2026-09','poll-fox-me-2026-08','cook-me-race-2026','inside-me-race-2026','fox-me-rating-2026','senate-rollcall-119-160','senate-rollcall-119-372'],evidenceIds:['ev-me-official-candidates','ev-me-replacement','ev-me-rcv','ev-me-yougov-poll','ev-me-cnn-poll','ev-me-fox-poll','ev-me-cook-rating','ev-me-inside-rating','ev-me-fox-rating','ev-rollcall-160-republicans','ev-hr1-rollcall'],
+  },
+  {
+    electionId:'2026-OH-3-special',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
+    headline:'Vanceの残任期を争う特別選挙で、三つの評価機関がToss Up',
+    summary:'HustedはVanceの副大統領就任で空いた議席へ2025年1月に任命され、2026年は2029年までの残任期を争います。Fox調査はBrown 53%・Husted 45%、AARPは48%・45%。Cook、Inside Elections、SabatoはいずれもToss Upです。',
+    balance:'二つの公表調査ではBrownが3〜8ポイント上ですが、時期・母集団・方法が異なります。特別選挙の候補者個人評価と、州の共和党寄りの基礎地盤を分けて追います。',
+    keyIssues:['生活費・医療・公共料金','特別選挙と候補者個人評価','減税・歳出とH.R.1'],
+    analysis:[
+      {heading:'特別選挙になった理由',body:'JD Vanceが副大統領に就任して生じた欠員へ、Mike DeWine知事がJon Hustedを暫定任命しました。今回の当選者はClass III議席の2029年までの残任期を務めます。',evidenceKind:'observed',evidenceIds:['ev-oh-vacancy','ev-oh-official-candidates']},
+      {heading:'採決と政策差',body:'H.R.1最終採決でHustedは賛成し、Collinsは反対しました。Hustedは減税・規制・法執行を、Brownは医療費・公共料金・議員株取引規制等を掲げます。',evidenceKind:'observed',evidenceIds:['ev-hr1-rollcall','ev-husted-hr1','ev-husted-bio','ev-brown-issues']},
+    ],
+    supportChange:'現時点の調査は同一回答者の追跡ではないため、個人の支持移動とは区別します。',
+    turnout:'FoxはRV、AARPはLVです。特別選挙であることから投票関心も更新対象にしますが、意欲を実投票率とは呼びません。',
+    updateConditions:['新しい独立した州全体調査が公表されたとき','特別選挙候補の討論・主要政策が更新されたとき','評価機関が分類を変更したとき'],
+    pollIds:['poll-oh-fox-2026-08','poll-oh-aarp-2026-06'],ratingIds:['rating-oh-cook-2025-08-18','rating-oh-cook-2026-04-13','rating-oh-inside-2026-08-06','rating-oh-inside-2026-09-03','rating-oh-sabato-2026-06-11'],relatedIssueIds:['household-economy','health-family','rights-institutions'],
+    sourceIds:['oh-dewine-husted-appointment','oh-candidate-list-2026','poll-fox-oh-2026-08','poll-aarp-oh-2026-06','cook-oh-race-2026','inside-oh-race-2026','sabato-oh-change-2026','senate-rollcall-119-372','husted-hr1-statement-2025','husted-bio-2026','brown-issues-2026'],evidenceIds:['ev-oh-vacancy','ev-oh-official-candidates','ev-oh-fox-poll','ev-oh-aarp-poll','ev-oh-cook-rating','ev-oh-inside-rating','ev-oh-sabato-rating','ev-hr1-rollcall','ev-husted-hr1','ev-husted-bio','ev-brown-issues'],
+  },
+  {
+    electionId:'2026-TX-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
+    headline:'初回質問は数ポイント差、評価機関はToss UpとLean Rに分かれる',
+    summary:'AARPはTalarico 48%・Paxton 44%、EmersonはPaxton 47.2%・Talarico 46.2%、Overtonの初回質問はTalarico 44.0%・Paxton 43.4%でした。CookはToss Up、Inside ElectionsはLean Republicanです。',
+    balance:'三つの初回候補者選択は先頭が入れ替わり、差は0.6〜4ポイントです。Overtonの50対50は未定者への追質問を割り当てた後の別段階であり、初回結果と分けて表示します。',
+    keyIssues:['生活費・税・医療','移民・国境','関税・エネルギー・製造業'],
+    analysis:[
+      {heading:'評価履歴',body:'CookはLikely RepublicanからLean Republicanを経て8月20日にToss Upへ変更しました。Inside Electionsは8月6日時点でLean Republicanです。',evidenceKind:'observed',evidenceIds:['ev-tx-cook-rating-path-2026','ev-tx-inside-rating-path-2026']},
+      {heading:'候補者の政策差',body:'Talaricoは生活費低減、公的医療選択肢、Trump tariffs撤廃、合法移民経路を掲げます。Paxtonは減税、強制送還、エネルギー開発、銃の権利、中絶反対を掲げます。',evidenceKind:'observed',evidenceIds:['ev-tx-candidate-positions-talarico-2026','ev-tx-candidate-positions-paxton-2026']},
+    ],
+    supportChange:'横断調査をつないで同じ有権者の支持変更とは扱いません。初回未定者への追質問だけは同じ調査内の別段階として示します。',
+    turnout:'三調査はいずれもLVですが、抽出・パネル・重み付けが異なります。',
+    updateConditions:['新しい州全体調査の原表が公表されたとき','CookまたはInside Electionsが評価を変更したとき','候補者の主要政策・討論が更新されたとき'],
+    pollIds:['poll-tx-aarp-2026-09','poll-tx-overton-2026-08-base','poll-tx-overton-2026-08-with-leaners','poll-tx-emerson-2026-08'],ratingIds:['rating-tx-cook-2025-07-17','rating-tx-cook-2026-05-26','rating-tx-cook-2026-08-20','rating-tx-inside-2025-07-24','rating-tx-inside-2026-08-06'],relatedIssueIds:['household-economy','immigration','trade-industry','energy-climate','health-family'],
+    sourceIds:['tx-sos-2026-ballot-cert','poll-aarp-tx-september-2026','poll-overton-tx-august-2026','poll-emerson-tx-august-2026','cook-tx-race-2026','inside-tx-race-2026','candidate-talarico-issues-2026','candidate-paxton-issues-2026'],evidenceIds:['ev-tx-official-general-candidates-2026','ev-tx-aarp-topline-2026-09','ev-tx-aarp-method-2026-09','ev-tx-overton-base-2026-08','ev-tx-overton-leaners-2026-08','ev-tx-overton-method-2026-08','ev-tx-emerson-topline-2026-08','ev-tx-emerson-method-2026-08','ev-tx-cook-rating-path-2026','ev-tx-inside-rating-path-2026','ev-tx-candidate-positions-talarico-2026','ev-tx-candidate-positions-paxton-2026'],
+  },
+  {
+    electionId:'2026-AK-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
+    headline:'CookはToss Up、InsideはTilt R。順位選択投票の段階を分けて読む',
+    summary:'Cookは7月1日にToss Upへ変更し、Inside Electionsは9月3日にLean RからTilt Rへ変更しました。8月のASR公表値50.6対49.4は第1選択ではなく、1,495人のsubsetによる最終RCVラウンドです。',
+    balance:'Data for Progressの第1選択はPeltola 47%・現職Sullivan 41%、仮想最終は53%・47%。ASRの8月値は最終ラウンドだけが公表されています。評価機関の差と調査ラウンドを保って比較します。',
+    keyIssues:['生活費・住宅・医療','石油・ガス・エネルギー価格','漁業・資源と順位選択投票'],
+    analysis:[
+      {heading:'評価変更の向き',body:'Inside ElectionsのLean RepublicanからTilt Republicanへの変更は、共和党の小さな優位を残しつつToss-upへ近づく方向です。CookのToss Upとは機関差として並べます。',evidenceKind:'observed',evidenceIds:['ev-ak-cook-rating-path-2026','ev-ak-inside-rating-path-2026','ev-ak-inside-tilt-direction-2026']},
+      {heading:'候補者と同姓候補',body:'現職はDan S. Sullivanです。Daniel J. Sullivan Jr.は別人の非現職候補で、候補ID、調査結果、カードを分離します。',evidenceKind:'observed',evidenceIds:['ev-ak-official-general-candidates-2026','ev-ak-sullivan-identity-2026']},
+    ],
+    supportChange:'順位移転は同一選挙内の選好順位を示しますが、時系列の支持変更とは異なります。',
+    turnout:'第1選択、移転後、最終ラウンドと、実際の投票参加を分けます。ASR3月の対象は原資料どおりgeneral votersと表示します。',
+    updateConditions:['第1選択を含む新しい完全な調査表が公表されたとき','評価機関が分類を変更したとき','候補者の選好移転が確認できるとき'],
+    pollIds:['poll-ak-asr-2026-08-final','poll-ak-dfp-2026-08-first','poll-ak-dfp-2026-08-final','poll-ak-asr-2026-03-first'],ratingIds:['rating-ak-cook-2026-01-12','rating-ak-cook-2026-07-01','rating-ak-inside-2025-01-09','rating-ak-inside-2026-01-12','rating-ak-inside-2026-09-03'],relatedIssueIds:['household-economy','energy-climate','health-family','place-services','rights-institutions'],
+    sourceIds:['ak-doe-2026-general-candidates','poll-asr-ak-august-2026','poll-dfp-ak-august-2026','poll-asr-ak-march-2026','cook-ak-race-2026','inside-ak-race-2026'],evidenceIds:['ev-ak-official-general-candidates-2026','ev-ak-sullivan-identity-2026','ev-ak-asr-final-round-2026-08','ev-ak-dfp-rcv-2026-08','ev-ak-dfp-method-2026-08','ev-ak-asr-march-rcv-2026','ev-ak-asr-march-method-2026','ev-ak-cook-rating-path-2026','ev-ak-inside-rating-path-2026','ev-ak-inside-tilt-direction-2026'],
+  },
+];
+
+export const focusCandidateBriefs: CandidateBrief[] = [
+  {candidateId:'cand-me-susan-m-collins',updatedAt:'2026-09-11',status:'published',summary:'共和党会派の現職ですが、個別案件では党指導部と異なる票を示しています。多数派の一議席と政策ごとの賛否を分けて読みます。',currentPositions:['医療制度への影響を財政法案の評価条件として明示'],record:['2025年4月のS.J.Res.37で賛成','2025年7月のH.R.1最終採決で反対'],supportAndFinance:[],differences:['Jacksonは労働者・医療・住宅政策を前面に出し、Collinsは現職として超党派実績を訴える'],policyPositions:['医療・地方病院','通商措置への議会関与'],opposedPolicies:['H.R.1のMedicaid等への影響を理由に最終採決で反対'],sourceIds:['senate-rollcall-119-160','senate-rollcall-119-372','collins-reconciliation-statement-2025'],evidenceIds:['ev-rollcall-160-republicans','ev-hr1-rollcall','ev-collins-reconciliation-2025']},
+  {candidateId:'cand-me-troy-d-jackson',updatedAt:'2026-09-11',status:'published',summary:'候補者資料では、労働者、医療、住宅、退役軍人、地域経済を重点に掲げています。7月に民主党の後任候補として指名されました。',currentPositions:['労働者の賃金・組合権','医療アクセスと薬価','住宅費と地域経済','退役軍人支援'],record:['メーン州上院議長を経験','2026年7月に民主党の後任候補として指名'],supportAndFinance:[],differences:['Collinsの現職実績に対し、州政治と労働者政策を中心に対比'],policyPositions:['労働','医療','住宅','地域経済'],opposedPolicies:[],sourceIds:['jackson-priorities-2026','me-replacements-2026'],evidenceIds:['ev-jackson-priorities','ev-me-replacement']},
+  {candidateId:'cand-oh-sherrod-brown',updatedAt:'2026-09-11',status:'published',summary:'候補者資料では、医療費、薬価、公共料金、データセンターの電力負担、議員株取引規制を掲げています。',currentPositions:['医療・薬価の負担軽減','データセンターが家庭の電力費へ与える負担への対策','公共料金の抑制','議員の個別株取引禁止'],record:['元連邦上院議員'],supportAndFinance:['FECの2026年6月30日締め累計：receipts約3,857万ドル、disbursements約2,234万ドル'],differences:['Hustedの減税・規制緩和路線に対し、家計費と企業負担・政治倫理を前面に出す'],policyPositions:['医療','生活費','電力・公共料金','政治倫理'],opposedPolicies:['議員による個別株取引'],sourceIds:['brown-issues-2026','fec-oh-senate-2026'],evidenceIds:['ev-brown-issues','ev-oh-finance']},
+  {candidateId:'cand-oh-jon-husted',updatedAt:'2026-09-11',status:'published',summary:'暫定任命された現職として、減税、規制、企業誘致、職業訓練、法執行を実績・重点に掲げています。',currentPositions:['減税と規制削減','企業誘致とTechCred職業訓練','法執行・国境政策','中絶反対'],record:['2025年1月にVanceの後任として上院へ任命','2025年7月のH.R.1最終採決で賛成'],supportAndFinance:['建設技能系組織などの支持を陣営が掲載','FECの2026年6月30日締め累計：receipts約1,436万ドル、disbursements約494万ドル'],differences:['Brownより減税・規制削減と法執行を重視'],policyPositions:['税・規制','雇用・技能','法執行','中絶'],opposedPolicies:['中絶の権利拡大'],sourceIds:['oh-dewine-husted-appointment','husted-hr1-statement-2025','husted-bio-2026','husted-endorsements-2026','fec-oh-senate-2026','senate-rollcall-119-372'],evidenceIds:['ev-oh-vacancy','ev-husted-hr1','ev-husted-bio','ev-husted-endorsements','ev-oh-finance','ev-hr1-rollcall']},
+  {candidateId:'cand-tx-james-talarico',updatedAt:'2026-09-11',status:'published',summary:'候補者資料では生活費、医療、労働、移民制度、関税を一体の政策として掲げています。',currentPositions:['富裕層・大企業課税と最低賃金15ドル','Social Security・Medicare保護、公的医療選択肢、薬価低減','Trump tariffs撤廃','国境管理と合法移民経路の拡大','Roeの保護の法制化、避妊・IVF保護'],record:['テキサス州下院議員'],supportAndFinance:[],differences:['Paxtonより公的医療拡大、合法移民経路、関税撤廃、中絶の権利を強く掲げる'],policyPositions:['生活費・税','医療','移民・国境','関税','中絶'],opposedPolicies:['Trump tariffs','Social Security・Medicare削減'],sourceIds:['candidate-talarico-issues-2026'],evidenceIds:['ev-tx-candidate-positions-talarico-2026']},
+  {candidateId:'cand-tx-ken-paxton',updatedAt:'2026-09-11',status:'published',summary:'候補者資料ではTrump政権の立法課題、減税、国境執行、エネルギー、銃、中絶反対を掲げています。',currentPositions:['減税、歳出・規制削減','国境壁と強制送還','石油・ガスと製造業','銃の権利と中絶反対','America First外交','cryptoとCLARITY Act'],record:['テキサス州司法長官'],supportAndFinance:[],differences:['Talaricoより移民執行、規制削減、化石燃料開発、社会保守政策を重視'],policyPositions:['税・規制','移民・国境','エネルギー','銃','中絶','外交'],opposedPolicies:['中絶の権利拡大','女子スポーツへのトランスジェンダー選手参加'],sourceIds:['candidate-paxton-issues-2026'],evidenceIds:['ev-tx-candidate-positions-paxton-2026']},
+  {candidateId:'cand-ak-mary-peltola',updatedAt:'2026-09-11',status:'published',summary:'候補者資料では、生活費と税負担、医療・住宅、漁業資源、エネルギー費、地方公共サービスを重点に掲げています。',currentPositions:['生活費・税負担・賃金','医療費・保険と住宅','factory trawling・bycatch対策と漁業資源回復','エネルギー費と地方交通・公共サービス','退役軍人支援'],record:['元連邦下院議員'],supportAndFinance:[],differences:['現職Sullivanより家計費・住宅と漁業資源回復を前面に出す'],policyPositions:['生活費','医療・住宅','漁業','エネルギー','地方サービス'],opposedPolicies:['漁業資源を損なうfactory trawling'],sourceIds:['candidate-peltola-campaign-2026','candidate-peltola-statement-2026'],evidenceIds:['ev-ak-candidate-positions-peltola-2026']},
+  {candidateId:'cand-ak-dan-s-sullivan',updatedAt:'2026-09-11',status:'published',summary:'現職上院議員として、資源開発、減税、防衛、国境、医療投資、漁業を重点に掲げています。',currentPositions:['石油・ガス開発とLNG','減税','軍・沿岸警備隊と国家防衛','国境・fentanyl対策','医療投資と漁業・bycatch対策'],record:['現職連邦上院議員'],supportAndFinance:[],differences:['Peltolaより資源開発、減税、防衛・国境を強く前面に出す'],policyPositions:['エネルギー','税','防衛','国境','医療','漁業'],opposedPolicies:[],sourceIds:['candidate-dan-s-sullivan-campaign-2026','candidate-dan-s-sullivan-statement-2026'],evidenceIds:['ev-ak-candidate-positions-dan-s-sullivan-2026']},
+  {candidateId:'cand-ak-daniel-j-sullivan-jr',updatedAt:'2026-09-11',status:'published',summary:'現職Dan S. Sullivanとは別人です。候補者資料ではAlaska-first、独立性、応答性、説明責任を中心に掲げています。',currentPositions:['Alaska-first','住民への応答性','独立性と説明責任'],record:['林業技術・林野庁・教員の経歴を候補者資料に掲載'],supportAndFinance:[],differences:['現職と同姓ですが別の非現職候補。詳細な分野別政策は主要候補より少ない'],policyPositions:['州への応答性','行政の説明責任'],opposedPolicies:[],sourceIds:['candidate-daniel-j-sullivan-jr-2026','ak-doe-2026-general-candidates'],evidenceIds:['ev-ak-candidate-profile-daniel-j-sullivan-jr-2026','ev-ak-sullivan-identity-2026']},
+];
+
+export const focusIssueCases: Record<string,IssueCaseStudy[]> = {
+  'household-economy':[
+    {caseId:'case-tx-costs',title:'テキサス：生活費と税・医療の政策差',stateFips:['48'],electionIds:['2026-TX-2-regular'],body:'Talaricoは大企業課税、公的医療選択肢、家計費低減を、Paxtonは減税、歳出・規制削減を掲げます。効果の予測ではなく、候補者自身が示した選択肢として比較します。',sourceIds:['candidate-talarico-issues-2026','candidate-paxton-issues-2026'],evidenceIds:['ev-tx-candidate-positions-talarico-2026','ev-tx-candidate-positions-paxton-2026']},
+    {caseId:'case-oh-costs',title:'オハイオ：公共料金・医療と減税',stateFips:['39'],electionIds:['2026-OH-3-special'],body:'Brownは医療費・公共料金を、Hustedは減税・規制削減を前面に出します。特別選挙の候補者差として追います。',sourceIds:['brown-issues-2026','husted-bio-2026'],evidenceIds:['ev-brown-issues','ev-husted-bio']},
+  ],
+  immigration:[
+    {caseId:'case-tx-border',title:'テキサス：国境執行と合法移民経路',stateFips:['48'],electionIds:['2026-TX-2-regular'],body:'Paxtonは国境壁と強制送還を、Talaricoは国境管理と合法移民経路の拡大を掲げます。上院の立法・歳出・承認権限と結び付けて読みます。',sourceIds:['candidate-paxton-issues-2026','candidate-talarico-issues-2026'],evidenceIds:['ev-tx-candidate-positions-paxton-2026','ev-tx-candidate-positions-talarico-2026']},
+  ],
+  'energy-climate':[
+    {caseId:'case-ak-energy',title:'アラスカ：資源開発と家計のエネルギー費',stateFips:['02'],electionIds:['2026-AK-2-regular'],body:'現職Sullivanは石油・ガス・LNG開発を、Peltolaは家計のエネルギー費と地域サービスを重点に掲げます。州経済への曝露と投票理由を分けて追います。',sourceIds:['candidate-dan-s-sullivan-campaign-2026','candidate-peltola-campaign-2026'],evidenceIds:['ev-ak-candidate-positions-dan-s-sullivan-2026','ev-ak-candidate-positions-peltola-2026']},
+  ],
+  'rights-institutions':[
+    {caseId:'case-me-individual-votes',title:'メーン：多数派の一議席と政策ごとの一票',stateFips:['23'],electionIds:['2026-ME-2-regular'],body:'Collinsは共和党会派の現職ですが、S.J.Res.37では賛成、H.R.1では反対しました。党派の議席計算から将来の政策票を自動確定しない具体例です。',sourceIds:['senate-rollcall-119-160','senate-rollcall-119-372'],evidenceIds:['ev-rollcall-160-republicans','ev-hr1-rollcall']},
+  ],
+};
+
+export const focusRollCalls: RollCallVote[] = [
+  {rollCallId:'senate-119-1-372',chamber:'Senate',congress:'119',session:'1',question:'On Passage of the Bill',measure:'H.R.1',voteDate:'2025-07-01',result:'Passed with vice-presidential tie-breaking vote',yea:50,nay:50,notVoting:0,summary:'上院はH.R.1を50対50で採決し、副大統領の決裁票で可決しました。予算調整手続の実例であり、通常法案の討論終結要件とは異なります。',notableVotes:['Jon Hustedは賛成','Susan Collinsは反対','副大統領が賛成の決裁票'],relatedPowerIds:['reconciliation'],relatedIssueIds:['household-economy','health-family','immigration','energy-climate'],sourceIds:['senate-rollcall-119-372'],evidenceIds:['ev-hr1-rollcall'],status:'published'},
+];
