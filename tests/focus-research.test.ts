@@ -130,7 +130,7 @@ describe('official candidate roster distinctions',() => {
   it('keeps the incumbent and both major-party candidates ahead of researched minor candidates',() => {
     const iowa = electionById('2026-IA-2-regular').candidates.filter(candidate => candidate.ballotStage !== 'write-in');
     const researchedIds = new Set(candidateBriefs.map(brief => brief.candidateId));
-    const featured = getFeaturedCandidates(iowa,'cand-ia-ashley-hinson',researchedIds);
+    const featured = getFeaturedCandidates(iowa,null,researchedIds);
 
     expect(featured.map(candidate => candidate.candidateId)).toEqual([
       'cand-ia-ashley-hinson',
