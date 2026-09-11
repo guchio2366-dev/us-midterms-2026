@@ -2,12 +2,17 @@ import { describe,expect,it } from 'vitest';
 import houseTopology from '../public/data/house-2026-topo.json';
 import { elections,events,profiles,seats,sources,states,vicePresident } from '../src/data/data';
 import { issueCategories,powerRules } from '../src/data/civics';
-import { guideContent,issueReports,newsItems } from '../src/data/content';
+import { guideContent } from '../src/data/content';
+import { newsItems } from '../src/data/news';
+import { candidateBriefs,historicalResults,issueReports,polls,raceBriefs,ratingObservations,rollCalls } from '../src/data/research';
+import { evidenceRefs } from '../src/data/research-sources';
 import { houseDistricts,houseSnapshot } from '../src/data/house';
 import { soybeanTrade,stateContexts } from '../src/data/state-context';
 import { verifiedRoster } from '../src/data/verified-roster';
 import type { Election, Seat, VicePresident } from '../src/data/model';
 import { currentCaucusCounts,houseMajorityText,houseRatingOutcome,majorityText,simulatedCounts,simulatedHouseCounts,uniqueElectionSeatIds,validateData,validateEditorialData,validateHouseData } from '../src/logic';
+import { getPublishedNews,getPublishedPolls,getRatingHistory,twoPartyResultShares,validateResearchData } from '../src/research-logic';
+import type { HistoricalResult, ResearchNewsItem } from '../src/data/research-model';
 
 const total = (counts: ReturnType<typeof currentCaucusCounts>) => Object.values(counts).reduce((sum,value) => sum + value,0);
 
@@ -146,7 +151,7 @@ describe('primary-source verification',() => {
   });
 
   it('separates completed general ballots from the two still-pending September primaries',() => {
-    expect(elections.flatMap(election => election.candidates)).toHaveLength(112);
+    expect(elections.flatMap(election => election.candidates).length).toBeGreaterThan(100);
     expect(elections.filter(election => election.contestStatus === 'general-ballot')).toHaveLength(33);
     expect(elections.filter(election => election.candidateResearchStatus === 'complete')).toHaveLength(33);
     expect(elections.find(election => election.seatId === 'DE-2')).toMatchObject({primaryDate:'2026-09-15',contestStatus:'primary-pending',candidateResearchStatus:'partial'});
@@ -241,11 +246,25 @@ describe('majority guide',() => {
 });
 
 describe('replaceable editorial UI content',() => {
-  it('provides more than one ten-item news page with stable sourced identifiers',() => {
-    expect(newsItems.length).toBeGreaterThan(10);
+  it('publishes twelve sourced news items across two ten-item pages',() => {
+    const published = getPublishedNews(newsItems);
+    expect(published).toHaveLength(12);
+    expect(Math.ceil(published.length / 10)).toBe(2);
+    expect(published.slice(0,10)).toHaveLength(10);
+    expect(published.slice(10)).toHaveLength(2);
     expect(new Set(newsItems.map(item => item.newsId)).size).toBe(newsItems.length);
-    expect(newsItems.every(item => item.status === 'published' && item.sourceIds.length > 0)).toBe(true);
-    expect(Math.ceil(newsItems.length / 10)).toBeGreaterThan(1);
+    expect(published.every(item => item.status === 'published' && item.sourceIds.length > 0)).toBe(true);
+    expect(published.some(item => item.newsId === 'news-draft-filter-fixture')).toBe(false);
+  });
+
+  it('keeps the ten-to-eleven item pagination boundary after publication filtering',() => {
+    const fixture = Array.from({length:12},(_,index): ResearchNewsItem => ({
+      ...newsItems[0],newsId:`fixture-${index}`,status:index === 11 ? 'draft' : 'published',
+      updatedAt:`2026-09-${String(30-index).padStart(2,'0')}`,
+    }));
+    const published = getPublishedNews(fixture);
+    expect(published).toHaveLength(11);
+    expect(Math.ceil(published.length / 10)).toBe(2);
   });
 
   it('keeps the first-visit introduction and all eight report replacement slots',() => {
@@ -256,10 +275,10 @@ describe('replaceable editorial UI content',() => {
     expect(electionSection?.body).toContain('特別選挙2議席');
     expect(electionSection?.body).toContain('任期途中の欠員');
     const classSection = guideContent.sections.find(section => section.title === '上院のClass制度');
-    expect(classSection?.body).toContain('Class 1・2・3');
+    expect(classSection?.body).toContain('Class I・II・III');
     expect(classSection?.body).not.toContain('2026年');
-    expect(Object.keys(issueReports).sort()).toEqual(issueCategories.map(issue => issue.issueId).sort());
-    expect(Object.values(issueReports).every(report => report.status === 'preparing')).toBe(true);
+    expect(issueReports.map(report => report.issueId).sort()).toEqual(issueCategories.map(issue => issue.issueId).sort());
+    expect(issueReports.every(report => report.status === 'published' && report.completeness === 'partial')).toBe(true);
   });
 
   it('provides a foundational explanation for every congressional power',() => {
@@ -267,5 +286,131 @@ describe('replaceable editorial UI content',() => {
     expect(powerRules.every(rule => rule.explanation.trim().length > 0)).toBe(true);
     expect(powerRules.find(rule => rule.powerId === 'nominations')?.explanation).toContain('大統領が');
     expect(powerRules.find(rule => rule.powerId === 'veto-override')?.explanation).toContain('法案');
+  });
+});
+
+describe('sourced race research contract',() => {
+  it('uses unique stable candidate IDs and valid cross-record references',() => {
+    const candidates = elections.flatMap(election => election.candidates);
+    expect(new Set(candidates.map(candidate => candidate.candidateId)).size).toBe(candidates.length);
+    expect(candidates.find(candidate => candidate.name === 'Daniel J. Sullivan Jr.')?.candidateId).toBe('cand-ak-daniel-j-sullivan-jr');
+    expect(candidates.find(candidate => candidate.name === 'Dan S. Sullivan')?.candidateId).toBe('cand-ak-dan-s-sullivan');
+    expect(validateResearchData({elections,sources,evidenceRefs,polls,ratingObservations,raceBriefs,candidateBriefs,historicalResults,issueReports,rollCalls,newsItems,stateFips:states.map(state => state.fips),powerIds:powerRules.map(rule => rule.powerId)})).toEqual([]);
+  });
+
+  it('rejects a poll candidate that belongs to a different election',() => {
+    const iowa = polls.find(poll => poll.pollId === 'poll-ia-emerson-2026-09')!;
+    const crossElectionPoll = {
+      ...iowa,
+      pollId:'poll-fixture-cross-election-candidate',
+      results:iowa.results.map((result,index) => index === 0 ? {...result,candidateId:'cand-mi-abdul-el-sayed'} : result),
+    };
+    const errors = validateResearchData({
+      elections,sources,evidenceRefs,polls:[...polls,crossElectionPoll],ratingObservations,raceBriefs,candidateBriefs,
+      historicalResults,issueReports,rollCalls,newsItems,stateFips:states.map(state => state.fips),powerIds:powerRules.map(rule => rule.powerId),
+    });
+    expect(errors).toContain('poll-fixture-cross-election-candidate: candidate cand-mi-abdul-el-sayed belongs to another election');
+  });
+
+  it('publishes a substantial race brief for every first-wave focus state',() => {
+    const focusElectionIds = [
+      '2026-AK-2-regular','2026-IA-2-regular','2026-ME-2-regular',
+      '2026-MI-2-regular','2026-OH-3-special','2026-TX-2-regular',
+    ];
+    const publishedFocus = raceBriefs
+      .filter(brief => brief.status === 'published' && focusElectionIds.includes(brief.electionId))
+      .sort((left,right) => left.electionId.localeCompare(right.electionId));
+    expect(publishedFocus.map(brief => brief.electionId)).toEqual(focusElectionIds);
+    expect(publishedFocus.every(brief => brief.completeness === 'substantial')).toBe(true);
+    expect(publishedFocus.every(brief => brief.pollIds.length > 0 && brief.ratingIds.length > 0 && brief.sourceIds.length > 0 && brief.evidenceIds.length > 0)).toBe(true);
+  });
+
+  it('publishes sourced briefs for both major candidates in all six focus elections',() => {
+    const expected: Record<string,string[]> = {
+      '2026-AK-2-regular':['cand-ak-mary-peltola','cand-ak-dan-s-sullivan'],
+      '2026-IA-2-regular':['cand-ia-ashley-hinson','cand-ia-josh-turek'],
+      '2026-ME-2-regular':['cand-me-susan-m-collins','cand-me-troy-d-jackson'],
+      '2026-MI-2-regular':['cand-mi-abdul-el-sayed','cand-mi-mike-rogers'],
+      '2026-OH-3-special':['cand-oh-sherrod-brown','cand-oh-jon-husted'],
+      '2026-TX-2-regular':['cand-tx-james-talarico','cand-tx-ken-paxton'],
+    };
+    for (const [electionId,candidateIds] of Object.entries(expected)) {
+      const election = elections.find(item => item.electionId === electionId)!;
+      expect(candidateIds.every(candidateId => election.candidates.some(candidate => candidate.candidateId === candidateId))).toBe(true);
+      for (const candidateId of candidateIds) {
+        const brief = candidateBriefs.find(item => item.candidateId === candidateId);
+        expect(brief).toMatchObject({candidateId,status:'published'});
+        expect(brief!.summary.length).toBeGreaterThan(0);
+        expect(brief!.currentPositions.length).toBeGreaterThan(0);
+        expect(brief!.sourceIds.length).toBeGreaterThan(0);
+        expect(brief!.evidenceIds.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('distinguishes printed candidates from declared write-ins in Maine and Ohio',() => {
+    const candidateNames = (electionId:string,stage:'general-ballot'|'write-in') => elections
+      .find(election => election.electionId === electionId)!.candidates
+      .filter(candidate => candidate.ballotStage === stage)
+      .map(candidate => candidate.name)
+      .sort();
+    expect(candidateNames('2026-ME-2-regular','general-ballot')).toEqual(['Susan M. Collins','Troy D. Jackson']);
+    expect(candidateNames('2026-ME-2-regular','write-in')).toEqual(['Ashley J. Webb','Brent Andrews','Gina Oswald','Joseph Steinberger','Michael Turcotte','Sigrid Ann Olson']);
+    expect(candidateNames('2026-OH-3-special','general-ballot')).toEqual(['Greg Levy','Jon Husted','Sherrod Brown','William B. Redpath']);
+    expect(candidateNames('2026-OH-3-special','write-in')).toEqual(['Anthony Holliman','Stephen Faris','Timothy Telymonde']);
+  });
+
+  it('keeps Texas leaner allocation and Alaska RCV rounds as separate poll stages',() => {
+    const txBase = polls.find(poll => poll.pollId === 'poll-tx-overton-2026-08-base')!;
+    const txLeaners = polls.find(poll => poll.pollId === 'poll-tx-overton-2026-08-with-leaners')!;
+    expect(txBase).toMatchObject({studyId:'study-tx-overton-2026-08',resultStage:'base',conditionLabel:'初回候補者選択'});
+    expect(txLeaners).toMatchObject({studyId:'study-tx-overton-2026-08',resultStage:'cumulative-with-leaners',conditionLabel:'未定者のleaner回答を割当後'});
+    expect(txBase.results.find(result => result.category === 'undecided')?.value).toBe(12.6);
+    expect(txLeaners.results.map(result => result.value)).toEqual([50,50]);
+
+    const akFirst = polls.find(poll => poll.pollId === 'poll-ak-dfp-2026-08-first')!;
+    const akFinal = polls.find(poll => poll.pollId === 'poll-ak-dfp-2026-08-final')!;
+    const akAsrFinal = polls.find(poll => poll.pollId === 'poll-ak-asr-2026-08-final')!;
+    expect(akFirst).toMatchObject({studyId:'study-ak-dfp-2026-08',resultStage:'first-choice',conditionLabel:'第1選択'});
+    expect(akFinal).toMatchObject({studyId:'study-ak-dfp-2026-08',resultStage:'final',conditionLabel:'移転後の仮想最終ラウンド'});
+    expect(akAsrFinal).toMatchObject({resultStage:'final',conditionLabel:'最終RCVラウンド',sampleSize:1495,completeness:'partial'});
+    expect(akAsrFinal.results.map(result => result.value)).toEqual([50.6,49.4]);
+  });
+
+  it('preserves residual categories and labels rounding separately from unreported shares',() => {
+    const sum = (pollId:string) => polls.find(poll => poll.pollId === pollId)!.results.reduce((total,result) => total + result.value,0);
+    const iowa = getPublishedPolls(polls,'2026-IA-2-regular').find(poll => poll.pollId === 'poll-ia-emerson-2026-09')!;
+    expect(iowa.results).toEqual(expect.arrayContaining([
+      expect.objectContaining({candidateId:'cand-ia-ashley-hinson',value:49.5}),
+      expect.objectContaining({candidateId:'cand-ia-josh-turek',value:45.1}),
+      expect.objectContaining({candidateId:'cand-ia-thomas-laehn',value:.8}),
+      expect.objectContaining({label:'未定',value:4.7}),
+    ]));
+    expect(iowa.residualTreatment).toBe('rounding');
+    expect(sum('poll-ia-emerson-2026-09')).toBeCloseTo(100.1);
+    expect(polls.find(poll => poll.pollId === 'poll-me-yougov-2026-09')).toMatchObject({residualTreatment:'rounding'});
+    expect(sum('poll-me-yougov-2026-09')).toBe(99);
+    expect(polls.find(poll => poll.pollId === 'poll-oh-aarp-2026-06')).toMatchObject({residualTreatment:'rounding'});
+    expect(sum('poll-oh-aarp-2026-06')).toBe(101);
+    expect(polls.find(poll => poll.pollId === 'poll-me-cnn-ssrs-2026-09')).toMatchObject({residualTreatment:'unreported',completeness:'partial'});
+    expect(sum('poll-me-cnn-ssrs-2026-09')).toBe(93);
+  });
+
+  it('computes two-party historical shares from raw votes rather than a reported margin',() => {
+    const fixture: HistoricalResult = {resultId:'fixture',stateFips:'00',electionDate:'2024-11-05',office:'president',candidates:[{label:'D',party:'D',votes:40},{label:'R',party:'R',votes:50},{label:'Other',party:'other',votes:10}],sourceIds:[],evidenceIds:[],status:'published'};
+    expect(twoPartyResultShares(fixture)).toEqual({D:44.44444444444444,R:55.55555555555556});
+    expect(historicalResults).toHaveLength(6);
+    const alaska = historicalResults.find(result => result.stateFips === '02')!;
+    expect(alaska.candidates).toEqual([
+      {label:'Kamala D. Harris',party:'D',votes:140026},
+      {label:'Donald J. Trump',party:'R',votes:184458},
+    ]);
+    expect(twoPartyResultShares(alaska)).toEqual({D:140026 / (140026 + 184458) * 100,R:184458 / (140026 + 184458) * 100});
+  });
+
+  it('keeps rating history within one organization',() => {
+    const history = getRatingHistory(ratingObservations,'2026-AK-2-regular','Inside Elections');
+    expect(history.map(item => item.ratingRaw)).toEqual(['Solid Republican','Lean Republican','Tilt Republican']);
+    expect(history.at(-1)).toMatchObject({ratingRaw:'Tilt Republican',category:'Tilt R'});
   });
 });

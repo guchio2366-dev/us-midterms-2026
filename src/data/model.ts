@@ -31,6 +31,8 @@ export interface Seat {
 }
 
 export interface Candidate {
+  candidateId: string;
+  personId: string;
   name: string;
   party: Party;
   partyLabel: string;
@@ -127,6 +129,8 @@ export interface StateContext {
   population2025: number;
   populationChange2020to2025: number;
   presidentialWinner2024: 'D'|'R';
+  /** FEC results with the Democratic and Republican votes normalized to 100%. */
+  presidentialTwoPartyShares2024: {D:number;R:number};
   presidentialMargin2024: number|null;
   topPrivateIndustry2025: string;
   topPrivateIndustryShare2025: number;

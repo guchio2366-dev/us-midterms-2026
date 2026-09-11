@@ -11,11 +11,20 @@ export const industryLabels: Record<string,string> = {
   '11':'農林水産','21':'鉱業・石油ガス','22':'公益事業','23':'建設','31-33':'製造業','42':'卸売','44-45':'小売','48-49':'運輸・倉庫','51':'情報','52':'金融・保険','53':'不動産・賃貸','54':'専門・科学・技術サービス','55':'企業管理','56':'業務支援・廃棄物処理','61':'教育サービス','62':'医療・社会扶助','71':'芸術・娯楽','72':'宿泊・飲食','81':'その他サービス',
 };
 
-const context = (stateFips:string,abbr:string,population2025:number,populationChange2020to2025:number,presidentialWinner2024:'D'|'R',presidentialMargin2024:number,industryCode:string,topPrivateIndustryShare2025:number,soybeanProduction2026:number|null,soybeanRank2026:number|null): StateContext => ({
-  stateFips,region:regionByAbbr[abbr],population2025,populationChange2020to2025,presidentialWinner2024,presidentialMargin2024,
-  topPrivateIndustry2025:industryLabels[industryCode],topPrivateIndustryShare2025,soybeanProduction2026,soybeanRank2026,
-  sourceIds:['census-pop-2025','fec-pres-2024','bea-sagdp-2025',...(soybeanProduction2026 === null ? [] : ['nass-soy-2026'])],
-});
+const context = (stateFips:string,abbr:string,population2025:number,populationChange2020to2025:number,presidentialWinner2024:'D'|'R',presidentialMargin2024:number,industryCode:string,topPrivateIndustryShare2025:number,soybeanProduction2026:number|null,soybeanRank2026:number|null): StateContext => {
+  // presidentialMargin2024 is already the FEC two-candidate margin. Store the
+  // corresponding shares in the data contract so the UI never guesses a
+  // denominator from an all-candidate margin.
+  const winnerShare = (100 + presidentialMargin2024) / 2;
+  const presidentialTwoPartyShares2024 = presidentialWinner2024 === 'R'
+    ? {D:100 - winnerShare,R:winnerShare}
+    : {D:winnerShare,R:100 - winnerShare};
+  return {
+    stateFips,region:regionByAbbr[abbr],population2025,populationChange2020to2025,presidentialWinner2024,presidentialTwoPartyShares2024,presidentialMargin2024,
+    topPrivateIndustry2025:industryLabels[industryCode],topPrivateIndustryShare2025,soybeanProduction2026,soybeanRank2026,
+    sourceIds:['census-pop-2025','fec-pres-2024','bea-sagdp-2025',...(soybeanProduction2026 === null ? [] : ['nass-soy-2026'])],
+  };
+};
 
 export const stateContexts: StateContext[] = [
   context('01','AL',5193088,3.3,'R',30.9,'31-33',17.6,12095,24),

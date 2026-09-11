@@ -14,13 +14,28 @@ export interface SenateRaceDetail {
 const caucusIntent = (party: Candidate['party']): Candidate['caucusIntent'] =>
   party === 'D' ? 'Democratic' : party === 'R' ? 'Republican' : 'unconfirmed';
 
+const candidateSlug = (value: string) => value
+  .normalize('NFKD')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g,'-')
+  .replace(/^-|-$/g,'');
+
 const candidate = (
   name: string,
   party: Candidate['party'],
   partyLabel: string,
   sourceId: string,
   ballotStage: Candidate['ballotStage'] = 'general-ballot',
-): Candidate => ({name,party,partyLabel,status:'confirmed',ballotStage,caucusIntent:caucusIntent(party),sourceIds:[sourceId,'senate-race-index']});
+  candidateId = `${sourceId}-${candidateSlug(name)}`,
+): Candidate => {
+  const personId = `person-${candidateSlug(name)}`;
+  return {
+    candidateId,
+    personId,
+    name,party,partyLabel,status:'confirmed',ballotStage,
+    caucusIntent:caucusIntent(party),sourceIds:[sourceId,'senate-race-index'],
+  };
+};
 
 const rating = (raw: string): Rating => {
   const normalized = raw.replace('Safe','Solid').replace('Tossup','Toss Up').replace(/ \(flip\)$/,'');
@@ -48,14 +63,14 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('FL-3','2026-08-18','Safe R','cand-fl',[
     candidate('Neil Gillespie','I','Independent','cand-fl'),candidate('Ashley Moody','R','Republican','cand-fl'),candidate('Angie Nixon','D','Democratic','cand-fl'),
   ]),
-  race('OH-3','2026-05-05','Tossup','cand-oh',[
-    candidate('Sherrod Brown','D','Democratic','cand-oh'),candidate('Jon Husted','R','Republican','cand-oh'),candidate('Greg Levy','other','Party for Socialism and Liberation','cand-oh'),candidate('William Redpath','other','Libertarian','cand-oh'),
+  race('OH-3','2026-05-05','Tossup','oh-candidate-list-2026',[
+    candidate('Sherrod Brown','D','Democratic','oh-candidate-list-2026','general-ballot','cand-oh-sherrod-brown'),candidate('Jon Husted','R','Republican','oh-candidate-list-2026','general-ballot','cand-oh-jon-husted'),candidate('Greg Levy','other','Other-party candidate','oh-candidate-list-2026','general-ballot','cand-oh-greg-levy'),candidate('William B. Redpath','other','Libertarian','oh-candidate-list-2026','general-ballot','cand-oh-william-b-redpath'),candidate('Stephen Faris','other','Declared write-in','oh-candidate-list-2026','write-in','cand-oh-stephen-faris'),candidate('Anthony Holliman','other','Declared write-in','oh-candidate-list-2026','write-in','cand-oh-anthony-holliman'),candidate('Timothy Telymonde','other','Declared write-in','oh-candidate-list-2026','write-in','cand-oh-timothy-telymonde'),
   ]),
   race('AL-2','2026-05-19','Safe R','cand-al',[
     candidate('Barry Moore','R','Republican','cand-al'),candidate('Everett Wess','D','Democratic','cand-al-d'),
   ]),
-  race('AK-2','2026-08-18','Tossup','cand-ak',[
-    candidate('Gerald Heikes','R','Republican','cand-ak'),candidate('Mary Peltola','D','Democratic','cand-ak'),candidate('Dan J. Sullivan','R','Republican','cand-ak'),candidate('Dan S. Sullivan','R','Republican','cand-ak'),
+  race('AK-2','2026-08-18','Tossup','ak-doe-2026-general-candidates',[
+    candidate('Gerald L. Heikes','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-gerald-l-heikes'),candidate('Mary Peltola','D','Democratic','ak-doe-2026-general-candidates','general-ballot','cand-ak-mary-peltola'),candidate('Dan S. Sullivan','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-dan-s-sullivan'),candidate('Daniel J. Sullivan Jr.','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-daniel-j-sullivan-jr'),
   ]),
   race('AR-2','2026-03-03','Safe R','cand-ar',[
     candidate('Tom Cotton','R','Republican','cand-ar'),candidate('Hallie Shoffner','D','Democratic','cand-ar'),candidate('Jeff Wadlin','other','Libertarian','cand-ar'),
@@ -75,8 +90,8 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('IL-2','2026-03-17','Safe D','cand-il',[
     candidate('Juliana Stratton','D','Democratic','cand-il'),candidate('Don Tracy','R','Republican','cand-il'),
   ]),
-  race('IA-2','2026-06-02','Lean R','cand-ia',[
-    candidate('Ashley Hinson','R','Republican','cand-ia'),candidate('Thomas Laehn','other','Libertarian','cand-ia'),candidate('Josh Turek','D','Democratic','cand-ia'),
+  race('IA-2','2026-06-02','Lean R','ia-candidate-list-2026',[
+    candidate('Ashley Hinson','R','Republican','ia-candidate-list-2026','general-ballot','cand-ia-ashley-hinson'),candidate('Thomas Laehn','other','Libertarian','ia-candidate-list-2026','general-ballot','cand-ia-thomas-laehn'),candidate('Josh Turek','D','Democratic','ia-candidate-list-2026','general-ballot','cand-ia-josh-turek'),
   ]),
   race('KS-2','2026-08-04','Likely R','cand-ks',[
     candidate('Adam Hamilton','D','Democratic','cand-ks'),candidate('Roger Marshall','R','Republican','cand-ks'),
@@ -87,14 +102,14 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('LA-2','2026-05-16','Safe R','cand-la',[
     candidate('Jamie Davis','D','Democratic','cand-la'),candidate('Julia Letlow','R','Republican','cand-la'),
   ]),
-  race('ME-2','2026-06-09','Tossup','cand-me',[
-    candidate('Susan Collins','R','Republican','cand-me'),candidate('Troy Jackson','D','Democratic','cand-me'),
+  race('ME-2','2026-06-09','Tossup','me-candidate-list-2026',[
+    candidate('Susan M. Collins','R','Republican','me-candidate-list-2026','general-ballot','cand-me-susan-m-collins'),candidate('Troy D. Jackson','D','Democratic','me-candidate-list-2026','general-ballot','cand-me-troy-d-jackson'),candidate('Brent Andrews','other','Declared write-in','me-writein-list-2026','write-in','cand-me-brent-andrews'),candidate('Sigrid Ann Olson','other','Declared write-in','me-writein-list-2026','write-in','cand-me-sigrid-ann-olson'),candidate('Gina Oswald','other','Declared write-in','me-writein-list-2026','write-in','cand-me-gina-oswald'),candidate('Joseph Steinberger','other','Declared write-in','me-writein-list-2026','write-in','cand-me-joseph-steinberger'),candidate('Michael Turcotte','other','Declared write-in','me-writein-list-2026','write-in','cand-me-michael-turcotte'),candidate('Ashley J. Webb','other','Declared write-in','me-writein-list-2026','write-in','cand-me-ashley-j-webb'),
   ]),
   race('MA-2','2026-09-01','Safe D','cand-ma',[
     candidate('John Deaton','R','Republican','cand-ma'),candidate('Ed Markey','D','Democratic','cand-ma'),candidate('Joe Tache','other','Party for Socialism and Liberation','cand-ma'),
   ]),
-  race('MI-2','2026-08-04','Tossup','cand-mi',[
-    candidate('Lydia Christensen','other','Libertarian','cand-mi'),candidate('Abdul El-Sayed','D','Democratic','cand-mi'),candidate('Tim Long','other','U.S. Taxpayers','cand-mi'),candidate('Douglas P. Marsh','other','Green','cand-mi'),candidate('Mike Rogers','R','Republican','cand-mi'),
+  race('MI-2','2026-08-04','Tossup','mi-candidate-list-2026',[
+    candidate('Lydia Christensen','other','Libertarian','mi-candidate-list-2026','general-ballot','cand-mi-lydia-christensen'),candidate('Abdul El-Sayed','D','Democratic','mi-candidate-list-2026','general-ballot','cand-mi-abdul-el-sayed'),candidate('Tim Long','other','U.S. Taxpayers','mi-candidate-list-2026','general-ballot','cand-mi-tim-long'),candidate('Douglas P. Marsh','other','Green','mi-candidate-list-2026','general-ballot','cand-mi-douglas-p-marsh'),candidate('Mike Rogers','R','Republican','mi-candidate-list-2026','general-ballot','cand-mi-mike-rogers'),candidate('Walter P. Kristy','other','Natural Law','mi-candidate-list-2026','general-ballot','cand-mi-walter-p-kristy'),
   ]),
   race('MN-2','2026-08-11','Likely D','cand-mn',[
     candidate('Peggy Flanagan','D','DFL','cand-mn'),candidate('Michele Tafoya','R','Republican','cand-mn'),
@@ -138,8 +153,8 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('TN-2','2026-08-06','Safe R','cand-tn',[
     candidate('Marquita Bradshaw','D','Democratic','cand-tn'),candidate('Tharon Chandler','I','Independent','cand-tn'),candidate('Andrew Gerena','I','Independent','cand-tn'),candidate('Bill Hagerty','R','Republican','cand-tn'),candidate('Jeremy Hearn','I','Independent','cand-tn'),candidate('Robert Jones','I','Independent','cand-tn'),candidate('James Macon III','I','Independent','cand-tn'),candidate('Yoshi Matthews','I','Independent','cand-tn'),candidate('David Sutman Jr.','I','Independent','cand-tn'),candidate('Catherine Whitson','I','Independent','cand-tn'),
   ]),
-  race('TX-2','2026-03-03','Tossup','cand-tx',[
-    candidate('Ted Brown','other','Libertarian','cand-tx'),candidate('Ken Paxton','R','Republican','cand-tx'),candidate('James Talarico','D','Democratic','cand-tx'),
+  race('TX-2','2026-03-03','Tossup','tx-sos-2026-ballot-cert',[
+    candidate('Ted Brown','other','Libertarian','tx-sos-2026-ballot-cert','general-ballot','cand-tx-ted-brown'),candidate('Ken Paxton','R','Republican','tx-sos-2026-ballot-cert','general-ballot','cand-tx-ken-paxton'),candidate('James Talarico','D','Democratic','tx-sos-2026-ballot-cert','general-ballot','cand-tx-james-talarico'),
   ]),
   race('VA-2','2026-08-04','Safe D','cand-va',[
     candidate('Bert Mizusawa','R','Republican','cand-va'),candidate('Mark Warner','D','Democratic','cand-va'),
@@ -157,7 +172,7 @@ const officialCandidateSources: Array<[string,string,string,string]> = [
   ['oh','2026 statewide candidate list','Ohio Secretary of State','https://www.ohiosos.gov/media-center/press-releases/2026/2026-02-04/'],
   ['al','2026 qualified candidates','Alabama political parties','https://algop.org/qualified-2026-republican-candidates/'],
   ['al-d','2026 qualified Democratic candidates','Alabama Democratic Party','https://aldemocrats.org/2026-qualified-candidates'],
-  ['ak','2026 candidates','Alaska Division of Elections','https://www.elections.alaska.gov/candidates'],
+  ['ak','2026 General Election candidates','Alaska Division of Elections','https://www.elections.alaska.gov/candidates/?election=26genr'],
   ['ar','2026 candidates','Arkansas Secretary of State','https://candidates.arkansas.gov/'],
   ['co','2026 candidate list','Colorado Secretary of State','https://www.sos.state.co.us/pubs/elections/vote/primaryCandidates.html'],
   ['de','Filed candidates by office','Delaware Department of Elections','https://elections.delaware.gov/candidates/candidatelist/prim_fcddt_2026.shtml'],
@@ -185,7 +200,7 @@ const officialCandidateSources: Array<[string,string,string,string]> = [
   ['sc','Candidate listing','South Carolina Election Commission','https://vrems.scvotes.sc.gov/Candidate/CandidateSearch?electionId=22598'],
   ['sd','2026 candidate list','South Dakota Secretary of State','https://vip.sdsos.gov/candidatelist.aspx?eid=773'],
   ['tn','2026 candidate lists','Tennessee Secretary of State','https://sos.tn.gov/elections/2026-candidate-lists'],
-  ['tx','Candidate information','Texas Secretary of State','https://goelect.txelections.civixapps.com/ivis-cbp-ui/candidate-information'],
+  ['tx','2026 General Election ballot certification','Texas Secretary of State','https://www.sos.state.tx.us/elections/forms/2026-ballot-cert.pdf'],
   ['va','2026 primary election candidates','Virginia Department of Elections','https://www.elections.virginia.gov/casting-a-ballot/candidate-list/'],
   ['wv','Candidates listing by office','West Virginia Secretary of State','https://candidates.wvsos.gov/'],
   ['wy','2026 election information','Wyoming Secretary of State','https://sos.wyo.gov/elections/'],
