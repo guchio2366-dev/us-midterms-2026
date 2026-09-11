@@ -3,6 +3,7 @@ import type { IssueCategory, PowerRule, Source } from './model';
 export const powerRules: PowerRule[] = [
   {
     powerId:'ordinary-law',domain:'law',action:'通常法案を成立させる',
+    explanation:'議員が法案を提出し、下院と上院が同じ文面を可決して大統領に送ります。大統領は署名または拒否権を行使します。',
     house:'同一文面を可決',senate:'同一文面を可決。通常法案は討論終結が先に必要になる場合がある',
     threshold:'下院・上院とも出席投票者の過半数。上院の討論終結は原則、選出・宣誓済み議員の5分の3',
     nominalSeats:'下院218／上院51または50＋副大統領。上院クロージャー60',
@@ -11,6 +12,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'appropriations',domain:'money',action:'予算・歳出を決める',
+    explanation:'歳入法案は下院が先に提出し、両院が歳出法案・予算を審議します。成立した歳出法が行政機関の支出範囲を決めます。',
     house:'歳入法案の起点。歳出法案を可決',senate:'歳出法案を可決・修正',
     threshold:'通常は両院の過半数。上院では討論終結60が必要になる場合がある',
     nominalSeats:'下院218／上院51または50＋副大統領。クロージャー60',
@@ -19,6 +21,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'oversight',domain:'oversight',action:'調査・公聴会・文書要求を行う',
+    explanation:'各院の委員会が議員の発議で公聴会、文書要求、召喚を行い、行政機関が法律と予算をどう執行したかを調べます。',
     house:'委員会の招致・調査・召喚状。多数党が委員長と議題を握る',senate:'委員会の招致・調査・召喚状。多数党が委員長と議題を握る',
     threshold:'委員会規則による。固定の本会議議席数ではなく、院の多数派が委員会運営を左右する',
     nominalSeats:'下院218が多数派の目安／上院51または50＋副大統領が運営多数派の目安',
@@ -27,6 +30,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'nominations',domain:'appointments',action:'閣僚・大使・連邦裁判官などを承認する',
+    explanation:'大統領が閣僚・大使・連邦裁判官などを指名し、上院が助言と同意として承認または否決します。下院は通常この承認手続に参加しません。',
     house:'原則として関与しない',senate:'助言と同意。指名の承認・否決',
     threshold:'出席投票者の過半数。指名の討論終結も単純多数',
     nominalSeats:'上院51、または50＋副大統領',
@@ -35,6 +39,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'treaties',domain:'treaties',action:'条約への助言と同意',
+    explanation:'大統領が外国政府と交渉して署名した条約について、上院が同意して批准を可能にします。下院は条約そのものの同意投票を行いません。',
     house:'条約同意には参加しない。実施法・歳出が必要なら関与',senate:'条約批准への同意',
     threshold:'出席上院議員の3分の2',
     nominalSeats:'全100人出席なら67',
@@ -43,6 +48,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'impeachment',domain:'impeachment',action:'弾劾訴追・裁判',
+    explanation:'下院が弾劾条項を提出・可決して訴追し、上院が裁判を行います。上院の有罪判決があれば罷免などの効果が生じます。',
     house:'弾劾条項を可決して訴追',senate:'弾劾裁判を行い、有罪なら罷免',
     threshold:'下院は出席投票者の過半数。上院の有罪は出席議員の3分の2',
     nominalSeats:'全員出席なら下院218／上院67',
@@ -51,6 +57,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'veto-override',domain:'veto',action:'大統領拒否権を覆す',
+    explanation:'大統領拒否権は、両院を通過した法案への署名を拒み、成立を止める権限です。歳入・歳出を含む法案を拒否したとき、両院がそれぞれ再可決すれば成立させられます。拒否権は法案に対する権限で、憲法改正や弾劾判決には及びません。',
     house:'再可決',senate:'再可決',
     threshold:'両院それぞれ出席議員の3分の2',
     nominalSeats:'全員出席なら下院290／上院67',
@@ -59,6 +66,7 @@ export const powerRules: PowerRule[] = [
   },
   {
     powerId:'reconciliation',domain:'money',action:'財政調整法を成立させる',
+    explanation:'予算決議に基づき、両院の委員会が税・歳出・債務上限に関する法案を作成します。予算に直接関係する範囲では、上院の討論時間が制限されます。',
     house:'財政指示に沿う法案を過半数で可決',senate:'対象が予算に直接関係する範囲で、討論時間が制限され単純多数で可決可能',
     threshold:'両院の過半数。上院60票の通常クロージャーを要しない',
     nominalSeats:'下院218／上院51または50＋副大統領',

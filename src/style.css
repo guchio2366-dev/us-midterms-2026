@@ -125,3 +125,31 @@ body.overlay-open{overflow:hidden}
 .sim-tabs-note{align-self:center;color:var(--muted);font-size:.72rem;line-height:1.5}.power-vote-bars{display:grid;gap:8px;min-width:200px}.power-vote>div:first-child{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.power-vote span{font-size:.66rem;color:var(--muted);font-weight:800}.power-vote b{font-size:.68rem;color:var(--navy);text-align:right}.power-vote-track{height:7px;margin-top:3px;border-radius:4px;background:#dfe8ef;overflow:hidden}.power-vote-track i{display:block;height:100%;background:#2166ac}.power-vote-track.senate-track{background:#f0dfe0}.power-vote-track.senate-track i{background:#b52b35}.power-nominal{display:block;margin-top:8px;line-height:1.55}
 .brief h3,.forecast-brief h3{margin:0 0 12px}.presidential-share{margin:0 0 18px;padding:14px 15px;background:#f4f5f3;border:1px solid #d9dcd7}.share-labels{display:flex;justify-content:space-between;gap:10px;font-size:.74rem;font-weight:800}.share-labels .share-d{color:#174f9e}.share-labels .share-r{color:#a5262e}.share-track{display:flex;height:18px;margin:8px 0 5px;border-radius:3px;overflow:hidden;background:#e1e1de}.share-track i{display:block;height:100%}.share-track .share-d{background:#4d80bd}.share-track .share-r{background:#cf5a5a}.presidential-share small{color:var(--muted);font-size:.66rem}.state-metrics{overflow-x:auto}.state-metrics table{width:100%;border-collapse:collapse;background:#fff}.state-metrics th,.state-metrics td{padding:9px 10px;border-bottom:1px solid var(--rule);font-size:.76rem;text-align:left}.state-metrics th{width:38%;color:var(--muted);font-weight:800;background:#f4f5f2}.forecast-brief{margin-top:20px;padding:18px;border-top:4px solid var(--navy);background:#eef2f3}.forecast-summary{margin:0 0 13px;color:#566169;font-size:.78rem;line-height:1.7}.forecast-brief article{padding:12px 0;border-top:1px solid #cad2d5}.forecast-brief article>b{font-size:.8rem;color:var(--navy)}.forecast-brief article p{font-size:.76rem;line-height:1.65}.tossup-research{margin:7px 0;padding:11px 12px;border-left:3px solid var(--gold);background:#fffaf0}.tossup-research.pending{background:#fff8e7}.tossup-research b{display:block;margin-top:4px;font-size:.71rem}.tossup-research p,.tossup-research li{margin:3px 0;font-size:.72rem;line-height:1.6}.tossup-research ul{margin:3px 0;padding-left:17px}.candidate-note-pending{display:block;margin:3px 0 0;color:#7b6b45;font-size:.62rem;line-height:1.45}.candidate-research{margin-top:5px;padding:7px 8px;background:#f4f5f2;font-size:.64rem}.candidate-research b{font-size:.63rem}.candidate-research ul{margin:2px 0 5px;padding-left:15px}.candidate-research li{font-size:.63rem;line-height:1.45}.special-term{color:#825c00;font-weight:700}
 @media(max-width:800px){.majority-scenarios{grid-template-columns:1fr}.sim-tabs-note{display:block;width:100%;padding:4px 3px}.power-vote-bars{min-width:180px}.state-metrics th{width:42%}}
+
+/* 09: contested-seat composition, rating guidance, and civic explanations */
+.seat-composition-block{margin:18px 0 4px;padding:14px 16px;background:#f5f6f3;border:1px solid var(--rule)}
+.seat-composition-title{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:9px}
+.seat-composition-title b,.majority-path-title b{font-size:.78rem;color:var(--navy)}
+.seat-composition-title span,.majority-path-title span{font-size:.68rem;color:var(--muted)}
+.seat-composition-track{display:flex;width:100%;height:30px;border:1px solid #c9cbc6;background:#e8e9e5;overflow:hidden}
+.seat-segment{position:relative;display:flex;align-items:center;justify-content:center;min-width:1px;border-right:1px solid #fff;color:#fff;font-size:.67rem;font-weight:800}
+.seat-segment span{line-height:1}
+.seat-segment.tiny span{display:none}
+.seat-segment.fixed-d{background:#9bb8d5}.seat-segment.fixed-r{background:#d99297}.seat-segment.fixed-other{background:#b9bbb6;color:#3e4548}
+.seat-segment.target-d{background:#174f9e}.seat-segment.target-r{background:#a5262e}.seat-segment.target-other{background:#696c6b}
+.seat-composition-legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:8px}
+.seat-composition-legend span{display:flex;align-items:center;gap:5px;font-size:.66rem;color:#5c666c}
+.seat-composition-legend i{width:13px;height:9px;border:1px solid #979994}
+.seat-composition-legend i.fixed-d{background:#9bb8d5}.seat-composition-legend i.fixed-r{background:#d99297}.seat-composition-legend i.fixed-other{background:#b9bbb6}
+.seat-composition-legend i.target-d{background:#174f9e}.seat-composition-legend i.target-r{background:#a5262e}.seat-composition-legend i.target-other{background:#696c6b}
+.majority-path{margin:13px 0;padding:11px 0;border-top:1px solid #d7d9d4}
+.majority-path-title{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.majority-detail-link{margin:0 0 4px;color:var(--muted);font-size:.76rem;line-height:1.6}
+.inline-link{color:#174f9e;font-weight:800}
+.rating-annotation{display:flex;flex-wrap:wrap;flex-basis:100%;gap:5px 10px;margin-top:9px;padding:10px 12px;border-left:3px solid var(--gold);background:#f4f5f2;font-size:.68rem;line-height:1.6;color:#5e666c}
+.rating-annotation b{color:var(--navy)}.rating-annotation strong{color:#313a40}
+.state-change-baseline{padding:10px 0 4px}.state-change-baseline h4{margin:0 0 6px;font-size:.75rem;color:var(--navy)}
+.metric-note{display:block;margin-top:3px;color:var(--muted);font-size:.65rem}
+.candidate-note-pending span{display:block!important}
+.power-table{min-width:1080px}.power-table th,.power-table td{vertical-align:top}.power-table th:first-child{min-width:155px}.power-explanation{min-width:220px;font-size:.74rem;line-height:1.6}
+@media(max-width:800px){.seat-composition-title,.majority-path-title{display:block}.seat-composition-title span,.majority-path-title span{display:block;margin-top:3px}.seat-composition-block{padding:12px}.seat-composition-track{height:27px}.power-explanation{min-width:205px}}

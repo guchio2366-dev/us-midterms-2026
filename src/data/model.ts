@@ -100,6 +100,7 @@ export interface PowerRule {
   powerId: string;
   domain: 'law'|'money'|'oversight'|'appointments'|'treaties'|'impeachment'|'veto';
   action: string;
+  explanation: string;
   house: string;
   senate: string;
   threshold: string;

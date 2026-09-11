@@ -250,12 +250,22 @@ describe('replaceable editorial UI content',() => {
 
   it('keeps the first-visit introduction and all eight report replacement slots',() => {
     expect(guideContent.intro).toContain('ニュース');
-    expect(guideContent.sections.some(section => section.title === '中間選挙')).toBe(true);
+    const electionSection = guideContent.sections.find(section => section.title === '中間選挙');
+    expect(electionSection).toBeTruthy();
+    expect(electionSection?.body).toContain('Class IIの通常選挙33議席');
+    expect(electionSection?.body).toContain('特別選挙2議席');
+    expect(electionSection?.body).toContain('任期途中の欠員');
     const classSection = guideContent.sections.find(section => section.title === '上院のClass制度');
-    expect(classSection?.body).toContain('Class 2の33議席');
-    expect(classSection?.body).toContain('特別選挙2議席');
-    expect(classSection?.body).toContain('任期途中の欠員');
+    expect(classSection?.body).toContain('Class 1・2・3');
+    expect(classSection?.body).not.toContain('2026年');
     expect(Object.keys(issueReports).sort()).toEqual(issueCategories.map(issue => issue.issueId).sort());
     expect(Object.values(issueReports).every(report => report.status === 'preparing')).toBe(true);
+  });
+
+  it('provides a foundational explanation for every congressional power',() => {
+    expect(powerRules).toHaveLength(8);
+    expect(powerRules.every(rule => rule.explanation.trim().length > 0)).toBe(true);
+    expect(powerRules.find(rule => rule.powerId === 'nominations')?.explanation).toContain('大統領が');
+    expect(powerRules.find(rule => rule.powerId === 'veto-override')?.explanation).toContain('法案');
   });
 });
