@@ -3,6 +3,7 @@ import { civicSources } from './civics';
 import { contextSources, soybeanTrade, stateContexts } from './state-context';
 import { houseSources } from './house';
 import { senateRaceDetails, senateRaceSources } from './senate-races';
+import { researchSources } from './research-sources';
 import { ROSTER_SOURCE_UPDATED_AT, ROSTER_VERIFIED_AT, verifiedRoster } from './verified-roster';
 
 type StateSeed = [fips:string, abbr:string, nameJa:string, nameEn:string, classes:[1|2|3,1|2|3]];
@@ -178,6 +179,7 @@ export const sources: Source[] = [
   checked({sourceId:'oh-election-schedule',title:'2026 Election Schedule with Candidate Requirements',publisher:'Franklin County Board of Elections, Ohio',url:'https://vote.franklincountyohio.gov/getmedia/5a24ba93-6eaa-4cfe-ad8c-77c5aed0e496/2026-Election-Schedule-with-Candidate-Requirements-6',publishedAt:null,updatedAt:'2026-05-28',referencePeriod:'p.1：一般選挙11月3日、Hustedの連邦上院残任期は2029年1月3日まで'}),
   checked({sourceId:'oh-vacancy-law',title:'Ohio Revised Code 3521.02 — Senate vacancies',publisher:'Ohio Laws',url:'https://codes.ohio.gov/ohio-revised-code/section-3521.02',publishedAt:null,referencePeriod:'1995-08-22施行の現行規定。特別選挙と暫定任命の12月15日期限'}),
   ...senateRaceSources,
+  ...researchSources,
   ...civicSources,
   ...contextSources,
   ...houseSources,
@@ -197,7 +199,11 @@ const stateEventIds = (state: State) => {
 };
 const electionByStateData = (state: State) => elections.filter(election => election.seatId.startsWith(`${state.abbr}-`));
 const electionStatusText = (election: Election) => election.contestStatus === 'general-ballot'
-  ? `${election.candidates.length}人の本選掲載候補を確認、情勢は${election.rating.category}`
+  ? (() => {
+      const printed = election.candidates.filter(candidate => candidate.ballotStage !== 'write-in').length;
+      const writeIns = election.candidates.length - printed;
+      return `本選の印刷候補${printed}人${writeIns ? `・宣言済み書き込み候補${writeIns}人` : ''}を確認、情勢は${election.rating.category}`;
+    })()
   : election.contestStatus === 'primary-pending' ? '予備選前で本選候補未確定' : '予備選投票日で結果確定待ち';
 
 export const profiles: Profile[] = states.map(state => {
@@ -230,4 +236,4 @@ export const events: EventItem[] = states.flatMap(state => {
   return items;
 });
 export const DATA_AS_OF = '2026-09-09';
-export const APP_VERSION = 'ui07-2026-09-10';
+export const APP_VERSION = 'research02-2026-09-11';
