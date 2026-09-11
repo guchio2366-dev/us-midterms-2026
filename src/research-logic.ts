@@ -76,6 +76,25 @@ export function getCandidateBrief(items: CandidateBrief[], candidateId: string):
   return items.find(item => item.candidateId === candidateId && isPublic(item.status));
 }
 
+export function getFeaturedCandidates(
+  candidates: Candidate[],
+  incumbentCandidateId: string | null,
+  researchedCandidateIds: Set<string>,
+): Candidate[] {
+  const incumbent = incumbentCandidateId
+    ? candidates.find(candidate => candidate.candidateId === incumbentCandidateId)
+    : undefined;
+  const majorPartyCandidates = (['D','R'] as const)
+    .map(party => candidates.find(candidate => candidate.party === party))
+    .filter((candidate): candidate is Candidate => Boolean(candidate));
+  const researched = candidates.filter(candidate => researchedCandidateIds.has(candidate.candidateId));
+
+  return [...new Map(
+    [...(incumbent ? [incumbent] : []),...majorPartyCandidates,...researched]
+      .map(candidate => [candidate.candidateId,candidate]),
+  ).values()];
+}
+
 export function twoPartyResultShares(result: HistoricalResult): {D:number;R:number} | null {
   const democratic = result.candidates.filter(item => item.party === 'D').reduce((sum,item) => sum + item.votes,0);
   const republican = result.candidates.filter(item => item.party === 'R').reduce((sum,item) => sum + item.votes,0);
