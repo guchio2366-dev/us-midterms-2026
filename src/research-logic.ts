@@ -22,10 +22,38 @@ export function getPublishedNewsForIssue(items: ResearchNewsItem[], issueId: str
   return getPublishedNews(items).filter(item => item.issueIds.includes(issueId));
 }
 
+const pollResultStageRank: Record<NonNullable<Poll['resultStage']>,number> = {
+  base: 0,
+  'first-choice': 0,
+  'leaner-follow-up': 1,
+  elimination: 2,
+  'calculated-head-to-head': 3,
+  'cumulative-with-leaners': 3,
+  final: 4,
+};
+
+export function sortPollStudyResults(items: Poll[]): Poll[] {
+  return [...items].sort((left,right) =>
+    (pollResultStageRank[left.resultStage ?? 'base'] - pollResultStageRank[right.resultStage ?? 'base'])
+    || right.fieldEnd.localeCompare(left.fieldEnd)
+    || left.pollId.localeCompare(right.pollId));
+}
+
 export function getPublishedPolls(items: Poll[], electionId: string): Poll[] {
-  return items
+  const studies = new Map<string,Poll[]>();
+  items
     .filter(item => item.electionId === electionId && isPublic(item.status))
-    .sort((left,right) => right.fieldEnd.localeCompare(left.fieldEnd) || left.pollId.localeCompare(right.pollId));
+    .forEach(item => {
+      const key = item.studyId ?? item.pollId;
+      studies.set(key,[...(studies.get(key) ?? []),item]);
+    });
+
+  return [...studies.entries()]
+    .sort(([leftKey,left],[rightKey,right]) =>
+      right.reduce((latest,item) => item.fieldEnd > latest ? item.fieldEnd : latest,'')
+        .localeCompare(left.reduce((latest,item) => item.fieldEnd > latest ? item.fieldEnd : latest,''))
+      || leftKey.localeCompare(rightKey))
+    .flatMap(([,study]) => sortPollStudyResults(study));
 }
 
 export function getRatingComparisons(items: RatingObservation[], electionId: string): RatingObservation[] {
