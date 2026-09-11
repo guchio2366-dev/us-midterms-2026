@@ -84,9 +84,13 @@ export function getFeaturedCandidates(
   const incumbent = incumbentCandidateId
     ? candidates.find(candidate => candidate.candidateId === incumbentCandidateId)
     : undefined;
-  const majorPartyCandidates = (['D','R'] as const)
-    .map(party => candidates.find(candidate => candidate.party === party))
-    .filter((candidate): candidate is Candidate => Boolean(candidate));
+  const seenMajorParties = new Set<'D'|'R'>();
+  const majorPartyCandidates = candidates.filter(candidate => {
+    if (candidate.party !== 'D' && candidate.party !== 'R') return false;
+    if (seenMajorParties.has(candidate.party)) return false;
+    seenMajorParties.add(candidate.party);
+    return true;
+  });
   const researched = candidates.filter(candidate => researchedCandidateIds.has(candidate.candidateId));
 
   return [...new Map(
