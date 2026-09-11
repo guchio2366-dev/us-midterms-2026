@@ -1,4 +1,5 @@
 import type { CandidateBrief, IssueReport, Poll, RaceBrief, RatingObservation, RollCallVote } from '../data/research-model';
+import { sortPollStudyResults } from '../research-logic';
 
 export const escapeHtml = (value: string | number) => String(value)
   .replaceAll('&','&amp;')
@@ -34,9 +35,12 @@ export function pollsMarkup(polls: Poll[]): string {
     studies.set(key,[...(studies.get(key) ?? []),poll]);
   });
   const groups = [...studies.values()];
-  const renderStudy = (items: Poll[]) => items.length === 1
-    ? pollMarkup(items[0])
-    : `<section class="poll-study"><h5>${escapeHtml(items[0].pollster)}・同一調査の${items.length}集計</h5>${items.map(pollMarkup).join('')}</section>`;
+  const renderStudy = (items: Poll[]) => {
+    const ordered = sortPollStudyResults(items);
+    return ordered.length === 1
+      ? pollMarkup(ordered[0])
+      : `<section class="poll-study"><h5>${escapeHtml(ordered[0].pollster)}・同一調査の${ordered.length}集計</h5>${ordered.map(pollMarkup).join('')}</section>`;
+  };
   return `<section class="research-polls"><h4>直近の確認済み調査</h4>${groups.slice(0,3).map(renderStudy).join('')}${groups.length > 3 ? `<details><summary>それ以前の${groups.length-3}調査</summary>${groups.slice(3).map(renderStudy).join('')}</details>` : ''}</section>`;
 }
 

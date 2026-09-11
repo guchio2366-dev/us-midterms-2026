@@ -103,6 +103,18 @@ describe('poll result stages and residual semantics',() => {
     ]);
   });
 
+  it('orders stages within the same poll study from the initial result to the final result',() => {
+    const alaskaStages = getPublishedPolls(polls,'2026-AK-2-regular')
+      .filter(item => item.studyId === 'study-ak-dfp-2026-08')
+      .map(item => item.resultStage);
+    const texasStages = getPublishedPolls(polls,'2026-TX-2-regular')
+      .filter(item => item.studyId === 'study-tx-overton-2026-08')
+      .map(item => item.resultStage);
+
+    expect(alaskaStages).toEqual(['first-choice','final']);
+    expect(texasStages).toEqual(['base','cumulative-with-leaners']);
+  });
+
   it('treats Maine YouGov\'s 99% total as rounding rather than an invented unreported category',() => {
     const maine = polls.find(item => item.pollId === 'poll-me-yougov-2026-09')!;
     const total = maine.results.reduce((sum,result) => sum + result.value,0);
