@@ -5,7 +5,7 @@ import type { Topology } from 'topojson-specification';
 import './style.css';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
-import { guideContent,issueReports,newsEditorialNote,newsItems } from './data/content';
+import { candidateResearchNotes,guideContent,issueReports,newsEditorialNote,newsItems,raceResearchNotes } from './data/content';
 import { houseDistricts,houseSnapshot } from './data/house';
 import { soybeanTrade,stateContexts } from './data/state-context';
 import type { Caucus, Election, HouseDistrict, Rating, Seat, State } from './data/model';
@@ -42,6 +42,9 @@ const sourceById = new Map(sources.map(source => [source.sourceId,source]));
 const houseByCombo = new Map(houseDistricts.map(district => [`${district.stateFips}${district.districtId.endsWith('-AL') ? '00' : String(district.district).padStart(2,'0')}`,district]));
 const electionByState = (state: State) => elections.filter(election => seatById.get(election.seatId)?.stateFips === state.fips);
 const targetSeatIds = uniqueElectionSeatIds(elections);
+const fixedSeatCounts = currentCaucusCounts(seats.filter(seat => !targetSeatIds.includes(seat.seatId)));
+const republicanTargetForMajority = Math.max(0,51 - fixedSeatCounts.Republican);
+const democraticTargetForMajority = Math.max(0,51 - fixedSeatCounts.Democratic);
 const regularCount = elections.filter(election => election.type === 'regular').length;
 const specialCount = elections.filter(election => election.type === 'special').length;
 const confirmedSeatCount = seats.filter(seat => seat.verificationStatus === 'confirmed' && seat.verifiedAt).length;
@@ -56,6 +59,22 @@ const topSoyCompetitiveRaces = topSoyContexts.filter(context => electionByState(
 const partyLabel = {D:'民主党',R:'共和党',I:'無所属',other:'その他',vacant:'空席',unknown:'未確認'};
 const caucusLabel: Record<Caucus,string> = {Democratic:'民主党会派',Republican:'共和党会派',none:'会派非所属',unconfirmed:'会派未確認',vacant:'空席'};
 const ratingColors: Record<Rating,string> = {'Solid D':'#174f9e','Likely D':'#4d80bd','Lean D':'#93b7dc','Toss Up':'#8a8178','Lean R':'#e59a9a','Likely R':'#cf5a5a','Solid R':'#a5262e',unavailable:'#d9d8d4'};
+const powerVoteSpecs: Record<string,{house:number|null;senate:number|null;houseLabel:string;senateLabel:string}> = {
+  'ordinary-law': {house:218,senate:51,houseLabel:'218 / 435',senateLabel:'51 / 100（50＋副大統領も可）'},
+  appropriations: {house:218,senate:51,houseLabel:'218 / 435',senateLabel:'51 / 100（50＋副大統領も可）'},
+  oversight: {house:218,senate:51,houseLabel:'多数派 218',senateLabel:'多数派 51'},
+  nominations: {house:null,senate:51,houseLabel:'関与なし',senateLabel:'51 / 100'},
+  treaties: {house:null,senate:67,houseLabel:'関与なし',senateLabel:'67 / 100'},
+  impeachment: {house:218,senate:67,houseLabel:'218 / 435',senateLabel:'67 / 100'},
+  'veto-override': {house:290,senate:67,houseLabel:'290 / 435',senateLabel:'67 / 100'},
+  reconciliation: {house:218,senate:51,houseLabel:'218 / 435',senateLabel:'51 / 100'},
+};
+function powerVoteBars(rule: typeof powerRules[number]) {
+  const spec = powerVoteSpecs[rule.powerId] ?? {house:null,senate:null,houseLabel:'要確認',senateLabel:'要確認'};
+  const bar = (label:string,votes:number|null,text:string) => `<div class="power-vote"><div><span>${label}</span><b>${text}</b></div><div class="power-vote-track" aria-hidden="true"><i style="width:${votes === null ? 0 : Math.round(votes / 435 * 100)}%"></i></div></div>`;
+  const senateBar = (label:string,votes:number|null,text:string) => `<div class="power-vote"><div><span>${label}</span><b>${text}</b></div><div class="power-vote-track senate-track" aria-hidden="true"><i style="width:${votes === null ? 0 : votes}%"></i></div></div>`;
+  return `<div class="power-vote-bars">${bar('下院',spec.house,spec.houseLabel)}${senateBar('上院',spec.senate,spec.senateLabel)}</div><small class="power-nominal">${rule.nominalSeats}／${rule.threshold}</small>`;
+}
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="mast">
@@ -68,12 +87,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div class="data-caution ${baselineComplete ? 'verified' : ''}" role="note"><strong>${baselineComplete ? '基礎データを確認済み' : '基礎情報に未確認項目があります'}</strong><span>上院100議席、2026年35選挙、候補者、統一情勢評価、50州の人口・産業・2024年結果を収録。デラウェアは予備選前、ロードアイランドは9月9日の開票確定前として区別しています。</span></div>
 
   <section id="overview" class="overview section-block" aria-labelledby="overview-heading">
-    <div class="section-heading"><div><p class="kicker">THE CONTROL MAP</p><h2 id="overview-heading">何議席が動き、何が変わるか</h2></div><p>議席の多数派と、個別の権限に必要な票数は別です。</p></div>
+    <div class="section-heading"><div><p class="kicker">THE CONTROL MAP</p><h2 id="overview-heading">何議席が動き、何が変わるか</h2></div><p>まず改選議席の規模を確認し、その後に多数派を取った院が何を動かせるかを見ます。</p></div>
     <div class="fact-grid">
       <article><span>上院の可変部分</span><strong>35</strong><p>通常33＋特別2。全100議席のうち65議席は今回の選挙では動きません。</p></article>
       <article><span>下院の可変部分</span><strong>435</strong><p>全議席が2年ごとに改選。通常の全員在席時、多数派は218です。</p></article>
-      <article><span>上院の運営多数派</span><strong>51</strong><p>50対50なら副大統領の決裁票。通常法案の討論終結は原則60です。</p></article>
-      <article><span>拒否権を覆す目安</span><strong>290＋67</strong><p>全員出席なら下院290、上院67。両院それぞれ3分の2が必要です。</p></article>
+    </div>
+    <div class="majority-scenarios">
+      <article><p class="kicker">上院の例</p><h3>共和党が過半数を維持する場合</h3><p>上院多数党として委員長・議題・指名承認の主導権を持ち、民主党が単独で進める法案や人事を止めやすくなります。改選されない31議席を前提に、35議席のうち<strong>${republicanTargetForMajority}議席以上</strong>を共和党会派が得ると、51議席に届きます。</p></article>
+      <article><p class="kicker">上院の例</p><h3>民主党が過半数を取る場合</h3><p>民主党会派が議題・委員会・指名承認を握り、政権の法案や人事に条件を付けられます。改選されない34議席を前提に、35議席のうち<strong>${democraticTargetForMajority}議席以上</strong>を民主党会派が得る必要があります。</p></article>
     </div>
     <div class="constraint-grid">
       <article><b>下院だけ反対党</b><p>法案と歳出を止め、委員会調査を主導し、過半数で弾劾訴追できます。単独では上院の指名承認や大統領罷免はできません。</p></article>
@@ -207,6 +228,16 @@ function enhanceLayout() {
       }
     });
     const table = powers.querySelector<HTMLTableElement>('.power-table');
+    if (table) {
+      [...(table.tBodies[0]?.rows ?? [])].forEach((row, index) => {
+        const rule = powerRules[index];
+        const voteCell = row.cells[3];
+        if (rule && voteCell && voteCell.dataset.visualized !== 'true') {
+          voteCell.dataset.visualized = 'true';
+          voteCell.innerHTML = powerVoteBars(rule);
+        }
+      });
+    }
     if (table && !table.dataset.actionsAdded) {
       table.dataset.actionsAdded = 'true';
       const header = table.tHead?.rows[0];
@@ -239,7 +270,7 @@ function enhanceLayout() {
     tabs.className = 'sim-tabs';
     tabs.setAttribute('role', 'tablist');
     tabs.setAttribute('aria-label', 'シミュレーション表示');
-    tabs.innerHTML = '<button type="button" role="tab" data-sim-mode="target">権限から逆算</button><button type="button" role="tab" data-sim-mode="rating" aria-selected="true" class="active">現在の選挙情勢</button><button type="button" role="tab" data-sim-mode="current">投票前の議席構成</button>';
+    tabs.innerHTML = '<button type="button" role="tab" data-sim-mode="target" aria-selected="false">権限から逆算</button><span class="sim-tabs-note">選挙情勢／投票前の議席構成は、地図直上の切替で表示します。</span>';
     const targetPanel = document.createElement('div');
     targetPanel.id = 'target-sim-panel';
     targetPanel.className = 'target-sim-panel';
@@ -827,13 +858,50 @@ const evidenceLabels: Record<string,string> = {incumbent:'現職氏名',party:'�
 function attributeRefs(attributes: Partial<Record<string,string[]>>) {
   return `<details class="attribute-evidence"><summary>確認項目と出典</summary><ul>${Object.entries(attributes).map(([field,ids]) => `<li><b>${evidenceLabels[field] ?? field}</b>：${(ids ?? []).map(id => { const source = sourceById.get(id); return source ? `<a href="${source.url}" target="_blank" rel="noreferrer">${source.title}</a>` : '出典未登録'; }).join('、')}</li>`).join('')}</ul></details>`;
 }
-function seatCard(seat: Seat) {
-  return `<div class="seat"><b>${seat.incumbent ?? (seat.vacant ? '空席' : '現職氏名未確認')} · ${seat.seatId}</b><span>Class ${seat.senateClass}／党籍：${partyLabel[seat.party]}／会派：${caucusLabel[seat.caucus]}</span><span>議席の6年任期：${seat.termStart ?? '開始日未確認'}〜${seat.termEnd ?? '終了日未確認'}</span><span>空席：${seat.vacant ? 'はい' : 'いいえ'}／確認状態：${seat.verificationStatus === 'confirmed' ? `確認済み（${seat.verifiedAt}）` : '一次資料再確認待ち'}</span>${attributeRefs(seat.attributeSourceIds)}</div>`;
+
+function twoPartyShares(context: typeof stateContexts[number]) {
+  const margin = Math.max(0, context.presidentialMargin2024 ?? 0);
+  const winnerShare = Math.min(100, (100 + margin) / 2);
+  return context.presidentialWinner2024 === 'R'
+    ? {D:100 - winnerShare,R:winnerShare}
+    : {D:winnerShare,R:100 - winnerShare};
+}
+
+function presidentialShareMarkup(context: typeof stateContexts[number]) {
+  const shares = twoPartyShares(context);
+  return `<div class="presidential-share" role="img" aria-label="2024年大統領選の二大政党票。民主党${shares.D.toFixed(1)}%、共和党${shares.R.toFixed(1)}%"><div class="share-labels"><span class="share-d">民主党 ${shares.D.toFixed(1)}%</span><span class="share-r">共和党 ${shares.R.toFixed(1)}%</span></div><div class="share-track"><i class="share-d" style="width:${shares.D.toFixed(1)}%"></i><i class="share-r" style="width:${shares.R.toFixed(1)}%"></i></div><small>2024年大統領選・二大候補票を100%に正規化</small></div>`;
+}
+
+function stateMetricsMarkup(context: typeof stateContexts[number], stateElections: Election[]) {
+  const populationChange = `${context.populationChange2020to2025 >= 0 ? '+' : ''}${context.populationChange2020to2025.toFixed(1)}%`;
+  const raceText = stateElections.length ? stateElections.map(election => `${election.type === 'special' ? '特別' : '通常'}・${election.rating.category}`).join('／') : '上院選なし';
+  const soybean = context.soybeanProduction2026 === null ? '掲載なし' : `${context.soybeanProduction2026.toLocaleString('en-US')}千bu（全米${context.soybeanRank2026}位）`;
+  return `<div class="state-metrics"><table><tbody><tr><th>2025年人口</th><td>${context.population2025.toLocaleString('en-US')}人</td></tr><tr><th>人口変化（2020→2025）</th><td>${populationChange}</td></tr><tr><th>民間GDP最大部門</th><td>${context.topPrivateIndustry2025}（民間GDPの${context.topPrivateIndustryShare2025.toFixed(1)}%）</td></tr><tr><th>大豆生産予測</th><td>${soybean}</td></tr><tr><th>2026年上院選</th><td>${raceText}</td></tr></tbody></table></div>`;
+}
+
+function candidateResearchMarkup(candidate: Election['candidates'][number]) {
+  const note = candidateResearchNotes[candidate.name];
+  if (!note || note.status === 'preparing') return '<small class="candidate-note-pending">特徴的な発言・注視する政策・忌避する政策：調査中</small>';
+  const list = (label:string, values:string[]) => values.length ? `<div><b>${label}</b><ul>${values.map(value => `<li>${value}</li>`).join('')}</ul></div>` : '';
+  return `<div class="candidate-research">${list('特徴的な発言',note.notableStatements)}${list('注視する政策',note.focusPolicies)}${list('忌避する政策',note.avoidPolicies)}${refs(note.sourceIds)}</div>`;
+}
+
+function raceResearchMarkup(election: Election) {
+  const note = raceResearchNotes[election.seatId];
+  if (election.rating.category !== 'Toss Up') return `<p class="race-relevance">${election.electionRelevance}</p>`;
+  if (note?.status === 'available') return `<div class="tossup-research"><b>均衡度</b><p>${note.balance}</p><b>主な論点</b><ul>${note.keyIssues.map(issue => `<li>${issue}</li>`).join('')}</ul><p>${note.note}</p>${refs(note.sourceIds)}</div>`;
+  return `<div class="tossup-research pending"><b>Toss Upの読み方</b><p>${election.electionRelevance}</p><p>票の均衡度、州内の主要論点、候補者発言の影響を分解した資料分析は調査中です。検証済みのレポートをここへ差し替えます。</p></div>`;
+}
+
+function seatCard(seat: Seat, stateElections: Election[]) {
+  const specialElection = stateElections.find(election => election.seatId === seat.seatId && election.type === 'special');
+  const specialText = specialElection ? `<span class="special-term">特別選挙：任期途中の欠員を補充。残任期終了は${seat.termEnd ?? '未確認'}、当選者の具体的な就任日は確定後に更新します。</span>` : '';
+  return `<div class="seat"><b>${seat.incumbent ?? (seat.vacant ? '空席' : '現職氏名未確認')} · ${seat.seatId}</b><span>Class ${seat.senateClass}／党籍：${partyLabel[seat.party]}／会派：${caucusLabel[seat.caucus]}</span>${specialText}<span>空席：${seat.vacant ? 'はい' : 'いいえ'}／確認状態：${seat.verificationStatus === 'confirmed' ? `確認済み（${seat.verifiedAt}）` : '一次資料再確認待ち'}</span>${attributeRefs(seat.attributeSourceIds)}</div>`;
 }
 function electionCard(election: Election) {
   const seat = seatById.get(election.seatId)!;
   const contestLabel = election.contestStatus === 'general-ballot' ? '本選候補' : election.contestStatus === 'primary-pending' ? `予備選候補（${election.primaryDate}予定）` : `予備選候補（${election.primaryDate}・結果確認中）`;
-  return `<div class="election-card ${election.type}"><b>${election.type === 'special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日：${election.date}</span><span>対象任期：${election.termStartLabel}〜${election.termEnd}</span>${election.termStartRule ? `<small>${election.termStartRule}</small>` : ''}<div class="rating-badge"><span>${election.rating.category}</span><small>${election.rating.organization}・${election.rating.ratedAt}</small></div><p class="race-relevance">${election.electionRelevance}</p><div class="candidate-block"><strong>${contestLabel} ${election.candidates.length}人</strong><ul>${election.candidates.map(candidate => `<li><i class="party-dot party-${candidate.party}"></i><span><b>${candidate.name}</b><small>${candidate.partyLabel}${candidate.ballotStage === 'write-in' ? '・記名候補' : ''}</small></span></li>`).join('')}</ul></div><span>候補者確認：${election.candidateResearchStatus === 'complete' ? '本選掲載を確認済み' : '予備選確定待ち'}／情勢取得 ${election.rating.retrievedAt}</span>${attributeRefs(election.attributeSourceIds)}</div>`;
+  return `<div class="election-card ${election.type}"><b>${election.type === 'special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日：${election.date}</span>${election.type === 'special' ? `<small>${election.termStartRule ?? '任期途中の欠員を州法に基づき補充します。'}</small>` : ''}<div class="rating-badge"><span>${election.rating.category}</span><small>${election.rating.organization}・${election.rating.ratedAt}</small></div>${raceResearchMarkup(election)}<div class="candidate-block"><strong>${contestLabel} ${election.candidates.length}人</strong><ul>${election.candidates.map(candidate => `<li><i class="party-dot party-${candidate.party}"></i><span><b>${candidate.name}</b><small>${candidate.partyLabel}${candidate.ballotStage === 'write-in' ? '・記名候補' : ''}</small></span>${candidateResearchMarkup(candidate)}</li>`).join('')}</ul></div><span>候補者確認：${election.candidateResearchStatus === 'complete' ? '本選掲載を確認済み' : '予備選確定待ち'}／情勢取得 ${election.rating.retrievedAt}</span>${attributeRefs(election.attributeSourceIds)}</div>`;
 }
 function selectState(state: State, trigger?: HTMLElement) {
   selected = state;
@@ -843,8 +911,8 @@ function selectState(state: State, trigger?: HTMLElement) {
   renderMap();
   const stateElections = electionByState(state); const profile = profileByFips.get(state.fips)!; const stateSeats = seats.filter(seat => seat.stateFips === state.fips);
   const ids = [...profile.politicalBase.sourceIds,...profile.industryAndIssues.sourceIds,...profile.historicalTrajectory.sourceIds,...profile.electionMeaning.sourceIds,...stateSeats.flatMap(seat => seat.sourceIds),...stateElections.flatMap(election => election.sourceIds)];
-  const timeline = events.filter(event => profile.eventIds.includes(event.eventId));
-  document.querySelector('#detail')!.innerHTML = `<button class="close" aria-label="州詳細を閉じる">×</button><p class="kicker">STATE BRIEFING</p><h2>${state.nameJa}</h2><p class="en">${state.nameEn} · ${state.abbr}</p><div class="status">州解説：${profile.contentStatus} · 基準日 ${profile.asOf}</div><div class="race-summary">${stateElections.length ? stateElections.map(electionCard).join('') : '<strong>2026年の上院選挙なし（下院は全区改選）</strong>'}</div><section class="brief"><h3>州の要約</h3><p>${profile.politicalBase.text}</p><p>${profile.industryAndIssues.text}</p><p>${profile.historicalTrajectory.text}</p><p>${profile.electionMeaning.text}</p></section><details open><summary>確認できる変化</summary>${timeline.map(event => `<article class="timeline-item"><time>${event.period}</time><b>${event.title}</b><p>${event.eventText}</p>${event.localEffect ? `<small>${event.localEffect}</small>` : ''}<em>${event.causalInterpretation.text}</em></article>`).join('')}</details><details open><summary>現職・議席情報</summary><p class="missing">議席の6年任期を表示しています。途中就任した現職本人の在職開始日とは異なります。</p>${stateSeats.map(seatCard).join('')}</details><details><summary>出典・情報時点</summary>${refs(ids)}</details>`;
+  const timeline = events.filter(event => profile.eventIds.includes(event.eventId) && !event.eventId.startsWith('population-'));
+  document.querySelector('#detail')!.innerHTML = `<button class="close" aria-label="州詳細を閉じる">×</button><p class="kicker">STATE BRIEFING</p><h2>${state.nameJa}</h2><p class="en">${state.nameEn} · ${state.abbr}</p><div class="status">州解説：${profile.contentStatus} · 基準日 ${profile.asOf}</div><section class="brief"><h3>州の要約</h3>${presidentialShareMarkup(contextByFips.get(state.fips)!)}${stateMetricsMarkup(contextByFips.get(state.fips)!,stateElections)}</section><section class="forecast-brief"><h3>投票予測の理由</h3>${stateElections.length ? `<p class="forecast-summary">${profile.electionMeaning.text}</p>${stateElections.map(election => `<article><b>${election.rating.category} · ${election.rating.organization ?? '情勢評価'}</b>${raceResearchMarkup(election)}</article>`).join('')}` : '<p>2026年の上院選はありません。下院は州内の全選挙区が改選されます。</p>'}</section><details open><summary>確認できる変化</summary>${timeline.map(event => `<article class="timeline-item"><time>${event.period}</time><b>${event.title}</b><p>${event.eventText}</p>${event.localEffect ? `<small>${event.localEffect}</small>` : ''}</article>`).join('')}</details><details open><summary>現職・議席情報</summary>${stateSeats.map(seat => seatCard(seat,stateElections)).join('')}</details><details><summary>出典・情報時点</summary>${refs(ids)}</details>`;
   document.querySelector<HTMLButtonElement>('#detail .close')!.onclick = () => {
     const focusTarget = returnFocus;
     selected = null; renderMap();

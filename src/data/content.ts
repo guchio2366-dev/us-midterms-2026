@@ -46,6 +46,22 @@ export interface IssueReportStatus {
   sourceIds: string[];
 }
 
+export interface CandidateResearchNote {
+  status: 'preparing' | 'available';
+  notableStatements: string[];
+  focusPolicies: string[];
+  avoidPolicies: string[];
+  sourceIds: string[];
+}
+
+export interface RaceResearchNote {
+  status: 'preparing' | 'available';
+  balance: string;
+  keyIssues: string[];
+  note: string;
+  sourceIds: string[];
+}
+
 const yearStart = (period: string) => period.match(/\d{4}/)?.[0] ?? '2026';
 const eventDate = (period: string) => {
   const day = period.match(/^\d{4}-\d{2}-\d{2}/)?.[0];
@@ -107,9 +123,9 @@ export const guideContent: { intro: string; sections: GuideSection[] } = {
   sections: [
     { title: '米国議会', body: '議会は下院と上院から成ります。法案、歳出、監督、指名承認、条約、弾劾などで役割と必要な票数が異なります。' },
     { title: '中間選挙', body: '大統領選の2年後に行われ、下院は全435議席、上院は3つのClassのうち約3分の1を改選します。2026年は通常選挙に加えて特別選挙があります。' },
-    { title: '上院のClass制度', body: '上院議員の任期は6年で、Class 1・2・3を2年ごとに順番に改選します。改選されない議席は今回の選挙では固定して表示します。' },
+    { title: '上院のClass制度', body: '上院議員の任期は6年で、Class 1・2・3を2年ごとに順番に改選します。2026年はClass 2の33議席に加え、任期途中の欠員を州法に基づいて補充する特別選挙2議席（フロリダ・オハイオ）を争います。特別選挙の当選者は残任期を務め、具体的な就任日は確定後に更新します。' },
     { title: '地図の読み方', body: '選挙情勢モードは評価機関の分類、投票前の議席構成モードは現職会派を示します。色は州全体の支持率や当選確率そのものではありません。' },
-    { title: 'シミュレーションの読み方', body: '手動シミュレーションは、各対象議席の会派を利用者が置き換えた場合の議席数です。権限から逆算する自動経路と因果係数は研究中で、未確認の確率は表示しません。' },
+    { title: 'シミュレーションの読み方', body: '手動シミュレーションは、各対象議席の会派を利用者が置き換えた場合の議席数です。権限から逆算する州の自動経路と因果係数は研究中で、未確認の確率は表示しません。' },
     { title: '出典と更新', body: 'カード、州詳細、権限表、論点レポートには対応する出典と対象期間を付けます。内容が更新された場合は、画面上の基準日とデータ版を確認してください。' },
   ],
 };
@@ -121,5 +137,9 @@ export const issueReports: Record<string, IssueReportStatus> = Object.fromEntrie
     sourceIds: issue.sourceIds,
   }]),
 );
+
+/** Candidate statements and race-specific reporting are intentionally replaceable. */
+export const candidateResearchNotes: Record<string, CandidateResearchNote> = {};
+export const raceResearchNotes: Record<string, RaceResearchNote> = {};
 
 export const replaceableContentVersion = 'editorial-pending-2026-09-09';
