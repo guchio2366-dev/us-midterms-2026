@@ -2,7 +2,7 @@ import { describe,expect,it } from 'vitest';
 import { elections } from '../src/data/data';
 import { newsItems } from '../src/data/news';
 import { candidateBriefs,polls,raceBriefs,ratingObservations } from '../src/data/research';
-import { getPublishedNews,getPublishedPolls } from '../src/research-logic';
+import { getFeaturedCandidates,getPublishedNews,getPublishedPolls } from '../src/research-logic';
 
 const focusRaces = [
   {electionId:'2026-IA-2-regular',majorCandidates:['cand-ia-ashley-hinson','cand-ia-josh-turek'],minimumStudies:3},
@@ -127,6 +127,18 @@ describe('poll result stages and residual semantics',() => {
 });
 
 describe('official candidate roster distinctions',() => {
+  it('keeps the incumbent and both major-party candidates ahead of researched minor candidates',() => {
+    const iowa = electionById('2026-IA-2-regular').candidates.filter(candidate => candidate.ballotStage !== 'write-in');
+    const researchedIds = new Set(candidateBriefs.map(brief => brief.candidateId));
+    const featured = getFeaturedCandidates(iowa,'cand-ia-ashley-hinson',researchedIds);
+
+    expect(featured.map(candidate => candidate.candidateId)).toEqual([
+      'cand-ia-ashley-hinson',
+      'cand-ia-josh-turek',
+      'cand-ia-thomas-laehn',
+    ]);
+  });
+
   it('separates printed candidates and declared write-ins in Maine and Ohio',() => {
     const maine = electionById('2026-ME-2-regular').candidates;
     const ohio = electionById('2026-OH-3-special').candidates;

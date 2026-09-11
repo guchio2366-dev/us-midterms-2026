@@ -12,7 +12,7 @@ import { candidateBriefs,historicalResults,issueReports,polls,raceBriefs,ratingO
 import { soybeanTrade,stateContexts } from './data/state-context';
 import type { Caucus, Election, HouseDistrict, Rating, Seat, State } from './data/model';
 import { baselineCaucus,currentCaucusCounts,houseMajorityText,houseRatingOutcome,majorityText,simulatedCounts,simulatedHouseCounts,uniqueElectionSeatIds,type Assumptions,type HouseAssumptions } from './logic';
-import { getCandidateBrief,getPublishedNews,getPublishedNewsById,getPublishedNewsForElection,getPublishedNewsForIssue,getPublishedPolls,getRaceBrief,getRatingComparisons,isPublic,twoPartyResultShares } from './research-logic';
+import { getCandidateBrief,getFeaturedCandidates,getPublishedNews,getPublishedNewsById,getPublishedNewsForElection,getPublishedNewsForIssue,getPublishedPolls,getRaceBrief,getRatingComparisons,isPublic,twoPartyResultShares } from './research-logic';
 import { candidateBriefMarkup,escapeHtml,issueReportMarkup,pollsMarkup,raceBriefMarkup,ratingsMarkup,rollCallMarkup } from './ui/research';
 
 type Mode = 'current'|'rating';
@@ -497,15 +497,19 @@ function renderNewsList() {
     card.type = 'button';
     card.className = 'news-card';
     card.dataset.newsId = item.newsId;
-    card.setAttribute('aria-label', item.headline + 'の詳細を開く');
     const meta = document.createElement('span');
     meta.className = 'news-meta';
+    meta.id = `news-meta-${item.newsId}`;
     meta.textContent = (NEWS_KIND_LABEL[item.kind] ?? 'ニュース') + ' · ' + (item.eventDate ?? '発生日未特定') + (item.location.label ? ' · ' + item.location.label : '');
     const headline = document.createElement('strong');
+    headline.id = `news-headline-${item.newsId}`;
     headline.textContent = item.headline;
     const summary = document.createElement('span');
     summary.className = 'news-summary';
+    summary.id = `news-summary-${item.newsId}`;
     summary.textContent = item.summary;
+    card.setAttribute('aria-labelledby', headline.id);
+    card.setAttribute('aria-describedby', `${meta.id} ${summary.id}`);
     card.append(meta, headline, summary);
     card.addEventListener('click', () => openOverlay('news', item.newsId));
     list.append(card);
@@ -1169,11 +1173,11 @@ function electionCard(election: Election) {
   const writeIns = election.candidates.filter(candidate => candidate.ballotStage === 'write-in');
   const researched = printed.filter(candidate => getCandidateBrief(candidateBriefs,candidate.candidateId));
   const incumbentCandidate = printed.find(candidate => candidateNameKey(candidate.name) === candidateNameKey(seat.incumbent));
-  const featured = [...new Map([
-    ...researched,
-    ...(incumbentCandidate ? [incumbentCandidate] : []),
-    ...(['D','R'] as const).map(party => printed.find(candidate => candidate.party === party)).filter((candidate): candidate is Election['candidates'][number] => Boolean(candidate)),
-  ].map(candidate => [candidate.candidateId,candidate])).values()];
+  const featured = getFeaturedCandidates(
+    printed,
+    incumbentCandidate?.candidateId ?? null,
+    new Set(researched.map(candidate => candidate.candidateId)),
+  );
   const otherPrinted = printed.filter(candidate => !featured.includes(candidate));
   const incumbentOnBallot = printed.some(candidate => candidateNameKey(candidate.name) === candidateNameKey(seat.incumbent));
   const openSeat = election.contestStatus === 'general-ballot' && seat.incumbent && !incumbentOnBallot
