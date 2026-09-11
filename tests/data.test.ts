@@ -251,6 +251,10 @@ describe('replaceable editorial UI content',() => {
   it('keeps the first-visit introduction and all eight report replacement slots',() => {
     expect(guideContent.intro).toContain('ニュース');
     expect(guideContent.sections.some(section => section.title === '中間選挙')).toBe(true);
+    const classSection = guideContent.sections.find(section => section.title === '上院のClass制度');
+    expect(classSection?.body).toContain('Class 2の33議席');
+    expect(classSection?.body).toContain('特別選挙2議席');
+    expect(classSection?.body).toContain('任期途中の欠員');
     expect(Object.keys(issueReports).sort()).toEqual(issueCategories.map(issue => issue.issueId).sort());
     expect(Object.values(issueReports).every(report => report.status === 'preparing')).toBe(true);
   });
