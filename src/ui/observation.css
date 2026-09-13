@@ -56,10 +56,12 @@
 .observation-seat-control { min-width: 0; padding-bottom: 6px; }
 .observation-seat-control > label { margin: 0; }
 .observation-seat-control > button { margin: 0 8px; font-size: 13px; }
-@container (min-width: 680px) {
+@container (min-width: 664px) {
   .observation-decision-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
   .observation-comparison-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .observation-body { scroll-behavior: auto; }
 }
+
+#detail { scroll-margin-top: 80px; }

@@ -72,7 +72,7 @@ export function jumpToObservation(id:string) {
   if (!target) return false;
   let parent=target.parentElement;
   while (parent) { if (parent instanceof HTMLDetailsElement) parent.open=true; parent=parent.parentElement; }
-  target.scrollIntoView({block:'start',behavior:'auto'});
+  target.scrollIntoView({block:'start',behavior:'instant'});
   target.focus({preventScroll:true});
   // View references are independent of the saved scenario parameter `s`.
   const prefix='obs-';

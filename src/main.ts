@@ -577,7 +577,7 @@ function enhanceLayout() {
     document.querySelector<HTMLSelectElement>('#state-search')!.value = state.fips;
     selectState(state,button);
     if (button.dataset.overviewUpdate) requestAnimationFrame(()=>jumpToObservation(button.dataset.overviewUpdate!));
-    document.querySelector('#simulator')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    document.querySelector('#detail')?.scrollIntoView({behavior:'instant',block:'start'});
   }));
   document.querySelector<HTMLButtonElement>('[data-all-races]')?.addEventListener('click',() => {
     document.querySelector('#simulator')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
@@ -1702,7 +1702,7 @@ function renderSim() {
     const state=stateByFips.get(button.dataset.seatMaterial!)!;
     document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
     selectState(state,button);
-    document.querySelector('#senate')?.scrollIntoView({behavior:'auto'});
+    document.querySelector('#detail')?.scrollIntoView({behavior:'instant',block:'start'});
   }));
   if (activeSeatId) document.querySelector<HTMLElement>(`#seat-controls [data-senate-choice="${activeSeatId}"]`)?.focus();
 }
@@ -1912,6 +1912,7 @@ if (linkedElection) {
   const state=stateByFips.get(seatById.get(linkedElection.seatId)!.stateFips)!;
   document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
   selectState(state);
+  document.querySelector('#detail')?.scrollIntoView({behavior:'instant',block:'start'});
   if (linkedObservation) requestAnimationFrame(()=>jumpToObservation(observationAnchor(linkedElection.electionId,linkedObservation)));
 } else if (observationView.has('race')) {
   document.querySelector('#national-overview')?.scrollIntoView({behavior:'auto'});
