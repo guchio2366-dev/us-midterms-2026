@@ -1,0 +1,65 @@
+.observation-host { container-type: inline-size; }
+.observation-body { color: #263d49; overflow-wrap: anywhere; }
+.detail .observation-body p, .detail .observation-current { font-size: 16px !important; line-height: 1.85; margin: 10px 0; }
+.detail .observation-body h4 { font-size: 19px; line-height: 1.55; margin: 18px 0 10px; color: var(--navy); }
+.detail .observation-body h5 { font-size: 16px; line-height: 1.6; margin: 0 0 8px; color: var(--navy); }
+.detail .observation-body small, .observation-monitor small { display: block; font-size: 13px; line-height: 1.7; color: #58656a; }
+.detail .observation-body section { padding: 14px 0; border-top: 1px solid var(--rule); }
+.detail .observation-body details { margin-top: 8px; }
+.detail .observation-body summary, .observation-more > summary, .observation-monitor summary { min-height: 44px; padding: 10px 2px; box-sizing: border-box; font-size: 15px; line-height: 1.6; cursor: pointer; color: #174f9e; }
+.observation-body :focus-visible, .observation-focus:focus-visible, .observation-seat-control button:focus-visible { outline: 3px solid #2769aa; outline-offset: 3px; }
+.observation-body [tabindex="-1"] { scroll-margin-top: 90px; }
+.detail .observation-current { padding: 10px 12px; background: #edf2f4; border-left: 3px solid #607582; }
+.observation-shortcuts { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.observation-shortcuts button, .observation-body button[data-observation-jump], .observation-seat-control button { min-height: 44px; padding: 8px 4px; border: 0; background: none; color: #174f9e; text-align: left; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font: inherit; font-size: 14px; }
+.detail .observation-uncertainty { padding: 12px; background: #f5f4ef; border-left: 3px solid #a59c82; }
+.observation-uncertainty > b { display: block; margin-bottom: 3px; }
+.observation-decision-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.observation-decision-grid > * { min-width: 0; }
+.observation-materials > article { margin: 0 0 14px; padding: 14px; background: #f7f8f6; border: 1px solid #d7dedb; }
+.observation-kind { font-size: 13px; font-weight: 600; color: #626c6c; }
+.detail .observation-limit { font-size: 14px !important; color: #596666; }
+.detail .observation-evidence { padding: 0; border: 0; }
+.detail .observation-evidence summary { font-size: 14px; font-weight: 400; }
+.detail .observation-evidence ul, .observation-monitor ul { display: block; margin: 0; padding: 0 0 0 18px; }
+.detail .observation-evidence li, .observation-monitor li { display: list-item; padding: 4px 0 10px; border: 0; font-size: 14px; line-height: 1.7; }
+.detail .observation-evidence li p { font-size: 13px !important; margin: 4px 0; }
+.observation-body a, .observation-monitor a { color: #174f9e; text-underline-offset: 3px; }
+.detail .observation-event-list { display: block; padding: 0; margin: 0; list-style: none; }
+.detail .observation-event-list > li { display: block; padding: 14px 0; border: 0; border-top: 1px solid #d8dedb; font-size: 16px; }
+.observation-date { display: flex; flex-wrap: wrap; gap: 2px 10px; margin-bottom: 10px; }
+.observation-date time { font-weight: 700; font-variant-numeric: tabular-nums; }
+.detail .observation-date small { flex-basis: 100%; order: 2; }
+.observation-date > span { font-size: 12px; align-self: center; padding: 2px 7px; background: #edf1f2; color: #3f5661; }
+.observation-pending { padding: 14px; background: #f5f1e7; }
+.observation-watch { margin-top: 16px; padding: 14px; background: #f4f6f5; }
+.detail .observation-choice { padding: 14px; background: #f1f4f6; border: 1px solid #bdcdd4; }
+.detail .observation-choice label { display: flex; flex-direction: column; gap: 6px; font-size: 16px; font-weight: 600; }
+.detail .observation-choice select { width: 100%; max-width: 100%; min-height: 44px; font-size: 16px; padding: 8px; }
+.observation-comparison-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.observation-comparison-row > article { min-width: 0; padding: 14px; border: 1px solid #d4dcda; background: #fafbf9; }
+.observation-comparison > details > summary { font-weight: 700; border-top: 1px solid #d4dcda; }
+.observation-comparison-row h5 .party-dot { display: inline-block; margin-right: 8px; }
+.observation-update { padding: 16px 0; border-top: 1px solid #d4dcda; }
+.observation-update > small { margin-bottom: 6px; }
+.observation-monitor { padding: 14px 0 0; margin-top: 14px; border-top: 1px solid #d4dcda; overflow-wrap: anywhere; }
+.observation-monitor p { font-size: 14px !important; line-height: 1.75; }
+.national-card .focus-races .observation-focus { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 12px; }
+.national-card .focus-races .observation-focus > strong { color: #384e59; font-size: 14px; line-height: 1.6; }
+.national-card .focus-races .observation-focus > p { margin: 0; color: #374d58; font-size: 15px; line-height: 1.8; font-weight: 400; }
+.national-card .focus-races .observation-focus > small { font-size: 12px; }
+.observation-more { min-width: 0; }
+.observation-more button + button { margin-top: 5px; }
+.changes-card > button { grid-template-columns: minmax(0, 1fr); }
+.changes-card > button > span { font-size: 15px; }
+.changes-card > button small { margin-top: 6px; font-size: 13px; font-weight: 400; }
+.observation-seat-control { min-width: 0; padding-bottom: 6px; }
+.observation-seat-control > label { margin: 0; }
+.observation-seat-control > button { margin: 0 8px; font-size: 13px; }
+@container (min-width: 680px) {
+  .observation-decision-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+  .observation-comparison-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .observation-body { scroll-behavior: auto; }
+}

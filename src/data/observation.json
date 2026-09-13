@@ -1,0 +1,2373 @@
+{
+  "schemaVersion": 1,
+  "revision": "observation-2026-09-13-v1",
+  "monitor": {
+    "state": "scheduled",
+    "timezone": "Asia/Tokyo",
+    "dailyAt": "09:00",
+    "weeklyReview": "月曜に候補者比較と反証を再確認",
+    "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
+    "firstScheduledFor": "2026-09-14T09:00:00+09:00",
+    "lastCompletedAt": "2026-09-13T10:28:25Z",
+    "latestRun": {
+      "runId": "observation-initial-20260913",
+      "startedAt": "2026-09-13T10:18:00Z",
+      "completedAt": "2026-09-13T10:28:25Z",
+      "outcome": "partial",
+      "checkedSourceIds": [
+        "obs-ssrs",
+        "obs-emerson-tx",
+        "obs-dfp-ak",
+        "obs-collins",
+        "obs-jackson-policy",
+        "obs-jackson-bio",
+        "obs-maine-debates",
+        "obs-abdul-ai",
+        "obs-rogers-trade",
+        "obs-rogers-bio",
+        "obs-brown-policy",
+        "obs-brown-bio",
+        "obs-husted-bio",
+        "obs-talarico-policy",
+        "obs-talarico-bio",
+        "obs-paxton-policy",
+        "obs-paxton-bio",
+        "obs-peltola",
+        "obs-sullivan",
+        "obs-sullivan-endorsements",
+        "obs-nh-wbur",
+        "obs-pappas",
+        "obs-bls-oct",
+        "obs-hr1-vote",
+        "obs-husted-hr1",
+        "obs-abdul-trade",
+        "obs-paxton-trial"
+      ],
+      "pendingSourceIds": [
+        "obs-roster-ak",
+        "obs-roster-me",
+        "obs-roster-mi",
+        "obs-roster-oh",
+        "obs-roster-tx",
+        "obs-roster-nh",
+        "obs-sabato",
+        "obs-inside",
+        "obs-white-house",
+        "obs-local-ak",
+        "obs-local-mi",
+        "obs-local-oh",
+        "obs-local-tx"
+      ],
+      "note": "初回は掲載する判断材料・候補者比較・予定の原文を照合。名簿・採用評価は既存の確認済み版を維持し、登録先全体の日次再確認は未完了。"
+    }
+  },
+  "sources": [
+    {
+      "sourceId": "obs-ssrs",
+      "title": "メーン・ミシガン上院選 CNN/SSRS調査",
+      "publisher": "SSRS",
+      "url": "https://ssrs.com/news/maine-and-michigan-senate-races-2026/",
+      "publishedAt": "2026-09-09",
+      "referencePeriod": "2026年8月31日〜9月6日調査。ME投票予定者880人、MI843人。オンライン・電話。候補者・政権への評価と政策的位置の分析",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-MI-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-emerson-tx",
+      "title": "Texas 2026 Poll: Paxton and Talarico",
+      "publisher": "Emerson College Polling",
+      "url": "https://emersoncollegepolling.com/texas-2026-poll-paxton-and-talarico/",
+      "publishedAt": null,
+      "referencePeriod": "8月9〜10日、投票予定者1,000人、credibility interval ±3ポイント。年齢別支持・最重要争点。英語で実施",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-dfp-ak",
+      "title": "Alaska affordability and Senate survey",
+      "publisher": "Data for Progress",
+      "url": "https://www.dataforprogress.org/blog/2026/8/17/as-alaskas-affordability-crisis-deepens-peltola-leads-in-senate-race",
+      "publishedAt": "2026-08-17",
+      "referencePeriod": "生活費・LNG開発・4候補の順位選択を尋ねた調査。進歩派系団体。最終ラウンドは調査上の再配分",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-collins",
+      "title": "大型財政法案への反対声明",
+      "publisher": "Susan Collins上院議員",
+      "url": "https://www.collins.senate.gov/newsroom/senator-collins-statement-on-the-senate-reconciliation-bill",
+      "publishedAt": "2025-07-01",
+      "referencePeriod": "Medicaidと地方病院を理由に反対。減税延長は支持し、地方病院基金の増額でも懸念を解消できないと説明",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-jackson-policy",
+      "title": "上院での優先政策",
+      "publisher": "Troy Jackson陣営",
+      "url": "https://www.jacksonformaine.com/priorities",
+      "publishedAt": null,
+      "referencePeriod": "Medicare for All、薬価引下げ、労働者減税、ICE廃止、中絶の権利",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-jackson-bio",
+      "title": "About Troy Jackson",
+      "publisher": "Troy Jackson陣営",
+      "url": "https://www.jacksonformaine.com/about",
+      "publishedAt": null,
+      "referencePeriod": "北部メーンの林業労働、州議会20年・上院議長6年、本人が挙げる学校給食・地方医療の実績",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-maine-debates",
+      "title": "Jackson agrees to four October debates",
+      "publisher": "Bangor Daily News",
+      "url": "https://www.bangordailynews.com/2026/09/04/politics/elections/maine-election-senate-2026-troy-jackson-susan-collins-october-debates/",
+      "publishedAt": "2026-09-04",
+      "referencePeriod": "両陣営の合意。10月6日WGME、8日WMTW、13日WABI/WAGM、15日News Center Maine等。形式をめぐる双方の説明",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-abdul-ai",
+      "title": "AI開発の一時停止を求める声明",
+      "publisher": "Abdul El-Sayed陣営",
+      "url": "https://abdulforsenate.com/2026/09/new-dr-abdul-el-sayed-calls-for-pausing-ai-development/",
+      "publishedAt": "2026-09-09",
+      "referencePeriod": "AI開発停止、労働者保護・安全審査の提案。末尾のMichigan出身・大学歴とMedicare for All",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-rogers-trade",
+      "title": "対カナダ貿易・関税についての声明",
+      "publisher": "Mike Rogers陣営",
+      "url": "https://rogersforsenate.com/news/michigan-democrats-have-managed-our-states-decline-now-its-time-for-a-change",
+      "publishedAt": "2026-08-29",
+      "referencePeriod": "関税は必要だが一律の解決策ではないと主張。Trumpとの協力で自動車・農業に有利な対カナダ協定を目指す",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-rogers-bio",
+      "title": "Meet Mike",
+      "publisher": "Mike Rogers陣営",
+      "url": "https://rogersforsenate.com/meet-mike",
+      "publishedAt": null,
+      "referencePeriod": "Livingston County出身、陸軍・FBI・州議会・連邦下院情報委員長、529制度・教育貯蓄の自己評価",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-brown-policy",
+      "title": "Our Fight",
+      "publisher": "Sherrod Brown陣営",
+      "url": "https://www.sherrodbrown.com/our-fight/",
+      "publishedAt": null,
+      "referencePeriod": "薬価、公共料金、データセンターが生む電力費用の負担、議員の株取引規制",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-brown-bio",
+      "title": "Sherrod Brown: Fighting for Ohioans",
+      "publisher": "Sherrod Brown陣営",
+      "url": "https://www.sherrodbrown.com/",
+      "publishedAt": null,
+      "referencePeriod": "Mansfield出身、労働者・年金・薬価の実績についての本人説明",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-husted-bio",
+      "title": "Meet Jon Husted",
+      "publisher": "Jon Husted陣営",
+      "url": "https://www.jonhustedforsenate.com/bio/",
+      "publishedAt": null,
+      "referencePeriod": "州副知事・州務長官・州下院議長、Intel投資誘致、TechCred等の職業訓練、規制削減の自己評価",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-talarico-policy",
+      "title": "Taxes & Cost of Living",
+      "publisher": "James Talarico陣営",
+      "url": "https://jamestalarico.com/issue/taxes-cost-of-living/",
+      "publishedAt": null,
+      "referencePeriod": "最低賃金15ドル、富裕層・法人税、医療費、公的保険選択肢、Trump関税の撤回。州議会の薬価・住宅政策についての自己評価",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-talarico-bio",
+      "title": "Meet James Talarico",
+      "publisher": "James Talarico陣営",
+      "url": "https://jamestalarico.com/meet-james-talarico/",
+      "publishedAt": null,
+      "referencePeriod": "公立中学校教員、州下院議員、神学校での学び。政策との関連がある職歴を採用",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-paxton-policy",
+      "title": "Issues",
+      "publisher": "Ken Paxton陣営",
+      "url": "https://www.kenpaxton.com/issues",
+      "publishedAt": null,
+      "referencePeriod": "America First、Trumpの優先政策、減税・国境管理・送還の主張",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-paxton-bio",
+      "title": "Built for this fight",
+      "publisher": "Ken Paxton陣営",
+      "url": "https://www.kenpaxton.com/about",
+      "publishedAt": null,
+      "referencePeriod": "州司法長官、州上下院・弁護士としての経歴。Biden政権への訴訟を実績として挙げる本人説明",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-peltola",
+      "title": "Alaska First",
+      "publisher": "Mary Peltola陣営",
+      "url": "https://marypeltola.com/",
+      "publishedAt": null,
+      "referencePeriod": "Kuskokwim川流域での漁業経験、生活費と漁業、党派より州の利益を優先する主張",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-sullivan",
+      "title": "Dan Sullivan for Alaska",
+      "publisher": "Dan Sullivan陣営",
+      "url": "https://dansullivanforalaska.com/",
+      "publishedAt": null,
+      "referencePeriod": "2015年上院就任、海兵隊での勤務、減税・エネルギー開発・防衛の実績についての本人説明",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-sullivan-endorsements",
+      "title": "Endorsements",
+      "publisher": "Dan Sullivan陣営",
+      "url": "https://dansullivanforalaska.com/endorsements/",
+      "publishedAt": null,
+      "referencePeriod": "商工会議所、Teamsters Local 959等の労組を含む推薦一覧。推薦と組合員個人の投票は別",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-nh-wbur",
+      "title": "NH Senate race: Pappas and Sununu",
+      "publisher": "WBUR",
+      "url": "https://www.wbur.org/news/2026/08/11/new-hampshire-senate-pappas-sununu",
+      "publishedAt": "2026-08-11",
+      "referencePeriod": "両候補への取材：生活費・医療、減税・独立性、Trump推薦と過去の対立。末尾の訂正（Sununu本人は登録ロビイストではない）を反映",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-pappas",
+      "title": "Chris Pappas for Senate",
+      "publisher": "Chris Pappas陣営",
+      "url": "https://chrispappas.org/",
+      "publishedAt": null,
+      "referencePeriod": "Manchesterの公立学校・家業のレストラン、候補者としての主張",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "weekly",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-bls-oct",
+      "title": "2026年10月 統計公表予定",
+      "publisher": "米労働統計局 BLS",
+      "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
+      "publishedAt": "2026-02-18",
+      "referencePeriod": "10月2日8:30雇用統計、14日8:30 CPI、20日10:00州別雇用。時刻は米東部時間",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-OH-3-special"
+      ],
+      "category": "calendar",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:18:00Z"
+    },
+    {
+      "sourceId": "obs-roster-ak",
+      "title": "Alaska本選候補者名簿",
+      "publisher": "Alaska本選候補者名簿",
+      "url": "https://www.elections.alaska.gov/candidates/?election=26genr",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-roster-me",
+      "title": "Maine選挙当局",
+      "publisher": "Maine選挙当局",
+      "url": "https://www.maine.gov/sos/cec/elec/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-roster-mi",
+      "title": "Michigan本選候補者名簿",
+      "publisher": "Michigan本選候補者名簿",
+      "url": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?electionType=GEN&electionYear=2026&page=page.miboePublicReport",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "title": "Ohio選挙当局",
+      "publisher": "Ohio選挙当局",
+      "url": "https://www.ohiosos.gov/elections/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-roster-tx",
+      "title": "Texas本選候補者証明",
+      "publisher": "Texas本選候補者証明",
+      "url": "https://www.sos.state.tx.us/elections/forms/2026-ballot-cert.pdf",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "title": "New Hampshire選挙当局",
+      "publisher": "New Hampshire選挙当局",
+      "url": "https://www.sos.nh.gov/elections",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-sabato",
+      "title": "Sabato 上院評価",
+      "publisher": "Sabato 上院評価",
+      "url": "https://centerforpolitics.org/crystalball/2026-senate/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-OH-3-special"
+      ],
+      "category": "rating",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-inside",
+      "title": "Inside Elections 上院評価",
+      "publisher": "Inside Elections 上院評価",
+      "url": "https://insideelections.com/ratings/senate",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-OH-3-special"
+      ],
+      "category": "rating",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-white-house",
+      "title": "大統領の公式発表",
+      "publisher": "大統領の公式発表",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-OH-3-special"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-local-ak",
+      "title": "Alaska Public Media 選挙取材",
+      "publisher": "Alaska Public Media 選挙取材",
+      "url": "https://alaskapublic.org/politics/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-local-mi",
+      "title": "Michigan Public 政治取材",
+      "publisher": "Michigan Public 政治取材",
+      "url": "https://www.michiganpublic.org/politics-government",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-local-oh",
+      "title": "Ohio Statehouse News Bureau",
+      "publisher": "Ohio Statehouse News Bureau",
+      "url": "https://www.statenews.org/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-local-tx",
+      "title": "Texas Tribune 政治取材",
+      "publisher": "Texas Tribune 政治取材",
+      "url": "https://www.texastribune.org/",
+      "publishedAt": null,
+      "referencePeriod": "2026年上院選・掲載内容",
+      "retrievedAt": null,
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": null,
+      "checkStatus": "not-checked",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-hr1-vote",
+      "title": "H.R.1 上院最終採決",
+      "publisher": "米連邦上院",
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00372.htm",
+      "publishedAt": "2025-07-01",
+      "referencePeriod": "HustedとSullivanはYea、CollinsはNay。2025年7月1日の採決原票",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-OH-3-special",
+        "2026-AK-2-regular",
+        "2026-ME-2-regular"
+      ],
+      "category": "official",
+      "cadence": "weekly",
+      "method": "公開原文の該当箇所を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:28:25Z"
+    },
+    {
+      "sourceId": "obs-husted-hr1",
+      "title": "大型財政法案への賛成理由",
+      "publisher": "Jon Husted上院議員",
+      "url": "https://www.husted.senate.gov/media/press-releases/husted-statement-on-increasing-tax-cuts-for-working-ohioans-making-americans-safer-and-more-prosperous/",
+      "publishedAt": "2025-07-01",
+      "referencePeriod": "減税・雇用・国境管理を賛成理由に挙げた本人声明",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "official",
+      "cadence": "weekly",
+      "method": "公開原文の該当箇所を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:28:25Z"
+    },
+    {
+      "sourceId": "obs-abdul-trade",
+      "title": "Trumpの関税への批判",
+      "publisher": "Abdul El-Sayed陣営",
+      "url": "https://abdulforsenate.com/2026/09/icymi-abdul-blasts-mike-rogers-for-choosing-trumps-tariffs-over-michiganders-pocketbooks/",
+      "publishedAt": "2026-09-01",
+      "referencePeriod": "関税が自動車雇用・家計に悪影響を及ぼすと主張。Rogersへの批判は候補者側の主張として扱う",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "official",
+      "cadence": "weekly",
+      "method": "公開原文の該当箇所を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:28:25Z"
+    },
+    {
+      "sourceId": "obs-paxton-trial",
+      "title": "Paxton acquitted",
+      "publisher": "Texas州上院",
+      "url": "https://senate.texas.gov/news.php?id=20230916a",
+      "publishedAt": "2023-09-16",
+      "referencePeriod": "16の弾劾条項を無罪、保留の4条項を棄却。弁護側は疑惑を争った。州上院による弾劾手続の結論",
+      "retrievedAt": "2026-09-13",
+      "contentVerifiedAt": "2026-09-13",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "official",
+      "cadence": "weekly",
+      "method": "公開原文の該当箇所を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-13T10:28:25Z"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-ssrs",
+      "sourceId": "obs-ssrs",
+      "locator": "2026年8月31日〜9月6日調査。ME投票予定者880人、MI843人。オンライン・電話。候補者・政権への評価と政策的位置の分析",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-emerson-tx",
+      "sourceId": "obs-emerson-tx",
+      "locator": "8月9〜10日、投票予定者1,000人、credibility interval ±3ポイント。年齢別支持・最重要争点。英語で実施",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-dfp-ak",
+      "sourceId": "obs-dfp-ak",
+      "locator": "生活費・LNG開発・4候補の順位選択を尋ねた調査。進歩派系団体。最終ラウンドは調査上の再配分",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-collins",
+      "sourceId": "obs-collins",
+      "locator": "Medicaidと地方病院を理由に反対。減税延長は支持し、地方病院基金の増額でも懸念を解消できないと説明",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-jackson-policy",
+      "sourceId": "obs-jackson-policy",
+      "locator": "Medicare for All、薬価引下げ、労働者減税、ICE廃止、中絶の権利",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-jackson-bio",
+      "sourceId": "obs-jackson-bio",
+      "locator": "北部メーンの林業労働、州議会20年・上院議長6年、本人が挙げる学校給食・地方医療の実績",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-maine-debates",
+      "sourceId": "obs-maine-debates",
+      "locator": "両陣営の合意。10月6日WGME、8日WMTW、13日WABI/WAGM、15日News Center Maine等。形式をめぐる双方の説明",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-abdul-ai",
+      "sourceId": "obs-abdul-ai",
+      "locator": "AI開発停止、労働者保護・安全審査の提案。末尾のMichigan出身・大学歴とMedicare for All",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rogers-trade",
+      "sourceId": "obs-rogers-trade",
+      "locator": "関税は必要だが一律の解決策ではないと主張。Trumpとの協力で自動車・農業に有利な対カナダ協定を目指す",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rogers-bio",
+      "sourceId": "obs-rogers-bio",
+      "locator": "Livingston County出身、陸軍・FBI・州議会・連邦下院情報委員長、529制度・教育貯蓄の自己評価",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-brown-policy",
+      "sourceId": "obs-brown-policy",
+      "locator": "薬価、公共料金、データセンターが生む電力費用の負担、議員の株取引規制",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-brown-bio",
+      "sourceId": "obs-brown-bio",
+      "locator": "Mansfield出身、労働者・年金・薬価の実績についての本人説明",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-husted-bio",
+      "sourceId": "obs-husted-bio",
+      "locator": "州副知事・州務長官・州下院議長、Intel投資誘致、TechCred等の職業訓練、規制削減の自己評価",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-talarico-policy",
+      "sourceId": "obs-talarico-policy",
+      "locator": "最低賃金15ドル、富裕層・法人税、医療費、公的保険選択肢、Trump関税の撤回。州議会の薬価・住宅政策についての自己評価",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-talarico-bio",
+      "sourceId": "obs-talarico-bio",
+      "locator": "公立中学校教員、州下院議員、神学校での学び。政策との関連がある職歴を採用",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-paxton-policy",
+      "sourceId": "obs-paxton-policy",
+      "locator": "America First、Trumpの優先政策、減税・国境管理・送還の主張",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-paxton-bio",
+      "sourceId": "obs-paxton-bio",
+      "locator": "州司法長官、州上下院・弁護士としての経歴。Biden政権への訴訟を実績として挙げる本人説明",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-peltola",
+      "sourceId": "obs-peltola",
+      "locator": "Kuskokwim川流域での漁業経験、生活費と漁業、党派より州の利益を優先する主張",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-sullivan",
+      "sourceId": "obs-sullivan",
+      "locator": "2015年上院就任、海兵隊での勤務、減税・エネルギー開発・防衛の実績についての本人説明",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-sullivan-endorsements",
+      "sourceId": "obs-sullivan-endorsements",
+      "locator": "商工会議所、Teamsters Local 959等の労組を含む推薦一覧。推薦と組合員個人の投票は別",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-nh-wbur",
+      "sourceId": "obs-nh-wbur",
+      "locator": "両候補への取材：生活費・医療、減税・独立性、Trump推薦と過去の対立。末尾の訂正（Sununu本人は登録ロビイストではない）を反映",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-pappas",
+      "sourceId": "obs-pappas",
+      "locator": "Manchesterの公立学校・家業のレストラン、候補者としての主張",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-bls-oct",
+      "sourceId": "obs-bls-oct",
+      "locator": "10月2日8:30雇用統計、14日8:30 CPI、20日10:00州別雇用。時刻は米東部時間",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-hr1-vote",
+      "sourceId": "obs-hr1-vote",
+      "locator": "HustedとSullivanはYea、CollinsはNay。2025年7月1日の採決原票",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-husted-hr1",
+      "sourceId": "obs-husted-hr1",
+      "locator": "減税・雇用・国境管理を賛成理由に挙げた本人声明",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-abdul-trade",
+      "sourceId": "obs-abdul-trade",
+      "locator": "関税が自動車雇用・家計に悪影響を及ぼすと主張。Rogersへの批判は候補者側の主張として扱う",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-paxton-trial",
+      "sourceId": "obs-paxton-trial",
+      "locator": "16の弾劾条項を無罪、保留の4条項を棄却。弁護側は疑惑を争った。州上院による弾劾手続の結論",
+      "checkedAt": "2026-09-13",
+      "kind": "observed"
+    }
+  ],
+  "races": [
+    {
+      "electionId": "2026-ME-2-regular",
+      "status": "published",
+      "updatedAt": "2026-09-13",
+      "headline": "現職への評価と、政権への評価が重なる",
+      "featuredSummary": "Collins個人への評価と、共和党・トランプ政権への評価が重なる接戦。医療をめぐる採決とJacksonの改革案を比べ、党派を越えた支持がどこまで残るかを見る。",
+      "lead": "CNN/SSRSの8月末〜9月初めの調査では、Collinsとトランプへの否定的評価が選挙の大きな背景にある。Collinsの独立した採決と、Jacksonの政策が実際の支持にどう結び付くかは分けて読む。",
+      "uncertainty": "政権への不満が、そのままJacksonへの投票になるとは限らない。候補者本人の評価と投票参加を引き続き確かめたい。",
+      "evidenceIds": [
+        "ev-obs-ssrs",
+        "ev-obs-collins",
+        "ev-obs-jackson-policy"
+      ],
+      "materials": [
+        {
+          "materialId": "me-incumbent",
+          "title": "医療で党方針に反対した実績",
+          "fact": "Collinsは2025年7月1日、Medicaidと地方病院への影響を理由に大型財政法案へ反対した。",
+          "meaning": "この行動が「州を優先する現職」という評価につながるかが焦点になる。",
+          "limit": "1回の採決だけで独立性全体や有権者の評価を決められない。",
+          "evidenceIds": [
+            "ev-obs-collins"
+          ]
+        },
+        {
+          "materialId": "me-acceptance",
+          "title": "政権への不満と、対立候補への支持",
+          "fact": "SSRSはCollins・トランプへの評価を主要な背景と分析。Jacksonは皆保険と薬価引下げなどを掲げる。",
+          "meaning": "現職への不満だけでなく、Jacksonの政策を受け入れられるかを合わせて見る。",
+          "limit": "公約の賛否から得票効果を数値化できる根拠はまだない。",
+          "evidenceIds": [
+            "ev-obs-ssrs",
+            "ev-obs-jackson-policy"
+          ]
+        }
+      ],
+      "comparison": [
+        {
+          "key": "career",
+          "label": "経歴・地元との関係",
+          "cells": [
+            {
+              "candidateId": "cand-me-troy-d-jackson",
+              "kind": "observed",
+              "text": "北部メーンの林業労働者出身。州議会議員、州上院議長を経験。",
+              "evidenceIds": [
+                "ev-obs-jackson-bio"
+              ]
+            },
+            {
+              "candidateId": "cand-me-susan-m-collins",
+              "kind": "observed",
+              "text": "連邦上院の現職。地方医療への影響を採決判断に挙げる。",
+              "evidenceIds": [
+                "ev-obs-collins"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "policy",
+          "label": "政策・採決・発言",
+          "cells": [
+            {
+              "candidateId": "cand-me-troy-d-jackson",
+              "kind": "claim",
+              "text": "皆保険、薬価引下げ、労働者への減税、連邦での中絶権保護を提案。",
+              "evidenceIds": [
+                "ev-obs-jackson-policy"
+              ]
+            },
+            {
+              "candidateId": "cand-me-susan-m-collins",
+              "kind": "observed",
+              "text": "2025年の財政法案には反対。減税延長には賛成しつつ、Medicaid削減への懸念を示した。",
+              "evidenceIds": [
+                "ev-obs-collins"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "president",
+          "label": "政党・トランプとの関係",
+          "cells": [
+            {
+              "candidateId": "cand-me-troy-d-jackson",
+              "kind": "claim",
+              "text": "ICE廃止を含む政策転換を掲げる。政権との対立を訴えるだけで支持が広がるかは未確認。",
+              "evidenceIds": [
+                "ev-obs-jackson-policy"
+              ]
+            },
+            {
+              "candidateId": "cand-me-susan-m-collins",
+              "kind": "observed",
+              "text": "共和党の主要財政法案への反対は確認できる。政権との関係は案件ごとに確認する。",
+              "evidenceIds": [
+                "ev-obs-collins"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "record",
+          "label": "実績への評価・批判",
+          "cells": [
+            {
+              "candidateId": "cand-me-troy-d-jackson",
+              "kind": "claim",
+              "text": "学校給食や地方医療の拡充を州議会での実績に挙げる。討論会形式では住民の質問を重視すると主張。",
+              "evidenceIds": [
+                "ev-obs-jackson-bio",
+                "ev-obs-maine-debates"
+              ]
+            },
+            {
+              "candidateId": "cand-me-susan-m-collins",
+              "kind": "observed",
+              "text": "住民との対話をめぐりJacksonが批判。陣営は小規模な会合などで質問に答えていると反論している。",
+              "evidenceIds": [
+                "ev-obs-maine-debates"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "voters",
+          "label": "有権者の受け止め",
+          "cells": [
+            {
+              "candidateId": "cand-me-troy-d-jackson",
+              "kind": "interpretation",
+              "text": "SSRSは、Jacksonへの評価より現職・政権への評価が中心と分析。知名度上昇後の評価を見たい。",
+              "evidenceIds": [
+                "ev-obs-ssrs"
+              ]
+            },
+            {
+              "candidateId": "cand-me-susan-m-collins",
+              "kind": "interpretation",
+              "text": "SSRSは現職への否定的評価を指摘。個々の有権者が何を理由に投票するかの確定ではない。",
+              "evidenceIds": [
+                "ev-obs-ssrs"
+              ]
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "watchId": "me-watch-0",
+          "title": "討論会後の受け止め",
+          "what": "医療・独立性の説明が評価されるか。",
+          "how": "発言全文と、その後の比較可能な候補者評価の調査を確認。次回調査の公表日は未確認。"
+        },
+        {
+          "watchId": "me-watch-1",
+          "title": "党派を越える支持",
+          "what": "共和党の支持を保ちつつ他党支持者にも届くか。",
+          "how": "同じ調査方法・質問の党派別結果を見る。部分標本の小ささも確認する。"
+        }
+      ]
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "status": "published",
+      "updatedAt": "2026-09-13",
+      "headline": "政策の違いが、候補者への距離感につながるか",
+      "featuredSummary": "医療・雇用をめぐる政策の違いが、両候補への距離感につながる接戦。El-Sayedの改革案とRogersの政権との協力を比べ、州民の受け止めを確かめたい。",
+      "lead": "CNN/SSRSは、ミシガンでは候補者の政策的位置が選挙の中心にあると分析している。医療、関税、AIと雇用の具体策を読み、誰に受け入れられるかは調査で確かめる。",
+      "uncertainty": "改革的だから支持が広がる、あるいは中道層が離れるという両方向の説明は、現段階では検証が必要な仮説である。",
+      "evidenceIds": [
+        "ev-obs-ssrs",
+        "ev-obs-abdul-ai",
+        "ev-obs-rogers-trade"
+      ],
+      "materials": [
+        {
+          "materialId": "mi-policy",
+          "title": "改革案をどこまで受け入れるか",
+          "fact": "El-Sayedは皆保険を掲げ、9月9日にはAI開発の一時停止と労働者・安全の保護を提案した。",
+          "meaning": "政策への期待と懸念を分け、候補者自身の評価に結び付くかを見る。",
+          "limit": "発言の目立ち方と、州全体での重要度は同じではない。",
+          "evidenceIds": [
+            "ev-obs-abdul-ai",
+            "ev-obs-ssrs"
+          ]
+        },
+        {
+          "materialId": "mi-trade",
+          "title": "製造業を守る方法と政権との距離",
+          "fact": "Rogersは8月29日、関税は必要だが万能ではないと述べ、Trumpとの対カナダ貿易交渉を訴えた。",
+          "meaning": "雇用を守る協力と評価されるか、家計・企業の負担への対応が不十分と見られるかが確認点。",
+          "limit": "自動車産業で働くことだけから支持先を推定できない。",
+          "evidenceIds": [
+            "ev-obs-rogers-trade"
+          ]
+        }
+      ],
+      "comparison": [
+        {
+          "key": "career",
+          "label": "経歴・地元との関係",
+          "cells": [
+            {
+              "candidateId": "cand-mi-abdul-el-sayed",
+              "kind": "observed",
+              "text": "ミシガン南東部出身、ミシガン大学卒。医療と労働者保護を選挙活動の軸にしている。",
+              "evidenceIds": [
+                "ev-obs-abdul-ai"
+              ]
+            },
+            {
+              "candidateId": "cand-mi-mike-rogers",
+              "kind": "observed",
+              "text": "Livingston County出身。陸軍、FBI、州議会、連邦下院情報委員長を経験。",
+              "evidenceIds": [
+                "ev-obs-rogers-bio"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "policy",
+          "label": "政策・採決・発言",
+          "cells": [
+            {
+              "candidateId": "cand-mi-abdul-el-sayed",
+              "kind": "claim",
+              "text": "皆保険に加え、AI安全審査や自動化による利益の労働者への還元を提案。",
+              "evidenceIds": [
+                "ev-obs-abdul-ai"
+              ]
+            },
+            {
+              "candidateId": "cand-mi-mike-rogers",
+              "kind": "claim",
+              "text": "関税を一律に使わず、対カナダ協定で農業・自動車製造業の利益を守ると主張。",
+              "evidenceIds": [
+                "ev-obs-rogers-trade"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "president",
+          "label": "政党・トランプとの関係",
+          "cells": [
+            {
+              "candidateId": "cand-mi-abdul-el-sayed",
+              "kind": "claim",
+              "text": "9月1日の陣営声明で、Trumpの関税が自動車雇用と生活費を脅かすと批判。Rogersの政権との協力姿勢を問題視する。",
+              "evidenceIds": [
+                "ev-obs-abdul-trade"
+              ]
+            },
+            {
+              "candidateId": "cand-mi-mike-rogers",
+              "kind": "claim",
+              "text": "Trumpと協力して貿易協定を実現すると明言。関税については一律の解決策ではないとも述べる。",
+              "evidenceIds": [
+                "ev-obs-rogers-trade"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "record",
+          "label": "実績への評価・批判",
+          "cells": [
+            {
+              "candidateId": "cand-mi-abdul-el-sayed",
+              "kind": "claim",
+              "text": "AIの発展に伴う雇用と安全の危険を強調。停止案を有権者がどう評価するかは未確認。",
+              "evidenceIds": [
+                "ev-obs-abdul-ai"
+              ]
+            },
+            {
+              "candidateId": "cand-mi-mike-rogers",
+              "kind": "claim",
+              "text": "教育貯蓄制度や情報委員長としての経験を実績に挙げる。効果の大きさは陣営の自己評価と区別する。",
+              "evidenceIds": [
+                "ev-obs-rogers-bio"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "voters",
+          "label": "有権者の受け止め",
+          "cells": [
+            {
+              "candidateId": "cand-mi-abdul-el-sayed",
+              "kind": "interpretation",
+              "text": "SSRSは政策的位置への評価が重要と分析。改革案ごとの賛否と支持率を同一視しない。",
+              "evidenceIds": [
+                "ev-obs-ssrs"
+              ]
+            },
+            {
+              "candidateId": "cand-mi-mike-rogers",
+              "kind": "interpretation",
+              "text": "SSRSの同じ調査を使って両候補を比べる。知名度や否定的評価も合わせて確認する。",
+              "evidenceIds": [
+                "ev-obs-ssrs"
+              ]
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "watchId": "mi-watch-0",
+          "title": "関税・AIをめぐる具体的な説明",
+          "what": "候補者が雇用と費用負担の両方に答えているか。",
+          "how": "公式発言と州内取材を照合。新たな発言内容は先取りしない。"
+        },
+        {
+          "watchId": "mi-watch-1",
+          "title": "政策への評価の変化",
+          "what": "政策への距離感が候補者支持と結び付くか。",
+          "how": "同じ質問・対象の調査を優先。新規調査の公表日は未確認。"
+        }
+      ]
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "status": "published",
+      "updatedAt": "2026-09-13",
+      "headline": "家計への支援と、投資・雇用の実績をどう評価するか",
+      "featuredSummary": "Brownは薬価・公共料金、Hustedは企業投資・職業訓練を前面に出す。家計負担と雇用実績のどちらが支持につながるかは、公約の比較に加えて有権者の評価を確かめたい。",
+      "lead": "両候補は経済の改善を訴えるが、Brownは家計負担、Hustedは投資・雇用の実績を強調する。今回の対象はClass 3の特別選挙1議席であり、政策を好むことと当選を見込むことは分けて考える。",
+      "uncertainty": "両陣営の発信は確認できるが、それぞれの政策を理由にどれほど票が動くかは、今回確認した資料では分からない。",
+      "evidenceIds": [
+        "ev-obs-brown-policy",
+        "ev-obs-husted-bio"
+      ],
+      "materials": [
+        {
+          "materialId": "oh-cost",
+          "title": "薬価・電力料金を誰が負担するか",
+          "fact": "Brownは薬価や公共料金の引下げ、データセンターの電力費用を一般家庭に転嫁しない仕組みを訴える。",
+          "meaning": "生活費への不満が、候補者の具体策への信頼につながるかを見る。",
+          "limit": "提案があること自体は、実現可能性や有権者の支持を証明しない。",
+          "evidenceIds": [
+            "ev-obs-brown-policy"
+          ]
+        },
+        {
+          "materialId": "oh-jobs",
+          "title": "企業投資・職業訓練への評価",
+          "fact": "Hustedは副知事時代のIntel誘致やTechCred等を、雇用と技能形成の実績として挙げている。",
+          "meaning": "投資発表の大きさだけでなく、州内の雇用・賃金への実際の進捗を確認したい。",
+          "limit": "陣営が掲げる成果を、そのまま因果効果や支持率へ置き換えない。",
+          "evidenceIds": [
+            "ev-obs-husted-bio"
+          ]
+        }
+      ],
+      "comparison": [
+        {
+          "key": "career",
+          "label": "経歴・地元との関係",
+          "cells": [
+            {
+              "candidateId": "cand-oh-sherrod-brown",
+              "kind": "observed",
+              "text": "Mansfield出身。労働者・年金・薬価を自身の政治活動の軸に挙げる。",
+              "evidenceIds": [
+                "ev-obs-brown-bio"
+              ]
+            },
+            {
+              "candidateId": "cand-oh-jon-husted",
+              "kind": "observed",
+              "text": "州副知事、州務長官、州下院議長を経験。経済政策と職業訓練を強調する。",
+              "evidenceIds": [
+                "ev-obs-husted-bio"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "policy",
+          "label": "政策・採決・発言",
+          "cells": [
+            {
+              "candidateId": "cand-oh-sherrod-brown",
+              "kind": "claim",
+              "text": "薬価・公共料金の抑制と、データセンターの費用負担を提案。議員の株取引規制も訴える。",
+              "evidenceIds": [
+                "ev-obs-brown-policy"
+              ]
+            },
+            {
+              "candidateId": "cand-oh-jon-husted",
+              "kind": "claim",
+              "text": "減税・企業誘致・技能訓練を重視。規制削減が投資と雇用につながると主張する。",
+              "evidenceIds": [
+                "ev-obs-husted-bio"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "president",
+          "label": "政党・トランプとの関係",
+          "cells": [
+            {
+              "candidateId": "cand-oh-sherrod-brown",
+              "kind": "claim",
+              "text": "連邦政府の大企業・富裕層向け減税を批判。労働者への利益を判断軸として訴える。",
+              "evidenceIds": [
+                "ev-obs-brown-bio"
+              ]
+            },
+            {
+              "candidateId": "cand-oh-jon-husted",
+              "kind": "observed",
+              "text": "2025年7月1日、政権の大型財政法案H.R.1に賛成。本人は減税、雇用、国境管理を理由に挙げた。",
+              "evidenceIds": [
+                "ev-obs-hr1-vote",
+                "ev-obs-husted-hr1"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "record",
+          "label": "実績への評価・批判",
+          "cells": [
+            {
+              "candidateId": "cand-oh-sherrod-brown",
+              "kind": "claim",
+              "text": "年金救済、薬価抑制、退役軍人への医療を実績に挙げる。寄与と政策効果は個別に確認する。",
+              "evidenceIds": [
+                "ev-obs-brown-bio"
+              ]
+            },
+            {
+              "candidateId": "cand-oh-jon-husted",
+              "kind": "claim",
+              "text": "Intel投資やTechCredの展開を実績に挙げる。投資計画と稼働・雇用の実現を分けて追う。",
+              "evidenceIds": [
+                "ev-obs-husted-bio"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "voters",
+          "label": "有権者の受け止め",
+          "cells": [
+            {
+              "candidateId": "cand-oh-sherrod-brown",
+              "kind": "pending",
+              "text": "これらの公約を理由に支持している人の割合は未確認。下の世論調査と合わせて読む。",
+              "evidenceIds": []
+            },
+            {
+              "candidateId": "cand-oh-jon-husted",
+              "kind": "pending",
+              "text": "投資・雇用実績への評価が得票に及ぼす効果は未確認。候補者支持と争点評価を分ける。",
+              "evidenceIds": []
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "watchId": "oh-watch-0",
+          "title": "雇用と投資の進捗",
+          "what": "投資計画が地元の採用や賃金にどう表れているか。",
+          "how": "企業・州の公表と州別統計を照合する。"
+        },
+        {
+          "watchId": "oh-watch-1",
+          "title": "生活費と候補者評価",
+          "what": "生活費を誰が改善できると考えられているか。",
+          "how": "争点の重要度と解決能力を尋ねる調査を確認。公表予定は未確認。"
+        }
+      ]
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "status": "published",
+      "updatedAt": "2026-09-13",
+      "headline": "経済・移民への評価と、支持層の投票参加",
+      "featuredSummary": "経済と移民の重みは支持層によって異なり、8月調査では年齢別の支持差も大きい。PaxtonとTalaricoの政策・評価に加え、各支持層の投票参加を見て当選を考える。",
+      "lead": "Emersonの8月調査では、若い層はTalarico、年長層はPaxtonが優勢だった。争点の優先順位も党派で異なるため、全体支持率と支持層の投票参加を合わせて見る。",
+      "uncertainty": "年齢別集計は州全体より不確かさが大きい。8月の結果を現在の投票意思と同一視せず、後続調査と方法を比べる。",
+      "evidenceIds": [
+        "ev-obs-emerson-tx"
+      ],
+      "materials": [
+        {
+          "materialId": "tx-turnout",
+          "title": "支持が実際の投票になるか",
+          "fact": "8月9〜10日のEmerson調査では、50歳未満と50歳超で両候補の優勢側が異なった。",
+          "meaning": "どちらの支持層が投票するかによって、州全体の見通しは変わりうる。",
+          "limit": "部分標本は小さく、年代だけから個人の支持や投票参加は分からない。",
+          "evidenceIds": [
+            "ev-obs-emerson-tx"
+          ]
+        },
+        {
+          "materialId": "tx-issues",
+          "title": "経済と移民をどのように評価するか",
+          "fact": "同調査で共和党支持者は移民、民主党支持者と無党派は経済を最重要課題に挙げた。",
+          "meaning": "課題を重視するだけでなく、どちらの候補が解決できると見られるかを確認する。",
+          "limit": "争点の優先順位と候補者への投票は一対一では対応しない。",
+          "evidenceIds": [
+            "ev-obs-emerson-tx"
+          ]
+        }
+      ],
+      "comparison": [
+        {
+          "key": "career",
+          "label": "経歴・地元との関係",
+          "cells": [
+            {
+              "candidateId": "cand-tx-james-talarico",
+              "kind": "observed",
+              "text": "公立中学校の教員を経て州下院議員。教育・生活費の経験を政策の説明に結び付ける。",
+              "evidenceIds": [
+                "ev-obs-talarico-bio"
+              ]
+            },
+            {
+              "candidateId": "cand-tx-ken-paxton",
+              "kind": "observed",
+              "text": "州司法長官。州上下院議員と弁護士の経験を持つ。",
+              "evidenceIds": [
+                "ev-obs-paxton-bio"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "policy",
+          "label": "政策・採決・発言",
+          "cells": [
+            {
+              "candidateId": "cand-tx-james-talarico",
+              "kind": "claim",
+              "text": "最低賃金の引上げ、富裕層・法人への課税、医療費や住宅費の軽減を提案。",
+              "evidenceIds": [
+                "ev-obs-talarico-policy"
+              ]
+            },
+            {
+              "candidateId": "cand-tx-ken-paxton",
+              "kind": "claim",
+              "text": "減税、国境管理と送還、America First政策の推進を掲げる。",
+              "evidenceIds": [
+                "ev-obs-paxton-policy"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "president",
+          "label": "政党・トランプとの関係",
+          "cells": [
+            {
+              "candidateId": "cand-tx-james-talarico",
+              "kind": "claim",
+              "text": "Trumpの関税を撤回すると明記。家計負担を政権批判の具体的な論点にする。",
+              "evidenceIds": [
+                "ev-obs-talarico-policy"
+              ]
+            },
+            {
+              "candidateId": "cand-tx-ken-paxton",
+              "kind": "claim",
+              "text": "Trumpの優先政策を進めると明記。政権との協力を自身の強みとして訴える。",
+              "evidenceIds": [
+                "ev-obs-paxton-policy"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "record",
+          "label": "実績への評価・批判",
+          "cells": [
+            {
+              "candidateId": "cand-tx-james-talarico",
+              "kind": "claim",
+              "text": "州議会でのインスリン自己負担上限や住宅規制の見直しを実績に挙げる。実施効果は別途確認する。",
+              "evidenceIds": [
+                "ev-obs-talarico-policy"
+              ]
+            },
+            {
+              "candidateId": "cand-tx-ken-paxton",
+              "kind": "observed",
+              "text": "2023年に職権乱用等をめぐり州下院で弾劾されたが、9月16日に州上院は16条項を無罪とし残り4条項を棄却。弁護側は疑惑を争った。これは弾劾手続の結論であり、別の訴訟の結論ではない。",
+              "evidenceIds": [
+                "ev-obs-paxton-trial"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "voters",
+          "label": "有権者の受け止め",
+          "cells": [
+            {
+              "candidateId": "cand-tx-james-talarico",
+              "kind": "observed",
+              "text": "8月Emerson調査では若い層で優勢。全体の好感度は好意的44%、否定的41%。",
+              "evidenceIds": [
+                "ev-obs-emerson-tx"
+              ]
+            },
+            {
+              "candidateId": "cand-tx-ken-paxton",
+              "kind": "observed",
+              "text": "同調査では年長層で優勢。全体の好感度は好意的43%、否定的44%。この調査は英語で実施。",
+              "evidenceIds": [
+                "ev-obs-emerson-tx"
+              ]
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "watchId": "tx-watch-0",
+          "title": "投票参加の見込み",
+          "what": "支持率と実際に投票する意欲が同じ方向か。",
+          "how": "調査対象が登録有権者か投票予定者か、期日前投票を何と比較しているかを確認する。"
+        },
+        {
+          "watchId": "tx-watch-1",
+          "title": "候補者自身への信頼",
+          "what": "経済・移民の解決能力を誰に期待しているか。",
+          "how": "同じ質問の候補者評価を追う。新たな調査日程は未確認。"
+        }
+      ]
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "status": "published",
+      "updatedAt": "2026-09-13",
+      "headline": "資源開発の利益と、生活費の改善を分けて見る",
+      "featuredSummary": "LNG開発への支持と生活費への不安が同時に強く、開発の賛否だけで支持先は決まらない。両候補の州への利益と、順位選択投票での票の移り方を合わせて見る。",
+      "lead": "Data for Progressの8月公表調査では、LNG開発支持と光熱費などへの不安が併存している。開発が誰の利益になるかに加え、順位選択で第三候補の支持がどちらへ移るかも確認する。",
+      "uncertainty": "同調査は進歩派系団体によるもの。調査上の最終ラウンドは実際の開票結果でも勝率でもなく、他の調査と照合する必要がある。",
+      "evidenceIds": [
+        "ev-obs-dfp-ak"
+      ],
+      "materials": [
+        {
+          "materialId": "ak-affordability",
+          "title": "開発と家計の利益は同じか",
+          "fact": "8月公表調査では、LNG計画への支持と生活費への強い懸念が同時に見られた。",
+          "meaning": "資源開発の是非だけでなく、価格・雇用・地域への還元を誰が確保できると考えられるかを見る。",
+          "limit": "開発への支持を共和党への支持に直結させられない。",
+          "evidenceIds": [
+            "ev-obs-dfp-ak"
+          ]
+        },
+        {
+          "materialId": "ak-transfer",
+          "title": "第1希望と最終的な選択を分ける",
+          "fact": "同調査は4候補を尋ね、順位に沿った最終ラウンドも試算した。",
+          "meaning": "第1希望だけでなく、他候補支持者が次に誰を選ぶかが判断材料になる。",
+          "limit": "候補者の混同、順位を付けない票、調査上の再配分と実際の集計との差に注意する。",
+          "evidenceIds": [
+            "ev-obs-dfp-ak"
+          ]
+        }
+      ],
+      "comparison": [
+        {
+          "key": "career",
+          "label": "経歴・地元との関係",
+          "cells": [
+            {
+              "candidateId": "cand-ak-mary-peltola",
+              "kind": "observed",
+              "text": "Kuskokwim川流域で育ち、漁業と家族の暮らしを自身の政治姿勢の背景として説明する。",
+              "evidenceIds": [
+                "ev-obs-peltola"
+              ]
+            },
+            {
+              "candidateId": "cand-ak-dan-s-sullivan",
+              "kind": "observed",
+              "text": "2015年に上院議員へ就任。海兵隊勤務を経て、国防・エネルギーを主要分野にする。",
+              "evidenceIds": [
+                "ev-obs-sullivan"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "policy",
+          "label": "政策・採決・発言",
+          "cells": [
+            {
+              "candidateId": "cand-ak-mary-peltola",
+              "kind": "claim",
+              "text": "生活費、漁業、地域の自立を優先し、党派よりアラスカの利益を守ると訴える。",
+              "evidenceIds": [
+                "ev-obs-peltola"
+              ]
+            },
+            {
+              "candidateId": "cand-ak-dan-s-sullivan",
+              "kind": "claim",
+              "text": "減税、資源・エネルギー開発、防衛投資を自身の実績と再選の理由に挙げる。",
+              "evidenceIds": [
+                "ev-obs-sullivan"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "president",
+          "label": "政党・トランプとの関係",
+          "cells": [
+            {
+              "candidateId": "cand-ak-mary-peltola",
+              "kind": "claim",
+              "text": "州外の党派的圧力より地元の事情を優先すると主張。具体的な協力・対立は案件別に確認する。",
+              "evidenceIds": [
+                "ev-obs-peltola"
+              ]
+            },
+            {
+              "candidateId": "cand-ak-dan-s-sullivan",
+              "kind": "observed",
+              "text": "2025年7月1日、政権の大型財政法案H.R.1に賛成。党方針と一致した具体例として読めるが、全政策での一致を意味しない。",
+              "evidenceIds": [
+                "ev-obs-hr1-vote"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "record",
+          "label": "実績への評価・批判",
+          "cells": [
+            {
+              "candidateId": "cand-ak-mary-peltola",
+              "kind": "claim",
+              "text": "漁業と農村部の生活費を強調。暮らしの経験に共感されるかと、政策成果は分けて判断する。",
+              "evidenceIds": [
+                "ev-obs-peltola"
+              ]
+            },
+            {
+              "candidateId": "cand-ak-dan-s-sullivan",
+              "kind": "observed",
+              "text": "陣営の推薦一覧には商工会議所のほかTeamsters等の労組もある。団体の推薦は組合員全員の投票を意味しない。",
+              "evidenceIds": [
+                "ev-obs-sullivan-endorsements"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "voters",
+          "label": "有権者の受け止め",
+          "cells": [
+            {
+              "candidateId": "cand-ak-mary-peltola",
+              "kind": "observed",
+              "text": "DFPの4候補調査では第1希望で47%、再配分後の試算で53%。同一調査の異なる段階である。",
+              "evidenceIds": [
+                "ev-obs-dfp-ak"
+              ]
+            },
+            {
+              "candidateId": "cand-ak-dan-s-sullivan",
+              "kind": "observed",
+              "text": "同調査では第1希望で41%、再配分後の試算で47%。同姓のDaniel J. Sullivan Jr.とは別候補である。",
+              "evidenceIds": [
+                "ev-obs-dfp-ak"
+              ]
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "watchId": "ak-watch-0",
+          "title": "開発の地域への還元",
+          "what": "LNG等の計画変更が価格・地域雇用にどう関係するか。",
+          "how": "政府・企業の公表と州内取材を照合。開発支持だけで票を割り振らない。"
+        },
+        {
+          "watchId": "ak-watch-1",
+          "title": "順位と候補者名の理解",
+          "what": "第三候補支持者の次の選択は何か。",
+          "how": "質問票と順位の集計方法を確認。新たな調査の発表予定は未確認。"
+        }
+      ]
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "status": "published",
+      "updatedAt": "2026-09-13",
+      "headline": "生活費と、政権からの独立性をどう評価するか",
+      "featuredSummary": "Pappasは生活費と医療、Sununuは減税と独立した実務能力を訴える。Trumpからの推薦と過去の対立を具体的に読み、政権への評価が候補者の評価にどう重なるかを見る。",
+      "lead": "両候補は州の利益を実現する能力を訴える。政策の違いに加え、SununuとTrumpの距離をどう評価するかが確認点になる。",
+      "uncertainty": "候補者の主張と取材は確認できるが、予備選後の支持のまとまりや、各論点が得票をどれだけ動かすかはまだ十分に確認できていない。",
+      "evidenceIds": [
+        "ev-obs-nh-wbur"
+      ],
+      "materials": [
+        {
+          "materialId": "nh-cost",
+          "title": "生活費・医療と減税への評価",
+          "fact": "Pappasは生活費軽減と医療保障、Sununuは減税・規制削減を訴えている。",
+          "meaning": "政策名の比較にとどめず、誰が州民の負担を改善できると評価されるかを見たい。",
+          "limit": "今回確認した取材は8月11日公表。予備選後の新しい反応は別に確認が必要。",
+          "evidenceIds": [
+            "ev-obs-nh-wbur"
+          ]
+        },
+        {
+          "materialId": "nh-independence",
+          "title": "推薦と独立性をどう受け止めるか",
+          "fact": "Sununuは過去にTrumpを批判した一方、2026年2月に推薦を受けた。",
+          "meaning": "政権への賛成票と見るか、州を代表する独立した人物と見るかが焦点になる。",
+          "limit": "推薦や過去の批判だけで、今後の採決や有権者の支持は決められない。",
+          "evidenceIds": [
+            "ev-obs-nh-wbur"
+          ]
+        }
+      ],
+      "comparison": [
+        {
+          "key": "career",
+          "label": "経歴・地元との関係",
+          "cells": [
+            {
+              "candidateId": "cand-nh-chris-pappas",
+              "kind": "observed",
+              "text": "Manchesterの公立学校に通い、家業のレストランに携わる。連邦下院では2019年から在職。",
+              "evidenceIds": [
+                "ev-obs-pappas",
+                "ev-obs-nh-wbur"
+              ]
+            },
+            {
+              "candidateId": "cand-nh-john-e-sununu",
+              "kind": "observed",
+              "text": "元連邦上院議員。退任後は民間で勤務した。元州知事Chris Sununuとは別人である。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "policy",
+          "label": "政策・採決・発言",
+          "cells": [
+            {
+              "candidateId": "cand-nh-chris-pappas",
+              "kind": "claim",
+              "text": "生活費、公共教育、Medicaid・Social Securityの保護を重視すると語る。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            },
+            {
+              "candidateId": "cand-nh-john-e-sununu",
+              "kind": "claim",
+              "text": "減税・規制削減と、州のために成果を出す独立した代表を訴える。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "president",
+          "label": "政党・トランプとの関係",
+          "cells": [
+            {
+              "candidateId": "cand-nh-chris-pappas",
+              "kind": "claim",
+              "text": "Sununuの当選がTrumpの政策を支えると批判する。これはPappas側の見方である。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            },
+            {
+              "candidateId": "cand-nh-john-e-sununu",
+              "kind": "observed",
+              "text": "2024年にはHaleyを支持しTrumpを批判。2026年2月にはTrumpの推薦を受けた。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "record",
+          "label": "実績への評価・批判",
+          "cells": [
+            {
+              "candidateId": "cand-nh-chris-pappas",
+              "kind": "observed",
+              "text": "Sununuの実績批判に対し、退役軍人・住宅等の立法を挙げて反論している。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            },
+            {
+              "candidateId": "cand-nh-john-e-sununu",
+              "kind": "observed",
+              "text": "民間経験を強みに挙げる。WBURは「本人が登録ロビイストだった」とする記述を訂正している。",
+              "evidenceIds": [
+                "ev-obs-nh-wbur"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "voters",
+          "label": "有権者の受け止め",
+          "cells": [
+            {
+              "candidateId": "cand-nh-chris-pappas",
+              "kind": "pending",
+              "text": "予備選後の政策別評価を十分に確認できていない。新しい候補者評価を確認する。",
+              "evidenceIds": []
+            },
+            {
+              "candidateId": "cand-nh-john-e-sununu",
+              "kind": "pending",
+              "text": "過去のTrump批判と今回の推薦への有権者の反応は未確認。取材者の見立てと調査結果を区別する。",
+              "evidenceIds": []
+            }
+          ]
+        }
+      ],
+      "watchItems": [
+        {
+          "watchId": "nh-watch-0",
+          "title": "予備選後の支持のまとまり",
+          "what": "候補者が決まった後に支持がどう変わるか。",
+          "how": "確定名簿と予備選後に実施された調査を照合。次回調査の発表日は未確認。"
+        },
+        {
+          "watchId": "nh-watch-1",
+          "title": "独立性の具体的な説明",
+          "what": "政権の政策にどこまで賛成・反対するか。",
+          "how": "両候補の同じ争点への回答を確認。未発表の訪問・演説予定は推測しない。"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "eventId": "bls-jobs-2026-10-02",
+      "title": "9月分の米雇用統計",
+      "date": "2026-10-02",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-bls-oct"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-AK-2-regular",
+          "why": "資源開発への期待と家計の雇用・所得環境を合わせて読む材料。",
+          "watch": "雇用・賃金の変化と候補者の説明を確認する。全国値を州の支持率へ直接置き換えない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "医療などの政策に加え、家計の所得環境を確認する材料。",
+          "watch": "雇用・賃金の変化と候補者の説明を確認する。全国値を州の支持率へ直接置き換えない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "製造業・雇用を訴える候補者の説明を検討する全国の背景。",
+          "watch": "雇用・賃金の変化と候補者の説明を確認する。全国値を州の支持率へ直接置き換えない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-TX-2-regular",
+          "why": "経済を重視する有権者が置かれる雇用・所得環境の参考。",
+          "watch": "雇用・賃金の変化と候補者の説明を確認する。全国値を州の支持率へ直接置き換えない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-NH-2-regular",
+          "why": "生活費を議論する際に、所得と雇用の全国の背景を確認する材料。",
+          "watch": "雇用・賃金の変化と候補者の説明を確認する。全国値を州の支持率へ直接置き換えない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-OH-3-special",
+          "why": "投資・雇用実績を訴える選挙の、全国の背景を確認する材料。",
+          "watch": "雇用・賃金の変化と候補者の説明を確認する。全国値を州の支持率へ直接置き換えない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "bls-cpi-2026-10-14",
+      "title": "9月分の米消費者物価指数",
+      "date": "2026-10-14",
+      "time": "08:30",
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-bls-oct"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-AK-2-regular",
+          "why": "生活費をめぐる候補者の主張を点検する全国の背景。",
+          "watch": "物価の内訳と家計負担への説明を見る。指数の変化だけで政権評価の変化を断定しない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "生活費をめぐる候補者の主張を点検する全国の背景。",
+          "watch": "物価の内訳と家計負担への説明を見る。指数の変化だけで政権評価の変化を断定しない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "生活費をめぐる候補者の主張を点検する全国の背景。",
+          "watch": "物価の内訳と家計負担への説明を見る。指数の変化だけで政権評価の変化を断定しない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-TX-2-regular",
+          "why": "生活費をめぐる候補者の主張を点検する全国の背景。",
+          "watch": "物価の内訳と家計負担への説明を見る。指数の変化だけで政権評価の変化を断定しない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-NH-2-regular",
+          "why": "生活費をめぐる候補者の主張を点検する全国の背景。",
+          "watch": "物価の内訳と家計負担への説明を見る。指数の変化だけで政権評価の変化を断定しない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-OH-3-special",
+          "why": "生活費をめぐる候補者の主張を点検する全国の背景。",
+          "watch": "物価の内訳と家計負担への説明を見る。指数の変化だけで政権評価の変化を断定しない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "bls-state-jobs-2026-10-20",
+      "title": "9月分の州別雇用・失業統計",
+      "date": "2026-10-20",
+      "time": "10:00",
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-bls-oct"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-AK-2-regular",
+          "why": "州内の雇用の動きを、候補者の経済・雇用政策と照らす材料。",
+          "watch": "州の雇用・失業率と改定値を確認し、単月の変化を一候補の功績・責任に帰さない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "州内の雇用の動きを、候補者の経済・雇用政策と照らす材料。",
+          "watch": "州の雇用・失業率と改定値を確認し、単月の変化を一候補の功績・責任に帰さない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "州内の雇用の動きを、候補者の経済・雇用政策と照らす材料。",
+          "watch": "州の雇用・失業率と改定値を確認し、単月の変化を一候補の功績・責任に帰さない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-TX-2-regular",
+          "why": "州内の雇用の動きを、候補者の経済・雇用政策と照らす材料。",
+          "watch": "州の雇用・失業率と改定値を確認し、単月の変化を一候補の功績・責任に帰さない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-NH-2-regular",
+          "why": "州内の雇用の動きを、候補者の経済・雇用政策と照らす材料。",
+          "watch": "州の雇用・失業率と改定値を確認し、単月の変化を一候補の功績・責任に帰さない。",
+          "materialIds": []
+        },
+        {
+          "electionId": "2026-OH-3-special",
+          "why": "州内の雇用の動きを、候補者の経済・雇用政策と照らす材料。",
+          "watch": "州の雇用・失業率と改定値を確認し、単月の変化を一候補の功績・責任に帰さない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "me-debate-2026-10-06",
+      "title": "メーン上院候補討論会（WGME）",
+      "date": "2026-10-06",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-maine-debates"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "CollinsとJacksonが同じ場で政策と実績を説明する機会。",
+          "watch": "医療・生活費と独立性への回答を比べる。発言の確認と、後日の有権者評価を分ける。",
+          "materialIds": [
+            "me-incumbent",
+            "me-acceptance"
+          ]
+        }
+      ],
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "me-debate-2026-10-08",
+      "title": "メーン上院候補討論会（WMTW）",
+      "date": "2026-10-08",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-maine-debates"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "CollinsとJacksonが同じ場で政策と実績を説明する機会。",
+          "watch": "医療・生活費と独立性への回答を比べる。発言の確認と、後日の有権者評価を分ける。",
+          "materialIds": [
+            "me-incumbent",
+            "me-acceptance"
+          ]
+        }
+      ],
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "me-debate-2026-10-13",
+      "title": "メーン上院候補討論会（WABI・WAGM）",
+      "date": "2026-10-13",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-maine-debates"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "CollinsとJacksonが同じ場で政策と実績を説明する機会。",
+          "watch": "医療・生活費と独立性への回答を比べる。発言の確認と、後日の有権者評価を分ける。",
+          "materialIds": [
+            "me-incumbent",
+            "me-acceptance"
+          ]
+        }
+      ],
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "me-debate-2026-10-15",
+      "title": "メーン上院候補討論会（News Center Maineほか）",
+      "date": "2026-10-15",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-13",
+      "evidenceIds": [
+        "ev-obs-maine-debates"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-ME-2-regular",
+          "why": "CollinsとJacksonが同じ場で政策と実績を説明する機会。",
+          "watch": "医療・生活費と独立性への回答を比べる。発言の確認と、後日の有権者評価を分ける。",
+          "materialIds": [
+            "me-incumbent",
+            "me-acceptance"
+          ]
+        }
+      ],
+      "resultUpdateId": null
+    }
+  ],
+  "updates": [
+    {
+      "updateId": "obs-update-ssrs-2026-09-09",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-09",
+      "updatedAt": "2026-09-13",
+      "title": "同じ接戦でも、候補者を評価する焦点が異なる",
+      "happened": "SSRSが8月31日〜9月6日のCNN調査を公表。メーンは現職・政権への評価、ミシガンは政策的位置に焦点を当てた。",
+      "meaning": "州ごとに読む判断材料を分けた。情勢評価や利用者の議席仮定はこの分析では動かさない。",
+      "uncertainty": "争点から得票への因果効果を測った結果ではない。",
+      "evidenceIds": [
+        "ev-obs-ssrs"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-ai-2026-09-09",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-09",
+      "updatedAt": "2026-09-13",
+      "title": "El-SayedがAI開発の一時停止を提案",
+      "happened": "陣営が開発停止と安全・労働者保護の提案を公表。",
+      "meaning": "政策の違いを検討する材料に追加した。",
+      "uncertainty": "提案への有権者の賛否や投票への影響は未確認。",
+      "evidenceIds": [
+        "ev-obs-abdul-ai"
+      ]
+    },
+    {
+      "updateId": "obs-update-me-debates-2026-09-04",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-04",
+      "updatedAt": "2026-09-13",
+      "title": "メーンで10月の4討論会への合意を確認",
+      "happened": "両陣営が10月6・8・13・15日の討論会に合意したと地元紙が報道。",
+      "meaning": "同じ争点への回答を比べる日程を予定欄へ追加した。",
+      "uncertainty": "時刻は今回の資料では確認できない。形式や延期の有無を引き続き確認する。",
+      "evidenceIds": [
+        "ev-obs-maine-debates"
+      ]
+    },
+    {
+      "updateId": "obs-update-ak-dfp-2026-08-17",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-08-17",
+      "updatedAt": "2026-09-13",
+      "title": "開発支持と生活費への不安が併存",
+      "happened": "DFPがLNGと家計負担、順位選択の調査を公表。",
+      "meaning": "資源開発への賛否だけで候補者を選べない背景を追加した。",
+      "uncertainty": "進歩派系団体の調査であり、順位再配分も調査上の試算。",
+      "evidenceIds": [
+        "ev-obs-dfp-ak"
+      ]
+    },
+    {
+      "updateId": "obs-update-tx-emerson-2026-08",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-08-10",
+      "updatedAt": "2026-09-13",
+      "title": "年齢別支持と争点の優先順位を確認",
+      "happened": "8月10日に実査を終えたEmerson調査で、年齢別の支持差と党派別の主要争点が示された。公表日の記載は今回の原文では確認できない。",
+      "meaning": "全体支持率に加えて投票参加と候補者への解決期待を確認する材料とした。",
+      "uncertainty": "8月の断面であり、後続調査との方法差を確認する必要がある。",
+      "evidenceIds": [
+        "ev-obs-emerson-tx"
+      ]
+    },
+    {
+      "updateId": "obs-update-nh-wbur-2026-08-11",
+      "status": "published",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-08-11",
+      "updatedAt": "2026-09-13",
+      "title": "生活費と独立性をめぐる両候補の主張",
+      "happened": "WBURがPappas・Sununu双方への取材を掲載。経歴の訂正も反映した。",
+      "meaning": "政策と政権との関係を、同じ項目で比べられるようにした。",
+      "uncertainty": "予備選前の取材であり、その後の有権者の評価は未確認。",
+      "evidenceIds": [
+        "ev-obs-nh-wbur"
+      ]
+    }
+  ]
+}

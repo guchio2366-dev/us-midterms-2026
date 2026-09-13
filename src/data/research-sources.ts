@@ -1,8 +1,10 @@
 import type { Source } from './model';
 import type { EvidenceRef } from './research-model';
 import { focusEvidenceRefs, focusResearchSources } from './research-focus-sources';
+import { observationEvidenceRefs, observationSources } from './observation';
 
 export const researchSources: Source[] = [
+  ...observationSources,
   ...focusResearchSources,
   {
     sourceId:'poll-emerson-ia-2026-09',
@@ -133,6 +135,7 @@ export const researchSources: Source[] = [
 ];
 
 export const evidenceRefs: EvidenceRef[] = [
+  ...observationEvidenceRefs,
   ...focusEvidenceRefs,
   {evidenceId:'ev-2024-president-ak',sourceId:'fec-pres-2024',locator:'確定得票表：Harris列 p.3 AK行 140,026票／Trump列 p.5 AK行 184,458票',checkedAt:'2026-09-11',kind:'observed'},
   {evidenceId:'ev-2024-president-ia',sourceId:'fec-pres-2024',locator:'確定得票表：Harris列 p.3 IA行 707,278票／Trump列 p.5 IA行 927,019票',checkedAt:'2026-09-11',kind:'observed'},

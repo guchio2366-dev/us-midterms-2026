@@ -1,0 +1,20 @@
+{
+  "provider": "ChatGPT Tasks",
+  "title": "接戦州の定点観測",
+  "enabled": true,
+  "timezone": "Asia/Tokyo",
+  "schedule": "BEGIN:VEVENT\nDTSTART;TZID=Asia/Tokyo:20260914T090000\nRRULE:FREQ=DAILY;BYHOUR=9;BYMINUTE=0;BYSECOND=0\nEND:VEVENT",
+  "createdAt": "2026-09-13T10:32:17.682072+00:00",
+  "firstScheduledFor": "2026-09-14T09:00:00+09:00",
+  "firstScheduledRunCompleted": false,
+  "scope": [
+    "AK",
+    "ME",
+    "MI",
+    "OH special",
+    "TX",
+    "NH"
+  ],
+  "weeklyReview": "Monday",
+  "management": "予約タスクの一覧でタイトルと対象リポジトリを照合して管理する"
+}
