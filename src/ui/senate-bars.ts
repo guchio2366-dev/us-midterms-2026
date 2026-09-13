@@ -20,21 +20,21 @@ const neutralGroups = [
 
 function fixedLeft(fixed: CaucusCounts): SeatBarSegment[] {
   return [
-    {count:fixed.Democratic,label:`非改選・民主党会派 ${fixed.Democratic}`,className:'fixed-d'},
+    {count:fixed.Democratic,label:`非改選・民主党会派 ${fixed.Democratic}`,shortLabel:`非改選 ${fixed.Democratic}`,className:'fixed-d'},
     ...neutralGroups.map(([key,label]) => ({count:fixed[key],label:`非改選・${label} ${fixed[key]}`,className:'fixed-other'})),
   ];
 }
 
 function fixedRight(fixed: CaucusCounts): SeatBarSegment {
-  return {count:fixed.Republican,label:`非改選・共和党会派 ${fixed.Republican}`,className:'fixed-r'};
+  return {count:fixed.Republican,label:`非改選・共和党会派 ${fixed.Republican}`,shortLabel:`非改選 ${fixed.Republican}`,className:'fixed-r'};
 }
 
 export function senateCompositionSegments(data: Breakdown, counts = data.currentContested): SeatBarSegment[] {
   const segments = [
     ...fixedLeft(data.fixed),
-    {count:counts.Democratic,label:`今回改選・民主党会派 ${counts.Democratic}`,className:'target-d'},
+    {count:counts.Democratic,label:`今回改選・民主党会派 ${counts.Democratic}`,shortLabel:String(counts.Democratic),className:'target-d'},
     ...neutralGroups.map(([key,label]) => ({count:counts[key],label:`今回改選・${label} ${counts[key]}`,className:key === 'vacant' ? 'target-vacant' : 'target-other'})),
-    {count:counts.Republican,label:`今回改選・共和党会派 ${counts.Republican}`,className:'target-r'},
+    {count:counts.Republican,label:`今回改選・共和党会派 ${counts.Republican}`,shortLabel:String(counts.Republican),className:'target-r'},
     fixedRight(data.fixed),
   ];
   prepareSeatBar(segments,data.total);
@@ -48,7 +48,7 @@ export function senateMajorityPath(data: Breakdown, party: 'Democratic'|'Republi
   if (required > data.contested) return {status:'unavailable',reason:'今回の選挙だけでは届かない。'};
   const label = party === 'Democratic' ? '民主党会派' : '共和党会派';
   const need = {count:required,label:`今回獲得が必要・${label} ${required}`,className:party === 'Democratic' ? 'target-d' : 'target-r'};
-  const rest = {count:data.contested - required,label:`今回改選・残り ${data.contested - required}`,className:'target-other'};
+  const rest = {count:data.contested - required,label:`今回改選・配分未指定 ${data.contested - required}`,className:'goal-other'};
   const segments = [...fixedLeft(data.fixed),...(party === 'Democratic' ? [need,rest] : [rest,need]),fixedRight(data.fixed)];
   prepareSeatBar(segments,data.total);
   return {status:'ready',required,segments,target:{value:threshold,from:party === 'Democratic' ? 'left' : 'right',label:`${label} ${threshold}議席の位置`}};
