@@ -150,6 +150,7 @@ body.overlay-open{overflow:hidden}
 .inline-link{color:#174f9e;font-weight:800}
 .rating-annotation{display:flex;flex-wrap:wrap;flex-basis:100%;gap:5px 10px;margin-top:9px;padding:10px 12px;border-left:3px solid var(--gold);background:#f4f5f2;font-size:.68rem;line-height:1.6;color:#5e666c}
 .rating-annotation b{color:var(--navy)}.rating-annotation strong{color:#313a40}
+.legend .rating-annotation>span{display:block}
 .state-change-baseline{padding:10px 0 4px}.state-change-baseline h4{margin:0 0 6px;font-size:.75rem;color:var(--navy)}
 .metric-note{display:block;margin-top:3px;color:var(--muted);font-size:.65rem}
 .candidate-note-pending span{display:block!important}
