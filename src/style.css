@@ -263,6 +263,7 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
 .seat-segment{min-width:0;flex-shrink:0;font-size:16px;line-height:1.2}
 .seat-segment span{font-size:16px;white-space:nowrap}
 .seat-segment.tiny span{display:none}
+.seat-segment.fixed-d{color:#173c5a}.seat-segment.fixed-r{color:#64202e}.seat-segment.fixed-other{color:#344047}
 .seat-segment.scope-fixed{background:#c7cbc9;color:#344047}
 .seat-segment.scope-target,.seat-segment.goal-party{background:#526f7c;color:#fff}
 .seat-segment.target-vacant{background:#d1a83f;color:#263036}
