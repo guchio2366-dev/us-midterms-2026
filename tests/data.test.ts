@@ -2,7 +2,7 @@ import { describe,expect,it } from 'vitest';
 import houseTopology from '../public/data/house-2026-topo.json';
 import { elections,events,profiles,seats,sources,states,vicePresident } from '../src/data/data';
 import { issueCategories,powerRules } from '../src/data/civics';
-import { guideContent } from '../src/data/content';
+import { introductionContent,introductionDetails } from '../src/data/content';
 import { newsItems } from '../src/data/news';
 import { candidateBriefs,historicalResults,issueReports,polls,raceBriefs,ratingObservations,rollCalls } from '../src/data/research';
 import { evidenceRefs } from '../src/data/research-sources';
@@ -267,16 +267,11 @@ describe('replaceable editorial UI content',() => {
     expect(Math.ceil(published.length / 10)).toBe(2);
   });
 
-  it('keeps the first-visit introduction and all eight report replacement slots',() => {
-    expect(guideContent.intro).toContain('ニュース');
-    const electionSection = guideContent.sections.find(section => section.title === '中間選挙');
-    expect(electionSection).toBeTruthy();
-    expect(electionSection?.body).toContain('Class IIの通常選挙33議席');
-    expect(electionSection?.body).toContain('特別選挙2議席');
-    expect(electionSection?.body).toContain('任期途中の欠員');
-    const classSection = guideContent.sections.find(section => section.title === '上院のClass制度');
-    expect(classSection?.body).toContain('Class I・II・III');
-    expect(classSection?.body).not.toContain('2026年');
+  it('keeps the introductory overview and all eight report replacement slots',() => {
+    expect(introductionContent.issueOverview).toHaveLength(6);
+    const ids = [...introductionContent.institutionSourceIds,...introductionContent.issueSourceIds];
+    expect(ids.every(id => sources.some(source => source.sourceId === id && source.contentVerifiedAt))).toBe(true);
+    expect(new Set(introductionDetails.map(section => section.id)).size).toBe(introductionDetails.length);
     expect(issueReports.map(report => report.issueId).sort()).toEqual(issueCategories.map(issue => issue.issueId).sort());
     expect(issueReports.every(report => report.status === 'published' && report.completeness === 'partial')).toBe(true);
   });

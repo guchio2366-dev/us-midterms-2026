@@ -1,22 +1,51 @@
 /**
- * Stable first-visit copy. Dated research, news, candidate and issue material
+ * Stable introductory copy. Dated research, news, candidate and issue material
  * lives in the research modules so that publication state is enforced once.
  */
-export interface GuideSection {
+export interface IntroductionSection {
+  id: string;
   title: string;
   body: string;
 }
 
-export const guideContent: { intro: string; sections: GuideSection[] } = {
-  intro: 'このサイトは、2026年の米国中間選挙を「議席が動くと、議会の権限がどう変わるか」という順番で読むための入口です。ニュース、議席と権限、地図・シミュレーション、出典を行き来しながら、確認できた事実と仮定を分けてご覧ください。',
-  sections: [
-    { title: '米国議会', body: '議会は下院と上院から成ります。法案、歳出、監督、指名承認、条約、弾劾などで役割と必要な票数が異なります。' },
-    { title: '中間選挙', body: '大統領選の2年後に行われ、下院は全435議席、上院は通常一つのClass（約3分の1）の議席を改選します。2026年はClass IIの通常選挙33議席に加え、フロリダ州とオハイオ州の特別選挙2議席を行います。フロリダではマルコ・ルビオ前議員が国務長官に、オハイオではJ.D.ヴァンス前議員が副大統領に就任して任期途中の欠員が生じました。両州は州法に基づく暫定任命を置き、2026年の特別選挙で残任期を担う議員に置き換えます。' },
-    { title: '上院のClass制度', body: '上院議員の任期は6年です。議席をClass I・II・IIIに分け、2年ごとに一つのClassを順番に改選します。各州の二つの上院議席は、原則として異なるClassに属します。' },
-    { title: '地図の読み方', body: '選挙情勢モードは評価機関の分類、投票前の議席構成モードは現職会派を示します。色は州全体の支持率や当選確率そのものではありません。' },
-    { title: 'シミュレーションの読み方', body: '手動シミュレーションは、各対象議席の会派を利用者が置き換えた場合の議席数です。権限から逆算する州の自動経路と因果係数は研究中で、未確認の確率は表示しません。' },
-    { title: '出典と更新', body: 'カード、州詳細、権限表、論点レポートには対応する出典と対象期間を付けます。内容が更新された場合は、画面上の基準日とデータ版を確認してください。' },
+export const introductionContent = {
+  purpose: '米国中間選挙の情勢と争点を知り、州ごとの当選者を仮定して、議席配分と議会の権限への影響を確かめるサイト。',
+  institution: (senateTotal: number, contested: number, houseTotal: number) => `米国議会は上院と下院から成り、中間選挙は大統領の4年の任期の中間に行われる。2026年は上院の${senateTotal}議席中${contested}議席と、下院の全${houseTotal}議席を選び直す。`,
+  impact: '議席配分が変わると、法案や予算を決め、大統領の政策や人事を進めたり制約したりする議会の力関係が変わる。',
+  issueOverview: [
+    '今回の中間選挙では、トランプ政権の運営や政策への評価が、全国の選挙情勢を左右する大きな要因となる。',
+    '都市部では民主党、地方部では共和党の支持が強い傾向があり、郊外では支持が分かれている。',
+    '物価や雇用、移民、医療などは複数の州に共通する論点で、同じ政策でも地域の産業や暮らしによって受け止め方が異なる。',
+    '候補者の実績や政策姿勢、地元との関係によって、全国的な党派の傾向と異なる結果になる場合もある。',
+    '支持する相手が変わることに加え、どの支持層が実際に投票に行くかも結果を左右する。',
+    '全国の傾向と各州の事情を併せて読むことで、接戦の理由や議席が動く条件を考えやすくなる。',
   ],
-};
+  capability: '地図で州の情勢・候補者・争点を確認し、当選者や会派を選ぶと、上院の議席配分がどう変わるか試せる。',
+  institutionSourceIds: ['senate-class-2','house-explained','house-legislative-process'],
+  issueSourceIds: [
+    'pew-midterms-2026',
+    'pew-community-partisanship-2024',
+    'pew-turnout-2022',
+  ],
+} as const;
+
+export const introductionDetails: IntroductionSection[] = [
+  {
+    id: 'classes',
+    title: '上院のClass制度',
+    body: '上院議員の任期は6年である。議席をClass I・II・IIIに分け、2年ごとに一つのClassを順番に改選する。各州の二つの上院議席は異なるClassに属する。',
+  },
+  {
+    id: 'special-elections',
+    title: '2026年の上院選挙',
+    body: 'Class IIの通常選挙に加え、フロリダ州とオハイオ州で特別選挙を行う。フロリダではマルコ・ルビオ前議員の国務長官就任、オハイオではJ.D.ヴァンス前議員の副大統領就任に伴う辞職で、任期途中の欠員が生じた。暫定任命された議員が在職し、特別選挙で残任期を担う議員を選ぶ。新たな6年任期が始まる選挙ではない。',
+  },
+];
+
+export const congressionalControlCases: IntroductionSection[] = [
+  {id:'house',title:'下院だけ反対党',body:'法案・歳出の修正を求め、委員会調査を主導し、過半数で弾劾訴追できる。上院の指名承認や大統領罷免は単独ではできない。'},
+  {id:'senate',title:'上院だけ反対党',body:'指名承認、議題、委員会調査を主導し、法案に条件を付けられる。条約への同意や弾劾有罪には、出席議員の3分の2が必要である。'},
+  {id:'both',title:'両院とも反対党',body:'立法・予算・監督を通じた制約が強まる。既存法に基づく行政権限は残り、大統領の拒否権を覆すには両院それぞれで3分の2の賛成が必要となる。'},
+];
 
 export const replaceableContentVersion = 'research-contract-2026-09-11';
