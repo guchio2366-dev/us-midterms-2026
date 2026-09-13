@@ -1,6 +1,6 @@
 # 上院基礎情報の一次資料照合
 
-> この文書は工程①（上院100議席の基礎情報）の完了記録です。候補者・情勢・州背景・下院を含む現在の実装は [README.md](README.md) と [RESEARCH_AND_METHOD.md](RESEARCH_AND_METHOD.md) を参照してください。
+> この文書は工程①（上院100議席の基礎情報）の完了記録です。候補者・情勢・州背景・下院を含む現在の実装は [CURRENT_STATE.md](CURRENT_STATE.md) を参照してください。
 
 確認日・データ基準日：2026-09-09（UTC）。作業開始時の main：`b3a0cbe9bd55173bb4af7a7cd6cdaf91bbb13dd3`。
 
