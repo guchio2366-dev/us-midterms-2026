@@ -40,6 +40,7 @@ export interface RaceObservation {
 export interface ObservationEvent {
   eventId: string;
   title: string;
+  publicationStatus: PublicationStatus;
   date: string | null;
   time: string | null;
   timezone: string;

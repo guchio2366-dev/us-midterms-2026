@@ -32,7 +32,7 @@ export function eventStatus(event: ObservationEvent, now = new Date()): string {
 }
 
 export function eventsForRace(data: ObservationDataset, electionId: string, now = new Date()) {
-  const all = data.events.filter(e=>e.relevance.some(r=>r.electionId===electionId));
+  const all = data.events.filter(e=>e.publicationStatus==='published' && e.relevance.some(r=>r.electionId===electionId));
   const end = new Date(now.getTime()+30*86400000);
   const sorted = all.filter(e=>e.status==='scheduled' && e.date).sort((a,b)=>a.date!.localeCompare(b.date!) || (a.time??'').localeCompare(b.time??'') || a.eventId.localeCompare(b.eventId));
   const upcoming = sorted.filter(e=>eventStatus(e,now)==='日程確定');

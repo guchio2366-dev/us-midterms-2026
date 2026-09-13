@@ -15,12 +15,18 @@ export function bindDisclosurePreference(details: HTMLDetailsElement, key: strin
   });
 }
 
-export function setupPageNavigation(openIssues: () => void, closePanel: () => void) {
-  function visit(hash: string) {
-    if (hash === '#issues') { openIssues(); return; }
-    closePanel();
+export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void, closePanel: () => void) {
+  let lastHash=location.hash;
+  function visit(hash: string, fromHistory=false) {
+    if (hash === '#issues') { lastHash=hash; openIssues(fromHistory); return; }
     const id = hash.slice(1);
-    if (!['overview','national-overview','news','powers','simulator','map-heading','sources'].includes(id)) return;
+    if (!['overview','national-overview','news','powers','simulator','map-heading','sources'].includes(id)) {
+      if(lastHash==='#issues') closePanel();
+      lastHash=hash;
+      return;
+    }
+    lastHash=hash;
+    closePanel();
     const target = document.getElementById(id);
     if (!target) return;
     const disclosure = id === 'overview' ? document.querySelector<HTMLDetailsElement>('#intro-disclosure')
@@ -47,7 +53,7 @@ export function setupPageNavigation(openIssues: () => void, closePanel: () => vo
     }
     visit(hash);
   });
-  window.addEventListener('popstate',() => visit(location.hash));
-  window.addEventListener('hashchange',() => visit(location.hash));
-  visit(location.hash);
+  window.addEventListener('popstate',() => visit(location.hash,true));
+  window.addEventListener('hashchange',() => visit(location.hash,true));
+  visit(location.hash,true);
 }

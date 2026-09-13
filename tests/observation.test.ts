@@ -8,10 +8,13 @@ import { eventInstant, eventStatus, eventsForRace, monitoringStatus, publishedUp
 import { observationLeadMarkup, observationComparisonMarkup, observationDecisionMarkup } from '../src/ui/observation';
 
 const now=new Date('2026-09-13T10:00:00Z');
-const event=(overrides:Partial<ObservationEvent>={}):ObservationEvent=>({
-  eventId:'fixture-common',title:'Test event',date:'2026-10-02',time:'08:30',timezone:'America/New_York',status:'scheduled',dateHistory:[],checkedAt:'2026-09-13',evidenceIds:[],
-  relevance:['2026-ME-2-regular','2026-AK-2-regular'].map(electionId=>({electionId,why:'背景',watch:'確認点',materialIds:[]})),resultUpdateId:null,...overrides,
-});
+const event=(overrides:Partial<ObservationEvent>={}):ObservationEvent=>{
+  const {publicationStatus='published',...rest}=overrides;
+  return {
+    eventId:'fixture-common',title:'Test event',date:'2026-10-02',time:'08:30',timezone:'America/New_York',status:'scheduled',dateHistory:[],checkedAt:'2026-09-13',evidenceIds:[],
+    relevance:['2026-ME-2-regular','2026-AK-2-regular'].map(electionId=>({electionId,why:'背景',watch:'確認点',materialIds:[]})),resultUpdateId:null,...rest,publicationStatus,
+  };
+};
 
 describe('接戦州の編集データ',()=>{
   it('connects every initial focus race, candidate, and source without orphaned references',()=>{
@@ -41,6 +44,7 @@ describe('接戦州の編集データ',()=>{
     }
     for(const e of data.evidenceRefs){expect(sourceIds.has(e.sourceId)).toBe(true);expect(e.locator).toBeTruthy();}
     for(const e of data.events){
+      expect(['draft','reviewed','published','withdrawn']).toContain(e.publicationStatus);
       refs(e.evidenceIds); expect(e.evidenceIds.length).toBeGreaterThan(0);
       if(e.time) expect(e.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(()=>new Intl.DateTimeFormat('ja',{timeZone:e.timezone})).not.toThrow();
@@ -135,6 +139,7 @@ describe('公開・確認状態',()=>{
     expect(html).toContain('未確認');
     expect(html).toContain(e.candidates.find(c=>c.candidateId===r.comparison[0].cells[0].candidateId)!.name);
     const me=observationFor('2026-ME-2-regular')!;
-    expect(observationDecisionMarkup(me,now)).toContain('現地日付・時刻未確認');
+    expect(observationDecisionMarkup(me)).toContain('この州の今後の予定を見る');
+    expect(observationDecisionMarkup(me)).not.toContain('2026-10-06');
   });
 });

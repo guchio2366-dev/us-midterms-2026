@@ -50,9 +50,13 @@
 .national-card .focus-races .observation-focus > small { font-size: 12px; }
 .observation-more { min-width: 0; }
 .observation-more button + button { margin-top: 5px; }
-.changes-card > button { grid-template-columns: minmax(0, 1fr); }
-.changes-card > button > span { font-size: 15px; }
-.changes-card > button small { margin-top: 6px; font-size: 13px; font-weight: 400; }
+.observation-feed-actions { display: grid; gap: 8px; }
+.observation-feed-actions button, .observation-all-news, .observation-update-link { min-height: 44px; padding: 10px 12px; border: 1px solid #a8b7ba; background: #fff; color: #174f9e; text-align: left; cursor: pointer; font: inherit; }
+.observation-update-link { display: flex; flex-direction: column; gap: 4px; width: 100%; margin: 0 0 8px; }
+.observation-update-link small { color: #5b696d; }
+.observation-update-link strong { color: var(--navy); font-size: 15px; line-height: 1.5; }
+.observation-update-link span { color: #3f5057; font-size: 14px; line-height: 1.6; }
+.observation-feed-actions button:focus-visible, .observation-all-news:focus-visible, .observation-update-link:focus-visible { outline: 3px solid #2769aa; outline-offset: 3px; }
 .observation-seat-control { min-width: 0; padding-bottom: 6px; }
 .observation-seat-control > label { margin: 0; }
 .observation-seat-control > button { margin: 0 8px; font-size: 13px; }
