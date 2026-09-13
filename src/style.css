@@ -412,7 +412,6 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
 
 @media(min-width:944px) and (orientation:landscape) and (min-height:600px){
   .national-grid{grid-template-columns:minmax(0,1.38fr) minmax(0,.92fr) minmax(0,1.12fr);gap:16px;align-items:start}
-  .national-grid>.news-section{height:100%}
   .national-grid>.news-section .news-list{max-height:520px;overflow-y:auto}
   .power-rollcall-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
