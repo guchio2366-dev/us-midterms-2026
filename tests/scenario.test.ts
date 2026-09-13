@@ -10,7 +10,7 @@ import {
 import { createLegacySenateBaseline,createRatingSenateBaseline } from '../src/scenario/baseline';
 import { generateSenatePaths } from '../src/scenario/paths';
 import { decodeScenario,encodeScenario,loadDraft,loadSavedScenarios,persistSavedScenarios,saveDraft,LEGACY_SAVED_STORAGE_KEY,SAVED_STORAGE_KEY } from '../src/scenario/storage';
-import { aggregateRatingConsensus } from '../src/rating-consensus';
+import { aggregateRatingConsensus,consensusDisplayRating } from '../src/rating-consensus';
 import { RATING_METHOD_VERSION,RATING_SNAPSHOT_AS_OF,RATING_SNAPSHOT_ID,ratingSnapshotObservations } from '../src/data/rating-snapshot';
 
 const consensus = aggregateRatingConsensus(elections.map(election => election.seatId),ratingSnapshotObservations);
@@ -143,6 +143,22 @@ describe('shared scenario state',() => {
 });
 
 describe('reverse Senate paths',() => {
+  it('uses the map consensus for route rankings and labels without changing saved state',() => {
+    const state = freshScenario();
+    const before = JSON.stringify(state);
+    const ratings = new Map(consensus.map(result => [result.seatId,consensusDisplayRating(result)]));
+    for (const caucus of ['Democratic','Republican'] as const) {
+      const result = generateSenatePaths({seats,elections,scenario:state,caucus,threshold:51,ratings,limit:3});
+      expect(result.status).toBe('reached');
+      expect(result.paths).toHaveLength(3);
+      for (const path of result.paths) {
+        expect(path.addedSeatIds.every(seatId => ratings.get(seatId) === 'Toss Up')).toBe(true);
+        expect(path.races.every(race => race.rating === ratings.get(race.seatId))).toBe(true);
+      }
+    }
+    expect(JSON.stringify(state)).toBe(before);
+  });
+
   it('shows at least one route to 51 seats without inventing probabilities',() => {
     const result = generateSenatePaths({seats,elections,scenario:freshScenario(),caucus:'Democratic',threshold:51,limit:3});
 

@@ -409,6 +409,8 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
 .projected>div:nth-child(2) strong{color:#626b6d}
 .projected>div:nth-child(3) strong{color:var(--red)}
 .scenario-baseline-note{margin:8px 0;color:#56636a;font-size:14px;line-height:1.65}
+.detail .rating-evidence{margin:4px 0 10px;color:var(--muted);font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+.detail .rating-badge{flex-wrap:wrap}
 
 @media(min-width:944px) and (orientation:landscape) and (min-height:600px){
   .national-grid{grid-template-columns:minmax(0,1.38fr) minmax(0,.92fr) minmax(0,1.12fr);gap:16px;align-items:start}

@@ -52,8 +52,10 @@ export function generateSenatePaths(input: {
   caucus: 'Democratic'|'Republican';
   threshold: number|null;
   limit?: number;
+  ratings?: ReadonlyMap<string,Rating>;
 }): SenatePathResult {
   const {seats,elections,scenario,caucus,threshold} = input;
+  const ratingFor = (election: Election) => input.ratings?.get(election.seatId) ?? election.rating.category;
   const limit = Math.max(1,Math.min(5,input.limit ?? 3));
   const electionSeatIds = new Set(elections.map(election => election.seatId));
   const seatById = new Map(seats.map(seat => [seat.seatId,seat]));
@@ -86,12 +88,12 @@ export function generateSenatePaths(input: {
   }
 
   const ordered = [...candidates].sort((left,right) =>
-    preferenceRank(left.rating.category,caucus) - preferenceRank(right.rating.category,caucus)
-    || left.rating.category.localeCompare(right.rating.category)
+    preferenceRank(ratingFor(left),caucus) - preferenceRank(ratingFor(right),caucus)
+    || ratingFor(left).localeCompare(ratingFor(right))
     || left.electionId.localeCompare(right.electionId));
-  const boundaryRank = preferenceRank(ordered[needed - 1].rating.category,caucus);
-  const guaranteed = ordered.filter(election => preferenceRank(election.rating.category,caucus) < boundaryRank);
-  const boundary = ordered.filter(election => preferenceRank(election.rating.category,caucus) === boundaryRank);
+  const boundaryRank = preferenceRank(ratingFor(ordered[needed - 1]),caucus);
+  const guaranteed = ordered.filter(election => preferenceRank(ratingFor(election),caucus) < boundaryRank);
+  const boundary = ordered.filter(election => preferenceRank(ratingFor(election),caucus) === boundaryRank);
   const boundaryNeeded = needed - guaranteed.length;
   const paths: SenatePath[] = [];
   const signatures = new Set<string>();
@@ -105,12 +107,12 @@ export function generateSenatePaths(input: {
       seatId:election.seatId,
       electionId:election.electionId,
       stateFips:seatById.get(election.seatId)!.stateFips,
-      rating:election.rating.category,
+      rating:ratingFor(election),
       isFlip:baselineCaucus(seatById.get(election.seatId)!) !== caucus,
     }));
     const races = [...held.map(election => ({
       seatId:election.seatId,electionId:election.electionId,stateFips:seatById.get(election.seatId)!.stateFips,
-      rating:election.rating.category,isFlip:baselineCaucus(seatById.get(election.seatId)!) !== caucus,
+      rating:ratingFor(election),isFlip:baselineCaucus(seatById.get(election.seatId)!) !== caucus,
     })),...added];
     const difficulty = added.reduce<Record<string,number>>((counts,race) => {
       counts[race.rating] = (counts[race.rating] ?? 0) + 1;

@@ -1,4 +1,5 @@
 import type { RatingSnapshotObservation } from './data/rating-snapshot';
+import type { Rating } from './data/model';
 
 export type RatingDirection = 'D'|'R'|'T';
 export type RatingConsensusCategory = 'D'|'R'|'tossup'|'split'|'missing';
@@ -41,4 +42,15 @@ export function ratingConsensusCounts(results: readonly RatingConsensusSeat[]) {
     counts[result.category] += 1;
     return counts;
   },{D:0,R:0,tossup:0,split:0,missing:0} as Record<RatingConsensusCategory,number>);
+}
+
+/** Direction follows the shared consensus. Strength is Sabato's, not an average. */
+export function consensusDisplayRating(result: RatingConsensusSeat|undefined): Rating {
+  if (!result || result.category === 'missing') return 'unavailable';
+  if (result.category === 'tossup' || result.category === 'split') return 'Toss Up';
+  const sabato = result.observations.find(item => item.organizationId === 'sabato');
+  if (sabato?.direction !== result.category) return 'unavailable';
+  const raw = sabato.ratingRaw.trim().toLowerCase();
+  const strength = /^(safe|solid)\b/.test(raw) ? 'Solid' : /^likely\b/.test(raw) ? 'Likely' : /^(lean|tilt)\b/.test(raw) ? 'Lean' : null;
+  return strength ? `${strength} ${result.category}` : 'unavailable';
 }
