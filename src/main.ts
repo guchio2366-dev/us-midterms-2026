@@ -6,7 +6,7 @@ import './style.css';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
 import { powerTargets } from './data/power-targets';
-import { introductionContent,introductionDetails } from './data/content';
+import { introductionContent,introductionDetails,type IntroSentence } from './data/content';
 import { houseDistricts,houseSnapshot } from './data/house';
 import { newsEditorialNote,newsItems } from './data/news';
 import { candidateBriefs,historicalResults,issueReports,polls,raceBriefs,ratingObservations,rollCalls } from './data/research';
@@ -185,6 +185,13 @@ function compactSourceLinks(ids: readonly string[]) {
     `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}${source.publishedAt ? `（${source.publishedAt}）` : ''}</a>`).join('／');
 }
 
+function introSentenceMarkup(sentence: IntroSentence) {
+  return sentence.map(part => {
+    const text = escapeHtml(part.text);
+    return part.strong ? `<strong>${text}</strong>` : text;
+  }).join('');
+}
+
 function introductionMarkup() {
   const total = seats.length;
   const contested = targetSeatIds.length;
@@ -213,7 +220,7 @@ function introductionMarkup() {
             <p class="intro-followup">必要な票数や院ごとの役割は、後の<a href="#powers">「議席と権限」</a>で詳しく説明する。</p>
             <button id="open-civics" class="intro-detail-button" type="button">Class制度と特別選挙の詳しい説明</button>
           </div>
-          <div class="intro-lens intro-column"><h2>選挙を見る主な論点</h2><p>${introductionContent.issueOverview.slice(0,3).map(escapeHtml).join('')}</p><p>${introductionContent.issueOverview.slice(3).map(escapeHtml).join('')}</p><p class="intro-sources"><b>概説の出典</b> ${introductionContent.issueSourceIds.map((id,index) => { const source = sourceById.get(id); return source ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${issueSourceLabels[index]}</a>` : ''; }).filter(Boolean).join('／')}</p><div class="intro-issues-route"><p>各論点の地域差や根拠を、8つの論点で詳しく読む。</p><button id="open-issues" type="button">8つの論点を詳しく読む</button></div></div>
+          <div class="intro-lens intro-column"><h2>選挙を見る主な論点</h2><p>${introductionContent.issueOverview.slice(0,3).map(introSentenceMarkup).join('')}</p><p>${introductionContent.issueOverview.slice(3).map(introSentenceMarkup).join('')}</p><p class="intro-sources"><b>概説の出典</b> ${introductionContent.issueSourceIds.map((id,index) => { const source = sourceById.get(id); return source ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${issueSourceLabels[index]}</a>` : ''; }).filter(Boolean).join('／')}</p><div class="intro-issues-route"><p>各論点の地域差や根拠を、8つの論点で詳しく読む。</p><button id="open-issues" type="button">8つの論点を詳しく読む</button></div></div>
         </div>
         <div class="intro-capability"><p>${escapeHtml(introductionContent.capability)}</p><div class="intro-actions"><a href="#simulator" class="intro-map-link">地図で州を選ぶ <span aria-hidden="true">↓</span></a></div></div>
       </div>
@@ -386,7 +393,7 @@ function enhanceLayout() {
   news.id = 'news';
   news.className = 'section-block news-section';
   news.setAttribute('aria-labelledby', 'news-heading');
-  news.innerHTML = '<div class="section-heading"><div><p class="kicker">NEWS & EVENTS</p><h3 id="news-heading">選挙を動かしうるニュース</h3></div></div><p class="news-editorial-note"></p><div class="news-frame"><div id="news-list" class="news-list" tabindex="0" aria-label="ニュース一覧"></div><div id="news-scrollbar" class="custom-scrollbar" role="scrollbar" aria-label="ニュース一覧のスクロール位置" aria-controls="news-list" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div><div class="news-pagination"><span id="news-page-status" aria-live="polite"></span><div><button id="news-prev" type="button">前の10件</button><button id="news-next" type="button">次の10件</button></div></div>';
+  news.innerHTML = '<div class="section-heading"><div><p class="kicker">NEWS & EVENTS</p><h3 id="news-heading">選挙を動かしうるニュース</h3></div></div><p class="news-editorial-note"></p><p class="news-scroll-hint">枠内をスクロールして続きを読む</p><div class="news-frame"><div id="news-list" class="news-list" tabindex="0" aria-label="ニュース一覧"></div><div id="news-scrollbar" class="custom-scrollbar" role="scrollbar" aria-label="ニュース一覧のスクロール位置" aria-controls="news-list" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div><div class="news-pagination"><span id="news-page-status" aria-live="polite"></span><div><button id="news-prev" type="button">前の10件</button><button id="news-next" type="button">次の10件</button></div></div>';
   const newsNote = news.querySelector<HTMLElement>('.news-editorial-note');
   if (newsNote) newsNote.textContent = newsEditorialNote;
   const nationalOverview = document.createElement('div');
