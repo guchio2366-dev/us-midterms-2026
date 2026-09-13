@@ -1,6 +1,6 @@
-import type { Caucus, Election, Rating, Seat } from '../data/model';
+import type { Election, Rating, Seat } from '../data/model';
 import type { ScenarioState } from './model';
-import { caucusForChoice } from './model';
+import { scenarioOutcomeForSeat } from './model';
 import { baselineCaucus } from '../logic';
 
 export interface PathRace {
@@ -45,11 +45,6 @@ function rotate<T>(items: T[], offset: number): T[] {
   return [...items.slice(normalized),...items.slice(0,normalized)];
 }
 
-function scenarioCaucusForSeat(state: ScenarioState, election: Election, seat: Seat): Caucus {
-  const choice = state.senate[seat.seatId];
-  return choice ? caucusForChoice(choice,election) ?? baselineCaucus(seat) : baselineCaucus(seat);
-}
-
 export function generateSenatePaths(input: {
   seats: Seat[];
   elections: Election[];
@@ -63,10 +58,10 @@ export function generateSenatePaths(input: {
   const electionSeatIds = new Set(elections.map(election => election.seatId));
   const seatById = new Map(seats.map(seat => [seat.seatId,seat]));
   const electionBySeat = new Map(elections.map(election => [election.seatId,election]));
-  const fixedSeats = seats.filter(seat => !electionSeatIds.has(seat.seatId) && baselineCaucus(seat) === caucus).length;
+  const fixedSeats = seats.filter(seat => !electionSeatIds.has(seat.seatId) && scenarioOutcomeForSeat(scenario,seat.seatId) === caucus).length;
   const currentScenarioSeats = seats.reduce((count,seat) => {
     const election = electionBySeat.get(seat.seatId);
-    return count + ((election ? scenarioCaucusForSeat(scenario,election,seat) : baselineCaucus(seat)) === caucus ? 1 : 0);
+    return count + (scenarioOutcomeForSeat(scenario,seat.seatId,election) === caucus ? 1 : 0);
   },0);
   if (threshold === null) return {status:'no-senate-condition',fixedSeats,currentScenarioSeats,targetSeats:null,shortage:0,requiredContestedSeats:0,paths:[]};
   const shortage = Math.max(0,threshold - currentScenarioSeats);
@@ -78,7 +73,7 @@ export function generateSenatePaths(input: {
   const candidates: Election[] = [];
   for (const election of elections) {
     const seat = seatById.get(election.seatId)!;
-    const current = scenarioCaucusForSeat(scenario,election,seat);
+    const current = scenarioOutcomeForSeat(scenario,election.seatId,election);
     const explicitlyLocked = Boolean(scenario.senate[election.seatId]) && !unlocked.has(election.seatId);
     if (current === caucus) held.push(election);
     else if (!explicitlyLocked) candidates.push(election);

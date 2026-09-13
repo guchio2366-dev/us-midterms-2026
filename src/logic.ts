@@ -118,13 +118,13 @@ export function simulatedCounts(seats: Seat[], elections: Election[], assumption
   },emptyCounts());
 }
 
-export function majorityText(counts: CaucusCounts, vicePresident: VicePresident|null): string {
+export function majorityText(counts: CaucusCounts & {unassigned?:number}, vicePresident: VicePresident|null): string {
   if (counts.Democratic >= 51) return '民主党会派が仮定上、必要議席を確保（51議席以上）';
   if (counts.Republican >= 51) return '共和党会派が仮定上、必要議席を確保（51議席以上）';
   const confirmedVicePresident = vicePresident?.verificationStatus === 'confirmed' ? vicePresident : null;
   if (counts.Democratic >= 50 && confirmedVicePresident?.party === 'D') return '民主党会派が仮定上、50議席と民主党副大統領の決裁票を確保';
   if (counts.Republican >= 50 && confirmedVicePresident?.party === 'R') return '共和党会派が仮定上、50議席と共和党副大統領の決裁票を確保';
-  const unresolved = counts.unconfirmed + counts.none + counts.vacant;
+  const unresolved = counts.unconfirmed + counts.none + counts.vacant + (counts.unassigned ?? 0);
   if (unresolved > 0) return `未確定・非所属・空席の${unresolved}議席次第`;
   if (counts.Democratic === 50 && counts.Republican === 50 && (!confirmedVicePresident || confirmedVicePresident.party === 'unknown')) return '50対50：副大統領の前提が未確認のため判定できません';
   return 'いずれの会派も単純多数の目安を確保していません';

@@ -1,5 +1,6 @@
 import type { Election, Seat } from '../data/model';
 import { currentCaucusCounts, uniqueElectionSeatIds, type CaucusCounts } from '../logic';
+import type { SenateOutcomeCounts } from '../scenario/model';
 import { prepareSeatBar, type SeatBarSegment, type SeatBarTarget } from './seat-bars';
 
 export function senateBreakdown(seats: Seat[], elections: Election[]) {
@@ -29,11 +30,12 @@ function fixedRight(fixed: CaucusCounts): SeatBarSegment {
   return {count:fixed.Republican,label:`非改選・共和党会派 ${fixed.Republican}`,shortLabel:`非改選 ${fixed.Republican}`,className:'fixed-r'};
 }
 
-export function senateCompositionSegments(data: Breakdown, counts = data.currentContested): SeatBarSegment[] {
+export function senateCompositionSegments(data: Breakdown, counts: CaucusCounts|SenateOutcomeCounts = data.currentContested): SeatBarSegment[] {
   const segments = [
     ...fixedLeft(data.fixed),
     {count:counts.Democratic,label:`今回改選・民主党会派 ${counts.Democratic}`,shortLabel:String(counts.Democratic),className:'target-d'},
     ...neutralGroups.map(([key,label]) => ({count:counts[key],label:`今回改選・${label} ${counts[key]}`,className:key === 'vacant' ? 'target-vacant' : 'target-other'})),
+    {count:'unassigned' in counts ? counts.unassigned : 0,label:`今回改選・未配分 ${'unassigned' in counts ? counts.unassigned : 0}`,shortLabel:'unassigned' in counts ? String(counts.unassigned) : '',className:'consensus-unresolved'},
     {count:counts.Republican,label:`今回改選・共和党会派 ${counts.Republican}`,shortLabel:String(counts.Republican),className:'target-r'},
     fixedRight(data.fixed),
   ];

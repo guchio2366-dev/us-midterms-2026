@@ -1,8 +1,10 @@
 import type { Election, HouseDistrict, Seat } from '../data/model';
-import { cloneScenario, normalizeScenario, type SavedScenario, type ScenarioLoadResult, type ScenarioState } from './model';
+import { cloneScenario, normalizeScenario, type SavedScenario, type ScenarioLoadResult, type ScenarioState, type SenateBaselineSnapshot } from './model';
 
-export const DRAFT_STORAGE_KEY = 'us-midterms-2026:scenario-draft:v1';
-export const SAVED_STORAGE_KEY = 'us-midterms-2026:scenarios:v1';
+export const DRAFT_STORAGE_KEY = 'us-midterms-2026:scenario-draft:v2';
+export const SAVED_STORAGE_KEY = 'us-midterms-2026:scenarios:v2';
+export const LEGACY_DRAFT_STORAGE_KEY = 'us-midterms-2026:scenario-draft:v1';
+export const LEGACY_SAVED_STORAGE_KEY = 'us-midterms-2026:scenarios:v1';
 export const SAVED_SCENARIO_LIMIT = 5;
 
 export interface StorageResult {
@@ -19,19 +21,32 @@ export function saveDraft(storage: Storage, state: ScenarioState): StorageResult
   }
 }
 
-export function loadDraft(storage: Storage, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[]): ScenarioLoadResult|null {
+export function loadDraft(storage: Storage, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[], currentBaseline: SenateBaselineSnapshot, legacyBaseline: SenateBaselineSnapshot): ScenarioLoadResult|null {
   try {
-    const text = storage.getItem(DRAFT_STORAGE_KEY);
-    if (!text) return null;
-    return normalizeScenario(JSON.parse(text),seats,elections,houseDistricts);
+    const currentText = storage.getItem(DRAFT_STORAGE_KEY);
+    if (currentText) try { return normalizeScenario(JSON.parse(currentText),seats,elections,houseDistricts,currentBaseline,legacyBaseline); }
+    catch {
+      const legacyText = storage.getItem(LEGACY_DRAFT_STORAGE_KEY);
+      if (legacyText) try {
+        const loaded = normalizeScenario(JSON.parse(legacyText),seats,elections,houseDistricts,currentBaseline,legacyBaseline);
+        loaded.notices.unshift('新しい自動保存を読み取れなかったため、以前の作業案を復元しました。');
+        return loaded;
+      } catch { /* handled below */ }
+      return {state:normalizeScenario(null,seats,elections,houseDistricts,currentBaseline,legacyBaseline).state,notices:['自動保存を読み取れなかったため、最新の暫定配分で開きました。元の保存内容は削除していません。'],staleBaseline:false};
+    }
+    const legacyText = storage.getItem(LEGACY_DRAFT_STORAGE_KEY);
+    if (!legacyText) return null;
+    try { return normalizeScenario(JSON.parse(legacyText),seats,elections,houseDistricts,currentBaseline,legacyBaseline); }
+    catch { return {state:normalizeScenario(null,seats,elections,houseDistricts,currentBaseline,legacyBaseline).state,notices:['以前の自動保存を読み取れなかったため、最新の暫定配分で開きました。元の保存内容は削除していません。'],staleBaseline:false}; }
   } catch {
-    return {state:normalizeScenario(null,seats,elections,houseDistricts).state,notices:['自動保存を読み取れなかったため、初期状態で開きました。'],staleBaseline:false};
+    return {state:normalizeScenario(null,seats,elections,houseDistricts,currentBaseline,legacyBaseline).state,notices:['このブラウザの自動保存へアクセスできないため、最新の暫定配分で開きました。'],staleBaseline:false};
   }
 }
 
-export function loadSavedScenarios(storage: Storage, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[]): {items:SavedScenario[];notices:string[]} {
+export function loadSavedScenarios(storage: Storage, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[], currentBaseline: SenateBaselineSnapshot, legacyBaseline: SenateBaselineSnapshot): {items:SavedScenario[];notices:string[]} {
   try {
-    const parsed: unknown = JSON.parse(storage.getItem(SAVED_STORAGE_KEY) ?? '[]');
+    const currentText = storage.getItem(SAVED_STORAGE_KEY);
+    const parsed: unknown = JSON.parse(currentText ?? storage.getItem(LEGACY_SAVED_STORAGE_KEY) ?? '[]');
     if (!Array.isArray(parsed)) return {items:[],notices:['保存案の一覧を読み取れませんでした。']};
     const notices: string[] = [];
     const items: SavedScenario[] = [];
@@ -39,7 +54,7 @@ export function loadSavedScenarios(storage: Storage, seats: Seat[], elections: E
       if (!raw || typeof raw !== 'object') continue;
       const record = raw as Record<string,unknown>;
       if (typeof record.id !== 'string' || typeof record.name !== 'string' || typeof record.savedAt !== 'string') continue;
-      const result = normalizeScenario(record.state,seats,elections,houseDistricts);
+      const result = normalizeScenario(record.state,seats,elections,houseDistricts,currentBaseline,legacyBaseline);
       notices.push(...result.notices.map(message => `${record.name}：${message}`));
       items.push({id:record.id,name:record.name.slice(0,40),savedAt:record.savedAt,state:result.state});
     }
@@ -77,15 +92,15 @@ export function encodeScenario(state: ScenarioState): string {
   return bytesToBase64Url(new TextEncoder().encode(JSON.stringify(shareState)));
 }
 
-export function decodeScenario(payload: string, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[]): ScenarioLoadResult {
+export function decodeScenario(payload: string, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[], currentBaseline: SenateBaselineSnapshot, legacyBaseline: SenateBaselineSnapshot): ScenarioLoadResult {
   if (!payload || payload.length > 12_000 || !/^[A-Za-z0-9_-]+$/.test(payload)) {
-    return {state:normalizeScenario(null,seats,elections,houseDistricts).state,notices:['共有URLの形式を確認できませんでした。'],staleBaseline:false};
+    return {state:normalizeScenario(null,seats,elections,houseDistricts,currentBaseline,legacyBaseline).state,notices:['共有URLの形式を確認できませんでした。'],staleBaseline:false};
   }
   try {
     const text = new TextDecoder().decode(base64UrlToBytes(payload));
-    return normalizeScenario(JSON.parse(text),seats,elections,houseDistricts);
+    return normalizeScenario(JSON.parse(text),seats,elections,houseDistricts,currentBaseline,legacyBaseline);
   } catch {
-    return {state:normalizeScenario(null,seats,elections,houseDistricts).state,notices:['共有URLを読み取れませんでした。'],staleBaseline:false};
+    return {state:normalizeScenario(null,seats,elections,houseDistricts,currentBaseline,legacyBaseline).state,notices:['共有URLを読み取れませんでした。'],staleBaseline:false};
   }
 }
 
