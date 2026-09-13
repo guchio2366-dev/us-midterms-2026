@@ -53,7 +53,7 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
     }
     visit(hash);
   });
-  window.addEventListener('popstate',() => visit(location.hash,true));
-  window.addEventListener('hashchange',() => visit(location.hash,true));
+  window.addEventListener('popstate',() => { if(location.hash!==lastHash) visit(location.hash,true); });
+  window.addEventListener('hashchange',() => { if(location.hash!==lastHash) visit(location.hash,true); });
   visit(location.hash,true);
 }

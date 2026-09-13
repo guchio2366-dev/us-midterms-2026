@@ -458,7 +458,7 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
 @media screen and (max-width:600px), screen and (min-width:601px) and (max-width:943px) and (max-height:500px){
   .national-grid>.news-section .news-scroll-hint{display:block;margin:0 0 8px;color:var(--muted);font-size:14px;line-height:1.5}
   .national-grid>.news-section .news-frame{display:block;padding:8px;border:1px solid #d3d5d0}
-  .national-grid>.news-section .news-list{max-height:min(31rem,65vh);max-height:min(31rem,65svh);overflow-y:auto;scrollbar-width:auto;overscroll-behavior:contain}
+  .national-grid>.news-section .news-list{max-height:min(27rem,58vh);max-height:min(27rem,58svh);overflow-y:auto;scrollbar-width:auto;overscroll-behavior:contain}
   .national-grid>.news-section .news-list::-webkit-scrollbar{display:revert}
   .national-grid>.news-section .news-list:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
   .national-grid>.news-section .custom-scrollbar{display:none}

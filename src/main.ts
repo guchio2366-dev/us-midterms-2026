@@ -2121,6 +2121,10 @@ window.addEventListener('popstate',()=>{
   renderNewsList();
   const key=resolveFeedKey(view.get('newsItem'),newsItems,observationData);
   if(key) openFeedItem(key,{history:'none'});
+  else if(overlayKind==='news' && location.hash==='#issues'){
+    overlayHistory=[];
+    openOverlay('issues',undefined,{recordHistory:false});
+  }
   else if(overlayKind==='news') closeOverlay();
 });
 initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; });
