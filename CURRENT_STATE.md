@@ -2,7 +2,7 @@
 
 > **現状確認の入口。** 本書は確認したコード時点の記録である。着手時には最新main・公開処理・定点観測の実行記録と照合する。設計書にある「未実装」「次工程」は、その設計書の作成時点の表現である。
 
-文書確認日：2026-09-14（日本時間）。確認対象のアプリ実装：[`377336f`](https://github.com/guchio2366-dev/us-midterms-2026/commit/377336fff27a27616b760fa5f851e096f1e59e64)。同コミットの [GitHub Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799993330) は成功。112テストとビルドも成功した。最終配備後の公開画面の再照合はブラウザー接続タイムアウトで未完了。先行段階の操作検証の範囲は[検証記録](docs/verification/ui-review-20260914.md)を参照。
+文書確認日：2026-09-15（日本時間）。概説・更新欄・州詳細のUX改善をローカルコミット`d4b5937`へ実装し、112テストと本番ビルドが成功した。利用者がブランチ公開・PR・検証後のマージ・Pages公開を承認したため、PR検証と公開を進める。配備・画面確認は完了後の記録を参照する。現在の公開版は引き続き[`377336f`](https://github.com/guchio2366-dev/us-midterms-2026/commit/377336fff27a27616b760fa5f851e096f1e59e64)で、同コミットの[GitHub Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799993330)は成功している。先行段階の操作検証の範囲は[検証記録](docs/verification/ui-review-20260914.md)を参照。
 
 ## 1. 目的と参照先
 
@@ -21,14 +21,14 @@
 
 | 領域 | 確認した状態 | 実装・証拠 |
 | --- | --- | --- |
-| 冒頭 | 投票日、短い概説、現在議席と改選範囲の棒グラフ、主な論点の強調、制度説明パネル | [main.ts](src/main.ts) |
-| 全国情勢 | 左：議席比較、中央：注目州、右：ニュース・今後の予定。横向き・幅944px以上・高さ600px以上で等幅3列 | [style.css](src/style.css) |
+| 冒頭 | iPad横で左に現在議席・改選範囲・論点、右に上院の暫定配分と51議席への配分例。注釈は開閉欄へ集約 | [実装記録](docs/ux-layout-implementation-20260915.md) |
+| 直近の更新 | 注目8選挙を州名順のタブで切替。右側にニュース・今後の予定を配置し、見出しの縦縮小を防止 | [実装記録](docs/ux-layout-implementation-20260915.md) |
 | 議席評価 | SabatoとInside Electionsの方向が一致する選挙を党派側へ配分。不一致・接戦は未配分。地図とシミュレーションは同じ統合評価を参照 | [評価集計](src/rating-consensus.ts)、[評価スナップショット](src/data/rating-snapshot.ts) |
 | 暫定配分 | 非改選D34・R31に改選D側12・R側17を加え、D46・R48・未配分6。勝率・確定結果ではない | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
 | ニュース | 既存12記事と分析更新9件を「最近のニュース」に統合。旧「直近の重要な更新」の独立欄は撤去。10件ごとにページング | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
 | 今後の予定 | 公開7件（統計公表3件、メーン討論会4件）。同じ欄のタブで切替。州による絞込み、延期・中止・結果確認待ち、結果記事との相互参照に対応 | [観測データ](src/data/observation.json)、[予定ロジック](src/observation-logic.ts) |
-| 接戦州 | AK・ME・MI・NH・OH特別・TXの6選挙に判断材料、候補者比較、注目事項を公開。注目州は最初の3件を表示し、残りを展開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
-| 候補者比較 | 経歴・地元、政策・採決・発言、政党・トランプとの関係、実績への評価・批判、有権者の受け止めの5項目 | [観測データ](src/data/observation.json) |
+| 接戦州 | Toss Up・評価分裂・Leanの8選挙を切替可能。AK・ME・MI・NH・OH特別・TXの6選挙には詳しい判断材料を公開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
+| 候補者比較 | 主要2候補の同じ項目を左右に同時表示。主要3項目を初期表示し、評価・受け止めの2項目はまとめて展開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | シミュレーション | 候補者・会派選択、未配分、権限から複数経路の提示、自動保存・名前付き保存・比較・共有URL。保存した基準を最新評価で勝手に上書きしない | [シナリオ](src/scenario/)、[経路](src/scenario/paths.ts) |
 | 小さい画面 | 縦並びへ切替。スマホのニュースは高さ制限のある枠内スクロール。表示件数は文字量・画面寸法によって変わる | [style.css](src/style.css) |
 | 基礎情報 | 上院100議席・35選挙（通常33＋特別2）、下院435区、50州背景、8論点と議会権限 | [データ](src/data/)、[基礎検証](tests/data.test.ts) |
@@ -59,13 +59,13 @@ Iowaの既存研究を削除したわけではない。New Hampshireは後から
 
 追加工程：[設計](docs/data-ui-analysis-design-20260914.md)に基づきAを一巡し、8論点を各5節と新規8事例で拡充した。[実装記録](docs/data-ui-analysis-implementation-20260914.md)、[画面検証](docs/verification/ui-review-20260914.md)。C1・C2・C3の公開成功を確認。5情報源の内容照合と指定端末での表示検証は継続待ち。全8論点は証拠の不足を明示してpartialを維持する。
 
-次回のUI改善：[概説・直近の更新・州詳細のUX改善設計](docs/ux-layout-design-20260915.md)を2026年9月15日に作成。冒頭の左右配置、更新欄の2列化、州詳細と候補者比較、操作中の議席集計を規定した。設計作成のみで、アプリは未変更。8論点の内容再設計・個別共有と一括校正は別工程として保留。
+UI改善：[概説・直近の更新・州詳細のUX改善設計](docs/ux-layout-design-20260915.md)に基づく実装をローカルで完了。[実装記録](docs/ux-layout-implementation-20260915.md)に変更箇所と検証結果を記録した。GitHubへの反映、Actions、Pagesの指定寸法・代表操作は未確認。8論点の内容再設計・個別共有と一括校正は別工程として保留。
 
 ## 6. 設計書と実装の対応
 
 | 文書 | 位置づけ・後続変更 |
 | --- | --- |
-| [概説・更新欄・州詳細のUX改善](docs/ux-layout-design-20260915.md) | 利用者の①〜⑪の合意を反映した後続設計。設計作成済み・実装未着手 |
+| [概説・更新欄・州詳細のUX改善](docs/ux-layout-design-20260915.md) | 利用者の①〜⑪の合意を反映した後続設計。[実装記録](docs/ux-layout-implementation-20260915.md)あり。GitHub・Pages反映は未実施 |
 | [冒頭の概説設計](docs/intro-overview-design-20260913.md) | 作成時の設計記録。[実装報告](docs/intro-overview-implementation-20260913.md)あり。制度説明の置き場などは後続設計を優先 |
 | [議席比較・iPad設計](docs/seat-comparison-ipad-design-20260913.md) | 議席比較・制度説明・地図と州詳細を実装。全国情勢の列構成、シミュレーションの初期値は後続実装で更新 |
 | [接戦州観測設計](docs/observation/design.md) | 6州の詳説と観測データを実装。重要更新・予定の配置は次の統合設計で変更 |

@@ -29,11 +29,14 @@ export function observationDecisionMarkup(race:RaceObservation) {
 
 export function observationComparisonMarkup(race:RaceObservation,candidates:Candidate[]) {
   const labels={observed:'確認できたこと',claim:'本人・陣営の主張',interpretation:'分析',pending:'未確認'};
-  return `<section id="${esc(observationAnchor(race.electionId,'comparison'))}" tabindex="-1" class="observation-comparison"><h4>候補者を詳しく比較する</h4><p>同じ項目で読み比べる。公約と実績、有権者の評価を分けて確認する。</p>${race.comparison.map(row=>`<details><summary>${esc(row.label)}</summary><div class="observation-comparison-row">${row.cells.map(cell=>{
-    const candidate=candidates.find(c=>c.candidateId===cell.candidateId);
-    if (!candidate) return '';
-    return `<article><h5><i class="party-dot ${esc(candidate.party)}" aria-hidden="true"></i>${esc(candidate.name)}<small>${esc(candidate.partyLabel)}</small></h5><span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${evidenceMarkup(cell.evidenceIds)}</article>`;
-  }).join('')}</div></details>`).join('')}<p class="observation-limit">選択欄から全候補を選べます。未確認は「支持なし」「問題なし」を意味しません。</p></section>`;
+  const comparisonCandidates=[...new Set(race.comparison.flatMap(row=>row.cells.map(cell=>cell.candidateId)))].map(id=>candidates.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>Boolean(candidate));
+  const rowMarkup=(row:RaceObservation['comparison'][number])=>`<section class="observation-comparison-item"><h5>${esc(row.label)}</h5><div class="observation-comparison-row">${comparisonCandidates.map(candidate=>{
+    const cell=row.cells.find(item=>item.candidateId===candidate.candidateId);
+    return `<article aria-label="${esc(candidate.name)}・${esc(row.label)}">${cell ? `<span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${evidenceMarkup(cell.evidenceIds)}` : '<span class="observation-kind">未確認</span><p>この項目は確認できる資料を追加中。</p>'}</article>`;
+  }).join('')}</div></section>`;
+  const primary=race.comparison.slice(0,3);
+  const supplementary=race.comparison.slice(3);
+  return `<section id="${esc(observationAnchor(race.electionId,'comparison'))}" tabindex="-1" class="observation-comparison"><h4>候補者を同じ項目で比較</h4><p>公約と実績、有権者の評価を分けて確認する。</p><div class="observation-candidate-head" aria-label="比較する候補者">${comparisonCandidates.map(candidate=>`<div><i class="party-dot party-${esc(candidate.party)}" aria-hidden="true"></i><b>${esc(candidate.name)}</b><small>${esc(candidate.partyLabel)}</small></div>`).join('')}</div>${primary.map(rowMarkup).join('')}${supplementary.length ? `<details class="observation-comparison-more"><summary>実績への評価・有権者の受け止め（${supplementary.length}項目）</summary>${supplementary.map(rowMarkup).join('')}</details>` : ''}<p class="observation-limit">選択欄から全候補を選べます。未確認は「支持なし」「問題なし」を意味しません。</p></section>`;
 }
 
 export function observationUpdateMarkup(update:ObservationUpdate,electionId:string) {

@@ -477,3 +477,121 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
 
 /* Evidence stays beside the explanation without adding another scroll area. */
 .issue-paragraph-evidence{margin:8px 0 12px;font-size:.8rem;overflow-wrap:anywhere}.issue-paragraph-evidence summary{cursor:pointer;min-height:40px;display:list-item;padding:8px 0}.issue-paragraph-evidence ul{padding-left:20px}.issue-paragraph-evidence li{margin:8px 0}.issue-paragraph-evidence p{margin:4px 0}.issue-panel-guide{margin:0 0 18px;line-height:1.7;font-size:.9rem}
+
+/* 16: agreed overview, updates, race comparison, and live scenario feedback */
+.legacy-anchor{display:block;scroll-margin-top:76px}
+#overview,#national-overview,#updates,#news,#powers,#simulator,#sources,#map-heading{scroll-margin-top:76px}
+.overview-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start}
+.overview-left,.national-overview{min-width:0;border:1px solid #cbd2d0;background:#fff}
+.overview-left>.intro-summary{padding:16px 18px;border-bottom:1px solid var(--rule)}
+.overview-left:not([open])>.intro-summary{border-bottom:0}
+.overview-left>.intro-body{padding:0 18px 18px}
+.overview-left .intro-lens{margin-top:24px;padding-top:20px;border-top:3px solid #87989e}
+.overview-left .intro-capability{margin-top:20px}
+.overview-left .intro-detail-button{margin-top:12px}
+.national-overview{padding:18px}
+.national-overview>h2{margin:4px 0 0;font-size:24px;color:var(--navy)}
+.provisional-totals{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,auto);align-items:center;gap:7px 12px;margin:12px 0;padding:10px 12px;background:#f0f3f2;font-size:14px}
+.provisional-totals>span{font-weight:800;color:#465a62}
+.provisional-totals b{font-size:15px;white-space:nowrap}.provisional-d{color:#174f9e}.provisional-r{color:#a5262e}.provisional-u{color:#535d5d}
+.national-overview .senate-comparison{gap:0;margin-top:8px}
+.national-overview .comparison-row{display:grid;grid-template-columns:1fr;gap:5px;padding:9px 0}
+.national-overview .comparison-row h4{font-size:15px}
+.national-overview .comparison-row .seat-range{display:none}
+.national-overview .comparison-row .seat-composition-track{height:30px}
+.national-overview .comparison-row .seat-composition-legend{margin-top:2px}
+.national-overview .comparison-values{display:none}
+.national-overview .comparison-legend{margin:10px 0 4px;padding:9px 0;gap:5px 12px}
+.national-overview .comparison-legend span{font-size:12px}
+.national-overview .consensus-method{margin-top:6px}
+.national-overview .consensus-method>summary{min-height:44px;font-size:14px}
+.national-overview .consensus-method>p{font-size:14px!important;line-height:1.7}
+.national-overview .consensus-note{margin:6px 0!important}
+
+.updates{padding-top:28px}
+.updates>.section-heading{margin-bottom:16px}
+.updates-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:stretch}
+.updates-card,.updates-grid>.news-section{min-width:0;padding:18px;border:1px solid #cbd2d0;background:#fff}
+.focus-card-heading,.focus-summary-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.focus-card-heading h3,.focus-summary-heading h3{margin:3px 0;color:var(--navy);font-size:22px}
+.focus-card-heading>span{padding:5px 8px;background:#ece8df;color:#554b38;font-size:13px;font-weight:800}
+.tossup-explainer{margin:8px 0 12px;border-block:1px solid var(--rule)}
+.tossup-explainer>summary{display:flex;align-items:center;min-height:44px;color:#174f9e;font-size:14px;font-weight:800;cursor:pointer}
+.tossup-explainer p{margin:0 0 12px;font-size:14px;line-height:1.7}
+.focus-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px}
+.focus-tabs button{display:flex;min-height:44px;flex-direction:column;justify-content:center;padding:7px 10px;border:1px solid #9aa6a5;background:#fff;color:var(--navy);font:inherit;font-size:14px;font-weight:800;text-align:left;cursor:pointer}
+.focus-tabs button span{font-size:11px;font-weight:600;color:#626d70}
+.focus-tabs button[aria-selected="true"]{border-color:#243d47;background:#243d47;color:#fff;box-shadow:inset 0 -4px 0 #c59a3a}
+.focus-tabs button[aria-selected="true"] span{color:#fff}
+.focus-tabs button.focus-tossup,.focus-tabs button.focus-split{border-left:5px solid #8a8178}
+.focus-tabs button.focus-missing{border-left:5px dashed #7e8886}
+.focus-tabs button:focus-visible,.focus-detail-button:focus-visible{outline:3px solid #2769aa;outline-offset:2px}
+.focus-summary{min-height:220px;padding:16px;border-top:4px solid #8a8178;background:#f7f7f4}
+.focus-summary h4{margin:12px 0 6px;color:var(--navy);font-size:18px;line-height:1.5}
+.focus-summary p{margin:6px 0;font-size:16px;line-height:1.75}
+.focus-summary small{display:block;color:var(--muted);font-size:14px}
+.focus-status{flex:0 0 auto;padding:5px 8px;background:#e8e6e0;color:#4d493f;font-size:13px;font-weight:800}
+.focus-status.focus-split{background:#e5e9e8;color:#40535a}.focus-status.focus-missing{border:1px dashed #677574;background:#fff}.focus-status.focus-lean{background:#e8eef2;color:#294c60}
+.focus-detail-button,.all-races-link{min-height:44px;padding:9px 12px;border:1px solid #87949a;background:#fff;color:#174f9e;font-weight:800;cursor:pointer}
+.focus-detail-button{width:100%;margin-top:14px}
+.updates-grid>.news-section{padding-top:18px}
+.updates-grid>.news-section .section-heading{display:block;margin:0 0 8px;padding:0;border:0}
+.updates-grid>.news-section .section-heading h3{margin:3px 0;color:var(--navy);font-size:22px}
+.updates-grid>.news-section .news-editorial-note{margin:0 0 10px;font-size:14px;line-height:1.6}
+.updates-grid>.news-section .news-list{max-height:430px;overflow-y:auto}
+.updates-grid>.news-section .news-card{flex:0 0 auto;min-height:0;padding:12px;border:0;border-bottom:1px solid #d7d9d3;border-radius:0;background:#fff}
+.updates-grid>.news-section .news-card strong{font-size:16px;line-height:1.5;overflow:visible}
+.updates-grid>.news-section .news-meta,.updates-grid>.news-section .news-summary{font-size:14px;line-height:1.55}
+.updates-grid>.news-section .news-scroll-hint{display:block;margin:0 0 8px;color:var(--muted);font-size:14px}
+
+.power-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.power-overview article{padding:16px;border-top:4px solid var(--gold);background:#f3f5f3}
+.power-overview b{color:var(--navy);font-size:17px}.power-overview p{margin:7px 0 0;font-size:15px;line-height:1.7}
+.power-detail-list{margin-top:12px;border-top:1px solid var(--rule)}
+.power-detail-list>summary{display:flex;align-items:center;min-height:48px;color:#174f9e;font-size:15px;font-weight:800;cursor:pointer}
+.power-detail-list>.table-scroll,.power-detail-list>.power-cards,.power-detail-list>.power-rollcall-example,.power-detail-list>.source-panel{margin-top:14px}
+.overlay-root[data-kind="issues"] .issue-card p,.overlay-root[data-kind="issues"] .issue-card li,.overlay-root[data-kind="issues"] .issue-report-body p{font-size:16px;line-height:1.8}
+
+.scenario-sticky{position:sticky;top:62px;z-index:17;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:5px 16px;margin:12px 0;padding:10px 14px;border:1px solid #536970;background:rgba(250,251,249,.98);box-shadow:0 5px 16px rgba(20,35,40,.16)}
+.scenario-sticky-heading{display:flex;flex-direction:column;grid-row:1/3}.scenario-sticky-heading span{color:var(--navy);font-size:14px;font-weight:900}.scenario-sticky-heading small{font-size:12px;color:var(--muted)}
+.scenario-sticky-counts{grid-column:2;display:flex;flex-wrap:wrap;gap:6px 14px}.scenario-sticky-counts b{font-size:14px}.scenario-sticky-counts .scenario-d{color:#174f9e}.scenario-sticky-counts .scenario-r{color:#a5262e}.scenario-sticky-counts .scenario-u,.scenario-sticky-counts .scenario-o{color:#566160}
+.scenario-mini-track{grid-column:2;display:flex;height:7px;overflow:hidden;background:#d2d5d1}.scenario-mini-track i{display:block;height:100%}.scenario-mini-track .scenario-d{background:#174f9e}.scenario-mini-track .scenario-r{background:#a5262e}.scenario-mini-track .scenario-u{background:#858b8b}.scenario-mini-track .scenario-o{background:#b29b65}
+.scenario-sticky p{grid-column:2;margin:0;color:#4d5b60;font-size:13px;line-height:1.45}
+.scenario-sticky>button{grid-column:3;grid-row:1/3;min-height:44px;padding:7px 10px;border:1px solid #71868d;background:#fff;color:#174f9e;font-weight:800;cursor:pointer}.scenario-sticky>button:disabled{opacity:.45;cursor:not-allowed}
+
+@media(min-width:960px) and (orientation:landscape) and (min-height:600px){
+  .overview-grid,.updates-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+  .workspace{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;height:auto;align-items:start;padding:20px 0 28px}
+  .map-column{min-height:0;overflow:visible}
+  .map-column .map svg{max-height:none}
+  .detail{display:flex;min-height:0;height:var(--map-column-height,720px);max-height:var(--map-column-height,720px);flex-direction:column;overflow:hidden;padding:18px;border:1px solid #cbd0cf;border-top:4px solid var(--gold);background:#fff}
+  .state-detail-header{flex:0 0 auto}
+  .state-detail-scroll{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding-right:10px;scrollbar-gutter:stable}
+  .power-rollcall-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:959px), (orientation:portrait), (max-height:599px){
+  .overview-grid,.updates-grid{grid-template-columns:1fr}
+  .workspace{grid-template-columns:1fr;height:auto}
+  .detail{display:block;height:auto;max-height:none;overflow:visible;border-left:0;border-top:4px solid #d3a443;padding:24px 0 0;min-height:0}
+  .state-detail-scroll{overflow:visible}
+  .scenario-sticky{position:static;grid-template-columns:1fr auto;gap:6px 10px}
+  .scenario-sticky-heading{grid-row:auto}.scenario-sticky-counts{grid-column:1/-1}.scenario-mini-track{grid-column:1/-1}.scenario-sticky p{grid-column:1}.scenario-sticky>button{grid-column:2;grid-row:1}
+}
+
+@media(max-width:700px){
+  .provisional-totals{grid-template-columns:1fr 1fr}.provisional-totals>span{grid-column:1/-1}
+  .power-overview{grid-template-columns:1fr}
+  .updates-grid>.news-section .news-list{max-height:min(27rem,58svh)}
+  .scenario-sticky{margin-inline:-4px;padding-bottom:max(10px,env(safe-area-inset-bottom))}
+}
+
+@media(max-width:420px){
+  .overview-left>.intro-summary,.overview-left>.intro-body,.national-overview,.updates-card,.updates-grid>.news-section{padding-inline:13px}
+  .focus-tabs button{flex:1 1 calc(50% - 7px)}
+}
+
+@media print{
+  .updates-grid>.news-section .news-list{max-height:none;overflow:visible}
+  .scenario-sticky{position:static;box-shadow:none}
+}
