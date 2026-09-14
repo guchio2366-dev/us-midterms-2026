@@ -2,8 +2,10 @@ import type { Source } from './model';
 import type { EvidenceRef } from './research-model';
 import { focusEvidenceRefs, focusResearchSources } from './research-focus-sources';
 import { observationEvidenceRefs, observationSources } from './observation';
+import { issueReportSources, issueReportEvidence } from './issue-report-sources';
 
 export const researchSources: Source[] = [
+  ...issueReportSources,
   ...observationSources,
   ...focusResearchSources,
   {
@@ -135,6 +137,7 @@ export const researchSources: Source[] = [
 ];
 
 export const evidenceRefs: EvidenceRef[] = [
+  ...issueReportEvidence,
   ...observationEvidenceRefs,
   ...focusEvidenceRefs,
   {evidenceId:'ev-2024-president-ak',sourceId:'fec-pres-2024',locator:'確定得票表：Harris列 p.3 AK行 140,026票／Trump列 p.5 AK行 184,458票',checkedAt:'2026-09-11',kind:'observed'},

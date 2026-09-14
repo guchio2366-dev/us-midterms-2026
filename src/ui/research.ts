@@ -1,5 +1,6 @@
 import type { CandidateBrief, IssueReport, Poll, RaceBrief, RatingObservation, RollCallVote } from '../data/research-model';
 import { sortPollStudyResults } from '../research-logic';
+import { evidenceRefs, researchSources } from '../data/research-sources';
 
 export const escapeHtml = (value: string | number) => String(value)
   .replaceAll('&','&amp;')
@@ -68,8 +69,17 @@ export function candidateBriefMarkup(brief: CandidateBrief): string {
   return `<div class="candidate-research"><p>${escapeHtml(brief.summary)}</p><dl>${compactList('現在の立場',brief.currentPositions)}${compactList('過去の採決・実績',brief.record)}${compactList('支持基盤・資金',brief.supportAndFinance)}${compactList('相手との主な違い',brief.differences)}${compactList('注視する政策',brief.policyPositions)}${compactList('明確に反対する政策',brief.opposedPolicies)}</dl><small>更新 ${escapeHtml(brief.updatedAt)}</small></div>`;
 }
 
+function issueEvidenceMarkup(ids: string[]): string {
+  const items = [...new Set(ids)].map(id => evidenceRefs.find(item=>item.evidenceId===id)).filter(item=>item!==undefined);
+  if (!items.length) return '';
+  return `<details class="issue-paragraph-evidence"><summary>この説明の根拠</summary><ul>${items.map(item=>{
+    const source=researchSources.find(source=>source.sourceId===item.sourceId);
+    return source ? `<li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.publisher)}：${escapeHtml(source.title)}</a><p>${escapeHtml(item.locator)}</p><small>内容確認 ${escapeHtml(item.checkedAt)}</small></li>` : '';
+  }).join('')}</ul></details>`;
+}
+
 export function issueReportMarkup(report: IssueReport): string {
-  const sections = report.sections.map(section => `<section class="issue-report-section ${section.evidenceKind}"><h4>${escapeHtml(section.heading)}</h4><p>${escapeHtml(section.body)}</p></section>`).join('');
+  const sections = report.sections.map(section => `<section class="issue-report-section ${section.evidenceKind}"><h4>${escapeHtml(section.heading)}</h4><p>${escapeHtml(section.body)}</p>${issueEvidenceMarkup(section.evidenceIds)}</section>`).join('');
   const cases = report.caseStudies.length ? `<section class="issue-cases"><h4>州・選挙の事例</h4>${report.caseStudies.map(item => `<article><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.body)}</p>${item.stateFips.map(fips => `<button type="button" data-research-state="${escapeHtml(fips)}">州詳細を開く</button>`).join('')}</article>`).join('')}</section>` : '';
   return `<div class="issue-report-body"><div class="research-status"><span>${report.completeness === 'substantial' ? '重点調査' : '部分公開'}</span><time>更新 ${escapeHtml(report.updatedAt)}</time></div><p class="issue-report-summary">${escapeHtml(report.summary)}</p><p class="issue-reading-guide">${escapeHtml(report.readingGuide)}</p>${sections}${cases}</div>`;
 }

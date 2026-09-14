@@ -287,7 +287,7 @@ function nationalOverviewMarkup() {
           <section class="comparison-row"><h4>共和党会派が51議席を確保</h4>${majorityPathMarkup('Republican')}</section>
         </div>
         <div class="comparison-legend" aria-label="グラフの凡例"><span><i class="fixed-d"></i>非改選D</span><span><i class="consensus-d"></i>改選D側／必要議席</span><span><i class="consensus-unresolved"></i>接戦・評価分裂</span><span><i class="goal-other"></i>配分未指定</span><span><i class="consensus-r"></i>改選R側／必要議席</span><span><i class="fixed-r"></i>非改選R</span></div>
-        <p class="consensus-note">SabatoとInside Electionsの最新評価を機械的に統合した暫定配分である。2機関が同じ方向の議席だけを党派側へ置き、接戦や評価の分裂は未配分とした。当選確率や最終結果を示すものではない。下の2本は51議席を確保するための配分例である。</p>
+        <p class="consensus-note">SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。資料ごとの確認日は出典に示す。2機関が同じ方向の議席だけを党派側へ置き、接戦や評価の分裂は未配分とした。当選確率や最終結果を示すものではない。下の2本は51議席を確保するための配分例である。</p>
         <p class="national-conditions">${vpControl} 詳しい採決条件は<a href="#powers">議席と権限</a>へ。</p>
         ${ratingConsensusDetailsMarkup()}
         <details class="consensus-method"><summary>集計方法・出典</summary><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${targetSeatIds.length}選挙を2機関で確認。Solid・Likely・Lean・Tiltは方向だけを使い、強さを平均していない。2機関が一致しない場合は評価分裂とした。</p><p>${compactSourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></details>

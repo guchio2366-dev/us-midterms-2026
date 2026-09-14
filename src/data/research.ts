@@ -1,4 +1,6 @@
 import { issueCategories } from './civics';
+import { issueReportContent } from './issue-report-content';
+import { evidenceRefs } from './research-sources';
 import type { CandidateBrief, HistoricalResult, IssueCaseStudy, IssueReport, Poll, PolicyPosition, RaceBrief, RatingObservation, RollCallVote } from './research-model';
 import { focusCandidateBriefs, focusIssueCases, focusPolls, focusRaceBriefs, focusRatingObservations, focusRollCalls } from './research-focus';
 
@@ -243,19 +245,24 @@ export const candidateBriefs: CandidateBrief[] = [
   ...focusCandidateBriefs,
 ];
 
-export const issueReports: IssueReport[] = issueCategories.map(issue => ({
+export const issueReports: IssueReport[] = issueCategories.map(issue => {
+  const content = issueReportContent[issue.issueId];
+  const cases = [...(content?.caseStudies ?? []),...(issueCases[issue.issueId] ?? []),...(focusIssueCases[issue.issueId] ?? [])];
+  const ids = [...new Set([...cases.flatMap(item=>item.evidenceIds),...(content?.sections.flatMap(item=>item.evidenceIds) ?? [])])];
+  return ({
   issueId:issue.issueId,updatedAt:'2026-09-11',status:'published',completeness:'partial',
-  summary:issue.scope,
+  summary:content?.summary ?? issue.scope,
   readingGuide:issueReadingGuide,
-  sections:[{
+  sections:content?.sections ?? [{
     heading:'この論点で確認する順序',
     body:`${issue.voterQuestion} 影響の大きさと、投票時の優先度、政策への賛否、候補者選択との関係を別々に確認します。`,
     evidenceKind:'interpretation',evidenceIds:[],
   }],
-  caseStudies:[...(issueCases[issue.issueId] ?? []),...(focusIssueCases[issue.issueId] ?? [])],
-  sourceIds:[...new Set([...issue.sourceIds,...([...(issueCases[issue.issueId] ?? []),...(focusIssueCases[issue.issueId] ?? [])].flatMap(item => item.sourceIds))])],
-  evidenceIds:[...(issueCases[issue.issueId] ?? []),...(focusIssueCases[issue.issueId] ?? [])].flatMap(item => item.evidenceIds),
-}));
+  caseStudies:cases,
+  sourceIds:[...new Set([...issue.sourceIds,...cases.flatMap(item=>item.sourceIds),...evidenceRefs.filter(item=>ids.includes(item.evidenceId)).map(item=>item.sourceId)])],
+  evidenceIds:ids,
+  ...(content ? {updatedAt:'2026-09-14'} : {}),
+});});
 
 export const rollCalls: RollCallVote[] = [
   {
