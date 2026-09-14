@@ -1,0 +1,101 @@
+{
+  "revision": "observation-2026-09-14-v1",
+  "execution": "予約された日次確認。月曜のため候補者比較の全項目と反証も再点検。",
+  "run": {
+    "runId": "observation-daily-20260914",
+    "startedAt": "2026-09-13T23:58:07Z",
+    "completedAt": "2026-09-14T00:10:00Z",
+    "outcome": "partial",
+    "checkedSourceIds": [
+      "obs-ssrs",
+      "obs-emerson-tx",
+      "obs-dfp-ak",
+      "obs-collins",
+      "obs-jackson-policy",
+      "obs-jackson-bio",
+      "obs-maine-debates",
+      "obs-abdul-ai",
+      "obs-rogers-trade",
+      "obs-rogers-bio",
+      "obs-brown-policy",
+      "obs-brown-bio",
+      "obs-husted-bio",
+      "obs-talarico-policy",
+      "obs-talarico-bio",
+      "obs-paxton-policy",
+      "obs-paxton-bio",
+      "obs-peltola",
+      "obs-sullivan",
+      "obs-sullivan-endorsements",
+      "obs-nh-wbur",
+      "obs-pappas",
+      "obs-bls-oct",
+      "obs-hr1-vote",
+      "obs-husted-hr1",
+      "obs-abdul-trade",
+      "obs-paxton-trial",
+      "obs-roster-ak",
+      "obs-roster-mi",
+      "obs-roster-tx",
+      "obs-inside",
+      "obs-white-house",
+      "obs-local-mi",
+      "obs-local-oh",
+      "obs-local-tx",
+      "obs-ap-mi-convention",
+      "obs-mi-rogers-residency",
+      "obs-texas-tribune-spending"
+    ],
+    "pendingSourceIds": [
+      "obs-roster-me",
+      "obs-roster-oh",
+      "obs-roster-nh",
+      "obs-sabato",
+      "obs-local-ak"
+    ],
+    "note": "月曜の全比較・反証を再点検。ミシガンの共和党大会での攻防とRogersの居住歴、テキサスの広告投下を反映。Maine・New Hampshireの名簿、Ohioの候補者名簿、Sabato、Alaska Public Mediaの一覧は取得・照合未完了。"
+  },
+  "changes": [
+    {
+      "electionId": "2026-MI-2-regular",
+      "summary": "共和党大会でのTrump・Rogersらの攻撃とEl-Sayedの応答を候補者比較へ追加。Rogersの資金提供に関する主張は根拠が示されなかったことを明記し、集会参加と有権者評価を区別。Rogersの州外居住歴と現在のMichigan居住・有権者登録を反証込みで補足。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "summary": "9月12日に始まったPaxton支援の大型広告投下を判断材料へ追加。広告支出、露出、認知・好感度、得票効果を区別し、後続調査を観察項目に設定。"
+    }
+  ],
+  "sourceResults": {
+    "successfulAt": "2026-09-14T00:10:00Z",
+    "successfulCount": 38,
+    "unavailable": [
+      {
+        "sourceId": "obs-roster-me",
+        "result": "選挙当局の登録ページを取得できず、名簿原文を再照合できなかった。"
+      },
+      {
+        "sourceId": "obs-roster-nh",
+        "result": "選挙当局の登録ページを取得できず、名簿原文を再照合できなかった。"
+      },
+      {
+        "sourceId": "obs-sabato",
+        "result": "評価ページが403を返し、今回の実行では原文を再取得できなかった。最後の確認済み評価を維持。"
+      },
+      {
+        "sourceId": "obs-local-ak",
+        "result": "登録した政治一覧ページを取得できず、一覧としての更新有無を確認できなかった。個別記事の検索結果は『確認成功』へ置き換えていない。"
+      },
+      {
+        "sourceId": "obs-roster-oh",
+        "result": "選挙ポータルは取得できたが、上院特別選挙の候補者名簿原文まで到達できず照合待ち。"
+      }
+    ]
+  },
+  "ratingAndScheduleCheck": {
+    "integratedTossUp": "Inside Electionsの9月3日版を再確認。既存の統合Toss Up 6選挙に追加なし。Sabato原文は今回取得できず、統合評価は既存の確認済み版を維持。",
+    "polls": "対象6州について9月12〜14日公表の新しい一次世論調査は確認できなかった。",
+    "events": "Maineの10月4討論会とBLSの10月公表予定に変更を確認せず。実施・中止・延期の新情報なし。",
+    "president": "White Houseの公式発表・ライブページを確認。対象6州に関係する将来の日程は確認できなかったため、予定を追加していない。"
+  },
+  "publicationEvidence": "この記録を含むGitコミットと対応するGitHub Pages workflowの結果を参照"
+}

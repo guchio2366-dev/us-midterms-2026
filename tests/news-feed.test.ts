@@ -12,9 +12,9 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-13T10:00:00Z'));
-    expect(recent).toHaveLength(18);
+    expect(recent).toHaveLength(20);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(12);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(6);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(8);
     expect(upcoming).toHaveLength(7);
     expect(upcoming.filter(item=>item.sourceId==='bls-jobs-2026-10-02')).toHaveLength(1);
     expect(filterFeed(upcoming,'2026-AK-2-regular')).toHaveLength(3);
@@ -76,4 +76,3 @@ describe('ニュース・予定の共通フィード',()=>{
     expect(legacyObservationFeedKey('2026-AK-2-regular','me-debate-2026-10-06',newsItems,observationData)).toBeNull();
   });
 });
-
