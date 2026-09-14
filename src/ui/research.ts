@@ -80,7 +80,7 @@ function issueEvidenceMarkup(ids: string[]): string {
 
 export function issueReportMarkup(report: IssueReport): string {
   const sections = report.sections.map(section => `<section class="issue-report-section ${section.evidenceKind}"><h4>${escapeHtml(section.heading)}</h4><p>${escapeHtml(section.body)}</p>${issueEvidenceMarkup(section.evidenceIds)}</section>`).join('');
-  const cases = report.caseStudies.length ? `<section class="issue-cases"><h4>州・選挙の事例</h4>${report.caseStudies.map(item => `<article><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.body)}</p>${item.stateFips.map(fips => `<button type="button" data-research-state="${escapeHtml(fips)}">州詳細を開く</button>`).join('')}</article>`).join('')}</section>` : '';
+  const cases = report.caseStudies.length ? `<section class="issue-cases"><h4>州・選挙の事例</h4>${report.caseStudies.map(item => `<article><b>${escapeHtml(item.title)}</b><p>${escapeHtml(item.body)}</p>${issueEvidenceMarkup(item.evidenceIds)}${item.stateFips.map(fips => `<button type="button" data-research-state="${escapeHtml(fips)}">州詳細を開く</button>`).join('')}</article>`).join('')}</section>` : '';
   return `<div class="issue-report-body"><div class="research-status"><span>${report.completeness === 'substantial' ? '重点調査' : '部分公開'}</span><time>更新 ${escapeHtml(report.updatedAt)}</time></div><p class="issue-report-summary">${escapeHtml(report.summary)}</p><p class="issue-reading-guide">${escapeHtml(report.readingGuide)}</p>${sections}${cases}</div>`;
 }
 

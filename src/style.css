@@ -474,3 +474,6 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
   .national-grid>.news-section .news-list{max-height:none;overflow:visible}
   .national-grid>.news-section .custom-scrollbar{display:none}
 }
+
+/* Evidence stays beside the explanation without adding another scroll area. */
+.issue-paragraph-evidence{margin:8px 0 12px;font-size:.8rem;overflow-wrap:anywhere}.issue-paragraph-evidence summary{cursor:pointer;min-height:40px;display:list-item;padding:8px 0}.issue-paragraph-evidence ul{padding-left:20px}.issue-paragraph-evidence li{margin:8px 0}.issue-paragraph-evidence p{margin:4px 0}.issue-panel-guide{margin:0 0 18px;line-height:1.7;font-size:.9rem}

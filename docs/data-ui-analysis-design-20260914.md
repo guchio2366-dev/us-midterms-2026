@@ -2,7 +2,7 @@
 
 作成日：2026年9月14日（日本時間）  
 版：1.0  
-状態：設計作成済み。以下の追加調査・画面検証・原稿拡充は本書作成時点では未着手。  
+状態：設計作成時点では未着手。後続の[実装記録](data-ui-analysis-implementation-20260914.md)と[画面検証](verification/ui-review-20260914.md)を参照。以下は当初設計として保持する。  
 確認したmain：[`904d4b3`](https://github.com/guchio2366-dev/us-midterms-2026/commit/904d4b38723e8e1051da460c3ac25cf6964e2f8e)
 
 ## 1. 目的・対象・進め方

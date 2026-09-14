@@ -80,6 +80,7 @@ const sourceById = new Map(sources.map(source => [source.sourceId,source]));
 const candidateById = new Map(elections.flatMap(election => election.candidates).map(candidate => [candidate.candidateId,candidate]));
 const publishedNewsItems = getPublishedNews(newsItems);
 const recentNewsFeed = buildRecentFeed(newsItems,observationData);
+const latestContentDate = ['2026-09-13',...issueReports.filter(item=>item.status==='published').map(item=>item.updatedAt),...observationData.races.filter(item=>item.status==='published').map(item=>item.updatedAt)].sort().at(-1)!;
 const houseByCombo = new Map(houseDistricts.map(district => [`${district.stateFips}${district.districtId.endsWith('-AL') ? '00' : String(district.district).padStart(2,'0')}`,district]));
 const electionByState = (state: State) => elections.filter(election => seatById.get(election.seatId)?.stateFips === state.fips);
 const targetSeatIds = uniqueElectionSeatIds(elections);
@@ -312,7 +313,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <main>
   ${introductionMarkup()}
   <nav class="jump-nav" aria-label="ページ内メニュー"><a href="#national-overview">全国情勢</a><a href="#news">ニュース</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a></nav>
-  <div class="dateline"><span>サイト内容更新 2026-09-13</span><span>上院 通常${regularCount}＋特別${specialCount}</span><span>下院 全435</span><span>候補者 ${candidateCount}人</span><span>版 ${APP_VERSION}</span><button id="reload-app" class="reload-app" type="button">最新版を再読み込み</button></div>
+  <div class="dateline"><span>サイト内容更新 ${escapeHtml(latestContentDate)}</span><span>上院 通常${regularCount}＋特別${specialCount}</span><span>下院 全435</span><span>候補者 ${candidateCount}人</span><span>版 ${APP_VERSION}</span><button id="reload-app" class="reload-app" type="button">最新版を再読み込み</button></div>
   <div class="data-caution ${baselineComplete ? 'verified' : ''}" role="note"><strong>${baselineComplete ? '収録範囲' : '基礎情報に未確認項目があります'}</strong><span>上院100議席、2026年35選挙、候補者、統一情勢評価、50州の人口・産業・2024年結果を収録。デラウェアは予備選前、ロードアイランドは9月9日の開票確定前として区別しています。</span></div>
   <section id="senate" class="summary" aria-labelledby="current-heading"><div><p class="kicker">現在の上院会派構成</p><h2 id="current-heading">100議席の内訳</h2></div><div id="current-counts" class="counts"></div></section>
   <section class="workspace" aria-label="上院州別地図と詳細">
@@ -345,8 +346,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <details class="source-panel"><summary>権限・票数の出典</summary>${refs([...new Set(powerRules.flatMap(rule => rule.sourceIds))])}</details>
   </section>
 
-  <section id="issues" class="section-block issues" aria-labelledby="issues-heading">
-    <div class="section-heading"><div><p class="kicker">ISSUE LENS</p><h2 id="issues-heading">8つの論点から選挙を見る</h2></div><p>各話題を一次分類へ一つだけ置き、権限・指標を別軸で結びます。</p></div>
+  <section id="issues" class="section-block issues" aria-label="8つの論点から選挙を見る">
+    <p class="issue-panel-guide">論点を選び、候補者の違い、州の事例、次に確認する点を読む。</p>
     <div id="issue-tabs" class="issue-tabs" role="tablist" aria-label="論点を選択">${issueCategories.map(issue => `<button id="issue-tab-${issue.issueId}" type="button" role="tab" data-issue="${issue.issueId}" aria-controls="issue-detail" aria-selected="${issue.issueId === activeIssueId}">${issue.label}</button>`).join('')}</div>
     <div id="issue-detail" class="issue-detail" role="tabpanel" aria-labelledby="issue-tab-${activeIssueId}"></div>
     <article class="soy-case" aria-labelledby="soy-heading">
