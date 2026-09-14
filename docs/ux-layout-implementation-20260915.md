@@ -48,6 +48,7 @@
 
 ## 公開後の品質確認
 
+- [PR #14](https://github.com/guchio2366-dev/us-midterms-2026/pull/14)を[PR CI](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34910785149)成功後にマージ。マージコミット `6ece58187af088a8f7f4c1f23ad33cdf137bddf6`の[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34910848773)は成功。
 - 公開Chromeで横はみ出し、重複ID、名前のないボタン・リンク、見出しや本文の意図しない切断がないことを再確認した。
 - 注目州タブは矢印キーで移動でき、州切替によってニュースの州フィルターや議席仮定が変わらないことを確認した。
 - 州詳細の冒頭に主要2候補・党派・現職表示を追加し、判断材料を読む前に対立構図を把握できるようにした。

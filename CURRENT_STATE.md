@@ -2,7 +2,7 @@
 
 > **現状確認の入口。** 本書は確認したコード時点の記録である。着手時には最新main・公開処理・定点観測の実行記録と照合する。設計書にある「未実装」「次工程」は、その設計書の作成時点の表現である。
 
-文書確認日：2026-09-15（日本時間）。概説・更新欄・州詳細のUX改善を[PR #13](https://github.com/guchio2366-dev/us-midterms-2026/pull/13)で反映した。PRの[テスト・ビルド](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34906165698)と、マージコミット`73fcf5e2cd49e27531e45cc757fb74170061ce3c`の[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34906223760)は成功。公開Chrome 1363×936で配置・州切替・候補者比較・議席変更とUndo・ニュースと予定を確認した。公開後の品質確認で、州詳細冒頭への主要候補表示と本文スキップリンクを補正した。[今回の検証記録](docs/ux-layout-implementation-20260915.md)を参照。指定寸法とSafari実機は未検証。
+文書確認日：2026-09-15（日本時間）。概説・更新欄・州詳細のUX改善を[PR #13](https://github.com/guchio2366-dev/us-midterms-2026/pull/13)で反映した。公開後の品質確認は[PR #14](https://github.com/guchio2366-dev/us-midterms-2026/pull/14)で州詳細冒頭への主要候補表示と本文スキップリンクを補正し、マージコミット`6ece58187af088a8f7f4c1f23ad33cdf137bddf6`の[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34910848773)が成功した。公開Chrome 1363×936で配置・州切替・候補者比較・議席変更とUndo・ニュースと予定を確認した。[今回の検証記録](docs/ux-layout-implementation-20260915.md)を参照。指定寸法とSafari実機は未検証。
 
 ## 1. 目的と参照先
 
