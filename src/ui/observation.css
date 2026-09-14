@@ -36,9 +36,16 @@
 .detail .observation-choice { padding: 14px; background: #f1f4f6; border: 1px solid #bdcdd4; }
 .detail .observation-choice label { display: flex; flex-direction: column; gap: 6px; font-size: 16px; font-weight: 600; }
 .detail .observation-choice select { width: 100%; max-width: 100%; min-height: 44px; font-size: 16px; padding: 8px; }
-.observation-comparison-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.observation-candidate-head { position: sticky; top: 0; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 10px 0; background: #fff; border-block: 1px solid #bfc9c7; }
+.observation-candidate-head > div { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 2px 8px; min-width: 0; padding: 9px 12px; background: #f1f4f3; }
+.observation-candidate-head b { overflow-wrap: anywhere; color: var(--navy); font-size: 16px; }
+.observation-candidate-head small { grid-column: 2; }
+.observation-comparison-item { padding: 14px 0 !important; }
+.observation-comparison-item > h5 { margin: 0 0 8px !important; font-size: 15px !important; }
+.observation-comparison-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .observation-comparison-row > article { min-width: 0; padding: 14px; border: 1px solid #d4dcda; background: #fafbf9; }
-.observation-comparison > details > summary { font-weight: 700; border-top: 1px solid #d4dcda; }
+.observation-comparison-more { margin-top: 8px; border-top: 1px solid #d4dcda; }
+.observation-comparison-more > summary { font-weight: 700; }
 .observation-comparison-row h5 .party-dot { display: inline-block; margin-right: 8px; }
 .observation-update { padding: 16px 0; border-top: 1px solid #d4dcda; }
 .observation-update > small { margin-bottom: 6px; }
@@ -63,6 +70,11 @@
 @container (min-width: 664px) {
   .observation-decision-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
   .observation-comparison-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (max-width: 380px) {
+  .observation-candidate-head { position: static; }
+  .observation-comparison-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .observation-comparison-row > article::before { content: attr(aria-label); display: block; margin-bottom: 7px; color: var(--navy); font-size: 13px; font-weight: 800; }
 }
 @media (prefers-reduced-motion: reduce) {
   .observation-body { scroll-behavior: auto; }
