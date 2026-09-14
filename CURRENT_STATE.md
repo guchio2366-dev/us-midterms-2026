@@ -2,8 +2,7 @@
 
 > **現状確認の入口。** 本書は確認したコード時点の記録である。着手時には最新main・公開処理・定点観測の実行記録と照合する。設計書にある「未実装」「次工程」は、その設計書の作成時点の表現である。
 
-文書確認日：2026-09-14（日本時間）。確認対象のアプリ実装：[`727fa2c`](https://github.com/guchio2366-dev/us-midterms-2026/commit/727fa2c4ca1695e525a9d9ca56459f9d2806f999)（2026-09-13 20:57 JST）。
-同コミットの [GitHub Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34755778770) は2026-09-13 20:58 JSTに成功し、テスト・ビルド・配備の各工程を確認した。本書を追加する文書更新と、アプリ実装の更新を区別する。
+文書確認日：2026-09-14（日本時間）。確認対象のアプリ実装：[`377336f`](https://github.com/guchio2366-dev/us-midterms-2026/commit/377336fff27a27616b760fa5f851e096f1e59e64)。同コミットの [GitHub Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799993330) は成功。112テストとビルドも成功した。最終配備後の公開画面の再照合はブラウザー接続タイムアウトで未完了。先行段階の操作検証の範囲は[検証記録](docs/verification/ui-review-20260914.md)を参照。
 
 ## 1. 目的と参照先
 
@@ -26,7 +25,7 @@
 | 全国情勢 | 左：議席比較、中央：注目州、右：ニュース・今後の予定。横向き・幅944px以上・高さ600px以上で等幅3列 | [style.css](src/style.css) |
 | 議席評価 | SabatoとInside Electionsの方向が一致する選挙を党派側へ配分。不一致・接戦は未配分。地図とシミュレーションは同じ統合評価を参照 | [評価集計](src/rating-consensus.ts)、[評価スナップショット](src/data/rating-snapshot.ts) |
 | 暫定配分 | 非改選D34・R31に改選D側12・R側17を加え、D46・R48・未配分6。勝率・確定結果ではない | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
-| ニュース | 既存12記事と分析更新6件を「最近のニュース」に統合。旧「直近の重要な更新」の独立欄は撤去。10件ごとにページング | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
+| ニュース | 既存12記事と分析更新9件を「最近のニュース」に統合。旧「直近の重要な更新」の独立欄は撤去。10件ごとにページング | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
 | 今後の予定 | 公開7件（統計公表3件、メーン討論会4件）。同じ欄のタブで切替。州による絞込み、延期・中止・結果確認待ち、結果記事との相互参照に対応 | [観測データ](src/data/observation.json)、[予定ロジック](src/observation-logic.ts) |
 | 接戦州 | AK・ME・MI・NH・OH特別・TXの6選挙に判断材料、候補者比較、注目事項を公開。注目州は最初の3件を表示し、残りを展開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | 候補者比較 | 経歴・地元、政策・採決・発言、政党・トランプとの関係、実績への評価・批判、有権者の受け止めの5項目 | [観測データ](src/data/observation.json) |
@@ -58,7 +57,7 @@ Iowaの既存研究を削除したわけではない。New Hampshireは後から
 2. 8論点レポートは部分公開。全州・全候補を同じ深さで調査したものではない。争点から投票変化・勝率を推定する因果モデル、調査平均、Xの自動話題抽出は未実装。
 3. 公開Chromeで代表操作と長文表示を検証した。指定寸法のiPad・iPhoneおよび実機Safariは未検証。CI成功と実機の見た目の検証を混同しない。DE・RIなどの名簿状態、情報源別の対象時点も必要な更新時に再照合する。
 
-追加工程：[設計](docs/data-ui-analysis-design-20260914.md)に基づきAを一巡し、8論点を各5節と新規8事例で拡充した。[実装記録](docs/data-ui-analysis-implementation-20260914.md)、[画面検証](docs/verification/ui-review-20260914.md)。C1・C2の公開成功を確認。5情報源の内容照合と指定端末での表示検証は継続待ち。全8論点は証拠の不足を明示してpartialを維持する。
+追加工程：[設計](docs/data-ui-analysis-design-20260914.md)に基づきAを一巡し、8論点を各5節と新規8事例で拡充した。[実装記録](docs/data-ui-analysis-implementation-20260914.md)、[画面検証](docs/verification/ui-review-20260914.md)。C1・C2・C3の公開成功を確認。5情報源の内容照合と指定端末での表示検証は継続待ち。全8論点は証拠の不足を明示してpartialを維持する。
 
 ## 6. 設計書と実装の対応
 

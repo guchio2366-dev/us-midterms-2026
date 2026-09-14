@@ -36,6 +36,6 @@
 - A：b0d2a3a6088b58d850f7d321bb3c074602b058d6。
 - C1：66b25dc93398fecba9acbc870671e07a0aa4a984、[配備成功](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799295876)。公開画面で家計本文・節見出しを照合。
 - C2：6f1abea6da2f905d5cec45096bdf29e189f4cdd2、[配備成功](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799529369)。
-- C3：この文書を追加したコミットと同SHAのPages workflowを照合する。公開結果の追記は検証後に行う。
+- C3：377336fff27a27616b760fa5f851e096f1e59e64、[配備成功](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799993330)。最終配備後の公開画面の再照合はブラウザー接続のタイムアウトで未完了。前段の公開画面での操作検証と、最終版のテスト・ビルド・配備成功を区別する。
 
 次回は未確認5情報源の日次照合を継続し、NHの政策比較と、各論点の有権者評価の原表を優先する。表示については指定iPad/iPhone寸法の検証が残る。
