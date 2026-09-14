@@ -2,7 +2,7 @@
 
 > **現状確認の入口。** 本書は確認したコード時点の記録である。着手時には最新main・公開処理・定点観測の実行記録と照合する。設計書にある「未実装」「次工程」は、その設計書の作成時点の表現である。
 
-文書確認日：2026-09-15（日本時間）。概説・更新欄・州詳細のUX改善をローカルコミット`d4b5937`へ実装し、112テストと本番ビルドが成功した。利用者がブランチ公開・PR・検証後のマージ・Pages公開を承認したため、PR検証と公開を進める。配備・画面確認は完了後の記録を参照する。現在の公開版は引き続き[`377336f`](https://github.com/guchio2366-dev/us-midterms-2026/commit/377336fff27a27616b760fa5f851e096f1e59e64)で、同コミットの[GitHub Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34799993330)は成功している。先行段階の操作検証の範囲は[検証記録](docs/verification/ui-review-20260914.md)を参照。
+文書確認日：2026-09-15（日本時間）。概説・更新欄・州詳細のUX改善を[PR #13](https://github.com/guchio2366-dev/us-midterms-2026/pull/13)で反映した。PRの[テスト・ビルド](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34906165698)と、マージコミット`73fcf5e2cd49e27531e45cc757fb74170061ce3c`の[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34906223760)は成功。公開Chrome 1363×936で配置・州切替・候補者比較・議席変更とUndo・ニュースと予定を確認した。[今回の検証記録](docs/ux-layout-implementation-20260915.md)を参照。指定寸法とSafari実機は未検証。
 
 ## 1. 目的と参照先
 
@@ -59,13 +59,13 @@ Iowaの既存研究を削除したわけではない。New Hampshireは後から
 
 追加工程：[設計](docs/data-ui-analysis-design-20260914.md)に基づきAを一巡し、8論点を各5節と新規8事例で拡充した。[実装記録](docs/data-ui-analysis-implementation-20260914.md)、[画面検証](docs/verification/ui-review-20260914.md)。C1・C2・C3の公開成功を確認。5情報源の内容照合と指定端末での表示検証は継続待ち。全8論点は証拠の不足を明示してpartialを維持する。
 
-UI改善：[概説・直近の更新・州詳細のUX改善設計](docs/ux-layout-design-20260915.md)に基づく実装をローカルで完了。[実装記録](docs/ux-layout-implementation-20260915.md)に変更箇所と検証結果を記録した。GitHubへの反映、Actions、Pagesの指定寸法・代表操作は未確認。8論点の内容再設計・個別共有と一括校正は別工程として保留。
+UI改善：[概説・直近の更新・州詳細のUX改善設計](docs/ux-layout-design-20260915.md)に基づく実装を公開。[実装記録](docs/ux-layout-implementation-20260915.md)に変更箇所と検証結果を記録した。GitHub反映・Actions・公開Chromeでの代表操作は確認済み。指定寸法・Safari実機は未確認。8論点の内容再設計・個別共有と一括校正は別工程として保留。
 
 ## 6. 設計書と実装の対応
 
 | 文書 | 位置づけ・後続変更 |
 | --- | --- |
-| [概説・更新欄・州詳細のUX改善](docs/ux-layout-design-20260915.md) | 利用者の①〜⑪の合意を反映した後続設計。[実装記録](docs/ux-layout-implementation-20260915.md)あり。GitHub・Pages反映は未実施 |
+| [概説・更新欄・州詳細のUX改善](docs/ux-layout-design-20260915.md) | 利用者の①〜⑪の合意を反映した後続設計。[実装記録](docs/ux-layout-implementation-20260915.md)あり。PR #13・Pages公開済み |
 | [冒頭の概説設計](docs/intro-overview-design-20260913.md) | 作成時の設計記録。[実装報告](docs/intro-overview-implementation-20260913.md)あり。制度説明の置き場などは後続設計を優先 |
 | [議席比較・iPad設計](docs/seat-comparison-ipad-design-20260913.md) | 議席比較・制度説明・地図と州詳細を実装。全国情勢の列構成、シミュレーションの初期値は後続実装で更新 |
 | [接戦州観測設計](docs/observation/design.md) | 6州の詳説と観測データを実装。重要更新・予定の配置は次の統合設計で変更 |
