@@ -236,4 +236,4 @@ export const events: EventItem[] = states.flatMap(state => {
   return items;
 });
 export const DATA_AS_OF = '2026-09-09';
-export const APP_VERSION = 'research03-2026-09-12';
+export const APP_VERSION = 'research04-2026-09-13';

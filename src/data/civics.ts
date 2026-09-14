@@ -87,6 +87,7 @@ export const issueCategories: IssueCategory[] = [
 ];
 
 const checked = (source: Omit<Source,'retrievedAt'|'contentVerifiedAt'>): Source => ({...source,retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'});
+const checkedOn = (date: string, source: Omit<Source,'retrievedAt'|'contentVerifiedAt'>): Source => ({...source,retrievedAt:date,contentVerifiedAt:date});
 export const civicSources: Source[] = [
   checked({sourceId:'constitution-legislation',title:'Constitution Annotated — Article I legislative process',publisher:'Library of Congress',url:'https://constitution.congress.gov/browse/article-1/section-7/',publishedAt:null,referencePeriod:'両院可決、歳入法案、大統領署名・拒否権と3分の2再可決'}),
   checked({sourceId:'constitution-appointments',title:'Constitution Annotated — Article II, Section 2',publisher:'Library of Congress',url:'https://constitution.congress.gov/browse/article-2/section-2/',publishedAt:null,referencePeriod:'上院の条約・指名への助言と同意'}),
@@ -101,4 +102,9 @@ export const civicSources: Source[] = [
   checked({sourceId:'crs-reconciliation',title:'The Budget Reconciliation Process',publisher:'Congressional Research Service',url:'https://crsreports.congress.gov/product/pdf/R/R44058',publishedAt:null,referencePeriod:'財政調整法と上院の討論制限・バードルール'}),
   checked({sourceId:'ustr-trade-agenda',title:'2026 Trade Policy Agenda and 2025 Annual Report',publisher:'Office of the U.S. Trade Representative',url:'https://ustr.gov/sites/default/files/files/Press/Releases/2026/2026%20Trade%20Policy%20Agenda%202025%20Annual%20Report.pdf',publishedAt:'2026-02-16',referencePeriod:'トランプ政権の通商政策方針と2025年措置'}),
   checked({sourceId:'usda-trade',title:'Agricultural Trade — Charting the Essentials',publisher:'USDA Economic Research Service',url:'https://ers.usda.gov/data-products/ag-and-food-statistics-charting-the-essentials/agricultural-trade',publishedAt:null,updatedAt:'2026-06-30',referencePeriod:'2025年農産物輸出、対中輸出減少と大豆需要'}),
+  checkedOn('2026-09-13',{sourceId:'house-explained',title:'The House Explained',publisher:'U.S. House of Representatives',url:'https://www.house.gov/the-house-explained',publishedAt:null,referencePeriod:'下院435議席、2年任期、全議席改選の制度概要'}),
+  checkedOn('2026-09-13',{sourceId:'house-legislative-process',title:'The Legislative Process',publisher:'U.S. House of Representatives',url:'https://www.house.gov/the-house-explained/the-legislative-process',publishedAt:null,referencePeriod:'両院による法案審議、予算・歳出、大統領への送付'}),
+  checkedOn('2026-09-13',{sourceId:'pew-midterms-2026',title:'As the 2026 midterms approach, economy is front and center',publisher:'Pew Research Center',url:'https://www.pewresearch.org/politics/2026/07/23/as-the-2026-midterms-approach-economy-is-front-and-center/',publishedAt:'2026-07-23',referencePeriod:'2026年中間選挙前の政権評価と主要論点'}),
+  checkedOn('2026-09-13',{sourceId:'pew-community-partisanship-2024',title:'Partisanship in Rural, Suburban and Urban Communities',publisher:'Pew Research Center',url:'https://www.pewresearch.org/politics/2024/04/09/partisanship-in-rural-suburban-and-urban-communities/',publishedAt:'2024-04-09',referencePeriod:'都市・郊外・地方で異なる党派構成'}),
+  checkedOn('2026-09-13',{sourceId:'pew-turnout-2022',title:'Voter turnout, 2018-2022',publisher:'Pew Research Center',url:'https://www.pewresearch.org/politics/2023/07/12/voter-turnout-2018-2022/',publishedAt:'2023-07-12',referencePeriod:'2018・2020・2022年選挙の投票参加と党派差'}),
 ];
