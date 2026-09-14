@@ -494,7 +494,7 @@
       "sourceId": "obs-roster-me",
       "title": "Maine選挙当局",
       "publisher": "Maine選挙当局",
-      "url": "https://www.maine.gov/sos/cec/elec/",
+      "url": "https://www.maine.gov/sos/elections-voting/upcoming-elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
       "retrievedAt": "2026-09-14",
@@ -506,7 +506,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
+      "checkStatus": "not-checked",
       "lastSuccessAt": null
     },
     {
@@ -544,7 +544,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "not-checked",
+      "checkStatus": "unavailable",
       "lastSuccessAt": null
     },
     {
@@ -672,7 +672,7 @@
       "category": "reporting",
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
-      "alternativeUrl": null,
+      "alternativeUrl": "https://alaskapublic.org/news/politics",
       "checkStatus": "unavailable",
       "lastSuccessAt": null
     },

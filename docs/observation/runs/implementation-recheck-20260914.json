@@ -1,0 +1,82 @@
+{
+  "execution": "設計A：未確認5情報源の一巡。日次全体の確認時刻は更新しない。",
+  "run": {
+    "runId": "implementation-recheck-20260914",
+    "startedAt": "2026-09-14T02:14:23Z",
+    "completedAt": "2026-09-14T02:14:23Z",
+    "outcome": "partial",
+    "checkedSourceIds": [],
+    "pendingSourceIds": [
+      "obs-roster-me",
+      "obs-roster-oh",
+      "obs-roster-nh",
+      "obs-sabato",
+      "obs-local-ak"
+    ],
+    "note": "移転先と確認範囲を整理。候補者名簿・評価・記事内容の照合は5件とも残る。"
+  },
+  "sourceResults": [
+    {
+      "sourceId": "obs-roster-me",
+      "attemptedUrls": [
+        "https://www.maine.gov/sos/cec/elec/",
+        "https://www.maine.gov/portal/government/edemocracy/elections_voting.html",
+        "https://www.maine.gov/sos/elections-voting/upcoming-elections"
+      ],
+      "checkedAt": "2026-09-14T02:14:23Z",
+      "result": "not-checked",
+      "scope": "前回補足確認以降の登録対象。名簿は2026年本選、評価は最新上院評価。",
+      "note": "公式ポータルから移転先に到達。7月27日版本選Excel名簿と8月25日版記名候補PDFの区別は確認。添付名簿本文は取得・照合できず、候補者確定の再確認は未完了。",
+      "nextCheck": "次回日次で公式添付資料・新一覧の本文を再照合。既存名簿・評価・最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/"
+      ],
+      "checkedAt": "2026-09-14T02:14:23Z",
+      "result": "unavailable",
+      "scope": "前回補足確認以降の登録対象。名簿は2026年本選、評価は最新上院評価。",
+      "note": "登録先の原文取得に失敗。公式ドメイン内検索でも対象資料本文を照合できず。",
+      "nextCheck": "次回日次で公式添付資料・新一覧の本文を再照合。既存名簿・評価・最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections",
+        "https://www.sos.nh.gov/"
+      ],
+      "checkedAt": "2026-09-14T02:14:23Z",
+      "result": "unavailable",
+      "scope": "前回補足確認以降の登録対象。名簿は2026年本選、評価は最新上院評価。",
+      "note": "登録先の原文取得に失敗。公式ドメイン内検索でも対象資料本文を照合できず。",
+      "nextCheck": "次回日次で公式添付資料・新一覧の本文を再照合。既存名簿・評価・最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/",
+        "https://centerforpolitics.org/"
+      ],
+      "checkedAt": "2026-09-14T02:14:23Z",
+      "result": "unavailable",
+      "scope": "前回補足確認以降の登録対象。名簿は2026年本選、評価は最新上院評価。",
+      "note": "登録先の原文取得に失敗。公式ドメイン内検索でも対象資料本文を照合できず。",
+      "nextCheck": "次回日次で公式添付資料・新一覧の本文を再照合。既存名簿・評価・最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-local-ak",
+      "attemptedUrls": [
+        "https://alaskapublic.org/politics/",
+        "https://alaskapublic.org/",
+        "https://alaskapublic.org/news/politics"
+      ],
+      "checkedAt": "2026-09-14T02:14:23Z",
+      "result": "unavailable",
+      "scope": "前回補足確認以降の登録対象。名簿は2026年本選、評価は最新上院評価。",
+      "note": "公式トップのPoliticsリンクから新一覧URLを確認。最初の取得は成功したが記事部分の追加取得が403。一覧の更新範囲と記事本文を照合できず、確認成功にはしない。",
+      "nextCheck": "次回日次で公式添付資料・新一覧の本文を再照合。既存名簿・評価・最後の成功日時を維持。"
+    }
+  ],
+  "publicationEvidence": "このファイルを含むコミットと対応Pages workflowを参照"
+}
