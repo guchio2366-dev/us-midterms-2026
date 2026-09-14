@@ -477,3 +477,39 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
 
 /* Evidence stays beside the explanation without adding another scroll area. */
 .issue-paragraph-evidence{margin:8px 0 12px;font-size:.8rem;overflow-wrap:anywhere}.issue-paragraph-evidence summary{cursor:pointer;min-height:40px;display:list-item;padding:8px 0}.issue-paragraph-evidence ul{padding-left:20px}.issue-paragraph-evidence li{margin:8px 0}.issue-paragraph-evidence p{margin:4px 0}.issue-panel-guide{margin:0 0 18px;line-height:1.7;font-size:.9rem}
+
+/* Decision design: one count and one category across national, map and scenario views. */
+.national-totals {display:flex;flex-wrap:wrap;justify-content:space-between;gap:.35rem .65rem;margin:.45rem 0;font-size:14px;line-height:1.6}
+.national-totals b:first-child {color:#174f9e}
+.national-totals b:nth-of-type(2) {color:#9f2730}
+.national-premise {font-size:12px;line-height:1.6;margin:.6rem 0;padding-top:.5rem;border-top:1px solid #dedbd6}
+.consensus-split {background:repeating-linear-gradient(135deg,#dedbd6 0 3px,#716a60 3px 4px)!important;color:#292620}
+.consensus-missing {background:#fff!important;border:1px dashed #716a60;color:#292620}
+.comparison-values {flex-wrap:wrap;gap:.2rem .65rem}
+.candidate-context {font-size:13px;line-height:1.75;margin:.6rem 0}
+.state-background {margin-top:.7rem}
+.state-related-news button {display:block;text-align:left;min-height:44px;width:100%;padding:.6rem;white-space:normal}
+.state-related-news button small,.state-related-news button span {display:block}
+.observation-materials>details {margin:.5rem 0;border-top:1px solid #dedbd6;padding:.5rem 0}
+.observation-materials>details>summary {font-weight:700;cursor:pointer;min-height:44px;display:flex;align-items:center}
+.path-list {min-width:0}
+.path-card,.path-preview,.path-alternative {min-width:0;overflow-wrap:anywhere}
+.path-card .observation-limit {font-size:12px}
+.path-card li>button,.path-alternative>button {min-height:44px;font-weight:700}
+.path-locks {margin:1rem 0}
+.path-locks>label {display:flex;align-items:center;gap:.65rem;min-height:44px;font-size:13px;padding:.3rem 0}
+.path-locks input {width:18px;height:18px;flex:none}
+.path-alternatives>div {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.path-alternative {border:1px solid #dedbd6;padding:.75rem}
+.path-alternatives>summary {cursor:pointer;padding:.65rem 0;min-height:44px}
+.path-swap {border-top:1px solid #dedbd6;padding:.5rem 0}
+.path-swap label {display:block;font-size:13px}
+.path-swap select {display:block;max-width:100%;width:100%;min-height:44px;padding:.5rem}
+.path-preview button {min-height:44px}
+.path-preview:focus {outline:2px solid #9c762c;outline-offset:3px}
+.path-alternative .observation-evidence,.path-card .observation-evidence {font-size:12px}
+@media(max-width:767px) {
+  .path-alternatives>div {grid-template-columns:1fr}
+  .national-totals {font-size:14px}
+  .path-card p,.path-preview p {font-size:14px;line-height:1.7}
+}

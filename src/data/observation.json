@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-14-v2",
+  "revision": "observation-2026-09-14-v2-decision-editorial",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -1926,10 +1926,10 @@
     {
       "electionId": "2026-NH-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "headline": "生活費と、政権からの独立性をどう評価するか",
       "featuredSummary": "Pappasは生活費と医療、Sununuは減税と独立した実務能力を訴える。Trumpからの推薦と過去の対立を具体的に読み、政権への評価が候補者の評価にどう重なるかを見る。",
-      "lead": "両候補は州の利益を実現する能力を訴える。政策の違いに加え、SununuとTrumpの距離をどう評価するかが確認点になる。",
+      "lead": "Pappasは生活費軽減と医療保障、Sununuは減税・規制削減を訴える。Sununuは過去にTrumpを批判した一方、今回は推薦を受けており、州を代表する独立性をどう説明するかも比較点になる。根拠の取材は8月11日公表で、予備選後の有権者評価は未確認である。",
       "uncertainty": "候補者の主張と取材は確認できるが、予備選後の支持のまとまりや、各論点が得票をどれだけ動かすかはまだ十分に確認できていない。",
       "evidenceIds": [
         "ev-obs-nh-wbur"
@@ -2359,11 +2359,12 @@
       "updatedAt": "2026-09-14",
       "title": "CollinsがTrumpの5,000ドル給付案に財政面から異論",
       "happened": "Maine Publicによると、CollinsはTrumpが共和党の議会支配維持を条件に提案した成人1人5,000ドル給付について、1兆ドル超との初期分析を挙げて現状では実現困難と述べた。Texasの共和党大会には参加せず、Maineで選挙運動をしていた。",
-      "meaning": "Trumpとの関係を抽象的な近さだけでなく、個別の財政提案への判断として比較できる材料を追加した。",
+      "meaning": "Collinsが給付案の財政負担に異論を示したことで、Trumpとの距離を個別の提案への判断として比較できる。独立性を訴える姿勢と、実際の採決・政策判断を照らす材料になる。",
       "uncertainty": "この発言への有権者評価と投票への効果は未確認。大会欠席と一つの反対発言だけで、政権との恒常的な距離は判断できない。",
       "evidenceIds": [
         "ev-obs-maine-public-collins-payout"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-mi-convention-2026-09-11",
@@ -2377,11 +2378,12 @@
       "updatedAt": "2026-09-14",
       "title": "共和党大会の攻撃にEl-Sayedが生活費・貿易で応答",
       "happened": "共和党大会でTrumpはEl-Sayedを批判し、Rogersはテロ組織から資金提供を受けていると主張したが、APは根拠が示されなかったと報じた。翌日のEl-Sayedは生活費、対カナダ貿易、医療へ論点を戻そうとした。",
-      "meaning": "候補者比較に大会での発言とEl-Sayedの応答を追加し、裏付けのない主張は事実と区別した。",
+      "meaning": "Rogers側はEl-Sayedへの批判を、El-Sayed側は生活費・貿易・医療を前面に出している。相手への評価を問う訴えと、政策の解決策を問う訴えの違いを比較できる。",
       "uncertainty": "大会での攻防が各候補への評価や投票参加をどう変えたかは未確認。集会への参加人数も州全体の支持を示さない。",
       "evidenceIds": [
         "ev-obs-ap-mi-convention"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-tx-ads-2026-09-12",
@@ -2393,13 +2395,14 @@
       "newsId": null,
       "eventDate": "2026-09-12",
       "updatedAt": "2026-09-14",
-      "title": "Paxton支援の大型広告投下が開始",
+      "title": "Paxton支援団体、テキサス上院選で大型広告の放映を開始",
       "happened": "Texas Tribuneによると、Senate Leadership FundとつながるTexas PACが約5,130万ドルの放送広告を予約し、9月12日に放映を開始した。共和党系の支出・予約は9月末まで計8,110万ドル、民主党側は4,370万ドル。",
-      "meaning": "広告投下後の認知・好感度と争点評価を、新しい確認点に加えた。",
+      "meaning": "Paxton支援団体の広告が放映段階に入った。広告内容を従来の主張と照らすことで、前面に出す争点を比較できる。放映後の認知や好感度の調査は、有権者の受け止めを確かめる材料になる。",
       "uncertainty": "支出額は広告効果や得票を示さない。候補者陣営と外部団体では広告単価が異なるため、金額だけで露出量も比較できない。",
       "evidenceIds": [
         "ev-obs-texas-tribune-spending"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-ssrs-2026-09-09",
@@ -2411,14 +2414,16 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-09",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "title": "同じ接戦でも、候補者を評価する焦点が異なる",
       "happened": "SSRSが8月31日〜9月6日のCNN調査を公表。メーンは現職・政権への評価、ミシガンは政策的位置に焦点を当てた。",
-      "meaning": "州ごとに読む判断材料を分けた。情勢評価や利用者の議席仮定はこの分析では動かさない。",
+      "meaning": "メーンでは現職Collinsと政権への評価、ミシガンでは候補者の政策的位置が比較の中心になる。同じ接戦評価でも、有権者が何を判断しているかは州によって異なる。",
       "uncertainty": "争点から得票への因果効果を測った結果ではない。",
       "evidenceIds": [
         "ev-obs-ssrs"
-      ]
+      ],
+      "editorialType": "analysis",
+      "publishedAt": "2026-09-13"
     },
     {
       "updateId": "obs-update-mi-ai-2026-09-09",
@@ -2429,14 +2434,15 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-09",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "title": "El-SayedがAI開発の一時停止を提案",
       "happened": "陣営が開発停止と安全・労働者保護の提案を公表。",
-      "meaning": "政策の違いを検討する材料に追加した。",
+      "meaning": "AI開発の進め方と安全・労働者保護の両立について、El-Sayedがどのような条件を求めるかを比較できる。Rogersの同じ論点への回答と合わせて読む必要がある。",
       "uncertainty": "提案への有権者の賛否や投票への影響は未確認。",
       "evidenceIds": [
         "ev-obs-abdul-ai"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-me-debates-2026-09-04",
@@ -2447,14 +2453,15 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-04",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "title": "メーンで10月の4討論会への合意を確認",
       "happened": "両陣営が10月6・8・13・15日の討論会に合意したと地元紙が報道。",
-      "meaning": "同じ争点への回答を比べる日程を予定欄へ追加した。",
+      "meaning": "CollinsとJacksonの回答を同じ争点で比較する機会になる。公約の内容だけでなく、実績への批判にどう答えるかも確認できる。",
       "uncertainty": "時刻は今回の資料では確認できない。形式や延期の有無を引き続き確認する。",
       "evidenceIds": [
         "ev-obs-maine-debates"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-ak-dfp-2026-08-17",
@@ -2465,14 +2472,15 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-08-17",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "title": "開発支持と生活費への不安が併存",
       "happened": "DFPがLNGと家計負担、順位選択の調査を公表。",
-      "meaning": "資源開発への賛否だけで候補者を選べない背景を追加した。",
+      "meaning": "LNG開発への賛否と、光熱費など家計の負担への評価を分けて読む必要がある。開発支持だけでは候補者の支持を説明できず、利益の届き方が比較点になる。",
       "uncertainty": "進歩派系団体の調査であり、順位再配分も調査上の試算。",
       "evidenceIds": [
         "ev-obs-dfp-ak"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-tx-emerson-2026-08",
@@ -2483,14 +2491,15 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-08-10",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "title": "年齢別支持と争点の優先順位を確認",
       "happened": "8月10日に実査を終えたEmerson調査で、年齢別の支持差と党派別の主要争点が示された。公表日の記載は今回の原文では確認できない。",
-      "meaning": "全体支持率に加えて投票参加と候補者への解決期待を確認する材料とした。",
+      "meaning": "年齢層で支持候補が異なるため、全体の支持率に加え、各層がどの程度投票すると見込まれているかが結果の読み方に関わる。党派別の主要争点も、候補者に期待する解決策を比較する材料になる。",
       "uncertainty": "8月の断面であり、後続調査との方法差を確認する必要がある。",
       "evidenceIds": [
         "ev-obs-emerson-tx"
-      ]
+      ],
+      "editorialType": "event"
     },
     {
       "updateId": "obs-update-nh-wbur-2026-08-11",
@@ -2501,14 +2510,15 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-08-11",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "title": "生活費と独立性をめぐる両候補の主張",
       "happened": "WBURがPappas・Sununu双方への取材を掲載。経歴の訂正も反映した。",
-      "meaning": "政策と政権との関係を、同じ項目で比べられるようにした。",
+      "meaning": "Pappasの生活費・医療保障と、Sununuの減税・規制削減を比較できる。Sununuの過去のTrump批判と今回の推薦を合わせ、政権との距離を具体的な政策判断で読む材料になる。",
       "uncertainty": "予備選前の取材であり、その後の有権者の評価は未確認。",
       "evidenceIds": [
         "ev-obs-nh-wbur"
-      ]
+      ],
+      "editorialType": "event"
     }
   ]
 }

@@ -53,6 +53,8 @@ export interface ObservationEvent {
   resultUpdateId: string | null;
 }
 export interface ObservationUpdate {
+  editorialType?: 'event' | 'analysis';
+  publishedAt?: string;
   updateId: string;
   status: PublicationStatus;
   electionIds: string[];

@@ -2,7 +2,7 @@ import type { ResearchNewsItem } from './research-model';
 
 export const newsItems: ResearchNewsItem[] = [
   {
-    newsId:'news-ia-yougov-poll-2026-09',kind:'election',
+    newsId:'news-ia-yougov-poll-2026-09',uncertainty:'登録有権者と投票予定者では母集団が異なる。他の調査との違いを、そのまま支持移動や当選確率として扱えない。',kind:'election',editorialType:'event',
     headline:'アイオワ州上院選、YouGov調査は対象定義で差が変化',
     eventDate:'2026-09-08',datePrecision:'day',publishedAt:'2026-09-09',updatedAt:'2026-09-11',
     summary:'9月3〜8日のYouGov調査では、登録有権者でTurek 44%・Hinson 43%。loose LVでは45%・43%、strict LVでは47%・43%でした。',
@@ -13,7 +13,7 @@ export const newsItems: ResearchNewsItem[] = [
     sourceIds:['poll-yougov-ia-2026-09'],evidenceIds:['ev-ia-yougov-poll'],location:{mapMode:'region',precision:'state',stateFips:['19'],label:'アイオワ州'},status:'published',
   },
   {
-    newsId:'news-mi-trafalgar-poll-2026-09',kind:'election',
+    newsId:'news-mi-trafalgar-poll-2026-09',uncertainty:'候補者間の差だけでは優位を確定できない。公表された精度幅は候補者間の差の信頼区間とは異なる。',kind:'election',editorialType:'event',
     headline:'ミシガン州上院選、最新調査でも候補者差は1.5ポイント',
     eventDate:'2026-09-09',datePrecision:'day',publishedAt:'2026-09-10',updatedAt:'2026-09-11',
     summary:'Trafalgar Groupの9月7〜9日調査は、El-Sayed 46.3%、Rogers 44.8%、未定6.8%。公式投票用紙の6候補をすべて示しました。',
@@ -24,7 +24,7 @@ export const newsItems: ResearchNewsItem[] = [
     sourceIds:['poll-trafalgar-mi-2026-09','mi-candidate-list-2026'],evidenceIds:['ev-mi-trafalgar-poll','ev-mi-official-candidates'],location:{mapMode:'region',precision:'state',stateFips:['26'],label:'ミシガン州'},status:'published',
   },
   {
-    newsId:'news-ia-emerson-poll-2026-09',kind:'election',
+    newsId:'news-ia-emerson-poll-2026-09',uncertainty:'一つの調査から支持の推移や最終的な勝敗は決められない。',kind:'election',editorialType:'event',
     headline:'アイオワ州上院選、Emerson/Nexstar調査でHinson 50%・Turek 45%',
     eventDate:'2026-09-03',datePrecision:'day',publishedAt:'2026-09-03',updatedAt:'2026-09-11',
     summary:'8月31日から9月1日に投票予定者750人を対象に実施した調査で、Ashley Hinsonが50%、Josh Turekが45%でした。',
@@ -38,11 +38,11 @@ export const newsItems: ResearchNewsItem[] = [
     location:{mapMode:'region',precision:'state',stateFips:['19'],label:'アイオワ州'},status:'published',
   },
   {
-    newsId:'news-ak-inside-rating-2026-09',kind:'election',
+    newsId:'news-ak-inside-rating-2026-09',uncertainty:'評価機関の分類変更であり、当選確率や有権者の支持率の変化を数値化したものではない。',kind:'election',editorialType:'event',
     headline:'Inside Elections、アラスカ州上院選をLean RからTilt Rへ変更',
     eventDate:'2026-09-03',datePrecision:'day',publishedAt:'2026-09-03',updatedAt:'2026-09-11',
     summary:'Inside Electionsは9月3日、アラスカ州上院選の評価をLean RepublicanからTilt Republicanへ変更しました。',
-    possibleImpact:'共和党優位が弱まる方向の変更です。Sabato’s Crystal Ballを使う地図色はそのままにし、州詳細の比較欄で機関差を示します。',
+    possibleImpact:'Inside Electionsが共和党優位を弱めた評価変更です。Sabatoとの原分類を並べることで、機関ごとの見方の違いを確認できます。',
     impactKind:'interpretation',policyStage:'not-applicable',
     selectionReason:'評価機関の判断が変わり、同じ選挙に対する機関差の説明が必要になったため。',
     whatChanged:'Lean RからTilt Rへの向きを訂正し、原表記を比較欄に追加しました。',
@@ -51,7 +51,7 @@ export const newsItems: ResearchNewsItem[] = [
     location:{mapMode:'region',precision:'state',stateFips:['02'],label:'アラスカ州'},status:'published',
   },
   {
-    newsId:'news-tx-aarp-poll-2026-09',kind:'election',headline:'テキサス州上院選、AARP調査はTalarico 48%・Paxton 44%',
+    newsId:'news-tx-aarp-poll-2026-09',uncertainty:'調査時点の回答であり、投票参加や未定層の選択を含めた選挙結果は未確定である。',kind:'election',editorialType:'event',headline:'テキサス州上院選、AARP調査はTalarico 48%・Paxton 44%',
     eventDate:'2026-09-01',datePrecision:'range',publishedAt:'2026-09-10',updatedAt:'2026-09-11',
     summary:'8月30日〜9月1日の投票予定者895人調査で、James Talarico 48%、Ken Paxton 44%、未定8%でした。',
     possibleImpact:'候補者差は4ポイント、各候補の公表標本誤差は±3.3ポイントです。EmersonとOvertonの初回質問では差がさらに小さく、調査ごとに先頭も変わります。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -59,7 +59,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['household-economy','immigration','trade-industry'],relatedElectionIds:['2026-TX-2-regular'],relatedCandidateIds:['cand-tx-james-talarico','cand-tx-ken-paxton'],sourceIds:['poll-aarp-tx-september-2026'],evidenceIds:['ev-tx-aarp-topline-2026-09','ev-tx-aarp-method-2026-09'],location:{mapMode:'region',precision:'state',stateFips:['48'],label:'テキサス州'},status:'published',
   },
   {
-    newsId:'news-me-yougov-poll-2026-09',kind:'election',headline:'メーン州上院選、YouGov調査はJackson 48%・Collins 44%',
+    newsId:'news-me-yougov-poll-2026-09',uncertainty:'調査の対象・実施期間を揃えず、他調査との差を支持移動と読むことはできない。',kind:'election',editorialType:'event',headline:'メーン州上院選、YouGov調査はJackson 48%・Collins 44%',
     eventDate:'2026-09-08',datePrecision:'day',publishedAt:'2026-09-09',updatedAt:'2026-09-11',
     summary:'9月2〜8日の投票予定者1,335人調査で、Troy D. Jackson 48%、現職Susan M. Collins 44%、その他1%、未定6%でした。',
     possibleImpact:'CNN/SSRSとFoxでもJacksonが先頭ですが、差は各調査の公表精度幅と同程度です。候補交代と順位選択投票を含め州詳細で確認できます。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -67,7 +67,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['household-economy','health-family','rights-institutions'],relatedElectionIds:['2026-ME-2-regular'],relatedCandidateIds:['cand-me-troy-d-jackson','cand-me-susan-m-collins'],sourceIds:['poll-yougov-me-2026-09','me-replacements-2026','me-election-guide-2026'],evidenceIds:['ev-me-yougov-poll','ev-me-replacement','ev-me-rcv'],location:{mapMode:'region',precision:'state',stateFips:['23'],label:'メーン州'},status:'published',
   },
   {
-    newsId:'news-oh-inside-rating-2026-09',kind:'election',headline:'Inside Elections、オハイオ特別上院選をToss-upへ変更',
+    newsId:'news-oh-inside-rating-2026-09',uncertainty:'Toss Upは接戦という分類であり、双方の当選確率が厳密に50%という意味ではない。',kind:'election',editorialType:'event',headline:'Inside Elections、オハイオ特別上院選をToss-upへ変更',
     eventDate:'2026-09-03',datePrecision:'day',publishedAt:'2026-09-03',updatedAt:'2026-09-11',
     summary:'Inside Electionsは9月3日、オハイオ州の特別上院選をTilt RepublicanからToss-upへ変更しました。',
     possibleImpact:'CookとSabatoもToss Upです。JD Vanceの残任期を争う特別選挙で、Hustedの暫定任命と候補者個人評価を州詳細で確認します。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -75,7 +75,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['household-economy','rights-institutions'],relatedElectionIds:['2026-OH-3-special'],relatedCandidateIds:['cand-oh-sherrod-brown','cand-oh-jon-husted'],sourceIds:['inside-oh-race-2026','oh-dewine-husted-appointment'],evidenceIds:['ev-oh-inside-rating','ev-oh-vacancy'],location:{mapMode:'region',precision:'state',stateFips:['39'],label:'オハイオ州'},status:'published',
   },
   {
-    newsId:'news-ak-asr-final-2026-08',kind:'election',headline:'アラスカ州調査、50.6対49.4は最終RCVラウンド',
+    newsId:'news-ak-asr-final-2026-08',uncertainty:'最終ラウンドの数値は再配分の試算であり、第1希望の支持率や確定した得票ではない。',kind:'election',editorialType:'event',headline:'アラスカ州調査、50.6対49.4は最終RCVラウンド',
     eventDate:'2026-08-23',datePrecision:'range',publishedAt:'2026-08-24',updatedAt:'2026-09-11',
     summary:'Alaska Survey Researchが公表したMary Peltola 50.6%、現職Dan S. Sullivan 49.4%は、1,495人のsubsetによる最終順位選択ラウンドです。',
     possibleImpact:'第一選択の支持率とは比較せず、順位移転後の条件付き結果として表示します。公表投稿だけでは初回ラウンドや完全な方法表を確認できないため部分公開です。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -83,7 +83,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['household-economy','energy-climate','rights-institutions'],relatedElectionIds:['2026-AK-2-regular'],relatedCandidateIds:['cand-ak-mary-peltola','cand-ak-dan-s-sullivan'],sourceIds:['poll-asr-ak-august-2026'],evidenceIds:['ev-ak-asr-final-round-2026-08'],location:{mapMode:'region',precision:'state',stateFips:['02'],label:'アラスカ州'},status:'published',
   },
   {
-    newsId:'news-tx-cook-rating-2026-08',kind:'election',headline:'Cook、テキサス州上院選をLean RからToss Upへ変更',
+    newsId:'news-tx-cook-rating-2026-08',uncertainty:'Cookの評価変更であり、支持率の変化や投票への因果効果を示すものではない。',kind:'election',editorialType:'event',headline:'Cook、テキサス州上院選をLean RからToss Upへ変更',
     eventDate:'2026-08-20',datePrecision:'day',publishedAt:'2026-08-20',updatedAt:'2026-09-11',
     summary:'Cook Political Reportは8月20日、テキサス州上院選をLean RepublicanからToss Upへ変更しました。',
     possibleImpact:'Inside ElectionsはLean Republicanを維持しています。機関差を残し、地図の統一基準を一州だけ置き換えません。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -91,7 +91,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['household-economy','immigration','trade-industry'],relatedElectionIds:['2026-TX-2-regular'],relatedCandidateIds:['cand-tx-james-talarico','cand-tx-ken-paxton'],sourceIds:['cook-tx-race-2026','inside-tx-race-2026'],evidenceIds:['ev-tx-cook-rating-path-2026','ev-tx-inside-rating-path-2026'],location:{mapMode:'region',precision:'state',stateFips:['48'],label:'テキサス州'},status:'published',
   },
   {
-    newsId:'news-oh-fox-poll-2026-08',kind:'election',headline:'オハイオ特別上院選、Fox調査はBrown 53%・Husted 45%',
+    newsId:'news-oh-fox-poll-2026-08',uncertainty:'8月の調査時点の回答であり、後続調査との差には調査方法の違いも関わる。',kind:'election',editorialType:'event',headline:'オハイオ特別上院選、Fox調査はBrown 53%・Husted 45%',
     eventDate:'2026-08-10',datePrecision:'range',publishedAt:'2026-08-13',updatedAt:'2026-09-11',
     summary:'8月6〜10日の登録有権者1,008人調査で、Sherrod Brown 53%、現職Jon Husted 45%、未定2%でした。',
     possibleImpact:'6月のAARP調査は48%対45%です。対象と時期を保って並べ、二調査から連続的な支持推移は作りません。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -99,7 +99,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['household-economy','health-family'],relatedElectionIds:['2026-OH-3-special'],relatedCandidateIds:['cand-oh-sherrod-brown','cand-oh-jon-husted'],sourceIds:['poll-fox-oh-2026-08'],evidenceIds:['ev-oh-fox-poll'],location:{mapMode:'region',precision:'state',stateFips:['39'],label:'オハイオ州'},status:'published',
   },
   {
-    newsId:'news-me-candidate-replacement-2026-07',kind:'election',headline:'メーン州民主党、Platner辞退後にJacksonを上院候補へ指名',
+    newsId:'news-me-candidate-replacement-2026-07',uncertainty:'候補者の交代だけから、支持の移動や本選の結果は判断できない。',kind:'election',editorialType:'event',headline:'メーン州民主党、Platner辞退後にJacksonを上院候補へ指名',
     eventDate:'2026-07-27',datePrecision:'range',publishedAt:'2026-07-27',updatedAt:'2026-09-11',
     summary:'予備選勝者Graham Platnerが7月10日に辞退し、州党は7月25日の大会でTroy D. Jacksonを後任に選び、州は7月27日に書類を受領しました。',
     possibleImpact:'候補交代の前後で実施された調査は候補者名が異なるため、同じ系列として直接比較しません。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -107,7 +107,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['rights-institutions'],relatedElectionIds:['2026-ME-2-regular'],relatedCandidateIds:['cand-me-troy-d-jackson'],sourceIds:['me-replacements-2026','me-candidate-list-2026'],evidenceIds:['ev-me-replacement','ev-me-official-candidates'],location:{mapMode:'region',precision:'state',stateFips:['23'],label:'メーン州'},status:'published',
   },
   {
-    newsId:'news-ak-cook-tossup-2026-07',kind:'election',headline:'Cook、アラスカ州上院選をToss Upへ変更',
+    newsId:'news-ak-cook-tossup-2026-07',uncertainty:'評価機関による情勢分類であり、勝率や最終的な順位選択投票の結果ではない。',kind:'election',editorialType:'event',headline:'Cook、アラスカ州上院選をToss Upへ変更',
     eventDate:'2026-07-01',datePrecision:'day',publishedAt:'2026-07-01',updatedAt:'2026-09-11',
     summary:'Cook Political Reportは、1月のLean Republicanから7月1日にToss Upへ変更しました。',
     possibleImpact:'Inside Electionsは9月3日時点でTilt Republicanです。両者を平均せず、機関ごとの現在値と履歴を州詳細に並べます。',impactKind:'interpretation',policyStage:'not-applicable',
@@ -115,7 +115,7 @@ export const newsItems: ResearchNewsItem[] = [
     issueIds:['rights-institutions'],relatedElectionIds:['2026-AK-2-regular'],relatedCandidateIds:['cand-ak-mary-peltola','cand-ak-dan-s-sullivan'],sourceIds:['cook-ak-race-2026','inside-ak-race-2026'],evidenceIds:['ev-ak-cook-rating-path-2026','ev-ak-inside-rating-path-2026'],location:{mapMode:'region',precision:'state',stateFips:['02'],label:'アラスカ州'},status:'published',
   },
   {
-    newsId:'news-draft-filter-fixture',kind:'election',headline:'公開フィルタ検証用の下書き',
+    newsId:'news-draft-filter-fixture',kind:'election',editorialType:'event',headline:'公開フィルタ検証用の下書き',
     eventDate:null,datePrecision:'unknown',publishedAt:'2026-09-11',updatedAt:'2026-09-11',
     summary:'この下書きは公開画面に表示されません。',possibleImpact:'なし',impactKind:'hypothesis',
     policyStage:'not-applicable',selectionReason:'公開フィルタの回帰検証',whatChanged:'なし',
