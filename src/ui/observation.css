@@ -10,6 +10,13 @@
 .observation-body :focus-visible, .observation-focus:focus-visible, .observation-seat-control button:focus-visible { outline: 3px solid #2769aa; outline-offset: 3px; }
 .observation-body [tabindex="-1"] { scroll-margin-top: 90px; }
 .detail .observation-current { padding: 10px 12px; background: #edf2f4; border-left: 3px solid #607582; }
+.observation-candidate-intro { padding: 13px 0 15px !important; border-top: 0 !important; }
+.observation-candidate-intro > span { display: block; margin-bottom: 7px; color: #58656a; font-size: 13px; font-weight: 700; }
+.observation-candidate-intro > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.observation-candidate-intro article { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 8px; min-width: 0; padding: 11px 12px; background: #f1f4f3; border: 1px solid #d4dcda; }
+.observation-candidate-intro p { display: flex; min-width: 0; flex-direction: column; gap: 2px; margin: 0 !important; }
+.observation-candidate-intro b { color: var(--navy); font-size: 15px; overflow-wrap: anywhere; }
+.detail .observation-candidate-intro small { color: #58656a; font-size: 13px; }
 .observation-shortcuts { display: flex; flex-wrap: wrap; gap: 6px 12px; }
 .observation-shortcuts button, .observation-body button[data-observation-jump], .observation-seat-control button { min-height: 44px; padding: 8px 4px; border: 0; background: none; color: #174f9e; text-align: left; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font: inherit; font-size: 14px; }
 .detail .observation-uncertainty { padding: 12px; background: #f5f4ef; border-left: 3px solid #a59c82; }
@@ -72,6 +79,7 @@
   .observation-comparison-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @container (max-width: 380px) {
+  .observation-candidate-intro > div { grid-template-columns: minmax(0, 1fr); }
   .observation-candidate-head { position: static; }
   .observation-comparison-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .observation-comparison-row > article::before { content: attr(aria-label); display: block; margin-bottom: 7px; color: var(--navy); font-size: 13px; font-weight: 800; }

@@ -23,13 +23,22 @@ export function observationLeadMarkup(race:RaceObservation) {
   return `<div class="observation-lead"><nav class="observation-shortcuts" aria-label="州の判断材料内を移動"><button type="button" data-observation-feed="recent" data-observation-race="${esc(race.electionId)}">関連ニュース</button>${link('comparison','候補者比較')}${link('choice','当選者を選ぶ')}</nav><h4>${esc(race.headline)}</h4><p>${esc(race.lead)}</p><p class="observation-uncertainty"><b>まだ分からないこと</b>${esc(race.uncertainty)}</p><small>分析更新 <time datetime="${esc(race.updatedAt)}">${esc(race.updatedAt)}</time> · 解説は閲覧時の公開版</small>${evidenceMarkup(race.evidenceIds)}</div>`;
 }
 
+const candidateNameKey=(value:string|null)=>(value ?? '').toLowerCase().replace(/\b(jr|sr|ii|iii|iv)\b\.?/g,'').split(/[^a-z]+/).filter(token=>token.length>1).join('-');
+const comparisonCandidatesFor=(race:RaceObservation,candidates:Candidate[])=>[...new Set(race.comparison.flatMap(row=>row.cells.map(cell=>cell.candidateId)))].map(id=>candidates.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>Boolean(candidate));
+
+export function observationCandidateIntroMarkup(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
+  const comparisonCandidates=comparisonCandidatesFor(race,candidates);
+  if (!comparisonCandidates.length) return '';
+  return `<section class="observation-candidate-intro" aria-label="主要候補"><span>主要候補</span><div>${comparisonCandidates.map(candidate=>`<article><i class="party-dot party-${esc(candidate.party)}" aria-hidden="true"></i><p><b>${esc(candidate.name)}</b><small>${esc(candidate.partyLabel)}${candidateNameKey(candidate.name)===candidateNameKey(incumbent) ? '・現職' : ''}</small></p></article>`).join('')}</div></section>`;
+}
+
 export function observationDecisionMarkup(race:RaceObservation) {
   return `<div class="observation-decision-grid"><section class="observation-materials" aria-label="重要な判断材料"><h4>まず見る判断材料</h4>${race.materials.slice(0,2).map(m=>`<article id="${esc(observationAnchor(race.electionId,m.materialId))}"><h5>${esc(m.title)}</h5><p>${esc(m.fact)}</p><p><b class="observation-kind">分析</b> ${esc(m.meaning)}</p><p class="observation-limit">${esc(m.limit)}</p>${evidenceMarkup(m.evidenceIds)}</article>`).join('')}</section><section class="observation-events-bridge"><h4>ニュース・今後の予定</h4><p>この州に関係する出来事と、次に確認する予定を全国情勢の一覧で追えます。</p><div class="observation-feed-actions"><button type="button" data-observation-feed="recent" data-observation-race="${esc(race.electionId)}">この州のニュースを見る</button><button type="button" data-observation-feed="upcoming" data-observation-race="${esc(race.electionId)}">この州の今後の予定を見る</button></div><div class="observation-watch"><h5>次に確認したい点</h5><p class="observation-limit">以下は公表日が決まった予定ではありません。</p>${race.watchItems.slice(0,2).map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</div></section></div>`;
 }
 
 export function observationComparisonMarkup(race:RaceObservation,candidates:Candidate[]) {
   const labels={observed:'確認できたこと',claim:'本人・陣営の主張',interpretation:'分析',pending:'未確認'};
-  const comparisonCandidates=[...new Set(race.comparison.flatMap(row=>row.cells.map(cell=>cell.candidateId)))].map(id=>candidates.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>Boolean(candidate));
+  const comparisonCandidates=comparisonCandidatesFor(race,candidates);
   const rowMarkup=(row:RaceObservation['comparison'][number])=>`<section class="observation-comparison-item"><h5>${esc(row.label)}</h5><div class="observation-comparison-row">${comparisonCandidates.map(candidate=>{
     const cell=row.cells.find(item=>item.candidateId===candidate.candidateId);
     return `<article aria-label="${esc(candidate.name)}・${esc(row.label)}">${cell ? `<span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${evidenceMarkup(cell.evidenceIds)}` : '<span class="observation-kind">未確認</span><p>この項目は確認できる資料を追加中。</p>'}</article>`;

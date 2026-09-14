@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { observationData as data, observationFor } from '../src/data/observation';
 import type { ObservationEvent } from '../src/data/observation-model';
-import { elections, sources } from '../src/data/data';
+import { elections, seats, sources } from '../src/data/data';
 import { newsItems } from '../src/data/news';
 import { evidenceRefs } from '../src/data/research-sources';
 import { eventInstant, eventStatus, eventsForRace, monitoringStatus, publishedUpdates } from '../src/observation-logic';
-import { observationLeadMarkup, observationComparisonMarkup, observationDecisionMarkup } from '../src/ui/observation';
+import { observationLeadMarkup, observationCandidateIntroMarkup, observationComparisonMarkup, observationDecisionMarkup } from '../src/ui/observation';
 
 const now=new Date('2026-09-13T10:00:00Z');
 const event=(overrides:Partial<ObservationEvent>={}):ObservationEvent=>{
@@ -135,6 +135,9 @@ describe('公開・確認状態',()=>{
     expect(observationLeadMarkup(r)).not.toContain('<img');
     expect(observationLeadMarkup(r)).toContain('&lt;img');
     const e=elections.find(e=>e.electionId===r.electionId)!;
+    const intro=observationCandidateIntroMarkup(r,e.candidates,seats.find(seat=>seat.seatId===e.seatId)?.incumbent ?? null);
+    expect(intro).toContain('主要候補');
+    expect(intro).toContain('・現職');
     const html=observationComparisonMarkup(r,e.candidates);
     expect(html).toContain('未確認');
     expect(html).toContain(e.candidates.find(c=>c.candidateId===r.comparison[0].cells[0].candidateId)!.name);
