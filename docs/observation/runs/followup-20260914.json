@@ -1,0 +1,59 @@
+{
+  "revision": "observation-2026-09-14-v2",
+  "execution": "同日の日次確認後の補足調査。漏れていたMaine Publicの州内取材を原文照合し、前回未確認の情報源も再試行。",
+  "run": {
+    "runId": "observation-followup-20260914",
+    "startedAt": "2026-09-14T00:30:20Z",
+    "completedAt": "2026-09-14T00:38:00Z",
+    "outcome": "partial",
+    "checkedSourceIds": [
+      "obs-maine-public-collins-payout"
+    ],
+    "pendingSourceIds": [
+      "obs-roster-me",
+      "obs-roster-oh",
+      "obs-roster-nh",
+      "obs-sabato",
+      "obs-local-ak"
+    ],
+    "note": "CollinsのTrump案への発言を反証込みで候補者比較へ反映。前回未確認の5情報源は引き続き取得・照合未完了。"
+  },
+  "changes": [
+    {
+      "electionId": "2026-ME-2-regular",
+      "summary": "CollinsがTrumpの5,000ドル給付案を費用面から実現困難と述べ、選挙結果と財政政策を結び付けるべきでないとした発言を追加。党大会欠席はMaineでの選挙運動という本人説明も併記し、政権との恒常的な距離や得票効果の証拠とは扱わない。"
+    }
+  ],
+  "sourceResults": {
+    "successfulAt": "2026-09-14T00:38:00Z",
+    "successfulCount": 1,
+    "unavailable": [
+      {
+        "sourceId": "obs-roster-me",
+        "result": "選挙当局の登録ページを取得できず、名簿原文を再照合できなかった。"
+      },
+      {
+        "sourceId": "obs-roster-oh",
+        "result": "選挙ポータルが403を返し、上院特別選挙の候補者名簿原文まで到達できなかった。"
+      },
+      {
+        "sourceId": "obs-roster-nh",
+        "result": "選挙当局の登録ページを取得できず、名簿原文を再照合できなかった。"
+      },
+      {
+        "sourceId": "obs-sabato",
+        "result": "評価ページを取得できず、今回の補足実行でも原文を再照合できなかった。最後の確認済み評価を維持。"
+      },
+      {
+        "sourceId": "obs-local-ak",
+        "result": "登録した政治一覧ページを取得できず、一覧としての更新有無を確認できなかった。検索結果は確認成功へ置き換えていない。"
+      }
+    ]
+  },
+  "freshSearch": {
+    "scope": "AK・ME・MI・OH特別・TX・NH、新しい統合Toss Up、候補者発表、世論調査、州内取材、予定変更、White House公式発表を前回完了後の差分中心に検索。",
+    "result": "Maine Publicの9月11日取材を追加。新しい一次世論調査、統合Toss Upの追加、対象州に関係する確認済みの大統領将来日程、既存予定の中止・延期は確認できなかった。",
+    "limits": "未取得の5情報源は『変化なし』とは判定していない。"
+  },
+  "publicationEvidence": "この記録を含むGitコミットと対応するGitHub Pages workflowの結果を参照"
+}

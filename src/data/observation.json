@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-14-v1",
+  "revision": "observation-2026-09-14-v2",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,51 +8,14 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-14T00:10:00Z",
+    "lastCompletedAt": "2026-09-14T00:38:00Z",
     "latestRun": {
-      "runId": "observation-daily-20260914",
-      "startedAt": "2026-09-13T23:58:07Z",
-      "completedAt": "2026-09-14T00:10:00Z",
+      "runId": "observation-followup-20260914",
+      "startedAt": "2026-09-14T00:30:20Z",
+      "completedAt": "2026-09-14T00:38:00Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-ssrs",
-        "obs-emerson-tx",
-        "obs-dfp-ak",
-        "obs-collins",
-        "obs-jackson-policy",
-        "obs-jackson-bio",
-        "obs-maine-debates",
-        "obs-abdul-ai",
-        "obs-rogers-trade",
-        "obs-rogers-bio",
-        "obs-brown-policy",
-        "obs-brown-bio",
-        "obs-husted-bio",
-        "obs-talarico-policy",
-        "obs-talarico-bio",
-        "obs-paxton-policy",
-        "obs-paxton-bio",
-        "obs-peltola",
-        "obs-sullivan",
-        "obs-sullivan-endorsements",
-        "obs-nh-wbur",
-        "obs-pappas",
-        "obs-bls-oct",
-        "obs-hr1-vote",
-        "obs-husted-hr1",
-        "obs-abdul-trade",
-        "obs-paxton-trial",
-        "obs-roster-ak",
-        "obs-roster-mi",
-        "obs-roster-tx",
-        "obs-inside",
-        "obs-white-house",
-        "obs-local-mi",
-        "obs-local-oh",
-        "obs-local-tx",
-        "obs-ap-mi-convention",
-        "obs-mi-rogers-residency",
-        "obs-texas-tribune-spending"
+        "obs-maine-public-collins-payout"
       ],
       "pendingSourceIds": [
         "obs-roster-me",
@@ -61,7 +24,7 @@
         "obs-sabato",
         "obs-local-ak"
       ],
-      "note": "月曜の全比較・反証を再点検。ミシガンの共和党大会での攻防とRogersの居住歴、テキサスの広告投下を反映。Maine・New Hampshireの名簿、Ohioの候補者名簿、Sabato、Alaska Public Mediaの一覧は取得・照合未完了。"
+      "note": "同日の日次確認後に見つかったMaine Publicの原文を追加照合。CollinsのTrump案への発言を反証込みで候補者比較へ反映。前回未確認の5情報源は引き続き取得・照合未完了。"
     }
   },
   "sources": [
@@ -904,6 +867,25 @@
       "alternativeUrl": null,
       "checkStatus": "checked",
       "lastSuccessAt": "2026-09-14T00:10:00Z"
+    },
+    {
+      "sourceId": "obs-maine-public-collins-payout",
+      "title": "Collins calls Trump's $5,000 post-election payout 'extraordinarily expensive' and likely infeasible",
+      "publisher": "Maine Public",
+      "url": "https://www.mainepublic.org/politics/2026-09-11/collins-calls-trumps-5-000-post-election-payout-extraordinarily-expensive-and-likely-infeasible",
+      "publishedAt": "2026-09-11",
+      "referencePeriod": "Collins本人の9月11日の発言。Trumpの選挙結果を条件とする5,000ドル給付案の費用・実現可能性、Texas党大会欠席の説明を州内取材で確認",
+      "retrievedAt": "2026-09-14",
+      "contentVerifiedAt": "2026-09-14",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Maine Public原文で発言主体、費用への留保、党大会欠席の説明を照合。発言・行動と有権者への効果を区別",
+      "alternativeUrl": "https://www.nhpr.org/2026-09-11/collins-calls-trumps-5-000-post-election-payout-extraordinarily-expensive-and-likely-infeasible",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-14T00:38:00Z"
     }
   ],
   "evidenceRefs": [
@@ -932,6 +914,13 @@
       "evidenceId": "ev-obs-collins",
       "sourceId": "obs-collins",
       "locator": "Medicaidと地方病院を理由に反対。減税延長は支持し、地方病院基金の増額でも懸念を解消できないと説明",
+      "checkedAt": "2026-09-14",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-maine-public-collins-payout",
+      "sourceId": "obs-maine-public-collins-payout",
+      "locator": "9月11日の本人発言。5,000ドル給付案は1兆ドル超との初期分析を挙げて実現困難と評価し、選挙結果と財政政策を結び付けるべきでないと述べた。党大会はMaineで選挙運動するため欠席",
       "checkedAt": "2026-09-14",
       "kind": "observed"
     },
@@ -1122,25 +1111,27 @@
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-14",
       "headline": "現職への評価と、政権への評価が重なる",
       "featuredSummary": "Collins個人への評価と、共和党・トランプ政権への評価が重なる接戦。医療をめぐる採決とJacksonの改革案を比べ、党派を越えた支持がどこまで残るかを見る。",
       "lead": "CNN/SSRSの8月末〜9月初めの調査では、Collinsとトランプへの否定的評価が選挙の大きな背景にある。Collinsの独立した採決と、Jacksonの政策が実際の支持にどう結び付くかは分けて読む。",
-      "uncertainty": "政権への不満が、そのままJacksonへの投票になるとは限らない。候補者本人の評価と投票参加を引き続き確かめたい。",
+      "uncertainty": "政権への不満が、そのままJacksonへの投票になるとは限らない。Collinsの個別の反対発言や党大会欠席だけで恒常的な政権との距離も確定できず、有権者の受け止めは未確認。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-collins",
+        "ev-obs-maine-public-collins-payout",
         "ev-obs-jackson-policy"
       ],
       "materials": [
         {
           "materialId": "me-incumbent",
-          "title": "医療で党方針に反対した実績",
-          "fact": "Collinsは2025年7月1日、Medicaidと地方病院への影響を理由に大型財政法案へ反対した。",
-          "meaning": "この行動が「州を優先する現職」という評価につながるかが焦点になる。",
-          "limit": "1回の採決だけで独立性全体や有権者の評価を決められない。",
+          "title": "党方針・Trump案と異なる判断",
+          "fact": "Collinsは2025年の財政法案に反対。2026年9月11日にはTrumpの5,000ドル給付案を費用面から実現困難と述べた。",
+          "meaning": "個別案件で異論を示す行動が「州を優先する現職」という評価につながるかが焦点になる。",
+          "limit": "個別の採決・発言だけで独立性全体や有権者の評価を決められない。党大会欠席も、本人はMaineでの選挙運動を理由にしている。",
           "evidenceIds": [
-            "ev-obs-collins"
+            "ev-obs-collins",
+            "ev-obs-maine-public-collins-payout"
           ]
         },
         {
@@ -1193,9 +1184,10 @@
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "2025年の財政法案には反対。減税延長には賛成しつつ、Medicaid削減への懸念を示した。",
+              "text": "2025年の財政法案には反対。2026年9月にはTrumpの5,000ドル給付案を費用面から実現困難とし、選挙結果と財政政策を結び付けるべきでないと述べた。",
               "evidenceIds": [
-                "ev-obs-collins"
+                "ev-obs-collins",
+                "ev-obs-maine-public-collins-payout"
               ]
             }
           ]
@@ -1215,9 +1207,10 @@
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "共和党の主要財政法案への反対は確認できる。政権との関係は案件ごとに確認する。",
+              "text": "共和党大会をMaineでの選挙運動のため欠席し、Trumpの給付案には財政面から異論を示した。欠席や一つの発言だけで恒常的な距離は判断しない。",
               "evidenceIds": [
-                "ev-obs-collins"
+                "ev-obs-collins",
+                "ev-obs-maine-public-collins-payout"
               ]
             }
           ]
@@ -1278,8 +1271,8 @@
         {
           "watchId": "me-watch-1",
           "title": "党派を越える支持",
-          "what": "共和党の支持を保ちつつ他党支持者にも届くか。",
-          "how": "同じ調査方法・質問の党派別結果を見る。部分標本の小ささも確認する。"
+          "what": "CollinsのTrump案への異論が、共和党の支持を保ちつつ他党支持者にも届くか。",
+          "how": "発言後の比較可能な候補者評価と党派別結果を見る。発言への賛否と投票先を分け、部分標本の小ささも確認する。"
         }
       ]
     },
@@ -2354,6 +2347,24 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-me-collins-payout-2026-09-11",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-11",
+      "updatedAt": "2026-09-14",
+      "title": "CollinsがTrumpの5,000ドル給付案に財政面から異論",
+      "happened": "Maine Publicによると、CollinsはTrumpが共和党の議会支配維持を条件に提案した成人1人5,000ドル給付について、1兆ドル超との初期分析を挙げて現状では実現困難と述べた。Texasの共和党大会には参加せず、Maineで選挙運動をしていた。",
+      "meaning": "Trumpとの関係を抽象的な近さだけでなく、個別の財政提案への判断として比較できる材料を追加した。",
+      "uncertainty": "この発言への有権者評価と投票への効果は未確認。大会欠席と一つの反対発言だけで、政権との恒常的な距離は判断できない。",
+      "evidenceIds": [
+        "ev-obs-maine-public-collins-payout"
+      ]
+    },
     {
       "updateId": "obs-update-mi-convention-2026-09-11",
       "status": "published",
