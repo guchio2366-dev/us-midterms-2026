@@ -9,6 +9,7 @@ export type NewsFeedKey = `${NewsFeedSourceKind}:${string}`;
 export interface NewsFeedItem {
   key: NewsFeedKey;
   sourceKind: NewsFeedSourceKind;
+  editorialType: 'event' | 'analysis' | 'scheduled';
   tab: NewsFeedTab;
   sourceId: string;
   title: string;
@@ -44,14 +45,15 @@ function updateFeedItem(update: ObservationUpdate): NewsFeedItem {
   return {
     key: `update:${update.updateId}`,
     sourceKind: 'update',
+    editorialType: update.editorialType ?? 'event',
     tab: 'recent',
     sourceId: update.updateId,
     title: update.title,
     summary: update.meaning,
-    sortDate: update.eventDate || update.updatedAt,
+    sortDate: update.editorialType === 'analysis' ? update.publishedAt ?? update.updatedAt : update.eventDate || update.publishedAt || update.updatedAt,
     sortInstant: null,
     updatedAt: update.updatedAt,
-    dateLabel: `出来事 ${update.eventDate}`,
+    dateLabel: update.editorialType === 'analysis' ? `掲載 ${update.publishedAt ?? update.updatedAt}` : update.eventDate ? `出来事 ${update.eventDate}` : `掲載 ${update.publishedAt ?? update.updatedAt}（出来事の日付未確認）`,
     statusLabel: null,
     relatedElectionIds: [...new Set(update.electionIds)],
     history: false,
@@ -62,12 +64,13 @@ function eventFeedItem(event: ObservationEvent, now: Date): NewsFeedItem {
   const status = eventStatus(event, now);
   const firstMeaning = event.relevance[0]?.why ?? '関連州への影響を確認する予定。';
   const summary = event.relevance.length > 1
-    ? `関連する${event.relevance.length}州ごとの「注目する理由」と「確認する点」を掲載。`
+    ? event.relevance.slice(0,2).map(item=>item.why).join('／')
     : firstMeaning;
   const history = event.status !== 'scheduled' || status === '予定日経過・結果確認待ち';
   return {
     key: `event:${event.eventId}`,
     sourceKind: 'event',
+    editorialType: 'scheduled',
     tab: 'upcoming',
     sourceId: event.eventId,
     title: event.title,
@@ -92,14 +95,15 @@ export function buildRecentFeed(newsItems: ResearchNewsItem[], data: Observation
     ...news.map<NewsFeedItem>(item => ({
       key: `news:${item.newsId}`,
       sourceKind: 'news',
+      editorialType: item.editorialType ?? (item.kind === 'data-update' ? 'analysis' : 'event'),
       tab: 'recent',
       sourceId: item.newsId,
       title: item.headline,
       summary: item.summary,
-      sortDate: item.eventDate ?? item.publishedAt,
+      sortDate: item.editorialType === 'analysis' || item.kind === 'data-update' ? item.publishedAt : item.eventDate ?? item.publishedAt,
       sortInstant: null,
       updatedAt: item.updatedAt,
-      dateLabel: item.eventDate ? `出来事 ${item.eventDate}` : `掲載 ${item.publishedAt}`,
+      dateLabel: item.editorialType === 'analysis' || item.kind === 'data-update' ? `掲載 ${item.publishedAt}` : item.eventDate ? `出来事 ${item.eventDate}` : `掲載 ${item.publishedAt}（出来事の日付未確認）`,
       statusLabel: null,
       relatedElectionIds: [...new Set([...item.relatedElectionIds,...updates.filter(update=>update.newsId===item.newsId).flatMap(update=>update.electionIds)])],
       history: false,
@@ -149,3 +153,5 @@ export function linkedUpdatesForNews(newsId: string, data: ObservationDataset): 
   return publicUpdates(data).filter(item => item.newsId === newsId)
     .sort((left, right) => right.eventDate.localeCompare(left.eventDate) || right.updatedAt.localeCompare(left.updatedAt) || left.updateId.localeCompare(right.updateId));
 }
+
+export const feedTypeLabel = (item: Pick<NewsFeedItem,'editorialType'>) => ({event:'出来事',analysis:'解説',scheduled:'予定'}[item.editorialType]);

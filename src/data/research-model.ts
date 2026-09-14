@@ -194,6 +194,8 @@ export interface NewsLocation {
 }
 
 export interface ResearchNewsItem {
+  editorialType?: 'event' | 'analysis';
+  uncertainty?: string;
   newsId: string;
   kind: NewsKind;
   headline: string;

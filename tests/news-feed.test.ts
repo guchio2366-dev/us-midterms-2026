@@ -63,7 +63,7 @@ describe('ニュース・予定の共通フィード',()=>{
     expect(feed.find(item=>item.key===`news:${first.newsId}`)?.dateLabel).toMatch(/^出来事 /);
     const noDate={...structuredClone(first),newsId:'publication-date-only',eventDate:null,publishedAt:'2026-09-12',updatedAt:'2026-09-12'};
     news.push(noDate);
-    expect(buildRecentFeed(news,data).find(item=>item.key==='news:publication-date-only')?.dateLabel).toBe('掲載 2026-09-12');
+    expect(buildRecentFeed(news,data).find(item=>item.key==='news:publication-date-only')?.dateLabel).toBe('掲載 2026-09-12（出来事の日付未確認）');
   });
 
   it('orders future events by date and resolves legacy update and event links',()=>{

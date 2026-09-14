@@ -23,9 +23,12 @@ export function aggregateRatingConsensus(
   observations: readonly RatingSnapshotObservation[],
   minimumOrganizations = 2,
 ): RatingConsensusSeat[] {
-  return seatIds.map(seatId => {
+  return [...new Set(seatIds)].map(seatId => {
     const byOrganization = new Map<string,RatingSnapshotObservation>();
-    observations.filter(item => item.seatId === seatId).forEach(item => byOrganization.set(item.organizationId,item));
+    observations.filter(item => item.seatId === seatId).forEach(item => {
+      if (byOrganization.has(item.organizationId)) throw new Error(`Duplicate rating: ${seatId}/${item.organizationId}`);
+      byOrganization.set(item.organizationId,item);
+    });
     const normalized = [...byOrganization.values()].map(item => ({...item,direction:normalizeRatingDirection(item.ratingRaw)}));
     const valid = normalized.filter((item): item is typeof item & {direction:RatingDirection} => item.direction !== null);
     if (valid.length < minimumOrganizations) return {seatId,category:'missing',observations:normalized};
@@ -53,4 +56,17 @@ export function consensusDisplayRating(result: RatingConsensusSeat|undefined): R
   const raw = sabato.ratingRaw.trim().toLowerCase();
   const strength = /^(safe|solid)\b/.test(raw) ? 'Solid' : /^likely\b/.test(raw) ? 'Likely' : /^(lean|tilt)\b/.test(raw) ? 'Lean' : null;
   return strength ? `${strength} ${result.category}` : 'unavailable';
+}
+
+export function ratingCategoryLabel(category: RatingConsensusCategory): string {
+  return {D:'民主党側',R:'共和党側',tossup:'接戦評価一致',split:'評価分裂',missing:'評価資料不足'}[category];
+}
+
+export function consensusLabel(result: RatingConsensusSeat | undefined): string {
+  if (!result) return ratingCategoryLabel('missing');
+  if (result.category === 'D' || result.category === 'R') {
+    const strength = consensusDisplayRating(result);
+    return strength === 'unavailable' ? ratingCategoryLabel(result.category) : `${ratingCategoryLabel(result.category)}（${strength}）`;
+  }
+  return ratingCategoryLabel(result.category);
 }

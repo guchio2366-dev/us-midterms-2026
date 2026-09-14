@@ -9,7 +9,7 @@ const refsById = new Map(observationData.evidenceRefs.map(e=>[e.evidenceId,e]));
 const sourceById = new Map(observationData.sources.map(s=>[s.sourceId,s]));
 const safeUrl = (url:string) => /^https:\/\//.test(url) ? esc(url) : '#';
 
-function evidenceMarkup(ids:string[]) {
+export function observationEvidenceMarkup(ids:string[]) {
   const refs=ids.map(id=>refsById.get(id)).filter(e=>!!e);
   if (!refs.length) return '';
   return `<details class="observation-evidence"><summary>根拠を確認</summary><ul>${refs.map(ref=>{
@@ -20,11 +20,11 @@ function evidenceMarkup(ids:string[]) {
 
 export function observationLeadMarkup(race:RaceObservation) {
   const link=(section:string,label:string)=>`<button type="button" data-observation-jump="${esc(observationAnchor(race.electionId,section))}">${label}</button>`;
-  return `<div class="observation-lead"><nav class="observation-shortcuts" aria-label="州の判断材料内を移動"><button type="button" data-observation-feed="recent" data-observation-race="${esc(race.electionId)}">関連ニュース</button>${link('comparison','候補者比較')}${link('choice','当選者を選ぶ')}</nav><h4>${esc(race.headline)}</h4><p>${esc(race.lead)}</p><p class="observation-uncertainty"><b>まだ分からないこと</b>${esc(race.uncertainty)}</p><small>分析更新 <time datetime="${esc(race.updatedAt)}">${esc(race.updatedAt)}</time> · 解説は閲覧時の公開版</small>${evidenceMarkup(race.evidenceIds)}</div>`;
+  return `<div class="observation-lead"><nav class="observation-shortcuts" aria-label="州の判断材料内を移動"><button type="button" data-observation-feed="recent" data-observation-race="${esc(race.electionId)}">関連ニュース</button>${link('comparison','候補者比較')}${link('choice','当選者を選ぶ')}</nav><h4>${esc(race.headline)}</h4><p>${esc(race.lead)}</p><p class="observation-uncertainty"><b>まだ分からないこと</b>${esc(race.uncertainty)}</p><small>分析更新 <time datetime="${esc(race.updatedAt)}">${esc(race.updatedAt)}</time> · 解説は閲覧時の公開版</small>${observationEvidenceMarkup(race.evidenceIds)}</div>`;
 }
 
 export function observationDecisionMarkup(race:RaceObservation) {
-  return `<div class="observation-decision-grid"><section class="observation-materials" aria-label="重要な判断材料"><h4>まず見る判断材料</h4>${race.materials.slice(0,2).map(m=>`<article id="${esc(observationAnchor(race.electionId,m.materialId))}"><h5>${esc(m.title)}</h5><p>${esc(m.fact)}</p><p><b class="observation-kind">分析</b> ${esc(m.meaning)}</p><p class="observation-limit">${esc(m.limit)}</p>${evidenceMarkup(m.evidenceIds)}</article>`).join('')}</section><section class="observation-events-bridge"><h4>ニュース・今後の予定</h4><p>この州に関係する出来事と、次に確認する予定を全国情勢の一覧で追えます。</p><div class="observation-feed-actions"><button type="button" data-observation-feed="recent" data-observation-race="${esc(race.electionId)}">この州のニュースを見る</button><button type="button" data-observation-feed="upcoming" data-observation-race="${esc(race.electionId)}">この州の今後の予定を見る</button></div><div class="observation-watch"><h5>次に確認したい点</h5><p class="observation-limit">以下は公表日が決まった予定ではありません。</p>${race.watchItems.slice(0,2).map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</div></section></div>`;
+  return `<div class="observation-decision-grid"><section class="observation-materials" aria-label="重要な判断材料"><h4>まず見る判断材料</h4>${race.materials.slice(0,2).map(m=>`<details id="${esc(observationAnchor(race.electionId,m.materialId))}"><summary>${esc(m.title)}</summary><p>${esc(m.fact)}</p><p><b class="observation-kind">分析</b> ${esc(m.meaning)}</p><p class="observation-limit">${esc(m.limit)}</p>${observationEvidenceMarkup(m.evidenceIds)}</details>`).join('')}</section><section class="observation-watch"><h4>次に確かめたい点</h4><p class="observation-limit">公表日が決まった予定ではありません。</p>${race.watchItems.slice(0,2).map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</section></div>`;
 }
 
 export function observationComparisonMarkup(race:RaceObservation,candidates:Candidate[]) {
@@ -32,7 +32,7 @@ export function observationComparisonMarkup(race:RaceObservation,candidates:Cand
   return `<section id="${esc(observationAnchor(race.electionId,'comparison'))}" tabindex="-1" class="observation-comparison"><h4>候補者を詳しく比較する</h4><p>同じ項目で読み比べる。公約と実績、有権者の評価を分けて確認する。</p>${race.comparison.map(row=>`<details><summary>${esc(row.label)}</summary><div class="observation-comparison-row">${row.cells.map(cell=>{
     const candidate=candidates.find(c=>c.candidateId===cell.candidateId);
     if (!candidate) return '';
-    return `<article><h5><i class="party-dot ${esc(candidate.party)}" aria-hidden="true"></i>${esc(candidate.name)}<small>${esc(candidate.partyLabel)}</small></h5><span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${evidenceMarkup(cell.evidenceIds)}</article>`;
+    return `<article><h5><i class="party-dot ${esc(candidate.party)}" aria-hidden="true"></i>${esc(candidate.name)}<small>${esc(candidate.partyLabel)}</small></h5><span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${observationEvidenceMarkup(cell.evidenceIds)}</article>`;
   }).join('')}</div></details>`).join('')}<p class="observation-limit">選択欄から全候補を選べます。未確認は「支持なし」「問題なし」を意味しません。</p></section>`;
 }
 

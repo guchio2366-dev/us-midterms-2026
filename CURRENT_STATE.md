@@ -19,17 +19,19 @@
 
 ## 2. 実装済みの状態
 
+作業ブランチ `codex/decision-design-20260914` で、[判断材料・表示・逆算の改善設計](docs/decision-design-20260914.md)を実装。[実装・検証記録](docs/decision-design-implementation-20260914.md)。この追記は作業ブランチの状態を示し、冒頭に記載した公開コミットとは別である。
+
 | 領域 | 確認した状態 | 実装・証拠 |
 | --- | --- | --- |
 | 冒頭 | 投票日、短い概説、現在議席と改選範囲の棒グラフ、主な論点の強調、制度説明パネル | [main.ts](src/main.ts) |
 | 全国情勢 | 左：議席比較、中央：注目州、右：ニュース・今後の予定。横向き・幅944px以上・高さ600px以上で等幅3列 | [style.css](src/style.css) |
 | 議席評価 | SabatoとInside Electionsの方向が一致する選挙を党派側へ配分。不一致・接戦は未配分。地図とシミュレーションは同じ統合評価を参照 | [評価集計](src/rating-consensus.ts)、[評価スナップショット](src/data/rating-snapshot.ts) |
-| 暫定配分 | 非改選D34・R31に改選D側12・R側17を加え、D46・R48・未配分6。勝率・確定結果ではない | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
-| ニュース | 既存12記事と分析更新9件を「最近のニュース」に統合。旧「直近の重要な更新」の独立欄は撤去。10件ごとにページング | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
+| 暫定配分 | 非改選を含む合計D46・R48・未配分6を直接表示。未配分は接戦評価一致・評価分裂・評価資料不足に分ける。条件付きの追加必要議席も共通集計から算出 | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
+| ニュース | 既存記事と分析更新を統合し、出来事・解説・予定を識別。候補者の前提情報と「事実・意味・未確認」を表示。州詳細も同じフィードへ統一。10件ごとのページングとスマホの枠内スクロールを維持 | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
 | 今後の予定 | 公開7件（統計公表3件、メーン討論会4件）。同じ欄のタブで切替。州による絞込み、延期・中止・結果確認待ち、結果記事との相互参照に対応 | [観測データ](src/data/observation.json)、[予定ロジック](src/observation-logic.ts) |
 | 接戦州 | AK・ME・MI・NH・OH特別・TXの6選挙に判断材料、候補者比較、注目事項を公開。注目州は最初の3件を表示し、残りを展開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | 候補者比較 | 経歴・地元、政策・採決・発言、政党・トランプとの関係、実績への評価・批判、有権者の受け止めの5項目 | [観測データ](src/data/observation.json) |
-| シミュレーション | 候補者・会派選択、未配分、権限から複数経路の提示、自動保存・名前付き保存・比較・共有URL。保存した基準を最新評価で勝手に上書きしない | [シナリオ](src/scenario/)、[経路](src/scenario/paths.ts) |
+| シミュレーション | 複数経路の共通議席と条件上必要な議席を区別。全交換候補、選挙ごとの固定、適用前の交換・取消に対応。候補者指定、既存の保存・比較・共有と基準版を維持 | [シナリオ](src/scenario/)、[経路](src/scenario/paths.ts) |
 | 小さい画面 | 縦並びへ切替。スマホのニュースは高さ制限のある枠内スクロール。表示件数は文字量・画面寸法によって変わる | [style.css](src/style.css) |
 | 基礎情報 | 上院100議席・35選挙（通常33＋特別2）、下院435区、50州背景、8論点と議会権限 | [データ](src/data/)、[基礎検証](tests/data.test.ts) |
 
@@ -68,6 +70,7 @@ Iowaの既存研究を削除したわけではない。New Hampshireは後から
 | [接戦州観測設計](docs/observation/design.md) | 6州の詳説と観測データを実装。重要更新・予定の配置は次の統合設計で変更 |
 | [ニュース統合設計](docs/observation/news-integration-design.md) | 3列とニュース・予定統合を実装。対応コミット：03861e3、727fa2c |
 | [調査・分類・計算方法](RESEARCH_AND_METHOD.md) | 9月11日までの研究方式と収録状態。後続の評価統合・経路提示・ニュース導線は本書と実コードを参照 |
+| [判断材料・表示・逆算の改善設計](docs/decision-design-20260914.md) | [実装記録](docs/decision-design-implementation-20260914.md)。全国合計・分類、読者向け記事、逆算の交換と固定 |
 | [旧監査書](CURRENT_STATE_20260909.md)、[依頼01結果](TASK_01_RESULT.md)、[基礎照合記録](DATA_VERIFICATION.md) | 9月9日の工程別履歴。現在の未完了タスク一覧として使用しない |
 
 ## 7. 更新時の引継ぎルール
