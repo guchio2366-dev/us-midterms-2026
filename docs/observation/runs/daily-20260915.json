@@ -520,7 +520,12 @@
     "firstTestAttempt": "111 passed / 1 failed: unverified OH retrieval date advanced beyond prior contentVerifiedAt; restored previous retrieval dates for pending sources, retaining attempt time here; validation rule not weakened."
   },
   "publication": {
-    "status": "validated-awaiting-fast-forward",
+    "status": "published-and-verified",
+    "commit": "2ba48dd6e5cb648233f510e34210be5dfd0bbe15",
+    "pagesRun": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34912284950",
+    "pagesConclusion": "success",
+    "publicChecks": ["新しい2記事の見出しと本文・根拠・留保を公開Chromeで確認", "今後の予定タブに9月16日のアラスカ関連法案を確認", "サイト内容更新とAK分析更新が9月15日、保存・議席関連コードは不変"],
+    "followup": "公開後の読み直しで、AK記事内にも混獲の定義を追加し、調査を指す同調査を具体名へ補正。事実の追加・評価変更なし。この記録を含む後続コミットとPages実行が最終版の正本。",
     "strategy": "normal fast-forward from rechecked latest main; commit and its GitHub Pages run are authoritative publication record; no generated dist committed"
   }
 }
