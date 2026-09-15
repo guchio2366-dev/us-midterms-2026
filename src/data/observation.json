@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-14-v2",
+  "revision": "observation-2026-09-15-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,23 +8,44 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-14T00:38:00Z",
+    "lastCompletedAt": "2026-09-15T00:06:44.507Z",
     "latestRun": {
-      "runId": "observation-followup-20260914",
-      "startedAt": "2026-09-14T00:30:20Z",
-      "completedAt": "2026-09-14T00:38:00Z",
+      "runId": "daily-20260915",
+      "startedAt": "2026-09-14T23:57:19Z",
+      "completedAt": "2026-09-15T00:06:44.507Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-maine-public-collins-payout"
+        "obs-ssrs",
+        "obs-emerson-tx",
+        "obs-dfp-ak",
+        "obs-collins",
+        "obs-maine-debates",
+        "obs-nh-wbur",
+        "obs-bls-oct",
+        "obs-roster-ak",
+        "obs-roster-mi",
+        "obs-roster-tx",
+        "obs-inside",
+        "obs-white-house",
+        "obs-local-ak",
+        "obs-local-mi",
+        "obs-local-tx",
+        "obs-ap-mi-convention",
+        "obs-texas-tribune-spending",
+        "obs-maine-public-collins-payout",
+        "obs-ak-fisheries-debate",
+        "obs-ak-bycatch-bill",
+        "obs-commerce-bycatch-20260916",
+        "obs-me-manchin-endorsement"
       ],
       "pendingSourceIds": [
         "obs-roster-me",
         "obs-roster-oh",
         "obs-roster-nh",
         "obs-sabato",
-        "obs-local-ak"
+        "obs-local-oh"
       ],
-      "note": "同日の日次確認後に見つかったMaine Publicの原文を追加照合。CollinsのTrump案への発言を反証込みで候補者比較へ反映。前回未確認の5情報源は引き続き取得・照合未完了。"
+      "note": "アラスカの漁業討論会・関連法案審議予定、メーンの推薦発表を原文照合して追加。登録の日次情報源23件中18件を対象箇所まで照合し、新規4資料も照合。ME名簿全体、OH・NH名簿、Sabato、Ohio州内取材の本文照合は未完了。新たな統合Toss Upの有無を断定せず、評価・議席基準は維持。候補者公式一覧と新規調査・予定も検索したが、未照合のリードは実行記録に残す。"
     }
   },
   "sources": [
@@ -35,8 +56,8 @@
       "url": "https://ssrs.com/news/maine-and-michigan-senate-races-2026/",
       "publishedAt": "2026-09-09",
       "referencePeriod": "2026年8月31日〜9月6日調査。ME投票予定者880人、MI843人。オンライン・電話。候補者・政権への評価と政策的位置の分析",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-ME-2-regular",
         "2026-MI-2-regular"
@@ -46,7 +67,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-emerson-tx",
@@ -55,8 +76,8 @@
       "url": "https://emersoncollegepolling.com/texas-2026-poll-paxton-and-talarico/",
       "publishedAt": null,
       "referencePeriod": "8月9〜10日、投票予定者1,000人、credibility interval ±3ポイント。年齢別支持・最重要争点。英語で実施",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -65,7 +86,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-dfp-ak",
@@ -74,8 +95,8 @@
       "url": "https://www.dataforprogress.org/blog/2026/8/17/as-alaskas-affordability-crisis-deepens-peltola-leads-in-senate-race",
       "publishedAt": "2026-08-17",
       "referencePeriod": "生活費・LNG開発・4候補の順位選択を尋ねた調査。進歩派系団体。最終ラウンドは調査上の再配分",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -84,7 +105,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-collins",
@@ -93,8 +114,8 @@
       "url": "https://www.collins.senate.gov/newsroom/senator-collins-statement-on-the-senate-reconciliation-bill",
       "publishedAt": "2025-07-01",
       "referencePeriod": "Medicaidと地方病院を理由に反対。減税延長は支持し、地方病院基金の増額でも懸念を解消できないと説明",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -103,7 +124,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-jackson-policy",
@@ -150,8 +171,8 @@
       "url": "https://www.bangordailynews.com/2026/09/04/politics/elections/maine-election-senate-2026-troy-jackson-susan-collins-october-debates/",
       "publishedAt": "2026-09-04",
       "referencePeriod": "両陣営の合意。10月6日WGME、8日WMTW、13日WABI/WAGM、15日News Center Maine等。形式をめぐる双方の説明",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -160,7 +181,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-abdul-ai",
@@ -416,8 +437,8 @@
       "url": "https://www.wbur.org/news/2026/08/11/new-hampshire-senate-pappas-sununu",
       "publishedAt": "2026-08-11",
       "referencePeriod": "両候補への取材：生活費・医療、減税・独立性、Trump推薦と過去の対立。末尾の訂正（Sununu本人は登録ロビイストではない）を反映",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-NH-2-regular"
       ],
@@ -426,7 +447,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-pappas",
@@ -454,8 +475,8 @@
       "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
       "publishedAt": "2026-02-18",
       "referencePeriod": "10月2日8:30雇用統計、14日8:30 CPI、20日10:00州別雇用。時刻は米東部時間",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -469,7 +490,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-roster-ak",
@@ -478,8 +499,8 @@
       "url": "https://www.elections.alaska.gov/candidates/?election=26genr",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -488,7 +509,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-roster-me",
@@ -516,8 +537,8 @@
       "url": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?electionType=GEN&electionYear=2026&page=page.miboePublicReport",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -526,7 +547,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-roster-oh",
@@ -554,8 +575,8 @@
       "url": "https://www.sos.state.tx.us/elections/forms/2026-ballot-cert.pdf",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -564,7 +585,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-roster-nh",
@@ -616,8 +637,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -631,7 +652,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -640,8 +661,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -655,26 +676,26 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-local-ak",
       "title": "Alaska Public Media 選挙取材",
       "publisher": "Alaska Public Media 選挙取材",
-      "url": "https://alaskapublic.org/politics/",
+      "url": "https://alaskapublic.org/news/politics",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": null,
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-AK-2-regular"
       ],
       "category": "reporting",
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
-      "alternativeUrl": "https://alaskapublic.org/news/politics",
-      "checkStatus": "unavailable",
-      "lastSuccessAt": null
+      "alternativeUrl": "https://alaskapublic.org/politics/",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-local-mi",
@@ -683,8 +704,8 @@
       "url": "https://www.michiganpublic.org/politics-government",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -693,7 +714,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-local-oh",
@@ -711,7 +732,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "checked",
+      "checkStatus": "not-checked",
       "lastSuccessAt": "2026-09-14T00:10:00Z"
     },
     {
@@ -721,8 +742,8 @@
       "url": "https://www.texastribune.org/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -731,7 +752,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-hr1-vote",
@@ -818,8 +839,8 @@
       "url": "https://apnews.com/article/d29ea1d7fa2f782e3de9039f9094104f",
       "publishedAt": "2026-09-11",
       "referencePeriod": "共和党大会でのTrump・Rogersらの発言と、翌日のEl-Sayedの州内活動を双方取材で確認",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -828,7 +849,7 @@
       "method": "AP原文を閲覧し、発言の主体、裏付けの有無、候補者側の応答を照合",
       "alternativeUrl": "https://www.audacy.com/wbbm780/news/politics/abdul-el-sayed-muslim-republican-convention-d29ea1d7fa2f782e3de9039f9094104f",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-mi-rogers-residency",
@@ -856,8 +877,8 @@
       "url": "https://www.texastribune.org/2026/09/11/senate-gop-leadership-ken-paxton-john-thune-texas-spending/",
       "publishedAt": "2026-09-11",
       "referencePeriod": "AdImpact集計による9月11日の広告予約と9月12日の放映開始。候補者陣営と外部団体の料金差も確認",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -866,7 +887,7 @@
       "method": "州内報道の本文で金額、媒体市場、放映開始、広告料金の注意点を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
       "sourceId": "obs-maine-public-collins-payout",
@@ -875,8 +896,8 @@
       "url": "https://www.mainepublic.org/politics/2026-09-11/collins-calls-trumps-5-000-post-election-payout-extraordinarily-expensive-and-likely-infeasible",
       "publishedAt": "2026-09-11",
       "referencePeriod": "Collins本人の9月11日の発言。Trumpの選挙結果を条件とする5,000ドル給付案の費用・実現可能性、Texas党大会欠席の説明を州内取材で確認",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -885,7 +906,83 @@
       "method": "Maine Public原文で発言主体、費用への留保、党大会欠席の説明を照合。発言・行動と有権者への効果を区別",
       "alternativeUrl": "https://www.nhpr.org/2026-09-11/collins-calls-trumps-5-000-post-election-payout-extraordinarily-expensive-and-likely-infeasible",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:38:00Z"
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+    },
+    {
+      "sourceId": "obs-ak-fisheries-debate",
+      "title": "アラスカ州・上院候補のコディアック漁業討論会",
+      "publisher": "Alaska Public Media",
+      "url": "https://alaskapublic.org/news/politics/2026-09-14/peltola-and-sullivan-confront-trawl-bycatch-and-each-other-at-kodiak-fisheries-debate",
+      "publishedAt": "2026-09-14",
+      "referencePeriod": "9月12日の討論会を9月14日12:37 AKDTに報道。共和党現職サリバンと民主党ペルトラの混獲対策、対立する説明を照合。献金額・投票回数・得票効果は独立確認しておらず採用しない。",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "公開原文の主体・日付・根拠箇所を照合。発言・予定と実施成果を区別",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+    },
+    {
+      "sourceId": "obs-ak-bycatch-bill",
+      "title": "共和党サリバン上院議員の混獲削減法案の発表",
+      "publisher": "Dan Sullivan上院議員事務所",
+      "url": "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-introduces-bycatch-reduction-act/",
+      "publishedAt": "2026-06-25",
+      "referencePeriod": "6月25日の法案発表。前年案を改訂した提案であり、網の基準・監視・技術開発を含む。議員側の説明・支持者評価と実証された効果を区別。",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公開原文の主体・日付・根拠箇所を照合。発言・予定と実施成果を区別",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+    },
+    {
+      "sourceId": "obs-commerce-bycatch-20260916",
+      "title": "上院商務委員会・9月16日の法案審議予定",
+      "publisher": "U.S. Senate Committee on Commerce, Science, and Transportation",
+      "url": "https://www.commerce.senate.gov/press/rep/release/chairman-cruz-announces-september-16-markup/",
+      "publishedAt": "2026-09-09",
+      "referencePeriod": "9月16日10:00米東部時間、S.4938 Bycatch Reduction Actを含む審議。公式会合ページとも照合。議題は変更の可能性あり。審議予定であり可決・成立ではない。",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "calendar",
+      "cadence": "daily",
+      "method": "公開原文の主体・日付・根拠箇所を照合。発言・予定と実施成果を区別",
+      "alternativeUrl": "https://www.commerce.senate.gov/meetings/executive-session-25-09-16-2026/",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+    },
+    {
+      "sourceId": "obs-me-manchin-endorsement",
+      "title": "メーン州・コリンズ陣営がマンチン元上院議員の推薦を発表",
+      "publisher": "Collins for Senator",
+      "url": "https://susancollins.com/press-release/press-release-former-senator-joe-manchin-endorses-senator-collins-soul-of-the-senate/",
+      "publishedAt": "2026-09-14",
+      "referencePeriod": "9月14日付の陣営公式発表。民主党出身・後に無所属のマンチン元上院議員がCNBCで推薦したと発表。本人の推薦理由とコリンズの応答を引用。番組全編とジャクソン陣営の反応は未照合。",
+      "retrievedAt": "2026-09-15",
+      "contentVerifiedAt": "2026-09-15",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "daily",
+      "method": "公開原文の主体・日付・根拠箇所を照合。発言・予定と実施成果を区別",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     }
   ],
   "evidenceRefs": [
@@ -893,35 +990,35 @@
       "evidenceId": "ev-obs-ssrs",
       "sourceId": "obs-ssrs",
       "locator": "2026年8月31日〜9月6日調査。ME投票予定者880人、MI843人。オンライン・電話。候補者・政権への評価と政策的位置の分析",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
       "evidenceId": "ev-obs-emerson-tx",
       "sourceId": "obs-emerson-tx",
       "locator": "8月9〜10日、投票予定者1,000人、credibility interval ±3ポイント。年齢別支持・最重要争点。英語で実施",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
       "evidenceId": "ev-obs-dfp-ak",
       "sourceId": "obs-dfp-ak",
       "locator": "生活費・LNG開発・4候補の順位選択を尋ねた調査。進歩派系団体。最終ラウンドは調査上の再配分",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
       "evidenceId": "ev-obs-collins",
       "sourceId": "obs-collins",
       "locator": "Medicaidと地方病院を理由に反対。減税延長は支持し、地方病院基金の増額でも懸念を解消できないと説明",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
       "evidenceId": "ev-obs-maine-public-collins-payout",
       "sourceId": "obs-maine-public-collins-payout",
       "locator": "9月11日の本人発言。5,000ドル給付案は1兆ドル超との初期分析を挙げて実現困難と評価し、選挙結果と財政政策を結び付けるべきでないと述べた。党大会はMaineで選挙運動するため欠席",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
@@ -942,7 +1039,7 @@
       "evidenceId": "ev-obs-maine-debates",
       "sourceId": "obs-maine-debates",
       "locator": "両陣営の合意。10月6日WGME、8日WMTW、13日WABI/WAGM、15日News Center Maine等。形式をめぐる双方の説明",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
@@ -1040,7 +1137,7 @@
       "evidenceId": "ev-obs-nh-wbur",
       "sourceId": "obs-nh-wbur",
       "locator": "両候補への取材：生活費・医療、減税・独立性、Trump推薦と過去の対立。末尾の訂正（Sununu本人は登録ロビイストではない）を反映",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
@@ -1054,7 +1151,7 @@
       "evidenceId": "ev-obs-bls-oct",
       "sourceId": "obs-bls-oct",
       "locator": "10月2日8:30雇用統計、14日8:30 CPI、20日10:00州別雇用。時刻は米東部時間",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
@@ -1089,7 +1186,7 @@
       "evidenceId": "ev-obs-ap-mi-convention",
       "sourceId": "obs-ap-mi-convention",
       "locator": "9月の共和党大会でRogersがEl-Sayedへの資金提供をテロ組織と結び付けたが根拠を示さず、Trumpも批判。翌日のEl-Sayedは生活費・対カナダ貿易・医療へ論点を戻した",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     },
     {
@@ -1103,7 +1200,35 @@
       "evidenceId": "ev-obs-texas-tribune-spending",
       "sourceId": "obs-texas-tribune-spending",
       "locator": "Texas PACが約5,130万ドルの放送広告を予約し9月12日から放映。共和党系の支出・予約は9月末まで計8,110万ドル、民主党側4,370万ドル。候補者陣営は外部団体より割安な広告単価を利用できる",
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ak-fisheries-debate",
+      "sourceId": "obs-ak-fisheries-debate",
+      "locator": "9月12日の討論会を9月14日12:37 AKDTに報道。共和党現職サリバンと民主党ペルトラの混獲対策、対立する説明を照合。献金額・投票回数・得票効果は独立確認しておらず採用しない。",
+      "checkedAt": "2026-09-15",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ak-bycatch-bill",
+      "sourceId": "obs-ak-bycatch-bill",
+      "locator": "6月25日の法案発表。前年案を改訂した提案であり、網の基準・監視・技術開発を含む。議員側の説明・支持者評価と実証された効果を区別。",
+      "checkedAt": "2026-09-15",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-commerce-bycatch-20260916",
+      "sourceId": "obs-commerce-bycatch-20260916",
+      "locator": "9月16日10:00米東部時間、S.4938 Bycatch Reduction Actを含む審議。公式会合ページとも照合。議題は変更の可能性あり。審議予定であり可決・成立ではない。",
+      "checkedAt": "2026-09-15",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-me-manchin-endorsement",
+      "sourceId": "obs-me-manchin-endorsement",
+      "locator": "9月14日付の陣営公式発表。民主党出身・後に無所属のマンチン元上院議員がCNBCで推薦したと発表。本人の推薦理由とコリンズの応答を引用。番組全編とジャクソン陣営の反応は未照合。",
+      "checkedAt": "2026-09-15",
       "kind": "observed"
     }
   ],
@@ -1111,7 +1236,7 @@
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-15",
       "headline": "現職への評価と、政権への評価が重なる",
       "featuredSummary": "Collins個人への評価と、共和党・トランプ政権への評価が重なる接戦。医療をめぐる採決とJacksonの改革案を比べ、党派を越えた支持がどこまで残るかを見る。",
       "lead": "CNN/SSRSの8月末〜9月初めの調査では、Collinsとトランプへの否定的評価が選挙の大きな背景にある。Collinsの独立した採決と、Jacksonの政策が実際の支持にどう結び付くかは分けて読む。",
@@ -1120,7 +1245,8 @@
         "ev-obs-ssrs",
         "ev-obs-collins",
         "ev-obs-maine-public-collins-payout",
-        "ev-obs-jackson-policy"
+        "ev-obs-jackson-policy",
+        "ev-obs-me-manchin-endorsement"
       ],
       "materials": [
         {
@@ -1231,9 +1357,10 @@
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "住民との対話をめぐりJacksonが批判。陣営は小規模な会合などで質問に答えていると反論している。",
+              "text": "住民との対話をめぐりJacksonが批判。陣営は小規模な会合などで質問に答えていると反論している。 9月14日、陣営は民主党出身・後に無所属のマンチン元上院議員の推薦を発表。推薦者の評価であり、有権者全体の支持ではない。",
               "evidenceIds": [
-                "ev-obs-maine-debates"
+                "ev-obs-maine-debates",
+                "ev-obs-me-manchin-endorsement"
               ]
             }
           ]
@@ -1766,23 +1893,27 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-13",
-      "headline": "資源開発の利益と、生活費の改善を分けて見る",
-      "featuredSummary": "LNG開発への支持と生活費への不安が同時に強く、開発の賛否だけで支持先は決まらない。両候補の州への利益と、順位選択投票での票の移り方を合わせて見る。",
-      "lead": "Data for Progressの8月公表調査では、LNG開発支持と光熱費などへの不安が併存している。開発が誰の利益になるかに加え、順位選択で第三候補の支持がどちらへ移るかも確認する。",
+      "updatedAt": "2026-09-15",
+      "headline": "漁業と資源開発の利益を、地元へどう戻すか",
+      "featuredSummary": "共和党現職サリバン氏と民主党ペルトラ元下院議員は、漁業の混獲対策でも競う。両者の説明を比べ、9月16日の関連法案審議で具体策が進むかを見る。",
+      "lead": "アラスカ州では、資源開発への支持と家計の不安が併存する。9月12日の漁業討論会では両候補が混獲（狙った魚以外も網に入ること）の削減を訴えた。法案の内容・進捗と、順位選択投票での票の移り方を分けて見る。",
       "uncertainty": "同調査は進歩派系団体によるもの。調査上の最終ラウンドは実際の開票結果でも勝率でもなく、他の調査と照合する必要がある。",
       "evidenceIds": [
-        "ev-obs-dfp-ak"
+        "ev-obs-dfp-ak",
+        "ev-obs-ak-fisheries-debate",
+        "ev-obs-ak-bycatch-bill",
+        "ev-obs-commerce-bycatch-20260916"
       ],
       "materials": [
         {
-          "materialId": "ak-affordability",
-          "title": "開発と家計の利益は同じか",
-          "fact": "8月公表調査では、LNG計画への支持と生活費への強い懸念が同時に見られた。",
-          "meaning": "資源開発の是非だけでなく、価格・雇用・地域への還元を誰が確保できると考えられるかを見る。",
-          "limit": "開発への支持を共和党への支持に直結させられない。",
+          "materialId": "ak-fisheries",
+          "title": "混獲対策を、誰が実行できるか",
+          "fact": "9月12日の討論会で両候補が対策を訴えた。共和党現職サリバン氏は法案を挙げ、民主党ペルトラ氏は対応の遅さを批判した。",
+          "meaning": "対策への賛否だけでなく、提案の内容と議会での進捗を比べる材料。",
+          "limit": "サリバン氏の6月発表は前年案の改訂と説明しており、「選挙年だけの対応」は相手候補の批判。法案成立・魚資源への効果・得票効果は未確認。",
           "evidenceIds": [
-            "ev-obs-dfp-ak"
+            "ev-obs-ak-fisheries-debate",
+            "ev-obs-ak-bycatch-bill"
           ]
         },
         {
@@ -1826,17 +1957,20 @@
             {
               "candidateId": "cand-ak-mary-peltola",
               "kind": "claim",
-              "text": "生活費、漁業、地域の自立を優先し、党派よりアラスカの利益を守ると訴える。",
+              "text": "生活費と漁業を優先。9月12日の討論会では混獲削減を訴え、現職の対応が遅いと批判した。これは候補者の主張で、効果の実証ではない。",
               "evidenceIds": [
-                "ev-obs-peltola"
+                "ev-obs-peltola",
+                "ev-obs-ak-fisheries-debate"
               ]
             },
             {
               "candidateId": "cand-ak-dan-s-sullivan",
               "kind": "claim",
-              "text": "減税、資源・エネルギー開発、防衛投資を自身の実績と再選の理由に挙げる。",
+              "text": "資源開発に加え、混獲削減法案で網の基準・監視・技術開発を提案。6月発表では前年案の改訂と説明した。9月16日の委員会審議予定を確認したが、成立・効果は未確認。",
               "evidenceIds": [
-                "ev-obs-sullivan"
+                "ev-obs-sullivan",
+                "ev-obs-ak-bycatch-bill",
+                "ev-obs-commerce-bycatch-20260916"
               ]
             }
           ]
@@ -1909,6 +2043,12 @@
         }
       ],
       "watchItems": [
+        {
+          "watchId": "ak-watch-bycatch",
+          "title": "混獲削減法案の審議",
+          "what": "9月16日の上院商務委員会でS.4938が審議され、修正・採決が行われるか。",
+          "how": "公式議事・修正案・採決記録を確認し、この予定の結果記事へつなぐ。委員会通過と法成立、漁業への効果は別段階として扱う。"
+        },
         {
           "watchId": "ak-watch-0",
           "title": "開発の地域への還元",
@@ -2090,7 +2230,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-bls-oct"
       ],
@@ -2143,7 +2283,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-bls-oct"
       ],
@@ -2196,7 +2336,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-bls-oct"
       ],
@@ -2249,7 +2389,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-maine-debates"
       ],
@@ -2275,7 +2415,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-maine-debates"
       ],
@@ -2301,7 +2441,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-maine-debates"
       ],
@@ -2327,7 +2467,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-14",
+      "checkedAt": "2026-09-15",
       "evidenceIds": [
         "ev-obs-maine-debates"
       ],
@@ -2344,9 +2484,74 @@
       ],
       "resultUpdateId": null,
       "publicationStatus": "published"
+    },
+    {
+      "eventId": "ak-bycatch-markup-2026-09-16",
+      "title": "アラスカ州・共和党サリバン氏の混獲削減法案を委員会審議",
+      "date": "2026-09-16",
+      "time": "10:00",
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-15",
+      "evidenceIds": [
+        "ev-obs-commerce-bycatch-20260916"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-AK-2-regular",
+          "why": "共和党現職サリバン氏と民主党ペルトラ氏が漁業討論会で争った具体策を追う。",
+          "watch": "S.4938の審議・修正・採決と両候補の説明を確認。議題変更の可能性があり、可決や成立は未確定。",
+          "materialIds": [
+            "ak-fisheries"
+          ]
+        }
+      ],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-me-manchin-2026-09-14",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-14",
+      "updatedAt": "2026-09-15",
+      "title": "メーン州・共和党現職コリンズ氏、マンチン元上院議員の推薦を発表",
+      "happened": "接戦6州の一つメーン州で、共和党のスーザン・コリンズ上院議員の陣営が、民主党出身で後に無所属となったジョー・マンチン元上院議員の推薦を発表。相手は民主党のトロイ・ジャクソン元州上院議長。発表ではマンチン氏が対話姿勢を評価し、コリンズ氏は超党派での協働を挙げて応じた。",
+      "meaning": "9月11日のトランプ氏の給付案への異論に続き、現職の超党派での仕事ぶりを考える材料。ただし、推薦が給付案への発言を受けたものだとは確認できない。",
+      "uncertainty": "陣営発表を原文照合。CNBC番組全編・相手陣営の反応・推薦後の有権者評価は未確認。推薦を民主党全体の支持や得票増と扱わない。",
+      "evidenceIds": [
+        "ev-obs-me-manchin-endorsement",
+        "ev-obs-maine-public-collins-payout",
+        "ev-obs-jackson-bio"
+      ]
+    },
+    {
+      "updateId": "obs-update-ak-fisheries-2026-09-12",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-12",
+      "updatedAt": "2026-09-15",
+      "title": "アラスカ州・共和党サリバン氏と民主党ペルトラ氏が漁業対策で論戦",
+      "happened": "接戦6州の一つアラスカ州で、共和党現職のダン・サリバン上院議員と民主党のメアリー・ペルトラ元下院議員が、9月12日のコディアック討論会で混獲削減を訴えた。サリバン氏は法案を挙げ、ペルトラ氏は対応の遅さを批判した。",
+      "meaning": "「漁業を守る」という共通の訴えの先に、提案の内容と実行力の違いを見る材料。関連法案S.4938は9月16日の上院商務委員会の議題に掲載されている。",
+      "uncertainty": "記事公表は9月14日、討論会は9月12日。法案の審議予定は成立や効果の証明ではない。討論会後の支持変化は未確認。",
+      "evidenceIds": [
+        "ev-obs-ak-fisheries-debate",
+        "ev-obs-ak-bycatch-bill",
+        "ev-obs-commerce-bycatch-20260916"
+      ]
+    },
     {
       "updateId": "obs-update-me-collins-payout-2026-09-11",
       "status": "published",

@@ -1,0 +1,526 @@
+{
+  "checkedSourceIds": [
+    "obs-ssrs",
+    "obs-emerson-tx",
+    "obs-dfp-ak",
+    "obs-collins",
+    "obs-maine-debates",
+    "obs-nh-wbur",
+    "obs-bls-oct",
+    "obs-roster-ak",
+    "obs-roster-mi",
+    "obs-roster-tx",
+    "obs-inside",
+    "obs-white-house",
+    "obs-local-ak",
+    "obs-local-mi",
+    "obs-local-tx",
+    "obs-ap-mi-convention",
+    "obs-texas-tribune-spending",
+    "obs-maine-public-collins-payout",
+    "obs-ak-fisheries-debate",
+    "obs-ak-bycatch-bill",
+    "obs-commerce-bycatch-20260916",
+    "obs-me-manchin-endorsement"
+  ],
+  "completedAt": "2026-09-15T00:06:44.507Z",
+  "note": "アラスカの漁業討論会・関連法案審議予定、メーンの推薦発表を原文照合して追加。登録の日次情報源23件中18件を対象箇所まで照合し、新規4資料も照合。ME名簿全体、OH・NH名簿、Sabato、Ohio州内取材の本文照合は未完了。新たな統合Toss Upの有無を断定せず、評価・議席基準は維持。候補者公式一覧と新規調査・予定も検索したが、未照合のリードは実行記録に残す。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-me",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-local-oh"
+  ],
+  "runId": "daily-20260915",
+  "startedAt": "2026-09-14T23:57:19Z",
+  "baseCommit": "b8546271ebb6bd4c2a716d180f41c0790325c764",
+  "revision": "observation-2026-09-15-v1",
+  "reviewMode": "daily; Tuesday Asia/Tokyo; weekly full comparison audit not due",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。取得試行と内容成功を区別し、未完了sourceの前回成功日時を維持。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-ssrs",
+      "attemptedUrls": [
+        "https://ssrs.com/news/maine-and-michigan-senate-races-2026/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "8月31日〜9月6日、ME880・MI843投票予定者、候補者評価の焦点を照合。新規州調査を確認したという意味ではない。"
+    },
+    {
+      "sourceId": "obs-emerson-tx",
+      "attemptedUrls": [
+        "https://emersoncollegepolling.com/texas-2026-poll-paxton-and-talarico/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "8月9〜10日の1000人調査、Paxton47/Talarico46、年齢別・争点・手法・英語実施を照合。"
+    },
+    {
+      "sourceId": "obs-dfp-ak",
+      "attemptedUrls": [
+        "https://www.dataforprogress.org/blog/2026/8/17/as-alaskas-affordability-crisis-deepens-peltola-leads-in-senate-race"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "8月公表の第1希望47/41、再配分53/47、LNGと家計負担を照合。新規実査なしとは断定しない。"
+    },
+    {
+      "sourceId": "obs-collins",
+      "attemptedUrls": [
+        "https://www.collins.senate.gov/newsroom/senator-collins-statement-on-the-senate-reconciliation-bill"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "Medicaid・地方病院を理由とする反対と、減税支持の留保を照合。"
+    },
+    {
+      "sourceId": "obs-maine-debates",
+      "attemptedUrls": [
+        "https://www.bangordailynews.com/2026/09/04/politics/elections/maine-election-senate-2026-troy-jackson-susan-collins-october-debates/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "10月6/8/13/15の4討論会を原記事で再照合。延期・中止の追加検索で確認できる変更資料なし。主催者最新時刻は未確認。"
+    },
+    {
+      "sourceId": "obs-nh-wbur",
+      "attemptedUrls": [
+        "https://www.wbur.org/news/2026/08/11/new-hampshire-senate-pappas-sununu"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "8月11日の両候補取材と経歴訂正を照合。9月8日予備選結果の当局原票は未確認。"
+    },
+    {
+      "sourceId": "obs-bls-oct",
+      "attemptedUrls": [
+        "https://www.bls.gov/schedule/2026/10_sched.htm"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "10月2日08:30雇用、14日08:30CPI、20日10:00州雇用、全て米東部時間を照合。"
+    },
+    {
+      "sourceId": "obs-roster-ak",
+      "attemptedUrls": [
+        "https://www.elections.alaska.gov/candidates/?election=26genr"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "上院の認証4候補、Mary Peltola/D・Dan S. Sullivan/R現職・Daniel J. Sullivan Jr./R・Gerald Heikes/Rを照合。同姓別人を維持。"
+    },
+    {
+      "sourceId": "obs-roster-me",
+      "attemptedUrls": [
+        "https://www.maine.gov/sos/elections-voting/upcoming-elections",
+        "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/2026%20Post%20Primary%20Withdrawals%20&%20Replacement%20Candidates%20FINAL.pdf",
+        "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/Nov26%20Declared%20Write%20in%20List.pdf"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "新入口と7/27差替PDF・8/25書込PDFは閲覧・部分照合成功。7/27全候補ExcelはInternal Error。名簿全体は未完了。成功日時は進めない。"
+    },
+    {
+      "sourceId": "obs-roster-mi",
+      "attemptedUrls": [
+        "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?electionType=GEN&electionYear=2026&page=page.miboePublicReport"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "上院欄のEl-Sayed/D、Rogers/R、Christensen/Lib、Long/UST、Marsh/Green、Kristy/Natural Lawを照合。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "当局トップ403、名簿原文未確認。"
+    },
+    {
+      "sourceId": "obs-roster-tx",
+      "attemptedUrls": [
+        "https://www.sos.state.tx.us/elections/forms/2026-ballot-cert.pdf"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "公式認証PDFの上院欄Paxton/REP・Talarico/DEM・Ted Brown/LIBを照合。1396ページ全体の監査ではない。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "当局トップ403、予備選結果・本選名簿の原票未確認。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "登録評価ページ403。新たな統合Toss Upの不存在を断定できない。既存スナップショットを保持。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/ratings/senate"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "公式ページからリンクされるJSONを閲覧。更新9/3、AK TiltR・ME TiltR・MI Tossup・OH III Tossup・TX LeanR・NH Tossupを照合。全35選挙の機械差分は未実施。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "公式一覧の9/13・9/11・9/10発表を確認。対象州訪問の確定日程は今回未確認。一般来館ツアーを大統領日程にしない。"
+    },
+    {
+      "sourceId": "obs-local-ak",
+      "attemptedUrls": [
+        "https://alaskapublic.org/news/politics"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "新URL /news/politics と9/14付の漁業討論会本文を確認。旧URLから情報源入口を更新。"
+    },
+    {
+      "sourceId": "obs-local-mi",
+      "attemptedUrls": [
+        "https://www.michiganpublic.org/politics-government"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "政治一覧の教育政策比較など新規見出しを確認。教育記事本文は未照合のリードとして別記。"
+    },
+    {
+      "sourceId": "obs-local-oh",
+      "attemptedUrls": [
+        "https://www.statenews.org/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-09-14T00:10:00Z",
+      "contentVerifiedAt": "2026-09-14",
+      "scope": "ホーム取得成功だが対象上院選の新規記事本文まで照合未完了。取得成功を内容確認にしない。"
+    },
+    {
+      "sourceId": "obs-local-tx",
+      "attemptedUrls": [
+        "https://www.texastribune.org/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "一覧の9/11〜12広告支出記事と本文を照合。他の最新政策発表は別途未確認リード。"
+    },
+    {
+      "sourceId": "obs-ap-mi-convention",
+      "attemptedUrls": [
+        "https://apnews.com/article/d29ea1d7fa2f782e3de9039f9094104f",
+        "https://www.audacy.com/wbbm780/news/politics/abdul-el-sayed-muslim-republican-convention-d29ea1d7fa2f782e3de9039f9094104f"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "AP直URLはInternal Error。同一記事のAudacy/AP配信本文で9/11、Rogers主張の根拠不提示、El-Sayedの応答と過去発言への留保を照合。"
+    },
+    {
+      "sourceId": "obs-texas-tribune-spending",
+      "attemptedUrls": [
+        "https://www.texastribune.org/2026/09/11/senate-gop-leadership-ken-paxton-john-thune-texas-spending/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "5,130万ドル予約・9/12放映、料金差と双方反応を再照合。新たな支出額は未確認。"
+    },
+    {
+      "sourceId": "obs-maine-public-collins-payout",
+      "attemptedUrls": [
+        "https://www.mainepublic.org/politics/2026-09-11/collins-calls-trumps-5-000-post-election-payout-extraordinarily-expensive-and-likely-infeasible"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "9/11の給付案への財政的異論、縮小案の留保、党大会欠席理由を再照合。違法性に関するKingの主張は法的結論として採用しない。"
+    },
+    {
+      "sourceId": "obs-ak-fisheries-debate",
+      "attemptedUrls": [
+        "https://alaskapublic.org/news/politics/2026-09-14/peltola-and-sullivan-confront-trawl-bycatch-and-each-other-at-kodiak-fisheries-debate"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "9月12日の討論会を9月14日12:37 AKDTに報道。共和党現職サリバンと民主党ペルトラの混獲対策、対立する説明を照合。献金額・投票回数・得票効果は独立確認しておらず採用しない。"
+    },
+    {
+      "sourceId": "obs-ak-bycatch-bill",
+      "attemptedUrls": [
+        "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-introduces-bycatch-reduction-act/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "6月25日の法案発表。前年案を改訂した提案であり、網の基準・監視・技術開発を含む。議員側の説明・支持者評価と実証された効果を区別。"
+    },
+    {
+      "sourceId": "obs-commerce-bycatch-20260916",
+      "attemptedUrls": [
+        "https://www.commerce.senate.gov/press/rep/release/chairman-cruz-announces-september-16-markup/",
+        "https://www.commerce.senate.gov/meetings/executive-session-25-09-16-2026/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "9月16日10:00米東部時間、S.4938 Bycatch Reduction Actを含む審議。公式会合ページとも照合。議題は変更の可能性あり。審議予定であり可決・成立ではない。"
+    },
+    {
+      "sourceId": "obs-me-manchin-endorsement",
+      "attemptedUrls": [
+        "https://susancollins.com/press-release/press-release-former-senator-joe-manchin-endorses-senator-collins-soul-of-the-senate/"
+      ],
+      "attemptedAt": "2026-09-15T00:06:44.507Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "9月14日付の陣営公式発表。民主党出身・後に無所属のマンチン元上院議員がCNBCで推薦したと発表。本人の推薦理由とコリンズの応答を引用。番組全編とジャクソン陣営の反応は未照合。"
+    }
+  ],
+  "changes": [
+    {
+      "electionId": "2026-AK-2-regular",
+      "updateId": "obs-update-ak-fisheries-2026-09-12",
+      "fields": [
+        "featuredSummary",
+        "lead",
+        "materials",
+        "policy comparison",
+        "watchItems"
+      ],
+      "note": "漁業討論会の両者の説明と、前年からの法案経緯の反証を追加。LNG背景と順位投票の注意は維持。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "updateId": "obs-update-me-manchin-2026-09-14",
+      "fields": [
+        "record comparison"
+      ],
+      "note": "陣営公式発表として推薦を追加。番組全編・相手陣営反応・得票効果は未確認。"
+    }
+  ],
+  "events": {
+    "added": [
+      "ak-bycatch-markup-2026-09-16"
+    ],
+    "existingRechecked": [
+      "bls-jobs-2026-10-02",
+      "bls-cpi-2026-10-14",
+      "bls-state-jobs-2026-10-20",
+      "me-debate-2026-10-06",
+      "me-debate-2026-10-08",
+      "me-debate-2026-10-13",
+      "me-debate-2026-10-15"
+    ],
+    "results": [],
+    "note": "既存7予定はまだ将来。9/12討論会は過去の予定台帳に登録がないため架空の予定を作らずupdate.eventId=null。9/16法案審議は別イベントとして登録、結果未確認・resultUpdateId=null。実施確認後は双方向参照を設定する。"
+  },
+  "discovery": {
+    "categories": [
+      "候補者公式の発表・ニュース・予定",
+      "新規世論調査と公表元",
+      "州内取材",
+      "予定の実施・中止・延期",
+      "大統領の確認済み日程",
+      "統合評価の追加対象"
+    ],
+    "candidatePages": [
+      {
+        "state": "AK",
+        "urls": [
+          "https://www.sullivan.senate.gov/newsroom/press-releases/",
+          "https://www.sullivan.senate.gov/newsroom/press-releases/sullivan-introduces-bycatch-reduction-act/",
+          "https://marypeltola.com/",
+          "https://marypeltola.com/press/",
+          "https://marypeltola.com/fish/"
+        ],
+        "status": "partial",
+        "note": "Sullivanの法案発表本文成功。Peltola一覧取得、Fish詳細は画像主体のため具体策の独立比較は未完了。"
+      },
+      {
+        "state": "ME",
+        "urls": [
+          "https://susancollins.com/",
+          "https://www.jacksonformaine.com/"
+        ],
+        "status": "partial",
+        "note": "Collins新規推薦の原文成功。Jacksonの同件への反応は未確認。www付きCollins入口は失敗、検索で見つかった非www公式入口成功。"
+      },
+      {
+        "state": "MI",
+        "urls": [
+          "https://abdulforsenate.com/",
+          "https://rogersforsenate.com/news"
+        ],
+        "status": "partial",
+        "note": "公式入口とRogersの9/11等のニュース一覧取得。新規教育政策・反論の全文比較は未完了。"
+      },
+      {
+        "state": "OH",
+        "urls": [
+          "https://www.sherrodbrown.com/",
+          "https://www.jonhustedforsenate.com/",
+          "https://www.jonhustedforsenate.com/press/"
+        ],
+        "status": "partial",
+        "note": "双方の公式入口・Hustedの公表一覧取得。7月推薦など掲載確認、新規発表全件の本文照合までは未完了。"
+      },
+      {
+        "state": "TX",
+        "urls": [
+          "https://www.kenpaxton.com/",
+          "https://jamestalarico.com/"
+        ],
+        "status": "partial",
+        "note": "両候補公式入口取得。KVUEの9/14 Texas Promise報道の政策原文は照合待ち。"
+      },
+      {
+        "state": "NH",
+        "urls": [
+          "https://chrispappas.org/",
+          "https://johnsununu.com/"
+        ],
+        "status": "partial",
+        "note": "Pappas公式入口取得。Sununu入口はInternal Error。候補者発表全件の確認とはしない。"
+      }
+    ]
+  },
+  "pendingLeads": [
+    {
+      "topic": "9/14 Reuters/Ipsos全国調査",
+      "url": "https://www.reuters.com/world/us/trump-approval-up-record-low-outlook-sours-republicans-reutersipsos-poll-finds-2026-09-14/",
+      "status": "original-and-questionnaire-pending",
+      "note": "検索のIpsos September14ページは2016年調査だったため不採用。2026原質問票・方法未照合、数値はサイトに未追加。"
+    },
+    {
+      "topic": "Manchinの番組全編・Rogersへの支持",
+      "url": "https://keyt.com/politics/cnn-us-politics/2026/09/14/joe-manchin-says-he-supports-republican-candidates-in-battleground-senate-races-in-maine-and-michigan/",
+      "status": "unavailable",
+      "note": "検索本文リードあり、原文open失敗。ME推薦は別の公式発表で確認。MI支持や関税条件は未追加。"
+    },
+    {
+      "topic": "ME推薦の州内取材",
+      "urls": [
+        "https://www.pressherald.com/2026/09/14/susan-collins-endorsed-by-democrat-joe-manchin/",
+        "https://www.bangordailynews.com/2026/09/14/politics/elections/joe-manchin-will-campaign-for-susan-collins/"
+      ],
+      "status": "unavailable",
+      "note": "いずれもInternal Error。未確認の反応や遊説日程を作らない。"
+    },
+    {
+      "topic": "Michigan教育公約・実行権限",
+      "url": "https://www.michiganpublic.org/politics-government",
+      "status": "reviewing",
+      "note": "一覧に教育政策比較。Bridgeの9/11 shop-class検証も検索に出たが原記事未照合。"
+    },
+    {
+      "topic": "Texas Promise・Paxton演説",
+      "url": "https://www.kvue.com/",
+      "status": "reviewing",
+      "note": "9/14報道の検索抜粋のみ。発言の前後、Talarico反論、公約原文を次回照合。"
+    },
+    {
+      "topic": "OH AIPAC資金報道",
+      "url": "https://tiffinohio.net/",
+      "status": "reviewing",
+      "note": "検索リードのみ。FEC原票未照合につき金額・比較は未追加。"
+    },
+    {
+      "topic": "NH予備選結果",
+      "url": "https://www.sos.nh.gov/elections",
+      "status": "unavailable",
+      "note": "報道の当選見出しと公式原票を混同しない。"
+    },
+    {
+      "topic": "大統領の対象州訪問・将来発言",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "status": "not-confirmed",
+      "note": "公式一覧と日程検索で掲載できる対象州の確定予定は未確認。予定が存在しないとの断定ではない。"
+    }
+  ],
+  "safety": {
+    "scenarioFilesChanged": false,
+    "ratingSnapshotChanged": false,
+    "savedBaselineChanged": false,
+    "shareFormatChanged": false,
+    "uiChanged": false,
+    "otherRaceAnalysisDatesUnchanged": true,
+    "forcePush": false,
+    "messagesToOthers": false
+  },
+  "validation": {
+    "npmCi": "passed",
+    "npmTest": "passed: 112/112 tests, 7 files",
+    "npmBuild": "passed: tsc and Vite; existing chunk-size advisory only",
+    "firstTestAttempt": "111 passed / 1 failed: unverified OH retrieval date advanced beyond prior contentVerifiedAt; restored previous retrieval dates for pending sources, retaining attempt time here; validation rule not weakened."
+  },
+  "publication": {
+    "status": "validated-awaiting-fast-forward",
+    "strategy": "normal fast-forward from rechecked latest main; commit and its GitHub Pages run are authoritative publication record; no generated dist committed"
+  }
+}
