@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-15-v1",
+  "revision": "observation-2026-09-16-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,44 +8,31 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-15T00:06:44.507Z",
+    "lastCompletedAt": "2026-09-16T00:08:35.054Z",
     "latestRun": {
-      "runId": "daily-20260915",
-      "startedAt": "2026-09-14T23:57:19Z",
-      "completedAt": "2026-09-15T00:06:44.507Z",
+      "runId": "daily-20260916",
+      "startedAt": "2026-09-15T23:57:23Z",
+      "completedAt": "2026-09-16T00:08:35.054Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-ssrs",
-        "obs-emerson-tx",
-        "obs-dfp-ak",
-        "obs-collins",
-        "obs-maine-debates",
-        "obs-nh-wbur",
-        "obs-bls-oct",
-        "obs-roster-ak",
-        "obs-roster-mi",
-        "obs-roster-tx",
+        "obs-roster-me",
         "obs-inside",
         "obs-white-house",
-        "obs-local-ak",
-        "obs-local-mi",
-        "obs-local-tx",
-        "obs-ap-mi-convention",
-        "obs-texas-tribune-spending",
-        "obs-maine-public-collins-payout",
-        "obs-ak-fisheries-debate",
-        "obs-ak-bycatch-bill",
+        "obs-local-oh",
         "obs-commerce-bycatch-20260916",
-        "obs-me-manchin-endorsement"
+        "obs-coefficient-nh",
+        "obs-texas-tribune-paxton-ads",
+        "obs-oh-heartland-husted",
+        "obs-jackson-byrne",
+        "obs-reuters-byrne",
+        "obs-fox2-mi-debates"
       ],
       "pendingSourceIds": [
-        "obs-roster-me",
         "obs-roster-oh",
         "obs-roster-nh",
-        "obs-sabato",
-        "obs-local-oh"
+        "obs-sabato"
       ],
-      "note": "アラスカの漁業討論会・関連法案審議予定、メーンの推薦発表を原文照合して追加。登録の日次情報源23件中18件を対象箇所まで照合し、新規4資料も照合。ME名簿全体、OH・NH名簿、Sabato、Ohio州内取材の本文照合は未完了。新たな統合Toss Upの有無を断定せず、評価・議席基準は維持。候補者公式一覧と新規調査・予定も検索したが、未照合のリードは実行記録に残す。"
+      "note": "NHの新調査、TXの候補者広告、MEの判事承認票、MIの討論会辞退と次回予定、OHの政治資金報道を原文照合して公開。ME名簿は公式Excelと差替資料を照合。Inside Electionsは9月3日版・35選挙を再確認したが、Sabatoは取得不能のため新たな統合Toss Upがないとは断定しない。OH・NH当局名簿は原票照合未完了。AK法案審議は開始前で予定を維持。大統領の対象州訪問は公式一覧から確認できず、未公表日程の不存在は断定しない。評価・議席基準・保存案は維持。"
     }
   },
   "sources": [
@@ -518,8 +505,8 @@
       "url": "https://www.maine.gov/sos/elections-voting/upcoming-elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": null,
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -527,8 +514,8 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "not-checked",
-      "lastSuccessAt": null
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
     },
     {
       "sourceId": "obs-roster-mi",
@@ -594,7 +581,7 @@
       "url": "https://www.sos.nh.gov/elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
+      "retrievedAt": "2026-09-16",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-NH-2-regular"
@@ -603,7 +590,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
+      "checkStatus": "reviewing",
       "lastSuccessAt": null
     },
     {
@@ -613,7 +600,7 @@
       "url": "https://centerforpolitics.org/crystalball/2026-senate/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
+      "retrievedAt": "2026-09-16",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-AK-2-regular",
@@ -637,8 +624,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -652,7 +639,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -661,8 +648,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -676,7 +663,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -723,8 +710,8 @@
       "url": "https://www.statenews.org/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
       "electionIds": [
         "2026-OH-3-special"
       ],
@@ -732,8 +719,8 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "not-checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
     },
     {
       "sourceId": "obs-local-tx",
@@ -953,8 +940,8 @@
       "url": "https://www.commerce.senate.gov/press/rep/release/chairman-cruz-announces-september-16-markup/",
       "publishedAt": "2026-09-09",
       "referencePeriod": "9月16日10:00米東部時間、S.4938 Bycatch Reduction Actを含む審議。公式会合ページとも照合。議題は変更の可能性あり。審議予定であり可決・成立ではない。",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -963,7 +950,7 @@
       "method": "公開原文の主体・日付・根拠箇所を照合。発言・予定と実施成果を区別",
       "alternativeUrl": "https://www.commerce.senate.gov/meetings/executive-session-25-09-16-2026/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
     },
     {
       "sourceId": "obs-me-manchin-endorsement",
@@ -983,6 +970,120 @@
       "alternativeUrl": null,
       "checkStatus": "checked",
       "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+    },
+    {
+      "sourceId": "obs-coefficient-nh",
+      "title": "New Hampshire Senate General Election Poll",
+      "publisher": "co/efficient",
+      "url": "https://battlegrounds.coefficient.org/nh/",
+      "publishedAt": null,
+      "referencePeriod": "9月9〜11日、投票予定者958人。携帯電話へのテキストと固定電話で実施、誤差±3.15ポイント。上院選はSununu 46%、Pappas 46%、未定9%。公開ページに依頼主と正確な公表日は記載なし。",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査公表元の全文・設問・実施期間・標本・方法・重み付けを照合。支持率と勝率を区別",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+    },
+    {
+      "sourceId": "obs-texas-tribune-paxton-ads",
+      "title": "Ken Paxton launches first ads in Texas Senate race",
+      "publisher": "The Texas Tribune",
+      "url": "https://www.texastribune.org/2026/09/15/texas-ken-paxton-first-ads-james-talarico/",
+      "publishedAt": "2026-09-15",
+      "referencePeriod": "共和党Paxton陣営が南テキサス3市場で週約30万ドルの初の本格的な本選広告を開始。減税案の訴えと民主党Talaricoへの批判、Talarico側の応答を照合。広告効果は未確認。",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内報道の本文で広告主体・市場・金額・両陣営の主張を照合。支出と効果を区別",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+    },
+    {
+      "sourceId": "obs-oh-heartland-husted",
+      "title": "Husted political committee got nearly $500K from a bank he worked for while in office",
+      "publisher": "Ohio Capital Journal",
+      "url": "https://ohiocapitaljournal.com/2026/09/14/husted-political-committee-got-nearly-500k-from-a-bank-he-worked-for-while-in-office/",
+      "publishedAt": "2026-09-14",
+      "referencePeriod": "共和党現職HustedのHeartland Bank取締役就任後の政治委員会への拠出約49.2万ドル、本人資産、州倫理法の説明を照合。記事は忌避違反の文書証拠を確認しておらず、本人側は回答なし。",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内報道の本文で開示額・利益相反に関する留保・当事者の回答状況を同時に照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+    },
+    {
+      "sourceId": "obs-jackson-byrne",
+      "title": "Troy Jackson calls out Susan Collins for vote to confirm another anti-abortion judge",
+      "publisher": "Troy Jackson陣営",
+      "url": "https://www.jacksonformaine.com/news/troy-jackson-calls-out-susan-collins-for-vote-to-confirm-another-anti-abortion-judge",
+      "publishedAt": "2026-09-15",
+      "referencePeriod": "民主党Jackson陣営が、共和党CollinsのMatthew Byrne判事承認票を中絶政策の争点として批判。広い政策評価は陣営の主張として扱う。",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "daily",
+      "method": "候補者陣営の原文で発言主体と批判対象を照合し、事実関係は独立報道と分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+    },
+    {
+      "sourceId": "obs-reuters-byrne",
+      "title": "US Senate elevates Ohio judge staunchly against abortion to federal bench",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/government/us-senate-elevates-ohio-judge-staunchly-against-abortion-federal-bench-2026-09-15/",
+      "publishedAt": "2026-09-15",
+      "referencePeriod": "上院がTrump指名のMatthew Byrneを52対45で連邦判事に承認。2020年の中絶反対回答、2023年訴訟での反対意見、本人の上院での説明を照合。",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "独立報道で承認結果・指名主体・過去の司法上の立場・本人説明を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+    },
+    {
+      "sourceId": "obs-fox2-mi-debates",
+      "title": "Mike Rogers declines FOX 2 Senate debate with Abdul El-Sayed",
+      "publisher": "FOX 2 Detroit",
+      "url": "https://www.fox2detroit.com/news/mike-rogers-abdul-el-sayed-debate-detroit-senate.amp",
+      "publishedAt": "2026-09-15",
+      "referencePeriod": "民主党El-Sayedは9月15日の討論会招待を受諾し、共和党Rogers陣営は当日朝に司会者への異議を理由に辞退。両候補が10月8日のWOOD TV8討論会に合意したことも確認。",
+      "retrievedAt": "2026-09-16",
+      "contentVerifiedAt": "2026-09-16",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "主催局の本文で招待・受諾・辞退理由・次回合意を照合。終了時刻だけで番組実施を断定しない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
     }
   ],
   "evidenceRefs": [
@@ -1230,34 +1331,80 @@
       "locator": "9月14日付の陣営公式発表。民主党出身・後に無所属のマンチン元上院議員がCNBCで推薦したと発表。本人の推薦理由とコリンズの応答を引用。番組全編とジャクソン陣営の反応は未照合。",
       "checkedAt": "2026-09-15",
       "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-coefficient-nh",
+      "sourceId": "obs-coefficient-nh",
+      "locator": "9月9〜11日、投票予定者958人。携帯電話へのテキストと固定電話、誤差±3.15ポイント。Sununu 46%、Pappas 46%、未定9%。依頼主と正確な公表日はページに記載なし。",
+      "checkedAt": "2026-09-16",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-texas-tribune-paxton-ads",
+      "sourceId": "obs-texas-tribune-paxton-ads",
+      "locator": "共和党Paxton陣営が南テキサス3市場で週約30万ドルの本選広告を開始。減税案と民主党Talaricoへの批判を訴え、Talarico側も応答。広告効果は未確認。",
+      "checkedAt": "2026-09-16",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-oh-heartland-husted",
+      "sourceId": "obs-oh-heartland-husted",
+      "locator": "Heartland BankがHustedの取締役就任後に政治委員会へ約49.2万ドルを拠出。記事は忌避違反の文書証拠を確認せず、州倫理当局は犯罪等がない政治献金は通常の『価値あるもの』に当たらないと説明。本人側は回答なし。",
+      "checkedAt": "2026-09-16",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-jackson-byrne",
+      "sourceId": "obs-jackson-byrne",
+      "locator": "民主党Jackson陣営が、共和党CollinsによるTrump指名のMatthew Byrne判事の承認票を中絶政策の争点として批判。広い評価は陣営の主張。",
+      "checkedAt": "2026-09-16",
+      "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-byrne",
+      "sourceId": "obs-reuters-byrne",
+      "locator": "上院は9月15日、Trump指名のMatthew Byrneを52対45で承認。Byrneの2020年の中絶反対回答、2023年訴訟の反対意見、上院での本人説明を照合。",
+      "checkedAt": "2026-09-16",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-fox2-mi-debates",
+      "sourceId": "obs-fox2-mi-debates",
+      "locator": "民主党El-Sayedは9月15日のFOX2討論会招待を受諾。共和党Rogers陣営は当日朝、司会者への異議を理由に辞退。両候補は10月8日のWOOD TV8討論会に合意。",
+      "checkedAt": "2026-09-16",
+      "kind": "observed"
     }
   ],
   "races": [
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-15",
+      "updatedAt": "2026-09-16",
       "headline": "現職への評価と、政権への評価が重なる",
       "featuredSummary": "Collins個人への評価と、共和党・トランプ政権への評価が重なる接戦。医療をめぐる採決とJacksonの改革案を比べ、党派を越えた支持がどこまで残るかを見る。",
-      "lead": "CNN/SSRSの8月末〜9月初めの調査では、Collinsとトランプへの否定的評価が選挙の大きな背景にある。Collinsの独立した採決と、Jacksonの政策が実際の支持にどう結び付くかは分けて読む。",
-      "uncertainty": "政権への不満が、そのままJacksonへの投票になるとは限らない。Collinsの個別の反対発言や党大会欠席だけで恒常的な政権との距離も確定できず、有権者の受け止めは未確認。",
+      "lead": "CNN/SSRSの8月末〜9月初めの調査では、Collinsとトランプへの否定的評価が選挙の大きな背景にある。CollinsはTrumpの給付案に異論を示す一方、9月15日にはTrump指名の連邦判事を承認する票を投じ、Jacksonが中絶政策の観点から批判した。独立性は案件ごとに読む。",
+      "uncertainty": "政権への不満が、そのままJacksonへの投票になるとは限らない。一つの反対発言や一つの承認票だけでCollinsと政権の恒常的な距離を決められず、今回の採決への有権者の反応も未確認。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-collins",
         "ev-obs-maine-public-collins-payout",
         "ev-obs-jackson-policy",
-        "ev-obs-me-manchin-endorsement"
+        "ev-obs-me-manchin-endorsement",
+        "ev-obs-jackson-byrne",
+        "ev-obs-reuters-byrne"
       ],
       "materials": [
         {
           "materialId": "me-incumbent",
-          "title": "党方針・Trump案と異なる判断",
-          "fact": "Collinsは2025年の財政法案に反対。2026年9月11日にはTrumpの5,000ドル給付案を費用面から実現困難と述べた。",
-          "meaning": "個別案件で異論を示す行動が「州を優先する現職」という評価につながるかが焦点になる。",
-          "limit": "個別の採決・発言だけで独立性全体や有権者の評価を決められない。党大会欠席も、本人はMaineでの選挙運動を理由にしている。",
+          "title": "政権との距離は案件ごとに異なる",
+          "fact": "Collinsは2025年の財政法案に反対し、2026年9月11日にはTrumpの5,000ドル給付案へ異論を示した。一方、15日にはTrump指名のMatthew Byrneを連邦判事に承認する票を投じた。",
+          "meaning": "『政権から独立しているか』を一語で決めず、財政・医療・司法など個別案件の判断を比べる。",
+          "limit": "一つの反対発言や承認票だけで独立性全体や得票への効果は決められない。Jacksonによる中絶政策への批判は陣営の主張として読む。",
           "evidenceIds": [
             "ev-obs-collins",
-            "ev-obs-maine-public-collins-payout"
+            "ev-obs-maine-public-collins-payout",
+            "ev-obs-jackson-byrne",
+            "ev-obs-reuters-byrne"
           ]
         },
         {
@@ -1310,10 +1457,12 @@
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "2025年の財政法案には反対。2026年9月にはTrumpの5,000ドル給付案を費用面から実現困難とし、選挙結果と財政政策を結び付けるべきでないと述べた。",
+              "text": "2025年の財政法案と2026年9月のTrumpの5,000ドル給付案には異論を示した。一方、9月15日にはTrump指名のMatthew Byrneを連邦判事に承認する票を投じた。Jacksonは中絶政策の観点から批判した。",
               "evidenceIds": [
                 "ev-obs-collins",
-                "ev-obs-maine-public-collins-payout"
+                "ev-obs-maine-public-collins-payout",
+                "ev-obs-jackson-byrne",
+                "ev-obs-reuters-byrne"
               ]
             }
           ]
@@ -1406,17 +1555,18 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-16",
       "headline": "政策の違いが、候補者への距離感につながるか",
       "featuredSummary": "医療・雇用をめぐる政策の違いが、両候補への距離感につながる接戦。El-Sayedの改革案とRogersの政権との協力を比べ、州民の受け止めを確かめたい。",
-      "lead": "CNN/SSRSは、ミシガンでは候補者の政策的位置が選挙の中心にあると分析している。9月の共和党大会ではEl-Sayedへの攻撃が前面に出た一方、本人は生活費・対カナダ貿易・医療へ論点を戻そうとした。発言の強さと有権者への効果は分けて読む。",
-      "uncertainty": "大会での攻防が共和党支持層を動員するのか、El-Sayedへの反発や同情を広げるのかは未確認。集会への参加人数も州全体の支持率や投票参加を示さない。",
+      "lead": "CNN/SSRSは、ミシガンでは候補者の政策的位置が選挙の中心にあると分析している。9月15日のFOX2討論会はEl-Sayedが招待を受諾し、Rogers陣営は司会者への異議を理由に当日朝に辞退した。両候補は10月8日のWOOD TV8討論会に合意している。",
+      "uncertainty": "討論会への参加判断が候補者評価や投票先を変えたかは未確認。9月15日の番組が予定どおりどの形式で行われたかも今回の締切時点では確認できておらず、辞退理由への評価も両陣営の説明と分けて追う。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
         "ev-obs-rogers-trade",
         "ev-obs-ap-mi-convention",
-        "ev-obs-mi-rogers-residency"
+        "ev-obs-mi-rogers-residency",
+        "ev-obs-fox2-mi-debates"
       ],
       "materials": [
         {
@@ -1565,23 +1715,24 @@
         },
         {
           "watchId": "mi-watch-1",
-          "title": "大会での攻防への反応",
-          "what": "人物・宗教をめぐる攻撃と、生活費・貿易へ戻す応答のどちらが候補者評価に結び付くか。",
-          "how": "大会後に実施された同じ質問・対象の調査を優先。新規調査の公表日は未確認。"
+          "title": "討論会での直接比較",
+          "what": "10月8日のWOOD TV8討論会で、両候補が生活費・医療・貿易にどう答えるか。",
+          "how": "主催局の実施確認と発言全文を優先し、出演判断や切り抜きだけで候補者評価への効果を決めない。"
         }
       ]
     },
     {
       "electionId": "2026-OH-3-special",
       "status": "published",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-16",
       "headline": "家計への支援と、投資・雇用の実績をどう評価するか",
       "featuredSummary": "Brownは薬価・公共料金、Hustedは企業投資・職業訓練を前面に出す。家計負担と雇用実績のどちらが支持につながるかは、公約の比較に加えて有権者の評価を確かめたい。",
-      "lead": "両候補は経済の改善を訴えるが、Brownは家計負担、Hustedは投資・雇用の実績を強調する。今回の対象はClass 3の特別選挙1議席であり、政策を好むことと当選を見込むことは分けて考える。",
-      "uncertainty": "両陣営の発信は確認できるが、それぞれの政策を理由にどれほど票が動くかは、今回確認した資料では分からない。",
+      "lead": "両候補は経済の改善を訴えるが、Brownは家計負担、Hustedは投資・雇用の実績を強調する。Hustedが副知事在任中に取締役を務めた銀行から、政治委員会が約49.2万ドルを受けたとの州内報道も、実績と利益相反への説明を考える材料になった。",
+      "uncertainty": "記事はHustedが表明した忌避方針に違反した文書証拠を確認しておらず、州倫理当局は通常の政治献金は州倫理法上の『価値あるもの』に当たらないと説明した。本人側の回答と有権者の反応は未確認。",
       "evidenceIds": [
         "ev-obs-brown-policy",
-        "ev-obs-husted-bio"
+        "ev-obs-husted-bio",
+        "ev-obs-oh-heartland-husted"
       ],
       "materials": [
         {
@@ -1688,9 +1839,10 @@
             {
               "candidateId": "cand-oh-jon-husted",
               "kind": "claim",
-              "text": "Intel投資やTechCredの展開を実績に挙げる。投資計画と稼働・雇用の実現を分けて追う。",
+              "text": "Intel投資やTechCredを実績に挙げる。一方、取締役を務めたHeartland Bankから政治委員会が約49.2万ドルを受けたと報じられた。記事は忌避違反の文書証拠を確認しておらず、本人側の回答は得られていない。",
               "evidenceIds": [
-                "ev-obs-husted-bio"
+                "ev-obs-husted-bio",
+                "ev-obs-oh-heartland-husted"
               ]
             }
           ]
@@ -1732,14 +1884,15 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-14",
+      "updatedAt": "2026-09-16",
       "headline": "経済・移民への評価と、支持層の投票参加",
       "featuredSummary": "経済と移民の重みは支持層によって異なり、8月調査では年齢別の支持差も大きい。PaxtonとTalaricoの政策・評価に加え、各支持層の投票参加を見て当選を考える。",
-      "lead": "Emersonの8月調査では、若い層はTalarico、年長層はPaxtonが優勢だった。争点の優先順位も党派で異なるため、全体支持率と支持層の投票参加を合わせて見る。",
-      "uncertainty": "年齢別集計は州全体より不確かさが大きい。9月12日に始まった広告の量や支出額も、認知・好感度・投票意思の変化を証明しない。後続調査で確かめる。",
+      "lead": "Emersonの8月調査では、若い層はTalarico、年長層はPaxtonが優勢だった。共和党Paxton陣営は9月15日、南テキサス3市場で初の本格的な本選広告を開始し、減税案と民主党Talaricoへの批判を前面に出した。",
+      "uncertainty": "年齢別集計は州全体より不確かさが大きい。外部団体の大型支出に加え候補者陣営も広告を始めたが、支出額やメッセージは認知・好感度・投票意思の変化を証明しない。後続調査で確かめる。",
       "evidenceIds": [
         "ev-obs-emerson-tx",
-        "ev-obs-texas-tribune-spending"
+        "ev-obs-texas-tribune-spending",
+        "ev-obs-texas-tribune-paxton-ads"
       ],
       "materials": [
         {
@@ -1755,11 +1908,12 @@
         {
           "materialId": "tx-airwaves",
           "title": "共和党系の大型広告投下が始まった",
-          "fact": "Texas Tribuneによると、Texas PACは約5,130万ドルの放送広告を予約し、9月12日に放映を開始した。共和党系の支出・予約は9月末まで計8,110万ドル、民主党側は4,370万ドル。",
-          "meaning": "Paxton側の露出拡大後に、候補者の認知・好感度と争点評価がどう変わるかを見る。",
+          "fact": "共和党系外部団体の大型広告に続き、Paxton陣営は9月15日、Harlingen・Laredo・Corpus Christiで週約30万ドルの放送・配信広告を開始した。",
+          "meaning": "外部団体の攻撃広告と候補者自身の減税メッセージを分け、南テキサスでの認知・好感度がどう変わるかを見る。",
           "limit": "名目支出額は広告効果ではない。候補者陣営は外部団体より割安な放送単価を利用できるため、両陣営の金額だけで露出量も比較できない。",
           "evidenceIds": [
-            "ev-obs-texas-tribune-spending"
+            "ev-obs-texas-tribune-spending",
+            "ev-obs-texas-tribune-paxton-ads"
           ]
         }
       ],
@@ -2066,13 +2220,14 @@
     {
       "electionId": "2026-NH-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-13",
+      "updatedAt": "2026-09-16",
       "headline": "生活費と、政権からの独立性をどう評価するか",
       "featuredSummary": "Pappasは生活費と医療、Sununuは減税と独立した実務能力を訴える。Trumpからの推薦と過去の対立を具体的に読み、政権への評価が候補者の評価にどう重なるかを見る。",
-      "lead": "両候補は州の利益を実現する能力を訴える。政策の違いに加え、SununuとTrumpの距離をどう評価するかが確認点になる。",
-      "uncertainty": "候補者の主張と取材は確認できるが、予備選後の支持のまとまりや、各論点が得票をどれだけ動かすかはまだ十分に確認できていない。",
+      "lead": "9月9〜11日のco/efficient調査では、共和党のJohn Sununuと民主党のChris Pappasが46%対46%、未定9%だった。候補者への評価と、Trumpを支持しないと答えた53%を同じ意味とせず、Sununuの独立性が実際の投票先にどう結び付くかを見る。",
+      "uncertainty": "一つの調査で、誤差は±3.15ポイント。公開ページに依頼主と正確な公表日の記載がなく、Trumpへの評価と上院選の投票理由を直接結び付ける設問でもない。新しい比較可能な調査で確かめる。",
       "evidenceIds": [
-        "ev-obs-nh-wbur"
+        "ev-obs-nh-wbur",
+        "ev-obs-coefficient-nh"
       ],
       "materials": [
         {
@@ -2088,11 +2243,12 @@
         {
           "materialId": "nh-independence",
           "title": "推薦と独立性をどう受け止めるか",
-          "fact": "Sununuは過去にTrumpを批判した一方、2026年2月に推薦を受けた。",
-          "meaning": "政権への賛成票と見るか、州を代表する独立した人物と見るかが焦点になる。",
-          "limit": "推薦や過去の批判だけで、今後の採決や有権者の支持は決められない。",
+          "fact": "Sununuは過去にTrumpを批判した一方、2026年2月に推薦を受けた。9月調査ではTrumpを支持しない回答が53%だったが、上院選はSununuとPappasがともに46%だった。",
+          "meaning": "大統領への評価と上院候補への評価が完全には重ならない可能性を、同じ調査の別設問で確認する。",
+          "limit": "別設問の数字から個々の回答者の組合せや理由は分からない。一つの調査で勝敗や推薦の効果も決められない。",
           "evidenceIds": [
-            "ev-obs-nh-wbur"
+            "ev-obs-nh-wbur",
+            "ev-obs-coefficient-nh"
           ]
         }
       ],
@@ -2192,15 +2348,19 @@
           "cells": [
             {
               "candidateId": "cand-nh-chris-pappas",
-              "kind": "pending",
-              "text": "予備選後の政策別評価を十分に確認できていない。新しい候補者評価を確認する。",
-              "evidenceIds": []
+              "kind": "observed",
+              "text": "9月9〜11日の投票予定者調査で支持46%、好意的37%、否定的51%。候補者支持と好感度は別設問で、政策別の理由は未確認。",
+              "evidenceIds": [
+                "ev-obs-coefficient-nh"
+              ]
             },
             {
               "candidateId": "cand-nh-john-e-sununu",
-              "kind": "pending",
-              "text": "過去のTrump批判と今回の推薦への有権者の反応は未確認。取材者の見立てと調査結果を区別する。",
-              "evidenceIds": []
+              "kind": "observed",
+              "text": "同じ調査で支持46%、好意的41%、否定的47%。Trump不支持53%と同時に並ぶが、推薦への反応を直接測った設問ではない。",
+              "evidenceIds": [
+                "ev-obs-coefficient-nh"
+              ]
             }
           ]
         }
@@ -2208,9 +2368,9 @@
       "watchItems": [
         {
           "watchId": "nh-watch-0",
-          "title": "予備選後の支持のまとまり",
-          "what": "候補者が決まった後に支持がどう変わるか。",
-          "how": "確定名簿と予備選後に実施された調査を照合。次回調査の発表日は未確認。"
+          "title": "同率から動く条件",
+          "what": "未定9%と、両候補に否定的な評価を持つ層が何を重視するか。",
+          "how": "次の比較可能な調査で支持率・好感度・争点別の解決能力を確認。次回調査の発表日は未確認。"
         },
         {
           "watchId": "nh-watch-1",
@@ -2493,7 +2653,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-15",
+      "checkedAt": "2026-09-16",
       "evidenceIds": [
         "ev-obs-commerce-bycatch-20260916"
       ],
@@ -2509,9 +2669,129 @@
       ],
       "resultUpdateId": null,
       "publicationStatus": "published"
+    },
+    {
+      "eventId": "mi-debate-2026-10-08",
+      "title": "ミシガン上院候補討論会（WOOD TV8）",
+      "date": "2026-10-08",
+      "time": null,
+      "timezone": "America/Detroit",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-16",
+      "evidenceIds": [
+        "ev-obs-fox2-mi-debates"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "民主党El-Sayedと共和党Rogersが同じ場で政策を説明することに合意した機会。",
+          "watch": "実施・延期・中止を主催局で確認し、生活費・医療・貿易への回答を比べる。時刻は未確認。",
+          "materialIds": [
+            "mi-policy",
+            "mi-trade"
+          ]
+        }
+      ],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-nh-coefficient-2026-09-11",
+      "status": "published",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-11",
+      "updatedAt": "2026-09-16",
+      "title": "ニューハンプシャー州、共和党スヌヌ氏と民主党パパス氏が46%で同率",
+      "happened": "接戦6州の一つニューハンプシャー州で、元共和党上院議員のジョン・スヌヌ氏と、民主党の現職下院議員クリス・パパス氏が争う。9月9〜11日の投票予定者958人へのco/efficient調査は、両者46%、未定9%だった。",
+      "meaning": "同じ調査でトランプ大統領を支持しない回答は53%だったが、上院選では共和党スヌヌ氏も46%を得た。大統領への評価と上院候補への評価を同じものとせず、スヌヌ氏が訴える独立性とパパス氏の政権批判を個別に見る材料になる。",
+      "uncertainty": "調査誤差は±3.15ポイントで、公開ページに依頼主と正確な公表日の記載がない。別設問の数字から個々の回答理由や推薦の効果は分からず、一つの調査で勝敗を判断しない。",
+      "evidenceIds": [
+        "ev-obs-coefficient-nh",
+        "ev-obs-nh-wbur"
+      ]
+    },
+    {
+      "updateId": "obs-update-tx-paxton-ads-2026-09-15",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-15",
+      "updatedAt": "2026-09-16",
+      "title": "テキサス州・共和党パクストン氏、本選で初の本格的な陣営広告",
+      "happened": "接戦6州の一つテキサス州で、共和党のケン・パクストン州司法長官と民主党のジェームズ・タラリコ州下院議員が争う。パクストン陣営は南テキサス3市場で週約30万ドルの放送・配信広告を始め、住宅頭金・医療保険料の税控除案を訴え、タラリコ氏の財政法案反対を批判した。",
+      "meaning": "共和党系外部団体の大型広告に、候補者自身の政策メッセージが加わった。タラリコ氏は同法案に医療・食料支援の削減があるとして反対しており、生活費対策の違いを比べる材料になる。",
+      "uncertainty": "広告の主張と反論を確認した段階で、南テキサスの支持や好感度が動いた証拠はない。週の支出額も広告の到達や得票効果を示さない。",
+      "evidenceIds": [
+        "ev-obs-texas-tribune-paxton-ads",
+        "ev-obs-texas-tribune-spending"
+      ]
+    },
+    {
+      "updateId": "obs-update-me-byrne-2026-09-15",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-15",
+      "updatedAt": "2026-09-16",
+      "title": "メーン州・共和党コリンズ氏の判事承認票を民主党ジャクソン氏が批判",
+      "happened": "接戦6州の一つメーン州で、共和党現職のスーザン・コリンズ上院議員と民主党のトロイ・ジャクソン元州上院議長が争う。上院は9月15日、トランプ大統領が指名したMatthew Byrne氏を連邦判事に52対45で承認。コリンズ氏は賛成し、ジャクソン陣営はByrne氏の過去の中絶反対の立場を挙げて批判した。",
+      "meaning": "前週、コリンズ氏はトランプ氏の5,000ドル給付案に財政面から異論を示した。今回の賛成票は、政権との距離を一語で決めず、財政と司法など案件ごとに見る必要を示す。",
+      "uncertainty": "Byrne氏は上院で拘束力のある先例に従うと説明している。ジャクソン陣営の広い評価は選挙上の主張であり、この一票への州有権者の反応と得票効果は未確認。",
+      "evidenceIds": [
+        "ev-obs-reuters-byrne",
+        "ev-obs-jackson-byrne",
+        "ev-obs-maine-public-collins-payout"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-fox2-debate-2026-09-15",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-15",
+      "updatedAt": "2026-09-16",
+      "title": "ミシガン州・共和党ロジャース氏、FOX2討論会への参加を当日辞退",
+      "happened": "接戦6州の一つミシガン州で、民主党のアブドゥル・エルサイード氏と共和党のマイク・ロジャース元下院議員が争う。FOX2は両陣営を8月5日に招待し、エルサイード氏は受諾。ロジャース陣営は9月15日朝、司会者に公平性の懸念があるとして同夜の参加を辞退し、局側は偏りを否定した。",
+      "meaning": "候補者が同じ条件で政策を説明する機会への参加判断を比べる材料。両候補は10月8日のWOOD TV8討論会には合意しており、医療・生活費・貿易の直接比較を次に確認する。",
+      "uncertainty": "辞退理由はロジャース陣営の説明で、司会者評価や有権者への効果は未確認。9月15日の番組が最終的にどの形式で行われたかも今回の締切時点では確認できていない。",
+      "evidenceIds": [
+        "ev-obs-fox2-mi-debates"
+      ]
+    },
+    {
+      "updateId": "obs-update-oh-heartland-2026-09-14",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-14",
+      "updatedAt": "2026-09-16",
+      "title": "オハイオ州・共和党ハステッド氏、在任中に務めた銀行と政治献金を州内紙が検証",
+      "happened": "オハイオ州の特別上院選では、共和党現職のジョン・ハステッド氏と民主党のシェロッド・ブラウン元上院議員が争う。Ohio Capital Journalは、ハステッド氏が副知事在任中の2022年にHeartland Bankの取締役となった後、同行が同氏の政治委員会へ計約49.2万ドルを拠出したと報じた。",
+      "meaning": "ハステッド氏が訴える企業誘致・経済運営の実績と、官職・企業役職・政治資金の関係への説明を同時に見る材料。州倫理当局は、犯罪などがない通常の政治献金は州倫理法上の『価値あるもの』に当たらないと説明した。",
+      "uncertainty": "記事は、本人が表明した利益相反時の忌避方針に違反した文書証拠を確認していない。銀行合併はOhio当局の承認対象ではなく、本人側の回答と有権者の反応も未確認。",
+      "evidenceIds": [
+        "ev-obs-oh-heartland-husted"
+      ]
+    },
     {
       "updateId": "obs-update-me-manchin-2026-09-14",
       "status": "published",

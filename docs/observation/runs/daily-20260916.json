@@ -1,0 +1,202 @@
+{
+  "checkedSourceIds": [
+    "obs-roster-me",
+    "obs-inside",
+    "obs-white-house",
+    "obs-local-oh",
+    "obs-commerce-bycatch-20260916",
+    "obs-coefficient-nh",
+    "obs-texas-tribune-paxton-ads",
+    "obs-oh-heartland-husted",
+    "obs-jackson-byrne",
+    "obs-reuters-byrne",
+    "obs-fox2-mi-debates"
+  ],
+  "completedAt": "2026-09-16T00:08:35.054Z",
+  "note": "NHの新調査、TXの候補者広告、MEの判事承認票、MIの討論会辞退と次回予定、OHの政治資金報道を原文照合して公開。ME名簿は公式Excelと差替資料を照合。Inside Electionsは公式JSONの9月3日版・35選挙を再確認したが、Sabatoは取得不能のため新たな統合Toss Upがないとは断定しない。OH・NH当局名簿は原票照合未完了。AK法案審議は開始前で予定を維持。大統領の対象州訪問は公式一覧から確認できず、未公表日程の不存在は断定しない。評価・議席基準・保存案・共有URLは変更していない。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato"
+  ],
+  "runId": "daily-20260916",
+  "startedAt": "2026-09-15T23:57:23Z",
+  "baseCommit": "48677247ce2496941b371abca831374d844032f0",
+  "revision": "observation-2026-09-16-v1",
+  "reviewMode": "daily; Wednesday Asia/Tokyo; weekly full comparison audit not due",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-coefficient-nh",
+      "attemptedUrls": [
+        "https://battlegrounds.coefficient.org/nh/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "9月9〜11日、投票予定者958人、Sununu46/Pappas46/未定9、好感度、Trump評価、方法、誤差±3.15を公表元で照合。依頼主と正確な公表日はページに記載なし。"
+    },
+    {
+      "sourceId": "obs-texas-tribune-paxton-ads",
+      "attemptedUrls": [
+        "https://www.texastribune.org/2026/09/15/texas-ken-paxton-first-ads-james-talarico/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "Paxton陣営の初の本格的な本選広告、南Texas3市場、週約30万ドル、政策訴求とTalarico側の反論を照合。効果は未確認。"
+    },
+    {
+      "sourceId": "obs-oh-heartland-husted",
+      "attemptedUrls": [
+        "https://ohiocapitaljournal.com/2026/09/14/husted-political-committee-got-nearly-500k-from-a-bank-he-worked-for-while-in-office/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "Heartland Bankから政治委員会への約49.2万ドル、資産開示、州倫理当局の説明、違反証拠未確認、本人側回答なしを同時に照合。"
+    },
+    {
+      "sourceId": "obs-jackson-byrne",
+      "attemptedUrls": [
+        "https://www.jacksonformaine.com/news/troy-jackson-calls-out-susan-collins-for-vote-to-confirm-another-anti-abortion-judge"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "民主党Jackson陣営による共和党Collinsの判事承認票への批判を、陣営の主張として照合。"
+    },
+    {
+      "sourceId": "obs-reuters-byrne",
+      "attemptedUrls": [
+        "https://www.reuters.com/legal/government/us-senate-elevates-ohio-judge-staunchly-against-abortion-federal-bench-2026-09-15/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "52対45の承認、Trump指名、Byrneの過去の中絶に関する立場と本人の上院での説明を照合。"
+    },
+    {
+      "sourceId": "obs-fox2-mi-debates",
+      "attemptedUrls": [
+        "https://www.fox2detroit.com/news/mike-rogers-abdul-el-sayed-debate-detroit-senate.amp"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "El-Sayedの受諾、Rogers陣営の当日辞退と説明、局側の応答、両候補が合意した10月8日WOOD TV8討論会を照合。9月15日の番組結果は未確認。"
+    },
+    {
+      "sourceId": "obs-roster-me",
+      "attemptedUrls": [
+        "https://www.maine.gov/sos/elections-voting/upcoming-elections",
+        "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/2026%20General%20Election%20Candidate%20List.xlsx",
+        "https://www.maine.gov/sos/sites/maine.gov.sos/files/inline-files/2026%20Post%20Primary%20Withdrawals%20%26%20Replacement%20Candidates%20FINAL.pdf"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "公式候補者Excelの上院欄Collins/R・Jackson/Dと、Platner辞退・Jackson差替の公式資料を照合。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/ratings/senate",
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "公式JSONの更新時刻9月3日、全35選挙を機械確認。6州の評価に変更なし。Sabato未確認のため統合評価全体の変更なしとは断定しない。"
+    },
+    {
+      "sourceId": "obs-commerce-bycatch-20260916",
+      "attemptedUrls": [
+        "https://www.commerce.senate.gov/press/rep/release/chairman-cruz-announces-september-16-markup/",
+        "https://www.commerce.senate.gov/meetings/executive-session-25-09-16-2026/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "9月16日10:00米東部時間の議題にS.4938が残ることを開始前に再確認。実施・採決結果は未確認。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-16T00:08:35.054Z",
+      "contentVerifiedAt": "2026-09-16",
+      "scope": "9月15日までの公式一覧を確認。対象6州への大統領の確定訪問日程は掲載から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式ページの本文取得に失敗。候補者原票は未確認。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/2026-democratic-state-primary",
+        "https://www.sos.nh.gov/2026-republican-state-primary"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式予備選ページと上院結果Excelへのリンクは確認。Excel取得が403となり原票の候補者行は未照合。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-16T00:08:35.054Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページの本文取得不能。新たな統合Toss Upの不存在を断定せず、既存スナップショットを維持。"
+    }
+  ],
+  "dataChanges": {
+    "publishedUpdateIds": [
+      "obs-update-nh-coefficient-2026-09-11",
+      "obs-update-tx-paxton-ads-2026-09-15",
+      "obs-update-me-byrne-2026-09-15",
+      "obs-update-mi-fox2-debate-2026-09-15",
+      "obs-update-oh-heartland-2026-09-14"
+    ],
+    "publishedEventIds": [
+      "mi-debate-2026-10-08"
+    ],
+    "ratingSnapshotChanged": false,
+    "scenarioBaselineChanged": false,
+    "savedScenariosChanged": false,
+    "sharedUrlsChanged": false
+  },
+  "verification": {
+    "npmTest": "passed: 112 tests",
+    "npmBuild": "passed",
+    "mainFastForward": "ready: origin/main unchanged from baseCommit before commit",
+    "pages": "pending",
+    "publicContent": "pending"
+  }
+}
