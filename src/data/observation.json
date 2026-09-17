@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-16-v1",
+  "revision": "observation-2026-09-17-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -624,8 +624,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-16",
-      "contentVerifiedAt": "2026-09-16",
+      "retrievedAt": "2026-09-17",
+      "contentVerifiedAt": "2026-09-17",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -639,7 +639,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -648,8 +648,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-16",
-      "contentVerifiedAt": "2026-09-16",
+      "retrievedAt": "2026-09-17",
+      "contentVerifiedAt": "2026-09-17",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -663,7 +663,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -940,8 +940,8 @@
       "url": "https://www.commerce.senate.gov/press/rep/release/chairman-cruz-announces-september-16-markup/",
       "publishedAt": "2026-09-09",
       "referencePeriod": "9月16日10:00米東部時間、S.4938 Bycatch Reduction Actを含む審議。公式会合ページとも照合。議題は変更の可能性あり。審議予定であり可決・成立ではない。",
-      "retrievedAt": "2026-09-16",
-      "contentVerifiedAt": "2026-09-16",
+      "retrievedAt": "2026-09-17",
+      "contentVerifiedAt": "2026-09-17",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -950,7 +950,7 @@
       "method": "公開原文の主体・日付・根拠箇所を照合。発言・予定と実施成果を区別",
       "alternativeUrl": "https://www.commerce.senate.gov/meetings/executive-session-25-09-16-2026/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
     },
     {
       "sourceId": "obs-me-manchin-endorsement",
@@ -1068,22 +1068,60 @@
     },
     {
       "sourceId": "obs-fox2-mi-debates",
-      "title": "Mike Rogers declines FOX 2 Senate debate with Abdul El-Sayed",
+      "title": "Mike Rogers declines FOX 2 Senate debate; Abdul El-Sayed answers questions",
       "publisher": "FOX 2 Detroit",
       "url": "https://www.fox2detroit.com/news/mike-rogers-abdul-el-sayed-debate-detroit-senate.amp",
       "publishedAt": "2026-09-15",
-      "referencePeriod": "民主党El-Sayedは9月15日の討論会招待を受諾し、共和党Rogers陣営は当日朝に司会者への異議を理由に辞退。両候補が10月8日のWOOD TV8討論会に合意したことも確認。",
-      "retrievedAt": "2026-09-16",
-      "contentVerifiedAt": "2026-09-16",
+      "referencePeriod": "民主党El-Sayedは9月15日の招待を受諾し、共和党Rogers陣営は当日朝に司会者への異議を理由に辞退。番組はEl-Sayedが単独で地域住民の質問に答える形式で実施。両候補が10月8日のWOOD TV8討論会に合意したことも確認。",
+      "retrievedAt": "2026-09-17",
+      "contentVerifiedAt": "2026-09-17",
       "electionIds": [
         "2026-MI-2-regular"
       ],
       "category": "reporting",
       "cadence": "daily",
-      "method": "主催局の本文で招待・受諾・辞退理由・次回合意を照合。終了時刻だけで番組実施を断定しない",
-      "alternativeUrl": null,
+      "method": "主催局の本文と実施後記事で招待・受諾・辞退理由・実施形式・次回合意を照合",
+      "alternativeUrl": "https://www.fox2detroit.com/news/u-s-senate-debate-abdul-el-sayed-mike-rogers-takeaways-analysis",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
+    },
+    {
+      "sourceId": "obs-sullivan-bycatch-committee-20260916",
+      "title": "Senate Commerce Committee advances Sen. Sullivan's Bycatch Reduction Act",
+      "publisher": "Dan Sullivan上院議員事務所",
+      "url": "https://www.youtube.com/watch?v=owYpe5OrUc4",
+      "publishedAt": "2026-09-16",
+      "referencePeriod": "共和党現職Dan Sullivanの公式動画で、S.4938 Bycatch Reduction Actが9月16日の上院商務委員会を通過したと確認。委員会通過であり、上院本会議通過・法成立・魚資源への効果ではない。",
+      "retrievedAt": "2026-09-17",
+      "contentVerifiedAt": "2026-09-17",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "議員事務所の公式動画の公表日・表題と、委員会公式会合ページの実施日時・議題を照合",
+      "alternativeUrl": "https://x.com/SenDanSullivan/status/2100319951257313666",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
+    },
+    {
+      "sourceId": "obs-ap-harris-el-sayed-20260922",
+      "title": "Kamala Harris is to campaign in Michigan with Abdul El-Sayed",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/elsayed-kamala-harris-michigan-senate-52f04f16a2d7aa6002df684c1e8aea29",
+      "publishedAt": "2026-09-16",
+      "referencePeriod": "民主党El-Sayed陣営とHarris側の報道担当者が、9月22日にMichiganで黒人妊産婦の健康を扱う円卓会議を行うと確認。初の共同公開行事。時刻と会場は未公表。",
+      "retrievedAt": "2026-09-17",
+      "contentVerifiedAt": "2026-09-17",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "AP本文で両陣営の確認、日付、主題、初の共同公開行事であることを照合。時刻・会場・得票効果は推測しない",
+      "alternativeUrl": "https://www.fox2detroit.com/news/abdul-el-sayed-campaigning-kamala-harris-next-week",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
     }
   ],
   "evidenceRefs": [
@@ -1370,8 +1408,22 @@
     {
       "evidenceId": "ev-obs-fox2-mi-debates",
       "sourceId": "obs-fox2-mi-debates",
-      "locator": "民主党El-Sayedは9月15日のFOX2討論会招待を受諾。共和党Rogers陣営は当日朝、司会者への異議を理由に辞退。両候補は10月8日のWOOD TV8討論会に合意。",
-      "checkedAt": "2026-09-16",
+      "locator": "民主党El-Sayedは9月15日のFOX2招待を受諾。共和党Rogers陣営は当日朝、司会者への異議を理由に辞退。番組はEl-Sayedが単独で地域住民の質問に答える形式で実施。両候補は10月8日のWOOD TV8討論会に合意。",
+      "checkedAt": "2026-09-17",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-sullivan-bycatch-committee-20260916",
+      "sourceId": "obs-sullivan-bycatch-committee-20260916",
+      "locator": "共和党現職Dan SullivanのS.4938は9月16日に上院商務委員会を通過。委員会通過であり、本会議通過・法成立・魚資源への効果ではない。",
+      "checkedAt": "2026-09-17",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ap-harris-el-sayed-20260922",
+      "sourceId": "obs-ap-harris-el-sayed-20260922",
+      "locator": "民主党El-SayedとHarris前副大統領が9月22日にMichiganで黒人妊産婦の健康を扱う円卓会議を予定。両陣営が確認し、初の共同公開行事。時刻・会場は未公表。",
+      "checkedAt": "2026-09-17",
       "kind": "observed"
     }
   ],
@@ -1555,11 +1607,11 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-16",
+      "updatedAt": "2026-09-17",
       "headline": "政策の違いが、候補者への距離感につながるか",
       "featuredSummary": "医療・雇用をめぐる政策の違いが、両候補への距離感につながる接戦。El-Sayedの改革案とRogersの政権との協力を比べ、州民の受け止めを確かめたい。",
-      "lead": "CNN/SSRSは、ミシガンでは候補者の政策的位置が選挙の中心にあると分析している。9月15日のFOX2討論会はEl-Sayedが招待を受諾し、Rogers陣営は司会者への異議を理由に当日朝に辞退した。両候補は10月8日のWOOD TV8討論会に合意している。",
-      "uncertainty": "討論会への参加判断が候補者評価や投票先を変えたかは未確認。9月15日の番組が予定どおりどの形式で行われたかも今回の締切時点では確認できておらず、辞退理由への評価も両陣営の説明と分けて追う。",
+      "lead": "CNN/SSRSは、ミシガンでは候補者の政策的位置が選挙の中心にあると分析している。9月15日のFOX2番組は、Rogers陣営が司会者への異議を理由に当日朝に辞退し、El-Sayedが単独で地域住民の質問に答えた。両候補は10月8日のWOOD TV8討論会に合意している。",
+      "uncertainty": "FOX2番組では両候補を同じ場で比較できなかった。参加判断やEl-Sayedの回答が候補者評価・投票先を変えたかは未確認で、Rogersの辞退理由への評価も両陣営の説明と分けて追う。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
@@ -2047,27 +2099,29 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-15",
+      "updatedAt": "2026-09-17",
       "headline": "漁業と資源開発の利益を、地元へどう戻すか",
-      "featuredSummary": "共和党現職サリバン氏と民主党ペルトラ元下院議員は、漁業の混獲対策でも競う。両者の説明を比べ、9月16日の関連法案審議で具体策が進むかを見る。",
-      "lead": "アラスカ州では、資源開発への支持と家計の不安が併存する。9月12日の漁業討論会では両候補が混獲（狙った魚以外も網に入ること）の削減を訴えた。法案の内容・進捗と、順位選択投票での票の移り方を分けて見る。",
+      "featuredSummary": "共和党現職サリバン氏と民主党ペルトラ元下院議員は、漁業の混獲対策でも競う。サリバン氏の関連法案は9月16日に上院委員会を通過したが、成立と効果はなお別に追う。",
+      "lead": "アラスカ州では、資源開発への支持と家計の不安が併存する。9月12日の漁業討論会では両候補が混獲（狙った魚以外も網に入ること）の削減を訴えた。サリバン氏が実績として挙げた法案は16日に上院商務委員会を通過した。法案の進捗・実際の効果と、順位選択投票での票の移り方を分けて見る。",
       "uncertainty": "Data for Progressの8月調査は進歩派系団体によるもの。調査上の最終ラウンドは実際の開票結果でも勝率でもなく、他の調査と照合する必要がある。",
       "evidenceIds": [
         "ev-obs-dfp-ak",
         "ev-obs-ak-fisheries-debate",
         "ev-obs-ak-bycatch-bill",
-        "ev-obs-commerce-bycatch-20260916"
+        "ev-obs-commerce-bycatch-20260916",
+        "ev-obs-sullivan-bycatch-committee-20260916"
       ],
       "materials": [
         {
           "materialId": "ak-fisheries",
           "title": "混獲対策を、誰が実行できるか",
-          "fact": "9月12日の討論会で両候補が対策を訴えた。共和党現職サリバン氏は法案を挙げ、民主党ペルトラ氏は対応の遅さを批判した。",
+          "fact": "9月12日の討論会で両候補が対策を訴えた。共和党現職サリバン氏が挙げた法案は16日に上院商務委員会を通過し、民主党ペルトラ氏は対応の遅さを批判している。",
           "meaning": "対策への賛否だけでなく、提案の内容と議会での進捗を比べる材料。",
-          "limit": "サリバン氏の6月発表は前年案の改訂と説明しており、「選挙年だけの対応」は相手候補の批判。法案成立・魚資源への効果・得票効果は未確認。",
+          "limit": "サリバン氏の6月発表は前年案の改訂と説明しており、「選挙年だけの対応」は相手候補の批判。委員会通過後も本会議通過・法成立・魚資源への効果・得票効果は未確認。",
           "evidenceIds": [
             "ev-obs-ak-fisheries-debate",
-            "ev-obs-ak-bycatch-bill"
+            "ev-obs-ak-bycatch-bill",
+            "ev-obs-sullivan-bycatch-committee-20260916"
           ]
         },
         {
@@ -2120,11 +2174,12 @@
             {
               "candidateId": "cand-ak-dan-s-sullivan",
               "kind": "claim",
-              "text": "資源開発に加え、混獲削減法案で網の基準・監視・技術開発を提案。6月発表では前年案の改訂と説明した。9月16日の委員会審議予定を確認したが、成立・効果は未確認。",
+              "text": "資源開発に加え、混獲削減法案で網の基準・監視・技術開発を提案。6月発表では前年案の改訂と説明し、9月16日に上院商務委員会を通過した。本会議通過・成立・効果は未確認。",
               "evidenceIds": [
                 "ev-obs-sullivan",
                 "ev-obs-ak-bycatch-bill",
-                "ev-obs-commerce-bycatch-20260916"
+                "ev-obs-commerce-bycatch-20260916",
+                "ev-obs-sullivan-bycatch-committee-20260916"
               ]
             }
           ]
@@ -2651,19 +2706,45 @@
       "date": "2026-09-16",
       "time": "10:00",
       "timezone": "America/New_York",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-09-16",
+      "checkedAt": "2026-09-17",
       "evidenceIds": [
-        "ev-obs-commerce-bycatch-20260916"
+        "ev-obs-commerce-bycatch-20260916",
+        "ev-obs-sullivan-bycatch-committee-20260916"
       ],
       "relevance": [
         {
           "electionId": "2026-AK-2-regular",
           "why": "共和党現職サリバン氏と民主党ペルトラ氏が漁業討論会で争った具体策を追う。",
-          "watch": "S.4938の審議・修正・採決と両候補の説明を確認。議題変更の可能性があり、可決や成立は未確定。",
+          "watch": "S.4938は委員会を通過。本会議で扱われるか、修正・採決、両候補の説明を追う。委員会通過は成立や効果の確定ではない。",
           "materialIds": [
             "ak-fisheries"
+          ]
+        }
+      ],
+      "resultUpdateId": "obs-update-ak-bycatch-committee-2026-09-16",
+      "publicationStatus": "published"
+    },
+    {
+      "eventId": "mi-harris-el-sayed-2026-09-22",
+      "title": "ミシガン州・民主党エルサイード氏とハリス前副大統領の医療円卓会議",
+      "date": "2026-09-22",
+      "time": null,
+      "timezone": "America/Detroit",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-09-17",
+      "evidenceIds": [
+        "ev-obs-ap-harris-el-sayed-20260922"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "民主党El-Sayed氏がHarris前副大統領と初めて共同の公開行事を行い、黒人妊産婦の健康と医療費を扱う予定。",
+          "watch": "実施・延期・中止、会場と発言全文を確認。党内結集への狙いと、支持・投票参加への実際の効果を分ける。",
+          "materialIds": [
+            "mi-policy"
           ]
         }
       ],
@@ -2698,6 +2779,27 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-ak-bycatch-committee-2026-09-16",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": "ak-bycatch-markup-2026-09-16",
+      "newsId": null,
+      "eventDate": "2026-09-16",
+      "updatedAt": "2026-09-17",
+      "title": "アラスカ州・共和党サリバン氏の混獲削減法案、上院委員会を通過",
+      "happened": "接戦6州の一つアラスカ州で、共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。12日の漁業討論会でサリバン氏が実績として挙げ、ペルトラ氏が対応の遅さを批判したS.4938混獲削減法案は、16日に上院商務委員会を通過した。混獲は狙った魚以外も網に入ることを指す。",
+      "meaning": "網の基準、監視、技術開発を盛り込む提案が委員会段階を進んだ。両候補が共に混獲削減を訴える中で、具体策の議会進捗を比べる材料になる。",
+      "uncertainty": "サリバン氏事務所の公式発表と委員会の会合記録を照合した。委員会通過は上院本会議の可決、下院通過、大統領署名、魚資源への効果、支持率の変化を意味しない。採決方法と修正内容は今回確認できていない。",
+      "evidenceIds": [
+        "ev-obs-ak-fisheries-debate",
+        "ev-obs-ak-bycatch-bill",
+        "ev-obs-commerce-bycatch-20260916",
+        "ev-obs-sullivan-bycatch-committee-20260916"
+      ]
+    },
     {
       "updateId": "obs-update-nh-coefficient-2026-09-11",
       "status": "published",
@@ -2765,11 +2867,11 @@
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-15",
-      "updatedAt": "2026-09-16",
-      "title": "ミシガン州・共和党ロジャース氏、FOX2討論会への参加を当日辞退",
-      "happened": "接戦6州の一つミシガン州で、民主党のアブドゥル・エルサイード氏と共和党のマイク・ロジャース元下院議員が争う。FOX2は両陣営を8月5日に招待し、エルサイード氏は受諾。ロジャース陣営は9月15日朝、司会者に公平性の懸念があるとして同夜の参加を辞退し、局側は偏りを否定した。",
-      "meaning": "候補者が同じ条件で政策を説明する機会への参加判断を比べる材料。両候補は10月8日のWOOD TV8討論会には合意しており、医療・生活費・貿易の直接比較を次に確認する。",
-      "uncertainty": "辞退理由はロジャース陣営の説明で、司会者評価や有権者への効果は未確認。9月15日の番組が最終的にどの形式で行われたかも今回の締切時点では確認できていない。",
+      "updatedAt": "2026-09-17",
+      "title": "ミシガン州・共和党ロジャース氏が欠席、民主党エルサイード氏が単独で政策回答",
+      "happened": "接戦6州の一つミシガン州で、民主党のアブドゥル・エルサイード氏と共和党のマイク・ロジャース元下院議員が争う。ロジャース陣営は9月15日朝、司会者への公平性の懸念を理由に同夜のFOX2番組を辞退し、局側は偏りを否定。番組は実施され、エルサイード氏が単独で医療、AIデータセンター、外交など地域住民の質問に答えた。",
+      "meaning": "両候補の直接比較にはならなかったが、参加判断とエルサイード氏の具体的な政策回答を確認できる。両候補が合意した10月8日のWOOD TV8討論会で、医療・生活費・貿易を同じ場で比べられるかが次の確認点。",
+      "uncertainty": "辞退理由はロジャース陣営の説明で、司会者評価や欠席・回答が有権者に与えた効果は未確認。単独出演を両候補の討論結果として扱わない。",
       "evidenceIds": [
         "ev-obs-fox2-mi-debates"
       ]
