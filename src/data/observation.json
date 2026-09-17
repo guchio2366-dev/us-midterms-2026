@@ -8,31 +8,26 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-16T00:08:35.054Z",
+    "lastCompletedAt": "2026-09-17T00:15:56.234Z",
     "latestRun": {
-      "runId": "daily-20260916",
-      "startedAt": "2026-09-15T23:57:23Z",
-      "completedAt": "2026-09-16T00:08:35.054Z",
+      "runId": "daily-20260917",
+      "startedAt": "2026-09-16T23:57:36Z",
+      "completedAt": "2026-09-17T00:15:56.234Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-roster-me",
         "obs-inside",
         "obs-white-house",
-        "obs-local-oh",
         "obs-commerce-bycatch-20260916",
-        "obs-coefficient-nh",
-        "obs-texas-tribune-paxton-ads",
-        "obs-oh-heartland-husted",
-        "obs-jackson-byrne",
-        "obs-reuters-byrne",
-        "obs-fox2-mi-debates"
+        "obs-sullivan-bycatch-committee-20260916",
+        "obs-fox2-mi-debates",
+        "obs-ap-harris-el-sayed-20260922"
       ],
       "pendingSourceIds": [
         "obs-roster-oh",
         "obs-roster-nh",
         "obs-sabato"
       ],
-      "note": "NHの新調査、TXの候補者広告、MEの判事承認票、MIの討論会辞退と次回予定、OHの政治資金報道を原文照合して公開。ME名簿は公式Excelと差替資料を照合。Inside Electionsは9月3日版・35選挙を再確認したが、Sabatoは取得不能のため新たな統合Toss Upがないとは断定しない。OH・NH当局名簿は原票照合未完了。AK法案審議は開始前で予定を維持。大統領の対象州訪問は公式一覧から確認できず、未公表日程の不存在は断定しない。評価・議席基準・保存案は維持。"
+      "note": "AKで共和党現職SullivanのS.4938が上院商務委員会を通過したこと、MIで共和党Rogers欠席後に民主党El-Sayedが単独で政策回答した番組結果、9月22日のEl-SayedとHarris前副大統領の医療円卓会議予定を原文照合して公開。委員会での正確な採決方式・修正内容、円卓会議の時刻・会場、記事から政策効果・得票効果は確認できない。Inside Electionsは9月3日版・35選挙に変更なし。Sabato、OH・NH当局名簿は原票照合未完了。AKの新調査らしき集計表示は原文・方法を確認できず非掲載。大統領の対象州訪問は9月16日までの公式一覧から確認できず、未公表日程の不存在は断定しない。評価・議席基準・保存案・共有URLは維持。"
     }
   },
   "sources": [
@@ -543,7 +538,7 @@
       "url": "https://www.ohiosos.gov/elections/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-14",
+      "retrievedAt": "2026-09-17",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-OH-3-special"
@@ -552,7 +547,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
+      "checkStatus": "reviewing",
       "lastSuccessAt": null
     },
     {
@@ -581,7 +576,7 @@
       "url": "https://www.sos.nh.gov/elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-16",
+      "retrievedAt": "2026-09-17",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-NH-2-regular"
@@ -600,7 +595,7 @@
       "url": "https://centerforpolitics.org/crystalball/2026-senate/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-16",
+      "retrievedAt": "2026-09-17",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-AK-2-regular",

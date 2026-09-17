@@ -2,7 +2,7 @@
 
 > **現状確認の入口。** 本書は確認したコード時点の記録である。着手時には最新main・公開処理・定点観測の実行記録と照合する。設計書にある「未実装」「次工程」は、その設計書の作成時点の表現である。
 
-文書確認日：2026-09-16（日本時間）。概説・更新欄・州詳細のUX改善を[PR #13](https://github.com/guchio2366-dev/us-midterms-2026/pull/13)で反映した。公開後の品質確認は[PR #14](https://github.com/guchio2366-dev/us-midterms-2026/pull/14)で州詳細冒頭への主要候補表示と本文スキップリンクを補正し、マージコミット`6ece58187af088a8f7f4c1f23ad33cdf137bddf6`の[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34910848773)が成功した。公開Chrome 1363×936で配置・州切替・候補者比較・議席変更とUndo・ニュースと予定を確認した。[今回の検証記録](docs/ux-layout-implementation-20260915.md)を参照。指定寸法とSafari実機は未検証。
+文書確認日：2026-09-17（日本時間）。概説・更新欄・州詳細のUX改善を[PR #13](https://github.com/guchio2366-dev/us-midterms-2026/pull/13)で反映した。公開後の品質確認は[PR #14](https://github.com/guchio2366-dev/us-midterms-2026/pull/14)で州詳細冒頭への主要候補表示と本文スキップリンクを補正し、マージコミット`6ece58187af088a8f7f4c1f23ad33cdf137bddf6`の[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/34910848773)が成功した。公開Chrome 1363×936で配置・州切替・候補者比較・議席変更とUndo・ニュースと予定を確認した。[今回の検証記録](docs/ux-layout-implementation-20260915.md)を参照。指定寸法とSafari実機は未検証。
 
 ## 1. 目的と参照先
 
@@ -25,8 +25,8 @@
 | 直近の更新 | 注目8選挙を州名順のタブで切替。右側にニュース・今後の予定を配置し、見出しの縦縮小を防止 | [実装記録](docs/ux-layout-implementation-20260915.md) |
 | 議席評価 | SabatoとInside Electionsの方向が一致する選挙を党派側へ配分。不一致・接戦は未配分。地図とシミュレーションは同じ統合評価を参照 | [評価集計](src/rating-consensus.ts)、[評価スナップショット](src/data/rating-snapshot.ts) |
 | 暫定配分 | 非改選D34・R31に改選D側12・R側17を加え、D46・R48・未配分6。勝率・確定結果ではない | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
-| ニュース | 既存12記事と分析更新16件を「最近のニュース」に統合。旧「直近の重要な更新」の独立欄は撤去。10件ごとにページング | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
-| 今後の予定 | 公開9件（統計公表3件、メーン討論会4件、アラスカ関連法案審議1件、ミシガン討論会1件）。同じ欄のタブで切替。州による絞込み、延期・中止・結果確認待ち、結果記事との相互参照に対応 | [観測データ](src/data/observation.json)、[予定ロジック](src/observation-logic.ts) |
+| ニュース | 既存12記事と分析更新17件を「最近のニュース」に統合。旧「直近の重要な更新」の独立欄は撤去。10件ごとにページング | [共通フィード](src/news-feed.ts)、[検証](tests/news-feed.test.ts) |
+| 今後の予定 | 将来の公開9件（統計公表3件、メーン討論会4件、ミシガンの円卓会議1件・討論会1件）と、結果確認済みの過去1件を同じ欄のタブで表示。州による絞込み、延期・中止・結果記事との相互参照に対応 | [観測データ](src/data/observation.json)、[予定ロジック](src/observation-logic.ts) |
 | 接戦州 | Toss Up・評価分裂・Leanの8選挙を切替可能。AK・ME・MI・NH・OH特別・TXの6選挙には詳しい判断材料を公開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | 候補者比較 | 主要2候補の同じ項目を左右に同時表示。主要3項目を初期表示し、評価・受け止めの2項目はまとめて展開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | シミュレーション | 候補者・会派選択、未配分、権限から複数経路の提示、自動保存・名前付き保存・比較・共有URL。保存した基準を最新評価で勝手に上書きしない | [シナリオ](src/scenario/)、[経路](src/scenario/paths.ts) |
@@ -46,6 +46,7 @@ Iowaの既存研究を削除したわけではない。New Hampshireは後から
 
 ## 4. 定点観測の運用状態
 
+- [9月17日の日次観測](docs/observation/runs/daily-20260917.json)は `partial`。AKで共和党現職Sullivanの混獲削減法案が上院商務委員会を通過した結果、MIで共和党Rogers欠席後に民主党El-Sayedが単独回答した番組結果、9月22日のEl-SayedとHarris前副大統領の医療円卓会議予定を追加した。委員会の採決方式・修正内容、円卓会議の時刻・会場、AKの新調査らしき集計表示は原文照合が未完了。OH/NH名簿・Sabatoも未完了で、統合評価・議席基準・保存案・共有URLは維持した。
 - [9月16日の日次観測](docs/observation/runs/daily-20260916.json)は `partial`。NHの46%対46%の新調査、TXの候補者広告、MEの判事承認票、MIの討論会辞退と10月8日の次回予定、OHの政治資金報道を原文照合して追加。ME名簿とInside Elections全35選挙は照合したが、OH/NH名簿・Sabatoは未完了。統合評価・議席基準・保存案・共有URLは維持した。
 - [9月15日の日次観測](docs/observation/runs/daily-20260915.json)は `partial`。既存の日次23情報源中18件と新規4件の対象箇所を照合。AKの漁業討論会と9月16日の法案審議予定、MEのマンチン推薦発表を追加。AK取材への接続は回復したが、ME名簿全体・OH/NH名簿・Sabato・Ohio取材の本文照合は未完了。全35選挙の評価差分は未完了のため、既存の統合評価と議席基準を保持した。
 - 更新記事は州・党派・氏名・立場を冒頭に示し、利用者向け通知では前後の出来事と対戦構図も説明する。[編集方針](docs/observation/README.md)を参照。確認だけの州の分析更新日は進めない。

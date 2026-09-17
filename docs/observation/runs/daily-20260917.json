@@ -1,0 +1,168 @@
+{
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-white-house",
+    "obs-commerce-bycatch-20260916",
+    "obs-sullivan-bycatch-committee-20260916",
+    "obs-fox2-mi-debates",
+    "obs-ap-harris-el-sayed-20260922"
+  ],
+  "completedAt": "2026-09-17T00:15:56.234Z",
+  "note": "AKで共和党現職SullivanのS.4938が上院商務委員会を通過したこと、MIで共和党Rogers欠席後に民主党El-Sayedが単独で政策回答した番組結果、9月22日のEl-SayedとHarris前副大統領の医療円卓会議予定を原文照合して公開。委員会での正確な採決方式・修正内容、円卓会議の時刻・会場、記事から政策効果・得票効果は確認できない。Inside Electionsは9月3日版・35選挙に変更なし。Sabato、OH・NH当局名簿は原票照合未完了。AKの新調査らしき集計表示は原文・方法を確認できず非掲載。大統領の対象州訪問は9月16日までの公式一覧から確認できず、未公表日程の不存在は断定しない。評価・議席基準・保存案・共有URLは変更していない。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato"
+  ],
+  "runId": "daily-20260917",
+  "startedAt": "2026-09-16T23:57:36Z",
+  "baseCommit": "4f44d05bbccdafb1f3214e0c8e94d657e4461178",
+  "publishedCommit": "236f2db6dd2e52bda747d8f51369e8d4b60c5227",
+  "revision": "observation-2026-09-17-v1",
+  "reviewMode": "daily; Thursday Asia/Tokyo; weekly full comparison audit not due",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-commerce-bycatch-20260916",
+      "attemptedUrls": [
+        "https://www.commerce.senate.gov/press/rep/release/chairman-cruz-announces-september-16-markup/",
+        "https://www.commerce.senate.gov/meetings/executive-session-25-09-16-2026/"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z",
+      "contentVerifiedAt": "2026-09-17",
+      "scope": "9月16日10:00米東部時間の会合実施と議題にS.4938が含まれたことを公式ページで照合。"
+    },
+    {
+      "sourceId": "obs-sullivan-bycatch-committee-20260916",
+      "attemptedUrls": [
+        "https://www.youtube.com/watch?v=owYpe5OrUc4",
+        "https://x.com/SenDanSullivan/status/2100319951257313666"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z",
+      "contentVerifiedAt": "2026-09-17",
+      "scope": "共和党現職Dan Sullivanの公式発信でS.4938の上院商務委員会通過を照合。正確な採決方式・修正内容は確認できず、本会議通過・法成立・魚資源への効果とは扱わない。"
+    },
+    {
+      "sourceId": "obs-fox2-mi-debates",
+      "attemptedUrls": [
+        "https://www.fox2detroit.com/news/mike-rogers-abdul-el-sayed-debate-detroit-senate.amp",
+        "https://www.fox2detroit.com/news/u-s-senate-debate-abdul-el-sayed-mike-rogers-takeaways-analysis"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z",
+      "contentVerifiedAt": "2026-09-17",
+      "scope": "共和党Mike Rogers陣営の当日辞退と司会者への異議、局側の反論、民主党Abdul El-Sayedが単独で住民の質問に答えた番組結果を主催局で照合。直接討論や得票効果とは扱わない。"
+    },
+    {
+      "sourceId": "obs-ap-harris-el-sayed-20260922",
+      "attemptedUrls": [
+        "https://apnews.com/article/elsayed-kamala-harris-michigan-senate-52f04f16a2d7aa6002df684c1e8aea29",
+        "https://www.fox2detroit.com/news/abdul-el-sayed-campaigning-kamala-harris-next-week"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z",
+      "contentVerifiedAt": "2026-09-17",
+      "scope": "民主党Abdul El-SayedとKamala Harris前副大統領が9月22日にMichiganで黒人妊産婦の健康を扱う円卓会議を開く予定を照合。両者初の共同公開行事。時刻・会場・得票効果は未確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/ratings/senate",
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z",
+      "contentVerifiedAt": "2026-09-17",
+      "scope": "公式JSONの更新時刻9月3日、全35選挙を機械確認。6州の評価に変更なし。Sabato未確認のため統合評価全体の変更なしとは断定しない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-17T00:02:32.190Z",
+      "contentVerifiedAt": "2026-09-17",
+      "scope": "9月16日までの公式一覧を確認。対象6州へのTrump大統領の確定訪問日程は掲載から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式の一般選挙案内ページは閲覧できたが、上院特別選挙の候補者行を含む原票は確認できず。候補者名簿の照合は未完了。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/2026-democratic-state-primary",
+        "https://www.sos.nh.gov/2026-republican-state-primary"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式予備選ページの本文取得が403。原票の候補者行は未照合。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページの本文取得が403。検索結果には8月26日更新の表示があるが原文を照合できず、新たな統合Toss Upの不存在は断定しない。"
+    },
+    {
+      "sourceId": "lead-rasmussen-ak-202609",
+      "attemptedUrls": [
+        "https://www.realclearpolling.com/polls/senate/general/2026/alaska/sullivan-vs-peltola"
+      ],
+      "attemptedAt": "2026-09-17T00:02:32.190Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "集計サイトにRasmussenのAlaska第1選択39対39という表示を確認したが、調査原文・実査期間・標本・質問文・方法を取得できず非掲載。"
+    }
+  ],
+  "dataChanges": {
+    "publishedUpdateIds": [
+      "obs-update-ak-bycatch-committee-2026-09-16"
+    ],
+    "updatedUpdateIds": [
+      "obs-update-mi-fox2-debate-2026-09-15"
+    ],
+    "publishedEventIds": [
+      "mi-harris-el-sayed-2026-09-22"
+    ],
+    "completedEventIds": [
+      "ak-bycatch-markup-2026-09-16"
+    ],
+    "ratingSnapshotChanged": false,
+    "scenarioBaselineChanged": false,
+    "savedScenariosChanged": false,
+    "sharedUrlsChanged": false
+  },
+  "verification": {
+    "npmTest": "passed: 112 tests",
+    "npmBuild": "passed",
+    "mainFastForward": "passed: 236f2db6dd2e52bda747d8f51369e8d4b60c5227 from rechecked baseCommit; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35165471079",
+    "publicContent": "verified in public Chrome: AK committee update, MI single-candidate program result, September 22 Harris and El-Sayed event, unchanged D46/R48/unallocated6 baseline"
+  }
+}
