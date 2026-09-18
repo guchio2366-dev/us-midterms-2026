@@ -31,7 +31,7 @@ describe('senate rating consensus',() => {
     expect(Object.values(counts).reduce((sum,value) => sum+value,0)).toBe(35);
     expect(counts.missing).toBe(0);
     expect(results.find(item => item.seatId === 'NC-2')?.category).toBe('D');
-    expect(results.find(item => item.seatId === 'ME-2')?.category).toBe('split');
+    expect(results.find(item => item.seatId === 'ME-2')?.category).toBe('tossup');
   });
 
   it('shows exactly the six unassigned seats as Toss Up, including New Hampshire',() => {

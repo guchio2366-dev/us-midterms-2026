@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-17-v1",
+  "revision": "observation-2026-09-18-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -490,7 +490,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "checked",
+      "checkStatus": "unavailable",
       "lastSuccessAt": "2026-09-15T00:06:44.507Z"
     },
     {
@@ -500,8 +500,8 @@
       "url": "https://www.maine.gov/sos/elections-voting/upcoming-elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-16",
-      "contentVerifiedAt": "2026-09-16",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -510,7 +510,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-16T00:08:35.054Z"
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
     },
     {
       "sourceId": "obs-roster-mi",
@@ -519,8 +519,8 @@
       "url": "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?electionType=GEN&electionYear=2026&page=page.miboePublicReport",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -529,7 +529,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
     },
     {
       "sourceId": "obs-roster-oh",
@@ -538,7 +538,7 @@
       "url": "https://www.ohiosos.gov/elections/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-17",
+      "retrievedAt": "2026-09-18",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-OH-3-special"
@@ -547,7 +547,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "reviewing",
+      "checkStatus": "unavailable",
       "lastSuccessAt": null
     },
     {
@@ -557,8 +557,8 @@
       "url": "https://www.sos.state.tx.us/elections/forms/2026-ballot-cert.pdf",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -567,7 +567,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
     },
     {
       "sourceId": "obs-roster-nh",
@@ -576,7 +576,7 @@
       "url": "https://www.sos.nh.gov/elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-17",
+      "retrievedAt": "2026-09-18",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-NH-2-regular"
@@ -585,7 +585,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "reviewing",
+      "checkStatus": "unavailable",
       "lastSuccessAt": null
     },
     {
@@ -595,7 +595,7 @@
       "url": "https://centerforpolitics.org/crystalball/2026-senate/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-17",
+      "retrievedAt": "2026-09-18",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-AK-2-regular",
@@ -618,9 +618,9 @@
       "publisher": "Inside Elections 上院評価",
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
-      "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-17",
-      "contentVerifiedAt": "2026-09-17",
+      "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -634,7 +634,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -643,8 +643,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-17",
-      "contentVerifiedAt": "2026-09-17",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -658,7 +658,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1117,9 +1117,266 @@
       "alternativeUrl": "https://www.fox2detroit.com/news/abdul-el-sayed-campaigning-kamala-harris-next-week",
       "checkStatus": "checked",
       "lastSuccessAt": "2026-09-17T00:02:32.190Z"
+    },
+    {
+      "sourceId": "obs-coefficient-ak-20260917",
+      "title": "Alaska Battleground Poll",
+      "publisher": "co/efficient",
+      "url": "https://battlegrounds.coefficient.org/ak/",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "9月14〜17日、投票予定者799人。4候補の第1選択は共和党現職Dan S. Sullivan 48%、民主党Mary Peltola 46%、Daniel J. Sullivan Jr. 1%、Gerald Heikes 1%、未定4%。携帯テキスト・固定電話、誤差±3.45ポイント。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査原文で実査日、標本、方法、質問別結果、依頼関係の説明を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-ak-public-bycatch-20260916",
+      "title": "Sullivan's trawl bycatch bill clears a U.S. Senate committee",
+      "publisher": "Alaska Public Media",
+      "url": "https://alaskapublic.org/news/politics/2026-09-16/sullivans-trawl-bycatch-bill-clears-a-u-s-senate-committee",
+      "publishedAt": "2026-09-16",
+      "referencePeriod": "S.4938の委員会通過、民主党委員7人の反対、賛否双方の漁業関係者の説明、下院日程上の制約を州内取材で確認。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内報道で採決の内訳、法案への批判と反論、次の立法段階を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-emerson-mi-20260917",
+      "title": "Michigan 2026 Poll: El-Sayed and Rogers Locked in Close Election",
+      "publisher": "Emerson College Polling",
+      "url": "https://emersoncollegepolling.com/michigan-2026-poll-el-sayed-and-rogers-locked-in-close-election/",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "9月12〜14日、投票予定者1,000人。民主党El-Sayed 48%、共和党Rogers 46%、未定4%。確度区間±3ポイント、英語、Nexstar依頼。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-MI-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査原文で実査日、標本、方法、依頼主、全体と学歴別結果を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-wapo-mi-20260917",
+      "title": "Michigan Senate race poll finds Abdul El-Sayed has narrow edge over Mike Rogers",
+      "publisher": "The Washington Post / Schar School",
+      "url": "https://www.washingtonpost.com/politics/2026/09/17/michigan-senate-race-poll-finds-abdul-el-sayed-has-narrow-edge-over-mike-rogers/",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "9月10〜14日、有権者名簿から抽出した投票予定者803人。民主党El-Sayed 48%、共和党Rogers 45%。電話・テキスト経由オンライン、誤差±3.9ポイント。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-MI-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公表記事と方法説明で実査日、抽出、方法、全体と部分標本の区別を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-emerson-tx-20260917",
+      "title": "Texas 2026 Poll: Talarico and Paxton in Dead Heat",
+      "publisher": "Emerson College Polling",
+      "url": "https://emersoncollegepolling.com/texas-2026-poll-talarico-and-paxton-in-dead-heat-abbott-maintains-edge/",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "9月12〜14日、投票予定者1,000人。民主党Talarico 47%、共和党Paxton 46%、Libertarian Ted Brown 2%、未定4%。確度区間±3ポイント、英語、Nexstar依頼。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-TX-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査原文で実査日、標本、方法、依頼主、候補者評価と争点を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-reconmr-tx-20260917",
+      "title": "ReconMR Texas Poll — September Release",
+      "publisher": "ReconMR",
+      "url": "https://reconmr.com/wp-content/uploads/2026/09/ReconMR-Texas-Poll-September-Release-Final.pdf",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "9月8〜11日、投票予定者614人。民主党Talarico 49%、共和党Paxton 43%、その他・投票しない4%、未定4%。電話とテキスト経由オンライン、英語・スペイン語、誤差±4.3ポイント。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-TX-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査PDFで実査日、標本、方法、言語、全体結果と質問順を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-trafalgar-oh-20260917",
+      "title": "Ohio Midterms Full Report",
+      "publisher": "The Trafalgar Group",
+      "url": "https://www.thetrafalgargroup.org/wp-content/uploads/2026/09/OH-Midterms-Full-Report-0917.pdf",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "9月14〜16日、投票予定者1,085人。民主党Brown 45.4%、共和党現職Husted 41.5%、その他6.0%、未定7.1%。誤差±2.9ポイント、回答率5.4%。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-OH-3-special"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査PDFで実査日、標本、回答率、全体結果を照合。依頼主はPDFで確認できず留保",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-ap-oh-economy-20260917",
+      "title": "Trump-era tariffs and data centers shape Ohio Senate rematch",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/sherrod-brown-jon-husted-youngstown-trump-d136734520db923e03398156046d8dc4",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "BrownとHustedの特別選挙、Youngstown周辺の党派変化、対カナダ貿易、データセンターと電力料金をめぐる双方の主張を州内取材で確認。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-OH-3-special"],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "AP本文で地域背景、候補者の経歴、双方の主張と広告支出を照合し、因果効果とは分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-reuters-canada-tariffs-20260917",
+      "title": "Canadian tariffs bite as Republicans search for winning message",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/government/canadian-tariffs-bite-republicans-search-winning-message-2026-09-17/",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "対カナダ関税をめぐり、メーン州の共和党Collinsと民主党Jackson、ミシガン州の共和党Rogersと民主党El-Sayedの異なる主張を比較。州別の貿易依存と全国調査も確認。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": "2026-09-18",
+      "electionIds": ["2026-ME-2-regular", "2026-MI-2-regular"],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Reuters本文で関税措置、州別貿易、候補者発言、全国調査を照合し、発言と効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z"
+    },
+    {
+      "sourceId": "obs-aarp-ak-20260917",
+      "title": "AARP Alaska 2026 Midterm Election Poll",
+      "publisher": "AARP",
+      "url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska.doi.10.26419-2fres.01065.016.pdf",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "集計サイトで新調査の掲載を確認したが、原PDFが403で方法・質問文を照合できず非掲載。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": null,
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "原PDFの取得と方法・質問文の照合待ち",
+      "alternativeUrl": null,
+      "checkStatus": "unavailable",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "title": "Quantus Survey: Collins and Jackson Even in Maine Senate Race",
+      "publisher": "Quantus Insights",
+      "url": "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race",
+      "publishedAt": "2026-09-17",
+      "referencePeriod": "集計サイトで新調査の掲載を確認したが、原文がタイムアウトし方法・質問文を照合できず非掲載。",
+      "retrievedAt": "2026-09-18",
+      "contentVerifiedAt": null,
+      "electionIds": ["2026-ME-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公表元原文の取得と方法・質問文の照合待ち",
+      "alternativeUrl": null,
+      "checkStatus": "unavailable",
+      "lastSuccessAt": null
     }
   ],
   "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-coefficient-ak-20260917",
+      "sourceId": "obs-coefficient-ak-20260917",
+      "locator": "9月14〜17日、投票予定者799人。4候補の第1選択は共和党現職Dan S. Sullivan 48%、民主党Mary Peltola 46%、同姓のDaniel J. Sullivan Jr. 1%、Gerald Heikes 1%、未定4%。誤差±3.45ポイント。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ak-public-bycatch-20260916",
+      "sourceId": "obs-ak-public-bycatch-20260916",
+      "locator": "S.4938は上院商務委員会で民主党委員7人が反対して通過。賛成側は基準・研究を前進と評価し、反対側は研究偏重や別の混獲増加の可能性を指摘。下院は選挙後まで休会。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-emerson-mi-20260917",
+      "sourceId": "obs-emerson-mi-20260917",
+      "locator": "9月12〜14日、投票予定者1,000人。民主党El-Sayed 48%、共和党Rogers 46%、未定4%。確度区間±3ポイント、英語、Nexstar依頼。経済が最重要47%。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-mi-20260917",
+      "sourceId": "obs-wapo-mi-20260917",
+      "locator": "9月10〜14日、有権者名簿から抽出した投票予定者803人。民主党El-Sayed 48%、共和党Rogers 45%、誤差±3.9ポイント。生活費が最重要48%。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-emerson-tx-20260917",
+      "sourceId": "obs-emerson-tx-20260917",
+      "locator": "9月12〜14日、投票予定者1,000人。民主党Talarico 47%、共和党Paxton 46%、Libertarian Ted Brown 2%、未定4%。確度区間±3ポイント、英語、Nexstar依頼。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reconmr-tx-20260917",
+      "sourceId": "obs-reconmr-tx-20260917",
+      "locator": "9月8〜11日、投票予定者614人。民主党Talarico 49%、共和党Paxton 43%、その他・投票しない4%、未定4%。電話とテキスト経由オンライン、英語・スペイン語、誤差±4.3ポイント。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-trafalgar-oh-20260917",
+      "sourceId": "obs-trafalgar-oh-20260917",
+      "locator": "9月14〜16日、投票予定者1,085人。民主党Brown 45.4%、共和党現職Husted 41.5%、その他6.0%、未定7.1%。誤差±2.9ポイント、回答率5.4%。依頼主はPDFで未確認。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ap-oh-economy-20260917",
+      "sourceId": "obs-ap-oh-economy-20260917",
+      "locator": "民主党Brownと共和党現職Hustedの特別選挙について、Youngstown周辺の党派変化、対カナダ貿易、データセンターと電力料金をめぐる双方の主張を取材。候補者主張と政策効果は別。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-canada-tariffs-20260917",
+      "sourceId": "obs-reuters-canada-tariffs-20260917",
+      "locator": "米国の対カナダ追加関税と9月8日発効のカナダ側報復関税を背景に、メーン州の共和党Collinsと民主党Jackson、ミシガン州の共和党Rogersと民主党El-Sayedの異なる主張を比較。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-inside-me-20260917",
+      "sourceId": "obs-inside",
+      "locator": "Inside Elections公式JSONは9月17日13:25米中部時間、メーン州上院選をTilt RepublicanからToss-upへ変更。全35選挙のうち他の対象州の現行分類は維持。",
+      "checkedAt": "2026-09-18",
+      "kind": "observed"
+    },
     {
       "evidenceId": "ev-obs-ssrs",
       "sourceId": "obs-ssrs",
@@ -1426,11 +1683,11 @@
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-16",
+      "updatedAt": "2026-09-18",
       "headline": "現職への評価と、政権への評価が重なる",
-      "featuredSummary": "Collins個人への評価と、共和党・トランプ政権への評価が重なる接戦。医療をめぐる採決とJacksonの改革案を比べ、党派を越えた支持がどこまで残るかを見る。",
-      "lead": "CNN/SSRSの8月末〜9月初めの調査では、Collinsとトランプへの否定的評価が選挙の大きな背景にある。CollinsはTrumpの給付案に異論を示す一方、9月15日にはTrump指名の連邦判事を承認する票を投じ、Jacksonが中絶政策の観点から批判した。独立性は案件ごとに読む。",
-      "uncertainty": "政権への不満が、そのままJacksonへの投票になるとは限らない。一つの反対発言や一つの承認票だけでCollinsと政権の恒常的な距離を決められず、今回の採決への有権者の反応も未確認。",
+      "featuredSummary": "共和党現職Collinsと民主党Jacksonの接戦。Inside Electionsも9月17日にToss-upへ移し、対カナダ関税ではCollinsの政権への異論とJacksonの批判を具体的に比べる。",
+      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。Inside Electionsは9月17日、評価をTilt RepublicanからToss-upへ変更した。対カナダ関税では、CollinsはTrump政権の貿易戦争を誤りとして反対票や政府への要請を挙げ、Jacksonは道路用塩の免除だけでは部品・肥料の負担に足りないと批判した。",
+      "uncertainty": "評価変更は勝者の予測ではない。関税への発言と議会行動は確認できるが、どの対応が州経済を改善したか、今回の論争で有権者の支持が動いたかは未確認。政権との距離も財政・司法・貿易など案件ごとに読む。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-collins",
@@ -1438,20 +1695,23 @@
         "ev-obs-jackson-policy",
         "ev-obs-me-manchin-endorsement",
         "ev-obs-jackson-byrne",
-        "ev-obs-reuters-byrne"
+        "ev-obs-reuters-byrne",
+        "ev-obs-reuters-canada-tariffs-20260917",
+        "ev-obs-inside-me-20260917"
       ],
       "materials": [
         {
           "materialId": "me-incumbent",
           "title": "政権との距離は案件ごとに異なる",
-          "fact": "Collinsは2025年の財政法案に反対し、2026年9月11日にはTrumpの5,000ドル給付案へ異論を示した。一方、15日にはTrump指名のMatthew Byrneを連邦判事に承認する票を投じた。",
-          "meaning": "『政権から独立しているか』を一語で決めず、財政・医療・司法など個別案件の判断を比べる。",
-          "limit": "一つの反対発言や承認票だけで独立性全体や得票への効果は決められない。Jacksonによる中絶政策への批判は陣営の主張として読む。",
+        "fact": "CollinsはTrumpの5,000ドル給付案や対カナダ関税に異論を示した。一方、9月15日にはTrump指名のMatthew Byrneを連邦判事に承認する票を投じた。Jacksonは判事票と、関税免除が限定的だとして批判した。",
+        "meaning": "『政権から独立しているか』を一語で決めず、財政・司法・貿易など個別案件の判断と相手候補の反論を比べる。",
+        "limit": "一つの反対発言や承認票だけで独立性全体や得票への効果は決められない。Jacksonの広い評価は陣営の主張として読む。",
           "evidenceIds": [
             "ev-obs-collins",
             "ev-obs-maine-public-collins-payout",
-            "ev-obs-jackson-byrne",
-            "ev-obs-reuters-byrne"
+          "ev-obs-jackson-byrne",
+          "ev-obs-reuters-byrne",
+          "ev-obs-reuters-canada-tariffs-20260917"
           ]
         },
         {
@@ -1602,18 +1862,21 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-17",
+      "updatedAt": "2026-09-18",
       "headline": "政策の違いが、候補者への距離感につながるか",
-      "featuredSummary": "医療・雇用をめぐる政策の違いが、両候補への距離感につながる接戦。El-Sayedの改革案とRogersの政権との協力を比べ、州民の受け止めを確かめたい。",
-      "lead": "CNN/SSRSは、ミシガンでは候補者の政策的位置が選挙の中心にあると分析している。9月15日のFOX2番組は、Rogers陣営が司会者への異議を理由に当日朝に辞退し、El-Sayedが単独で地域住民の質問に答えた。両候補は10月8日のWOOD TV8討論会に合意している。",
-      "uncertainty": "FOX2番組では両候補を同じ場で比較できなかった。参加判断やEl-Sayedの回答が候補者評価・投票先を変えたかは未確認で、Rogersの辞退理由への評価も両陣営の説明と分けて追う。",
+      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。9月中旬の2調査はいずれもEl-Sayedが2〜3ポイント先行したが誤差内で、生活費と対カナダ関税への説明を比べる。",
+      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。Emersonは48%対46%、Washington Post/Scharは48%対45%で、いずれもEl-Sayedが先頭だが差は公表誤差内だった。対カナダ関税では、RogersはTrump政権との近さを交渉力として訴え、El-Sayedは負担を認めながら政権に合わせていると批判している。",
+      "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。関税への両候補の説明が実際の交渉結果や家計改善、得票効果を生んだ証拠もまだない。10月8日の直接討論で同じ質問への回答を比べる。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
         "ev-obs-rogers-trade",
         "ev-obs-ap-mi-convention",
         "ev-obs-mi-rogers-residency",
-        "ev-obs-fox2-mi-debates"
+        "ev-obs-fox2-mi-debates",
+        "ev-obs-emerson-mi-20260917",
+        "ev-obs-wapo-mi-20260917",
+        "ev-obs-reuters-canada-tariffs-20260917"
       ],
       "materials": [
         {
@@ -1630,11 +1893,12 @@
         {
           "materialId": "mi-trade",
           "title": "製造業を守る方法と政権との距離",
-          "fact": "Rogersは8月29日、関税は必要だが万能ではないと述べ、Trumpとの対カナダ貿易交渉を訴えた。",
-          "meaning": "雇用を守る協力と評価されるか、家計・企業の負担への対応が不十分と見られるかが確認点。",
-          "limit": "自動車産業で働くことだけから支持先を推定できない。",
+        "fact": "カナダの報復関税が9月8日に発効する中、Rogersは関税は必要だが一律ではなく、Trumpとの近さで交渉すると主張。El-Sayedは負担を認めながら政権に合わせていると批判した。",
+        "meaning": "政権への近さを交渉力と見るか、政策への異論を言えない弱さと見るか、同じ出来事への説明を比べる。",
+        "limit": "両者の発言は選挙上の主張で、関税による州内雇用・価格への純効果や得票効果を証明しない。",
           "evidenceIds": [
-            "ev-obs-rogers-trade"
+          "ev-obs-rogers-trade",
+          "ev-obs-reuters-canada-tariffs-20260917"
           ]
         }
       ],
@@ -1771,25 +2035,28 @@
     {
       "electionId": "2026-OH-3-special",
       "status": "published",
-      "updatedAt": "2026-09-16",
+      "updatedAt": "2026-09-18",
       "headline": "家計への支援と、投資・雇用の実績をどう評価するか",
-      "featuredSummary": "Brownは薬価・公共料金、Hustedは企業投資・職業訓練を前面に出す。家計負担と雇用実績のどちらが支持につながるかは、公約の比較に加えて有権者の評価を確かめたい。",
-      "lead": "両候補は経済の改善を訴えるが、Brownは家計負担、Hustedは投資・雇用の実績を強調する。Hustedが副知事在任中に取締役を務めた銀行から、政治委員会が約49.2万ドルを受けたとの州内報道も、実績と利益相反への説明を考える材料になった。",
-      "uncertainty": "記事はHustedが表明した忌避方針に違反した文書証拠を確認しておらず、州倫理当局は通常の政治献金は州倫理法上の『価値あるもの』に当たらないと説明した。本人側の回答と有権者の反応は未確認。",
+      "featuredSummary": "民主党Brown元上院議員と共和党現職Hustedの特別選挙。新調査はBrown 45.4%・Husted 41.5%だが、生活費、データセンターの電力費、雇用への説明を中心に比べる。",
+      "lead": "民主党シェロッド・ブラウン元上院議員が、Vance副大統領の後任に任命された共和党現職ジョン・ハステッド上院議員へ挑む。9月14〜16日のTrafalgar調査はBrown 45.4%、Husted 41.5%、その他6.0%、未定7.1%。APは、かつて民主党が強かったYoungstown周辺で、対カナダ貿易、雇用、データセンターの電力料金が争点になっていると取材した。",
+      "uncertainty": "調査差は公表誤差に近く、PDFでは依頼主を確認できなかった。地域の党派変化や広告費から個人の投票先は決められない。BrownとHustedのデータセンター対策が電気料金や雇用へ及ぼした効果も、候補者の主張と分けて確認する。",
       "evidenceIds": [
         "ev-obs-brown-policy",
         "ev-obs-husted-bio",
-        "ev-obs-oh-heartland-husted"
+        "ev-obs-oh-heartland-husted",
+        "ev-obs-trafalgar-oh-20260917",
+        "ev-obs-ap-oh-economy-20260917"
       ],
       "materials": [
         {
           "materialId": "oh-cost",
           "title": "薬価・電力料金を誰が負担するか",
-          "fact": "Brownは薬価や公共料金の引下げ、データセンターの電力費用を一般家庭に転嫁しない仕組みを訴える。",
-          "meaning": "生活費への不満が、候補者の具体策への信頼につながるかを見る。",
-          "limit": "提案があること自体は、実現可能性や有権者の支持を証明しない。",
+        "fact": "Brownは薬価や公共料金の引下げ、データセンターの電力費用を一般家庭に転嫁しない仕組みを訴える。Hustedはデータセンター自身に電力費を負担させ、余剰電力を系統へ戻す法案を挙げる。",
+        "meaning": "生活費の問題認識だけでなく、誰の具体策が家計と雇用を両立できるかを比べる。",
+        "limit": "双方の説明は政策主張で、料金低下や雇用増加が実現したとの因果効果、有権者の支持理由を証明しない。",
           "evidenceIds": [
-            "ev-obs-brown-policy"
+          "ev-obs-brown-policy",
+          "ev-obs-ap-oh-economy-20260917"
           ]
         },
         {
@@ -1931,25 +2198,28 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-16",
+      "updatedAt": "2026-09-18",
       "headline": "経済・移民への評価と、支持層の投票参加",
-      "featuredSummary": "経済と移民の重みは支持層によって異なり、8月調査では年齢別の支持差も大きい。PaxtonとTalaricoの政策・評価に加え、各支持層の投票参加を見て当選を考える。",
-      "lead": "Emersonの8月調査では、若い層はTalarico、年長層はPaxtonが優勢だった。共和党Paxton陣営は9月15日、南テキサス3市場で初の本格的な本選広告を開始し、減税案と民主党Talaricoへの批判を前面に出した。",
-      "uncertainty": "年齢別集計は州全体より不確かさが大きい。外部団体の大型支出に加え候補者陣営も広告を始めたが、支出額やメッセージは認知・好感度・投票意思の変化を証明しない。後続調査で確かめる。",
+      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。9月の2調査はいずれもTalaricoが先頭だが差と方法は異なり、経済・移民、候補者評価、投票参加を分けて見る。",
+      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月のEmerson調査は47%対46%、ReconMRは49%対43%でTalaricoが先頭だった。Emersonでは経済が最重要36%で、Talaricoの好感度は48%・否定42%、Paxtonは40%・否定48%だった。",
+      "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なるため、数字の差を支持変化と呼ばない。いずれも一時点の調査で、広告開始の効果や最終的な投票参加を証明しない。部分標本はさらに不確か。",
       "evidenceIds": [
         "ev-obs-emerson-tx",
         "ev-obs-texas-tribune-spending",
-        "ev-obs-texas-tribune-paxton-ads"
+        "ev-obs-texas-tribune-paxton-ads",
+        "ev-obs-emerson-tx-20260917",
+        "ev-obs-reconmr-tx-20260917"
       ],
       "materials": [
         {
           "materialId": "tx-turnout",
           "title": "支持が実際の投票になるか",
-          "fact": "8月9〜10日のEmerson調査では、50歳未満と50歳超で両候補の優勢側が異なった。",
-          "meaning": "どちらの支持層が投票するかによって、州全体の見通しは変わりうる。",
-          "limit": "部分標本は小さく、年代だけから個人の支持や投票参加は分からない。",
+        "fact": "9月調査ではEmersonがTalarico 47%・Paxton 46%、ReconMRが49%・43%。方法と言語、標本数は異なる。",
+        "meaning": "一つの数字で決めず、候補者評価、争点、無党派層、実際の投票参加が後続調査でも再現するかを見る。",
+        "limit": "異なる調査の差は支持率の上昇・低下を示さない。党派・年齢・人種別の部分標本は州全体より不確か。",
           "evidenceIds": [
-            "ev-obs-emerson-tx"
+          "ev-obs-emerson-tx-20260917",
+          "ev-obs-reconmr-tx-20260917"
           ]
         },
         {
@@ -2060,17 +2330,19 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "observed",
-              "text": "8月Emerson調査では若い層で優勢。全体の好感度は好意的44%、否定的41%。",
-              "evidenceIds": [
-                "ev-obs-emerson-tx"
+            "text": "9月Emerson調査で好感度は好意的48%、否定的42%。同調査で47%、ReconMRで49%の支持だが、異なる方法の調査を支持変化として結ばない。",
+            "evidenceIds": [
+              "ev-obs-emerson-tx-20260917",
+              "ev-obs-reconmr-tx-20260917"
               ]
             },
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "observed",
-              "text": "同調査では年長層で優勢。全体の好感度は好意的43%、否定的44%。この調査は英語で実施。",
-              "evidenceIds": [
-                "ev-obs-emerson-tx"
+            "text": "9月Emerson調査で好感度は好意的40%、否定的48%。同調査で46%、ReconMRで43%の支持。広告開始との因果は確認できない。",
+            "evidenceIds": [
+              "ev-obs-emerson-tx-20260917",
+              "ev-obs-reconmr-tx-20260917"
               ]
             }
           ]
@@ -2094,29 +2366,32 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-17",
+      "updatedAt": "2026-09-18",
       "headline": "漁業と資源開発の利益を、地元へどう戻すか",
-      "featuredSummary": "共和党現職サリバン氏と民主党ペルトラ元下院議員は、漁業の混獲対策でも競う。サリバン氏の関連法案は9月16日に上院委員会を通過したが、成立と効果はなお別に追う。",
-      "lead": "アラスカ州では、資源開発への支持と家計の不安が併存する。9月12日の漁業討論会では両候補が混獲（狙った魚以外も網に入ること）の削減を訴えた。サリバン氏が実績として挙げた法案は16日に上院商務委員会を通過した。法案の進捗・実際の効果と、順位選択投票での票の移り方を分けて見る。",
-      "uncertainty": "Data for Progressの8月調査は進歩派系団体によるもの。調査上の最終ラウンドは実際の開票結果でも勝率でもなく、他の調査と照合する必要がある。",
+      "featuredSummary": "共和党現職Dan S. Sullivanと民主党Mary Peltolaの接戦。新調査の第1選択は48%対46%で誤差内。混獲法案は委員会を通過したが、内容への反論と次の立法段階も見る。",
+      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月14〜17日のco/efficient調査は4候補の第1選択でSullivan 48%、Peltola 46%、未定4%と誤差内だった。Sullivanが実績に挙げる混獲削減法案は委員会を通過した一方、民主党委員7人が反対し、漁業関係者から研究偏重や別の混獲増加を懸念する声も出た。",
+      "uncertainty": "同姓のDaniel J. Sullivan Jr.は別候補で、順位選択投票では第1選択と最終ラウンドを分ける。委員会通過は法成立や漁業への効果を意味せず、下院は選挙後まで休会予定。調査1件で勝敗や法案の得票効果は判断しない。",
       "evidenceIds": [
         "ev-obs-dfp-ak",
         "ev-obs-ak-fisheries-debate",
         "ev-obs-ak-bycatch-bill",
         "ev-obs-commerce-bycatch-20260916",
-        "ev-obs-sullivan-bycatch-committee-20260916"
+        "ev-obs-sullivan-bycatch-committee-20260916",
+        "ev-obs-coefficient-ak-20260917",
+        "ev-obs-ak-public-bycatch-20260916"
       ],
       "materials": [
         {
           "materialId": "ak-fisheries",
           "title": "混獲対策を、誰が実行できるか",
-          "fact": "9月12日の討論会で両候補が対策を訴えた。共和党現職サリバン氏が挙げた法案は16日に上院商務委員会を通過し、民主党ペルトラ氏は対応の遅さを批判している。",
-          "meaning": "対策への賛否だけでなく、提案の内容と議会での進捗を比べる材料。",
-          "limit": "サリバン氏の6月発表は前年案の改訂と説明しており、「選挙年だけの対応」は相手候補の批判。委員会通過後も本会議通過・法成立・魚資源への効果・得票効果は未確認。",
+          "fact": "両候補が混獲削減を訴える。Sullivanの法案は上院商務委員会を通過したが民主党委員7人が反対し、Peltolaは対応の遅さ、漁業関係者の一部は研究偏重や別の混獲増加の可能性を批判した。",
+          "meaning": "対策への賛否だけでなく、法案の具体策、反対理由、次の議会段階を比べる材料。",
+          "limit": "委員会通過後も本会議・下院通過、法成立、魚資源への効果、得票効果は未確認。批判と反論は政策効果の実証ではない。",
           "evidenceIds": [
             "ev-obs-ak-fisheries-debate",
             "ev-obs-ak-bycatch-bill",
-            "ev-obs-sullivan-bycatch-committee-20260916"
+            "ev-obs-sullivan-bycatch-committee-20260916",
+            "ev-obs-ak-public-bycatch-20260916"
           ]
         },
         {
@@ -2230,17 +2505,19 @@
             {
               "candidateId": "cand-ak-mary-peltola",
               "kind": "observed",
-              "text": "DFPの4候補調査では第1希望で47%、再配分後の試算で53%。同一調査の異なる段階である。",
+              "text": "9月co/efficient調査の4候補第1選択で46%。8月DFP調査の第1希望47%・再配分後53%とは、実査時期・調査主体・集計段階が異なる。",
               "evidenceIds": [
-                "ev-obs-dfp-ak"
+                "ev-obs-dfp-ak",
+                "ev-obs-coefficient-ak-20260917"
               ]
             },
             {
               "candidateId": "cand-ak-dan-s-sullivan",
               "kind": "observed",
-              "text": "同調査では第1希望で41%、再配分後の試算で47%。同姓のDaniel J. Sullivan Jr.とは別候補である。",
+              "text": "9月co/efficient調査の4候補第1選択で48%。同姓のDaniel J. Sullivan Jr.は1%の別候補。8月DFP調査とは時期・主体・集計段階が異なる。",
               "evidenceIds": [
-                "ev-obs-dfp-ak"
+                "ev-obs-dfp-ak",
+                "ev-obs-coefficient-ak-20260917"
               ]
             }
           ]
@@ -2775,6 +3052,76 @@
   ],
   "updates": [
     {
+      "updateId": "obs-update-me-rating-tariffs-2026-09-17",
+      "status": "published",
+      "electionIds": ["2026-ME-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-17",
+      "updatedAt": "2026-09-18",
+      "title": "メーン州、Inside Electionsも接戦評価へ――共和党コリンズ氏と民主党ジャクソン氏は関税対応で対立",
+      "happened": "接戦6州の一つメーン州で、共和党現職スーザン・コリンズ上院議員と民主党トロイ・ジャクソン元州上院議長が争う。Inside Electionsは9月17日、評価をTilt Republican（共和党わずかに優勢）からToss-up（五分）へ変更した。同日報道された対カナダ関税の論争では、Collins氏はTrump政権の貿易戦争を誤りとして反対票や政府への要請を挙げ、Jackson氏は道路用塩の免除だけでは自動車部品や肥料の負担に足りないと批判した。",
+      "meaning": "CookとFoxに続き主要評価がToss Upにそろった。政策面では、共和党現職が大統領と異なる立場を取った事実だけでなく、州の負担をどこまで軽減できたかという民主党候補の反論まで比べられる。",
+      "uncertainty": "評価変更は勝者の確定でも勝率でもない。候補者発言と議会行動は確認できるが、どの対応が価格・雇用を改善したか、今回の論争で支持が動いたかは未確認。取得できなかったQuantus新調査は方法・質問文を照合できず掲載していない。",
+      "evidenceIds": ["ev-obs-inside-me-20260917", "ev-obs-reuters-canada-tariffs-20260917"]
+    },
+    {
+      "updateId": "obs-update-ak-coefficient-2026-09-17",
+      "status": "published",
+      "electionIds": ["2026-AK-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-17",
+      "updatedAt": "2026-09-18",
+      "title": "アラスカ州、共和党現職サリバン氏48%・民主党ペルトラ氏46%――順位投票の第1選択",
+      "happened": "接戦6州の一つアラスカ州で、共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月14〜17日のco/efficient調査は、4候補の第1選択でDan S. Sullivan氏48%、Peltola氏46%、同姓だが別人のDaniel J. Sullivan Jr.氏1%、Gerald Heikes氏1%、未定4%だった。",
+      "meaning": "差は誤差±3.45ポイントの範囲内で、接戦を確認する一材料になる。アラスカは順位選択投票のため、4候補の第1選択と、下位候補が除外された後の最終集計を分けて追う。",
+      "uncertainty": "一つの調査で勝敗は判断しない。標本は65歳以上が44%、18〜34歳が4%で、重み付け後の州全体推計として読む。AARPの別調査は原PDFを取得できず、方法・質問文を照合できないため掲載していない。",
+      "evidenceIds": ["ev-obs-coefficient-ak-20260917"]
+    },
+    {
+      "updateId": "obs-update-mi-polls-tariffs-2026-09-17",
+      "status": "published",
+      "electionIds": ["2026-MI-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-17",
+      "updatedAt": "2026-09-18",
+      "title": "ミシガン州、民主党エルサイード氏が2調査で僅差先行――共和党ロジャース氏とは関税対応でも対立",
+      "happened": "接戦6州の一つミシガン州で、民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬のEmerson調査は48%対46%、Washington Post/Schar調査は48%対45%で、いずれもEl-Sayed氏が先頭だが差は公表誤差内だった。カナダの報復関税が9月8日に発効する中、Rogers氏はTrump大統領との近さを交渉力として訴え、El-Sayed氏は負担を認めながら政権に合わせていると批判した。",
+      "meaning": "2調査とも接戦を示し、生活費はそれぞれ経済47%、生活費48%と最重要だった。『大統領との協力で条件を変える』というRogers氏の説明と、『政権に異論を言えない』というEl-Sayed氏の批判を同じ貿易問題で比べられる。",
+      "uncertainty": "別調査の数字差を支持変化とは呼べず、学歴・人種別の部分標本は全体より不確か。関税への発言が交渉結果、家計、雇用、得票を変えた証拠もまだない。",
+      "evidenceIds": ["ev-obs-emerson-mi-20260917", "ev-obs-wapo-mi-20260917", "ev-obs-reuters-canada-tariffs-20260917"]
+    },
+    {
+      "updateId": "obs-update-tx-polls-2026-09-17",
+      "status": "published",
+      "electionIds": ["2026-TX-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-17",
+      "updatedAt": "2026-09-18",
+      "title": "テキサス州、民主党タラリコ氏が2調査で先頭――共和党パクストン氏との差と方法は異なる",
+      "happened": "接戦6州の一つテキサス州で、民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月のEmerson調査はTalarico氏47%・Paxton氏46%、ReconMR調査は49%・43%だった。Emersonでは経済が最重要36%で、Talarico氏の好感度は48%・否定42%、Paxton氏は40%・否定48%だった。",
+      "meaning": "共和党優勢と見られてきた州でも候補者個人への評価を確認する必要がある。ただし支持率だけでなく、経済・移民の優先度、無党派層、各支持層が実際に投票するかを後続調査で見る。",
+      "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なる。数字の差を支持変化や広告効果と呼ばず、一時点の調査で勝敗を決めない。",
+      "evidenceIds": ["ev-obs-emerson-tx-20260917", "ev-obs-reconmr-tx-20260917"]
+    },
+    {
+      "updateId": "obs-update-oh-poll-economy-2026-09-17",
+      "status": "published",
+      "electionIds": ["2026-OH-3-special"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-17",
+      "updatedAt": "2026-09-18",
+      "title": "オハイオ州特別選挙、民主党ブラウン氏45.4%・共和党現職ハステッド氏41.5%――生活費と雇用が焦点",
+      "happened": "接戦6州の一つオハイオ州では、Vance副大統領の後任に任命された共和党現職ジョン・ハステッド上院議員へ、2024年に議席を失った民主党シェロッド・ブラウン元上院議員が挑む。9月14〜16日のTrafalgar調査はBrown氏45.4%、Husted氏41.5%、その他6.0%、未定7.1%。APは、かつて民主党が強かったYoungstown周辺で、対カナダ貿易、雇用、データセンターの電力料金が争点になっていると取材した。",
+      "meaning": "Brown氏は家計への電力費転嫁を批判し、Husted氏はデータセンター自身に費用を負担させる法案を挙げる。『生活費を下げる』という共通目標の下で、具体策と実績の説明を比較できる。",
+      "uncertainty": "支持差は公表誤差±2.9ポイントに近く、調査PDFでは依頼主を確認できなかった。地域の党派変化、広告費、候補者の法案説明だけでは料金・雇用への効果や投票理由を決められない。",
+      "evidenceIds": ["ev-obs-trafalgar-oh-20260917", "ev-obs-ap-oh-economy-20260917"]
+    },
+    {
       "updateId": "obs-update-ak-bycatch-committee-2026-09-16",
       "status": "published",
       "electionIds": [
@@ -2783,16 +3130,17 @@
       "eventId": "ak-bycatch-markup-2026-09-16",
       "newsId": null,
       "eventDate": "2026-09-16",
-      "updatedAt": "2026-09-17",
+      "updatedAt": "2026-09-18",
       "title": "アラスカ州・共和党サリバン氏の混獲削減法案、上院委員会を通過",
-      "happened": "接戦6州の一つアラスカ州で、共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。12日の漁業討論会でサリバン氏が実績として挙げ、ペルトラ氏が対応の遅さを批判したS.4938混獲削減法案は、16日に上院商務委員会を通過した。混獲は狙った魚以外も網に入ることを指す。",
-      "meaning": "網の基準、監視、技術開発を盛り込む提案が委員会段階を進んだ。両候補が共に混獲削減を訴える中で、具体策の議会進捗を比べる材料になる。",
-      "uncertainty": "サリバン氏事務所の公式発表と委員会の会合記録を照合した。委員会通過は上院本会議の可決、下院通過、大統領署名、魚資源への効果、支持率の変化を意味しない。採決方法と修正内容は今回確認できていない。",
+      "happened": "接戦6州の一つアラスカ州で、共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。12日の漁業討論会でSullivan氏が実績として挙げ、Peltola氏が対応の遅さを批判したS.4938混獲削減法案は、16日に上院商務委員会を通過した。州内報道では民主党委員7人が反対した。混獲は狙った魚以外も網に入ることを指す。",
+      "meaning": "網の基準、監視、研究を盛り込む提案が委員会段階を進んだ。一方、漁業関係者には研究偏重との批判や、底引き網の接触を減らすと別の魚種の混獲・燃料費が増えるとの懸念もあり、進捗と内容評価を分けて比べる。",
+      "uncertainty": "委員会通過は上院本会議、下院、大統領署名、魚資源への効果、支持率の変化を意味しない。Sullivan氏は上院での早期可決を望むが、下院は選挙後まで休会予定で、成立時期は確認できない。",
       "evidenceIds": [
         "ev-obs-ak-fisheries-debate",
         "ev-obs-ak-bycatch-bill",
         "ev-obs-commerce-bycatch-20260916",
-        "ev-obs-sullivan-bycatch-committee-20260916"
+        "ev-obs-sullivan-bycatch-committee-20260916",
+        "ev-obs-ak-public-bycatch-20260916"
       ]
     },
     {

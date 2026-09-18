@@ -110,6 +110,7 @@ export const focusPolls: Poll[] = [
 export const focusRatingObservations: RatingObservation[] = [
   {ratingId:'rating-me-cook-2026-08-20',electionId:'2026-ME-2-regular',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-08-20',retrievedAt:'2026-09-11',sourceIds:['cook-me-race-2026'],evidenceIds:['ev-me-cook-rating'],status:'published'},
   {ratingId:'rating-me-inside-2025-07-24',electionId:'2026-ME-2-regular',organization:'Inside Elections',ratingRaw:'Tilt Republican',category:'Tilt R',ratedAt:'2025-07-24',retrievedAt:'2026-09-11',sourceIds:['inside-me-race-2026'],evidenceIds:['ev-me-inside-rating'],status:'published'},
+  {ratingId:'rating-me-inside-2026-09-17',electionId:'2026-ME-2-regular',organization:'Inside Elections',ratingRaw:'Toss-up',category:'Toss Up',ratedAt:'2026-09-17',retrievedAt:'2026-09-18',sourceIds:['inside-me-race-2026'],evidenceIds:['ev-me-inside-rating'],status:'published'},
   {ratingId:'rating-me-fox-2026-07-22',electionId:'2026-ME-2-regular',organization:'Fox News Power Rankings',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-07-22',retrievedAt:'2026-09-11',sourceIds:['fox-me-rating-2026'],evidenceIds:['ev-me-fox-rating'],status:'published'},
   {ratingId:'rating-oh-cook-2025-08-18',electionId:'2026-OH-3-special',organization:'The Cook Political Report',ratingRaw:'Lean Republican',category:'Lean R',ratedAt:'2025-08-18',retrievedAt:'2026-09-11',sourceIds:['cook-oh-race-2026'],evidenceIds:['ev-oh-cook-rating'],status:'published'},
   {ratingId:'rating-oh-cook-2026-04-13',electionId:'2026-OH-3-special',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-04-13',retrievedAt:'2026-09-11',sourceIds:['cook-oh-race-2026'],evidenceIds:['ev-oh-cook-rating'],status:'published'},
@@ -130,8 +131,8 @@ export const focusRatingObservations: RatingObservation[] = [
 export const focusRaceBriefs: RaceBrief[] = [
   {
     electionId:'2026-ME-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
-    headline:'三つの直近調査はJacksonが先行し、評価機関はToss UpとTilt Rに分かれる',
-    summary:'YouGovとCNN/SSRSはいずれもJackson 48%でCollinsを3〜4ポイント上回り、Foxも48%対46%でした。一方、CookとFoxはToss Up、Inside ElectionsはTilt Republicanです。7月の民主党候補交代と順位選択投票の仕組みも結果の読み方に関係します。',
+    headline:'三つの直近調査でJacksonが先行し、主要3評価はToss Upにそろう',
+    summary:'YouGovとCNN/SSRSはいずれもJackson 48%でCollinsを3〜4ポイント上回り、Foxも48%対46%でした。CookとFoxに続き、Inside Electionsも9月17日にTilt RepublicanからToss-upへ変更しました。7月の民主党候補交代と順位選択投票の仕組みも結果の読み方に関係します。',
     balance:'直近三調査はいずれもJacksonが先頭ですが、差は2〜4ポイントで、各調査の公表精度幅と同程度です。現職Collinsの個人票、Jacksonへの候補交代、順位移転を一つの数字へ畳み込まず追います。',
     keyIssues:['生活費・医療','現職の超党派票と候補者個人評価','順位選択投票と候補交代'],
     analysis:[
@@ -141,7 +142,7 @@ export const focusRaceBriefs: RaceBrief[] = [
     supportChange:'横断調査の差だけでは同じ人の支持変更を特定できません。候補交代前後の設問と候補者名を区別します。',
     turnout:'YouGovとCNN/SSRSのLV、FoxのRVは母集団が異なります。順位選択のラウンドも投票参加とは別です。',
     updateConditions:['新しい州全体調査で第1選択と順位移転が公表されたとき','評価機関が分類を変更したとき','候補者の主要政策・採決情報が更新されたとき'],
-    pollIds:['poll-me-yougov-2026-09','poll-me-cnn-ssrs-2026-09','poll-me-fox-2026-08'],ratingIds:['rating-me-cook-2026-08-20','rating-me-inside-2025-07-24','rating-me-fox-2026-07-22'],relatedIssueIds:['household-economy','health-family','trade-industry','rights-institutions'],
+    pollIds:['poll-me-yougov-2026-09','poll-me-cnn-ssrs-2026-09','poll-me-fox-2026-08'],ratingIds:['rating-me-cook-2026-08-20','rating-me-inside-2025-07-24','rating-me-inside-2026-09-17','rating-me-fox-2026-07-22'],relatedIssueIds:['household-economy','health-family','trade-industry','rights-institutions'],
     sourceIds:['me-candidate-list-2026','me-replacements-2026','me-election-guide-2026','poll-yougov-me-2026-09','poll-cnn-me-2026-09','poll-fox-me-2026-08','cook-me-race-2026','inside-me-race-2026','fox-me-rating-2026','senate-rollcall-119-160','senate-rollcall-119-372'],evidenceIds:['ev-me-official-candidates','ev-me-replacement','ev-me-rcv','ev-me-yougov-poll','ev-me-cnn-poll','ev-me-fox-poll','ev-me-cook-rating','ev-me-inside-rating','ev-me-fox-rating','ev-rollcall-160-republicans','ev-hr1-rollcall'],
   },
   {
