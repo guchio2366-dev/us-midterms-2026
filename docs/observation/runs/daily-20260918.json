@@ -1,0 +1,283 @@
+{
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-white-house",
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-tx",
+    "obs-coefficient-ak-20260917",
+    "obs-ak-public-bycatch-20260916",
+    "obs-emerson-mi-20260917",
+    "obs-wapo-mi-20260917",
+    "obs-emerson-tx-20260917",
+    "obs-reconmr-tx-20260917",
+    "obs-trafalgar-oh-20260917",
+    "obs-ap-oh-economy-20260917",
+    "obs-reuters-canada-tariffs-20260917"
+  ],
+  "completedAt": "2026-09-18T00:23:29.900Z",
+  "note": "AK・MI・TX・OHの新しい世論調査、AKの混獲法案をめぐる反論、ME・MIの対カナダ関税をめぐる候補者発言、OHのYoungstown地域の経済論戦を原文照合して公開。Inside ElectionsはMEをTilt RepublicanからToss-upへ変更したため評価履歴も更新したが、統合未配分は従来からMEを含む6議席で、D46・R48・未配分6は変わらない。調査値は誤差範囲・標本・質問設計と分け、発言は政策効果や得票効果の証拠と扱わない。AK名簿は本日取得不能、OH・NH名簿とSabato、AARP AK・Quantus MEの原文照合は未完了。White House公式一覧で対象州へのTrump大統領の確定訪問日程は確認できず、未公表日程の不存在は断定しない。保存案・共有URLは維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-ak",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-aarp-ak-20260917",
+    "obs-quantus-me-20260917"
+  ],
+  "runId": "daily-20260918",
+  "startedAt": "2026-09-17T23:59:55Z",
+  "baseCommit": "d27705f8716935682dbb221cd5b4d372f3c92918",
+  "publishedCommit": "80c19e0d1b1540ebd5417fac1a880bd738703264",
+  "revision": "observation-2026-09-18-v1",
+  "reviewMode": "daily; Friday Asia/Tokyo; weekly full comparison audit not due",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "公式JSON全35選挙を確認。MEがTilt RepublicanからToss-upへ変更。既存の統合未配分6議席と暫定配分は不変。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "公式発表一覧を確認。対象6州へのTrump大統領の確定訪問日程は掲載から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-roster-me",
+      "attemptedUrls": [
+        "https://www.maine.gov/sos/elections-voting/upcoming-elections"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "Maine州務長官の一般選挙候補資料で上院候補者を照合。"
+    },
+    {
+      "sourceId": "obs-roster-mi",
+      "attemptedUrls": [
+        "https://mi-boe.entellitrak.com/etk-mi-boe-prod/page.request.do?electionType=GEN&electionYear=2026&page=page.miboePublicReport"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "Michigan州公式候補者一覧で上院候補者を照合。"
+    },
+    {
+      "sourceId": "obs-roster-tx",
+      "attemptedUrls": [
+        "https://www.sos.state.tx.us/elections/forms/2026-ballot-cert.pdf"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "Texas州務長官の投票用紙認証資料で上院候補者を照合。"
+    },
+    {
+      "sourceId": "obs-coefficient-ak-20260917",
+      "attemptedUrls": [
+        "https://battlegrounds.coefficient.org/ak/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "9月14〜17日実施、投票予定者799人の第1選択を照合。共和党現職Dan Sullivan 48%、民主党Mary Peltola 46%で差は誤差範囲内。"
+    },
+    {
+      "sourceId": "obs-ak-public-bycatch-20260916",
+      "attemptedUrls": [
+        "https://alaskapublic.org/news/politics/2026-09-16/sullivans-trawl-bycatch-bill-clears-a-u-s-senate-committee"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "S.4938の委員会通過、民主党委員7人の反対、PeltolaとSullivanの相互批判、業界内の異論、下院日程を照合。法成立・漁業効果とは扱わない。"
+    },
+    {
+      "sourceId": "obs-emerson-mi-20260917",
+      "attemptedUrls": [
+        "https://emersoncollegepolling.com/michigan-2026-poll-el-sayed-and-rogers-locked-in-close-election/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "9月12〜14日、投票予定者1,000人、民主党El-Sayed 48%、共和党Rogers 46%、誤差±3ポイントを照合。"
+    },
+    {
+      "sourceId": "obs-wapo-mi-20260917",
+      "attemptedUrls": [
+        "https://www.washingtonpost.com/politics/2026/09/17/michigan-senate-race-poll-finds-abdul-el-sayed-has-narrow-edge-over-mike-rogers/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "9月10〜14日、投票予定者803人、El-Sayed 48%、Rogers 45%、誤差±3.9ポイントと生活費設問を照合。"
+    },
+    {
+      "sourceId": "obs-emerson-tx-20260917",
+      "attemptedUrls": [
+        "https://emersoncollegepolling.com/texas-2026-poll-talarico-and-paxton-in-dead-heat-abbott-maintains-edge/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "9月12〜14日、投票予定者1,000人、民主党Talarico 47%、共和党Paxton 46%、Libertarian Ted Brown 2%、誤差±3ポイントを照合。"
+    },
+    {
+      "sourceId": "obs-reconmr-tx-20260917",
+      "attemptedUrls": [
+        "https://reconmr.com/wp-content/uploads/2026/09/ReconMR-Texas-Poll-September-Release-Final.pdf"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "9月8〜11日、投票予定者614人、Talarico 49%、Paxton 43%、誤差±4.3ポイントを原文PDFで照合。"
+    },
+    {
+      "sourceId": "obs-trafalgar-oh-20260917",
+      "attemptedUrls": [
+        "https://www.thetrafalgargroup.org/wp-content/uploads/2026/09/OH-Midterms-Full-Report-0917.pdf"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "9月14〜16日、投票予定者1,085人、民主党Brown 45.4%、共和党現職Husted 41.5%、誤差±2.9ポイントを原文PDFで照合。"
+    },
+    {
+      "sourceId": "obs-ap-oh-economy-20260917",
+      "attemptedUrls": [
+        "https://apnews.com/article/sherrod-brown-jon-husted-youngstown-trump-d136734520db923e03398156046d8dc4"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "Youngstown地域の党派変化、雇用・対カナダ貿易・データセンター電力費をめぐるBrownとHustedの主張を照合。主張を政策効果の証拠とは扱わない。"
+    },
+    {
+      "sourceId": "obs-reuters-canada-tariffs-20260917",
+      "attemptedUrls": [
+        "https://www.reuters.com/legal/government/canadian-tariffs-bite-republicans-search-winning-message-2026-09-17/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-18T00:20:00Z",
+      "contentVerifiedAt": "2026-09-18",
+      "scope": "MEのCollins・Jackson、MIのRogers・El-Sayedによる対カナダ関税をめぐる発言と相互批判を照合。経済・得票への効果とは分けて掲載。"
+    },
+    {
+      "sourceId": "obs-roster-ak",
+      "attemptedUrls": [
+        "https://www.elections.alaska.gov/candidates/?election=26genr"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "本日は公式候補者ページがタイムアウト。9月15日の成功記録を保持し、本日の成功には置き換えない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式候補者原票を取得できず、上院特別選挙候補者の原票照合は未完了。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式ページが403。候補者原票の照合は未完了。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページの本文を取得できず。Inside Elections以外の評価更新の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-aarp-ak-20260917",
+      "attemptedUrls": [
+        "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska.doi.10.26419-2fres.01065.016.pdf"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原文PDFが403。数値・標本・質問文を照合できないため記事に使用しない。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-18T00:20:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原文ページがタイムアウト。数値・方法を照合できないため記事に使用しない。"
+    }
+  ],
+  "dataChanges": {
+    "publishedUpdateIds": [
+      "obs-update-me-rating-tariffs-2026-09-17",
+      "obs-update-ak-coefficient-2026-09-17",
+      "obs-update-mi-polls-tariffs-2026-09-17",
+      "obs-update-tx-polls-2026-09-17",
+      "obs-update-oh-poll-economy-2026-09-17"
+    ],
+    "updatedUpdateIds": [
+      "obs-update-ak-bycatch-committee-2026-09-16"
+    ],
+    "publishedEventIds": [],
+    "completedEventIds": [],
+    "ratingSnapshotChanged": true,
+    "scenarioBaselineChanged": false,
+    "savedScenariosChanged": false,
+    "sharedUrlsChanged": false
+  },
+  "verification": {
+    "npmTest": "passed: 112 tests",
+    "npmBuild": "passed",
+    "mainFastForward": "passed: 80c19e0d1b1540ebd5417fac1a880bd738703264 from rechecked baseCommit; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35290954532",
+    "publicContent": "verified after deployment: five September 17 battleground updates, Maine Inside Elections Toss-up classification, unchanged D46/R48/unallocated6 baseline"
+  }
+}

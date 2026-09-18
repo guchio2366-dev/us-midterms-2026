@@ -8,26 +8,37 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-17T00:15:56.234Z",
+    "lastCompletedAt": "2026-09-18T00:23:29.900Z",
     "latestRun": {
-      "runId": "daily-20260917",
-      "startedAt": "2026-09-16T23:57:36Z",
-      "completedAt": "2026-09-17T00:15:56.234Z",
+      "runId": "daily-20260918",
+      "startedAt": "2026-09-17T23:59:55Z",
+      "completedAt": "2026-09-18T00:23:29.900Z",
       "outcome": "partial",
       "checkedSourceIds": [
         "obs-inside",
         "obs-white-house",
-        "obs-commerce-bycatch-20260916",
-        "obs-sullivan-bycatch-committee-20260916",
-        "obs-fox2-mi-debates",
-        "obs-ap-harris-el-sayed-20260922"
+        "obs-roster-me",
+        "obs-roster-mi",
+        "obs-roster-tx",
+        "obs-coefficient-ak-20260917",
+        "obs-ak-public-bycatch-20260916",
+        "obs-emerson-mi-20260917",
+        "obs-wapo-mi-20260917",
+        "obs-emerson-tx-20260917",
+        "obs-reconmr-tx-20260917",
+        "obs-trafalgar-oh-20260917",
+        "obs-ap-oh-economy-20260917",
+        "obs-reuters-canada-tariffs-20260917"
       ],
       "pendingSourceIds": [
+        "obs-roster-ak",
         "obs-roster-oh",
         "obs-roster-nh",
-        "obs-sabato"
+        "obs-sabato",
+        "obs-aarp-ak-20260917",
+        "obs-quantus-me-20260917"
       ],
-      "note": "AKで共和党現職SullivanのS.4938が上院商務委員会を通過したこと、MIで共和党Rogers欠席後に民主党El-Sayedが単独で政策回答した番組結果、9月22日のEl-SayedとHarris前副大統領の医療円卓会議予定を原文照合して公開。委員会での正確な採決方式・修正内容、円卓会議の時刻・会場、記事から政策効果・得票効果は確認できない。Inside Electionsは9月3日版・35選挙に変更なし。Sabato、OH・NH当局名簿は原票照合未完了。AKの新調査らしき集計表示は原文・方法を確認できず非掲載。大統領の対象州訪問は9月16日までの公式一覧から確認できず、未公表日程の不存在は断定しない。評価・議席基準・保存案・共有URLは維持。"
+      "note": "AK・MI・TX・OHの新しい世論調査、AKの混獲法案をめぐる反論、ME・MIの対カナダ関税をめぐる候補者発言、OHのYoungstown地域の経済論戦を原文照合して公開。Inside ElectionsはMEをTilt RepublicanからToss-upへ変更したため評価履歴も更新したが、統合未配分は従来からMEを含む6議席で、D46・R48・未配分6は変わらない。調査値は誤差範囲・標本・質問設計と分け、発言は政策効果や得票効果の証拠と扱わない。AK名簿は本日取得不能、OH・NH名簿とSabato、AARP AK・Quantus MEの原文照合は未完了。White House公式一覧で対象州へのTrump大統領の確定訪問日程は確認できず、未公表日程の不存在は断定しない。保存案・共有URLは維持。"
     }
   },
   "sources": [
