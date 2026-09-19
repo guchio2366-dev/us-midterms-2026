@@ -176,6 +176,9 @@
     "initialTestAttempt": "依存パッケージ未導入のためvitest not foundで失敗。npm ci後に同じテストを再実行。",
     "tests": "112 passed",
     "build": "success",
-    "directGitPush": "failed before publication because the runtime had no HTTPS username; GitHub connection used to create the same verified tree and the main ref will be advanced with force=false"
+    "directGitPush": "failed before publication because the runtime had no HTTPS username; GitHub connection created the same verified tree",
+    "mainFastForward": "passed: a2a9428071a6ff5d980e17b4c0a6bd7000144e17 from rechecked baseCommit; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35408728255",
+    "publicContent": "verified after deployment in the published JavaScript bundle: both September 18 updates and unchanged D46/R48/unallocated6 baseline"
   }
 }
