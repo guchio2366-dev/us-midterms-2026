@@ -12,9 +12,9 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(34);
+    expect(recent).toHaveLength(36);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(12);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(22);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(24);
     expect(upcoming).toHaveLength(10);
     expect(upcoming.filter(item=>item.sourceId==='bls-jobs-2026-10-02')).toHaveLength(1);
     expect(filterFeed(upcoming,'2026-AK-2-regular')).toHaveLength(4);

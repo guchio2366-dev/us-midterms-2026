@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-18-v1",
+  "revision": "observation-2026-09-19-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -549,7 +549,7 @@
       "url": "https://www.ohiosos.gov/elections/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-OH-3-special"
@@ -587,7 +587,7 @@
       "url": "https://www.sos.nh.gov/elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-NH-2-regular"
@@ -606,7 +606,7 @@
       "url": "https://centerforpolitics.org/crystalball/2026-senate/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-AK-2-regular",
@@ -630,8 +630,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-18",
-      "contentVerifiedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -645,7 +645,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-18T00:20:00Z"
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -654,8 +654,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-18",
-      "contentVerifiedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -669,7 +669,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-18T00:20:00Z"
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1289,7 +1289,7 @@
       "url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska.doi.10.26419-2fres.01065.016.pdf",
       "publishedAt": "2026-09-17",
       "referencePeriod": "集計サイトで新調査の掲載を確認したが、原PDFが403で方法・質問文を照合できず非掲載。",
-      "retrievedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
       "contentVerifiedAt": null,
       "electionIds": ["2026-AK-2-regular"],
       "category": "poll",
@@ -1306,7 +1306,7 @@
       "url": "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race",
       "publishedAt": "2026-09-17",
       "referencePeriod": "集計サイトで新調査の掲載を確認したが、原文がタイムアウトし方法・質問文を照合できず非掲載。",
-      "retrievedAt": "2026-09-18",
+      "retrievedAt": "2026-09-19",
       "contentVerifiedAt": null,
       "electionIds": ["2026-ME-2-regular"],
       "category": "poll",
@@ -1315,6 +1315,105 @@
       "alternativeUrl": null,
       "checkStatus": "unavailable",
       "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-reuters-oh-pac-spending-20260918",
+      "title": "Trump-linked pop-up PACs blitz Ohio with ads against Brown in costly Senate race",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/government/trump-linked-pop-up-pacs-blitz-ohio-with-ads-against-brown-costly-senate-race-2026-09-18/",
+      "publishedAt": "2026-09-18",
+      "referencePeriod": "共和党系外部団体による直近1週間の約1,400万ドルのOhio広告、Brown・Husted両候補の資金調達、広告内容、Brown陣営の反応、Husted陣営がコメントしなかったことを照合。",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Reuters本文でAdImpact集計、FEC記録、団体間の関係、両陣営の反応を照合し、支出と広告効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "title": "Senate Republicans move $46.5 million into coordinated battleground spending",
+      "publisher": "Axios",
+      "url": "https://www.axios.com/2026/09/18/senate-republicans-supreme-court-campaign-spending",
+      "publishedAt": "2026-09-18",
+      "referencePeriod": "NRSCがOH・NH・MI・AK・MEを含む8州で候補者との協調支出を予定し、OHに1,120万ドル、NHに530万ドル、MIに420万ドルと報道。FEC提出は9月20日予定。",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
+      "electionIds": [
+        "2026-OH-3-special",
+        "2026-NH-2-regular",
+        "2026-MI-2-regular",
+        "2026-AK-2-regular",
+        "2026-ME-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "報道本文で州別予定額と制度背景を照合。FEC原票は提出後に再確認し、予定額を確定支出や効果と扱わない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
+    },
+    {
+      "sourceId": "obs-axios-mi-piker-20260918",
+      "title": "Hasan Piker says Abdul El-Sayed is making a mistake distancing from him",
+      "publisher": "Axios",
+      "url": "https://www.axios.com/2026/09/18/hasan-piker-abdul-el-sayed-michigan-senate-democrats",
+      "publishedAt": "2026-09-18",
+      "referencePeriod": "民主党候補El-Sayedと配信者Hasan Pikerの予備選時の接点、Pikerの後続発言、El-Sayedの距離の取り方、共和党系団体による約300万ドルの関連広告を照合。",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Axios本文で時系列、候補者・配信者の発言、広告支出を照合し、候補者本人の立場と支援者の発言を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
+    },
+    {
+      "sourceId": "obs-elsayed-piker-statement-20260824",
+      "title": "Statement from Dr. Abdul El-Sayed on Hasan Piker's comments regarding Jeremy Moss",
+      "publisher": "Abdul El-Sayed陣営",
+      "url": "https://abdulforsenate.com/2026/08/statement-from-dr-abdul-el-sayed-on-hasan-pikers-comments-regarding-jeremy-moss/",
+      "publishedAt": "2026-08-24",
+      "referencePeriod": "El-Sayed陣営が反ユダヤ主義を非難し、ユダヤ系住民の安全への責任と、陣営以外は陣営を代表しないとの立場を表明。",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "daily",
+      "method": "候補者陣営の原文で本人側の立場を照合し、第三者の発言や有権者評価とは分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
+    },
+    {
+      "sourceId": "obs-elsayed-morning-joe-20260918",
+      "title": "El-Sayed joins Morning Joe to discuss affordability and his coalition",
+      "publisher": "Abdul El-Sayed陣営",
+      "url": "https://abdulforsenate.com/2026/09/icymi-dr-abdul-el-sayed-joins-morning-joe-to-discuss-the-affordability-crisis-and-the-broad-coalition-backing-his-campaign/",
+      "publishedAt": "2026-09-18",
+      "referencePeriod": "陣営がMorning Joe出演で生活費、医療、党内結束を前面に出したと説明。陣営による自己評価として照合。",
+      "retrievedAt": "2026-09-19",
+      "contentVerifiedAt": "2026-09-19",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "daily",
+      "method": "候補者陣営の発表で本人の主張を照合し、政策効果・有権者評価の証拠とは扱わない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z"
     }
   ],
   "evidenceRefs": [
@@ -1688,6 +1787,41 @@
       "locator": "民主党El-SayedとHarris前副大統領が9月22日にMichiganで黒人妊産婦の健康を扱う円卓会議を予定。両陣営が確認し、初の共同公開行事。時刻・会場は未公表。",
       "checkedAt": "2026-09-17",
       "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-oh-pac-spending-20260918",
+      "sourceId": "obs-reuters-oh-pac-spending-20260918",
+      "locator": "共和党系スーパーPAC6団体が直近1週間にOhioで計約1,400万ドルの広告を発注。民主党Brownは約3,860万ドル、共和党Hustedは約1,430万ドルを調達したとFEC記録に基づき報道。Brown陣営は批判し、Husted陣営はコメントしなかった。",
+      "checkedAt": "2026-09-19",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-axios-nrsc-spending-20260918",
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "locator": "NRSCは最高裁判断後の新しい協調支出枠で、OHに1,120万ドル、NHに530万ドル、MIに420万ドル、ほかAK・MEを含む8州へ計4,650万ドルを振り向けると報道。FEC提出予定は9月20日で、原票確認前の予定額。",
+      "checkedAt": "2026-09-19",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-axios-mi-piker-20260918",
+      "sourceId": "obs-axios-mi-piker-20260918",
+      "locator": "配信者Hasan Pikerは民主党El-Sayedと予備選中に一度選挙活動を行った。後続発言を共和党系団体が広告で攻撃し、関連広告は約300万ドル。Pikerは距離を取ることを誤りと評したが、候補者本人や陣営の発言ではない。",
+      "checkedAt": "2026-09-19",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-elsayed-piker-statement-20260824",
+      "sourceId": "obs-elsayed-piker-statement-20260824",
+      "locator": "El-Sayed陣営は8月24日、反ユダヤ主義を非難し、Jewish Michigandersの安全への責任を表明。陣営以外は陣営を代表しないと明記した。候補者側の声明であり、有権者の受け止めは示さない。",
+      "checkedAt": "2026-09-19",
+      "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-elsayed-morning-joe-20260918",
+      "sourceId": "obs-elsayed-morning-joe-20260918",
+      "locator": "El-Sayed陣営は9月18日のMorning Joe出演で生活費・医療・党内結束を強調したと発表。候補者が選挙の中心に置こうとする論点を示すが、政策効果や有権者評価ではない。",
+      "checkedAt": "2026-09-19",
+      "kind": "claim"
     }
   ],
   "races": [
@@ -1873,10 +2007,10 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-18",
+      "updatedAt": "2026-09-19",
       "headline": "政策の違いが、候補者への距離感につながるか",
-      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。9月中旬の2調査はいずれもEl-Sayedが2〜3ポイント先行したが誤差内で、生活費と対カナダ関税への説明を比べる。",
-      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。Emersonは48%対46%、Washington Post/Scharは48%対45%で、いずれもEl-Sayedが先頭だが差は公表誤差内だった。対カナダ関税では、RogersはTrump政権との近さを交渉力として訴え、El-Sayedは負担を認めながら政権に合わせていると批判している。",
+      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。生活費・関税の政策比較に加え、El-Sayed本人の立場、予備選で一度共に活動した配信者の発言、共和党側の広告を分けて確認する。",
+      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。共和党系団体は、予備選でEl-Sayedと一度活動した配信者Hasan Piker氏の発言を約300万ドルの広告で攻撃した。El-Sayed陣営は反ユダヤ主義を非難し、Piker氏は陣営を代表しないと明記したうえで、生活費・医療を中心争点として訴えている。",
       "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。関税への両候補の説明が実際の交渉結果や家計改善、得票効果を生んだ証拠もまだない。10月8日の直接討論で同じ質問への回答を比べる。",
       "evidenceIds": [
         "ev-obs-ssrs",
@@ -1963,13 +2097,14 @@
           "key": "president",
           "label": "政党・トランプとの関係",
           "cells": [
-            {
-              "candidateId": "cand-mi-abdul-el-sayed",
-              "kind": "observed",
-              "text": "Trumpらの大会での批判に対し、生活費・対カナダ貿易・医療へ焦点を戻すと応答。9月1日の陣営声明でもTrumpの関税を批判している。",
-              "evidenceIds": [
-                "ev-obs-abdul-trade",
-                "ev-obs-ap-mi-convention"
+        {
+          "candidateId": "cand-mi-abdul-el-sayed",
+          "kind": "observed",
+          "text": "Trumpらの大会での批判に対し、生活費・対カナダ貿易・医療へ焦点を戻すと応答。予備選で一度共に活動した配信者Hasan Pikerの後続発言については、反ユダヤ主義を非難し、陣営以外は陣営を代表しないと表明した。",
+          "evidenceIds": [
+            "ev-obs-abdul-trade",
+            "ev-obs-ap-mi-convention",
+            "ev-obs-elsayed-piker-statement-20260824"
               ]
             },
             {
@@ -2046,10 +2181,10 @@
     {
       "electionId": "2026-OH-3-special",
       "status": "published",
-      "updatedAt": "2026-09-18",
+      "updatedAt": "2026-09-19",
       "headline": "家計への支援と、投資・雇用の実績をどう評価するか",
-      "featuredSummary": "民主党Brown元上院議員と共和党現職Hustedの特別選挙。新調査はBrown 45.4%・Husted 41.5%だが、生活費、データセンターの電力費、雇用への説明を中心に比べる。",
-      "lead": "民主党シェロッド・ブラウン元上院議員が、Vance副大統領の後任に任命された共和党現職ジョン・ハステッド上院議員へ挑む。9月14〜16日のTrafalgar調査はBrown 45.4%、Husted 41.5%、その他6.0%、未定7.1%。APは、かつて民主党が強かったYoungstown周辺で、対カナダ貿易、雇用、データセンターの電力料金が争点になっていると取材した。",
+      "featuredSummary": "民主党Brown元上院議員と共和党現職Hustedの特別選挙。新調査のBrown小幅先行とBrownの資金調達優位に対し、共和党系団体が広告を急増させている。",
+      "lead": "JD Vance氏の副大統領就任で空いた残り2年の議席を、民主党シェロッド・ブラウン元上院議員と共和党現職ジョン・ハステッド上院議員が争う。9月14〜16日のTrafalgar調査はBrown 45.4%、Husted 41.5%で差は誤差範囲に近い。Brownが資金調達で先行する一方、共和党系外部団体は直近1週間に約1,400万ドルのOhio広告を発注した。争点は生活費、雇用、対カナダ貿易、データセンターの電力料金に加え、広告が双方をどう位置付けるかへ広がっている。",
       "uncertainty": "調査差は公表誤差に近く、PDFでは依頼主を確認できなかった。地域の党派変化や広告費から個人の投票先は決められない。BrownとHustedのデータセンター対策が電気料金や雇用へ及ぼした効果も、候補者の主張と分けて確認する。",
       "evidenceIds": [
         "ev-obs-brown-policy",
@@ -2176,18 +2311,23 @@
           "key": "voters",
           "label": "有権者の受け止め",
           "cells": [
-            {
-              "candidateId": "cand-oh-sherrod-brown",
-              "kind": "pending",
-              "text": "これらの公約を理由に支持している人の割合は未確認。下の世論調査と合わせて読む。",
-              "evidenceIds": []
-            },
-            {
-              "candidateId": "cand-oh-jon-husted",
-              "kind": "pending",
-              "text": "投資・雇用実績への評価が得票に及ぼす効果は未確認。候補者支持と争点評価を分ける。",
-              "evidenceIds": []
-            }
+        {
+          "candidateId": "cand-oh-sherrod-brown",
+          "kind": "pending",
+          "text": "最近の調査では小幅に先行し、資金調達額もHustedを上回る。ただし、共和党系団体が急増させた攻撃広告で支持が動いたかは未確認。",
+          "evidenceIds": [
+            "ev-obs-reuters-oh-pac-spending-20260918"
+          ]
+        },
+        {
+          "candidateId": "cand-oh-jon-husted",
+          "kind": "pending",
+          "text": "共和党側は外部団体と党組織による広告を増やしているが、支出額は有権者の評価や得票効果を示さない。",
+          "evidenceIds": [
+            "ev-obs-reuters-oh-pac-spending-20260918",
+            "ev-obs-axios-nrsc-spending-20260918"
+          ]
+        }
           ]
         }
       ],
@@ -3062,6 +3202,49 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-battleground-ad-spending-2026-09-18",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special",
+        "2026-NH-2-regular",
+        "2026-MI-2-regular",
+        "2026-AK-2-regular",
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-18",
+      "updatedAt": "2026-09-19",
+      "title": "共和党側が接戦州の広告を増額――オハイオでは外部団体が1週間で約1,400万ドル",
+      "happened": "Ohio州特別選挙は、JD Vance氏の副大統領就任で空いた残り2年の議席を、共和党現職Jon Husted上院議員と民主党Sherrod Brown元上院議員が争う。Reutersによると、共和党系スーパーPAC6団体は直近1週間だけで約1,400万ドルのOhio広告を発注した。別のAxios報道では、共和党上院選委員会NRSCも候補者との協調支出としてOhioに1,120万ドル、New Hampshireに530万ドル、Michiganに420万ドルを予定し、Alaska・Maineにも資金を振り向ける。",
+      "meaning": "Brown氏が最近の複数調査で小幅に先行し、資金調達ではBrown氏約3,860万ドル、Husted氏約1,430万ドルという中、共和党側が広告量で補おうとしている構図を確認できる。Ohioの広告はBrown氏をトランスジェンダー政策、銀行救済、民主社会主義者との関係で攻撃し、Brown陣営は富裕層と企業によるHusted氏救済だと反論した。Husted陣営はReutersの取材にコメントしなかった。",
+      "uncertainty": "支出額は広告が見られた量、説得効果、支持率変化を示さない。NRSCの州別額は9月20日提出予定のFEC原票をまだ照合しておらず予定額として扱う。団体のTrump氏との組織的なつながりは報道で確認したが、各支出がTrump大統領本人の直接指示だとは確認していない。",
+      "evidenceIds": [
+        "ev-obs-reuters-oh-pac-spending-20260918",
+        "ev-obs-axios-nrsc-spending-20260918"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-piker-distance-2026-09-18",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-18",
+      "updatedAt": "2026-09-19",
+      "title": "ミシガン州、民主党El-Sayed氏が支援者Piker氏の発言と距離――本人の立場と第三者発言を分けて確認",
+      "happened": "民主党Abdul El-Sayed氏と共和党Mike Rogers元下院議員が争うMichigan州上院選で、配信者Hasan Piker氏が再び争点になった。Piker氏は予備選中にEl-Sayed氏と一度選挙活動を行ったが、その後の反ユダヤ主義と受け取られた発言などを共和党系団体が約300万ドルの広告で攻撃した。El-Sayed陣営は8月24日に反ユダヤ主義を非難し、ユダヤ系住民の安全への責任と『陣営以外は陣営を代表しない』との立場を表明。Piker氏は9月18日、距離を取るのは誤りだと思うが、自分が攻撃材料になるとの判断は理解すると述べた。",
+      "meaning": "候補者本人の発言、過去に一度共に活動した支援者の発言、対立陣営側の広告という三つを混同せず比べる材料になる。El-Sayed陣営は同日のMorning Joe出演では生活費と医療を中心争点として訴えており、選挙をPiker氏との関係ではなく政策論へ戻そうとする候補者側の発信も確認できる。",
+      "uncertainty": "Piker氏は候補者でも陣営の代弁者でもない。El-Sayed氏の声明は本人側の立場を示すが、すべての支援者の見方や有権者の評価を証明しない。約300万ドルの広告支出が支持を動かしたかも未確認。",
+      "evidenceIds": [
+        "ev-obs-axios-mi-piker-20260918",
+        "ev-obs-elsayed-piker-statement-20260824",
+        "ev-obs-elsayed-morning-joe-20260918"
+      ]
+    },
     {
       "updateId": "obs-update-me-rating-tariffs-2026-09-17",
       "status": "published",
