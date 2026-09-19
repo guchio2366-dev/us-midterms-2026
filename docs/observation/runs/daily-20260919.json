@@ -1,0 +1,181 @@
+{
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-white-house",
+    "obs-reuters-oh-pac-spending-20260918",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-axios-mi-piker-20260918",
+    "obs-elsayed-piker-statement-20260824",
+    "obs-elsayed-morning-joe-20260918"
+  ],
+  "completedAt": "2026-09-19T00:09:46Z",
+  "note": "Ohioを中心とする共和党系外部団体・NRSCの接戦州広告支出と、Michiganの民主党El-Sayed本人の声明・配信者Pikerの発言・共和党側広告を分けた解説を公開。支出額は露出や得票効果と扱わず、NRSCの州別予定額は9月20日提出予定のFEC原票を照合待ちと明記。Inside Electionsの全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧に対象州へのTrump大統領の確定訪問日程は確認できず、未公表日程の不存在は断定しない。AK・OH・NH名簿、Sabato、AARP AK、Quantus MEは本日の原文照合未完了。D46・R48・未配分6、保存案・共有URLは維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-ak",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-aarp-ak-20260917",
+    "obs-quantus-me-20260917"
+  ],
+  "runId": "daily-20260919",
+  "startedAt": "2026-09-18T23:58:40Z",
+  "baseCommit": "08e21872e974f392f3832aa3cea148f305b8fce7",
+  "publishedCommit": "d19e038c16b0a6c8be8bff063deb78ab46415d1c",
+  "revision": "observation-2026-09-19-v1",
+  "reviewMode": "daily; Saturday Asia/Tokyo; weekly full comparison audit not due",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "公式JSON全35選挙を確認。9月17日版から変更なく、新たな統合Toss Upと暫定配分の変更はない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "公式発表一覧を9月18日掲載分まで確認。対象6州へのTrump大統領の確定訪問日程は一覧から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-reuters-oh-pac-spending-20260918",
+      "attemptedUrls": [
+        "https://www.reuters.com/legal/government/trump-linked-pop-up-pacs-blitz-ohio-with-ads-against-brown-costly-senate-race-2026-09-18/"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "共和党系スーパーPAC6団体の直近1週間約1,400万ドル、候補者の資金調達、広告内容、Brown陣営の反論、Husted陣営の回答なしを照合。支出と得票効果を分ける。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": [
+        "https://www.axios.com/2026/09/18/senate-republicans-supreme-court-campaign-spending"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "OH・NH・MIの州別予定額とAK・MEを含む対象州を照合。FEC提出予定は9月20日で、原票確認までは報道された予定額として扱う。"
+    },
+    {
+      "sourceId": "obs-axios-mi-piker-20260918",
+      "attemptedUrls": [
+        "https://www.axios.com/2026/09/18/hasan-piker-abdul-el-sayed-michigan-senate-democrats"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "El-SayedとPikerが予備選中に一度活動した経緯、Pikerの後続発言、共和党系広告約300万ドルを照合。Pikerを候補者・陣営代弁者として扱わない。"
+    },
+    {
+      "sourceId": "obs-elsayed-piker-statement-20260824",
+      "attemptedUrls": [
+        "https://abdulforsenate.com/2026/08/statement-from-dr-abdul-el-sayed-on-hasan-pikers-comments-regarding-jeremy-moss/"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "El-Sayed陣営による反ユダヤ主義の非難、ユダヤ系住民の安全への責任、陣営以外は陣営を代表しないとの原文を照合。"
+    },
+    {
+      "sourceId": "obs-elsayed-morning-joe-20260918",
+      "attemptedUrls": [
+        "https://abdulforsenate.com/2026/09/icymi-dr-abdul-el-sayed-joins-morning-joe-to-discuss-the-affordability-crisis-and-the-broad-coalition-backing-his-campaign/"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "陣営が生活費・医療・党内結束を前面に出したことを照合。陣営の主張として扱い、効果・有権者評価とは分ける。"
+    },
+    {
+      "sourceId": "obs-roster-ak",
+      "attemptedUrls": [
+        "https://www.elections.alaska.gov/candidates/?election=26genr"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "unavailable",
+      "lastSuccessAt": "2026-09-15T00:06:44.507Z",
+      "contentVerifiedAt": "2026-09-15",
+      "scope": "本日は公式候補者ページを取得できず。9月15日の成功記録を保持し、本日の成功には置き換えない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/",
+        "https://www.ohiosos.gov/directories/county-boards-of-elections"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官サイトと郡選管一覧は取得できたが、上院特別選挙の候補者原票には到達できず照合未完了。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式選挙ページ本文を取得できず、候補者原票の照合は未完了。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページ本文を取得できず。Inside Elections以外の評価更新の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-aarp-ak-20260917",
+      "attemptedUrls": [
+        "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska.doi.10.26419-2fres.01065.016.pdf"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原PDF本文を取得できず、方法・質問文を照合できないため数値は非掲載。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-19T00:04:22Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公表元本文を取得できず、方法・質問文を照合できないため数値は非掲載。"
+    }
+  ],
+  "verification": {
+    "initialTestAttempt": "依存パッケージ未導入のためvitest not foundで失敗。npm ci後に同じテストを再実行。",
+    "tests": "112 passed",
+    "build": "success",
+    "directGitPush": "failed before publication because the runtime had no HTTPS username; GitHub connection used to create the same verified tree and the main ref will be advanced with force=false"
+  }
+}
