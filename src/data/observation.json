@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-19-v1",
+  "revision": "observation-2026-09-20-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,30 +8,29 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-19T00:09:46Z",
+    "lastCompletedAt": "2026-09-20T00:06:55Z",
     "latestRun": {
-      "runId": "daily-20260919",
-      "startedAt": "2026-09-18T23:58:40Z",
-      "completedAt": "2026-09-19T00:09:46Z",
+      "runId": "daily-20260920",
+      "startedAt": "2026-09-20T00:01:30Z",
+      "completedAt": "2026-09-20T00:06:55Z",
       "outcome": "partial",
       "checkedSourceIds": [
         "obs-inside",
         "obs-white-house",
-        "obs-reuters-oh-pac-spending-20260918",
-        "obs-axios-nrsc-spending-20260918",
-        "obs-axios-mi-piker-20260918",
-        "obs-elsayed-piker-statement-20260824",
-        "obs-elsayed-morning-joe-20260918"
+        "obs-roster-ak",
+        "obs-aarp-ak-20260917",
+        "obs-reuters-oh-data-centers-20260919",
+        "obs-wapo-mi-rhetoric-20260919",
+        "obs-houston-chronicle-tx-ads-20260919"
       ],
       "pendingSourceIds": [
-        "obs-roster-ak",
         "obs-roster-oh",
         "obs-roster-nh",
         "obs-sabato",
-        "obs-aarp-ak-20260917",
-        "obs-quantus-me-20260917"
+        "obs-quantus-me-20260917",
+        "obs-axios-nrsc-spending-20260918"
       ],
-      "note": "Ohioを中心とする共和党系外部団体・NRSCの接戦州広告支出と、Michiganの民主党El-Sayed本人の声明・配信者Pikerの発言・共和党側広告を分けた解説を公開。支出額は露出や得票効果と扱わず、NRSCの州別予定額は9月20日提出予定のFEC原票を照合待ちと明記。Inside Electionsの全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧に対象州へのTrump大統領の確定訪問日程は確認できず、未公表日程の不存在は断定しない。AK・OH・NH名簿、Sabato、AARP AK、Quantus MEは本日の原文照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
+      "note": "AlaskaのAARP調査、Ohioのデータセンター反発、Michiganの攻撃広告と有権者の受け止め、Texasの広告急増を公開。候補者・第三者・有権者評価を分け、異なる調査の差、広告額、発言を支持変化や得票効果とは扱わない。Inside Electionsは9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧に対象州へのTrump大統領の新たな確定訪問日程は確認できず、未公表日程の不存在は断定しない。Alaska公式名簿は4候補を照合できた。OH・NH名簿、Sabato、Quantus MEと、米国時間9月20日提出予定のNRSC支出原票は照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
     }
   },
   "sources": [
@@ -485,8 +484,8 @@
       "url": "https://www.elections.alaska.gov/candidates/?election=26genr",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -494,8 +493,8 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
     },
     {
       "sourceId": "obs-roster-me",
@@ -623,8 +622,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-19",
-      "contentVerifiedAt": "2026-09-19",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -638,7 +637,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-19T00:04:22Z"
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -647,8 +646,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-19",
-      "contentVerifiedAt": "2026-09-19",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -662,7 +661,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-19T00:04:22Z"
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1281,16 +1280,16 @@
       "publisher": "AARP",
       "url": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska.doi.10.26419-2fres.01065.016.pdf",
       "publishedAt": "2026-09-17",
-      "referencePeriod": "集計サイトで新調査の掲載を確認したが、原PDFが403で方法・質問文を照合できず非掲載。",
-      "retrievedAt": "2026-09-19",
-      "contentVerifiedAt": null,
+      "referencePeriod": "9月8〜11日、Alaska州の投票予定者800人。電話55%・SMSからウェブ45%。第1順位はPeltola 46%、Dan S. Sullivan 41%、最終再配分は53%対47%。誤差±3.5ポイント。AARP依頼、Fabrizio Ward（共和党系）とImpact Research（民主党系）が実施。",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
       "electionIds": ["2026-AK-2-regular"],
       "category": "poll",
       "cadence": "daily",
-      "method": "原PDFの取得と方法・質問文の照合待ち",
+      "method": "原PDF21ページを取得し、質問結果、順位再配分、標本、実査期間、方法、依頼主を照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
-      "lastSuccessAt": null
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
     },
     {
       "sourceId": "obs-quantus-me-20260917",
@@ -1407,6 +1406,63 @@
       "alternativeUrl": null,
       "checkStatus": "checked",
       "lastSuccessAt": "2026-09-19T00:04:22Z"
+    },
+    {
+      "sourceId": "obs-reuters-oh-data-centers-20260919",
+      "title": "Democrats try to ride data center backlash to election victory in rural US Midwest",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/government/democrats-try-ride-data-center-backlash-election-victory-rural-us-midwest-2026-09-19/",
+      "publishedAt": "2026-09-19",
+      "referencePeriod": "Ohio州Defianceの住民運動、州の税優遇、8月31日BGSU調査、上院候補Brown・Husted両陣営の主張と住民側の留保を照合。",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Reuters本文で住民投票運動、調査結果、候補者双方の発言と反証を照合し、政策主張と効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
+    },
+    {
+      "sourceId": "obs-wapo-mi-rhetoric-20260919",
+      "title": "How anti-Muslim rhetoric is influencing the pivotal Michigan Senate race",
+      "publisher": "The Washington Post",
+      "url": "https://www.washingtonpost.com/politics/2026/09/19/anti-muslim-rhetoric-against-abdul-el-sayed-shapes-michigan-senate-race/",
+      "publishedAt": "2026-09-19",
+      "referencePeriod": "共和党側のMichigan広告支出、Piker氏を扱う広告、Rogers陣営とEl-Sayed氏の反応、Post-Schar調査でのPiker氏の認知・候補者選好との関係を照合。",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "報道本文と同紙調査の記述を照合し、候補者本人、第三者、広告内容、有権者の回答を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-tx-ads-20260919",
+      "title": "Trump's Texas visit spurs a $100M avalanche of negative ads against James Talarico",
+      "publisher": "Houston Chronicle",
+      "url": "https://www.houstonchronicle.com/politics/texas-take/article/talarico-attack-ads-22438633.php",
+      "publishedAt": "2026-09-19",
+      "referencePeriod": "Trump大統領の8月末Texas訪問後に共和党系5委員会が投じた広告、両陣営の直近支出比、Paxton・Talarico両候補の発言を照合。",
+      "retrievedAt": "2026-09-20",
+      "contentVerifiedAt": "2026-09-20",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内報道本文で支出規模、期間、発言主体を照合し、広告費と支持率への効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z"
     }
   ],
   "evidenceRefs": [
@@ -1815,6 +1871,34 @@
       "locator": "El-Sayed陣営は9月18日のMorning Joe出演で生活費・医療・党内結束を強調したと発表。候補者が選挙の中心に置こうとする論点を示すが、政策効果や有権者評価ではない。",
       "checkedAt": "2026-09-19",
       "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-oh-data-centers-20260919",
+      "sourceId": "obs-reuters-oh-data-centers-20260919",
+      "locator": "Defianceでは11月3日に大規模データセンターを制限する住民投票を目指し、市は新規承認を6か月停止。ReutersによるとBGSUの8月31日調査で州民の71%が新設の一時停止を支持。Brown陣営は地元決定を強調し、Husted陣営は事業者に発電・送電増強費を負担させる法案を反論に挙げた。住民活動家は両党の選挙公約に懐疑的。",
+      "checkedAt": "2026-09-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-mi-rhetoric-20260919",
+      "sourceId": "obs-wapo-mi-rhetoric-20260919",
+      "locator": "共和党側のMichigan本選広告約2,900万ドルの4分の3がEl-Sayed攻撃で、3分の1はテロとの関連付け。Piker氏を扱う広告は700万ドル超。Rogers陣営は批判は事実に基づくと主張し、El-Sayed氏は宗教をめぐる攻撃を批判。Post-Schar調査では投票予定者の55%がPiker氏への意見を持たず、Piker氏への評価は上院選の候補者選好を予測しなかった。因果効果の証明ではない。",
+      "checkedAt": "2026-09-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-houston-chronicle-tx-ads-20260919",
+      "sourceId": "obs-houston-chronicle-tx-ads-20260919",
+      "locator": "Trump大統領が8月末に共和党Paxton氏支援のためTexasを訪問すると発表して以降、共和党系5委員会が民主党Talarico氏を狙う主に否定的な広告を1億ドル超投入。直近はPaxton側がTalarico側を4対1で上回った。Talarico氏は虚偽だと反論し、Paxton氏は党の結束を強調。支出額は広告の説得効果を示さない。",
+      "checkedAt": "2026-09-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-aarp-ak-20260917",
+      "sourceId": "obs-aarp-ak-20260917",
+      "locator": "9月8〜11日、投票予定者800人、電話55%・SMSからウェブ45%、誤差±3.5ポイント。第1順位は民主党Peltola 46%、共和党現職Dan S. Sullivan 41%、Daniel J. Sullivan 4%、Heikes 3%、未定7%。調査上の最終再配分はPeltola 53%、Sullivan 47%で11%はどちらも順位付けせず。",
+      "checkedAt": "2026-09-20",
+      "kind": "observed"
     }
   ],
   "races": [
@@ -2000,11 +2084,11 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-19",
+      "updatedAt": "2026-09-20",
       "headline": "政策の違いが、候補者への距離感につながるか",
-      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。生活費・関税の政策比較に加え、El-Sayed本人の立場、予備選で一度共に活動した配信者の発言、共和党側の広告を分けて確認する。",
-      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。共和党系団体は、予備選でEl-Sayedと一度活動した配信者Hasan Piker氏の発言を約300万ドルの広告で攻撃した。El-Sayed陣営は反ユダヤ主義を非難し、Piker氏は陣営を代表しないと明記したうえで、生活費・医療を中心争点として訴えている。",
-      "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。関税への両候補の説明が実際の交渉結果や家計改善、得票効果を生んだ証拠もまだない。10月8日の直接討論で同じ質問への回答を比べる。",
+      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。生活費・関税の政策比較に加え、候補者本人、第三者の発言、宗教をめぐる広告、有権者の受け止めを分けて確認する。",
+      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。共和党側はEl-Sayed氏と予備選で一度活動した配信者Hasan Piker氏を広告で攻撃し、Rogers陣営は事実に基づく批判だと主張。El-Sayed氏は宗教をめぐる攻撃を批判し、反ユダヤ主義を非難したうえで生活費・医療を中心争点としている。",
+      "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。Post-Schar調査では55%がPiker氏への意見を持たず、その評価は候補者選好を予測しなかったが、広告が将来も無効だと示す因果証拠ではない。10月8日の直接討論で同じ質問への回答を比べる。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
@@ -2014,7 +2098,8 @@
         "ev-obs-fox2-mi-debates",
         "ev-obs-emerson-mi-20260917",
         "ev-obs-wapo-mi-20260917",
-        "ev-obs-reuters-canada-tariffs-20260917"
+        "ev-obs-reuters-canada-tariffs-20260917",
+        "ev-obs-wapo-mi-rhetoric-20260919"
       ],
       "materials": [
         {
@@ -2140,17 +2225,19 @@
             {
               "candidateId": "cand-mi-abdul-el-sayed",
               "kind": "interpretation",
-              "text": "SSRSは政策的位置への評価が重要と分析。改革案ごとの賛否と支持率を同一視しない。",
+              "text": "SSRSは政策的位置への評価が重要と分析。Post-Schar調査では55%がPiker氏への意見を持たず、その評価は上院候補の選好を予測しなかった。改革案や第三者への賛否と支持率を同一視しない。",
               "evidenceIds": [
-                "ev-obs-ssrs"
+                "ev-obs-ssrs",
+                "ev-obs-wapo-mi-rhetoric-20260919"
               ]
             },
             {
               "candidateId": "cand-mi-mike-rogers",
               "kind": "interpretation",
-              "text": "SSRSの同じ調査を使って両候補を比べる。知名度や否定的評価も合わせて確認する。",
+              "text": "SSRSの同じ調査を使って両候補を比べる。共和党側の広告量だけで効果を決めず、Post-Schar調査で題材となったPiker氏への評価が候補者選好を予測しなかった点も合わせて確認する。",
               "evidenceIds": [
-                "ev-obs-ssrs"
+                "ev-obs-ssrs",
+                "ev-obs-wapo-mi-rhetoric-20260919"
               ]
             }
           ]
@@ -2174,28 +2261,30 @@
     {
       "electionId": "2026-OH-3-special",
       "status": "published",
-      "updatedAt": "2026-09-19",
+      "updatedAt": "2026-09-20",
       "headline": "家計への支援と、投資・雇用の実績をどう評価するか",
-      "featuredSummary": "民主党Brown元上院議員と共和党現職Hustedの特別選挙。新調査のBrown小幅先行とBrownの資金調達優位に対し、共和党系団体が広告を急増させている。",
-      "lead": "JD Vance氏の副大統領就任で空いた残り2年の議席を、民主党シェロッド・ブラウン元上院議員と共和党現職ジョン・ハステッド上院議員が争う。9月14〜16日のTrafalgar調査はBrown 45.4%、Husted 41.5%で差は誤差範囲に近い。Brownが資金調達で先行する一方、共和党系外部団体は直近1週間に約1,400万ドルのOhio広告を発注した。争点は生活費、雇用、対カナダ貿易、データセンターの電力料金に加え、広告が双方をどう位置付けるかへ広がっている。",
-      "uncertainty": "調査差は公表誤差に近く、PDFでは依頼主を確認できなかった。地域の党派変化や広告費から個人の投票先は決められない。BrownとHustedのデータセンター対策が電気料金や雇用へ及ぼした効果も、候補者の主張と分けて確認する。",
+      "featuredSummary": "民主党Brown元上院議員と共和党現職Hustedの特別選挙。広告戦に加え、データセンターを誰が決め、電力・税負担を誰が負うかが具体的な争点になっている。",
+      "lead": "JD Vance氏の副大統領就任で空いた残り2年の議席を、民主党シェロッド・ブラウン元上院議員と共和党現職ジョン・ハステッド上院議員が争う。9月14〜16日のTrafalgar調査はBrown 45.4%、Husted 41.5%で差は誤差範囲に近い。Defianceでは住民が11月3日に大規模データセンターを制限する住民投票を目指し、市は新規承認を6か月停止。Brownは地元の決定権を、Hustedは事業者に発電・送電増強費を負担させる法案を訴えている。",
+      "uncertainty": "調査差は公表誤差に近く、PDFでは依頼主を確認できなかった。BGSU調査で州民の71%が新設の一時停止を支持したとの報道は争点の広がりを示すが、上院選の投票先を示さない。住民側には両党の選挙公約への懐疑もあり、BrownとHustedの対策が料金・税収・雇用へ及ぼす効果は未確認。",
       "evidenceIds": [
         "ev-obs-brown-policy",
         "ev-obs-husted-bio",
         "ev-obs-oh-heartland-husted",
         "ev-obs-trafalgar-oh-20260917",
-        "ev-obs-ap-oh-economy-20260917"
+        "ev-obs-ap-oh-economy-20260917",
+        "ev-obs-reuters-oh-data-centers-20260919"
       ],
       "materials": [
         {
           "materialId": "oh-cost",
           "title": "薬価・電力料金を誰が負担するか",
-        "fact": "Brownは薬価や公共料金の引下げ、データセンターの電力費用を一般家庭に転嫁しない仕組みを訴える。Hustedはデータセンター自身に電力費を負担させ、余剰電力を系統へ戻す法案を挙げる。",
-        "meaning": "生活費の問題認識だけでなく、誰の具体策が家計と雇用を両立できるかを比べる。",
-        "limit": "双方の説明は政策主張で、料金低下や雇用増加が実現したとの因果効果、有権者の支持理由を証明しない。",
+          "fact": "Brownは地元住民が建設を決めるべきだと主張。Husted陣営は事業者に発電・送電増強費を負担させる法案を挙げる。Defianceでは住民投票を目指す署名運動と市の6か月停止が進み、州は新たな税優遇申請を停止している。",
+          "meaning": "開発の可否、電力費、税優遇、地元の決定権を分け、どの仕組みが家計と雇用を両立できるかを比べる。",
+          "limit": "双方の説明は政策主張で、住民活動家には両党への懐疑もある。料金低下や雇用増加、上院選での得票効果は確認できない。",
           "evidenceIds": [
           "ev-obs-brown-policy",
-          "ev-obs-ap-oh-economy-20260917"
+            "ev-obs-ap-oh-economy-20260917",
+            "ev-obs-reuters-oh-data-centers-20260919"
           ]
         },
         {
@@ -2307,18 +2396,20 @@
         {
           "candidateId": "cand-oh-sherrod-brown",
           "kind": "pending",
-          "text": "最近の調査では小幅に先行し、資金調達額もHustedを上回る。ただし、共和党系団体が急増させた攻撃広告で支持が動いたかは未確認。",
-          "evidenceIds": [
-            "ev-obs-reuters-oh-pac-spending-20260918"
+              "text": "最近の調査では小幅に先行し、資金調達額もHustedを上回る。データセンターの地元決定権を訴えるが、71%の一時停止支持がBrown個人への支持を意味するわけではない。",
+              "evidenceIds": [
+                "ev-obs-reuters-oh-pac-spending-20260918",
+                "ev-obs-reuters-oh-data-centers-20260919"
           ]
         },
         {
           "candidateId": "cand-oh-jon-husted",
           "kind": "pending",
-          "text": "共和党側は外部団体と党組織による広告を増やしているが、支出額は有権者の評価や得票効果を示さない。",
+              "text": "共和党側は広告を増やし、Husted陣営は事業者に電力網増強費を負担させる法案を反論に挙げる。広告額も法案提出も、料金低下や得票効果の証明ではない。",
           "evidenceIds": [
             "ev-obs-reuters-oh-pac-spending-20260918",
-            "ev-obs-axios-nrsc-spending-20260918"
+                "ev-obs-axios-nrsc-spending-20260918",
+                "ev-obs-reuters-oh-data-centers-20260919"
           ]
         }
           ]
@@ -2342,17 +2433,18 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-18",
+      "updatedAt": "2026-09-20",
       "headline": "経済・移民への評価と、支持層の投票参加",
-      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。9月の2調査はいずれもTalaricoが先頭だが差と方法は異なり、経済・移民、候補者評価、投票参加を分けて見る。",
-      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月のEmerson調査は47%対46%、ReconMRは49%対43%でTalaricoが先頭だった。Emersonでは経済が最重要36%で、Talaricoの好感度は48%・否定42%、Paxtonは40%・否定48%だった。",
-      "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なるため、数字の差を支持変化と呼ばない。いずれも一時点の調査で、広告開始の効果や最終的な投票参加を証明しない。部分標本はさらに不確か。",
+      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。9月の2調査と、Trump氏の8月末訪問後に急増した広告を分け、経済・移民、候補者評価、投票参加を見る。",
+      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月のEmerson調査は47%対46%、ReconMRは49%対43%でTalaricoが先頭。Trump大統領の8月末Texas訪問後、共和党系5委員会は主にTalaricoを攻撃する広告を1億ドル超投入し、直近はPaxton側がTalarico側を4対1で上回った。両候補はそれぞれ、虚偽攻撃と党結束として説明している。",
+      "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なるため、数字の差を支持変化と呼ばない。広告額は予約・支出の規模であって視聴量や説得効果ではなく、Trump氏の訪問後に続いたことだけで因果関係も断定しない。最終的な投票参加は未確認。",
       "evidenceIds": [
         "ev-obs-emerson-tx",
         "ev-obs-texas-tribune-spending",
         "ev-obs-texas-tribune-paxton-ads",
         "ev-obs-emerson-tx-20260917",
-        "ev-obs-reconmr-tx-20260917"
+        "ev-obs-reconmr-tx-20260917",
+        "ev-obs-houston-chronicle-tx-ads-20260919"
       ],
       "materials": [
         {
@@ -2369,12 +2461,13 @@
         {
           "materialId": "tx-airwaves",
           "title": "共和党系の大型広告投下が始まった",
-          "fact": "共和党系外部団体の大型広告に続き、Paxton陣営は9月15日、Harlingen・Laredo・Corpus Christiで週約30万ドルの放送・配信広告を開始した。",
-          "meaning": "外部団体の攻撃広告と候補者自身の減税メッセージを分け、南テキサスでの認知・好感度がどう変わるかを見る。",
-          "limit": "名目支出額は広告効果ではない。候補者陣営は外部団体より割安な放送単価を利用できるため、両陣営の金額だけで露出量も比較できない。",
+          "fact": "共和党系外部団体の大型広告に続き、Paxton陣営は9月15日に南Texasで自陣営広告を開始。Trump氏の8月末訪問後、共和党系5委員会によるTalarico攻撃広告は1億ドル超となり、直近はPaxton側が4対1で上回った。",
+          "meaning": "外部団体の攻撃、候補者自身の減税メッセージ、Trump氏の支援を分け、認知・好感度と争点評価が後続調査でどう動くかを見る。",
+          "limit": "名目支出額は広告効果ではない。候補者陣営と外部団体では放送単価も異なり、訪問後の時系列だけでTrump氏の訪問が支出増や支持変化を生んだとも断定できない。",
           "evidenceIds": [
             "ev-obs-texas-tribune-spending",
-            "ev-obs-texas-tribune-paxton-ads"
+            "ev-obs-texas-tribune-paxton-ads",
+            "ev-obs-houston-chronicle-tx-ads-20260919"
           ]
         }
       ],
@@ -2474,19 +2567,21 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "observed",
-            "text": "9月Emerson調査で好感度は好意的48%、否定的42%。同調査で47%、ReconMRで49%の支持だが、異なる方法の調査を支持変化として結ばない。",
+              "text": "9月Emerson調査で好感度は好意的48%、否定的42%。同調査で47%、ReconMRで49%の支持。1億ドル超の攻撃広告を『競争力の証拠』とする本人の解釈は、有権者評価とは分ける。",
             "evidenceIds": [
               "ev-obs-emerson-tx-20260917",
-              "ev-obs-reconmr-tx-20260917"
+                "ev-obs-reconmr-tx-20260917",
+                "ev-obs-houston-chronicle-tx-ads-20260919"
               ]
             },
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "observed",
-            "text": "9月Emerson調査で好感度は好意的40%、否定的48%。同調査で46%、ReconMRで43%の支持。広告開始との因果は確認できない。",
+              "text": "9月Emerson調査で好感度は好意的40%、否定的48%。同調査で46%、ReconMRで43%の支持。Paxton氏は党の結束と勢いを主張するが、広告支出との因果は確認できない。",
             "evidenceIds": [
               "ev-obs-emerson-tx-20260917",
-              "ev-obs-reconmr-tx-20260917"
+                "ev-obs-reconmr-tx-20260917",
+                "ev-obs-houston-chronicle-tx-ads-20260919"
               ]
             }
           ]
@@ -2510,11 +2605,11 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-18",
+      "updatedAt": "2026-09-20",
       "headline": "漁業と資源開発の利益を、地元へどう戻すか",
-      "featuredSummary": "共和党現職Dan S. Sullivanと民主党Mary Peltolaの接戦。新調査の第1選択は48%対46%で誤差内。混獲法案は委員会を通過したが、内容への反論と次の立法段階も見る。",
-      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月14〜17日のco/efficient調査は4候補の第1選択でSullivan 48%、Peltola 46%、未定4%と誤差内だった。Sullivanが実績に挙げる混獲削減法案は委員会を通過した一方、民主党委員7人が反対し、漁業関係者から研究偏重や別の混獲増加を懸念する声も出た。",
-      "uncertainty": "同姓のDaniel J. Sullivan Jr.は別候補で、順位選択投票では第1選択と最終ラウンドを分ける。委員会通過は法成立や漁業への効果を意味せず、下院は選挙後まで休会予定。調査1件で勝敗や法案の得票効果は判断しない。",
+      "featuredSummary": "共和党現職Dan S. Sullivanと民主党Mary Peltolaの接戦。同じ週の2調査は第1順位の先頭が逆で、調査方法と順位選択投票の再配分を分けて見る。",
+      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月8〜11日のAARP調査は第1順位でPeltola 46%、Sullivan 41%、調査上の最終再配分で53%対47%。一方、9月14〜17日のco/efficient調査は第1順位でSullivan 48%、Peltola 46%だった。Sullivan氏の混獲削減法案は委員会を通過したが、反対理由と次の立法段階も確認する。",
+      "uncertainty": "2調査は実査期間、電話・ウェブの比率、調査主体、順位再配分の示し方が異なり、先頭の逆転を支持率変化と呼べない。同姓のDaniel J. Sullivan Jr.は別候補で、第1順位と最終ラウンドを分ける。委員会通過は法成立や漁業への効果を意味しない。",
       "evidenceIds": [
         "ev-obs-dfp-ak",
         "ev-obs-ak-fisheries-debate",
@@ -2522,7 +2617,8 @@
         "ev-obs-commerce-bycatch-20260916",
         "ev-obs-sullivan-bycatch-committee-20260916",
         "ev-obs-coefficient-ak-20260917",
-        "ev-obs-ak-public-bycatch-20260916"
+        "ev-obs-ak-public-bycatch-20260916",
+        "ev-obs-aarp-ak-20260917"
       ],
       "materials": [
         {
@@ -2541,11 +2637,13 @@
         {
           "materialId": "ak-transfer",
           "title": "第1希望と最終的な選択を分ける",
-          "fact": "同調査は4候補を尋ね、順位に沿った最終ラウンドも試算した。",
-          "meaning": "第1希望だけでなく、他候補支持者が次に誰を選ぶかが判断材料になる。",
-          "limit": "候補者の混同、順位を付けない票、調査上の再配分と実際の集計との差に注意する。",
+          "fact": "AARP調査は第1順位でPeltola 46%・Sullivan 41%、最終再配分で53%・47%。co/efficient調査は第1順位でSullivan 48%・Peltola 46%だった。",
+          "meaning": "一つの先頭候補だけで決めず、質問方法と実査期間、第1順位、他候補からの移転を分けて見る。",
+          "limit": "調査上の再配分は実際の投票・集計ではない。AARP調査では11%が最終的に両主要候補を順位付けせず、2調査の差も支持率変化とは断定できない。",
           "evidenceIds": [
-            "ev-obs-dfp-ak"
+            "ev-obs-dfp-ak",
+            "ev-obs-coefficient-ak-20260917",
+            "ev-obs-aarp-ak-20260917"
           ]
         }
       ],
@@ -2649,19 +2747,21 @@
             {
               "candidateId": "cand-ak-mary-peltola",
               "kind": "observed",
-              "text": "9月co/efficient調査の4候補第1選択で46%。8月DFP調査の第1希望47%・再配分後53%とは、実査時期・調査主体・集計段階が異なる。",
+              "text": "9月8〜11日のAARP調査は第1順位46%・最終再配分53%。9月14〜17日のco/efficient調査は第1順位46%で、相手候補が48%。実査時期・方法・集計段階をそろえず支持変化と呼ばない。",
               "evidenceIds": [
                 "ev-obs-dfp-ak",
-                "ev-obs-coefficient-ak-20260917"
+                "ev-obs-coefficient-ak-20260917",
+                "ev-obs-aarp-ak-20260917"
               ]
             },
             {
               "candidateId": "cand-ak-dan-s-sullivan",
               "kind": "observed",
-              "text": "9月co/efficient調査の4候補第1選択で48%。同姓のDaniel J. Sullivan Jr.は1%の別候補。8月DFP調査とは時期・主体・集計段階が異なる。",
+              "text": "9月8〜11日のAARP調査は第1順位41%・最終再配分47%。9月14〜17日のco/efficient調査は第1順位48%。同姓のDaniel J. Sullivan Jr.は別候補で、調査ごとの表記と割合を混同しない。",
               "evidenceIds": [
                 "ev-obs-dfp-ak",
-                "ev-obs-coefficient-ak-20260917"
+                "ev-obs-coefficient-ak-20260917",
+                "ev-obs-aarp-ak-20260917"
               ]
             }
           ]
@@ -3195,6 +3295,81 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-oh-data-centers-2026-09-19",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-19",
+      "updatedAt": "2026-09-20",
+      "title": "オハイオ州特別選挙、データセンター誘致が地元の決定権・電力・税負担の争点に",
+      "happened": "JD Vance氏の副大統領就任で空いた上院議席を、共和党現職Jon Husted氏と民主党Sherrod Brown元上院議員が争う。Defianceでは住民が11月3日の投票で大規模データセンターを制限するため署名を集め、市は新規承認を6か月停止した。Reutersによると、Bowling Green State Universityの8月31日調査ではOhio州民の71%が新設の一時停止を支持した。",
+      "meaning": "Brown陣営は『地元住民が建設を決めるべきだ』と主張し、Husted陣営は事業者に発電・送電増強費を負担させる法案を反論に挙げた。投資・雇用の賛否だけでなく、電気代、州と自治体の税優遇、農地・水、決定権を誰が負うかという具体策を比べる材料になる。",
+      "uncertainty": "71%はデータセンター新設の一時停止への回答で、上院選の候補者支持率ではない。住民活動家は両党の選挙公約に懐疑的で、Brown氏の地元決定案とHusted氏の費用負担法案が料金・税収・雇用に与える効果、得票への影響は未確認。",
+      "evidenceIds": [
+        "ev-obs-reuters-oh-data-centers-20260919"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-rhetoric-poll-2026-09-19",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-19",
+      "updatedAt": "2026-09-20",
+      "title": "ミシガン州、宗教と第三者発言を結ぶ攻撃広告――調査では題材のPiker氏を55%が評価せず",
+      "happened": "民主党Abdul El-Sayed氏と共和党Mike Rogers元下院議員が争う上院選で、共和党側は一般選挙広告約2,900万ドルの4分の3をEl-Sayed氏への攻撃に使い、その3分の1はテロとの関連付けだった。700万ドル超の広告は、El-Sayed氏と予備選中に一度活動した配信者Hasan Piker氏の2019年発言を扱った。Rogers陣営は批判は事実に基づくと主張し、El-Sayed氏は宗教をめぐる攻撃を批判している。",
+      "meaning": "候補者本人、過去に共に活動した第三者、広告制作者の表現を分けて確認する必要がある。Post-Schar調査では投票予定者の55%がPiker氏への意見を持たず、Piker氏への評価は上院候補の選好を予測しなかった。広告量とは別に、有権者が題材を候補者判断へ結び付けているかを見る材料になる。",
+      "uncertainty": "調査の関連は広告の因果効果を測ったものではなく、今後も影響しないとは言えない。同調査の『イスラム教徒の大統領候補を検討しない』という別設問を、上院選でEl-Sayed氏に投票しない理由と直接結び付けない。",
+      "evidenceIds": [
+        "ev-obs-wapo-mi-rhetoric-20260919",
+        "ev-obs-elsayed-piker-statement-20260824"
+      ]
+    },
+    {
+      "updateId": "obs-update-tx-ad-surge-2026-09-19",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-19",
+      "updatedAt": "2026-09-20",
+      "title": "テキサス州、Trump氏の訪問後に共和党側の広告が1億ドル超――Paxton氏とTalarico氏は意味を対立して説明",
+      "happened": "共和党Ken Paxton州司法長官と民主党James Talarico州下院議員が争う。Trump大統領がPaxton氏を支援するため8月末にTexasを訪問すると発表して以降、共和党系5委員会は主にTalarico氏を攻撃する広告を1億ドル超投入し、直近はPaxton側がTalarico側を4対1で上回った。これはPaxton陣営自身が9月15日に始めた南Texasの広告とは別の外部団体支出を含む。",
+      "meaning": "Talarico氏は広告を虚偽の攻撃と批判し、同時に大口献金者が接戦と見ている証拠だと解釈した。Paxton氏は選挙は僅差だとしたうえで共和党の結束と勢いを強調した。支出の事実、候補者による意味付け、実際の有権者反応を分けて追う。",
+      "uncertainty": "広告費は視聴量・説得効果・支持率変化を示さない。Trump氏の訪問後に支出が増えたという時系列だけで、訪問が支出増や支持変化を生んだとも断定できない。広告の実施変更と、その後に同じ質問で行われる調査を確認する。",
+      "evidenceIds": [
+        "ev-obs-houston-chronicle-tx-ads-20260919",
+        "ev-obs-texas-tribune-paxton-ads"
+      ]
+    },
+    {
+      "updateId": "obs-update-ak-aarp-poll-2026-09-17",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-17",
+      "updatedAt": "2026-09-20",
+      "title": "アラスカ州、AARP調査は民主党Peltola氏46%・共和党現職Sullivan氏41%――同じ週の別調査は逆順",
+      "happened": "順位選択投票で争うAlaska州上院選には4人が立候補し、中心は民主党Mary Peltola元下院議員と共和党現職Dan S. Sullivan上院議員。AARPが依頼した9月8〜11日の調査は第1順位でPeltola氏46%、Sullivan氏41%、同姓のDaniel J. Sullivan氏4%、共和党Gerald Heikes氏3%、未定7%。調査上の最終再配分はPeltola氏53%、Sullivan氏47%だった。",
+      "meaning": "一方、9月14〜17日のco/efficient調査は第1順位でSullivan氏48%、Peltola氏46%と先頭が逆だった。AARP調査は電話55%・SMSからウェブ45%で投票予定者800人、co/efficient調査はオンライン中心の投票予定者799人。候補者名だけでなく、実査期間、方法、第1順位と最終再配分をそろえて比べる必要がある。",
+      "uncertainty": "先頭が逆でも支持が短期間に反転したとは断定できない。AARP調査の最終再配分では11%が両主要候補を順位付けしておらず、調査上の再配分は実際の投票結果ではない。同姓の2候補も別人として扱う。",
+      "evidenceIds": [
+        "ev-obs-aarp-ak-20260917",
+        "ev-obs-coefficient-ak-20260917"
+      ]
+    },
     {
       "updateId": "obs-update-battleground-ad-spending-2026-09-18",
       "status": "published",
