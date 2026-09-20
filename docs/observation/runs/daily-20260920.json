@@ -1,0 +1,169 @@
+{
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-white-house",
+    "obs-roster-ak",
+    "obs-aarp-ak-20260917",
+    "obs-reuters-oh-data-centers-20260919",
+    "obs-wapo-mi-rhetoric-20260919",
+    "obs-houston-chronicle-tx-ads-20260919"
+  ],
+  "completedAt": "2026-09-20T00:18:56Z",
+  "note": "AlaskaのAARP調査、Ohioのデータセンター反発、Michiganの攻撃広告と有権者の受け止め、Texasの広告急増を公開。候補者・第三者・有権者評価を分け、異なる調査の差、広告額、発言を支持変化や得票効果とは扱わない。Inside Electionsは9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧に対象州へのTrump大統領の新たな確定訪問日程は確認できず、未公表日程の不存在は断定しない。Alaska公式名簿は4候補を照合できた。OH・NH名簿、Sabato、Quantus MEと、米国時間9月20日提出予定のNRSC支出原票は照合未完了。D46・R48・未配分6、保存案・共有URLは維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918"
+  ],
+  "runId": "daily-20260920",
+  "startedAt": "2026-09-20T00:01:30Z",
+  "baseCommit": "7bc66c41c2ed927d7e00566ead3eaf969a81dcfc",
+  "publishedCommit": "c60c581c9bc5817405fcbcc5da5f75691cb4fa56",
+  "revision": "observation-2026-09-20-v1",
+  "reviewMode": "daily; Sunday Asia/Tokyo; weekly full comparison audit not due",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "公式JSON全35選挙を確認。9月17日版から変更なく、新たな統合Toss Upと暫定配分の変更はない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "公式発表一覧を9月18日掲載分まで確認。対象6州へのTrump大統領の新たな確定訪問日程は一覧から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-roster-ak",
+      "attemptedUrls": [
+        "https://www.elections.alaska.gov/candidates/?election=26genr"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "公式本選名簿でMary Peltola、現職Dan S. Sullivan、Daniel J. Sullivan Jr.、Gerald Heikesの4候補と党派・認証状態を照合。同姓候補を区別した。"
+    },
+    {
+      "sourceId": "obs-aarp-ak-20260917",
+      "attemptedUrls": [
+        "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-alaska.doi.10.26419-2fres.01065.016.pdf"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "原PDF21ページを取得。9月8〜11日、投票予定者800人、電話55%・SMSからウェブ45%、誤差±3.5ポイント。第1順位と調査上の最終再配分、順位を付けない割合、依頼主・実施社を照合。"
+    },
+    {
+      "sourceId": "obs-reuters-oh-data-centers-20260919",
+      "attemptedUrls": [
+        "https://www.reuters.com/legal/government/democrats-try-ride-data-center-backlash-election-victory-rural-us-midwest-2026-09-19/"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "Defianceの住民投票運動、市の停止、州の税優遇、BGSU調査、Brown・Husted両陣営の主張、住民側の反証を照合。支持率や政策効果とは分けた。"
+    },
+    {
+      "sourceId": "obs-wapo-mi-rhetoric-20260919",
+      "attemptedUrls": [
+        "https://www.washingtonpost.com/politics/2026/09/19/anti-muslim-rhetoric-against-abdul-el-sayed-shapes-michigan-senate-race/"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "広告支出、Rogers陣営とEl-Sayed本人の応答、Pikerの位置付け、Post-Schar調査の55%無回答と候補者選好との非予測関係を照合。別設問と因果効果を混同しない。"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-tx-ads-20260919",
+      "attemptedUrls": [
+        "https://www.houstonchronicle.com/politics/texas-take/article/talarico-attack-ads-22438633.php"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-20T00:06:55Z",
+      "contentVerifiedAt": "2026-09-20",
+      "scope": "Trump大統領の8月末訪問後の共和党系5委員会の広告額、直近の支出比、Paxton・Talarico両候補の発言を照合。時系列を因果関係と扱わない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/elections/"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官サイトはHTTP 403で、上院特別選挙の候補者原票を照合できなかった。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式選挙ページはHTTP 403で、候補者原票の照合は未完了。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページはHTTP 403で本文を取得できず。Inside Elections以外の評価更新の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公表元本文が応答せず、方法・質問文を照合できないため数値は非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": [
+        "https://www.fec.gov/data/"
+      ],
+      "attemptedAt": "2026-09-20T00:06:55Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-19T00:04:22Z",
+      "contentVerifiedAt": "2026-09-19",
+      "scope": "NRSCの州別協調支出は米国時間9月20日提出予定。今回の確認時点は同日未明で原票を特定できず、報道された予定額のまま照合待ち。"
+    }
+  ],
+  "verification": {
+    "tests": "112 passed",
+    "build": "success",
+    "mainFastForward": "passed: c60c581c9bc5817405fcbcc5da5f75691cb4fa56 from rechecked baseCommit; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35478393982",
+    "publicContent": "verified in the published JavaScript bundle: four new updates and unchanged D46/R48/unallocated6 baseline"
+  }
+}
