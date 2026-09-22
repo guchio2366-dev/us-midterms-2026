@@ -1,0 +1,145 @@
+{
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-white-house",
+    "obs-ap-harris-el-sayed-20260922",
+    "obs-houston-chronicle-tx-rally-result-20260921",
+    "obs-reuters-mi-rogers-iran-20260921",
+    "obs-reuters-ipsos-national-20260921"
+  ],
+  "completedAt": "2026-09-22T00:11:04Z",
+  "note": "Texasで共和党Paxton氏・Cruz氏の9月21日集会の実施と発言を確認し、予定と結果を相互参照。Michiganで共和党Rogers氏の対イラン戦争早期終結・燃料税提案と過去の政権支持、民主党El-Sayed氏の反論を追加。全国Reuters/Ipsos調査は6州の候補者支持率と区別して掲載。9月22日のEl-Sayed氏・Harris前副大統領の行事は実施前のため予定を維持。Inside Elections全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧は9月21日掲載分まで確認し、対象6州へのTrump大統領の新たな確定訪問は確認できなかったが未公表日程の不存在は断定しない。OH・NH名簿、Sabato、Quantus ME、NRSC支出のFEC原票、Jackson氏の経歴ページは照合未完了。D46・R48・未配分6、保存案・共有URLは維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-jackson-bio",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918"
+  ],
+  "runId": "daily-20260922",
+  "startedAt": "2026-09-21T23:58:18Z",
+  "baseCommit": "309e0aa62a5c787248fafddb7c8adc91b8839374",
+  "publishedCommit": null,
+  "revision": "observation-2026-09-22-v1",
+  "reviewMode": "daily; Tuesday Asia/Tokyo; targeted update and pending-source retry",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": ["https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "公式JSON全35選挙を確認。9月17日版から変更なく、新たな統合Toss Upと暫定配分の変更はない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": ["https://www.whitehouse.gov/briefings-statements/"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "公式発表一覧を9月21日掲載分まで確認。対象6州へのTrump大統領の新たな確定訪問日程は一覧から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-tx-rally-result-20260921",
+      "attemptedUrls": ["https://www.houstonchronicle.com/politics/article/ken-paxton-ted-cruz-campaign-rally-senate-talarico-22441659.php"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "9月21日のPaxton氏・Cruz氏集会の実施、減税・投票参加・対立候補への発言、会場の反応を確認。会場反応を州全体の支持とは扱わない。"
+    },
+    {
+      "sourceId": "obs-reuters-mi-rogers-iran-20260921",
+      "attemptedUrls": ["https://www.reuters.com/world/us/two-republican-senate-candidates-call-swift-end-iran-war-diverging-trump-2026-09-21/"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "Rogers氏の現在の対イラン戦争・燃料価格提案、7月までのTrump政権支持、El-Sayed氏の反論を照合。発言変更と効果を分けた。"
+    },
+    {
+      "sourceId": "obs-reuters-ipsos-national-20260921",
+      "attemptedUrls": ["https://www.reuters.com/world/us/trump-approval-falls-career-low-32-high-costs-bite-reutersipsos-poll-finds-2026-09-21/"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "全国成人1,277人の標本、実査期間、誤差、生活費・イラン・議会一般投票の対象を照合。州別候補支持には置き換えない。"
+    },
+    {
+      "sourceId": "obs-ap-harris-el-sayed-20260922",
+      "attemptedUrls": ["https://apnews.com/article/elsayed-kamala-harris-michigan-senate-52f04f16a2d7aa6002df684c1e8aea29"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "El-Sayed氏とHarris前副大統領の9月22日行事は確認時点で実施前。実施済みとはせず予定を維持した。"
+    },
+    {
+      "sourceId": "obs-jackson-bio",
+      "attemptedUrls": ["https://www.jacksonformaine.com/about"],
+      "attemptedAt": "2026-09-22T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "候補者の経歴ページは取得制限が続き、再照合は未完了。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": ["https://www.ohiosos.gov/elections/"],
+      "attemptedAt": "2026-09-22T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官ページが403で、上院特別選挙の候補者原票を照合できなかった。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": ["https://www.sos.nh.gov/elections"],
+      "attemptedAt": "2026-09-22T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官ページが403で、候補者原票を照合できなかった。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": ["https://centerforpolitics.org/crystalball/2026-senate/"],
+      "attemptedAt": "2026-09-22T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページが403で本文を取得できず。Inside Elections以外の評価更新の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": ["https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"],
+      "attemptedAt": "2026-09-22T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "見出し以外の方法・質問文を取得できず、調査数値は引き続き非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": ["https://www.fec.gov/data/committee/C00027466/"],
+      "attemptedAt": "2026-09-22T00:08:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-22T00:08:00Z",
+      "contentVerifiedAt": "2026-09-22",
+      "scope": "FECのNRSCページは8月31日までの委員会集計を確認できたが、報道された州別予定額の原票は特定できず照合待ち。"
+    }
+  ],
+  "verification": {
+    "tests": "112 passed",
+    "build": "success",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  }
+}

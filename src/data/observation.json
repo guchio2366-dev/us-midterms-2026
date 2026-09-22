@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-21-v1",
+  "revision": "observation-2026-09-22-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,38 +8,19 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-21T00:12:22Z",
+    "lastCompletedAt": "2026-09-22T00:11:04Z",
     "latestRun": {
-      "runId": "daily-20260921",
-      "startedAt": "2026-09-20T23:59:51Z",
-      "completedAt": "2026-09-21T00:12:22Z",
+      "runId": "daily-20260922",
+      "startedAt": "2026-09-21T23:58:18Z",
+      "completedAt": "2026-09-22T00:11:04Z",
       "outcome": "partial",
       "checkedSourceIds": [
         "obs-inside",
         "obs-white-house",
-        "obs-jackson-policy",
-        "obs-abdul-ai",
-        "obs-rogers-trade",
-        "obs-rogers-bio",
-        "obs-brown-policy",
-        "obs-brown-bio",
-        "obs-husted-bio",
-        "obs-talarico-policy",
-        "obs-talarico-bio",
-        "obs-paxton-policy",
-        "obs-paxton-bio",
-        "obs-peltola",
-        "obs-sullivan",
-        "obs-sullivan-endorsements",
-        "obs-pappas",
-        "obs-hr1-vote",
-        "obs-husted-hr1",
-        "obs-abdul-trade",
-        "obs-paxton-trial",
-        "obs-mi-rogers-residency",
-        "obs-reuters-democratic-unity-20260919",
-        "obs-ap-mi-rogers-coalition-20260921",
-        "obs-houston-chronicle-tx-events-20260920"
+        "obs-ap-harris-el-sayed-20260922",
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-reuters-mi-rogers-iran-20260921",
+        "obs-reuters-ipsos-national-20260921"
       ],
       "pendingSourceIds": [
         "obs-jackson-bio",
@@ -49,7 +30,7 @@
         "obs-quantus-me-20260917",
         "obs-axios-nrsc-spending-20260918"
       ],
-      "note": "月曜の全候補者比較5項目と反証を再点検。Michiganで共和党Rogers氏のDetroit・民主党支持層への働きかけとTrump氏との距離の変遷、民主党El-Sayed氏側の予備選後の結集を追加。Maine・Michigan・Texasでは民主党の推薦・共同活動・未推薦を一般有権者の支持と分けて追記。TexasのPaxton氏・Cruz氏集会とTalarico氏出演予定を追加した。Inside Elections全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧は9月20日掲載分まで確認し、対象6州へのTrump大統領の新たな確定訪問は確認できなかったが未公表日程の不存在は断定しない。OH・NH名簿、Sabato、Quantus ME、NRSC支出のFEC原票、Jackson氏の経歴ページは照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
+      "note": "Texasで共和党Paxton氏・Cruz氏の9月21日集会の実施と発言を確認し、予定と結果を相互参照。Michiganで共和党Rogers氏の対イラン戦争早期終結・燃料税提案と過去の政権支持、民主党El-Sayed氏の反論を追加。全国Reuters/Ipsos調査は6州の候補者支持率と区別して掲載。9月22日のEl-Sayed氏・Harris前副大統領の行事は実施前のため予定を維持。Inside Elections全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧は9月21日掲載分まで確認し、対象6州へのTrump大統領の新たな確定訪問は確認できなかったが未公表日程の不存在は断定しない。OH・NH名簿、Sabato、Quantus ME、NRSC支出のFEC原票、Jackson氏の経歴ページは照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
     }
   },
   "sources": [
@@ -641,8 +622,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-20",
-      "contentVerifiedAt": "2026-09-20",
+      "retrievedAt": "2026-09-22",
+      "contentVerifiedAt": "2026-09-22",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -656,7 +637,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-20T00:06:55Z"
+      "lastSuccessAt": "2026-09-22T00:08:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -665,8 +646,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-20",
-      "contentVerifiedAt": "2026-09-20",
+      "retrievedAt": "2026-09-22",
+      "contentVerifiedAt": "2026-09-22",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -680,7 +661,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-20T00:06:55Z"
+      "lastSuccessAt": "2026-09-22T00:08:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1128,8 +1109,8 @@
       "url": "https://apnews.com/article/elsayed-kamala-harris-michigan-senate-52f04f16a2d7aa6002df684c1e8aea29",
       "publishedAt": "2026-09-16",
       "referencePeriod": "民主党El-Sayed陣営とHarris側の報道担当者が、9月22日にMichiganで黒人妊産婦の健康を扱う円卓会議を行うと確認。初の共同公開行事。時刻と会場は未公表。",
-      "retrievedAt": "2026-09-17",
-      "contentVerifiedAt": "2026-09-17",
+      "retrievedAt": "2026-09-22",
+      "contentVerifiedAt": "2026-09-22",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -1138,7 +1119,7 @@
       "method": "AP本文で両陣営の確認、日付、主題、初の共同公開行事であることを照合。時刻・会場・得票効果は推測しない",
       "alternativeUrl": "https://www.fox2detroit.com/news/abdul-el-sayed-campaigning-kamala-harris-next-week",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-17T00:02:32.190Z"
+      "lastSuccessAt": "2026-09-22T00:08:00Z"
     },
     {
       "sourceId": "obs-coefficient-ak-20260917",
@@ -1541,6 +1522,68 @@
       "alternativeUrl": null,
       "checkStatus": "checked",
       "lastSuccessAt": "2026-09-21T00:06:01Z"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-tx-rally-result-20260921",
+      "title": "Ken Paxton says close Texas Senate race will come down to turnout at rally with Ted Cruz",
+      "publisher": "Houston Chronicle",
+      "url": "https://www.houstonchronicle.com/politics/article/ken-paxton-ted-cruz-campaign-rally-senate-talarico-22441659.php",
+      "publishedAt": "2026-09-21",
+      "referencePeriod": "共和党Ken Paxton氏とTed Cruz上院議員が9月21日にCypressで開いた集会の実施、Paxton氏の減税案と投票参加への発言、対立候補James Talarico氏への攻撃、会場の反応を照合。",
+      "retrievedAt": "2026-09-22",
+      "contentVerifiedAt": "2026-09-22",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内紙の現地取材で予定の実施と候補者・応援者の発言を照合し、集会参加者の反応と州全体の有権者評価を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z"
+    },
+    {
+      "sourceId": "obs-reuters-mi-rogers-iran-20260921",
+      "title": "Two Republican Senate candidates call for swift end to Iran war, diverging from Trump",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/us/two-republican-senate-candidates-call-swift-end-iran-war-diverging-trump-2026-09-21/",
+      "publishedAt": "2026-09-21",
+      "referencePeriod": "ミシガン州の共和党Mike Rogers氏が対イラン戦争の早期終結、ガソリン税停止、ディーゼル輸出停止を訴えた広告と、過去のTrump政権支持、民主党Abdul El-Sayed氏の反論を照合。",
+      "retrievedAt": "2026-09-22",
+      "contentVerifiedAt": "2026-09-22",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Reuters本文で現在の提案、7月までの過去発言、対立候補の反論を照合し、立場の変化と有権者への効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z"
+    },
+    {
+      "sourceId": "obs-reuters-ipsos-national-20260921",
+      "title": "Trump approval falls to career low 32% as high costs bite, Reuters/Ipsos poll finds",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/us/trump-approval-falls-career-low-32-high-costs-bite-reutersipsos-poll-finds-2026-09-21/",
+      "publishedAt": "2026-09-21",
+      "referencePeriod": "9月20日まで4日間に実施したReuters/Ipsos全国調査。Trump大統領の総合評価、生活費・イラン攻撃への評価、登録有権者の議会一般投票を照合。",
+      "retrievedAt": "2026-09-22",
+      "contentVerifiedAt": "2026-09-22",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査本文で標本、実査期間、誤差、設問ごとの対象を照合し、全国調査を州別上院選の予測には使わない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-22T00:08:00Z"
     }
   ],
   "evidenceRefs": [
@@ -1998,6 +2041,27 @@
       "locator": "共和党Ken Paxton氏はTed Cruz上院議員と9月21日14時30分ごろ（米中部時間）にCypressのGlorious Way Churchで集会予定。民主党James Talarico氏は9月24日にAustinのTexas Tribune Festivalへ出演予定。実施・発言内容・延期中止は未確認。",
       "checkedAt": "2026-09-21",
       "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-houston-chronicle-tx-rally-result-20260921",
+      "sourceId": "obs-houston-chronicle-tx-rally-result-20260921",
+      "locator": "9月21日、共和党のTexas州司法長官Ken Paxton氏は共和党Ted Cruz上院議員とCypressで数百人規模の集会を実施。医療・住宅・育児の減税を訴え、Metaとの10億ドル和解を実績に挙げ、接戦は投票参加で決まると述べた。会場は友好的だったが空席もあり、個々の参加者の反応は州全体の支持を示さない。",
+      "checkedAt": "2026-09-22",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-mi-rogers-iran-20260921",
+      "sourceId": "obs-reuters-mi-rogers-iran-20260921",
+      "locator": "共和党Mike Rogers氏は広告で対イラン戦争の早期終結、州・連邦ガソリン税の一時停止、米国産ディーゼルの輸出一時停止を提案。7月にはTrump大統領の攻撃と権限を擁護していた。民主党Abdul El-Sayed氏はガソリン高騰後の選挙向け転換だと批判。立場の変化と得票効果は別に確認する。",
+      "checkedAt": "2026-09-22",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-ipsos-national-20260921",
+      "sourceId": "obs-reuters-ipsos-national-20260921",
+      "locator": "9月20日まで4日間、米国成人1,277人のオンライン調査（誤差約±3ポイント）。Trump大統領の総合支持32%、生活費対応17%、対イラン攻撃34%。登録有権者の議会一般投票は民主43%、共和35%。全国値であり、6州の上院候補支持や因果効果を示さない。",
+      "checkedAt": "2026-09-22",
+      "kind": "observed"
     }
   ],
   "races": [
@@ -2185,11 +2249,11 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-21",
+      "updatedAt": "2026-09-22",
       "headline": "政策の違いが、候補者への距離感につながるか",
-      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。政策と攻撃広告に加え、Rogersが民主党支持層へ広げる働きかけと、El-Sayed側の予備選後の結集を分けて確認する。",
-      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。RogersはDetroitで識字率や住宅を取り上げ、黒人・ユダヤ系の民主党支持者にも働きかける一方、Trump支持者の投票参加も狙う。El-Sayedは生活費・医療を中心に据え、予備選相手Haley Stevens氏は全面支持を表明した。",
-      "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。党幹部の推薦や個別支持者の転換は州全体の移動を示さない。Post-Schar調査では55%がPiker氏への意見を持たなかったが、広告が将来も無効だと示す因果証拠ではない。10月8日の直接討論で同じ質問への回答を比べる。",
+      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。RogersがTrump政権のイラン攻撃支持から早期終結へ比重を移したため、燃料価格への提案、過去発言、El-Sayedの反論を分けて確認する。",
+      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。Rogersは7月までTrump大統領の対イラン攻撃と権限を擁護していたが、9月21日には戦争の早期終結とガソリン税・ディーゼル輸出の一時停止を提案。El-Sayedは、燃料高騰後の選挙向け転換だと批判した。",
+      "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。Rogersの現在と過去の発言は確認できるが、戦況や燃料価格への政策効果、El-Sayedの批判への有権者評価は未確認。10月8日の直接討論で同じ質問への回答を比べる。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
@@ -2202,7 +2266,8 @@
         "ev-obs-reuters-canada-tariffs-20260917",
         "ev-obs-wapo-mi-rhetoric-20260919",
         "ev-obs-reuters-democratic-unity-20260919",
-        "ev-obs-ap-mi-rogers-coalition-20260921"
+        "ev-obs-ap-mi-rogers-coalition-20260921",
+        "ev-obs-reuters-mi-rogers-iran-20260921"
       ],
       "materials": [
         {
@@ -2218,13 +2283,14 @@
         },
         {
           "materialId": "mi-trade",
-          "title": "製造業を守る方法と政権との距離",
-        "fact": "カナダの報復関税が9月8日に発効する中、Rogersは関税は必要だが一律ではなく、Trumpとの近さで交渉すると主張。El-Sayedは負担を認めながら政権に合わせていると批判した。",
-        "meaning": "政権への近さを交渉力と見るか、政策への異論を言えない弱さと見るか、同じ出来事への説明を比べる。",
-        "limit": "両者の発言は選挙上の主張で、関税による州内雇用・価格への純効果や得票効果を証明しない。",
+          "title": "物価と政権との距離を案件ごとに見る",
+          "fact": "対カナダ関税ではRogersはTrumpとの近さを交渉力と説明。対イラン戦争では攻撃支持から早期終結へ比重を移し、ガソリン税とディーゼル輸出の一時停止を提案した。El-Sayedは、いずれも家計負担を招いた後の対応だと批判する。",
+          "meaning": "政権への近さが交渉力になるのか、政策への異論が遅れるのかを、貿易と戦争・燃料価格の別々の案件で比べる。",
+          "limit": "両候補の発言は選挙上の主張。各提案が燃料価格、州内雇用、外交に与える効果や得票効果は確認できない。",
           "evidenceIds": [
           "ev-obs-rogers-trade",
-          "ev-obs-reuters-canada-tariffs-20260917"
+            "ev-obs-reuters-canada-tariffs-20260917",
+            "ev-obs-reuters-mi-rogers-iran-20260921"
           ]
         }
       ],
@@ -2259,17 +2325,19 @@
             {
               "candidateId": "cand-mi-abdul-el-sayed",
               "kind": "claim",
-              "text": "皆保険に加え、AI安全審査や自動化による利益の労働者への還元を提案。",
+              "text": "皆保険に加え、AI安全審査や自動化による利益の労働者への還元を提案。Rogers氏の対イラン戦争の早期終結案は、燃料高騰後の選挙向け転換だと批判した。",
               "evidenceIds": [
-                "ev-obs-abdul-ai"
+                "ev-obs-abdul-ai",
+                "ev-obs-reuters-mi-rogers-iran-20260921"
               ]
             },
             {
               "candidateId": "cand-mi-mike-rogers",
               "kind": "claim",
-              "text": "関税を一律に使わず、対カナダ協定で農業・自動車製造業の利益を守ると主張。",
+              "text": "関税を一律に使わず対カナダ協定で農業・自動車製造業を守ると主張。対イラン戦争の早期終結、州・連邦ガソリン税と米国産ディーゼル輸出の一時停止も提案した。",
               "evidenceIds": [
-                "ev-obs-rogers-trade"
+                "ev-obs-rogers-trade",
+                "ev-obs-reuters-mi-rogers-iran-20260921"
               ]
             }
           ]
@@ -2292,11 +2360,12 @@
             {
               "candidateId": "cand-mi-mike-rogers",
               "kind": "observed",
-              "text": "Trumpと協力すると主張しつつ、自陣営広告では『Michigan first』を訴える。2020年選挙後はTrump氏の不正主張を批判したが、2026年7月には同氏の『透明性への姿勢』を評価。接近と距離の両方を案件・時期ごとに見る。",
+              "text": "Trumpと協力すると主張しつつ、自陣営広告では『Michigan first』を訴える。7月にはTrump氏の対イラン攻撃と大統領権限を擁護したが、9月21日には戦争の早期終結を要求。接近と距離を案件・時期ごとに見る。",
               "evidenceIds": [
                 "ev-obs-rogers-trade",
                 "ev-obs-ap-mi-convention",
-                "ev-obs-ap-mi-rogers-coalition-20260921"
+                "ev-obs-ap-mi-rogers-coalition-20260921",
+                "ev-obs-reuters-mi-rogers-iran-20260921"
               ]
             }
           ]
@@ -2540,11 +2609,11 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-21",
+      "updatedAt": "2026-09-22",
       "headline": "経済・移民への評価と、支持層の投票参加",
-      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。9月の2調査と、Trump氏の8月末訪問後に急増した広告を分け、経済・移民、候補者評価、投票参加を見る。",
-      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月のEmerson調査は47%対46%、ReconMRは49%対43%でTalaricoが先頭。Trump大統領の8月末Texas訪問後、共和党系5委員会は主にTalaricoを攻撃する広告を1億ドル超投入し、直近はPaxton側がTalarico側を4対1で上回った。両候補はそれぞれ、虚偽攻撃と党結束として説明している。",
-      "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なるため、数字の差を支持変化と呼ばない。広告額は予約・支出の規模であって視聴量や説得効果ではなく、Trump氏の訪問後に続いたことだけで因果関係も断定しない。最終的な投票参加は未確認。",
+      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。9月の2調査と大型広告に加え、PaxtonがCruz上院議員との集会で減税と投票参加をどう訴えたかを見る。",
+      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月の2調査ではTalaricoが先頭だが、方法と差は異なる。9月21日、Paxtonは共和党Ted Cruz上院議員とのCypress集会で医療・住宅・育児の減税を掲げ、接戦は投票参加で決まると述べた。Talaricoも子ども税額控除の拡大を支持しており、減税の対象と方法を比べる必要がある。",
+      "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なるため、数字の差を支持変化と呼ばない。集会は数百人規模で友好的だったが空席もあり、拍手や一参加者の反応は州全体の支持率を示さない。広告額も説得効果ではなく、最終的な投票参加は未確認。",
       "evidenceIds": [
         "ev-obs-emerson-tx",
         "ev-obs-texas-tribune-spending",
@@ -2552,7 +2621,8 @@
         "ev-obs-emerson-tx-20260917",
         "ev-obs-reconmr-tx-20260917",
         "ev-obs-houston-chronicle-tx-ads-20260919",
-        "ev-obs-reuters-democratic-unity-20260919"
+        "ev-obs-reuters-democratic-unity-20260919",
+        "ev-obs-houston-chronicle-tx-rally-result-20260921"
       ],
       "materials": [
         {
@@ -2568,14 +2638,15 @@
         },
         {
           "materialId": "tx-airwaves",
-          "title": "共和党系の大型広告投下が始まった",
-          "fact": "共和党系外部団体の大型広告に続き、Paxton陣営は9月15日に南Texasで自陣営広告を開始。Trump氏の8月末訪問後、共和党系5委員会によるTalarico攻撃広告は1億ドル超となり、直近はPaxton側が4対1で上回った。",
-          "meaning": "外部団体の攻撃、候補者自身の減税メッセージ、Trump氏の支援を分け、認知・好感度と争点評価が後続調査でどう動くかを見る。",
-          "limit": "名目支出額は広告効果ではない。候補者陣営と外部団体では放送単価も異なり、訪問後の時系列だけでTrump氏の訪問が支出増や支持変化を生んだとも断定できない。",
+          "title": "広告と集会が投票参加につながるか",
+          "fact": "共和党系5委員会のTalarico攻撃広告は1億ドル超。Paxtonは9月21日、Ted Cruz上院議員との集会で医療・住宅・育児の減税を訴え、接戦は投票参加で決まると述べた。",
+          "meaning": "外部団体の攻撃、候補者自身の政策、Trump氏やCruz氏の支援を分け、認知・好感度と実際の投票参加が後続調査でどう動くかを見る。",
+          "limit": "広告費、集会の参加者数、会場の拍手は州全体の支持や投票を示さない。個々の減税案の財政・家計効果も別途確認が必要。",
           "evidenceIds": [
             "ev-obs-texas-tribune-spending",
             "ev-obs-texas-tribune-paxton-ads",
-            "ev-obs-houston-chronicle-tx-ads-20260919"
+            "ev-obs-houston-chronicle-tx-ads-20260919",
+            "ev-obs-houston-chronicle-tx-rally-result-20260921"
           ]
         }
       ],
@@ -2609,17 +2680,19 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "claim",
-              "text": "最低賃金の引上げ、富裕層・法人への課税、医療費や住宅費の軽減を提案。",
+              "text": "最低賃金の引上げ、富裕層・法人への課税、医療費や住宅費の軽減、子ども税額控除の拡大を提案。",
               "evidenceIds": [
-                "ev-obs-talarico-policy"
+                "ev-obs-talarico-policy",
+                "ev-obs-houston-chronicle-tx-rally-result-20260921"
               ]
             },
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "claim",
-              "text": "減税、国境管理と送還、America First政策の推進を掲げる。",
+              "text": "減税、国境管理と送還、America First政策の推進を掲げる。9月21日の集会では医療・住宅・育児の税負担軽減を具体策として挙げた。",
               "evidenceIds": [
-                "ev-obs-paxton-policy"
+                "ev-obs-paxton-policy",
+                "ev-obs-houston-chronicle-tx-rally-result-20260921"
               ]
             }
           ]
@@ -2686,11 +2759,12 @@
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "observed",
-              "text": "9月Emerson調査で好感度は好意的40%、否定的48%。同調査で46%、ReconMRで43%の支持。Paxton氏は党の結束と勢いを主張するが、広告支出との因果は確認できない。",
+              "text": "9月Emerson調査で好感度は好意的40%、否定的48%。同調査で46%、ReconMRで43%の支持。Paxton氏は接戦を認め投票参加を訴えたが、集会の拍手や広告支出から州全体の支持変化は確認できない。",
             "evidenceIds": [
               "ev-obs-emerson-tx-20260917",
                 "ev-obs-reconmr-tx-20260917",
-                "ev-obs-houston-chronicle-tx-ads-20260919"
+                "ev-obs-houston-chronicle-tx-ads-20260919",
+                "ev-obs-houston-chronicle-tx-rally-result-20260921"
               ]
             }
           ]
@@ -3408,23 +3482,24 @@
       "date": "2026-09-21",
       "time": "14:30",
       "timezone": "America/Chicago",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-22",
       "evidenceIds": [
-        "ev-obs-houston-chronicle-tx-events-20260920"
+        "ev-obs-houston-chronicle-tx-events-20260920",
+        "ev-obs-houston-chronicle-tx-rally-result-20260921"
       ],
       "relevance": [
         {
           "electionId": "2026-TX-2-regular",
           "why": "共和党Paxton氏がTed Cruz上院議員と、広告以外の場で経済・国境・Trump政権との協力をどう説明するかを見る機会。",
-          "watch": "実施・延期・中止、発言全文、対立候補への言及を確認。参加者数や拍手を州全体の支持率に置き換えない。",
+          "watch": "集会は実施。減税、Trump政権との協力、投票参加の訴えが後続の候補者評価や投票意欲に結び付くかを見る。参加者数や拍手を州全体の支持率に置き換えない。",
           "materialIds": [
             "tx-airwaves"
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-tx-paxton-cruz-rally-2026-09-21",
       "publicationStatus": "published"
     },
     {
@@ -3455,6 +3530,65 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-tx-paxton-cruz-rally-2026-09-21",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": "tx-paxton-cruz-rally-2026-09-21",
+      "newsId": null,
+      "eventDate": "2026-09-21",
+      "updatedAt": "2026-09-22",
+      "title": "テキサス州、共和党Paxton氏がCruz上院議員との集会で減税と投票参加を訴え",
+      "happened": "民主党James Talarico州下院議員と争う共和党Ken Paxton州司法長官は、9月21日にCypressで共和党Ted Cruz上院議員との集会を実施した。Paxton氏は医療・住宅・育児の減税、州司法長官としてのMetaとの10億ドル和解を挙げ、接戦は投票参加で決まると述べた。Cruz氏はTrump大統領の発言にも触れ、選挙を保守対進歩派の対立として位置付けた。",
+      "meaning": "共和党側が大型広告に加え、家計向け減税と党の動員を対面集会でも前面に出した。Talarico氏も子ども税額控除の拡大を支持しているため、単に『減税に賛成か』ではなく対象、財源、実施可能性を比べる材料になる。",
+      "uncertainty": "数百人の会場は友好的だったが空席もあり、Paxton氏よりCruz氏への反応が強い場面もあった。一参加者の発言、拍手、参加者数は州全体の支持や投票参加を示さず、政策や広告の得票効果は未確認。",
+      "evidenceIds": [
+        "ev-obs-houston-chronicle-tx-rally-result-20260921"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-rogers-iran-2026-09-21",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-21",
+      "updatedAt": "2026-09-22",
+      "title": "ミシガン州、共和党Rogers氏が対イラン戦争の早期終結を要求――7月の政権支持から比重を変更",
+      "happened": "引退する民主党現職の議席を争う共和党Mike Rogers元下院議員は、選挙広告で対イラン戦争を早期に終わらせ、州・連邦ガソリン税と米国産ディーゼル輸出を一時停止すべきだと述べた。Rogers氏は7月にはTrump大統領のイラン攻撃と大統領権限を擁護していた。対する民主党Abdul El-Sayed氏は、ガソリンが1ガロン5ドルに達した後の選挙向け転換だと批判した。",
+      "meaning": "燃料価格が上がる中、Rogers氏はTrump政権との協力だけでなく、早期終結と家計負担軽減を打ち出した。現在の提案、過去の発言、El-Sayed氏の反論を同じ時系列で比べる材料になる。",
+      "uncertainty": "Rogers氏の発言変更は確認できるが、その理由や戦争終結・税停止・輸出停止による燃料価格への効果は確定していない。El-Sayed氏の『選挙向け』という説明も対立候補の評価で、有権者の受け止めと得票効果は未確認。",
+      "evidenceIds": [
+        "ev-obs-reuters-mi-rogers-iran-20260921"
+      ]
+    },
+    {
+      "updateId": "obs-update-national-costs-iran-2026-09-21",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-21",
+      "updatedAt": "2026-09-22",
+      "title": "全国調査で生活費とイラン対応への低評価――接戦6州では州別の反応を別途確認",
+      "happened": "9月20日まで4日間のReuters/Ipsos全国調査では、Trump大統領の総合支持は32%、生活費対応への支持は17%、対イラン攻撃への支持は34%だった。登録有権者の議会一般投票では民主党43%、共和党35%。対象は米国成人1,277人で、オンライン調査の誤差は約3ポイント。",
+      "meaning": "各接戦州で生活費、燃料価格、Trump大統領との距離が争点化する背景を示す。ただし候補者が同じ全国環境から受ける影響は州、候補者、投票参加によって異なるため、後続の州別調査と候補者評価で確かめる。",
+      "uncertainty": "全国の成人調査と登録有権者の一般投票は、アラスカ、メーン、ミシガン、オハイオ、テキサス、ニューハンプシャーの上院候補支持率ではない。前回との差には誤差があり、生活費や戦争が個別候補の支持を動かした因果関係も示さない。",
+      "evidenceIds": [
+        "ev-obs-reuters-ipsos-national-20260921"
+      ]
+    },
     {
       "updateId": "obs-update-mi-coalitions-2026-09-21",
       "status": "published",
