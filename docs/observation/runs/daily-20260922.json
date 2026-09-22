@@ -21,7 +21,7 @@
   "runId": "daily-20260922",
   "startedAt": "2026-09-21T23:58:18Z",
   "baseCommit": "309e0aa62a5c787248fafddb7c8adc91b8839374",
-  "publishedCommit": null,
+  "publishedCommit": "163ba79f190958d6338ed6b782c268fbfdc1f34e",
   "revision": "observation-2026-09-22-v1",
   "reviewMode": "daily; Tuesday Asia/Tokyo; targeted update and pending-source retry",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
@@ -138,8 +138,8 @@
   "verification": {
     "tests": "112 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "passed: 163ba79f190958d6338ed6b782c268fbfdc1f34e from rechecked baseCommit; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35671454991",
+    "publicContent": "verified on the published site: three new analysis updates, Texas rally result linked to its completed event, and unchanged D46/R48/unallocated6 baseline"
   }
 }
