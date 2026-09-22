@@ -4,10 +4,12 @@ import type { Feature, FeatureCollection, Geometry } from 'geojson';
 import type { Topology } from 'topojson-specification';
 import './style.css';
 import './ui/observation.css';
+import './ui/overview.css';
+import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
 import { powerTargets } from './data/power-targets';
-import { introductionContent,introductionDetails,type IntroSentence } from './data/content';
+import { introductionContent,introductionDetails } from './data/content';
 import { houseDistricts,houseSnapshot } from './data/house';
 import { newsItems } from './data/news';
 import { candidateBriefs,historicalResults,issueReports,polls,raceBriefs,ratingObservations,rollCalls } from './data/research';
@@ -72,7 +74,6 @@ let overlayOriginNewsId: string|null = null;
 let issuesSection: HTMLElement|null = null;
 const NEWS_PAGE_SIZE = 10;
 const POWER_DISCLOSURE_KEY = 'us-midterms-2026:power-disclosure:v1';
-const INTRO_DISCLOSURE_KEY = 'us-midterms-2026:intro-disclosure:v1';
 const stateByFips = new Map(states.map(state => [state.fips,state]));
 const seatById = new Map(seats.map(seat => [seat.seatId,seat]));
 const profileByFips = new Map(profiles.map(profile => [profile.stateFips,profile]));
@@ -200,104 +201,6 @@ function senateContestedRange() {
   return {start:seats.length - targetSeatIds.length - fixedSeatCounts.Republican,count:targetSeatIds.length,label:`今回改選 ${targetSeatIds.length}`};
 }
 
-function majorityPathMarkup(party: 'Democratic'|'Republican') {
-  const path = senateMajorityPath(senateBaseline,party);
-  if (path.status === 'unavailable') return `<p class="missing">${path.reason}</p>`;
-  return `<div class="majority-path">${seatBarMarkup(path.segments,seats.length,'必要配分の例。残りは獲得先を決めていない議席',path.target,senateContestedRange())}</div>`;
-}
-
-function compactSourceLinks(ids: readonly string[]) {
-  return ids.map(id => sourceById.get(id)).filter((source): source is typeof sources[number] => Boolean(source)).map(source =>
-    `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.title)}${source.publishedAt ? `（${source.publishedAt}）` : ''}</a>`).join('／');
-}
-
-function introSentenceMarkup(sentence: IntroSentence) {
-  return sentence.map(part => {
-    const text = escapeHtml(part.text);
-    return part.strong ? `<strong>${text}</strong>` : text;
-  }).join('');
-}
-
-function introductionMarkup() {
-  const total = seats.length;
-  const contested = targetSeatIds.length;
-  const senateCounts = currentCaucusCounts(seats);
-  const currentSenate = senateCompositionSegments(senateBaseline);
-  const currentHouse: SeatBarSegment[] = [
-    {count:houseSnapshot.Democratic,label:`今回改選・民主党 ${houseSnapshot.Democratic}`,shortLabel:`民主 ${houseSnapshot.Democratic}`,className:'target-d'},
-    {count:houseSnapshot.Independent,label:`今回改選・独立 ${houseSnapshot.Independent}`,shortLabel:'',className:'target-other'},
-    {count:houseSnapshot.vacant,label:`今回改選・空席 ${houseSnapshot.vacant}`,shortLabel:'',className:'target-vacant'},
-    {count:houseSnapshot.Republican,label:`今回改選・共和党 ${houseSnapshot.Republican}`,shortLabel:`共和 ${houseSnapshot.Republican}`,className:'target-r'},
-  ];
-  const issueSourceLabels = ['大統領評価・経済','都市・郊外・地方','投票参加'];
-  return `<section id="overview" class="introduction section-block" aria-labelledby="overview-heading">
-    <div class="overview-grid">
-      <details id="intro-disclosure" class="overview-left" open>
-        <summary class="intro-summary"><span><strong id="overview-heading">米国中間選挙の概説<span class="intro-subtitle">現在議席・改選範囲・論点</span></strong></span><span class="summary-hint">概説を閉じる</span></summary>
-        <div class="intro-body">
-          <div class="intro-institution">
-            <p>${escapeHtml(introductionContent.institution(total,contested,houseSnapshot.total))}</p>
-            <h2 class="intro-column-heading">現在の議席と今回の改選範囲</h2>
-            <div class="intro-scope-grid">
-              <article><h3>上院 <span>全${total}議席</span><b>民主${senateCounts.Democratic}／共和${senateCounts.Republican}</b></h3>${seatBarMarkup(currentSenate,total,'現在の上院議席。薄色は非改選、濃色は今回改選',undefined,senateContestedRange())}<p class="scope-note">中央の改選${contested}議席（通常${regularCount}＋特別${specialCount}）を争う。</p></article>
-              <article><h3>下院 <span>全${houseSnapshot.total}議席</span><b>民主${houseSnapshot.Democratic}／共和${houseSnapshot.Republican}</b></h3>${seatBarMarkup(currentHouse,houseSnapshot.total,'現在の下院議席。全435議席が今回改選')}<p class="scope-note">全議席を改選。多数派の目安は218議席。独立${houseSnapshot.Independent}・空席${houseSnapshot.vacant}を含む。</p></article>
-            </div>
-            <p class="intro-impact">${escapeHtml(introductionContent.impact)}</p>
-            <p class="intro-followup">必要な票数や院ごとの役割は、後の<a href="#powers">「議席と権限」</a>で詳しく説明する。</p>
-            <button id="open-civics" class="intro-detail-button" type="button">Class制度と特別選挙の詳しい説明</button>
-          </div>
-          <div class="intro-lens"><h2>選挙を見る主な論点</h2><p>${introductionContent.issueOverview.slice(0,3).map(introSentenceMarkup).join('')}</p><p>${introductionContent.issueOverview.slice(3).map(introSentenceMarkup).join('')}</p><p class="intro-sources"><b>概説の出典</b> ${introductionContent.issueSourceIds.map((id,index) => { const source = sourceById.get(id); return source ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${issueSourceLabels[index]}</a>` : ''; }).filter(Boolean).join('／')}</p><div class="intro-issues-route"><p>各論点の地域差や根拠を、8つの論点で詳しく読む。</p><button id="open-issues" type="button">8つの論点を詳しく読む</button></div></div>
-          <div class="intro-capability"><p>${escapeHtml(introductionContent.capability)}</p><div class="intro-actions"><a href="#simulator" class="intro-map-link">地図で州を選ぶ <span aria-hidden="true">↓</span></a></div></div>
-        </div>
-      </details>
-      <div id="national-overview-slot"></div>
-    </div>
-  </section>`;
-}
-
-function ratingCategoryLabel(category: RatingConsensusCategory) {
-  if (category === 'D') return 'D側優勢';
-  if (category === 'R') return 'R側優勢';
-  if (category === 'tossup') return 'Toss Up';
-  if (category === 'split') return '評価分裂';
-  return '評価不足';
-}
-
-function ratingConsensusDetailsMarkup() {
-  const rows = ratingConsensus.map(result => {
-    const seat = seatById.get(result.seatId);
-    const state = seat ? stateByFips.get(seat.stateFips) : null;
-    const election = elections.find(item => item.seatId === result.seatId);
-    return `<tr><th scope="row">${escapeHtml(state?.nameJa ?? result.seatId)}${election?.type === 'special' ? '（特別）' : ''}</th><td>${ratingCategoryLabel(result.category)}</td>${result.observations.map(observation => `<td>${escapeHtml(observation.ratingRaw)}<small>${escapeHtml(observation.currentConfirmedAt)}確認</small></td>`).join('')}</tr>`;
-  }).join('');
-  return `<details class="consensus-details"><summary>35選挙の評価内訳を見る</summary><div class="consensus-table-wrap"><table><thead><tr><th>選挙</th><th>集計</th><th>Sabato</th><th>Inside Elections</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
-}
-
-function nationalOverviewMarkup() {
-  const unresolved = ratingConsensusTotals.tossup + ratingConsensusTotals.split + ratingConsensusTotals.missing;
-  const provisionalD = fixedSeatCounts.Democratic + ratingConsensusTotals.D;
-  const provisionalR = fixedSeatCounts.Republican + ratingConsensusTotals.R;
-  const provisional: SeatBarSegment[] = [
-    {count:fixedSeatCounts.Democratic,label:`非改選・民主党会派 ${fixedSeatCounts.Democratic}`,shortLabel:`非改選 ${fixedSeatCounts.Democratic}`,className:'fixed-d'},
-    {count:ratingConsensusTotals.D,label:`改選・D側優勢 ${ratingConsensusTotals.D}`,shortLabel:String(ratingConsensusTotals.D),className:'consensus-d'},
-    {count:ratingConsensusTotals.tossup+ratingConsensusTotals.split,label:`未配分 ${ratingConsensusTotals.tossup+ratingConsensusTotals.split}（Toss Up ${ratingConsensusTotals.tossup}・評価分裂 ${ratingConsensusTotals.split}）`,shortLabel:String(ratingConsensusTotals.tossup+ratingConsensusTotals.split),className:'consensus-unresolved'},
-    {count:ratingConsensusTotals.missing,label:`評価不足 ${ratingConsensusTotals.missing}`,shortLabel:String(ratingConsensusTotals.missing),className:'consensus-missing'},
-    {count:ratingConsensusTotals.R,label:`改選・R側優勢 ${ratingConsensusTotals.R}`,shortLabel:String(ratingConsensusTotals.R),className:'consensus-r'},
-    {count:fixedSeatCounts.Republican,label:`非改選・共和党会派 ${fixedSeatCounts.Republican}`,shortLabel:`非改選 ${fixedSeatCounts.Republican}`,className:'fixed-r'},
-  ];
-  const vpControl = vicePresident.verificationStatus === 'confirmed' && vicePresident.party === 'R' ? `共和党は今回19議席で計50。50対50では副大統領の決裁票が関係する（${vicePresident.verifiedAt}確認）。` : '50対50の運営は副大統領の確認が必要。';
-  return `<section id="national-overview" class="national-overview national-card" aria-labelledby="national-overview-heading">
-      <p class="kicker">NATIONAL SNAPSHOT</p><h2 id="national-overview-heading">上院の情勢と51議席への配分</h2><p class="national-type">3本とも全100議席。薄色は非改選、濃色は今回改選。</p>
-      <div class="provisional-totals" aria-label="情勢評価による暫定配分"><span>情勢評価による暫定配分</span><b class="provisional-d">民主 ${provisionalD}</b><b class="provisional-u">未配分 ${unresolved}</b><b class="provisional-r">共和 ${provisionalR}</b></div>
-        <div class="senate-comparison">
-          <section class="comparison-row"><h4>情勢評価に基づく暫定配分</h4>${seatBarMarkup(provisional,seats.length,'2機関の情勢評価を機械的に集計した暫定配分',undefined,senateContestedRange())}<p class="comparison-values"><b>D側 ${ratingConsensusTotals.D}</b><span>未配分 ${ratingConsensusTotals.tossup+ratingConsensusTotals.split}</span><b>R側 ${ratingConsensusTotals.R}</b></p></section>
-          <section class="comparison-row"><h4>民主党会派が51議席を確保</h4>${majorityPathMarkup('Democratic')}</section>
-          <section class="comparison-row"><h4>共和党会派が51議席を確保</h4>${majorityPathMarkup('Republican')}</section>
-        </div>
-        <div class="comparison-legend" aria-label="グラフの凡例"><span><i class="fixed-d"></i>非改選D</span><span><i class="consensus-d"></i>改選D側／必要議席</span><span><i class="consensus-unresolved"></i>接戦・評価分裂</span><span><i class="goal-other"></i>配分未指定</span><span><i class="consensus-r"></i>改選R側／必要議席</span><span><i class="fixed-r"></i>非改選R</span></div>
-        <details class="consensus-method"><summary>配分の考え方・出典</summary><p class="consensus-note">SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ方向の議席だけを党派側へ置き、接戦・評価分裂・資料不足は未配分とした。当選確率や最終結果ではない。下の2本は51議席に届く配分例である。</p><p class="national-conditions">${vpControl} 詳しい採決条件は<a href="#powers">議席と権限</a>へ。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${targetSeatIds.length}選挙を2機関で確認。Solid・Likely・Lean・Tiltは方向だけを使い、強さを平均していない。</p>${ratingConsensusDetailsMarkup()}<p>${compactSourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></details>
-  </section>`;
-}
 
 function focusClassification(election: Election) {
   const category = ratingConsensusBySeat.get(election.seatId)?.category ?? 'missing';
@@ -377,12 +280,11 @@ function powerCardsMarkup() {
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <header class="mast">
-  <div class="eyebrow">2026 UNITED STATES MIDTERMS</div><h1>米国中間選挙 2026</h1>
-  <p class="dek">${escapeHtml(introductionContent.purpose)}</p>
+  <div class="mast-inner"><div><div class="eyebrow">U.S. MIDTERMS</div><h1>米国中間選挙 2026</h1></div><div class="mast-election"><span>投開票日・米国現地</span><time datetime="2026-11-03">2026.11.03</time></div></div>
 </header>
 <main>
-  ${introductionMarkup()}
   <nav class="jump-nav" aria-label="ページ内メニュー"><a href="#overview">概説・全国情勢</a><a href="#updates">直近の更新</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a></nav>
+  ${introductionMarkup()}
   <div class="dateline"><span>サイト内容更新 ${escapeHtml(latestContentDate)}</span><span>上院 通常${regularCount}＋特別${specialCount}</span><span>下院 全435</span><span>候補者 ${candidateCount}人</span><span>版 ${APP_VERSION}</span><button id="reload-app" class="reload-app" type="button">最新版を再読み込み</button></div>
   <div class="data-caution ${baselineComplete ? 'verified' : ''}" role="note"><strong>${baselineComplete ? '収録範囲' : '基礎情報に未確認項目があります'}</strong><span>上院100議席、2026年35選挙、候補者、統一情勢評価、50州の人口・産業・2024年結果を収録。デラウェアは予備選前、ロードアイランドは9月9日の開票確定前として区別しています。</span></div>
   <span id="senate" class="legacy-anchor" aria-hidden="true"></span>
@@ -497,8 +399,8 @@ function enhanceLayout() {
   focus.innerHTML = focusUpdatesMarkup();
   if (focus.firstElementChild) updatesGrid.append(focus.firstElementChild);
   updatesGrid.append(news);
-  if (nav) nav.after(updates);
-  else if (overview) overview.after(updates);
+  if (overview) overview.after(updates);
+  else if (nav) nav.after(updates);
   else main.prepend(updates);
 
   if (powers) {
@@ -640,8 +542,6 @@ function enhanceLayout() {
     main.insertBefore(sim, powers?.nextSibling ?? updates.nextSibling);
   }
   if (issues) issues.remove();
-  const introDisclosure = overview?.querySelector<HTMLDetailsElement>('#intro-disclosure');
-  if (introDisclosure) bindDisclosurePreference(introDisclosure,INTRO_DISCLOSURE_KEY,overview?.querySelector('.intro-summary .summary-hint'));
   if (method) {
     method.id = 'sources';
     method.classList.add('section-block');
