@@ -1,41 +1,43 @@
-/* Approved PC composition: a readable 40/60 opening, independent of the map layout. */
-:root { --opening-width: min(2048px, calc(100vw - 64px)); }
+/* Approved compact composition: 60/40 content with a separate full-width masthead. */
+:root { --opening-width: min(1440px, calc(100vw - 64px)); --mast-width: min(2048px, calc(100vw - 64px)); }
 .mast { padding: 18px 0; border-bottom: 3px solid var(--gold); }
-.mast-inner { width: var(--opening-width); margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.mast-inner { width: var(--mast-width); margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .mast h1 { margin: 5px 0 0; font-size: clamp(1.75rem, 2.5vw, 2.5rem); line-height: 1.15; }
 .mast-election { text-align: right; flex-shrink: 0; }
 .mast-election span { display: block; font-size: .75rem; color: #d3dce3; }
 .mast-election time { font: 700 1.5rem/1.3 Georgia, serif; }
-main > .jump-nav { width: var(--opening-width); margin-inline: calc((100% - var(--opening-width)) / 2); gap: 12px; padding: 0; border-top: 0; }
+main > .jump-nav { width: var(--mast-width); margin-inline: calc((100% - var(--mast-width)) / 2); gap: 12px; padding: 0; border-top: 0; }
 main > .jump-nav a { border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; background: transparent; font-size: .875rem; }
 main > .jump-nav a[href="#overview"] { border-bottom-color: var(--gold); }
-#overview { width: var(--opening-width); margin-inline: calc((100% - var(--opening-width)) / 2); padding: 20px 0 24px; }
-#overview .overview-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); grid-template-areas: "overview senate" "issues senate"; align-items: start; gap: 16px 24px; }
+#overview, #updates { width: var(--opening-width); margin-inline: calc((100% - var(--opening-width)) / 2); }
+#overview { padding: 18px 0; }
+#overview .overview-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-areas: "context senate"; align-items: start; gap: 20px; }
+#overview .opening-context { grid-area: context; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 #overview .intro-overview-card { grid-area: overview; }
 #overview .intro-issues-card { grid-area: issues; }
 #overview .national-overview { grid-area: senate; }
-#overview .opening-card { min-width: 0; padding: 20px 24px; border: 1px solid #d9dfdf; border-radius: 6px; background: #fff; }
-#overview h2 { margin: 5px 0 12px; font-size: clamp(1.375rem, 1.7vw, 1.75rem); line-height: 1.35; color: var(--navy); }
-#overview .kicker { font-size: .6875rem; }
-.opening-lead { margin: 0 0 14px; font-size: 1rem; line-height: 1.6; }
+#overview .opening-card { min-width: 0; padding: 16px 18px; border: 1px solid #d9dfdf; border-radius: 6px; background: #fff; }
+#overview h2 { margin: 4px 0 10px; font-size: 1.375rem; line-height: 1.35; color: var(--navy); }
+#overview .kicker { margin: 0; font-size: .6875rem; }
+#overview .opening-lead { margin: 0 0 10px; font-size: 1rem; line-height: 1.6; }
 .opening-seats { width: 100%; border-collapse: collapse; font-size: 1rem; text-align: left; }
 .opening-seats thead { background: #edf2f5; color: #314a58; font-size: .8125rem; }
-.opening-seats th, .opening-seats td { padding: 9px 12px; border-bottom: 1px solid #dce1e2; }
-.opening-seats thead th { padding-block: 7px; }
+.opening-seats th, .opening-seats td { padding: 6px 10px; border-bottom: 1px solid #dce1e2; }
+.opening-seats thead th { padding-block: 5px; }
 .opening-seats tbody th { width: 20%; font-size: 1.125rem; }
 .opening-seats td:nth-child(2) { width: 43%; }
 .opening-seats small { display: block; font-size: .8125rem; color: #52616a; font-weight: 400; }
-.opening-seats b { font-size: 1.375rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.opening-seats b { font-size: 1.125rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .opening-dem, .opening-rep { display: inline-block; white-space: nowrap; font-weight: 700; }
 .opening-dem { color: #2166ac; margin-right: 12px; }
 .opening-rep { color: #a5262e; }
 #overview .opening-footnote { margin: 7px 0 0; font-size: .75rem; line-height: 1.5; color: #52616a; }
 .opening-issues { margin: 0; }
-.opening-issues > div { display: grid; grid-template-columns: minmax(145px, .85fr) minmax(0, 1.4fr); gap: 10px 20px; padding: 11px 0; border-top: 1px solid #dce1e2; }
+.opening-issues > div { display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 8px 16px; padding: 7px 0; border-top: 1px solid #dce1e2; }
 .opening-issues dt { font-weight: 700; font-size: 1rem; }
 .opening-issues dd { margin: 0; font-size: .9375rem; line-height: 1.6; color: #43525d; }
 .opening-issues dd strong { font-weight: 600; color: var(--ink); }
-#overview .opening-details { margin: 6px 0 0; border: 0; padding: 0; }
+#overview .opening-details { margin: 4px 0 0; border: 0; padding: 0; }
 #overview .opening-details > summary { display: flex; align-items: center; justify-content: flex-end; gap: 10px; min-height: 36px; padding: 6px 0; color: #174f9e; font-size: .8125rem; font-weight: 600; list-style: none; cursor: pointer; }
 #overview .opening-details > summary::-webkit-details-marker { display: none; }
 #overview .opening-details > summary::after { content: '+'; font-size: 1.125rem; }
@@ -47,52 +49,53 @@ main > .jump-nav a[href="#overview"] { border-bottom-color: var(--gold); }
 .opening-text-button { border: 0; background: transparent; color: #174f9e; padding: 8px 0; text-align: left; text-decoration: underline; text-underline-offset: 4px; font-size: .875rem; cursor: pointer; }
 .opening-national-heading { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
 #overview .opening-national-heading h2 { margin-bottom: 0; }
-.opening-total { flex-shrink: 0; padding: 4px 8px; border: 1px solid #b9c3c8; border-radius: 3px; color: #314a58; font-size: .8125rem; }
+.opening-total { display: none; }
 #overview .opening-asof { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; font-size: .8125rem; line-height: 1.5; color: #53636c; margin: 10px 0 0; }
-#overview .provisional-totals { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 8px 0 10px; margin: 0; background: transparent; }
+#overview .provisional-totals { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; padding: 0; margin: 8px 0; background: transparent; }
+#overview .provisional-d { background: #eef5fb; }
+#overview .provisional-u { background: #f0f3f3; }
+#overview .provisional-r { background: #faf0f1; }
 #overview .provisional-totals > div { display: flex; align-items: baseline; justify-content: center; gap: 10px; }
-#overview .provisional-totals span { font-size: 1.125rem; font-weight: 600; }
-#overview .provisional-totals b { font: 700 clamp(2.5rem, 4vw, 3.75rem)/1.15 Georgia, serif; font-variant-numeric: tabular-nums; }
-#overview .provisional-u b { font-size: clamp(2.25rem, 3.4vw, 3.25rem); }
+#overview .provisional-totals span { font-size: .9375rem; font-weight: 600; }
+#overview .provisional-totals b { font: 700 2.25rem/1.3 Georgia, serif; font-variant-numeric: tabular-nums; }
+#overview .provisional-u b { font-size: 2.125rem; }
 #overview .national-type { margin: 0 0 8px; font-size: .8125rem; line-height: 1.5; }
 #overview .senate-comparison { margin: 0; gap: 0; }
-#overview .comparison-row { display: block; padding: 11px 0 9px; border-top: 1px solid #e1e5e4; }
-.comparison-heading { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 3px 12px; margin-bottom: 9px; }
-#overview .comparison-heading h3 { margin: 0; font: 700 1rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Yu Gothic", Meiryo, sans-serif; color: var(--navy); }
-.comparison-heading > span { font-size: .875rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-#overview .seat-composition-track { height: 34px; border: 0; }
+#overview .comparison-row { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); grid-template-areas: "label chart" "equation chart"; gap: 3px 12px; padding: 10px 0; border-top: 1px solid #e1e5e4; }
+#overview .comparison-heading { grid-area: label; display: flex; flex-direction: column; align-items: start; gap: 2px; margin: 0; }
+#overview .comparison-heading h3 { margin: 0; font: 700 .875rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Yu Gothic", Meiryo, sans-serif; color: var(--navy); }
+#overview .comparison-heading > span { font-size: .75rem; font-variant-numeric: tabular-nums; }
+#overview .comparison-row > .seat-composition { grid-area: chart; min-width: 0; align-self: center; margin: 0; }
+#overview .seat-composition-track { height: 22px; border: 0; }
 #overview .seat-segment { border: 0; }
-#overview .seat-segment span { font-size: 1rem; }
+#overview .seat-segment span { font-size: .8125rem; }
 #overview .seat-segment.tiny span { display: inline; }
 #overview .seat-segment.fixed-d { background: #d5e5f3; color: #173c5a; }
 #overview .seat-segment.fixed-r { background: #efd5d7; color: #64202e; }
 #overview .seat-segment.goal-other { background: #edf0f0; color: #43525d; }
+#overview .seat-segment.consensus-unresolved, #overview .comparison-legend i.consensus-unresolved { background: #606c70; color: #fff; }
 #overview .seat-composition-legend { display: none; }
 #overview .seat-target-marker { width: 2px; top: -4px; bottom: -4px; background: #876217; box-shadow: none; }
-#overview .path-equation { margin: 6px 0 0; font-size: .8125rem; color: #53636c; line-height: 1.5; }
-#overview .comparison-legend { padding: 9px 0; margin: 3px 0 10px; gap: 6px 18px; }
+#overview .path-equation { grid-area: equation; margin: 0; font-size: .75rem; color: #53636c; line-height: 1.5; }
+#overview .comparison-legend { padding: 7px 0; margin: 0 0 8px; gap: 5px 12px; }
 #overview .comparison-legend span { font-size: .75rem; gap: 5px; }
 #overview .comparison-legend i { border: 0; width: 14px; height: 12px; }
 #overview .comparison-legend i.fixed-d { background: #d5e5f3; }
 #overview .comparison-legend i.fixed-r { background: #efd5d7; }
 #overview .comparison-legend i.goal-other { background: #edf0f0; }
-#overview .opening-caution { margin: 0; padding: 9px 12px; background: #fcf5e5; color: #73500c; font-size: .8125rem; line-height: 1.6; font-weight: 600; }
+#overview .opening-caution { margin: 0; padding: 7px 10px; background: #fcf5e5; color: #73500c; font-size: .8125rem; line-height: 1.6; font-weight: 600; }
 #overview .national-conditions { margin: 9px 0 0; font-size: .8125rem; line-height: 1.6; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
-/* 16:9 monitors get useful chart width, not oversized prose or viewport-locked heights. */
-@media (min-width: 1600px) {
-  #overview .opening-card { padding: 22px 28px; }
-  #overview .overview-grid { gap: 20px 28px; }
-  .opening-lead { font-size: 1.0625rem; }
-  .opening-issues > div { padding-block: 14px; }
-  .opening-issues dd { font-size: 1rem; }
-  #overview .comparison-row { padding-block: 14px 10px; }
-  #overview .seat-composition-track { height: 38px; }
+/* The comparison reflows when the text grows, without squeezing chart labels. */
+#overview .national-overview { container-type: inline-size; container-name: senate-opening; }
+@container senate-opening (max-width: 30rem) {
+  #overview .comparison-row { grid-template-columns: minmax(0, 1fr); grid-template-areas: "label" "chart" "equation"; gap: 6px; }
+  #overview .comparison-heading { flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
 }
 @media (max-width: 1199px) {
-  :root { --opening-width: calc(100vw - 40px); }
-  #overview .overview-grid { gap: 16px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+  :root { --opening-width: calc(100vw - 40px); --mast-width: calc(100vw - 40px); }
+  #overview .overview-grid { gap: 16px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   #overview .opening-card { padding: 16px; }
   .opening-seats th, .opening-seats td { padding-inline: 7px; }
   .opening-issues > div { display: block; }
@@ -101,10 +104,11 @@ main > .jump-nav a[href="#overview"] { border-bottom-color: var(--gold); }
 }
 @media (max-width: 959px) {
   #overview .overview-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "overview" "senate" "issues"; }
+  #overview .opening-context { display: contents; }
   .opening-issues > div { display: grid; }
 }
 @media (max-width: 600px) {
-  :root { --opening-width: calc(100vw - 28px); }
+  :root { --opening-width: calc(100vw - 28px); --mast-width: calc(100vw - 28px); }
   .mast { padding: 16px 0; }
   .mast-inner { gap: 12px; align-items: start; }
   .mast h1 { font-size: 1.5rem; }

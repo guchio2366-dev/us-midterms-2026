@@ -30,9 +30,10 @@ export function introductionMarkup() {
   const special = uniqueElectionSeatIds(elections.filter(election => election.type === 'special')).length;
   return `<section id="overview" class="introduction section-block" aria-labelledby="overview-heading">
     <div class="overview-grid">
+      <div class="opening-context">
       <section class="opening-card intro-overview-card" aria-labelledby="overview-heading">
         <p class="kicker">OVERVIEW</p><h2 id="overview-heading">米国中間選挙の概説</h2>
-        <p class="opening-lead">大統領任期の折り返しで、連邦議会を選び直す。<br>議席の変化が、政権の<strong>政策・予算・人事</strong>を左右する。</p>
+        <p class="opening-lead">大統領任期の折り返しで、連邦議会を選び直す。議席の変化が、政権の<strong>政策・予算・人事</strong>を左右する。</p>
         <table class="opening-seats"><caption class="visually-hidden">現在の議席と今回の改選範囲</caption>
           <thead><tr><th scope="col">議院</th><th scope="col">現在の議席</th><th scope="col">今回の改選</th></tr></thead>
           <tbody>
@@ -63,6 +64,7 @@ export function introductionMarkup() {
           <button id="open-issues" class="opening-text-button" type="button">既存の8つの論点を詳しく読む</button>
         </div></details>
       </section>
+      </div>
       <div id="national-overview-slot"></div>
     </div>
   </section>`;
