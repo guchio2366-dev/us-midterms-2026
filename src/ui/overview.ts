@@ -52,14 +52,10 @@ export function introductionMarkup() {
       </section>
       <section class="opening-card intro-issues-card" aria-labelledby="intro-issues-heading">
         <p class="kicker">ISSUES</p><h2 id="intro-issues-heading">選挙を見る主な論点</h2>
-        <dl class="opening-issues">
-          <div><dt>政権評価と暮らし</dt><dd>物価・雇用・移民・医療を、<strong>政権への評価</strong>と重ねて読む。</dd></div>
-          <div><dt>都市・郊外・地方</dt><dd>支持の分布と地域産業が、<strong>同じ政策への反応</strong>を変える。</dd></div>
-          <div><dt>候補者と投票参加</dt><dd>実績・政策・地元との関係に加え、<strong>誰が投票に行くか</strong>。</dd></div>
-        </dl>
-        <details class="opening-details"><summary>論点の解説・出典を読む</summary><div>
-          <p>${introductionContent.issueOverview.slice(0,3).map(sentenceMarkup).join('')}</p>
-          <p>${introductionContent.issueOverview.slice(3).map(sentenceMarkup).join('')}</p>
+        <ol class="opening-issue-explanations">
+          ${[0,2,4].map(start => `<li><p>${introductionContent.issueOverview.slice(start,start+2).map(sentenceMarkup).join('')}</p></li>`).join('')}
+        </ol>
+        <details class="opening-details"><summary>出典・詳しい論点を読む</summary><div>
           <p class="opening-source-links">${sourceLinks(introductionContent.issueSourceIds)}</p>
           <button id="open-issues" class="opening-text-button" type="button">既存の8つの論点を詳しく読む</button>
         </div></details>

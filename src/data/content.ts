@@ -17,29 +17,21 @@ export const introductionContent = {
   impact: '議席配分が変わると、法案や予算を決め、大統領の政策や人事を進めたり制約したりする議会の力関係が変わる。',
   issueOverview: [
     [
-      {text:'今回の中間選挙では、'},
-      {text:'トランプ政権の運営や政策への評価',strong:true},
-      {text:'が、全国の選挙情勢を左右する大きな要因となる。'},
+      {text:'今回の中間選挙は、トランプ大統領への信任を問う意味合いが強い。',strong:true},
     ],
     [
-      {text:'都市部',strong:true},{text:'では民主党、'},
-      {text:'地方部',strong:true},{text:'では共和党の支持が強い傾向があり、'},
-      {text:'郊外',strong:true},{text:'では支持が分かれている。'},
+      {text:'物価・雇用・移民・医療などへの政権の対応を、有権者がどう評価するかが大きな焦点となる。'},
     ],
     [
-      {text:'物価や雇用、移民、医療',strong:true},
-      {text:'などは複数の州に共通する論点で、同じ政策でも地域の産業や暮らしによって受け止め方が異なる。'},
+      {text:'都市部では民主党、地方部では共和党の支持が強い傾向がある。',strong:true},
     ],
     [
-      {text:'候補者の実績や政策姿勢、地元との関係',strong:true},
-      {text:'によって、全国的な党派の傾向と異なる結果になる場合もある。'},
+      {text:'郊外では支持が分かれ、地域の産業や暮らしによって政策の受け止め方も異なる。'},
     ],
     [
-      {text:'支持する相手が変わることに加え、'},
-      {text:'どの支持層が実際に投票に行くか',strong:true},
-      {text:'も結果を左右する。'},
+      {text:'候補者の実績・政策・地元との関係も、勝敗を左右する。',strong:true},
     ],
-    [{text:'全国の傾向と各州の事情を併せて読むことで、接戦の理由や議席が動く条件を考えやすくなる。'}],
+    [{text:'全国的な政権評価や党派の傾向に加え、候補者個人への評価と、支持者が実際に投票に行くかを見る。'}],
   ] satisfies readonly IntroSentence[],
   capability: '地図で州の情勢・候補者・争点を確認し、当選者や会派を選ぶと、上院の議席配分がどう変わるか試せる。',
   institutionSourceIds: ['senate-class-2','house-explained','house-legislative-process','federal-election-date'],
