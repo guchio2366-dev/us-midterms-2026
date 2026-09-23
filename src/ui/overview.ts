@@ -28,6 +28,7 @@ export function introductionMarkup() {
   const counts = currentCaucusCounts(seats);
   const regular = uniqueElectionSeatIds(elections.filter(election => election.type === 'regular')).length;
   const special = uniqueElectionSeatIds(elections.filter(election => election.type === 'special')).length;
+  const [institutionFirst,...institutionRest] = introductionContent.institution(seats.length,breakdown.contested,houseSnapshot.total).split('。');
   return `<section id="overview" class="introduction section-block" aria-labelledby="overview-heading">
     <div class="overview-grid">
       <div class="opening-context">
@@ -43,10 +44,9 @@ export function introductionMarkup() {
         </table>
         <p class="opening-footnote">上院は会派別。下院は独立${houseSnapshot.Independent}・空席${houseSnapshot.vacant}を含む。</p>
         <details class="opening-details"><summary>制度・出典を読む</summary><div>
-          <p>${escapeHtml(introductionContent.institution(seats.length,breakdown.contested,houseSnapshot.total))}</p>
+          <p>${escapeHtml(institutionFirst)}。<button id="open-civics" class="opening-text-button opening-inline-link" type="button">Class制度・特別選挙とは</button>${escapeHtml(institutionRest.join('。'))}</p>
           <p>${escapeHtml(introductionContent.impact)}</p>
           <p>院ごとの役割と必要票は<a href="#powers">「議席と権限」</a>で確認できる。</p>
-          <button id="open-civics" class="opening-text-button" type="button">Class制度と特別選挙の詳しい説明</button>
           <p class="opening-source-links">${sourceLinks(introductionContent.institutionSourceIds)}</p>
         </div></details>
       </section>
@@ -125,5 +125,6 @@ export function nationalOverviewMarkup() {
     <p class="opening-caution">暫定評価であり、当選確率や最終結果ではない。下2本は必要な配分の例。</p>
     <p class="national-conditions">${vpControl} <a href="#powers">採決条件を確認</a></p>
     <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ方向の議席だけを党派側へ置き、接戦・評価分裂・資料不足は未配分とした。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙を2機関で確認。Solid・Likely・Lean・Tiltは方向だけを使い、強さを平均していない。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
+    <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。その行方を読むために、<a href="#updates">${unresolved}つの州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>
   </section>`;
 }
