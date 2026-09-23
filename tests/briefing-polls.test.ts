@@ -18,6 +18,7 @@ describe('briefing poll bars',()=>{
     for (const result of poll.results) {expect(html).toContain(result.label);expect(html).toContain(`<b>${result.value}%</b>`);}
     expect(html).toContain('公表値の合計101%（丸め）');
     expect(html).toContain(poll.fieldStart);expect(html).toContain(poll.fieldEnd);
+    expect(html).toContain('スポンサー：明記なし');
     expect(html).toContain('2,169人');expect(html).toContain('登録有権者');
     expect(html).toContain('href="https://');
     expect(html).toContain(poll.precisionLabel!);
