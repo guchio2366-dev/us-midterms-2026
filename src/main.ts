@@ -209,11 +209,15 @@ function focusClassification(election: Election) {
 
 function researchBriefingMarkup(election: Election) {
   const brief = getRaceBrief(raceBriefs,election.electionId);
+  const seat = seatById.get(election.seatId)!;
+  const direction = ratingConsensusBySeat.get(election.seatId)?.category;
+  const outlook = direction === 'D' ? '民主党寄り' : direction === 'R' ? '共和党寄り' : '優勢側を判断しにくい状態';
+  const context = `現在この議席を持つ会派は${caucusLabel[seat.caucus]}。収録した機関の統合評価は${outlook}で、議席を守れるか、相手側が奪うかが上院の過半数争いに関わる。優勢という評価も当選確定を意味しない。`;
   const majorCandidates = election.candidates.filter(candidate => candidate.party === 'D' || candidate.party === 'R');
   const candidates = `<section class="observation-candidate-intro" aria-label="主要候補"><div>${majorCandidates.map(candidate => `<article><i class="party-dot party-${escapeHtml(candidate.party)}" aria-hidden="true"></i><p><b>${escapeHtml(candidate.name)}</b><small>${escapeHtml(candidate.partyLabel)}</small></p></article>`).join('')}</div></section>`;
   const lead = brief
     ? `<div class="briefing-week"><small>州別調査 · 更新 <time datetime="${escapeHtml(brief.updatedAt)}">${escapeHtml(brief.updatedAt)}</time></small><h4>${escapeHtml(brief.headline)}</h4><p>${escapeHtml(brief.summary)}</p></div><p class="briefing-takeaway"><b>主な論点</b>${brief.keyIssues.map(escapeHtml).join('／')}</p><details class="briefing-details"><summary>州別調査・根拠を、この欄で読む</summary><div class="briefing-expanded">${raceBriefMarkup(brief)}${refs(brief.sourceIds)}</div></details>`
-    : `<div class="briefing-week"><small>選挙の基本情報</small><h4>この選挙を見るポイント</h4><p>${escapeHtml(election.electionRelevance)}</p><p class="briefing-coverage-note">週次の詳しい解説は未収録。候補者と情勢評価、右欄の関連ニュースを確認できます。</p></div><details class="briefing-details"><summary>候補者・選挙情報の根拠を読む</summary>${refs(election.sourceIds)}</details>`;
+    : `<div class="briefing-week"><small>選挙の基本情報</small><h4>この選挙を見るポイント</h4><p>${escapeHtml(context)}</p><p class="briefing-coverage-note">週次の詳しい解説は未収録。候補者と情勢評価を掲載しています。確認済みの関連記事がある場合は、ニュース欄に表示します。</p></div><details class="briefing-details"><summary>候補者・選挙情報の根拠を読む</summary>${refs(election.sourceIds)}</details>`;
   return candidates + lead;
 }
 
