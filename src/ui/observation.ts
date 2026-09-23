@@ -36,7 +36,7 @@ export function observationDecisionMarkup(race:RaceObservation) {
   return `<div class="observation-decision-grid"><section class="observation-materials" aria-label="重要な判断材料"><h4>まず見る判断材料</h4>${race.materials.slice(0,2).map(m=>`<article id="${esc(observationAnchor(race.electionId,m.materialId))}"><h5>${esc(m.title)}</h5><p>${esc(m.fact)}</p><p><b class="observation-kind">分析</b> ${esc(m.meaning)}</p><p class="observation-limit">${esc(m.limit)}</p>${evidenceMarkup(m.evidenceIds)}</article>`).join('')}</section><section class="observation-events-bridge"><h4>ニュース・今後の予定</h4><p>この州に関係する出来事と、次に確認する予定を全国情勢の一覧で追えます。</p><div class="observation-feed-actions"><button type="button" data-observation-feed="recent" data-observation-race="${esc(race.electionId)}">この州のニュースを見る</button><button type="button" data-observation-feed="upcoming" data-observation-race="${esc(race.electionId)}">この州の今後の予定を見る</button></div><div class="observation-watch"><h5>次に確認したい点</h5><p class="observation-limit">以下は公表日が決まった予定ではありません。</p>${race.watchItems.slice(0,2).map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</div></section></div>`;
 }
 
-export function observationComparisonMarkup(race:RaceObservation,candidates:Candidate[]) {
+export function observationComparisonMarkup(race:RaceObservation,candidates:Candidate[],prefix='obs',readingOnly=false) {
   const labels={observed:'確認できたこと',claim:'本人・陣営の主張',interpretation:'分析',pending:'未確認'};
   const comparisonCandidates=comparisonCandidatesFor(race,candidates);
   const rowMarkup=(row:RaceObservation['comparison'][number])=>`<section class="observation-comparison-item"><h5>${esc(row.label)}</h5><div class="observation-comparison-row">${comparisonCandidates.map(candidate=>{
@@ -45,7 +45,22 @@ export function observationComparisonMarkup(race:RaceObservation,candidates:Cand
   }).join('')}</div></section>`;
   const primary=race.comparison.slice(0,3);
   const supplementary=race.comparison.slice(3);
-  return `<section id="${esc(observationAnchor(race.electionId,'comparison'))}" tabindex="-1" class="observation-comparison"><h4>候補者を同じ項目で比較</h4><p>公約と実績、有権者の評価を分けて確認する。</p><div class="observation-candidate-head" aria-label="比較する候補者">${comparisonCandidates.map(candidate=>`<div><i class="party-dot party-${esc(candidate.party)}" aria-hidden="true"></i><b>${esc(candidate.name)}</b><small>${esc(candidate.partyLabel)}</small></div>`).join('')}</div>${primary.map(rowMarkup).join('')}${supplementary.length ? `<details class="observation-comparison-more"><summary>実績への評価・有権者の受け止め（${supplementary.length}項目）</summary>${supplementary.map(rowMarkup).join('')}</details>` : ''}<p class="observation-limit">選択欄から全候補を選べます。未確認は「支持なし」「問題なし」を意味しません。</p></section>`;
+  return `<section id="${esc(`${prefix}-${race.electionId}-comparison`)}" tabindex="-1" class="observation-comparison"><h4>候補者を同じ項目で比較</h4><p>公約と実績、有権者の評価を分けて確認する。</p><div class="observation-candidate-head" aria-label="比較する候補者">${comparisonCandidates.map(candidate=>`<div><i class="party-dot party-${esc(candidate.party)}" aria-hidden="true"></i><b>${esc(candidate.name)}</b><small>${esc(candidate.partyLabel)}</small></div>`).join('')}</div>${primary.map(rowMarkup).join('')}${supplementary.length ? `<details class="observation-comparison-more"><summary>実績への評価・有権者の受け止め（${supplementary.length}項目）</summary>${supplementary.map(rowMarkup).join('')}</details>` : ''}<p class="observation-limit">${readingOnly ? '主要候補を比較しています。' : '選択欄から全候補を選べます。'}未確認は「支持なし」「問題なし」を意味しません。</p></section>`;
+}
+
+/** Reading stays inside the briefing; no scenario controls or duplicate detail anchors. */
+export function observationBriefingMarkup(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
+  const material = race.materials.at(-1);
+  return `${observationCandidateIntroMarkup(race,candidates,incumbent)}
+    <div class="briefing-week"><small>今週の焦点 · 分析更新 <time datetime="${esc(race.updatedAt)}">${esc(race.updatedAt)}</time></small><h4>${esc(race.headline)}</h4><p>${esc(race.featuredSummary)}</p></div>
+    ${material ? `<p class="briefing-takeaway"><b>ここを見る</b>${esc(material.meaning)}</p>` : ''}
+    <details class="briefing-details"><summary>候補者の違い・発言の経緯を、この欄で読む</summary><div class="briefing-expanded">
+      <h4>これまでの経緯</h4><p>${esc(race.lead)}</p>
+      <p class="observation-uncertainty"><b>まだ分からないこと</b>${esc(race.uncertainty)}</p>${evidenceMarkup(race.evidenceIds)}
+      <section class="observation-materials"><h4>判断材料を詳しく読む</h4>${race.materials.map(m=>`<article><h5>${esc(m.title)}</h5><p>${esc(m.fact)}</p><p><b>分析</b> ${esc(m.meaning)}</p><p class="observation-limit">${esc(m.limit)}</p>${evidenceMarkup(m.evidenceIds)}</article>`).join('')}</section>
+      ${observationComparisonMarkup(race,candidates,'briefing',true)}
+      <section class="briefing-watch"><h4>次に確認したい点</h4>${race.watchItems.map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</section>
+    </div></details>`;
 }
 
 export function observationUpdateMarkup(update:ObservationUpdate,electionId:string) {
