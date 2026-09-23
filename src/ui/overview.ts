@@ -7,10 +7,12 @@ import { aggregateRatingConsensus, ratingConsensusCounts, type RatingConsensusCa
 import { escapeHtml } from './research';
 import { seatBarMarkup, type SeatBarSegment } from './seat-bars';
 import { senateBreakdown, senateMajorityPath } from './senate-bars';
+import { briefingElections } from './briefing';
 
 const breakdown = senateBreakdown(seats, elections);
 const consensus = aggregateRatingConsensus(uniqueElectionSeatIds(elections), ratingSnapshotObservations);
 const totals = ratingConsensusCounts(consensus);
+const featuredStates = briefingElections(elections,seats,states,consensus).length;
 const sourceById = new Map(sources.map(source => [source.sourceId, source]));
 
 function sourceLinks(ids: readonly string[]) {
@@ -125,6 +127,6 @@ export function nationalOverviewMarkup() {
     <p class="opening-caution">暫定評価であり、当選確率や最終結果ではない。下2本は必要な配分の例。</p>
     <p class="national-conditions">${vpControl} <a href="#powers">採決条件を確認</a></p>
     <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ方向の議席だけを党派側へ置き、接戦・評価分裂・資料不足は未配分とした。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙を2機関で確認。Solid・Likely・Lean・Tiltは方向だけを使い、強さを平均していない。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
-    <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。その行方を読むために、<a href="#updates">${unresolved}つの州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>
+    <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。その州にアイオワとノースカロライナを加え、<a href="#updates">${featuredStates}つの州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>
   </section>`;
 }

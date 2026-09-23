@@ -6,7 +6,7 @@ import './style.css';
 import './ui/observation.css';
 import './ui/overview.css';
 import './ui/briefing.css';
-import { briefingElections, locatorMapMarkup } from './ui/briefing';
+import { briefingElections, locatorMapMarkup, ratingShareMarkup } from './ui/briefing';
 import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
@@ -204,7 +204,17 @@ function focusClassification(election: Election) {
   if (category === 'tossup') return {label:'接戦（Toss Up）',className:'focus-tossup'};
   if (category === 'split') return {label:'評価が分かれる',className:'focus-split'};
   if (category === 'missing') return {label:'評価不足',className:'focus-missing'};
-  return {label:displayRatingFor(election),className:'focus-lean'};
+  return {label:category === 'D' ? '民主党寄り' : '共和党寄り',className:'focus-lean'};
+}
+
+function researchBriefingMarkup(election: Election) {
+  const brief = getRaceBrief(raceBriefs,election.electionId);
+  const majorCandidates = election.candidates.filter(candidate => candidate.party === 'D' || candidate.party === 'R');
+  const candidates = `<section class="observation-candidate-intro" aria-label="主要候補"><div>${majorCandidates.map(candidate => `<article><i class="party-dot party-${escapeHtml(candidate.party)}" aria-hidden="true"></i><p><b>${escapeHtml(candidate.name)}</b><small>${escapeHtml(candidate.partyLabel)}</small></p></article>`).join('')}</div></section>`;
+  const lead = brief
+    ? `<div class="briefing-week"><small>州別調査 · 更新 <time datetime="${escapeHtml(brief.updatedAt)}">${escapeHtml(brief.updatedAt)}</time></small><h4>${escapeHtml(brief.headline)}</h4><p>${escapeHtml(brief.summary)}</p></div><p class="briefing-takeaway"><b>主な論点</b>${brief.keyIssues.map(escapeHtml).join('／')}</p><details class="briefing-details"><summary>州別調査・根拠を、この欄で読む</summary><div class="briefing-expanded">${raceBriefMarkup(brief)}${refs(brief.sourceIds)}</div></details>`
+    : `<div class="briefing-week"><small>選挙の基本情報</small><h4>この選挙を見るポイント</h4><p>${escapeHtml(election.electionRelevance)}</p><p class="briefing-coverage-note">週次の詳しい解説は未収録。候補者と情勢評価、右欄の関連ニュースを確認できます。</p></div><details class="briefing-details"><summary>候補者・選挙情報の根拠を読む</summary>${refs(election.sourceIds)}</details>`;
+  return candidates + lead;
 }
 
 function focusSummaryMarkup(election: Election) {
@@ -214,9 +224,9 @@ function focusSummaryMarkup(election: Election) {
   const classification = focusClassification(election);
   const body = observation
     ? observationBriefingMarkup(observation,election.candidates,seat.incumbent)
-    : '<h4>判断材料を確認中</h4><p>評価機関の判断を確認できる。州の詳しい解説は、資料の確認後に追加する。</p>';
-  return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3></div><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div>${body}
-    <details class="briefing-ratings"><summary>この州の情勢評価・確認日</summary><p>${consensusEvidenceMarkup(election)}</p></details>
+    : researchBriefingMarkup(election);
+  return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3></div><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div>
+    ${ratingShareMarkup(ratingConsensusBySeat.get(election.seatId))}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details>${body}
     <figure class="briefing-locator"><div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>色は選択州の位置を示す</span><small>アラスカ・ハワイは位置と縮尺を調整。</small></figcaption></figure>`;
 }
 
@@ -229,7 +239,8 @@ function renderFocusLocator() {
 
 function focusUpdatesMarkup() {
   const active = focusElections.find(election => election.electionId === activeFocusElectionId) ?? focusElections[0];
-  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><p class="kicker">RACES TO WATCH</p><h3>過半数の行方を左右する${focusElections.length}州</h3></div><span>接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}</span></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>冒頭の統合評価で未配分となった議席を取り上げる。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。ここで取り上げる州以外も当選確定ではない。</p></details><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
+  const leaningCount = focusElections.filter(election => ['D','R'].includes(ratingConsensusBySeat.get(election.seatId)?.category ?? '')).length;
+  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><p class="kicker">RACES TO WATCH</p><h3>過半数の行方を左右する${focusElections.length}州</h3></div><span>接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}${leaningCount ? `・優勢側のある${leaningCount}州` : ''}</span></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>冒頭の統合評価で未配分となった州に、アイオワとノースカロライナを加えて読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。</p></details><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
     const state = stateByFips.get(seatById.get(election.seatId)!.stateFips)!;
     const selected = election.electionId === active?.electionId;
     const classification = focusClassification(election);
