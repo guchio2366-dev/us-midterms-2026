@@ -26,7 +26,12 @@ describe('PC opening overview contract', () => {
     }
     expect(html).toContain('id="open-civics"');
     expect(html).toContain('id="open-issues"');
-    expect(html.match(/<dt>/g)).toHaveLength(3);
+    const visibleIssues = html.split('<ol class="opening-issue-explanations">')[1].split('</ol>')[0];
+    expect(visibleIssues.match(/<li>/g)).toHaveLength(3);
+    for (const sentence of introductionContent.issueOverview) {
+      for (const part of sentence) expect(visibleIssues).toContain(part.text);
+    }
+    expect(html).not.toContain('class="opening-issues"');
     expect(html.match(/<details class="opening-details">/g)).toHaveLength(2);
     expect(html).not.toMatch(/<details[^>]*\bopen(?:\s|>)/);
   });
