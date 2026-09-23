@@ -20,7 +20,7 @@
   "runId": "daily-20260923",
   "startedAt": "2026-09-22T23:59:54Z",
   "baseCommit": "aff616c1584602c66b4aea38fdcfa92447738604",
-  "publishedCommit": null,
+  "publishedCommit": "227e594da078afbae0e5eca86984bb9de2fa4eef",
   "revision": "observation-2026-09-23-v1",
   "reviewMode": "daily; Wednesday Asia/Tokyo; targeted event-result update and pending-source retry",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
@@ -128,8 +128,8 @@
   "verification": {
     "tests": "119 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "passed: 227e594da078afbae0e5eca86984bb9de2fa4eef from rechecked baseCommit; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35801653739",
+    "publicContent": "verified on the published site: Michigan Harris–El-Sayed event result, mutual links between the completed event and update, AP/CBS Detroit sources, and unchanged D46/R48/unallocated6 baseline"
   }
 }
