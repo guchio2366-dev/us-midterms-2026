@@ -9,7 +9,7 @@ import { newsItems } from '../src/data/news';
 import { ratingSnapshotObservations } from '../src/data/rating-snapshot';
 import { aggregateRatingConsensus } from '../src/rating-consensus';
 import { buildRecentFeed, buildUpcomingFeed, filterFeed } from '../src/news-feed';
-import { briefingElections, locatorMapMarkup, ratingShareMarkup, ratingShareSegments } from '../src/ui/briefing';
+import { briefingElections, locatorMapMarkup } from '../src/ui/briefing';
 import { observationBriefingMarkup, observationComparisonMarkup } from '../src/ui/observation';
 import { introductionMarkup, nationalOverviewMarkup } from '../src/ui/overview';
 
@@ -74,26 +74,4 @@ describe('state briefing', () => {
     expect(nationalOverviewMarkup()).toContain('href="#updates">8つの州');
   });
 
-  it('shows the two-organization direction shares, not election probabilities', () => {
-    for (const [seatId,counts] of [['IA-2',[0,0,2,0]],['NC-2',[2,0,0,0]],['AK-2',[0,1,1,0]],['ME-2',[0,2,0,0]]] as const) {
-      const result=consensus.find(c=>c.seatId===seatId);
-      const segments=ratingShareSegments(result);
-      expect(segments.map(s=>s.count)).toEqual(counts);
-      expect(segments.reduce((sum,s)=>sum+s.percent,0)).toBe(100);
-      expect(ratingShareMarkup(result)).toContain('勝率・得票率ではなく');
-      expect(ratingShareMarkup(result)).toContain('収録2機関');
-    }
-    expect(ratingShareMarkup(consensus.find(c=>c.seatId==='AK-2'))).toContain('50%');
-    expect(ratingShareMarkup(consensus.find(c=>c.seatId==='IA-2'))).toContain('100%');
-  });
-
-  it('retains unrecognized evaluations in the denominator and does not invent missing values', () => {
-    const original=consensus.find(c=>c.seatId==='IA-2')!;
-    const unknown={...original,observations:original.observations.map((o,i)=>i ? {...o,direction:null} : o)};
-    expect(ratingShareSegments(unknown).map(s=>s.percent)).toEqual([0,0,50,50]);
-    expect(ratingShareMarkup(unknown)).toContain('判定不能');
-    expect(ratingShareMarkup({...original,observations:original.observations.slice(0,1)})).toContain('2機関分がそろっていません');
-    expect(ratingShareMarkup(undefined)).toContain('割合は表示できません');
-    expect(ratingShareMarkup({...original,observations:[]})).not.toContain('width:');
-  });
 });

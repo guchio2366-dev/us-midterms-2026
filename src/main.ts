@@ -6,7 +6,8 @@ import './style.css';
 import './ui/observation.css';
 import './ui/overview.css';
 import './ui/briefing.css';
-import { briefingElections, locatorMapMarkup, ratingShareMarkup } from './ui/briefing';
+import { briefingElections, locatorMapMarkup } from './ui/briefing';
+import { briefingPollsMarkup } from './ui/briefing-polls';
 import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
@@ -230,7 +231,7 @@ function focusSummaryMarkup(election: Election) {
     ? observationBriefingMarkup(observation,election.candidates,seat.incumbent)
     : researchBriefingMarkup(election);
   return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3></div><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div>
-    ${ratingShareMarkup(ratingConsensusBySeat.get(election.seatId))}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details>${body}
+    ${briefingPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details>${body}
     <figure class="briefing-locator"><div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>色は選択州の位置を示す</span><small>アラスカ・ハワイは位置と縮尺を調整。</small></figcaption></figure>`;
 }
 
