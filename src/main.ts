@@ -32,7 +32,7 @@ import { RATING_METHOD_VERSION,RATING_SNAPSHOT_AS_OF,RATING_SNAPSHOT_ID,ratingSn
 import { aggregateRatingConsensus,consensusDisplayRating,ratingConsensusCounts,type RatingConsensusCategory } from './rating-consensus';
 import { observationData, observationFor } from './data/observation';
 import { eventInstant, eventStatus, monitoringStatus } from './observation-logic';
-import { observationAnchor, observationBriefingMarkup, observationLeadMarkup, observationCandidateIntroMarkup, observationDecisionMarkup, observationComparisonMarkup, observationUpdatesMarkup, monitoringMarkup, bindObservationJumps, jumpToObservation } from './ui/observation';
+import { observationAnchor, observationBriefingParts, observationLeadMarkup, observationCandidateIntroMarkup, observationDecisionMarkup, observationComparisonMarkup, observationUpdatesMarkup, monitoringMarkup, bindObservationJumps, jumpToObservation } from './ui/observation';
 import { buildRecentFeed, buildUpcomingFeed, feedItemByKey, filterFeed, legacyObservationFeedKey, linkedUpdatesForNews, resolveFeedKey, type NewsFeedItem, type NewsFeedKey, type NewsFeedTab } from './news-feed';
 
 type Mode = 'current'|'rating';
@@ -208,7 +208,7 @@ function focusClassification(election: Election) {
   return {label:category === 'D' ? '民主党寄り' : '共和党寄り',className:'focus-lean'};
 }
 
-function researchBriefingMarkup(election: Election) {
+function researchBriefingParts(election: Election) {
   const brief = getRaceBrief(raceBriefs,election.electionId);
   const seat = seatById.get(election.seatId)!;
   const direction = ratingConsensusBySeat.get(election.seatId)?.category;
@@ -217,9 +217,12 @@ function researchBriefingMarkup(election: Election) {
   const majorCandidates = election.candidates.filter(candidate => candidate.party === 'D' || candidate.party === 'R');
   const candidates = `<section class="observation-candidate-intro" aria-label="主要候補"><div>${majorCandidates.map(candidate => `<article><i class="party-dot party-${escapeHtml(candidate.party)}" aria-hidden="true"></i><p><b>${escapeHtml(candidate.name)}</b><small>${escapeHtml(candidate.partyLabel)}</small></p></article>`).join('')}</div></section>`;
   const lead = brief
-    ? `<div class="briefing-week"><small>州別調査 · 更新 <time datetime="${escapeHtml(brief.updatedAt)}">${escapeHtml(brief.updatedAt)}</time></small><h4>${escapeHtml(brief.headline)}</h4><p>${escapeHtml(brief.summary)}</p></div><p class="briefing-takeaway"><b>主な論点</b>${brief.keyIssues.map(escapeHtml).join('／')}</p><details class="briefing-details"><summary>州別調査・根拠を、この欄で読む</summary><div class="briefing-expanded">${raceBriefMarkup(brief)}${refs(brief.sourceIds)}</div></details>`
-    : `<div class="briefing-week"><small>選挙の基本情報</small><h4>この選挙を見るポイント</h4><p>${escapeHtml(context)}</p><p class="briefing-coverage-note">週次の詳しい解説は未収録。候補者と情勢評価を掲載しています。確認済みの関連記事がある場合は、ニュース欄に表示します。</p></div><details class="briefing-details"><summary>候補者・選挙情報の根拠を読む</summary>${refs(election.sourceIds)}</details>`;
-  return candidates + lead;
+    ? `<div class="briefing-week"><small>州別調査 · 更新 <time datetime="${escapeHtml(brief.updatedAt)}">${escapeHtml(brief.updatedAt)}</time></small><h4>${escapeHtml(brief.headline)}</h4><p>${escapeHtml(brief.summary)}</p></div><p class="briefing-takeaway"><b>主な論点</b>${brief.keyIssues.map(escapeHtml).join('／')}</p>`
+    : `<div class="briefing-week"><small>選挙の基本情報</small><h4>この選挙を見るポイント</h4><p>${escapeHtml(context)}</p><p class="briefing-coverage-note">週次の詳しい解説は未収録。候補者と情勢評価を掲載しています。確認済みの関連記事がある場合は、ニュース欄に表示します。</p></div>`;
+  const details = brief
+    ? `<details class="briefing-details"><summary>州別調査・根拠を、この欄で読む</summary><div class="briefing-expanded">${raceBriefMarkup(brief)}${refs(brief.sourceIds)}</div></details>`
+    : `<details class="briefing-details"><summary>候補者・選挙情報の根拠を読む</summary>${refs(election.sourceIds)}</details>`;
+  return {lead:candidates + lead,details};
 }
 
 function focusSummaryMarkup(election: Election) {
@@ -228,10 +231,10 @@ function focusSummaryMarkup(election: Election) {
   const observation = observationFor(election.electionId);
   const classification = focusClassification(election);
   const body = observation
-    ? observationBriefingMarkup(observation,election.candidates,seat.incumbent)
-    : researchBriefingMarkup(election);
+    ? observationBriefingParts(observation,election.candidates,seat.incumbent)
+    : researchBriefingParts(election);
   return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3></div><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div>
-    ${briefingPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details>${body}
+    <div class="briefing-columns"><div class="briefing-analysis">${body.lead}</div><div class="briefing-poll-column">${briefingPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div></div>${body.details}
     <figure class="briefing-locator"><div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>色は選択州の位置を示す</span><small>アラスカ・ハワイは位置と縮尺を調整。</small></figcaption></figure>`;
 }
 

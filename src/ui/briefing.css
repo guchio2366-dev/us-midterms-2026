@@ -50,7 +50,7 @@
 #updates .briefing-ratings p { font-size: .8125rem; }
 #updates .briefing-ratings { margin: 0 0 10px; }
 #updates .briefing-ratings ol { font-size: .8125rem; overflow-wrap: anywhere; }
-#updates .briefing-polls > h4 { font-size: .9375rem; margin: 10px 0 4px; }
+#updates .briefing-polls > h4 { font-size: .9375rem; margin: 0 0 4px; }
 #updates .briefing-polls-note { font-size: .75rem; color: #535e62; margin: 0 0 8px; line-height: 1.6; }
 .briefing-poll-study + .briefing-poll-study { border-top: 1px solid var(--rule); margin-top: 10px; padding-top: 10px; }
 .briefing-poll-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3px 12px; font-size: .8125rem; }
@@ -94,6 +94,13 @@
 #updates .news-section .news-pagination { display: flex; flex-wrap: wrap; gap: 8px; }
 #updates .news-section .news-pagination button { min-height: 36px; font-size: .75rem; margin: 0 4px 0 0; }
 .briefing-simulation-link { display: block; margin-top: 18px; padding: 14px; border-block: 1px solid var(--rule); text-align: center; font-size: 1.125rem; color: var(--navy); text-decoration: none; font-weight: 700; }
+.briefing-columns { display: grid; grid-template-columns: minmax(0,1fr); gap: 16px; align-items: start; }
+.briefing-columns > div { min-width: 0; }
+.briefing-poll-column { padding-top: 14px; border-top: 1px solid var(--rule); }
+@container briefing (min-width: 40rem) {
+  .briefing-columns { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+  .briefing-poll-column { padding: 0 0 0 20px; border-top: 0; border-left: 1px solid var(--rule); }
+}
 @container briefing (min-width: 52rem) {
   #updates .focus-tabs { grid-template-columns: repeat(8,minmax(0,1fr)); }
 }

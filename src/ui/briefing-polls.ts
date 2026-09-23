@@ -32,10 +32,10 @@ export function briefingPollMarkup(poll: Poll) {
     return source ? [`<a href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.title)}</a>`] : [];
   }).join('／');
   return `<article class="briefing-poll" data-poll-id="${esc(poll.pollId)}">
-    <div class="briefing-poll-heading"><b>${esc(poll.pollster)}${poll.sponsor ? ` <span>／${esc(poll.sponsor)}</span>` : ''}</b><time datetime="${esc(poll.fieldEnd)}">${esc(poll.fieldStart)}〜${esc(poll.fieldEnd)}</time></div>
-    <p class="briefing-poll-meta">${esc(poll.populationLabel)} ${poll.sampleSize.toLocaleString('ja-JP')}人 · <b>${esc(condition)}</b>${poll.completeness === 'partial' ? ' · 部分公開' : ''}</p>
+    <div class="briefing-poll-heading"><b>${esc(poll.pollster)}${poll.sponsor ? ` <span>／${esc(poll.sponsor)}</span>` : ''}</b></div>
     <div class="briefing-poll-track" aria-hidden="true">${results.map(r=>`<i class="briefing-poll-${colorKey(r)}" style="width:${r.value/denominator*100}%"></i>`).join('')}${remainder ? `<i class="briefing-poll-unreported" style="width:${remainder/denominator*100}%"></i>` : ''}</div>
     <ul class="briefing-poll-labels">${results.map(r=>`<li><i class="briefing-poll-${colorKey(r)}" aria-hidden="true"></i>${esc(r.label)} <b>${r.value}%</b></li>`).join('')}${remainder ? `<li><i class="briefing-poll-unreported" aria-hidden="true"></i>内訳未掲載 <b>${remainder}%</b></li>` : ''}</ul>
+    <p class="briefing-poll-meta"><time datetime="${esc(poll.fieldEnd)}">${esc(poll.fieldStart)}〜${esc(poll.fieldEnd)}</time><br>${esc(poll.populationLabel)} ${poll.sampleSize.toLocaleString('ja-JP')}人 · <b>${esc(condition)}</b>${poll.completeness === 'partial' ? ' · 部分公開' : ''}</p>
     <p class="briefing-poll-precision">${esc(poll.precisionLabel ?? '誤差の記載なし')}${poll.residualTreatment === 'rounding' || total > 100.01 ? ` · 公表値の合計${Number(total.toFixed(2))}%（丸め）` : ''}</p>
     <details class="briefing-poll-method"><summary>調査方法・設問・出典</summary><p>スポンサー：${esc(poll.sponsor ?? '明記なし')}</p><p>${esc(poll.method)}</p><p>${esc(poll.question)}</p>${poll.notes.map(n=>`<p>${esc(n)}</p>`).join('')}<p>${sources || '出典を確認中'}</p></details>
   </article>`;
