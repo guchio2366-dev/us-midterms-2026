@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-22-v1",
+  "revision": "observation-2026-09-23-v1",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,29 +8,28 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-22T00:11:04Z",
+    "lastCompletedAt": "2026-09-23T00:16:24Z",
     "latestRun": {
-      "runId": "daily-20260922",
-      "startedAt": "2026-09-21T23:58:18Z",
-      "completedAt": "2026-09-22T00:11:04Z",
+      "runId": "daily-20260923",
+      "startedAt": "2026-09-22T23:59:54Z",
+      "completedAt": "2026-09-23T00:16:24Z",
       "outcome": "partial",
       "checkedSourceIds": [
         "obs-inside",
         "obs-white-house",
         "obs-ap-harris-el-sayed-20260922",
-        "obs-houston-chronicle-tx-rally-result-20260921",
-        "obs-reuters-mi-rogers-iran-20260921",
-        "obs-reuters-ipsos-national-20260921"
+        "obs-ap-mi-harris-elsayed-result-20260922",
+        "obs-cbs-detroit-harris-elsayed-20260922",
+        "obs-jackson-bio"
       ],
       "pendingSourceIds": [
-        "obs-jackson-bio",
         "obs-roster-oh",
         "obs-roster-nh",
         "obs-sabato",
         "obs-quantus-me-20260917",
         "obs-axios-nrsc-spending-20260918"
       ],
-      "note": "Texasで共和党Paxton氏・Cruz氏の9月21日集会の実施と発言を確認し、予定と結果を相互参照。Michiganで共和党Rogers氏の対イラン戦争早期終結・燃料税提案と過去の政権支持、民主党El-Sayed氏の反論を追加。全国Reuters/Ipsos調査は6州の候補者支持率と区別して掲載。9月22日のEl-Sayed氏・Harris前副大統領の行事は実施前のため予定を維持。Inside Elections全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧は9月21日掲載分まで確認し、対象6州へのTrump大統領の新たな確定訪問は確認できなかったが未公表日程の不存在は断定しない。OH・NH名簿、Sabato、Quantus ME、NRSC支出のFEC原票、Jackson氏の経歴ページは照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
+      "note": "Michiganで民主党El-Sayed氏とHarris前副大統領の9月22日医療円卓会議の実施を確認し、元の予定と結果を相互参照。黒人妊産婦の健康、党内結集という民主党側の狙いと、共和党Rogers氏側の反論を分けて掲載し、共同登壇を実際の支持結集や得票効果とは扱わない。Inside Elections全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧は9月22日掲載分まで確認し、対象6州へのTrump大統領の新たな確定訪問は確認できなかったが未公表日程の不存在は断定しない。Jackson氏の公式経歴ページは再照合できた。OH・NH名簿、Sabato、Quantus ME、NRSC州別支出のFEC原票は照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
     }
   },
   "sources": [
@@ -137,8 +136,8 @@
       "url": "https://www.jacksonformaine.com/about",
       "publishedAt": null,
       "referencePeriod": "北部メーンの林業労働、州議会20年・上院議長6年、本人が挙げる学校給食・地方医療の実績",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-09-23",
+      "contentVerifiedAt": "2026-09-23",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -147,7 +146,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-09-23T00:05:00Z"
     },
     {
       "sourceId": "obs-maine-debates",
@@ -622,8 +621,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-22",
-      "contentVerifiedAt": "2026-09-22",
+      "retrievedAt": "2026-09-23",
+      "contentVerifiedAt": "2026-09-23",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -637,7 +636,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-22T00:08:00Z"
+      "lastSuccessAt": "2026-09-23T00:05:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -646,8 +645,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-22",
-      "contentVerifiedAt": "2026-09-22",
+      "retrievedAt": "2026-09-23",
+      "contentVerifiedAt": "2026-09-23",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -661,7 +660,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-22T00:08:00Z"
+      "lastSuccessAt": "2026-09-23T00:05:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1119,7 +1118,45 @@
       "method": "AP本文で両陣営の確認、日付、主題、初の共同公開行事であることを照合。時刻・会場・得票効果は推測しない",
       "alternativeUrl": "https://www.fox2detroit.com/news/abdul-el-sayed-campaigning-kamala-harris-next-week",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-22T00:08:00Z"
+      "lastSuccessAt": "2026-09-23T00:05:00Z"
+    },
+    {
+      "sourceId": "obs-ap-mi-harris-elsayed-result-20260922",
+      "title": "Kamala Harris says midterms could be ‘stopgap’ on Trump as she campaigns with El-Sayed in Michigan",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/kamala-harris-abdul-elsayed-michigan-senate-368c41b288038e91312496731c18d213",
+      "publishedAt": "2026-09-22",
+      "referencePeriod": "9月22日にDetroitのBirth Detroitで民主党Abdul El-Sayed氏とKamala Harris前副大統領が黒人妊産婦の健康を扱う円卓会議を実施。党内結集というEl-Sayed氏の説明、共和党Mike Rogers陣営の反論、2024年から続く党内の相違を報道。",
+      "retrievedAt": "2026-09-23",
+      "contentVerifiedAt": "2026-09-23",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "APの実施後記事で会場、主題、両陣営の発言、過去の相違を照合。共同登壇を支持結集や得票効果の証拠とは扱わない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z"
+    },
+    {
+      "sourceId": "obs-cbs-detroit-harris-elsayed-20260922",
+      "title": "Kamala Harris campaigns for Abdul El-Sayed at Detroit maternal health roundtable",
+      "publisher": "CBS Detroit",
+      "url": "https://www.cbsnews.com/detroit/news/kamala-harris-abdul-el-sayed-detroit-maternal-health-campaign/",
+      "publishedAt": "2026-09-22",
+      "referencePeriod": "Birth Detroitでの円卓会議の発言と、共和党Mike Rogers氏がHarris氏の訪問をEl-Sayed氏の弱さの表れと批判し、物価・税・刑事司法を攻撃した声明を州内局が報道。",
+      "retrievedAt": "2026-09-23",
+      "contentVerifiedAt": "2026-09-23",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内局の記事で会場と参加者の発言、Rogers氏の応答を照合。医療上の効果と選挙への効果は推測しない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z"
     },
     {
       "sourceId": "obs-coefficient-ak-20260917",
@@ -1959,6 +1996,20 @@
       "kind": "observed"
     },
     {
+      "evidenceId": "ev-obs-ap-mi-harris-elsayed-result-20260922",
+      "sourceId": "obs-ap-mi-harris-elsayed-result-20260922",
+      "locator": "9月22日、民主党Abdul El-Sayed氏とKamala Harris前副大統領はDetroitのBirth Detroitで黒人妊産婦の健康を扱う円卓会議を実施。El-Sayed氏は党内結集を狙うと説明し、Rogers陣営は訪問を弱さの表れと批判した。両氏はIsrael政策の相違について同席中に質問を受けていない。",
+      "checkedAt": "2026-09-23",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-cbs-detroit-harris-elsayed-20260922",
+      "sourceId": "obs-cbs-detroit-harris-elsayed-20260922",
+      "locator": "Birth DetroitでHarris氏はEl-Sayed氏を黒人妊産婦の健康の擁護者として支持し、El-Sayed氏は出産前後の支援を訴えた。共和党Mike Rogers氏は声明で訪問をEl-Sayed氏の弱さの表れと位置付け、Harris政権期の物価と両候補の政策を批判した。支持や政策効果の実証ではない。",
+      "checkedAt": "2026-09-23",
+      "kind": "observed"
+    },
+    {
       "evidenceId": "ev-obs-reuters-oh-pac-spending-20260918",
       "sourceId": "obs-reuters-oh-pac-spending-20260918",
       "locator": "共和党系スーパーPAC6団体が直近1週間にOhioで計約1,400万ドルの広告を発注。民主党Brownは約3,860万ドル、共和党Hustedは約1,430万ドルを調達したとFEC記録に基づき報道。Brown陣営は批判し、Husted陣営はコメントしなかった。",
@@ -2249,11 +2300,11 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-22",
+      "updatedAt": "2026-09-23",
       "headline": "政策の違いが、候補者への距離感につながるか",
-      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。RogersがTrump政権のイラン攻撃支持から早期終結へ比重を移したため、燃料価格への提案、過去発言、El-Sayedの反論を分けて確認する。",
-      "lead": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。Rogersは7月までTrump大統領の対イラン攻撃と権限を擁護していたが、9月21日には戦争の早期終結とガソリン税・ディーゼル輸出の一時停止を提案。El-Sayedは、燃料高騰後の選挙向け転換だと批判した。",
-      "uncertainty": "別々の調査の差から支持率の変化は断定できず、学歴・人種別の部分標本は全体より不確か。Rogersの現在と過去の発言は確認できるが、戦況や燃料価格への政策効果、El-Sayedの批判への有権者評価は未確認。10月8日の直接討論で同じ質問への回答を比べる。",
+      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。El-SayedはHarris前副大統領と黒人妊産婦の健康を訴え、党内結集を狙う。Rogers側は訪問を弱さの表れと反論したため、共同登壇と実際の支持移動を分けて見る。",
+      "lead": "引退する民主党Gary Peters上院議員の議席を、民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬の2調査はEl-Sayedが2〜3ポイント先頭だが差は公表誤差内。9月22日、El-SayedはHarris前副大統領とDetroitで黒人妊産婦の健康を扱う円卓会議を実施し、2024年大統領選や予備選で分かれた民主党支持層の結集を訴えた。Rogers側は訪問をEl-Sayedの弱さの表れと批判した。",
+      "uncertainty": "共同登壇、推薦、陣営の『結集』『弱さ』という説明は、黒人・アラブ系・ユダヤ系・予備選支持者の実際の投票先を示さない。両氏はIsrael政策の相違について同席中に質問を受けず、医療政策の効果と得票効果も未確認。10月8日の直接討論と後続の比較可能な調査で確認する。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
@@ -2267,18 +2318,22 @@
         "ev-obs-wapo-mi-rhetoric-20260919",
         "ev-obs-reuters-democratic-unity-20260919",
         "ev-obs-ap-mi-rogers-coalition-20260921",
-        "ev-obs-reuters-mi-rogers-iran-20260921"
+        "ev-obs-reuters-mi-rogers-iran-20260921",
+        "ev-obs-ap-mi-harris-elsayed-result-20260922",
+        "ev-obs-cbs-detroit-harris-elsayed-20260922"
       ],
       "materials": [
         {
           "materialId": "mi-policy",
-          "title": "改革案をどこまで受け入れるか",
-          "fact": "El-Sayedは皆保険を掲げ、9月9日にはAI開発の一時停止と労働者・安全の保護を提案した。",
-          "meaning": "政策への期待と懸念を分け、候補者自身の評価に結び付くかを見る。",
-          "limit": "発言の目立ち方と、州全体での重要度は同じではない。",
+          "title": "医療・改革案と支持連合を分けて見る",
+          "fact": "El-Sayedは皆保険とAI開発の一時停止を掲げ、9月22日にはHarris前副大統領と黒人妊産婦の健康と出産前後の支援を訴えた。",
+          "meaning": "医療政策の内容に加え、予備選後に黒人有権者など民主党の支持層をまとめられるかを見る。",
+          "limit": "共同登壇と政策発言は、医療上の効果や支持層の結集、得票効果を証明しない。",
           "evidenceIds": [
             "ev-obs-abdul-ai",
-            "ev-obs-ssrs"
+            "ev-obs-ssrs",
+            "ev-obs-ap-mi-harris-elsayed-result-20260922",
+            "ev-obs-cbs-detroit-harris-elsayed-20260922"
           ]
         },
         {
@@ -2325,10 +2380,11 @@
             {
               "candidateId": "cand-mi-abdul-el-sayed",
               "kind": "claim",
-              "text": "皆保険に加え、AI安全審査や自動化による利益の労働者への還元を提案。Rogers氏の対イラン戦争の早期終結案は、燃料高騰後の選挙向け転換だと批判した。",
+              "text": "皆保険、AI安全審査と利益の労働者への還元を提案。Harris前副大統領との円卓会議では、黒人妊産婦の健康と出産前後の支援を訴えた。Rogers氏の対イラン戦争の早期終結案は、燃料高騰後の選挙向け転換だと批判した。",
               "evidenceIds": [
                 "ev-obs-abdul-ai",
-                "ev-obs-reuters-mi-rogers-iran-20260921"
+                "ev-obs-reuters-mi-rogers-iran-20260921",
+                "ev-obs-cbs-detroit-harris-elsayed-20260922"
               ]
             },
             {
@@ -2346,26 +2402,28 @@
           "key": "president",
           "label": "政党・トランプとの関係",
           "cells": [
-        {
-          "candidateId": "cand-mi-abdul-el-sayed",
-          "kind": "observed",
-          "text": "Trumpらの大会での批判に対し、生活費・対カナダ貿易・医療へ焦点を戻すと応答。予備選相手Haley Stevens氏は全面支持を表明した一方、他の一部党関係者は未推薦。Piker氏の後続発言については反ユダヤ主義を非難した。",
-          "evidenceIds": [
-            "ev-obs-abdul-trade",
-            "ev-obs-ap-mi-convention",
-            "ev-obs-elsayed-piker-statement-20260824",
-            "ev-obs-reuters-democratic-unity-20260919"
+            {
+              "candidateId": "cand-mi-abdul-el-sayed",
+              "kind": "observed",
+              "text": "Trumpらの批判に生活費・貿易・医療で応答。予備選相手Haley Stevens氏の支持に続き、Harris前副大統領と初めて共同登壇し党内結集を訴えた。2024年にはIsrael政策をめぐるUncommitted運動に加わった後Harris氏を支持しており、共同登壇だけで過去の相違や支持層の反応が解消したとは言えない。",
+              "evidenceIds": [
+                "ev-obs-abdul-trade",
+                "ev-obs-ap-mi-convention",
+                "ev-obs-elsayed-piker-statement-20260824",
+                "ev-obs-reuters-democratic-unity-20260919",
+                "ev-obs-ap-mi-harris-elsayed-result-20260922"
               ]
             },
             {
               "candidateId": "cand-mi-mike-rogers",
               "kind": "observed",
-              "text": "Trumpと協力すると主張しつつ、自陣営広告では『Michigan first』を訴える。7月にはTrump氏の対イラン攻撃と大統領権限を擁護したが、9月21日には戦争の早期終結を要求。接近と距離を案件・時期ごとに見る。",
+              "text": "Trumpと協力すると主張しつつ、自陣営広告では『Michigan first』を訴える。7月にはTrump氏の対イラン攻撃を擁護したが、9月21日には戦争の早期終結を要求。翌日にはHarris氏の訪問をEl-Sayed氏の弱さの表れと批判し、物価・税・刑事司法を結び付けて攻撃した。",
               "evidenceIds": [
                 "ev-obs-rogers-trade",
                 "ev-obs-ap-mi-convention",
                 "ev-obs-ap-mi-rogers-coalition-20260921",
-                "ev-obs-reuters-mi-rogers-iran-20260921"
+                "ev-obs-reuters-mi-rogers-iran-20260921",
+                "ev-obs-cbs-detroit-harris-elsayed-20260922"
               ]
             }
           ]
@@ -2422,9 +2480,9 @@
       "watchItems": [
         {
           "watchId": "mi-watch-0",
-          "title": "関税・AIをめぐる具体的な説明",
-          "what": "候補者が雇用と費用負担の両方に答えているか。",
-          "how": "公式発言と州内取材を照合。新たな発言内容は先取りしない。"
+          "title": "共同登壇後の民主党支持層の結集",
+          "what": "黒人・アラブ系・ユダヤ系有権者や予備選支持者が、El-Sayed氏支持へまとまるか。",
+          "how": "後続の同条件の候補者評価と属性別結果を確認。推薦、共同登壇、会場反応を投票先と同一視しない。"
         },
         {
           "watchId": "mi-watch-1",
@@ -3431,23 +3489,25 @@
       "date": "2026-09-22",
       "time": null,
       "timezone": "America/Detroit",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-09-17",
+      "checkedAt": "2026-09-23",
       "evidenceIds": [
-        "ev-obs-ap-harris-el-sayed-20260922"
+        "ev-obs-ap-harris-el-sayed-20260922",
+        "ev-obs-ap-mi-harris-elsayed-result-20260922",
+        "ev-obs-cbs-detroit-harris-elsayed-20260922"
       ],
       "relevance": [
         {
           "electionId": "2026-MI-2-regular",
-          "why": "民主党El-Sayed氏がHarris前副大統領と初めて共同の公開行事を行い、黒人妊産婦の健康と医療費を扱う予定。",
-          "watch": "実施・延期・中止、会場と発言全文を確認。党内結集への狙いと、支持・投票参加への実際の効果を分ける。",
+          "why": "民主党El-Sayed氏とHarris前副大統領が初の共同公開行事を実施し、黒人妊産婦の健康と党内結集を訴えた。共和党Rogers氏側も反論した。",
+          "watch": "行事は実施済み。後続の候補者評価や属性別調査で支持・投票参加への効果を確認し、共同登壇や反論だけで支持移動を決めない。",
           "materialIds": [
             "mi-policy"
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-mi-harris-elsayed-2026-09-22",
       "publicationStatus": "published"
     },
     {
@@ -3530,6 +3590,25 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-mi-harris-elsayed-2026-09-22",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": "mi-harris-el-sayed-2026-09-22",
+      "newsId": null,
+      "eventDate": "2026-09-22",
+      "updatedAt": "2026-09-23",
+      "title": "ミシガン州、民主党El-Sayed氏がHarris前副大統領と初の共同登壇――医療と党内結集を訴え",
+      "happened": "引退する民主党Gary Peters上院議員の議席を共和党Mike Rogers元下院議員と争う民主党Abdul El-Sayed氏は、9月22日にDetroitのBirth DetroitでKamala Harris前副大統領と黒人妊産婦の健康を扱う円卓会議を実施した。El-Sayed氏は出産前後の支援を訴え、2024年大統領選と8月の予備選で分かれた民主党支持層をまとめる狙いを説明した。Rogers氏側は訪問をEl-Sayed氏の弱さの表れと位置付け、物価・税・刑事司法を批判した。",
+      "meaning": "El-Sayed氏は医師・元Detroit保健局長という経歴と医療政策を、Harris氏が支持を得てきたDetroitの黒人有権者への働きかけにつないだ。一方、Rogers氏は民主党内の過去の相違と生活費を攻撃材料にした。医療政策の比較と、両党が支持層を動員できるかを同時に見る材料になる。",
+      "uncertainty": "El-Sayed氏は2024年にIsrael政策をめぐるUncommitted運動に加わった後Harris氏を支持したが、両氏は今回その相違について同席中に質問を受けていない。共同登壇は黒人・アラブ系・ユダヤ系有権者や予備選支持者が実際に結集した証拠ではなく、Rogers氏の『弱さ』という説明も対立陣営の評価である。医療上の効果と得票効果は未確認。",
+      "evidenceIds": [
+        "ev-obs-ap-mi-harris-elsayed-result-20260922",
+        "ev-obs-cbs-detroit-harris-elsayed-20260922"
+      ]
+    },
     {
       "updateId": "obs-update-tx-paxton-cruz-rally-2026-09-21",
       "status": "published",

@@ -1,0 +1,135 @@
+{
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-white-house",
+    "obs-ap-harris-el-sayed-20260922",
+    "obs-ap-mi-harris-elsayed-result-20260922",
+    "obs-cbs-detroit-harris-elsayed-20260922",
+    "obs-jackson-bio"
+  ],
+  "completedAt": "2026-09-23T00:16:24Z",
+  "note": "Michiganで民主党El-Sayed氏とHarris前副大統領の9月22日医療円卓会議の実施を確認し、元の予定と結果を相互参照。黒人妊産婦の健康、党内結集という民主党側の狙いと、共和党Rogers氏側の反論を分けて掲載し、共同登壇を実際の支持結集や得票効果とは扱わない。Inside Elections全35選挙は9月17日版から変更なく、新たな統合Toss Upはない。White House公式一覧は9月22日掲載分まで確認し、対象6州へのTrump大統領の新たな確定訪問は確認できなかったが未公表日程の不存在は断定しない。Jackson氏の公式経歴ページは再照合できた。OH・NH名簿、Sabato、Quantus ME、NRSC州別支出のFEC原票は照合未完了。D46・R48・未配分6、保存案・共有URLは維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918"
+  ],
+  "runId": "daily-20260923",
+  "startedAt": "2026-09-22T23:59:54Z",
+  "baseCommit": "aff616c1584602c66b4aea38fdcfa92447738604",
+  "publishedCommit": null,
+  "revision": "observation-2026-09-23-v1",
+  "reviewMode": "daily; Wednesday Asia/Tokyo; targeted event-result update and pending-source retry",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": ["https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "公式JSON全35選挙を確認。最終更新は9月17日のままで、新たな統合Toss Upと暫定配分の変更はない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": ["https://www.whitehouse.gov/briefings-statements/"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "公式発表一覧を9月22日掲載分まで確認。対象6州へのTrump大統領の新たな確定訪問日程は一覧から確認できず、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-ap-harris-el-sayed-20260922",
+      "attemptedUrls": ["https://apnews.com/article/elsayed-kamala-harris-michigan-senate-52f04f16a2d7aa6002df684c1e8aea29"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "事前記事で9月22日の主題、両陣営による予定確認、初の共同公開行事という位置付けを再確認。"
+    },
+    {
+      "sourceId": "obs-ap-mi-harris-elsayed-result-20260922",
+      "attemptedUrls": ["https://apnews.com/article/kamala-harris-abdul-elsayed-michigan-senate-368c41b288038e91312496731c18d213"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "Birth Detroitでの行事実施、黒人妊産婦の健康、El-Sayed氏の党内結集の説明、Rogers陣営の反論、2024年からの党内相違を照合。"
+    },
+    {
+      "sourceId": "obs-cbs-detroit-harris-elsayed-20260922",
+      "attemptedUrls": ["https://www.cbsnews.com/detroit/news/kamala-harris-abdul-el-sayed-detroit-maternal-health-campaign/"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "州内局の記事でHarris氏とEl-Sayed氏の医療発言、Rogers氏の物価・税・刑事司法を含む応答を照合。政策効果・得票効果とは分けた。"
+    },
+    {
+      "sourceId": "obs-jackson-bio",
+      "attemptedUrls": ["https://www.jacksonformaine.com/about"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "候補者公式ページを取得し、北部Maineの林業労働、州議会20年・上院議長6年、陣営が挙げる実績を再照合。新しい分析変更はない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": ["https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官ページの本文を取得できず、上院特別選挙の候補者原票を照合できなかった。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": ["https://www.sos.nh.gov/elections/2026-election-information"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官ページの本文を取得できず、候補者原票を照合できなかった。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": ["https://centerforpolitics.org/crystalball/2026-senate/"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式評価ページの本文を取得できず。Inside Elections以外の評価更新の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": ["https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "見出し以外の方法・質問文を取得できず、調査数値は引き続き非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": ["https://www.fec.gov/data/committee/C00027466/"],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "FECのNRSCページは8月31日までの委員会集計を確認できたが、報道された州別予定額の原票は特定できず照合待ち。"
+    }
+  ],
+  "verification": {
+    "tests": "119 passed",
+    "build": "success",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  }
+}
