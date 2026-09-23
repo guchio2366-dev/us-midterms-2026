@@ -1,0 +1,109 @@
+{
+  "checkedSourceIds": [
+    "obs-vox-me-abortion-20260922",
+    "obs-chron-tx-bush-cornyn-fundraiser-20260922"
+  ],
+  "completedAt": "2026-09-23T00:35:38Z",
+  "note": "同日1回目の公開後に出た州別取材を追加確認。Maineでは共和党現職Collins氏のKavanaugh判事承認票と、民主党Jackson氏の過去から現在への中絶政策の変化が広告・投票参加の争点になっていることを整理した。TexasではGeorge W. Bush元大統領とJohn Cornyn上院議員の共和党募金行事が接戦6州の共和党候補へ資金を回した一方、共和党Paxton氏を対象に含めなかったことを記録した。ただしBush氏はTexas上院選への立場を公表しておらず、不支持や有権者への効果とは扱わない。OH・NH名簿、Sabato、Quantus ME、NRSC州別支出のFEC原票は照合未完了。D46・R48・未配分6、保存案・共有URLは維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-sabato",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918"
+  ],
+  "runId": "daily-20260923-2",
+  "startedAt": "2026-09-23T00:32:42Z",
+  "baseCommit": "a882dc40acbbff5e71697f8ae03912ffd66e0708",
+  "publishedCommit": "866cb63ea62955df5cdf9e31eb1af15289a14889",
+  "revision": "observation-2026-09-23-v2",
+  "reviewMode": "daily follow-up; Wednesday Asia/Tokyo; newly published state-reporting check",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-vox-me-abortion-20260922",
+      "attemptedUrls": [
+        "https://www.vox.com/policy/503317/susan-collins-abortion-maine-midterms-politics-reproductive-rights-roe-v-wade"
+      ],
+      "attemptedAt": "2026-09-23T00:35:38Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:35:38Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "広告支出、Collins氏のKavanaugh判事承認票と説明、Jackson氏の2010年の回答と2023年の州法案共同提出、有権者の争点優先度を照合。候補者の記録、支援団体の主張、得票効果を分けた。"
+    },
+    {
+      "sourceId": "obs-chron-tx-bush-cornyn-fundraiser-20260922",
+      "attemptedUrls": [
+        "https://www.chron.com/news/article/george-bush-ken-paxton-fundraising-22443254.php"
+      ],
+      "attemptedAt": "2026-09-23T00:35:38Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-23T00:35:38Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "Bush元大統領とCornyn上院議員のDallas募金行事が支援した6州、Paxton氏が対象外だった事実、Cornyn氏の過去の批判、Bush氏の未表明とPaxton氏側の未回答を照合。対象外を不支持とは断定しない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"
+      ],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "同日1回目の確認で州務長官ページ本文を取得できず。短時間の追試ではなく未確認として引き継いだ。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections/2026-election-information"
+      ],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "同日1回目の確認で州務長官ページ本文を取得できず。未確認として引き継いだ。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "同日1回目の確認で公式評価ページ本文を取得できず。Inside Elections以外の評価更新の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "同日1回目の確認で方法・質問文を取得できず、調査数値は引き続き非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": [
+        "https://www.fec.gov/data/committee/C00027466/"
+      ],
+      "attemptedAt": "2026-09-23T00:05:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "同日1回目にFEC委員会集計を確認したが、報道された州別予定額の原票は特定できず照合待ち。"
+    }
+  ],
+  "verification": {
+    "tests": "124 passed",
+    "build": "success",
+    "mainFastForward": "passed: 866cb63ea62955df5cdf9e31eb1af15289a14889 from rechecked baseCommit a882dc40acbbff5e71697f8ae03912ffd66e0708; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35803736024",
+    "publicContent": "verified on the published site: Texas Bush/Cornyn fundraiser context, Maine abortion-record comparison and uncertainty, linkage to the new six-state briefing layout, and unchanged D46/R48/unallocated6 baseline"
+  }
+}
