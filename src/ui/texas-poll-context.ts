@@ -20,7 +20,6 @@ export function texasPollContextMarkup(electionId: string): string {
       <tfoot><tr><th scope="row">上院で縮まった差</th><td>${relativePoll.toFixed(1)}</td><td>${relativeResult.toFixed(1)}</td></tr></tfoot>
     </table>
     <p class="texas-context-limit">ただし、上院の差は調査では1.0ポイント、実結果は8.5ポイントで、大きく外れた。今回の支持率を補正する数字ではない。</p>
-    <p class="texas-context-next"><b>今年はここを見る</b>自党の支持を固め、無党派にも広げられるか。候補別の支持率と、党派別の内訳を併せて追いたい。</p>
     <details class="texas-context-details"><summary>比較の条件・計算・出典</summary>
       <p>調査は${esc(context.fieldStart)}〜${esc(context.fieldEnd)}、投票予定者${context.sampleSize}人。携帯へのMMSからウェブ回答、固定電話の自動音声、CINTオンラインパネルを併用。投票日は2024年11月5日で、調査終了から15日ある。</p>
       <p>大統領選はトランプ対ハリス、上院選はクルーズ対オルレッド。同じ調査の2設問を比較しており、独立した2調査ではない。</p>

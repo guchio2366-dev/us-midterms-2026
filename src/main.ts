@@ -8,6 +8,7 @@ import './ui/overview.css';
 import './ui/briefing.css';
 import { briefingElections, locatorMapMarkup } from './ui/briefing';
 import { briefingPollsMarkup } from './ui/briefing-polls';
+import { briefingLensMarkup } from './ui/briefing-lens';
 import { texasPollContextMarkup } from './ui/texas-poll-context';
 import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
@@ -223,7 +224,7 @@ function researchBriefingParts(election: Election) {
   const details = brief
     ? `<details class="briefing-details"><summary>州別調査・根拠を、この欄で読む</summary><div class="briefing-expanded">${raceBriefMarkup(brief)}${refs(brief.sourceIds)}</div></details>`
     : `<details class="briefing-details"><summary>候補者・選挙情報の根拠を読む</summary>${refs(election.sourceIds)}</details>`;
-  return {lead:candidates + lead,details};
+  return {candidates,lead,details};
 }
 
 function focusSummaryMarkup(election: Election) {
@@ -234,13 +235,13 @@ function focusSummaryMarkup(election: Election) {
   const body = observation
     ? observationBriefingParts(observation,election.candidates,seat.incumbent)
     : researchBriefingParts(election);
-  return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3></div><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div>
-    <div class="briefing-columns"><div class="briefing-analysis">${body.lead}${texasPollContextMarkup(election.electionId)}</div><div class="briefing-poll-column">${briefingPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div></div>${body.details}`;
+  return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><div class="focus-state-title"><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div></div>${body.candidates}</div>
+    <div class="briefing-columns"><div class="briefing-analysis">${body.lead}${briefingLensMarkup(election.electionId)}${texasPollContextMarkup(election.electionId)}</div><div class="briefing-poll-column">${briefingPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div></div>${body.details}`;
 }
 
 function focusLocatorContent(election: Election) {
   const state = stateByFips.get(seatById.get(election.seatId)!.stateFips)!;
-  return `<div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>着色は選択州</span><small>アラスカ・ハワイは位置と縮尺を調整。</small></figcaption>`;
+  return `<div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>着色は選択州</span><small>AK・HIは位置・縮尺を調整</small></figcaption>`;
 }
 
 function renderFocusLocator() {
@@ -252,7 +253,7 @@ function renderFocusLocator() {
 function focusUpdatesMarkup() {
   const active = focusElections.find(election => election.electionId === activeFocusElectionId) ?? focusElections[0];
   const leaningCount = focusElections.filter(election => ['D','R'].includes(ratingConsensusBySeat.get(election.seatId)?.category ?? '')).length;
-  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><p class="kicker">RACES TO WATCH</p><h3>過半数の行方を左右する${focusElections.length}州</h3></div><span>接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}${leaningCount ? `・優勢側のある${leaningCount}州` : ''}</span></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>冒頭の統合評価で未配分となった州に、アイオワとノースカロライナを加えて読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。</p></details><div class="focus-selector"><figure id="focus-locator" class="briefing-locator">${active ? focusLocatorContent(active) : ''}</figure><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
+  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><h3>過半数の行方を左右する${focusElections.length}州</h3></div></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}${leaningCount ? `・優勢側のある${leaningCount}州` : ''}。冒頭の統合評価で未配分となった州に、アイオワとノースカロライナを加えて読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。</p></details><div class="focus-selector"><figure id="focus-locator" class="briefing-locator">${active ? focusLocatorContent(active) : ''}</figure><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
     const state = stateByFips.get(seatById.get(election.seatId)!.stateFips)!;
     const selected = election.electionId === active?.electionId;
     const classification = focusClassification(election);
