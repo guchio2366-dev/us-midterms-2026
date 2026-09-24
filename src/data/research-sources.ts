@@ -3,8 +3,10 @@ import type { EvidenceRef } from './research-model';
 import { focusEvidenceRefs, focusResearchSources } from './research-focus-sources';
 import { observationEvidenceRefs, observationSources } from './observation';
 import { issueReportSources, issueReportEvidence } from './issue-report-sources';
+import { texasPollContextSources, texasPollContextEvidence } from './texas-poll-context';
 
 export const researchSources: Source[] = [
+  ...texasPollContextSources,
   ...issueReportSources,
   ...observationSources,
   ...focusResearchSources,
@@ -139,6 +141,7 @@ export const researchSources: Source[] = [
 ];
 
 export const evidenceRefs: EvidenceRef[] = [
+  ...texasPollContextEvidence,
   ...issueReportEvidence,
   ...observationEvidenceRefs,
   ...focusEvidenceRefs,
