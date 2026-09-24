@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-23-v2",
+  "revision": "observation-2026-09-24",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,24 +8,25 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-23T00:35:38Z",
+    "lastCompletedAt": "2026-09-24T00:15:00Z",
     "latestRun": {
-      "runId": "daily-20260923-2",
-      "startedAt": "2026-09-23T00:32:42Z",
-      "completedAt": "2026-09-23T00:35:38Z",
+      "runId": "daily-20260924",
+      "startedAt": "2026-09-24T00:01:28Z",
+      "completedAt": "2026-09-24T00:15:00Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-vox-me-abortion-20260922",
-        "obs-chron-tx-bush-cornyn-fundraiser-20260922"
+        "obs-sabato",
+        "obs-270towin-sabato-20260922",
+        "obs-inside",
+        "obs-white-house"
       ],
       "pendingSourceIds": [
         "obs-roster-oh",
         "obs-roster-nh",
-        "obs-sabato",
         "obs-quantus-me-20260917",
         "obs-axios-nrsc-spending-20260918"
       ],
-      "note": "同日1回目の公開後に出た州別取材を追加確認。Maineでは共和党現職Collins氏のKavanaugh判事承認票と、民主党Jackson氏の過去から現在への中絶政策の変化が広告・投票参加の争点になっていることを整理した。TexasではGeorge W. Bush元大統領とJohn Cornyn上院議員の共和党募金行事が接戦6州の共和党候補へ資金を回した一方、共和党Paxton氏を対象に含めなかったことを記録した。ただしBush氏はTexas上院選への立場を公表しておらず、不支持や有権者への効果とは扱わない。OH・NH名簿、Sabato、Quantus ME、NRSC州別支出のFEC原票は照合未完了。D46・R48・未配分6、保存案・共有URLは維持。"
+      "note": "Sabatoの9月22日変更を、公式記事の公表情報と同日付の現行評価表で照合。IowaはLean RからToss-up、MichiganはToss-upからLean D、KansasはLikely RからLean Rへ変更された。Inside Electionsは9月17日版のままのため、統合評価ではIowaが新たに未配分となり、暫定配分はD46・R47・未配分7。評価変更は勝敗予測や支持移動の証明とは扱わない。公式記事本文はCloudflareで取得できず、代替表との照合を部分確認として記録。White House公式一覧は9月22日掲載分まで確認し、対象州へのTrump大統領の新たな確定訪問は確認できなかった。旧保存案・共有URLは保存時の基準を維持。"
     }
   },
   "sources": [
@@ -590,25 +591,48 @@
       "sourceId": "obs-sabato",
       "title": "Sabato 上院評価",
       "publisher": "Sabato 上院評価",
-      "url": "https://centerforpolitics.org/crystalball/2026-senate/",
-      "publishedAt": null,
-      "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-19",
-      "contentVerifiedAt": null,
+      "url": "https://centerforpolitics.org/crystalball/rating-changes-toward-democrats-across-the-board-mi-sen-to-leans-d-other-key-statewide-races-to-toss-up/",
+      "publishedAt": "2026-09-22",
+      "referencePeriod": "Iowa・Kansas・Michiganの2026年9月22日評価変更",
+      "retrievedAt": "2026-09-24",
+      "contentVerifiedAt": "2026-09-24",
       "electionIds": [
+        "2026-IA-2-regular",
         "2026-AK-2-regular",
         "2026-ME-2-regular",
         "2026-MI-2-regular",
         "2026-TX-2-regular",
         "2026-NH-2-regular",
-        "2026-OH-3-special"
+        "2026-OH-3-special",
+        "2026-KS-2-regular"
       ],
       "category": "rating",
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "alternativeUrl": "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026",
+      "checkStatus": "reviewing",
+      "lastSuccessAt": "2026-09-24T00:08:00Z"
+    },
+    {
+      "sourceId": "obs-270towin-sabato-20260922",
+      "title": "Crystal Ball 2026 Senate Ratings — September 22 changes",
+      "publisher": "270toWin",
+      "url": "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026",
+      "publishedAt": null,
+      "referencePeriod": "Sabatoの9月22日変更3件と現行評価の照合",
+      "retrievedAt": "2026-09-24",
+      "contentVerifiedAt": "2026-09-24",
+      "electionIds": [
+        "2026-IA-2-regular",
+        "2026-MI-2-regular",
+        "2026-KS-2-regular"
+      ],
+      "category": "rating",
+      "cadence": "daily",
+      "method": "日付付きの変更一覧とSabato公式分析記事へのリンクを照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
-      "lastSuccessAt": null
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-24T00:08:00Z"
     },
     {
       "sourceId": "obs-inside",
@@ -617,8 +641,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-23",
-      "contentVerifiedAt": "2026-09-23",
+      "retrievedAt": "2026-09-24",
+      "contentVerifiedAt": "2026-09-24",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -632,7 +656,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-23T00:05:00Z"
+      "lastSuccessAt": "2026-09-24T00:09:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -641,8 +665,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-23",
-      "contentVerifiedAt": "2026-09-23",
+      "retrievedAt": "2026-09-24",
+      "contentVerifiedAt": "2026-09-24",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -656,7 +680,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-23T00:05:00Z"
+      "lastSuccessAt": "2026-09-24T00:10:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -2161,6 +2185,13 @@
       "locator": "9月21日夜、共和党のGeorge W. Bush元大統領とJohn Cornyn上院議員はDallasの募金行事でAlaska、Iowa、Maine、Michigan、New Hampshire、Ohioの共和党上院候補を支援したが、Texas候補Ken Paxton氏は対象に含めなかった。Cornyn氏は8月にPaxton氏の選挙運動と資金調達を批判。Bush氏はTexas上院選への立場を公表しておらず、Paxton氏側の回答も得られていないため、対象外をBush氏の不支持や党全体の分裂とは断定しない。",
       "checkedAt": "2026-09-23",
       "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-sabato-changes-20260922",
+      "sourceId": "obs-270towin-sabato-20260922",
+      "locator": "As of September 22, 2026の変更一覧で、Iowa Lean Republican→Toss-up、Kansas Likely→Leans Republican、Michigan Toss-up→Leans Democratを確認。Sabato公式分析記事の題名・公表日・検索断片とも照合したが、公式本文はCloudflareで取得できなかったため部分確認として扱う。",
+      "checkedAt": "2026-09-24",
+      "kind": "observed"
     }
   ],
   "races": [
@@ -3645,6 +3676,26 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-sabato-ratings-2026-09-22",
+      "status": "published",
+      "electionIds": [
+        "2026-IA-2-regular",
+        "2026-MI-2-regular",
+        "2026-KS-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-22",
+      "updatedAt": "2026-09-24",
+      "title": "SabatoがアイオワをToss Up、ミシガンをLean Dへ変更",
+      "happened": "上院選の情勢評価機関Sabato's Crystal Ballは9月22日、引退する共和党現職の議席を民主党Josh Turek氏と共和党Ashley Hinson氏が争うIowa州をLean RからToss Upへ変更した。引退する民主党現職の議席を民主党Abdul El-Sayed氏と共和党Mike Rogers氏が争うMichigan州はToss UpからLean Dへ、Kansas州はLikely RからLean Rへ変更した。",
+      "meaning": "Inside ElectionsはIowaをTilt R、MichiganをToss Upとしている。このサイトの統合規則では2機関の方向が一致しない議席を未配分にするため、Iowaが7つ目の未配分となり、暫定配分は民主党会派46・共和党会派47・未配分7になる。Michiganは引き続き未配分で、Kansasは共和党側の配分を維持する。",
+      "uncertainty": "情勢評価は勝率でも選挙結果でもなく、候補者への支持移動を直接測る世論調査でもない。Sabato公式記事の本文は取得制限で読めず、公式の題名・公表情報と、同日付で変更3件を掲載した現行評価表を照合した。旧保存案と共有URLは保存時の議席基準を維持する。",
+      "evidenceIds": [
+        "ev-obs-sabato-changes-20260922"
+      ]
+    },
     {
       "updateId": "obs-update-tx-bush-cornyn-fundraiser-2026-09-22",
       "status": "published",

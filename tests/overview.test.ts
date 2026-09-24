@@ -41,7 +41,7 @@ describe('PC opening overview contract', () => {
     const tracks = [...html.matchAll(/<div class="seat-composition-track"[^>]*>(.*?)<div class="seat-composition-legend"/gs)];
     expect(tracks).toHaveLength(3);
     const widths = tracks.map(track => [...track[1].matchAll(/style="width:([\d.]+)%"/g)].map(match => Number(match[1])));
-    expect(widths).toEqual([[34,12,6,17,31],[34,17,18,31],[34,15,20,31]]);
+    expect(widths).toEqual([[34,12,7,16,31],[34,17,18,31],[34,15,20,31]]);
     for (const row of widths) expect(row.reduce((sum,n) => sum+n,0)).toBe(100);
     expect(html).toContain('style="left:51%"');
     expect(html).toContain('style="left:49%"');
@@ -50,7 +50,7 @@ describe('PC opening overview contract', () => {
   it('shows the date, uncertainty and tie caveat before the optional method', () => {
     const visible = nationalOverviewMarkup().split('<details class="consensus-method')[0];
     expect(visible).toContain(RATING_SNAPSHOT_AS_OF);
-    expect(visible).toContain('未配分 6：接戦 3・評価分裂 3');
+    expect(visible).toContain('未配分 7：接戦 2・評価分裂 5');
     expect(visible).toContain('当選確率や最終結果ではない');
     expect(visible).toContain('下2本は必要な配分の例');
     expect(visible).toContain('非改選 34 ＋ 今回必要 17');

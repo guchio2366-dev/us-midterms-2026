@@ -90,10 +90,10 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('IL-2','2026-03-17','Safe D','cand-il',[
     candidate('Juliana Stratton','D','Democratic','cand-il'),candidate('Don Tracy','R','Republican','cand-il'),
   ]),
-  race('IA-2','2026-06-02','Lean R','ia-candidate-list-2026',[
+  race('IA-2','2026-06-02','Tossup','ia-candidate-list-2026',[
     candidate('Ashley Hinson','R','Republican','ia-candidate-list-2026','general-ballot','cand-ia-ashley-hinson'),candidate('Thomas Laehn','other','Libertarian','ia-candidate-list-2026','general-ballot','cand-ia-thomas-laehn'),candidate('Josh Turek','D','Democratic','ia-candidate-list-2026','general-ballot','cand-ia-josh-turek'),
   ]),
-  race('KS-2','2026-08-04','Likely R','cand-ks',[
+  race('KS-2','2026-08-04','Lean R','cand-ks',[
     candidate('Adam Hamilton','D','Democratic','cand-ks'),candidate('Roger Marshall','R','Republican','cand-ks'),
   ]),
   race('KY-2','2026-05-19','Safe R','cand-ky',[
@@ -108,7 +108,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('MA-2','2026-09-01','Safe D','cand-ma',[
     candidate('John Deaton','R','Republican','cand-ma'),candidate('Ed Markey','D','Democratic','cand-ma'),candidate('Joe Tache','other','Party for Socialism and Liberation','cand-ma'),
   ]),
-  race('MI-2','2026-08-04','Tossup','mi-candidate-list-2026',[
+  race('MI-2','2026-08-04','Lean D','mi-candidate-list-2026',[
     candidate('Lydia Christensen','other','Libertarian','mi-candidate-list-2026','general-ballot','cand-mi-lydia-christensen'),candidate('Abdul El-Sayed','D','Democratic','mi-candidate-list-2026','general-ballot','cand-mi-abdul-el-sayed'),candidate('Tim Long','other','U.S. Taxpayers','mi-candidate-list-2026','general-ballot','cand-mi-tim-long'),candidate('Douglas P. Marsh','other','Green','mi-candidate-list-2026','general-ballot','cand-mi-douglas-p-marsh'),candidate('Mike Rogers','R','Republican','mi-candidate-list-2026','general-ballot','cand-mi-mike-rogers'),candidate('Walter P. Kristy','other','Natural Law','mi-candidate-list-2026','general-ballot','cand-mi-walter-p-kristy'),
   ]),
   race('MN-2','2026-08-11','Likely D','cand-mn',[
@@ -209,6 +209,6 @@ const officialCandidateSources: Array<[string,string,string,string]> = [
 export const senateRaceSources: Source[] = [
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
-  {sourceId:'sabato-senate-2026',title:"2026 Senate ratings",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://centerforpolitics.org/crystalball/2026-senate/',publishedAt:null,updatedAt:'2026-08-26',referencePeriod:'全35選挙の統一情勢評価。Safeは表示上Solidへ正規化',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
+  {sourceId:'sabato-senate-2026',title:"2026 Senate ratings",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://centerforpolitics.org/crystalball/2026-senate/',publishedAt:null,updatedAt:'2026-09-22',referencePeriod:'全35選挙の統一情勢評価。Safeは表示上Solidへ正規化',retrievedAt:'2026-09-24',contentVerifiedAt:'2026-09-24'},
   {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-09-17',referencePeriod:'全35選挙の現行情勢評価。Tiltを含む元分類を保持',retrievedAt:'2026-09-18',contentVerifiedAt:'2026-09-18'},
 ];

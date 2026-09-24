@@ -38,9 +38,9 @@ function firstElectionWithBothCaucuses() {
 }
 
 describe('shared scenario state',() => {
-  it('starts a new scenario from the rating consensus with six seats unassigned',() => {
+  it('starts a new scenario from the rating consensus with seven seats unassigned',() => {
     const counts = countScenarioSenate(freshScenario(),seats,elections);
-    expect(counts).toEqual({Democratic:46,Republican:48,none:0,unconfirmed:0,vacant:0,unassigned:6});
+    expect(counts).toEqual({Democratic:46,Republican:47,none:0,unconfirmed:0,vacant:0,unassigned:7});
   });
 
   it('keeps a current candidate choice and resolves its caucus',() => {
@@ -87,7 +87,7 @@ describe('shared scenario state',() => {
     changedBaseline.snapshotId = 'later-snapshot';
     changedBaseline.outcomes['MI-2'] = 'Republican';
     const loaded = decodeScenario(encodeScenario(state),seats,elections,houseDistricts,changedBaseline,legacyBaseline);
-    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:46,Republican:48,none:0,unconfirmed:0,vacant:0,unassigned:6});
+    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:46,Republican:47,none:0,unconfirmed:0,vacant:0,unassigned:7});
     expect(loaded.staleBaseline).toBe(true);
   });
 
@@ -102,11 +102,11 @@ describe('shared scenario state',() => {
     const state = freshScenario();
     const election = elections.find(item => currentBaseline.outcomes[item.seatId] === 'unassigned')!;
     state.senate[election.seatId] = {kind:'caucus',electionId:election.electionId,caucus:'Democratic'};
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:47,Republican:48,unassigned:5});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:47,Republican:47,unassigned:6});
     state.senate[election.seatId] = {kind:'caucus',electionId:election.electionId,caucus:'Republican'};
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:46,Republican:49,unassigned:5});
-    delete state.senate[election.seatId];
     expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:46,Republican:48,unassigned:6});
+    delete state.senate[election.seatId];
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:46,Republican:47,unassigned:7});
   });
 
   it('recovers safely from a corrupt browser draft',() => {
@@ -168,11 +168,11 @@ describe('reverse Senate paths',() => {
     expect(result.paths[0].addedSeatIds).toHaveLength(result.shortage);
   });
 
-  it('starts the Republican path three seats short without locking automatic ratings',() => {
+  it('starts the Republican path four seats short without locking automatic ratings',() => {
     const result = generateSenatePaths({seats,elections,scenario:freshScenario(),caucus:'Republican',threshold:51,limit:3});
     expect(result.status).toBe('reached');
-    expect(result.shortage).toBe(3);
-    expect(result.paths[0].addedSeatIds).toHaveLength(3);
+    expect(result.shortage).toBe(4);
+    expect(result.paths[0].addedSeatIds).toHaveLength(4);
   });
 
   it('respects explicit choices until the user unlocks them',() => {

@@ -24,7 +24,7 @@ export function prepareSeatBar(segments: SeatBarSegment[], total: number): Prepa
   if (Math.abs(sum - total) > 1e-9) throw new Error(`seat bar segments total ${sum}, expected ${total}`);
   return segments.filter(segment => segment.count > 0).map(segment => ({
     ...segment,
-    percent: segment.count / total * 100,
+    percent: Number((segment.count / total * 100).toFixed(6)),
   }));
 }
 

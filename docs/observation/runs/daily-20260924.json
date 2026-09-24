@@ -1,0 +1,122 @@
+{
+  "checkedSourceIds": [
+    "obs-sabato",
+    "obs-270towin-sabato-20260922",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "completedAt": "2026-09-24T00:15:00Z",
+  "note": "Sabatoの9月22日変更を、公式記事の公表情報と同日付の現行評価表で照合。IowaはLean RからToss-up、MichiganはToss-upからLean D、KansasはLikely RからLean Rへ変更された。Inside Electionsは9月17日版のままのため、統合評価ではIowaが新たに未配分となり、暫定配分はD46・R47・未配分7。評価変更は勝敗予測や支持移動の証明とは扱わない。公式記事本文はCloudflareで取得できず、代替表との照合を部分確認として記録。White House公式一覧は9月22日掲載分まで確認し、対象州へのTrump大統領の新たな確定訪問は確認できなかった。旧保存案・共有URLは保存時の基準を維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918"
+  ],
+  "runId": "daily-20260924",
+  "startedAt": "2026-09-24T00:01:28Z",
+  "baseCommit": "50fef72b8e933929a793a9da9b7e39511a809210",
+  "publishedCommit": null,
+  "revision": "observation-2026-09-24",
+  "reviewMode": "daily; Thursday Asia/Tokyo; rating-change and scheduled-event check",
+  "timestampConvention": "成功日時は取得済み原文または明示した代替表を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/rating-changes-toward-democrats-across-the-board-mi-sen-to-leans-d-other-key-statewide-races-to-toss-up/",
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-24T00:08:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-24T00:08:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "公式記事の題名・公表日・検索断片でMichiganのLeans Dを確認。公式本文はCloudflare challengeで取得できず、変更3件の完全な本文説明は未確認。代替の現行評価表と相互照合した。"
+    },
+    {
+      "sourceId": "obs-270towin-sabato-20260922",
+      "attemptedUrls": [
+        "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026"
+      ],
+      "attemptedAt": "2026-09-24T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-24T00:08:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "As of September 22の変更一覧でIowa Lean R→Toss-up、Kansas Likely R→Leans R、Michigan Toss-up→Leans Dを照合。Sabato公式分析記事へのリンクも確認した。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/ratings/senate"
+      ],
+      "attemptedAt": "2026-09-24T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-24T00:09:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "現行JSONは9月17日更新のままで、Iowa Tilt R、Michigan Toss-up、Kansas Likely Rを維持。Sabatoとの不一致を統合未配分へ反映した。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-24T00:10:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-24T00:10:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "公式一覧は9月22日掲載分まで確認。対象州へのTrump大統領の新たな確定訪問は確認できなかったが、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"
+      ],
+      "attemptedAt": "2026-09-24T00:11:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院特別選挙候補者原票を取得できず、前回から未確認として継続。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections/2026-election-information"
+      ],
+      "attemptedAt": "2026-09-24T00:11:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院候補者原票を取得できず、前回から未確認として継続。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-24T00:12:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "方法・質問文を取得できず、調査数値は引き続き非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": [
+        "https://www.fec.gov/data/committee/C00027466/"
+      ],
+      "attemptedAt": "2026-09-24T00:12:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "報道された州別予定額に対応するFEC原票を特定できず照合待ち。前回成功日時を進めていない。"
+    }
+  ],
+  "verification": {
+    "tests": "129 passed",
+    "build": "success",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  }
+}
