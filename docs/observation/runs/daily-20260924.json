@@ -17,7 +17,7 @@
   "runId": "daily-20260924",
   "startedAt": "2026-09-24T00:01:28Z",
   "baseCommit": "50fef72b8e933929a793a9da9b7e39511a809210",
-  "publishedCommit": null,
+  "publishedCommit": "82938871824aa9fb4ecfabfd8dfe72a4855f95d7",
   "revision": "observation-2026-09-24",
   "reviewMode": "daily; Thursday Asia/Tokyo; rating-change and scheduled-event check",
   "timestampConvention": "成功日時は取得済み原文または明示した代替表を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
@@ -115,8 +115,8 @@
   "verification": {
     "tests": "129 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "passed: 82938871824aa9fb4ecfabfd8dfe72a4855f95d7 from base 50fef72b8e933929a793a9da9b7e39511a809210; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/35938022380",
+    "publicContent": "verified: 公開画面でD46・R47・未配分7、未配分の内訳『接戦2・評価分裂5』、Iowaの評価分裂、地図のToss Up 7議席、最新暫定配分から始まるシミュレーションを確認"
   }
 }
