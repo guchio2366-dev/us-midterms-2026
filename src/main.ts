@@ -241,7 +241,7 @@ function focusSummaryMarkup(election: Election) {
 
 function focusLocatorContent(election: Election) {
   const state = stateByFips.get(seatById.get(election.seatId)!.stateFips)!;
-  return `<div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>着色は選択州</span><small>AK・HIは位置・縮尺を調整</small></figcaption>`;
+  return `<div id="focus-locator-map">${locatorMapMarkup(geoFeatures,state)}</div><figcaption><b>${escapeHtml(state.nameJa)}の位置</b><span>着色は選択州</span><small>アラスカ・ハワイは別配置・縮尺調整</small></figcaption>`;
 }
 
 function renderFocusLocator() {
