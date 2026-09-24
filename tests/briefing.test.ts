@@ -3,20 +3,51 @@ import { feature } from 'topojson-client';
 import type { FeatureCollection } from 'geojson';
 import type { Topology } from 'topojson-specification';
 import topology from '../public/data/states-10m.json';
-import { elections, seats, states } from '../src/data/data';
+import { elections, seats, states, sources } from '../src/data/data';
+import { briefingLenses } from '../src/data/briefing-lenses';
+import { briefingLensMarkup } from '../src/ui/briefing-lens';
 import { observationData, observationFor } from '../src/data/observation';
 import { newsItems } from '../src/data/news';
 import { ratingSnapshotObservations } from '../src/data/rating-snapshot';
 import { aggregateRatingConsensus } from '../src/rating-consensus';
 import { buildRecentFeed, buildUpcomingFeed, filterFeed } from '../src/news-feed';
 import { briefingElections, locatorMapMarkup } from '../src/ui/briefing';
-import { observationBriefingMarkup, observationComparisonMarkup } from '../src/ui/observation';
+import { observationBriefingMarkup, observationBriefingParts, observationComparisonMarkup } from '../src/ui/observation';
 import { introductionMarkup, nationalOverviewMarkup } from '../src/ui/overview';
 
 const consensus = aggregateRatingConsensus(elections.map(e=>e.seatId),ratingSnapshotObservations);
 const focus = briefingElections(elections,seats,states,consensus);
 
 describe('state briefing', () => {
+  it('binds editorial findings to the correct races and existing sources, with honest gaps', () => {
+    expect(briefingLenses.map(lens=>lens.electionId).sort()).toEqual(focus.map(e=>e.electionId).sort());
+    for (const lens of briefingLenses) {
+      expect(lens.sourceIds.length).toBeGreaterThan(0);
+      const html=briefingLensMarkup(lens.electionId);
+      for (const id of lens.sourceIds) {
+        const source=sources.find(item=>item.sourceId===id);
+        expect(source,`${lens.electionId}: ${id}`).toBeDefined();
+        expect(html).toContain(source!.url.replaceAll('&','&amp;'));
+      }
+      expect(html).toContain(lens.limitation);
+    }
+    expect(briefingLensMarkup('2026-NC-2-regular')).toContain('候補別・党派別調査をまだ収録していない');
+    expect(briefingLensMarkup('unknown-election')).toBe('');
+  });
+
+  it('separates candidate identity from the analysis without losing candidates in the complete briefing', () => {
+    for (const e of focus) {
+      const race=observationFor(e.electionId);
+      if (!race) continue;
+      const seat=seats.find(s=>s.seatId===e.seatId)!;
+      const parts=observationBriefingParts(race,e.candidates,seat.incumbent);
+      expect(parts.candidates).toContain('aria-label="主要候補"');
+      expect(parts.lead).not.toContain('observation-candidate-intro');
+      const complete=observationBriefingMarkup(race,e.candidates,seat.incumbent);
+      expect(complete.match(/class="observation-candidate-intro"/g)).toHaveLength(1);
+    }
+  });
+
   it('keeps Iowa in the briefing when it becomes the seventh unallocated seat', () => {
     expect(focus.map(e=>e.seatId)).toEqual(['AK-2','IA-2','ME-2','MI-2','NH-2','NC-2','OH-3','TX-2']);
     expect(consensus.filter(c=>['tossup','split','missing'].includes(c.category))).toHaveLength(7);

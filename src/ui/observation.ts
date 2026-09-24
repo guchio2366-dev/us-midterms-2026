@@ -50,10 +50,8 @@ export function observationComparisonMarkup(race:RaceObservation,candidates:Cand
 
 /** Reading stays inside the briefing; no scenario controls or duplicate detail anchors. */
 export function observationBriefingParts(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
-  const material = race.materials.at(-1);
-  const lead = `${observationCandidateIntroMarkup(race,candidates,incumbent)}
-    <div class="briefing-week"><small>今週の焦点 · 分析更新 <time datetime="${esc(race.updatedAt)}">${esc(race.updatedAt)}</time></small><h4>${esc(race.headline)}</h4><p>${esc(race.featuredSummary)}</p></div>
-    ${material ? `<p class="briefing-takeaway"><b>ここを見る</b>${esc(material.meaning)}</p>` : ''}`;
+  const candidateIntro = observationCandidateIntroMarkup(race,candidates,incumbent);
+  const lead = `<div class="briefing-week"><small>今週の焦点 · 分析更新 <time datetime="${esc(race.updatedAt)}">${esc(race.updatedAt)}</time></small><h4>${esc(race.headline)}</h4><p>${esc(race.featuredSummary)}</p></div>`;
   const details = `<details class="briefing-details"><summary>候補者の違い・発言の経緯を、この欄で読む</summary><div class="briefing-expanded">
       <h4>これまでの経緯</h4><p>${esc(race.lead)}</p>
       <p class="observation-uncertainty"><b>まだ分からないこと</b>${esc(race.uncertainty)}</p>${evidenceMarkup(race.evidenceIds)}
@@ -61,12 +59,12 @@ export function observationBriefingParts(race:RaceObservation,candidates:Candida
       ${observationComparisonMarkup(race,candidates,'briefing',true)}
       <section class="briefing-watch"><h4>次に確認したい点</h4>${race.watchItems.map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</section>
     </div></details>`;
-  return {lead,details};
+  return {candidates:candidateIntro,lead,details};
 }
 
 export function observationBriefingMarkup(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
-  const {lead,details} = observationBriefingParts(race,candidates,incumbent);
-  return lead + details;
+  const parts = observationBriefingParts(race,candidates,incumbent);
+  return parts.candidates + parts.lead + parts.details;
 }
 
 export function observationUpdateMarkup(update:ObservationUpdate,electionId:string) {
