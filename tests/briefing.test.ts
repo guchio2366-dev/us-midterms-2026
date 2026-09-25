@@ -5,6 +5,7 @@ import type { Topology } from 'topojson-specification';
 import topology from '../public/data/states-10m.json';
 import { elections, seats, states, sources } from '../src/data/data';
 import { briefingLenses } from '../src/data/briefing-lenses';
+import { briefingLensEvidence } from '../src/data/briefing-lens-sources';
 import { briefingLensMarkup } from '../src/ui/briefing-lens';
 import { observationData, observationFor } from '../src/data/observation';
 import { newsItems } from '../src/data/news';
@@ -30,6 +31,15 @@ describe('state briefing', () => {
         expect(html).toContain(source!.url.replaceAll('&','&amp;'));
       }
       expect(html).toContain(lens.limitation);
+      const visible=html.split('<details>')[0];
+      expect(visible).toContain(lens.finding);
+      expect(visible).toContain(lens.evidence);
+      expect(visible).not.toContain(lens.question);
+      for (const id of lens.evidenceIds) {
+        const ref=briefingLensEvidence.find(item=>item.evidenceId===id);
+        expect(ref, `${lens.electionId}: ${id}`).toBeDefined();
+        expect(lens.sourceIds).toContain(ref!.sourceId);
+      }
     }
     expect(briefingLensMarkup('2026-NC-2-regular')).toContain('候補別・党派別調査をまだ収録していない');
     expect(briefingLensMarkup('unknown-election')).toBe('');
