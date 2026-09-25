@@ -1,0 +1,146 @@
+{
+  "checkedSourceIds": [
+    "obs-270towin-sabato-20260922",
+    "obs-inside",
+    "obs-white-house",
+    "obs-marist-tx-20260923",
+    "obs-texas-tribune-talarico-tribfest-20260924"
+  ],
+  "completedAt": "2026-09-25T00:20:40Z",
+  "note": "Texasでは、Texas Tribune Festivalで民主党James Talarico氏が共和党Ken Paxton氏へFox News討論を提案した事実と、Maristの登録有権者調査でTalarico氏50%・Paxton氏44%だったことを追加した。Paxton陣営は7月に討論する意向を示していたが、9月24日時点で主催者・日時・会場を受諾した討論は確認できず、提案段階として扱う。Marist調査では52%がPaxton氏の勝利を予想しており、投票意向と勝者予想を区別した。単一の登録有権者調査であるため、統合情勢評価と暫定配分D46・R47・未配分7は変更していない。旧保存案・共有URLは保存時の基準を維持。初回Pages実行はSabato部分確認情報源の日付整合性テストで停止し、旧公開版を維持したまま修正して再実行に成功した。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-sabato",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918"
+  ],
+  "runId": "daily-20260925",
+  "startedAt": "2026-09-25T00:01:58Z",
+  "baseCommit": "498996bc15e03ea560194701cd221dc80db4135c",
+  "publishedCommit": "f227c5f5e4d47c0b2bf5de8594db8feaa66e5739",
+  "revision": "observation-2026-09-25",
+  "reviewMode": "daily; Friday Asia/Tokyo; scheduled-event result and poll check",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-texas-tribune-talarico-tribfest-20260924",
+      "attemptedUrls": [
+        "https://www.texastribune.org/2026/09/24/james-talarico-tribfest-2026/"
+      ],
+      "attemptedAt": "2026-09-25T00:04:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-25T00:04:00Z",
+      "contentVerifiedAt": "2026-09-25",
+      "scope": "9月24日のTexas Tribune FestivalでTalarico氏がFox NewsのBret Baier氏を司会とする討論をPaxton氏へ提案したことを原文で確認。Paxton氏は同イベントに出席せず、7月の陣営発言以降、討論招待を受諾していないとの報道も確認。討論の開催確定や得票効果とは扱わない。"
+    },
+    {
+      "sourceId": "obs-marist-tx-20260923",
+      "attemptedUrls": [
+        "https://maristpoll.marist.edu/polls/2026-midterm-elections-in-texas-september-2026/"
+      ],
+      "attemptedAt": "2026-09-25T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-25T00:05:00Z",
+      "contentVerifiedAt": "2026-09-25",
+      "scope": "9月17〜20日実施、登録有権者1,139人、電話・SMS・オンライン、標本誤差±4.4ポイントを確認。投票意向Talarico 50%、Paxton 44%、未定4%、その他2%と、勝者予想Paxton 52%を区別して収録した。"
+    },
+    {
+      "sourceId": "obs-270towin-sabato-20260922",
+      "attemptedUrls": [
+        "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026"
+      ],
+      "attemptedAt": "2026-09-25T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-25T00:06:00Z",
+      "contentVerifiedAt": "2026-09-25",
+      "scope": "9月22日版のままで、Iowa Toss-up、Michigan Leans D、Kansas Leans Rを維持していることを確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-25T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-25T00:06:00Z",
+      "contentVerifiedAt": "2026-09-25",
+      "scope": "現行JSONのlast_updatedは9月17日のままで、Iowa Tilt R、Michigan Toss-upなどを維持。統合評価と暫定配分の変更なし。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-25T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-25T00:07:00Z",
+      "contentVerifiedAt": "2026-09-25",
+      "scope": "公式一覧は9月24日掲載分まで確認。対象州へのTrump大統領の新たな確定訪問は確認できなかったが、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/rating-changes-toward-democrats-across-the-board-mi-sen-to-leans-d-other-key-statewide-races-to-toss-up/",
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-25T00:08:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-24T00:08:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "公式記事本文は引き続きCloudflare challengeで取得できず、前日の部分確認から成功日時を進めていない。代替の現行評価表は別情報源として確認した。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"
+      ],
+      "attemptedAt": "2026-09-25T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院特別選挙候補者原票を取得できず、未確認として継続。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections/2026-election-information"
+      ],
+      "attemptedAt": "2026-09-25T00:09:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院候補者原票を取得できず、未確認として継続。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-25T00:10:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "方法・質問文を取得できず、調査数値は引き続き非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": [
+        "https://www.fec.gov/data/committee/C00027466/"
+      ],
+      "attemptedAt": "2026-09-25T00:10:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "報道された州別予定額に対応するFEC原票を特定できず照合待ち。前回成功日時を進めていない。"
+    }
+  ],
+  "verification": {
+    "tests": "131 passed",
+    "build": "success",
+    "mainFastForward": "passed: f227c5f5e4d47c0b2bf5de8594db8feaa66e5739 from base 498996bc15e03ea560194701cd221dc80db4135c; force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36076852031; initial run 36076604312 stopped on source-date validation before deployment",
+    "publicContent": "verified: 公開画面でTexasのMarist調査記事と討論提案記事、暫定配分D46・R47・未配分7、最新暫定配分から始まるシミュレーションを確認"
+  }
+}
