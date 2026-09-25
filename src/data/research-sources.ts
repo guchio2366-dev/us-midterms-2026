@@ -4,8 +4,10 @@ import { focusEvidenceRefs, focusResearchSources } from './research-focus-source
 import { observationEvidenceRefs, observationSources } from './observation';
 import { issueReportSources, issueReportEvidence } from './issue-report-sources';
 import { texasPollContextSources, texasPollContextEvidence } from './texas-poll-context';
+import { briefingLensSources, briefingLensEvidence } from './briefing-lens-sources';
 
 export const researchSources: Source[] = [
+  ...briefingLensSources,
   ...texasPollContextSources,
   ...issueReportSources,
   ...observationSources,
@@ -141,6 +143,7 @@ export const researchSources: Source[] = [
 ];
 
 export const evidenceRefs: EvidenceRef[] = [
+  ...briefingLensEvidence,
   ...texasPollContextEvidence,
   ...issueReportEvidence,
   ...observationEvidenceRefs,

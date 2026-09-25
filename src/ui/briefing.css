@@ -92,10 +92,11 @@
 .briefing-locator figcaption { font-size: .6875rem; color: #535e62; line-height: 1.5; }
 .briefing-locator figcaption b { display: block; color: var(--navy); font-size: .75rem; }
 #updates .briefing-locator small { display: block; font-size: .625rem; margin-top: 3px; }
-#updates .briefing-lens { margin: 12px 0 0; padding: 10px 12px 4px; border-left: 2px solid #a78639; background: #f7f3e9; }
+#updates .briefing-lens { margin: 0; padding: 10px 12px 4px; border-left: 2px solid #a78639; background: #f7f3e9; }
+#updates .briefing-lens + .briefing-week { margin-top: 12px; }
 .briefing-lens-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 3px 8px; color: #735619; font-size: .6875rem; }
 .briefing-lens-heading > span { font-weight: 500; }
-#updates .briefing-lens h5 { margin: 6px 0 4px; color: var(--navy); font-size: .9375rem; line-height: 1.65; }
+#updates .briefing-lens h4 { margin: 6px 0 4px; color: var(--navy); font-size: .9375rem; line-height: 1.65; }
 #updates .briefing-lens p { margin: 4px 0; font-size: .875rem; line-height: 1.75; }
 .briefing-lens > details > summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 36px; color: #174f9e; font-size: .75rem; cursor: pointer; list-style: none; }
 .briefing-lens > details > summary::-webkit-details-marker { display: none; }
