@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-24",
+  "revision": "observation-2026-09-25",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,28 +8,68 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-24T00:15:00Z",
+    "lastCompletedAt": "2026-09-25T00:11:03Z",
     "latestRun": {
-      "runId": "daily-20260924",
-      "startedAt": "2026-09-24T00:01:28Z",
-      "completedAt": "2026-09-24T00:15:00Z",
+      "runId": "daily-20260925",
+      "startedAt": "2026-09-25T00:01:58Z",
+      "completedAt": "2026-09-25T00:11:03Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-sabato",
         "obs-270towin-sabato-20260922",
         "obs-inside",
-        "obs-white-house"
+        "obs-white-house",
+        "obs-marist-tx-20260923",
+        "obs-texas-tribune-talarico-tribfest-20260924"
       ],
       "pendingSourceIds": [
+        "obs-sabato",
         "obs-roster-oh",
         "obs-roster-nh",
         "obs-quantus-me-20260917",
         "obs-axios-nrsc-spending-20260918"
       ],
-      "note": "Sabatoの9月22日変更を、公式記事の公表情報と同日付の現行評価表で照合。IowaはLean RからToss-up、MichiganはToss-upからLean D、KansasはLikely RからLean Rへ変更された。Inside Electionsは9月17日版のままのため、統合評価ではIowaが新たに未配分となり、暫定配分はD46・R47・未配分7。評価変更は勝敗予測や支持移動の証明とは扱わない。公式記事本文はCloudflareで取得できず、代替表との照合を部分確認として記録。White House公式一覧は9月22日掲載分まで確認し、対象州へのTrump大統領の新たな確定訪問は確認できなかった。旧保存案・共有URLは保存時の基準を維持。"
+      "note": "Texas州で、民主党James Talarico州下院議員の9月24日Texas Tribune Festival出演を実施済みに更新し、共和党Ken Paxton州司法長官へのFox News討論提案と、9月23日公表のMarist調査（Talarico 50%、Paxton 44%、登録有権者1,139人、誤差±4.4ポイント）を追加。討論は未合意で、調査も勝敗予測とは扱わない。Inside Electionsは9月17日版、Sabato代替表は9月22日版のままで、暫定配分D46・R47・未配分7を維持。White House公式一覧は9月24日掲載分まで確認し、対象州へのTrump大統領の新たな確定訪問は確認できなかった。旧保存案・共有URLは保存時の議席基準を維持。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-marist-tx-20260923",
+      "title": "2026 Midterm Elections in Texas, September 2026",
+      "publisher": "Marist Poll",
+      "url": "https://maristpoll.marist.edu/polls/2026-midterm-elections-in-texas-september-2026/",
+      "publishedAt": "2026-09-23",
+      "referencePeriod": "9月17〜20日、Texas州の登録有権者1,139人。電話の有人調査、テキスト、オンラインを併用。民主党James Talarico 50%、共和党Ken Paxton 44%、誤差±4.4ポイント。",
+      "retrievedAt": "2026-09-25",
+      "contentVerifiedAt": "2026-09-25",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査機関の原文で実査期間、対象、標本数、質問結果、方法、誤差を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-25T00:05:00Z"
+    },
+    {
+      "sourceId": "obs-texas-tribune-talarico-tribfest-20260924",
+      "title": "James Talarico challenges Ken Paxton to Fox News debate",
+      "publisher": "The Texas Tribune",
+      "url": "https://www.texastribune.org/2026/09/24/james-talarico-tribfest-2026/",
+      "publishedAt": "2026-09-24",
+      "referencePeriod": "Texas Tribune Festivalでの民主党James Talarico氏の出演、共和党Ken Paxton氏への討論提案、過去の討論招待への両陣営の対応を照合。",
+      "retrievedAt": "2026-09-25",
+      "contentVerifiedAt": "2026-09-25",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "主催者の州内報道と掲載された出演映像で、実施、発言、相手陣営の回答状況を照合",
+      "alternativeUrl": "https://www.youtube.com/live/sn5BYAbOczQ",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-25T00:04:00Z"
+    },
     {
       "sourceId": "obs-ssrs",
       "title": "メーン・ミシガン上院選 CNN/SSRS調査",
@@ -594,7 +634,7 @@
       "url": "https://centerforpolitics.org/crystalball/rating-changes-toward-democrats-across-the-board-mi-sen-to-leans-d-other-key-statewide-races-to-toss-up/",
       "publishedAt": "2026-09-22",
       "referencePeriod": "Iowa・Kansas・Michiganの2026年9月22日評価変更",
-      "retrievedAt": "2026-09-24",
+      "retrievedAt": "2026-09-25",
       "contentVerifiedAt": "2026-09-24",
       "electionIds": [
         "2026-IA-2-regular",
@@ -620,8 +660,8 @@
       "url": "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026",
       "publishedAt": null,
       "referencePeriod": "Sabatoの9月22日変更3件と現行評価の照合",
-      "retrievedAt": "2026-09-24",
-      "contentVerifiedAt": "2026-09-24",
+      "retrievedAt": "2026-09-25",
+      "contentVerifiedAt": "2026-09-25",
       "electionIds": [
         "2026-IA-2-regular",
         "2026-MI-2-regular",
@@ -632,7 +672,7 @@
       "method": "日付付きの変更一覧とSabato公式分析記事へのリンクを照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-24T00:08:00Z"
+      "lastSuccessAt": "2026-09-25T00:06:00Z"
     },
     {
       "sourceId": "obs-inside",
@@ -641,8 +681,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-24",
-      "contentVerifiedAt": "2026-09-24",
+      "retrievedAt": "2026-09-25",
+      "contentVerifiedAt": "2026-09-25",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -656,7 +696,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-24T00:09:00Z"
+      "lastSuccessAt": "2026-09-25T00:06:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -665,8 +705,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-24",
-      "contentVerifiedAt": "2026-09-24",
+      "retrievedAt": "2026-09-25",
+      "contentVerifiedAt": "2026-09-25",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -680,7 +720,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-24T00:10:00Z"
+      "lastSuccessAt": "2026-09-25T00:07:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1682,6 +1722,20 @@
     }
   ],
   "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-marist-tx-20260923",
+      "sourceId": "obs-marist-tx-20260923",
+      "locator": "9月17〜20日、登録有権者1,139人。民主党Talarico 50%、共和党Paxton 44%、未定4%、その他2%。誤差±4.4ポイント。電話の有人調査、テキスト、オンラインを併用。",
+      "checkedAt": "2026-09-25",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-texas-tribune-talarico-tribfest-20260924",
+      "sourceId": "obs-texas-tribune-talarico-tribfest-20260924",
+      "locator": "9月24日のTexas Tribune Festivalで民主党Talarico氏が出演し、共和党Paxton氏へFox NewsのBret Baier氏司会の討論を提案。Paxton陣営は7月に討論する意向を示したが、9月24日時点で招待を受諾しておらず、Festival招待にも応じなかった。",
+      "checkedAt": "2026-09-25",
+      "kind": "observed"
+    },
     {
       "evidenceId": "ev-obs-coefficient-ak-20260917",
       "sourceId": "obs-coefficient-ak-20260917",
@@ -3654,28 +3708,65 @@
       "date": "2026-09-24",
       "time": null,
       "timezone": "America/Chicago",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-09-21",
+      "checkedAt": "2026-09-25",
       "evidenceIds": [
-        "ev-obs-houston-chronicle-tx-events-20260920"
+        "ev-obs-houston-chronicle-tx-events-20260920",
+        "ev-obs-texas-tribune-talarico-tribfest-20260924"
       ],
       "relevance": [
         {
           "electionId": "2026-TX-2-regular",
           "why": "民主党Talarico氏が生活費・Trump関税・共和党側の大型広告へどう答えるかを確認する機会。",
-          "watch": "主催者による実施確認と発言全文を追う。時刻は今回の資料では未確認。",
+          "watch": "出演は実施。討論提案にPaxton氏またはFox Newsが応じるかを追う。提案を討論の開催決定とは扱わない。",
           "materialIds": [
             "tx-turnout",
             "tx-airwaves"
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-tx-talarico-tribfest-2026-09-24",
       "publicationStatus": "published"
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-tx-marist-2026-09-23",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-23",
+      "updatedAt": "2026-09-25",
+      "title": "テキサス州、Marist調査で民主党Talarico氏50%・共和党Paxton氏44%",
+      "happened": "共和党Ken Paxton州司法長官と民主党James Talarico州下院議員が争うTexas州上院選。Maristが9月17〜20日に登録有権者1,139人へ行った調査では、Talarico氏50%、Paxton氏44%、未定4%、その他2%だった。無党派ではTalarico氏55%。一方、勝者予想では全体の52%がPaxton氏の勝利を見込んだ。",
+      "meaning": "投票先の回答ではTalarico氏が先行する一方、誰が勝つと思うかという認識はPaxton氏が上回った。候補者への支持と、Texasでは共和党が優位だという見立てを分けて確認できる。",
+      "uncertainty": "登録有権者調査で、実際の投票者に絞った調査ではない。誤差は±4.4ポイントで、1回の調査から支持の確定や投票参加を断定できない。勝者予想も投票先ではないため、議席配分は未配分のまま維持する。",
+      "evidenceIds": [
+        "ev-obs-marist-tx-20260923"
+      ]
+    },
+    {
+      "updateId": "obs-update-tx-talarico-tribfest-2026-09-24",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": "tx-talarico-tribune-festival-2026-09-24",
+      "newsId": null,
+      "eventDate": "2026-09-24",
+      "updatedAt": "2026-09-25",
+      "title": "テキサス州、民主党Talarico氏が共和党Paxton氏へFox News討論を提案",
+      "happened": "民主党James Talarico州下院議員は9月24日のTexas Tribune Festivalに出演し、共和党Ken Paxton州司法長官へFox NewsのBret Baier氏が司会する討論を提案した。Paxton陣営は7月に討論する意向を示したが、9月24日時点で複数の招待を受諾していない。Paxton氏はFestivalにも招待されたが参加しなかった。",
+      "meaning": "Talarico氏は、共和党側が司会者を批判してきた経緯を踏まえ、保守系視聴者の多いFox Newsを指定して討論参加を迫った。両候補を同じ質問で比べられる場が実現するかが次の確認点になる。",
+      "uncertainty": "これはTalarico氏からの提案で、Paxton氏やFox Newsの受諾、日時、会場は確認されていない。討論への対応だけで政策能力、有権者の評価、得票効果を判断しない。",
+      "evidenceIds": [
+        "ev-obs-texas-tribune-talarico-tribfest-20260924"
+      ]
+    },
     {
       "updateId": "obs-update-sabato-ratings-2026-09-22",
       "status": "published",
