@@ -1,0 +1,160 @@
+{
+  "checkedSourceIds": [
+    "obs-marist-ia-20260922",
+    "obs-270towin-sabato-20260922",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "completedAt": "2026-09-26T00:17:02Z",
+  "note": "Iowaでは、Maristの登録有権者調査で民主党Josh Turek氏50%・共和党Ashley Hinson氏42%、別設問の勝者予想でHinson氏59%・Turek氏37%だったことを追加した。支持先と勝者予想を分け、単一の登録有権者調査から支持移動や勝敗を断定しない。Inside Electionsは9月17日版、Sabato代替表は9月22日版のままで、統合評価と暫定配分D46・R47・未配分7は変更していない。White House公式一覧は9月25日掲載分まで確認し、対象州へのTrump大統領の新たな確定訪問は確認できなかった。New HampshireのUNH・NYT/Siena調査は集計サイトで公表を把握したが、原票本文・方法・設問を取得できず非掲載。旧保存案・共有URLは保存時の基準を維持。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-sabato",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "runId": "daily-20260926",
+  "startedAt": "2026-09-26T00:00:04Z",
+  "baseCommit": "2199571414b6ba2b7a89e1b8a1698c71df1e475d",
+  "publishedCommit": null,
+  "revision": "observation-2026-09-26",
+  "reviewMode": "daily; Saturday Asia/Tokyo; new-poll, rating, candidate-source and schedule check",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-marist-ia-20260922",
+      "attemptedUrls": [
+        "https://maristpoll.marist.edu/polls/2026-midterm-elections-in-iowa-september-2026/"
+      ],
+      "attemptedAt": "2026-09-26T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-26T00:05:00Z",
+      "contentVerifiedAt": "2026-09-26",
+      "scope": "9月17〜20日実施、登録有権者1,050人、電話・SMS・オンライン、標本誤差±4.4ポイントを原文で確認。投票意向Turek 50%、Hinson 42%と、勝者予想Hinson 59%、Turek 37%を別設問として収録した。"
+    },
+    {
+      "sourceId": "obs-270towin-sabato-20260922",
+      "attemptedUrls": [
+        "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026"
+      ],
+      "attemptedAt": "2026-09-26T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-26T00:06:00Z",
+      "contentVerifiedAt": "2026-09-26",
+      "scope": "9月22日版のままで、Iowa Toss-up、Michigan Leans D、Kansas Leans Rを維持していることを確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": [
+        "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"
+      ],
+      "attemptedAt": "2026-09-26T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-26T00:06:00Z",
+      "contentVerifiedAt": "2026-09-26",
+      "scope": "現行JSONのlast_updatedは9月17日のままで、Iowa Tilt R、Michigan Toss-upなどを維持。統合評価と暫定配分の変更なし。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/briefings-statements/"
+      ],
+      "attemptedAt": "2026-09-26T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-26T00:07:00Z",
+      "contentVerifiedAt": "2026-09-26",
+      "scope": "公式一覧は9月25日掲載分まで確認。対象州へのTrump大統領の新たな確定訪問は確認できなかったが、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://centerforpolitics.org/crystalball/rating-changes-toward-democrats-across-the-board-mi-sen-to-leans-d-other-key-statewide-races-to-toss-up/",
+        "https://centerforpolitics.org/crystalball/2026-senate/"
+      ],
+      "attemptedAt": "2026-09-26T00:08:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-24T00:08:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "公式記事本文は引き続き取得制限で完全取得できず、前回の部分確認から成功日時を進めていない。代替の現行評価表は別情報源として確認した。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedUrls": [
+        "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2004&context=survey_center_polls",
+        "https://www.270towin.com/2026-senate-polls/new-hampshire"
+      ],
+      "attemptedAt": "2026-09-26T00:09:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "集計サイトで9月24日公表の存在と表示値を把握したが、UNH原票PDFはタイムアウトまたは403で本文を取得できず、標本・設問・方法を原文照合できないため非掲載。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedUrls": [
+        "https://www.nytimes.com/interactive/2026/09/24/polls/times-siena-poll-nh-toplines.html",
+        "https://www.270towin.com/2026-senate-polls/new-hampshire"
+      ],
+      "attemptedAt": "2026-09-26T00:09:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "集計サイトで9月24日公表の存在と表示値を把握したが、NYT/Siena原票ページは本文取得エラーで、標本・設問・方法を原文照合できないため非掲載。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"
+      ],
+      "attemptedAt": "2026-09-26T00:10:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院特別選挙候補者原票を取得できず、未確認として継続。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections/2026-election-information"
+      ],
+      "attemptedAt": "2026-09-26T00:10:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院候補者原票を取得できず、未確認として継続。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": [
+        "https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"
+      ],
+      "attemptedAt": "2026-09-26T00:11:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "方法・質問文を取得できず、調査数値は引き続き非掲載。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": [
+        "https://www.fec.gov/data/committee/C00027466/"
+      ],
+      "attemptedAt": "2026-09-26T00:11:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "報道された州別予定額に対応するFEC原票を特定できず照合待ち。前回成功日時を進めていない。"
+    }
+  ],
+  "verification": {
+    "tests": "131 passed",
+    "build": "success",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  }
+}

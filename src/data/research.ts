@@ -20,6 +20,18 @@ const issueCases: Record<string,IssueCaseStudy[]> = {
 
 export const polls: Poll[] = [
   {
+    pollId:'poll-ia-marist-2026-09',electionId:'2026-IA-2-regular',pollster:'Marist Poll',sponsor:null,
+    fieldStart:'2026-09-17',fieldEnd:'2026-09-20',population:'RV',populationLabel:'登録有権者',sampleSize:1050,
+    method:'電話の有人インタビュー、テキスト、オンラインを併用したマルチモード調査。',
+    question:"In November's election for Senate, are you supporting:",questionExact:true,precisionLabel:'標本誤差 ±4.4ポイント',
+    results:[
+      {label:'Josh Turek',candidateId:'cand-ia-josh-turek',party:'D',value:50,category:'candidate'},
+      {label:'Ashley Hinson',candidateId:'cand-ia-ashley-hinson',party:'R',value:42,category:'candidate'},
+    ],
+    notes:['公表ページでは残り8%の内訳を確認できないため、グラフでは「内訳未掲載」と表示します。','別設問の勝者予想はHinson 59%、Turek 37%。投票先とは混ぜません。'],completeness:'partial',residualTreatment:'unreported',
+    sourceIds:['obs-marist-ia-20260922'],evidenceIds:['ev-obs-marist-ia-20260922'],status:'published',
+  },
+  {
     pollId:'poll-ia-emerson-2026-09',
     electionId:'2026-IA-2-regular',
     pollster:'Emerson College Polling',
@@ -164,10 +176,10 @@ export const historicalResults: HistoricalResult[] = [
 
 export const raceBriefs: RaceBrief[] = [
   {
-    electionId:'2026-IA-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
+    electionId:'2026-IA-2-regular',updatedAt:'2026-09-26',status:'published',completeness:'substantial',
     headline:'州の基礎党派と異なり、調査・評価機関で先頭や分類が割れる',
-    summary:'2024年大統領選では共和党が二桁差で上回りましたが、上院選ではCookとSabatoがToss Up、InsideがTilt Rです。YouGovの登録有権者ではTurek 44%・Hinson 43%、Emersonの投票予定者ではHinson 49.5%・Turek 45.1%でした。',
-    balance:'最新の確認済み調査でも、母集団と方法により先頭が入れ替わります。YouGovの登録有権者ではTurekが1ポイント上、EmersonとSuffolkの投票予定者ではHinsonが約4.4〜4.6ポイント上です。単一の平均や勝率へ変換せず、設問・対象・未定票を保ったまま比較します。',
+    summary:'2024年大統領選では共和党が二桁差で上回りましたが、上院選ではCookとSabatoがToss Up、InsideがTilt Rです。Maristの登録有権者ではTurek 50%・Hinson 42%、勝者予想ではHinson 59%・Turek 37%でした。',
+    balance:'最新のMarist登録有権者調査ではTurekが8ポイント上ですが、勝者予想はHinsonが22ポイント上です。YouGovではTurekが1ポイント上、EmersonとSuffolkの投票予定者ではHinsonが約4.4〜4.6ポイント上でした。支持先・勝者予想・母集団を混ぜた平均や勝率へ変換しません。',
     keyIssues:['生活費と州経済','関税・輸出市場・農業','医療と社会保障'],
     analysis:[
       {heading:'いま確認できること',body:'共和党寄りの州の基礎地盤と、競争的な上院情勢を分けて見る必要があります。Cookは8月20日、Sabatoは9月22日にToss Upへ変更し、InsideはTilt Rを維持しています。評価変更は勝敗確定ではありません。',evidenceKind:'observed',evidenceIds:['ev-ia-cook-rating','ev-ia-inside-rating','ev-sabato-changes-2026-09-22']},
@@ -176,8 +188,8 @@ export const raceBriefs: RaceBrief[] = [
     supportChange:'同じ人が支持先を変えたことを直接示す比較可能なパネル調査は、現在の掲載資料では確認していません。',
     turnout:'投票予定者調査は実際の投票参加を確定するものではありません。支持先と投票参加を別に更新します。',
     updateConditions:['別の州全体調査の原表を確認したとき','評価機関が同一選挙の分類を変更したとき','候補者の通商・農業政策が具体化したとき'],
-    pollIds:['poll-ia-yougov-2026-09','poll-ia-yougov-2026-09-loose-lv','poll-ia-yougov-2026-09-strict-lv','poll-ia-emerson-2026-09','poll-ia-suffolk-2026-08'],ratingIds:['rating-ia-cook-2026-06-02','rating-ia-cook-2026-08-20','rating-ia-inside-2026-08-06','rating-ia-sabato-2026-06-03','rating-ia-sabato-2026-09-22'],relatedIssueIds:['household-economy','trade-industry','health-family'],
-    sourceIds:['poll-yougov-ia-2026-09','poll-emerson-ia-2026-09','poll-emerson-ia-full-2026-09','poll-suffolk-ia-2026-08','poll-suffolk-ia-method-2026','cook-ia-race-2026','inside-ia-race-2026','sabato-ia-change-2026','sabato-senate-labor-day-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-ia-yougov-poll','ev-ia-emerson-topline','ev-ia-emerson-method','ev-ia-emerson-full','ev-ia-suffolk-poll','ev-ia-suffolk-method','ev-ia-cook-rating','ev-ia-inside-rating','ev-ia-sabato-rating','ev-sabato-changes-2026-09-22'],
+    pollIds:['poll-ia-marist-2026-09','poll-ia-yougov-2026-09','poll-ia-yougov-2026-09-loose-lv','poll-ia-yougov-2026-09-strict-lv','poll-ia-emerson-2026-09','poll-ia-suffolk-2026-08'],ratingIds:['rating-ia-cook-2026-06-02','rating-ia-cook-2026-08-20','rating-ia-inside-2026-08-06','rating-ia-sabato-2026-06-03','rating-ia-sabato-2026-09-22'],relatedIssueIds:['household-economy','trade-industry','health-family'],
+    sourceIds:['obs-marist-ia-20260922','poll-yougov-ia-2026-09','poll-emerson-ia-2026-09','poll-emerson-ia-full-2026-09','poll-suffolk-ia-2026-08','poll-suffolk-ia-method-2026','cook-ia-race-2026','inside-ia-race-2026','sabato-ia-change-2026','sabato-senate-labor-day-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-obs-marist-ia-20260922','ev-ia-yougov-poll','ev-ia-emerson-topline','ev-ia-emerson-method','ev-ia-emerson-full','ev-ia-suffolk-poll','ev-ia-suffolk-method','ev-ia-cook-rating','ev-ia-inside-rating','ev-ia-sabato-rating','ev-sabato-changes-2026-09-22'],
   },
   {
     electionId:'2026-MI-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',

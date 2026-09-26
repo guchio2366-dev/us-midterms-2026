@@ -5,11 +5,12 @@ import { briefingPollStudies, briefingPollMarkup, briefingPollsMarkup } from '..
 describe('briefing poll bars',()=>{
   it('compares separate studies without using two populations from the same survey as two polls',()=>{
     const studies=briefingPollStudies(polls,'2026-IA-2-regular');
-    expect(studies[0].map(p=>p.pollId)).toEqual(['poll-ia-yougov-2026-09','poll-ia-yougov-2026-09-loose-lv','poll-ia-yougov-2026-09-strict-lv']);
-    expect(studies[1][0].pollId).toBe('poll-ia-emerson-2026-09');
+    expect(studies[0].map(p=>p.pollId)).toEqual(['poll-ia-marist-2026-09']);
+    expect(studies[1].map(p=>p.pollId)).toEqual(['poll-ia-yougov-2026-09','poll-ia-yougov-2026-09-loose-lv','poll-ia-yougov-2026-09-strict-lv']);
+    expect(studies[2][0].pollId).toBe('poll-ia-emerson-2026-09');
     const html=briefingPollsMarkup(polls,'2026-IA-2-regular');
     expect(html).toContain('同じ調査の別集計（2件）');
-    expect(html).toContain('それ以前の1調査を見る');
+    expect(html).toContain('それ以前の2調査を見る');
     expect(html).not.toContain('機関を等しく集計');
   });
   it('keeps published candidate shares, undecided shares, dates, samples, precision and source links',()=>{
