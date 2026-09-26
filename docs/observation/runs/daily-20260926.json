@@ -20,7 +20,7 @@
   "runId": "daily-20260926",
   "startedAt": "2026-09-26T00:00:04Z",
   "baseCommit": "2199571414b6ba2b7a89e1b8a1698c71df1e475d",
-  "publishedCommit": null,
+  "publishedCommit": "1b086ba9b8a16e2679803153314a908513d6049a",
   "revision": "observation-2026-09-26",
   "reviewMode": "daily; Saturday Asia/Tokyo; new-poll, rating, candidate-source and schedule check",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
@@ -153,8 +153,8 @@
   "verification": {
     "tests": "131 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "passed: main was advanced from 2199571414b6ba2b7a89e1b8a1698c71df1e475d to 1b086ba9b8a16e2679803153314a908513d6049a with force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36204511113",
+    "publicContent": "verified: Iowa view shows the Marist 50%-42% survey context, the 59%-37% winner expectation, and the D46/R47/unassigned7 seat summary"
   }
 }
