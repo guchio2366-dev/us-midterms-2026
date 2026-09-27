@@ -21,7 +21,7 @@
   "runId": "daily-20260927",
   "startedAt": "2026-09-26T23:57:44Z",
   "baseCommit": "84bf8c22435e3c4c8e8c555295cf37f107c5cf40",
-  "publishedCommit": "pending",
+  "publishedCommit": "e21ad493333cebd481b1835ff88a5d7af8984c07",
   "revision": "observation-2026-09-27",
   "reviewMode": "daily; Sunday Asia/Tokyo; new-poll, rating, candidate-source and schedule check; full weekly comparison not due",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
@@ -164,8 +164,8 @@
   "verification": {
     "tests": "131 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 84bf8c22435e3c4c8e8c555295cf37f107c5cf40 to e21ad493333cebd481b1835ff88a5d7af8984c07 without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36281890276",
+    "publicContent": "success; public page showed the 2026-09-23 Alaska bycatch floor update, analysis updated 2026-09-27, D46/R47/unassigned7, eight-state briefing, and the preserved scenario/share controls"
   }
 }
