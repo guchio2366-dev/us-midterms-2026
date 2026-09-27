@@ -6,9 +6,10 @@ import './style.css';
 import './ui/observation.css';
 import './ui/overview.css';
 import './ui/briefing.css';
+import './ui/compact-briefing.css';
 import { briefingElections, locatorMapMarkup } from './ui/briefing';
-import { briefingPollsMarkup } from './ui/briefing-polls';
-import { briefingLensMarkup } from './ui/briefing-lens';
+import { briefingEvidenceMarkup, briefingComparisonPollsMarkup } from './ui/briefing-polls';
+import { briefingTakeawayMarkup, briefingLensMarkup } from './ui/briefing-lens';
 import { texasPollContextMarkup } from './ui/texas-poll-context';
 import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
@@ -59,6 +60,7 @@ let sharedScenarioPending = false;
 let activeIssueId = 'trade-industry';
 let soySort: 'production'|'competitive'|'margin' = 'production';
 let newsTab: NewsFeedTab = 'recent';
+let newsExpanded = false;
 let newsRaceFilter: string|null = null;
 let activeFocusElectionId: string|null = null;
 let geoFeatures: Feature<Geometry>[] = [];
@@ -74,7 +76,7 @@ let overlayNewsId: string|null = null;
 let overlayReturnFocus: HTMLElement|null = null;
 let overlayReturnScrollY = 0;
 let overlayHistory: {kind:OverlayKind;newsId:string|null;scrollTop:number}[] = [];
-type NewsReturnState = {feedKey:NewsFeedKey;articleScrollTop:number;tab:NewsFeedTab;raceFilter:string|null;newsPage:number;listScrollTop:number};
+type NewsReturnState = {feedKey:NewsFeedKey;articleScrollTop:number;tab:NewsFeedTab;raceFilter:string|null;newsPage:number;listScrollTop:number;expanded:boolean};
 let stateReturnNews: NewsReturnState|null = null;
 let overlayOriginNewsId: string|null = null;
 let issuesSection: HTMLElement|null = null;
@@ -219,7 +221,7 @@ function researchBriefingParts(election: Election) {
   const majorCandidates = election.candidates.filter(candidate => candidate.party === 'D' || candidate.party === 'R');
   const candidates = `<section class="observation-candidate-intro" aria-label="主要候補"><div>${majorCandidates.map(candidate => `<article><i class="party-dot party-${escapeHtml(candidate.party)}" aria-hidden="true"></i><p><b>${escapeHtml(candidate.name)}</b><small>${escapeHtml(candidate.partyLabel)}</small></p></article>`).join('')}</div></section>`;
   const lead = brief
-    ? `<div class="briefing-week"><small>州別調査 · 更新 <time datetime="${escapeHtml(brief.updatedAt)}">${escapeHtml(brief.updatedAt)}</time></small><h4>${escapeHtml(brief.headline)}</h4><p>${escapeHtml(brief.summary)}</p></div><p class="briefing-takeaway"><b>主な論点</b>${brief.keyIssues.map(escapeHtml).join('／')}</p>`
+    ? `<div class="briefing-week"><small>州別調査 · 更新 <time datetime="${escapeHtml(brief.updatedAt)}">${escapeHtml(brief.updatedAt)}</time></small><h4>${escapeHtml(brief.headline)}</h4><p>${escapeHtml(brief.summary)}</p></div><p class="briefing-key-issues"><b>主な論点</b>${brief.keyIssues.map(escapeHtml).join('／')}</p>`
     : `<div class="briefing-week"><small>選挙の基本情報</small><h4>この選挙を見るポイント</h4><p>${escapeHtml(context)}</p><p class="briefing-coverage-note">週次の詳しい解説は未収録。候補者と情勢評価を掲載しています。確認済みの関連記事がある場合は、ニュース欄に表示します。</p></div>`;
   const details = brief
     ? `<details class="briefing-details"><summary>州別調査・根拠を、この欄で読む</summary><div class="briefing-expanded">${raceBriefMarkup(brief)}${refs(brief.sourceIds)}</div></details>`
@@ -236,7 +238,10 @@ function focusSummaryMarkup(election: Election) {
     ? observationBriefingParts(observation,election.candidates,seat.incumbent)
     : researchBriefingParts(election);
   return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><div class="focus-state-title"><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div></div>${body.candidates}</div>
-    <div class="briefing-columns"><div class="briefing-analysis">${briefingLensMarkup(election.electionId)}${body.lead}${texasPollContextMarkup(election.electionId)}</div><div class="briefing-poll-column">${briefingPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>Sabato・Inside Electionsの原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div></div>${body.details}`;
+    ${briefingTakeawayMarkup(election.electionId)}
+    <div class="briefing-columns"><div class="briefing-poll-column">${briefingEvidenceMarkup(polls,election.electionId)}${briefingComparisonPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>2機関の原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div><div class="briefing-analysis">${briefingLensMarkup(election.electionId)}</div></div>
+    <details class="briefing-context"><summary>州の論点・これまでの経緯を読む</summary>${body.lead}${texasPollContextMarkup(election.electionId)}</details>
+    <div class="briefing-footer">${body.details}<button type="button" class="briefing-simulation-link" data-briefing-simulate="${escapeHtml(election.electionId)}">この州の結果を変えてみる →</button></div>`;
 }
 
 function focusLocatorContent(election: Election) {
@@ -253,7 +258,7 @@ function renderFocusLocator() {
 function focusUpdatesMarkup() {
   const active = focusElections.find(election => election.electionId === activeFocusElectionId) ?? focusElections[0];
   const leaningCount = focusElections.filter(election => ['D','R'].includes(ratingConsensusBySeat.get(election.seatId)?.category ?? '')).length;
-  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><h3>過半数の行方を左右する${focusElections.length}州</h3></div></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}${leaningCount ? `・優勢側のある${leaningCount}州` : ''}。冒頭の統合評価で未配分となった州に、アイオワとノースカロライナを加えて読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。</p></details><div class="focus-selector"><figure id="focus-locator" class="briefing-locator">${active ? focusLocatorContent(active) : ''}</figure><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
+  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><h3>過半数の行方を左右する${focusElections.length}州</h3></div></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}${leaningCount ? `・優勢側のある${leaningCount}州` : ''}。冒頭の統合評価で未配分となった州と、追加で取り上げる州を合わせて読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。</p></details><div class="focus-selector"><figure id="focus-locator" class="briefing-locator">${active ? focusLocatorContent(active) : ''}</figure><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
     const state = stateByFips.get(seatById.get(election.seatId)!.stateFips)!;
     const selected = election.electionId === active?.electionId;
     const classification = focusClassification(election);
@@ -276,6 +281,7 @@ function renderFocusSummary(focus=true,syncFeed=true) {
   renderFocusLocator();
   if (syncFeed) {
     newsRaceFilter=active.electionId;
+    newsExpanded=false;
     newsPages.recent=newsPages.upcoming=0;
     newsScrollTops.recent=newsScrollTops.upcoming=0;
     renderNewsList();
@@ -408,7 +414,13 @@ function enhanceLayout() {
   news.id = 'news';
   news.className = 'section-block news-section';
   news.setAttribute('aria-labelledby', 'news-heading');
-  news.innerHTML = '<div class="section-heading"><div><p class="kicker">NEWS & EVENTS</p><h3 id="news-heading">ニュース・今後の予定</h3></div></div><div class="news-scope" role="group" aria-label="ニュースの対象"><button type="button" data-news-scope="state" aria-pressed="true">この州</button><button type="button" data-news-scope="all" aria-pressed="false">全国</button></div><p class="news-editorial-note">左の州選択に連動。記事を開くと背景と根拠を読める。</p><div class="news-tabs" role="tablist" aria-label="ニュースと予定を切り替える"><button id="news-tab-recent" type="button" role="tab" aria-selected="true" aria-controls="news-feed-panel" data-news-tab="recent">最近のニュース</button><button id="news-tab-upcoming" type="button" role="tab" aria-selected="false" aria-controls="news-feed-panel" data-news-tab="upcoming" tabindex="-1">今後の予定</button></div><div id="news-race-filter" class="news-race-filter" hidden><span></span></div><p class="news-scroll-hint">枠内をスクロールして続きを読む</p><div id="news-feed-panel" role="tabpanel" aria-labelledby="news-tab-recent"><div class="news-frame"><div id="news-list" class="news-list" tabindex="0" aria-label="最近のニュース一覧"></div><div id="news-scrollbar" class="custom-scrollbar" role="scrollbar" aria-label="ニュース一覧のスクロール位置" aria-controls="news-list" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div><div class="news-pagination"><span id="news-page-status" aria-live="polite"></span><div><button id="news-prev" type="button">前の10件</button><button id="news-next" type="button">次の10件</button></div></div></div><div data-observation-monitor></div>';
+  news.innerHTML = '<div class="section-heading"><div><p class="kicker">NEWS & EVENTS</p><h3 id="news-heading">ニュース・今後の予定</h3></div></div><div class="news-scope" role="group" aria-label="ニュースの対象"><button type="button" data-news-scope="state" aria-pressed="true">この州</button><button type="button" data-news-scope="all" aria-pressed="false">全国</button></div><p class="news-editorial-note">選んだ州に関係する出来事と、その背景を読む。</p><div class="news-tabs" role="tablist" aria-label="ニュースと予定を切り替える"><button id="news-tab-recent" type="button" role="tab" aria-selected="true" aria-controls="news-feed-panel" data-news-tab="recent">最近のニュース</button><button id="news-tab-upcoming" type="button" role="tab" aria-selected="false" aria-controls="news-feed-panel" data-news-tab="upcoming" tabindex="-1">今後の予定</button></div><div id="news-race-filter" class="news-race-filter" hidden><span></span></div><p class="news-scroll-hint">枠内をスクロールして続きを読む</p><div id="news-feed-panel" role="tabpanel" aria-labelledby="news-tab-recent"><div class="news-frame"><div id="news-list" class="news-list" tabindex="0" aria-label="最近のニュース一覧"></div><div id="news-scrollbar" class="custom-scrollbar" role="scrollbar" aria-label="ニュース一覧のスクロール位置" aria-controls="news-list" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div><div class="news-pagination"><span id="news-page-status" aria-live="polite"></span><div><button id="news-prev" type="button">前の10件</button><button id="news-next" type="button">次の10件</button></div></div></div><button id="news-expand" class="news-expand" type="button" aria-expanded="false" aria-controls="news-list">ニュース一覧を見る</button><div data-observation-monitor></div>';
+  news.querySelector<HTMLButtonElement>('#news-expand')?.addEventListener('click',()=>{
+    newsExpanded=!newsExpanded;
+    newsPages[newsTab]=0;
+    renderNewsList();
+    document.querySelector<HTMLButtonElement>('#news-expand')?.focus({preventScroll:true});
+  });
   const newsMonitor=news.querySelector<HTMLElement>('[data-observation-monitor]');
   if(newsMonitor) newsMonitor.innerHTML=monitoringMarkup();
   const nationalOverview = document.createElement('div');
@@ -427,9 +439,25 @@ function enhanceLayout() {
   const updatesGrid = updates.querySelector<HTMLElement>('.updates-grid')!;
   const focus = document.createElement('div');
   focus.innerHTML = focusUpdatesMarkup();
-  if (focus.firstElementChild) updatesGrid.append(focus.firstElementChild);
+  if (focus.firstElementChild) {
+    const navigation = document.createElement('div');
+    navigation.className = 'focus-navigation';
+    focus.querySelectorAll('.focus-card-heading,.tossup-explainer,.focus-selector').forEach(part=>navigation.append(part));
+    updatesGrid.before(navigation);
+    updatesGrid.append(focus.firstElementChild);
+  }
   updatesGrid.append(news);
-  updates.insertAdjacentHTML('beforeend','<a class="briefing-simulation-link" href="#simulator">議席配分をシミュレーションする →</a>');
+  updates.addEventListener('click',event=>{
+    const button=(event.target as Element).closest<HTMLButtonElement>('[data-briefing-simulate]');
+    const election=elections.find(item=>item.electionId===button?.dataset.briefingSimulate);
+    const state=election ? stateByFips.get(seatById.get(election.seatId)!.stateFips) : undefined;
+    if (!state) return;
+    selectState(state,button ?? undefined,{focus:false,scroll:false});
+    const heading=document.querySelector<HTMLElement>('#state-detail-heading');
+    const target=matchMedia('(max-width: 959px)').matches ? heading : document.querySelector('#simulator');
+    target?.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    heading?.focus({preventScroll:true});
+  });
   if (overview) overview.after(updates);
   else if (nav) nav.after(updates);
   else main.prepend(updates);
@@ -632,6 +660,7 @@ function enhanceLayout() {
   });
   document.querySelectorAll<HTMLButtonElement>('[data-news-scope]').forEach(button=>button.addEventListener('click',()=>{
     newsRaceFilter=button.dataset.newsScope==='state' ? activeFocusElectionId : null;
+    newsExpanded=false;
     newsPages.recent=newsPages.upcoming=0;
     newsScrollTops.recent=newsScrollTops.upcoming=0;
     renderNewsList();
@@ -735,9 +764,11 @@ function updateNewsViewUrl(replace=true) {
   if(replace) window.history.replaceState(null,'',url); else window.history.pushState(null,'',url);
 }
 
-function setNewsTab(tab:NewsFeedTab,options:{focus?:boolean;updateUrl?:boolean}={}) {
+function setNewsTab(tab:NewsFeedTab,options:{focus?:boolean;updateUrl?:boolean;expanded?:boolean}={}) {
   const currentList=document.querySelector<HTMLElement>('#news-list');
   if(currentList) newsScrollTops[newsTab]=currentList.scrollTop;
+  if(options.expanded!==undefined) newsExpanded=options.expanded;
+  else if(newsTab!==tab) newsExpanded=false;
   newsTab=tab;
   renderNewsList();
   if(options.updateUrl!==false) updateNewsViewUrl();
@@ -752,7 +783,7 @@ function showNewsFeed(tab:NewsFeedTab,electionId:string|null) {
   }
   newsPages[tab]=0;
   newsScrollTops[tab]=0;
-  setNewsTab(tab,{focus:false,updateUrl:false});
+  setNewsTab(tab,{focus:false,updateUrl:false,expanded:true});
   setNewsItemUrl(null,'replace');
   updateNewsViewUrl();
   const news=document.querySelector<HTMLElement>('#news');
@@ -792,15 +823,24 @@ function renderNewsList() {
   newsPages[newsTab] = Math.min(Math.max(0, newsPages[newsTab]), pageCount - 1);
   const start = newsPages[newsTab] * NEWS_PAGE_SIZE;
   const pageItems = feedItems.slice(start, start + NEWS_PAGE_SIZE);
+  const visibleItems = newsExpanded ? pageItems : feedItems.slice(0,3);
+  const news=document.querySelector<HTMLElement>('#news');
+  news?.classList.toggle('news-expanded',newsExpanded);
+  const expand=document.querySelector<HTMLButtonElement>('#news-expand');
+  if(expand){
+    expand.hidden=feedItems.length<=3;
+    expand.setAttribute('aria-expanded',String(newsExpanded));
+    expand.textContent=newsExpanded ? '最新の3件だけに戻す' : `${newsTab==='recent' ? 'ニュース' : '予定'}一覧を見る（${feedItems.length}件）`;
+  }
   list.innerHTML = '';
-  if (!pageItems.length) {
+  if (!visibleItems.length) {
     const empty = document.createElement('p');
     empty.className = 'news-empty';
     empty.textContent = newsTab==='recent' ? '表示できるニュースがありません。' : '表示できる予定がありません。';
     list.append(empty);
   }
   let historyHost:HTMLElement|null=null;
-  pageItems.forEach(item => {
+  visibleItems.forEach(item => {
     const card = document.createElement('button');
     card.type = 'button';
     card.className = `news-card feed-${item.sourceKind}${item.history ? ' feed-history' : ''}`;
@@ -849,11 +889,12 @@ function captureNewsReturn(feedKey: NewsFeedKey): NewsReturnState {
   const content = document.querySelector<HTMLElement>('#overlay-content');
   const stored = [...overlayHistory].reverse().find(entry => entry.kind === 'news' && entry.newsId === feedKey);
   const articleScrollTop = overlayKind === 'news' && overlayNewsId === feedKey ? (content?.scrollTop ?? 0) : (stored?.scrollTop ?? 0);
-  return {feedKey,articleScrollTop,tab:newsTab,raceFilter:newsRaceFilter,newsPage:newsPages[newsTab],listScrollTop:document.querySelector<HTMLElement>('#news-list')?.scrollTop ?? 0};
+  return {feedKey,articleScrollTop,tab:newsTab,raceFilter:newsRaceFilter,newsPage:newsPages[newsTab],listScrollTop:document.querySelector<HTMLElement>('#news-list')?.scrollTop ?? 0,expanded:newsExpanded};
 }
 
 function restoreNewsReturn(state: NewsReturnState) {
   newsTab=state.tab;
+  newsExpanded=state.expanded;
   newsRaceFilter=state.raceFilter;
   newsPages[state.tab] = state.newsPage;
   newsScrollTops[state.tab]=state.listScrollTop;
@@ -2260,3 +2301,4 @@ function refreshObservationStatus() {
 }
 setInterval(refreshObservationStatus,60000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden) refreshObservationStatus();});
+

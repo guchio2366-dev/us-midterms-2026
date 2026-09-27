@@ -6,7 +6,7 @@ import topology from '../public/data/states-10m.json';
 import { elections, seats, states, sources } from '../src/data/data';
 import { briefingLenses } from '../src/data/briefing-lenses';
 import { briefingLensEvidence } from '../src/data/briefing-lens-sources';
-import { briefingLensMarkup } from '../src/ui/briefing-lens';
+import { briefingLensMarkup, briefingTakeawayMarkup } from '../src/ui/briefing-lens';
 import { observationData, observationFor } from '../src/data/observation';
 import { newsItems } from '../src/data/news';
 import { ratingSnapshotObservations } from '../src/data/rating-snapshot';
@@ -32,8 +32,10 @@ describe('state briefing', () => {
       }
       expect(html).toContain(lens.limitation);
       const visible=html.split('<details>')[0];
-      expect(visible).toContain(lens.finding);
+      expect(briefingTakeawayMarkup(lens.electionId)).toContain(lens.finding);
+      expect(visible).not.toContain(lens.finding);
       expect(visible).toContain(lens.evidence);
+      expect(visible).toContain(lens.nextData);
       expect(visible).not.toContain(lens.question);
       for (const id of lens.evidenceIds) {
         const ref=briefingLensEvidence.find(item=>item.evidenceId===id);
