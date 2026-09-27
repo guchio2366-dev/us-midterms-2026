@@ -24,9 +24,11 @@
   <button id="text-size">文字を200%にする</button>
   <output id="size">1024 × 768</output>
 </nav>
-<iframe id="preview" title="中間選挙サイトの表示" width="1024" height="768" src="./"></iframe>
+<iframe id="preview" title="中間選挙サイトの表示" width="1024" height="768" src="about:blank"></iframe>
 <script>
   const frame = document.getElementById('preview');
+  // Avoid stale cached HTML pointing to assets removed by a new Pages deployment.
+  frame.src = `./?layout-preview=${Date.now()}`;
   document.querySelectorAll('[data-size]').forEach(button => {
     button.onclick = () => {
       const [width, height] = button.dataset.size.split(',');

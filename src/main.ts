@@ -452,6 +452,7 @@ function enhanceLayout() {
     const election=elections.find(item=>item.electionId===button?.dataset.briefingSimulate);
     const state=election ? stateByFips.get(seatById.get(election.seatId)!.stateFips) : undefined;
     if (!state) return;
+    document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
     selectState(state,button ?? undefined,{focus:false,scroll:false});
     const heading=document.querySelector<HTMLElement>('#state-detail-heading');
     const target=matchMedia('(max-width: 959px)').matches ? heading : document.querySelector('#simulator');
@@ -645,11 +646,17 @@ function enhanceLayout() {
     newsScrollTops[newsTab]=0;
     newsPages[newsTab] = Math.max(0, newsPages[newsTab] - 1);
     renderNewsList();
+    const list=document.querySelector<HTMLElement>('#news-list');
+    list?.scrollIntoView({block:'start'});
+    list?.focus({preventScroll:true});
   });
   document.querySelector<HTMLButtonElement>('#news-next')?.addEventListener('click', () => {
     newsScrollTops[newsTab]=0;
     newsPages[newsTab] += 1;
     renderNewsList();
+    const list=document.querySelector<HTMLElement>('#news-list');
+    list?.scrollIntoView({block:'start'});
+    list?.focus({preventScroll:true});
   });
   document.querySelectorAll<HTMLButtonElement>('[data-news-tab]').forEach(button=>button.addEventListener('click',()=>setNewsTab(button.dataset.newsTab as NewsFeedTab)));
   document.querySelector<HTMLElement>('.news-tabs')?.addEventListener('keydown',event=>{
@@ -2301,4 +2308,3 @@ function refreshObservationStatus() {
 }
 setInterval(refreshObservationStatus,60000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden) refreshObservationStatus();});
-
