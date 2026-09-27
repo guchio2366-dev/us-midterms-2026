@@ -121,7 +121,7 @@
 #updates .news-tabs { gap: 4px; margin: 0 0 6px; padding: 3px; }
 #updates .news-tabs button { min-height: 34px; padding: 5px 6px; font-size: .8125rem; line-height: 1.5; }
 #updates .news-frame { display: block; min-width: 0; padding: 0; border: 0; background: transparent; }
-#updates .news-section .news-list { display: flex; gap: 0; height: auto; max-height: none; overflow: visible; overscroll-behavior: auto; }
+#updates .news-section .news-list { display: flex; gap: 0; height: auto; max-height: none; overflow: visible; overscroll-behavior: auto; scroll-margin-top: 84px; }
 #updates .news-section .news-scroll-hint, #updates .news-section .custom-scrollbar { display: none; }
 #updates .news-section .news-card { min-width: 0; min-height: 0; padding: 12px 0; gap: 4px; border-bottom: 1px solid var(--rule); }
 #updates .news-section .news-card strong { font-size: .90625rem; line-height: 1.5; }

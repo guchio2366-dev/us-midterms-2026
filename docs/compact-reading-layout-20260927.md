@@ -26,3 +26,9 @@
 - `npm run build`：TypeScript・Viteの本番ビルド成功。従来の大きなJSチャンクの警告は残る。
 - `git diff --check`：成功。
 - 公開Chromeの確認結果と配備コミットは実装PRへ追記する。実機Safariは未検証。
+
+## 公開確認と操作の補正
+
+実装は[PR #30](https://github.com/guchio2366-dev/us-midterms-2026/pull/30)、配備はコミット`f7971fd25b9669806c3b2a5ab05756842a0b9bd3`の[Pages処理](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36303187930)成功を確認した。公開Chromeで8州の結論・根拠・関連ニュースの切替、単一選択、横はみ出しがないことを確認。NCのニュース0件は明示する。
+
+追加レビューに基づき、シミュレーション遷移時の州セレクト同期と、ニュースのページ送り時に一覧先頭へ戻す操作を補正する。寸法検証ページは古いHTMLと配備後の資産の組合せを避けるため、新しいURLでiframeを読み込む。指定寸法の結果は補正PRへ記録する。
