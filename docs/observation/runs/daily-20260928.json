@@ -22,7 +22,7 @@
     "obs-inside",
     "obs-white-house"
   ],
-  "completedAt": "2026-09-28T00:23:00Z",
+  "completedAt": "2026-09-28T00:30:00Z",
   "note": "月曜の週次点検として6接戦州の候補者比較5項目と反証を再確認。Alaska、Michigan、Texas、North Carolinaの新しい調査原票を追加し、単一調査と手法差を明記。MichiganではRogers氏の自動車工場勤務の事実と『完成車組立ライン』という表現へのUAWの異論を分離し、TexasではPaxton氏側が中国系投資を争点にする一方、関連企業幹部らから計4万ドルを受けたとの選挙資金記録を反証材料として追加した。10月15日のAlaska討論会と10月21日のMichigan討論会を追加し、Michigan10月8日とMaine4討論会の時刻を確認。Sabato・Inside Electionsの統合評価、暫定配分D46・R47・未配分7、旧保存案・共有URLは維持。UNH・NYT/SienaのNew Hampshire調査原票、OH・NH名簿、Quantus Maine、NRSC州別支出のFEC原票は再確認したが照合待ち。",
   "outcome": "partial",
   "pendingSourceIds": [
@@ -36,7 +36,7 @@
   "runId": "daily-20260928",
   "startedAt": "2026-09-28T00:02:00Z",
   "baseCommit": "c9463baf741bd579f72aac3a6c1b81c91f60e840",
-  "publishedCommit": null,
+  "publishedCommit": "bc7f795fe29cae11c0352808c7d46027faf1622a",
   "revision": "observation-2026-09-28",
   "reviewMode": "weekly; Monday Asia/Tokyo; full five-field candidate comparison and counterevidence review plus polls, ratings, candidate sources and schedules",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
@@ -254,8 +254,8 @@
   "verification": {
     "tests": "143 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from c9463baf741bd579f72aac3a6c1b81c91f60e840 to bc7f795fe29cae11c0352808c7d46027faf1622a without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36362209731",
+    "publicContent": "success; public page showed the 2026-09-28 content date, D46/R47/unassigned7, the four-state poll update, Michigan job-claim and Texas donor counterevidence, the October 8 and 21 Michigan debates, and the preserved scenario save/share controls"
   }
 }
