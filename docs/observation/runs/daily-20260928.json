@@ -1,0 +1,261 @@
+{
+  "checkedSourceIds": [
+    "obs-bigdata-mi-20260925",
+    "obs-trafalgar-ak-20260925",
+    "obs-tpor-tx-20260925",
+    "obs-hpu-nc-20260924",
+    "obs-mi-advance-rogers-autoworker-20260924",
+    "obs-houston-chronicle-paxton-china-donors-20260922",
+    "obs-alaska-public-debate-schedule-20260922",
+    "obs-wlns-mi-debates-20260905",
+    "obs-jackson-policy",
+    "obs-brown-policy",
+    "obs-husted-bio",
+    "obs-talarico-policy",
+    "obs-paxton-policy",
+    "obs-peltola",
+    "obs-sullivan",
+    "obs-pappas",
+    "obs-maine-debates",
+    "obs-sabato",
+    "obs-270towin-sabato-20260922",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "completedAt": "2026-09-28T00:23:00Z",
+  "note": "月曜の週次点検として6接戦州の候補者比較5項目と反証を再確認。Alaska、Michigan、Texas、North Carolinaの新しい調査原票を追加し、単一調査と手法差を明記。MichiganではRogers氏の自動車工場勤務の事実と『完成車組立ライン』という表現へのUAWの異論を分離し、TexasではPaxton氏側が中国系投資を争点にする一方、関連企業幹部らから計4万ドルを受けたとの選挙資金記録を反証材料として追加した。10月15日のAlaska討論会と10月21日のMichigan討論会を追加し、Michigan10月8日とMaine4討論会の時刻を確認。Sabato・Inside Electionsの統合評価、暫定配分D46・R47・未配分7、旧保存案・共有URLは維持。UNH・NYT/SienaのNew Hampshire調査原票、OH・NH名簿、Quantus Maine、NRSC州別支出のFEC原票は再確認したが照合待ち。",
+  "outcome": "partial",
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "runId": "daily-20260928",
+  "startedAt": "2026-09-28T00:02:00Z",
+  "baseCommit": "c9463baf741bd579f72aac3a6c1b81c91f60e840",
+  "publishedCommit": null,
+  "revision": "observation-2026-09-28",
+  "reviewMode": "weekly; Monday Asia/Tokyo; full five-field candidate comparison and counterevidence review plus polls, ratings, candidate sources and schedules",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "comparisonAudit": [
+    {
+      "electionId": "2026-AK-2-regular",
+      "fields": ["career", "materials", "statedPlan", "recordAndEvaluation", "voters"],
+      "result": "updated",
+      "scope": "新しいTrafalgar原票、10月15日討論会、既存の漁業・移譲票・実績反証を再確認。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "fields": ["career", "materials", "statedPlan", "recordAndEvaluation", "voters"],
+      "result": "checked-no-analysis-change",
+      "scope": "公式政策、経歴、4討論会、超党派性・中絶・予備選後の結集に関する反証を再確認。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "fields": ["career", "materials", "statedPlan", "recordAndEvaluation", "voters"],
+      "result": "updated",
+      "scope": "新しいBIG DATA POLL原票、Rogers氏の勤務歴表現への反証、10月8日・21日討論会を反映。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "fields": ["career", "materials", "statedPlan", "recordAndEvaluation", "voters"],
+      "result": "checked-no-analysis-change",
+      "scope": "候補者公式政策・経歴、銀行・広告費・データセンター反証を再確認。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "fields": ["career", "materials", "statedPlan", "recordAndEvaluation", "voters"],
+      "result": "updated",
+      "scope": "新しいTexas Public Opinion Research原票と中国系投資関連企業幹部の献金反証を反映。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "fields": ["career", "materials", "statedPlan", "recordAndEvaluation", "voters"],
+      "result": "checked-no-analysis-change",
+      "scope": "Pappas氏公式発信と既存調査を再確認。UNH・NYT/Siena原票未取得のため新数値は掲載せず。"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-bigdata-mi-20260925",
+      "attemptedUrls": ["https://www.bigdatapoll.com/blog/wolverine-state-poll-el-sayed-leads-rogers-for-us-senate-in-michigan/"],
+      "attemptedAt": "2026-09-28T00:16:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:16:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "実査期間、登録・投票予定者標本、leaner込み46.7%対42.1%、混合調査方法、誤差±4.0ポイントを原文照合。"
+    },
+    {
+      "sourceId": "obs-trafalgar-ak-20260925",
+      "attemptedUrls": ["https://www.thetrafalgargroup.org/wp-content/uploads/2026/09/AK-Midterms-Survey-Report-0925.pdf"],
+      "attemptedAt": "2026-09-28T00:16:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:16:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "PDF原票で1,079投票予定者、全候補、46.8%対45.5%、誤差±2.9ポイントを確認。同姓候補を省略しない。"
+    },
+    {
+      "sourceId": "obs-tpor-tx-20260925",
+      "attemptedUrls": ["https://texaspublicopinionresearch.substack.com/p/new-poll-in-texas-general-election-662"],
+      "attemptedAt": "2026-09-28T00:16:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:16:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "1,007投票予定者、leaner込み49%対44%、第三候補・未定、誤差±3.6ポイントを原文照合。"
+    },
+    {
+      "sourceId": "obs-hpu-nc-20260924",
+      "attemptedUrls": ["https://www.highpoint.edu/blog/2026/09/hpu-poll-127-north-carolina-likely-voters-weigh-in-on-u-s-senate-race-and-more/"],
+      "attemptedAt": "2026-09-28T00:16:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:16:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "オンライン非確率パネル、706投票予定者、50%対42%、credibility interval±3.9ポイントを確認し、通常の無作為標本誤差とは区別。"
+    },
+    {
+      "sourceId": "obs-mi-advance-rogers-autoworker-20260924",
+      "attemptedUrls": ["https://michiganadvance.com/2026/09/24/mike-rogers-claims-he-was-an-assembly-line-worker-the-uaw-said-that-is-stretching-the-truth/"],
+      "attemptedAt": "2026-09-28T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:15:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "1981〜82年のCars & Concepts勤務、陣営の具体的作業説明、UAWの表現への異論を照合。勤務事実と『Chrysler完成車組立ライン』を分けた。"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-paxton-china-donors-20260922",
+      "attemptedUrls": ["https://www.houstonchronicle.com/politics/texas/article/ken-paxton-donations-china-22438240.php"],
+      "attemptedAt": "2026-09-28T00:10:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:10:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "選挙資金記録に基づく計4万ドル、寄付者と関連企業、Paxton陣営の回答状況を照合。献金と政策影響を分けた。"
+    },
+    {
+      "sourceId": "obs-alaska-public-debate-schedule-20260922",
+      "attemptedUrls": ["https://alaskapublic.org/news/politics/elections/2026-09-22/8-candidates-3-debates-tune-into-debate-for-the-state-this-october"],
+      "attemptedAt": "2026-09-28T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:20:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "10月15日19時Alaska時間、主催、参加基準、Sullivan・Peltola両氏の対象を確認。"
+    },
+    {
+      "sourceId": "obs-wlns-mi-debates-20260905",
+      "attemptedUrls": ["https://www.wlns.com/news/michigan/el-sayed-rogers-set-for-two-october-debates-ahead-of-november-midterms/"],
+      "attemptedAt": "2026-09-28T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:20:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "両陣営が10月8日19時WOOD TV8と10月21日夕方WXYZに合意したことを確認。未受諾招待は確定予定にしない。"
+    },
+    {
+      "sourceId": "weekly-candidate-primary-sources",
+      "attemptedUrls": [
+        "https://www.jacksonformaine.com/priorities",
+        "https://www.sherrodbrown.com/our-fight/",
+        "https://www.jonhustedforsenate.com/bio/",
+        "https://jamestalarico.com/issue/taxes-cost-of-living/",
+        "https://www.kenpaxton.com/issues",
+        "https://marypeltola.com/",
+        "https://dansullivanforalaska.com/",
+        "https://chrispappas.org/"
+      ],
+      "attemptedAt": "2026-09-28T00:22:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:22:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "週次比較の公式政策・経歴の再点検。新たに確認できた主張は既存比較の意味を変えず、確認だけの州では分析更新日を進めていない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": ["https://sabatoscrystalball.substack.com/p/rating-changes-toward-democrats-across"],
+      "attemptedAt": "2026-09-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:18:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "9月22日版のIowa Toss Up、Michigan Lean D、Kansas Lean Rを維持。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": ["https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"],
+      "attemptedAt": "2026-09-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:18:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "JSONは9月17日版のまま。統合評価とD46・R47・未配分7を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": ["https://www.whitehouse.gov/briefings-statements/"],
+      "attemptedAt": "2026-09-28T00:19:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-28T00:19:00Z",
+      "contentVerifiedAt": "2026-09-28",
+      "scope": "公式一覧は9月26日掲載分まで。対象州へのTrump大統領の新たな確定訪問は確認できなかったが、未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedUrls": ["https://scholars.unh.edu/survey_center_polls/1005/", "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2004&context=survey_center_polls"],
+      "attemptedAt": "2026-09-28T00:17:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式HTMLで題名・日付・Pappas氏僅差先行の要旨は確認したがPDFは403。標本・設問・方法・数値を原文照合できず非掲載。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedUrls": ["https://www.nytimes.com/interactive/2026/09/24/polls/times-siena-poll-nh-toplines.html"],
+      "attemptedAt": "2026-09-28T00:17:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原票ページを取得できず、標本・質問文・方法を照合できないため非掲載。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": ["https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"],
+      "attemptedAt": "2026-09-28T00:17:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院特別選挙候補者原票を取得できず、未確認を継続。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": ["https://www.sos.nh.gov/elections/2026-election-information"],
+      "attemptedAt": "2026-09-28T00:17:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院候補者原票を取得できず、未確認を継続。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": ["https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"],
+      "attemptedAt": "2026-09-28T00:17:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文・方法・質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": ["https://www.fec.gov/data/committee/C00027466/"],
+      "attemptedAt": "2026-09-28T00:17:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "FEC概要は8月31日までの集計を再確認できたが、報道された州別予定額の原票を特定できず照合待ち。成功日時を進めていない。"
+    }
+  ],
+  "verification": {
+    "tests": "143 passed",
+    "build": "success",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  }
+}
