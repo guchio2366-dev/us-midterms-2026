@@ -8,11 +8,11 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-29T00:36:00Z",
+    "lastCompletedAt": "2026-09-29T00:20:00Z",
     "latestRun": {
       "runId": "daily-20260929",
       "startedAt": "2026-09-29T00:01:00Z",
-      "completedAt": "2026-09-29T00:36:00Z",
+      "completedAt": "2026-09-29T00:20:00Z",
       "outcome": "partial",
       "checkedSourceIds": [
         "obs-quantus-oh-20260924",

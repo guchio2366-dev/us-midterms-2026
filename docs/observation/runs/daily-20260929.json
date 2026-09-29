@@ -1,12 +1,12 @@
 {
   "runId": "daily-20260929",
   "startedAt": "2026-09-29T00:01:00Z",
-  "completedAt": "2026-09-29T00:36:00Z",
+  "completedAt": "2026-09-29T00:20:00Z",
   "outcome": "partial",
   "reviewMode": "daily; polls, ratings, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "40818b5060ae5d71ef70d2bc8909b35bc859c1eb",
-  "publishedCommit": null,
+  "publishedCommit": "32ba93b431036156fddbdc4d65b854c578ff958e",
   "revision": "observation-2026-09-29",
   "checkedSourceIds": [
     "obs-quantus-oh-20260924",
@@ -185,9 +185,9 @@
   "verification": {
     "tests": "143 passed",
     "build": "success",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 40818b5060ae5d71ef70d2bc8909b35bc859c1eb to 32ba93b431036156fddbdc4d65b854c578ff958e without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36502290120",
+    "publicContent": "success; public page showed the 2026-09-29 observation confirmation, D46/R47/unassigned7, the Alaska update, and the preserved scenario save/share controls; the Pages workflow completed successfully"
   },
   "note": "Ohio、Texas、North Carolinaの新しい調査原票と、Alaska、Maine、New Hampshire、Texasの州内取材を追加。主張、採決・実績、広告支出、政策効果、有権者評価を分離。統合評価D46・R47・未配分7と既存の保存案・共有URLは維持した。未取得原票は変化なしとせず、情報源別に照合待ちを記録した。"
 }
