@@ -1,0 +1,193 @@
+{
+  "runId": "daily-20260929",
+  "startedAt": "2026-09-29T00:01:00Z",
+  "completedAt": "2026-09-29T00:36:00Z",
+  "outcome": "partial",
+  "reviewMode": "daily; polls, ratings, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "40818b5060ae5d71ef70d2bc8909b35bc859c1eb",
+  "publishedCommit": null,
+  "revision": "observation-2026-09-29",
+  "checkedSourceIds": [
+    "obs-quantus-oh-20260924",
+    "obs-bigdata-tx-20260927",
+    "obs-aarp-nc-20260928",
+    "obs-alaska-public-lower48-20260928",
+    "obs-spectrum-me-trump-20260928",
+    "obs-nhpr-nh-outside-spending-20260928",
+    "obs-houston-chronicle-paxton-data-centers-20260928",
+    "obs-sabato",
+    "obs-270towin-sabato-20260922",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-quantus-oh-20260924",
+      "attemptedUrls": ["https://quantusinsights.org/f/brown-and-husted-deadlocked-in-ohio-senate-race"],
+      "attemptedAt": "2026-09-29T00:12:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:12:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "719 completesから投票しない24人を除いた695投票予定者、初回回答、leaner込み47.3%対46.8%、二者択一、誤差±4.2ポイントを原文照合。"
+    },
+    {
+      "sourceId": "obs-bigdata-tx-20260927",
+      "attemptedUrls": ["https://www.bigdatapoll.com/blog/lone-star-state-poll-talarico-paxton-in-close-race-us-senate-in-texas/"],
+      "attemptedAt": "2026-09-29T00:13:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:13:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "698投票予定者、初回回答、leaner込み46.8%対44.9%、混合調査方式、誤差±4.0ポイント、資金源を原文照合。"
+    },
+    {
+      "sourceId": "obs-aarp-nc-20260928",
+      "attemptedUrls": [
+        "https://www.aarp.org/pri/topics/voter-research/politics/2026-midterm-election-poll-north-carolina/",
+        "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-north-carolina.doi.10.26419-2fres.01065.019.pdf"
+      ],
+      "attemptedAt": "2026-09-29T00:14:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:14:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "1,115投票予定者、名簿抽出、電話・SMS方式、全体53%対42%、50歳以上45%対51%、誤差±2.9ポイントをPDF原票で確認。"
+    },
+    {
+      "sourceId": "obs-alaska-public-lower48-20260928",
+      "attemptedUrls": ["https://alaskapublic.org/news/politics/elections/2026-09-28/lower-48-is-a-phrase-to-fight-over-in-alaska-its-a-fixture-in-the-states-u-s-senate-race"],
+      "attemptedAt": "2026-09-29T00:17:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:17:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "Sullivan氏側の州外勢力批判、Peltola氏のWillow計画での反証、外部PAC、州内有権者・識者の異なる反応を照合。"
+    },
+    {
+      "sourceId": "obs-spectrum-me-trump-20260928",
+      "attemptedUrls": ["https://spectrumlocalnews.com/me/maine/politics/2026/09/28/jackson-says-trump--owns--collins--slams-her-for-not-fighting-against-iran-war-and-ice"],
+      "attemptedAt": "2026-09-29T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:18:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "Jackson氏の包括的批判を、Collins氏の財政法案の最終反対票、Iran戦争権限決議への賛成、陣営反論と照合。"
+    },
+    {
+      "sourceId": "obs-nhpr-nh-outside-spending-20260928",
+      "attemptedUrls": ["https://www.nhpr.org/nh-news/2026-09-28/nh-newhampshire-senate-race-pappas-sununu-midterms-election"],
+      "attemptedAt": "2026-09-29T00:19:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:19:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "外部団体の約5,000万ドル、1,000万ドルの広告予約、両候補の説明と一有権者の反応を照合し、支出と効果を分離。"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-paxton-data-centers-20260928",
+      "attemptedUrls": ["https://www.houstonchronicle.com/politics/texas/article/ken-paxton-data-centers-22453375.php"],
+      "attemptedAt": "2026-09-29T00:20:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:20:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "Paxton氏の条件付き支持、水・電力・立地・対中機器の提案と、Talarico氏の一時停止・規制強化案を照合。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": ["https://sabatoscrystalball.substack.com/p/rating-changes-toward-democrats-across"],
+      "attemptedAt": "2026-09-29T00:22:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:22:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "9月22日版のIowa Toss Up、Michigan Lean D、Kansas Lean Rを維持。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": ["https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json"],
+      "attemptedAt": "2026-09-29T00:22:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:22:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "現行評価を再確認し、統合評価とD46・R47・未配分7を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": ["https://www.whitehouse.gov/briefings-statements/"],
+      "attemptedAt": "2026-09-29T00:23:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-09-29T00:23:00Z",
+      "contentVerifiedAt": "2026-09-29",
+      "scope": "公式公表で対象州へのTrump大統領の新たな確定訪問は確認できなかった。未公表日程の不存在は断定しない。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedUrls": [
+        "https://scholars.unh.edu/survey_center_polls/1005/",
+        "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2004&context=survey_center_polls"
+      ],
+      "attemptedAt": "2026-09-29T00:24:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "PDF原票を取得できず、標本・設問・方法・数値を原文照合できないため非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedUrls": ["https://www.nytimes.com/interactive/2026/09/24/polls/times-siena-poll-nh-toplines.html"],
+      "attemptedAt": "2026-09-29T00:24:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原票ページを取得できず、標本・質問文・方法を照合できないため非掲載。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": ["https://www.sos.state.oh.us/elections/voters/candidate-filing-information/2026-candidate-requirements/"],
+      "attemptedAt": "2026-09-29T00:24:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院特別選挙候補者原票を取得できず、未確認を継続。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": ["https://www.sos.nh.gov/elections/2026-election-information"],
+      "attemptedAt": "2026-09-29T00:24:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州務長官の上院候補者原票を取得できず、未確認を継続。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": ["https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"],
+      "attemptedAt": "2026-09-29T00:24:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文・方法・質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": ["https://www.fec.gov/data/committee/C00027466/"],
+      "attemptedAt": "2026-09-29T00:24:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "FEC概要は確認できるが、報道された州別予定額の原票を特定できず照合待ち。成功日時を進めていない。"
+    }
+  ],
+  "comparisonAudit": [],
+  "verification": {
+    "tests": "143 passed",
+    "build": "success",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Ohio、Texas、North Carolinaの新しい調査原票と、Alaska、Maine、New Hampshire、Texasの州内取材を追加。主張、採決・実績、広告支出、政策効果、有権者評価を分離。統合評価D46・R47・未配分7と既存の保存案・共有URLは維持した。未取得原票は変化なしとせず、情報源別に照合待ちを記録した。"
+}

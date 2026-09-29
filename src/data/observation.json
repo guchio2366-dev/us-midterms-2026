@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-09-28",
+  "revision": "observation-2026-09-29",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,21 +8,20 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-09-28T00:30:00Z",
+    "lastCompletedAt": "2026-09-29T00:36:00Z",
     "latestRun": {
-      "runId": "daily-20260928",
-      "startedAt": "2026-09-28T00:02:00Z",
-      "completedAt": "2026-09-28T00:30:00Z",
+      "runId": "daily-20260929",
+      "startedAt": "2026-09-29T00:01:00Z",
+      "completedAt": "2026-09-29T00:36:00Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-bigdata-mi-20260925",
-        "obs-trafalgar-ak-20260925",
-        "obs-tpor-tx-20260925",
-        "obs-hpu-nc-20260924",
-        "obs-mi-advance-rogers-autoworker-20260924",
-        "obs-houston-chronicle-paxton-china-donors-20260922",
-        "obs-alaska-public-debate-schedule-20260922",
-        "obs-wlns-mi-debates-20260905",
+        "obs-quantus-oh-20260924",
+        "obs-bigdata-tx-20260927",
+        "obs-aarp-nc-20260928",
+        "obs-alaska-public-lower48-20260928",
+        "obs-spectrum-me-trump-20260928",
+        "obs-nhpr-nh-outside-spending-20260928",
+        "obs-houston-chronicle-paxton-data-centers-20260928",
         "obs-sabato",
         "obs-270towin-sabato-20260922",
         "obs-inside",
@@ -36,10 +35,143 @@
         "obs-unh-nh-20260924",
         "obs-nyt-siena-nh-20260924"
       ],
-      "note": "月曜の週次点検として6接戦州の候補者比較5項目と反証を再確認。Alaska、Michigan、Texas、North Carolinaの新しい調査原票を追加し、単一調査と手法差を明記。MichiganではRogers氏の自動車工場勤務の事実と『完成車組立ライン』という表現へのUAWの異論を分離し、TexasではPaxton氏側が中国系投資を争点にする一方、関連企業幹部らから計4万ドルを受けたとの選挙資金記録を反証材料として追加した。10月15日のAlaska討論会と10月21日のMichigan討論会を追加し、Michigan10月8日とMaine4討論会の時刻を確認。Sabato・Inside Electionsの統合評価、暫定配分D46・R47・未配分7、旧保存案・共有URLは維持。UNH・NYT/SienaのNew Hampshire調査原票、OH・NH名簿、Quantus Maine、NRSC州別支出のFEC原票は再確認したが照合待ち。"
+      "note": "Ohio、Texas、North Carolinaの新しい調査原票を確認。OhioはBrown 47.3%・Husted 46.8%、TexasはTalarico 46.8%・Paxton 44.9%、North CarolinaはCooper 53%・Whatley 42%で、いずれも調査方式と比較対象を明記した。Alaskaでは州外勢力をめぐる両陣営の主張、MaineではJackson氏の批判とCollins氏の最終採決・Iran権限決議、New Hampshireでは約5,000万ドルの外部広告、Texasではデータセンター政策を確認し、主張・実績・有権者評価を分離。Sabato・Inside Electionsの統合評価、暫定配分D46・R47・未配分7、旧保存案・共有URLは維持。大統領の対象州訪問は公式公表で確認できず、未公表日程の不存在は断定しない。UNH・NYT/SienaのNew Hampshire調査原票、OH・NH名簿、Quantus Maine、NRSC州別支出のFEC原票は照合待ち。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-quantus-oh-20260924",
+      "title": "Brown and Husted Deadlocked in Ohio Senate Race",
+      "publisher": "Quantus Insights",
+      "url": "https://quantusinsights.org/f/brown-and-husted-deadlocked-in-ohio-senate-race",
+      "publishedAt": "2026-09-24",
+      "referencePeriod": "9月21〜23日、Ohio州の投票予定者695人。leaner込みで民主党Sherrod Brown 47.3%、共和党Jon Husted 46.8%、誤差±4.2ポイント。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査機関の原文で実査期間、標本抽出、初回回答・leaner込み・二者択一の各結果、誤差を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:12:00Z"
+    },
+    {
+      "sourceId": "obs-bigdata-tx-20260927",
+      "title": "Lone Star State Poll: Talarico, Paxton in Close Race for U.S. Senate in Texas",
+      "publisher": "BIG DATA POLL",
+      "url": "https://www.bigdatapoll.com/blog/lone-star-state-poll-talarico-paxton-in-close-race-us-senate-in-texas/",
+      "publishedAt": "2026-09-27",
+      "referencePeriod": "9月24〜26日、Texas州の登録有権者793人・投票予定者698人。投票予定者のleaner込みで民主党James Talarico 46.8%、共和党Ken Paxton 44.9%、誤差±4.0ポイント。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "調査機関の原文で実査期間、登録有権者・投票予定者の標本数、初回回答とleaner込み、方式、誤差、資金源を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:13:00Z"
+    },
+    {
+      "sourceId": "obs-aarp-nc-20260928",
+      "title": "2026 Midterm Election Poll: North Carolina",
+      "publisher": "AARP Research",
+      "url": "https://www.aarp.org/pri/topics/voter-research/politics/2026-midterm-election-poll-north-carolina/",
+      "publishedAt": "2026-09-28",
+      "referencePeriod": "9月17〜20日、North Carolina州の投票予定者1,115人。民主党Roy Cooper 53%、共和党Michael Whatley 42%、その他・未定5%、誤差±2.9ポイント。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-NC-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "AARPの解説ページと調査PDFで実査期間、登録有権者名簿からの抽出、電話・SMS方式、標本数、全体・50歳以上の結果、誤差を照合",
+      "alternativeUrl": "https://www.aarp.org/content/dam/aarp/research/topics/voter-opinion-research/politics/2026-midterm-election-poll-north-carolina.doi.10.26419-2fres.01065.019.pdf",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:14:00Z"
+    },
+    {
+      "sourceId": "obs-alaska-public-lower48-20260928",
+      "title": "‘Lower 48’ is a phrase to fight over in Alaska. It’s a fixture in the state’s U.S. Senate race",
+      "publisher": "Alaska Public Media / Associated Press",
+      "url": "https://alaskapublic.org/news/politics/elections/2026-09-28/lower-48-is-a-phrase-to-fight-over-in-alaska-its-a-fixture-in-the-states-u-s-senate-race",
+      "publishedAt": "2026-09-28",
+      "referencePeriod": "Sullivan氏側の『州外リベラルと同調』という批判、Peltola氏のWillow計画承認でBiden政権に働きかけたという反論、州外資金をめぐる両陣営の主張と州内有権者・識者の受け止め。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内掲載のAP取材で両陣営の発言、政策上の具体例、外部団体の広告、州内有権者・識者の引用を照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:17:00Z"
+    },
+    {
+      "sourceId": "obs-spectrum-me-trump-20260928",
+      "title": "Jackson says Trump 'owns' Collins, slams her for not fighting against Iran war and ICE",
+      "publisher": "Spectrum News Maine",
+      "url": "https://spectrumlocalnews.com/me/maine/politics/2026/09/28/jackson-says-trump--owns--collins--slams-her-for-not-fighting-against-iran-war-and-ice",
+      "publishedAt": "2026-09-28",
+      "referencePeriod": "Jackson氏の政権との距離をめぐる批判を、Collins氏の大型財政法案の最終反対票、Iranで大統領権限を制限する決議への賛成、Collins陣営の反論と照合。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内報道でJackson氏の発言、採決経過、Collins氏の説明と陣営反論を照合し、包括的評価と個別採決を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-nhpr-nh-outside-spending-20260928",
+      "title": "Outside groups have spent roughly $50 million on New Hampshire’s U.S. Senate race",
+      "publisher": "New Hampshire Public Radio",
+      "url": "https://www.nhpr.org/nh-news/2026-09-28/nh-newhampshire-senate-race-pappas-sununu-midterms-election",
+      "publishedAt": "2026-09-28",
+      "referencePeriod": "New Hampshire上院選で外部団体が約5,000万ドルを投じ、Trump系No Going Back PACが1,000万ドルの広告枠を予約。Pappas氏とSununu氏の外部資金への説明、郵便広告を捨てた一有権者の反応も取材。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内公共放送の取材で広告支出・予約、資金開示法案、両候補の説明、有権者の一例を照合し、支出と説得効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:19:00Z"
+    },
+    {
+      "sourceId": "obs-houston-chronicle-paxton-data-centers-20260928",
+      "title": "Ken Paxton says he supports data centers, but with conditions",
+      "publisher": "Houston Chronicle",
+      "url": "https://www.houstonchronicle.com/politics/texas/article/ken-paxton-data-centers-22453375.php",
+      "publishedAt": "2026-09-28",
+      "referencePeriod": "Paxton氏がデータセンターを条件付きで支持し、電気料金転嫁の回避、水再利用、住宅地との距離、対中機器制限を提案。Talarico氏の一時停止・規制強化案とも比較。",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内紙の候補者インタビューでPaxton氏の条件、州司法長官室の調査、Talarico氏の既存案、両案とAbbott知事案の重なりを照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-09-29T00:20:00Z"
+    },
     {
       "sourceId": "obs-bigdata-mi-20260925",
       "title": "Wolverine State Poll: El-Sayed Leads Rogers for U.S. Senate in Michigan",
@@ -851,8 +983,8 @@
       "url": "https://sabatoscrystalball.substack.com/p/rating-changes-toward-democrats-across",
       "publishedAt": "2026-09-22",
       "referencePeriod": "Iowa・Kansas・Michiganの2026年9月22日評価変更",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
       "electionIds": [
         "2026-IA-2-regular",
         "2026-AK-2-regular",
@@ -868,7 +1000,7 @@
       "method": "Sabato公式Substackの分析本文、変更理由、変更後評価を照合",
       "alternativeUrl": "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:18:00Z"
+      "lastSuccessAt": "2026-09-29T00:22:00Z"
     },
     {
       "sourceId": "obs-270towin-sabato-20260922",
@@ -877,8 +1009,8 @@
       "url": "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026",
       "publishedAt": null,
       "referencePeriod": "Sabatoの9月22日変更3件と現行評価の照合",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
       "electionIds": [
         "2026-IA-2-regular",
         "2026-MI-2-regular",
@@ -889,7 +1021,7 @@
       "method": "日付付きの変更一覧とSabato公式分析記事へのリンクを照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:18:00Z"
+      "lastSuccessAt": "2026-09-29T00:22:00Z"
     },
     {
       "sourceId": "obs-inside",
@@ -898,8 +1030,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・9月17日更新。MEをTilt RepublicanからToss-upへ変更。全35選挙を確認",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -913,7 +1045,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:18:00Z"
+      "lastSuccessAt": "2026-09-29T00:22:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -922,8 +1054,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-09-29",
+      "contentVerifiedAt": "2026-09-29",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -937,7 +1069,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:19:00Z"
+      "lastSuccessAt": "2026-09-29T00:23:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -1977,6 +2109,55 @@
     }
   ],
   "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-quantus-oh-20260924",
+      "sourceId": "obs-quantus-oh-20260924",
+      "locator": "9月21〜23日、Ohio州の投票予定者695人。leaner込みでBrown 47.3%、Husted 46.8%。初回回答は45.6%対45.3%、誤差±4.2ポイント。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-bigdata-tx-20260927",
+      "sourceId": "obs-bigdata-tx-20260927",
+      "locator": "9月24〜26日、投票予定者698人。初回回答はTalarico 44.6%、Paxton 41.6%、leaner込みで46.8%対44.9%。登録有権者793人、誤差±4.0ポイント。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-aarp-nc-20260928",
+      "sourceId": "obs-aarp-nc-20260928",
+      "locator": "9月17〜20日、投票予定者1,115人。Cooper 53%、Whatley 42%、その他・未定5%、誤差±2.9ポイント。50歳以上ではWhatley 51%、Cooper 45%。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-alaska-public-lower48-20260928",
+      "sourceId": "obs-alaska-public-lower48-20260928",
+      "locator": "Sullivan氏側はPeltola氏を州外リベラルと結び付け、Peltola氏はWillow計画の承認でBiden政権に働きかけた実績を反証に提示。州外PACと両陣営の資金批判、州内有権者・識者の異なる受け止めも掲載。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-spectrum-me-trump-20260928",
+      "sourceId": "obs-spectrum-me-trump-20260928",
+      "locator": "Jackson氏はCollins氏がTrump政権に十分対抗していないと批判。記事はCollins氏が大型財政法案の審議入りには賛成したが最終案には反対し、Iran戦争権限決議では民主党側に加わったことも確認。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-nhpr-nh-outside-spending-20260928",
+      "sourceId": "obs-nhpr-nh-outside-spending-20260928",
+      "locator": "外部団体がNew Hampshire上院選へ約5,000万ドルを投じ、No Going Back PACは1,000万ドルの広告枠を予約。両候補の説明と、郵便広告を捨てた一有権者の反応を区別して掲載。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-houston-chronicle-paxton-data-centers-20260928",
+      "sourceId": "obs-houston-chronicle-paxton-data-centers-20260928",
+      "locator": "Paxton氏はデータセンターを条件付きで支持し、他の利用者への電気料金転嫁回避、水再利用、住宅地との距離、対中機器制限を提案。Talarico氏は一時停止と規制強化を提案している。",
+      "checkedAt": "2026-09-29",
+      "kind": "observed"
+    },
     {
       "evidenceId": "ev-obs-bigdata-mi-20260925",
       "sourceId": "obs-bigdata-mi-20260925",
@@ -4141,6 +4322,100 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-three-state-polls-2026-09-28",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special",
+        "2026-TX-2-regular",
+        "2026-NC-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-28",
+      "updatedAt": "2026-09-29",
+      "title": "3州の新調査を原票確認――Ohioは同率圏、TexasとNorth Carolinaは民主党候補が先頭",
+      "happened": "OhioのQuantus Insights調査はleaner込みで民主党Sherrod Brown氏47.3%・共和党Jon Husted氏46.8%。TexasのBIG DATA POLLは投票予定者で民主党James Talarico氏46.8%・共和党Ken Paxton氏44.9%。North CarolinaのAARP調査は民主党Roy Cooper氏53%・共和党Michael Whatley氏42%だった。",
+      "meaning": "Ohioは初回回答、leaner込み、二者択一のいずれでも1ポイント未満の差。Texasでは直近の複数調査でTalarico氏が先頭だが差の大きさは異なる。North CarolinaではCooper氏が全体で先頭の一方、50歳以上だけではWhatley氏が51%対45%で先頭となり、年齢構成と投票参加が重要な確認点になる。",
+      "uncertainty": "3調査は州、標本、方式、実査期間が異なる。OhioとTexasの差は各調査の誤差内で、North Carolinaの50歳以上は全体と別の部分標本。異なる調査の差を時系列の支持移動とは扱わず、統合評価と暫定配分は変更しない。",
+      "evidenceIds": [
+        "ev-obs-quantus-oh-20260924",
+        "ev-obs-bigdata-tx-20260927",
+        "ev-obs-aarp-nc-20260928"
+      ]
+    },
+    {
+      "updateId": "obs-update-ak-lower48-2026-09-28",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-28",
+      "updatedAt": "2026-09-29",
+      "title": "Alaskaで『州外勢力』が争点――Sullivanの批判にPeltolaはWillow計画で反論",
+      "happened": "共和党現職Dan Sullivan氏側は、民主党Mary Peltola氏を石油開発に反対する州外のリベラルと結び付けて攻撃した。Peltola氏は、2023年のWillow石油計画承認をBiden政権へ働きかけたことを挙げ、州の利益に反する政権には党派を問わず対抗すると反論した。外部PACと両陣営は互いに州外資金とのつながりも批判している。",
+      "meaning": "『州外と戦う候補』という表現ではなく、Willow計画などの具体的な働きかけ、現在の開発方針、資金源を同じ基準で比べる材料になる。州内取材では、この攻防を重視する人と、安定を重視する人の双方が紹介された。",
+      "uncertainty": "両陣営と外部団体の表現は選挙上の主張。取材に登場する有権者は州全体の代表標本ではなく、Willow計画への働きかけの事実から、将来の開発効果や得票への影響は判断できない。",
+      "evidenceIds": [
+        "ev-obs-alaska-public-lower48-20260928"
+      ]
+    },
+    {
+      "updateId": "obs-update-me-trump-record-2026-09-28",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-28",
+      "updatedAt": "2026-09-29",
+      "title": "Maineで政権との距離が再争点化――Jacksonの批判をCollinsの個別採決と照合",
+      "happened": "民主党Troy Jackson氏は、共和党現職Susan Collins氏がTrump政権に十分対抗していないと批判した。州内報道は、Collins氏が大型財政法案の審議入りには賛成した一方で最終案には反対し、Iranで大統領の戦争権限を制限する決議では民主党側に加わったことも確認した。Collins陣営は、Jackson氏の包括的な評価に反論した。",
+      "meaning": "候補者の『政権に従う』『独立している』という総括表現より、審議入りと最終採決、戦争権限など個別の行動を分けて比べる必要がある。Jackson氏の批判とCollins氏側の反論を、採決記録で検証する材料になる。",
+      "uncertainty": "複数の採決が確認できても、候補者の全案件での独立性や、有権者がどの採決を重視するかは確定しない。陣営の評価と採決事実を同じものとして扱わない。",
+      "evidenceIds": [
+        "ev-obs-spectrum-me-trump-20260928"
+      ]
+    },
+    {
+      "updateId": "obs-update-nh-outside-spending-2026-09-28",
+      "status": "published",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-28",
+      "updatedAt": "2026-09-29",
+      "title": "New Hampshireで外部広告約5,000万ドル――支出量と説得効果を分けて追う",
+      "happened": "州内公共放送は、外部団体がNew Hampshire上院選へ約5,000万ドルを投じ、その多くが共和党John Sununu氏を支援または民主党Chris Pappas氏を攻撃する内容だと報じた。Trump系No Going Back PACは1,000万ドルの広告枠を予約。Pappas氏は資金開示法案を挙げ、Sununu氏は大量広告の中で単純で焦点の絞られた発信が必要だと説明した。",
+      "meaning": "候補者本人の資金、外部団体の支出、予約された将来の広告を分け、どの争点が繰り返されるかを確認する材料。郵便広告を捨てた一有権者の反応も報じられたが、州全体の受け止めとは扱わない。",
+      "uncertainty": "広告の予約額は実際の放送額と同じとは限らず、支出の多さは支持率上昇や説得効果を示さない。外部団体の発言を候補者本人の発言とも扱わない。",
+      "evidenceIds": [
+        "ev-obs-nhpr-nh-outside-spending-20260928"
+      ]
+    },
+    {
+      "updateId": "obs-update-tx-data-centers-2026-09-28",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-09-28",
+      "updatedAt": "2026-09-29",
+      "title": "Texasのデータセンター政策――Paxtonは条件付き支持、Talaricoは一時停止を提案",
+      "happened": "共和党Ken Paxton氏は、データセンターが雇用とAI競争力を生むとして条件付きで支持し、他の利用者への電気料金転嫁を避けること、水の再利用、住宅地との距離、China製機器の制限を提案した。民主党James Talarico氏は、電力・水への影響を調べる間の一時停止と規制強化を提案している。",
+      "meaning": "賛成か反対かの二択ではなく、電力網費用、水、立地、地元の決定権を誰がどう負担・規制するかを比べる材料になる。Paxton氏の提案にはAbbott知事案やTalarico氏案と重なる部分もある。",
+      "uncertainty": "両候補の提案は公約・発言段階で、料金、水使用、雇用への実際の効果や有権者評価は未確認。州司法長官室の調査と選挙公約も別に扱う。",
+      "evidenceIds": [
+        "ev-obs-houston-chronicle-paxton-data-centers-20260928"
+      ]
+    },
     {
       "updateId": "obs-update-late-september-polls-2026-09-25",
       "status": "published",
