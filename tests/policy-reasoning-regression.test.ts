@@ -138,3 +138,15 @@ describe('policy reasoning compatibility regressions',()=>{
     }
   });
 });
+
+// A manual workbench choice follows the existing simulator's lock behavior.
+it.each(['candidate','unassigned'] as const)('locks a manual %s choice after a path unlock',kind=>{
+  const state=createScenarioState(baseline);
+  state.unlockedSeatIds=['ME-2','MI-2'];
+  const election=elections.find(e=>e.seatId==='ME-2')!;
+  const choice=kind==='candidate'?{kind,electionId:election.electionId,candidateId:'cand-me-susan-m-collins'}:{kind,electionId:election.electionId};
+  const next=applyReasonedChoice(state,election,choice,{assessment:kind==='candidate'?'conditional':'hold',assumptionIds:[],factors:[],evidenceIds:[]},elections);
+  expect(next.unlockedSeatIds).toEqual(['MI-2']);
+  expect(state.unlockedSeatIds).toEqual(['ME-2','MI-2']);
+  expect(next.senate[election.seatId]).toEqual(choice);
+});
