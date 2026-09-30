@@ -70,6 +70,8 @@ export interface ObservationRun {
   runId: string;
   startedAt: string;
   completedAt: string | null;
+  timingIntegrity?: 'inconsistent';
+  timingNote?: string;
   outcome: 'changed' | 'unchanged' | 'partial' | 'failed' | 'reviewing';
   checkedSourceIds: string[];
   pendingSourceIds: string[];

@@ -1,0 +1,20 @@
+import type { Candidate, Election } from './data/model';
+
+/** Keep old IDs available for saved assumptions, outside the current roster. */
+export function isArchivedCandidate(candidate: Candidate, election: Election): boolean {
+  return election.contestStatus === 'general-ballot' && candidate.ballotStage === 'primary-ballot';
+}
+
+export const candidateRosterNotes: Readonly<Record<string,string>> = {
+  'DE-2': '2026年9月30日に州選挙当局の本選名簿でCoons・Katzの掲載、別の公式一覧で記名投票候補3人を確認しました。名簿の更新日は9月29日です。以前の予備選候補は履歴として区別しています。',
+  'RI-2': '2026年9月30日に州務長官の候補者表でReed・McKayの本選掲載（On Election Ballot: Y）を確認しました。独立候補Michael Bahryは9月9日時点の資料を保持し、今回の本選掲載は再確認待ちです。未確認は立候補の撤回を意味しません。',
+  'OH-3': '候補者資料は2026年9月9日時点です。9月29日の定点観測では州務長官の最新の公式名簿を取得できず、本選候補・記名投票候補の再照合は未完了です。ここにある全候補の掲載資格を最新確認済みとは扱いません。',
+  'NH-2': '候補者資料は2026年9月9日時点です。9月29日の定点観測に続き、9月30日も州務長官の本選名簿PDFを取得できず、全候補・党籍・掲載資格の最新の再照合は未完了です。',
+};
+
+export function candidateStageLabel(candidate: Candidate, election: Election): string {
+  if (isArchivedCandidate(candidate,election)) return '以前の予備選資料・現在の本選名簿には掲載なし';
+  if (candidate.status === 'unconfirmed') return '本選掲載の再確認待ち';
+  return candidate.ballotStage === 'write-in' ? '記名投票候補'
+    : candidate.ballotStage === 'primary-ballot' ? '予備選段階' : '';
+}

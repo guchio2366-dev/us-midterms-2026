@@ -1,4 +1,18 @@
 /** Disclosure preferences are written only by a user's summary activation. */
+export function scrollStateDetailIntoView(options: ScrollIntoViewOptions) {
+  const target = document.querySelector<HTMLElement>('#detail');
+  if (!target) return;
+  let offset = 80;
+  document.querySelectorAll<HTMLElement>('main > .jump-nav, #scenario-sticky').forEach(header => {
+    const style = getComputedStyle(header);
+    if (style.position !== 'sticky' && style.position !== 'fixed') return;
+    const top = Number.parseFloat(style.top);
+    if (Number.isFinite(top)) offset = Math.max(offset,top + header.getBoundingClientRect().height + 12);
+  });
+  target.style.scrollMarginTop = `${offset}px`;
+  target.scrollIntoView(options);
+}
+
 export function bindDisclosurePreference(details: HTMLDetailsElement, key: string, hint?: HTMLElement|null) {
   try { details.open = localStorage.getItem(key) !== 'closed'; } catch { details.open = true; }
   const summary = details.querySelector<HTMLElement>(':scope > summary')!;

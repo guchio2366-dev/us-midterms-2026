@@ -1,5 +1,8 @@
 {
   "runId": "daily-20260929",
+  "timingIntegrity": "inconsistent",
+  "timingNote": "9月29日の記録では完了時刻00:20 UTCより後に00:22〜00:24 UTCの情報源確認が記載されています。実行ログで実時刻を回復できていないため、元の時刻を保持し不整合を明示しています。ここで新たな日次確認の完了を示すものではありません。",
+  "timingReviewedAt": "2026-09-30",
   "startedAt": "2026-09-29T00:01:00Z",
   "completedAt": "2026-09-29T00:20:00Z",
   "outcome": "partial",

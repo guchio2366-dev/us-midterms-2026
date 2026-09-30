@@ -30,10 +30,12 @@ import { generateSenatePaths, type SenatePath } from './scenario/paths';
 import { createLegacySenateBaseline, createRatingSenateBaseline } from './scenario/baseline';
 import { seatBarMarkup, type SeatBarSegment } from './ui/seat-bars';
 import { senateBreakdown, senateCompositionSegments, senateMajorityPath } from './ui/senate-bars';
-import { bindDisclosurePreference, setupPageNavigation } from './ui/navigation';
+import { bindDisclosurePreference, setupPageNavigation, scrollStateDetailIntoView } from './ui/navigation';
 import { RATING_METHOD_VERSION,RATING_SNAPSHOT_AS_OF,RATING_SNAPSHOT_ID,ratingSnapshotObservations } from './data/rating-snapshot';
 import { aggregateRatingConsensus,consensusDisplayRating,ratingConsensusCounts,type RatingConsensusCategory } from './rating-consensus';
 import { observationData, observationFor } from './data/observation';
+import { candidateStageLabel, isArchivedCandidate } from './candidate-roster';
+import { candidateChoiceOptionsMarkup, candidateRosterNoteMarkup } from './ui/candidate-roster';
 import { eventInstant, eventStatus, monitoringStatus } from './observation-logic';
 import { observationAnchor, observationBriefingParts, observationLeadMarkup, observationCandidateIntroMarkup, observationDecisionMarkup, observationComparisonMarkup, observationUpdatesMarkup, monitoringMarkup, bindObservationJumps, jumpToObservation } from './ui/observation';
 import { buildRecentFeed, buildUpcomingFeed, feedItemByKey, filterFeed, legacyObservationFeedKey, linkedUpdatesForNews, resolveFeedKey, type NewsFeedItem, type NewsFeedKey, type NewsFeedTab } from './news-feed';
@@ -962,7 +964,7 @@ function appendFeedStateLinks(article:HTMLElement,feedKey:NewsFeedKey,electionId
       closeOverlay();
       document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
       selectState(state);
-      document.querySelector('#detail')?.scrollIntoView({behavior:'instant',block:'start'});
+      scrollStateDetailIntoView({behavior:'instant',block:'start'});
     });
     stateNav.append(button);
   });
@@ -1487,10 +1489,7 @@ function senateChoiceOptions(election: Election) {
   const baseline = scenarioState.senateBaseline.outcomes[election.seatId] ?? 'unassigned';
   const category = ratingConsensus.find(item => item.seatId === election.seatId)?.category ?? 'missing';
   const reason = baseline === 'unassigned' ? `（${ratingCategoryLabel(category)}）` : '';
-  const candidateOptions = election.candidates.map(candidate => {
-    const stage = candidate.ballotStage === 'write-in' ? '・記名投票候補' : candidate.ballotStage === 'primary-ballot' ? '・予備選段階' : '';
-    return `<option value="candidate:${escapeHtml(candidate.candidateId)}" ${value === `candidate:${candidate.candidateId}` ? 'selected' : ''}>${escapeHtml(candidate.name)}（${escapeHtml(candidate.partyLabel)}${stage}）</option>`;
-  }).join('');
+  const candidateOptions = candidateChoiceOptionsMarkup(election,value);
   return `<option value="baseline" ${value === 'baseline' ? 'selected' : ''}>初期値：${outcomeLabel[baseline]}${reason}</option><option value="unassigned" ${value === 'unassigned' ? 'selected' : ''}>未配分にする</option><optgroup label="候補者が当選"><!-- official roster order -->${candidateOptions}</optgroup><optgroup label="会派のみ指定"><option value="caucus:Democratic" ${value === 'caucus:Democratic' ? 'selected' : ''}>民主党会派</option><option value="caucus:Republican" ${value === 'caucus:Republican' ? 'selected' : ''}>共和党会派</option><option value="caucus:none" ${value === 'caucus:none' ? 'selected' : ''}>会派非所属</option><option value="caucus:unconfirmed" ${value === 'caucus:unconfirmed' ? 'selected' : ''}>会派未確認</option></optgroup>`;
 }
 
@@ -1863,8 +1862,11 @@ function candidateCardMarkup(candidate: Election['candidates'][number], seat: Se
   const research = brief
     ? `<details class="candidate-details"><summary>政策・実績・相違点を見る</summary>${candidateResearchMarkup(candidate)}</details>`
     : '<small class="candidate-research-pending">政策資料は確認後に追加します。</small>';
-  const stage = candidate.ballotStage === 'write-in' ? '・記名投票候補' : candidate.ballotStage === 'primary-ballot' ? '・予備選段階' : '';
-  return `<article class="candidate-card ${selectedCandidate ? 'selected-candidate' : ''}"><header><i class="party-dot party-${candidate.party}"></i><span><b>${escapeHtml(candidate.name)}</b><small>${escapeHtml(candidate.partyLabel)}${stage}</small></span>${incumbent ? '<em class="incumbent-badge">現職</em>' : ''}</header>${shortPolicy}<button type="button" class="candidate-choice-button" data-candidate-choice="${candidate.candidateId}" data-seat="${seat.seatId}" data-election="${election.electionId}" aria-pressed="${selectedCandidate}">${selectedCandidate ? '当選する仮定に選択中' : 'この候補が当選すると仮定'}</button>${research}</article>`;
+  const stage = candidateStageLabel(candidate,election);
+  const archived = isArchivedCandidate(candidate,election);
+  const choiceControl = archived ? `<small>${selectedCandidate ? '以前の保存案の仮定を保持しています。変更・解除は選択欄から行えます。' : '以前の候補者資料として保持しています。'}</small>`
+    : `<button type="button" class="candidate-choice-button" data-candidate-choice="${candidate.candidateId}" data-seat="${seat.seatId}" data-election="${election.electionId}" aria-pressed="${selectedCandidate}">${selectedCandidate ? '当選する仮定に選択中' : 'この候補が当選すると仮定'}</button>`;
+  return `<article class="candidate-card ${selectedCandidate ? 'selected-candidate' : ''}"><header><i class="party-dot party-${candidate.party}"></i><span><b>${escapeHtml(candidate.name)}</b><small>${escapeHtml(candidate.partyLabel)}${stage ? `・${escapeHtml(stage)}` : ''}</small></span>${incumbent ? '<em class="incumbent-badge">現職</em>' : ''}</header>${shortPolicy}${choiceControl}${research}</article>`;
 }
 
 function relatedNewsMarkup(election: Election) {
@@ -1901,7 +1903,9 @@ function seatCard(seat: Seat, stateElections: Election[]) {
 function electionCard(election: Election) {
   const seat = seatById.get(election.seatId)!;
   const contestLabel = election.contestStatus === 'general-ballot' ? '本選候補' : election.contestStatus === 'primary-pending' ? `予備選候補（${election.primaryDate}予定）` : `予備選候補（${election.primaryDate}・結果確認中）`;
-  const printed = election.candidates.filter(candidate => candidate.ballotStage !== 'write-in');
+  const archived = election.candidates.filter(candidate => isArchivedCandidate(candidate,election));
+  const pending = election.candidates.filter(candidate => candidate.status === 'unconfirmed' && !isArchivedCandidate(candidate,election));
+  const printed = election.candidates.filter(candidate => candidate.ballotStage !== 'write-in' && candidate.status === 'confirmed' && !isArchivedCandidate(candidate,election));
   const writeIns = election.candidates.filter(candidate => candidate.ballotStage === 'write-in');
   const researched = printed.filter(candidate => getCandidateBrief(candidateBriefs,candidate.candidateId));
   const incumbentCandidate = printed.find(candidate => candidateNameKey(candidate.name) === candidateNameKey(seat.incumbent));
@@ -1915,13 +1919,15 @@ function electionCard(election: Election) {
   const openSeat = election.contestStatus === 'general-ballot' && seat.incumbent && !incumbentOnBallot
     ? `<p class="open-seat-note">現在の議席保持者 ${escapeHtml(seat.incumbent)} は本選候補ではありません。</p>` : '';
   const otherPrintedMarkup = otherPrinted.length ? `<details class="candidate-more"><summary>その他の投票用紙掲載候補 ${otherPrinted.length}人</summary><div class="candidate-list">${otherPrinted.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div></details>` : '';
+  const rosterNotesMarkup = candidateRosterNoteMarkup(election.seatId);
+  const previousCandidatesMarkup = `${pending.length ? `<details class="candidate-more"><summary>本選掲載の再確認待ち ${pending.length}人</summary><div class="candidate-list">${pending.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div></details>` : ''}${archived.length ? `<details class="candidate-more"><summary>以前の予備選候補の資料 ${archived.length}人</summary><p>現在の本選候補と区別しています。以前の保存案の仮定は自動変更しません。</p><div class="candidate-list">${archived.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div></details>` : ''}`;
   const writeInMarkup = writeIns.length ? `<details class="candidate-more"><summary>記名投票候補 ${writeIns.length}人</summary><p class="writein-note">候補者名を投票用紙へ書いて投票する候補です。</p><div class="candidate-list">${writeIns.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div></details>` : '';
   const choice = scenarioState.senate[election.seatId];
   const choiceLabel = choice ? scenarioChoiceLabel(choice,election) : `初期値：${outcomeLabel[scenarioState.senateBaseline.outcomes[election.seatId] ?? 'unassigned']}`;
   const outcome = assumptions[election.seatId] ?? scenarioOutcomeForSeat(scenarioState,election.seatId,election);
   const observation = observationFor(election.electionId);
   if (observation) return `<article class="election-card ${election.type} observation-host"><header class="election-card-head"><b>${election.type==='special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="observation-current"><b>自分の仮定：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p><div class="observation-body">${observationCandidateIntroMarkup(observation,election.candidates,seat.incumbent)}${observationLeadMarkup(observation)}${observationDecisionMarkup(observation)}<section id="${observationAnchor(election.electionId,'choice')}" tabindex="-1" class="election-assumption observation-choice"><h4>当選者を仮定する</h4><p>まだ決められなければ「未配分」のままにできる。</p><label>この選挙の当選仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><small>「初期配分へ戻す」は、この保存案の基準に戻す操作。</small></section>${observationComparisonMarkup(observation,election.candidates)}<details class="observation-candidate-files"><summary>${contestLabel}の全候補・政策資料</summary><div class="candidate-list">${featured.map(candidate=>candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}</details>${observationUpdatesMarkup(observation)}${relatedNewsMarkup(election)}<details class="race-full"><summary>世論調査・評価比較・原資料</summary><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${raceResearchMarkup(election)}${attributeRefs(election.attributeSourceIds)}</details><div data-observation-monitor>${monitoringMarkup()}</div></div></article>`;
-  return `<article class="election-card ${election.type}"><header class="election-card-head"><b>${election.type === 'special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${election.type === 'special' ? `<p class="special-term">${election.termStartRule ?? '任期途中の欠員を州法に基づき補充します。'}</p>` : ''}${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${raceLeadMarkup(election)}<section class="candidate-block"><h4>${contestLabel}：投票用紙に載る候補${printed.length}人${writeIns.length ? `・記名投票候補${writeIns.length}人` : ''}</h4><div class="candidate-list">${featured.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}</section><section class="election-assumption"><label>この候補が当選すると仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><p><b>現在の入力：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p></section>${relatedNewsMarkup(election)}<details class="race-full"><summary>調査・世論調査・評価比較・出典を開く</summary>${raceResearchMarkup(election)}<small class="election-verification">候補者名簿：${election.contestStatus === 'general-ballot' ? '本選掲載を確認済み' : '予備選確定待ち'}／情勢取得 ${election.rating.retrievedAt}</small>${attributeRefs(election.attributeSourceIds)}</details></article>`;
+  return `<article class="election-card ${election.type}"><header class="election-card-head"><b>${election.type === 'special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${election.type === 'special' ? `<p class="special-term">${election.termStartRule ?? '任期途中の欠員を州法に基づき補充します。'}</p>` : ''}${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${rosterNotesMarkup}${raceLeadMarkup(election)}<section class="candidate-block"><h4>${contestLabel}：投票用紙に載る候補${printed.length}人${writeIns.length ? `・記名投票候補${writeIns.length}人` : ''}</h4><div class="candidate-list">${featured.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}${previousCandidatesMarkup}</section><section class="election-assumption"><label>この候補が当選すると仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><p><b>現在の入力：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p></section>${relatedNewsMarkup(election)}<details class="race-full"><summary>調査・世論調査・評価比較・出典を開く</summary>${raceResearchMarkup(election)}${refs(election.candidates.flatMap(candidate=>candidate.sourceIds))}<small class="election-verification">候補者名簿：${election.candidateResearchStatus === 'complete' ? '本選掲載を確認済み（資料の確認日は出典を参照）' : '一部の掲載資格は再確認待ち'}／情勢取得 ${election.rating.retrievedAt}</small>${attributeRefs(election.attributeSourceIds)}</details></article>`;
 }
 
 function compactCopy(value: string, limit = 190) {
@@ -2007,7 +2013,7 @@ function selectState(state: State, trigger?: HTMLElement, options: {focus?:boole
     if (scroller) scroller.scrollTop = sameState ? previousScrollTop : 0;
   });
   const splitLayout = matchMedia('(min-width: 960px) and (orientation: landscape) and (min-height: 600px)').matches;
-  if (options.scroll !== false && !splitLayout) detail.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  if (options.scroll !== false && !splitLayout) scrollStateDetailIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
 }
 function electionLabelForSeat(seatId: string) {
   return elections.filter(election => election.seatId === seatId).map(election => election.type === 'special' ? '特別' : '通常').join('・');
@@ -2042,7 +2048,7 @@ function renderSim() {
     const state=stateByFips.get(button.dataset.seatMaterial!)!;
     document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
     selectState(state,button);
-    document.querySelector('#detail')?.scrollIntoView({behavior:'instant',block:'start'});
+    scrollStateDetailIntoView({behavior:'instant',block:'start'});
   }));
   if (activeSeatId) document.querySelector<HTMLElement>(`#seat-controls [data-senate-choice="${activeSeatId}"]`)?.focus();
 }
@@ -2282,7 +2288,7 @@ if (linkedElection) {
   const state=stateByFips.get(seatById.get(linkedElection.seatId)!.stateFips)!;
   document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
   selectState(state);
-  document.querySelector('#detail')?.scrollIntoView({behavior:'instant',block:'start'});
+  scrollStateDetailIntoView({behavior:'instant',block:'start'});
   if (linkedObservation && !legacyFeed) requestAnimationFrame(()=>jumpToObservation(observationAnchor(linkedElection.electionId,linkedObservation)));
 } else if (observationView.has('race')) {
   document.querySelector('#national-overview')?.scrollIntoView({behavior:'auto'});
