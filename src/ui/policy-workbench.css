@@ -57,3 +57,6 @@
 .pw-race-comparison>div{display:grid;grid-template-columns:1fr 1fr;gap:20px}.pw-race-comparison section{min-width:0;padding:12px;background:#f1f4ef}.pw-policy-comparison{font-size:.8rem}
 @media(max-width:950px){.pw-top-grid{grid-template-columns:1fr 1fr;gap:20px}.pw-choice-grid{grid-template-columns:minmax(0,1.4fr) minmax(230px,.8fr);gap:20px}.pw-route-grid{grid-template-columns:1fr}.pw-race-summary li{grid-template-columns:70px minmax(0,1fr)}}
 @media(max-width:720px){.policy-workbench{font-size:.94rem}.pw-top-grid,.pw-choice-grid,.pw-candidate-records{grid-template-columns:1fr}.pw-top-grid{gap:22px}.pw-choice-grid{gap:18px}.pw-race-form{padding:14px}.pw-race-summary li{grid-template-columns:100px minmax(0,1fr)}.pw-comparison-pickers,.pw-comparison-totals,.pw-race-comparison>div,.pw-policy-comparison{grid-template-columns:1fr;gap:12px}.pw-race-comparison section::before{display:block;content:attr(aria-label);font-weight:700;font-size:.8rem;color:#55646a}.pw-seat-counts b{font-size:1.3rem}}
+
+.policy-workbench>.section-heading{align-items:flex-end}
+.policy-workbench>.section-heading>p{margin-bottom:0}

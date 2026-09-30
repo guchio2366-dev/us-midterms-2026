@@ -1,3 +1,4 @@
+import { scenarioPathDifficultyLabel } from './ui/scenario-path-labels';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
@@ -1680,10 +1681,7 @@ function renderStateCompare() {
   bindSenateChoiceControls(host);
 }
 
-function targetDifficultyLabel(path: SenatePath) {
-  const entries = Object.entries(path.difficulty);
-  return entries.length ? entries.map(([rating,count]) => `${rating} ${count}議席`).join('／') : '追加獲得なし';
-}
+function targetDifficultyLabel(path: SenatePath) { return scenarioPathDifficultyLabel(path); }
 
 function renderTargetSim() {
   const host = document.querySelector<HTMLElement>('#target-sim-panel');
