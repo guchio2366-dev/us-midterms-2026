@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { elections, seats } from '../src/data/data';
+import { elections, profiles, seats } from '../src/data/data';
 import { houseDistricts } from '../src/data/house';
 import { candidateRosterNotes, isArchivedCandidate } from '../src/candidate-roster';
 import { candidateChoiceOptionsMarkup, candidateRosterNoteMarkup } from '../src/ui/candidate-roster';
@@ -11,6 +11,18 @@ import { createScenarioState, countScenarioSenate } from '../src/scenario/model'
 import { encodeScenario, decodeScenario } from '../src/scenario/storage';
 
 describe('candidate roster verification and saved assumptions', () => {
+  it('keeps the lower state summaries consistent with current and pending candidates', () => {
+    const de=profiles.find(profile=>profile.stateFips==='10')!;
+    expect(de.electionMeaning.text).toContain('印刷候補2人・宣言済み書き込み候補3人を確認');
+    expect(de.electionMeaning.text).toContain('以前の予備選候補3人は履歴');
+    expect(de.electionMeaning.sourceIds).toContain('cand-de-general-20260930');
+    const ri=profiles.find(profile=>profile.stateFips==='44')!;
+    expect(ri.electionMeaning.text).toContain('印刷候補2人');
+    expect(ri.electionMeaning.text).toContain('本選掲載の再確認待ち1人');
+    expect(ri.electionMeaning.text).toContain('以前の予備選候補2人は履歴');
+    expect(ri.electionMeaning.sourceIds).toContain('cand-ri-ballot-20260930');
+    for(const fips of ['33','39']) expect(profiles.find(profile=>profile.stateFips===fips)!.electionMeaning.text).toContain('最新名簿の再照合は一部未完了');
+  });
   it('separates Delaware printed, declared write-in and previous primary candidates', () => {
     const election = elections.find(e=>e.seatId==='DE-2')!;
     expect(election.candidates.filter(c=>c.ballotStage==='general-ballot').map(c=>c.name)).toEqual(['Chris Coons','Michael Katz']);

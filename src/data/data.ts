@@ -3,6 +3,7 @@ import { civicSources } from './civics';
 import { contextSources, soybeanTrade, stateContexts } from './state-context';
 import { houseSources } from './house';
 import { senateRaceDetails, senateRaceSources } from './senate-races';
+import { isArchivedCandidate } from '../candidate-roster';
 import { researchSources } from './research-sources';
 import { ROSTER_SOURCE_UPDATED_AT, ROSTER_VERIFIED_AT, verifiedRoster } from './verified-roster';
 
@@ -200,9 +201,13 @@ const stateEventIds = (state: State) => {
 const electionByStateData = (state: State) => elections.filter(election => election.seatId.startsWith(`${state.abbr}-`));
 const electionStatusText = (election: Election) => election.contestStatus === 'general-ballot'
   ? (() => {
-      const printed = election.candidates.filter(candidate => candidate.ballotStage !== 'write-in').length;
-      const writeIns = election.candidates.length - printed;
-      return `本選の印刷候補${printed}人${writeIns ? `・宣言済み書き込み候補${writeIns}人` : ''}を確認、情勢は${election.rating.category}`;
+      const current = election.candidates.filter(candidate => !isArchivedCandidate(candidate,election));
+      const printed = current.filter(candidate => candidate.ballotStage === 'general-ballot' && candidate.status === 'confirmed').length;
+      const writeIns = current.filter(candidate => candidate.ballotStage === 'write-in' && candidate.status === 'confirmed').length;
+      const pending = current.filter(candidate => candidate.status === 'unconfirmed').length;
+      const archived = election.candidates.length - current.length;
+      const verification = election.candidateResearchStatus === 'complete' ? 'を確認' : 'を資料に収録（最新名簿の再照合は一部未完了）';
+      return `本選の印刷候補${printed}人${writeIns ? `・宣言済み書き込み候補${writeIns}人` : ''}${verification}${pending ? `、本選掲載の再確認待ち${pending}人` : ''}${archived ? `、以前の予備選候補${archived}人は履歴として区別` : ''}、情勢は${election.rating.category}`;
     })()
   : election.contestStatus === 'primary-pending' ? '予備選前で本選候補未確定' : '予備選投票日で結果確定待ち';
 
@@ -215,11 +220,11 @@ export const profiles: Profile[] = states.map(state => {
     ? ` USDAの2026年8月予測では大豆${context.soybeanProduction2026!.toLocaleString('en-US')}千ブッシェル、全米${context.soybeanRank2026}位です。`
     : ' USDA州別表に大豆生産量の掲載はありません。';
   return {
-    stateFips:state.fips,asOf:'2026-09-09',contentStatus:'確認済み',
+    stateFips:state.fips,asOf:['DE','RI'].includes(state.abbr) ? '2026-09-30' : '2026-09-09',contentStatus:'確認済み',
     politicalBase:{text:`2024年大統領選は${winner}が二大候補票で${context.presidentialMargin2024!.toFixed(1)}ポイント上回りました。2025年推計人口は${context.population2025.toLocaleString('en-US')}人です。`,sourceIds:['fec-pres-2024','census-pop-2025']},
     industryAndIssues:{text:`2025年の民間GDPで最大の2桁産業は${context.topPrivateIndustry2025}（民間GDPの${context.topPrivateIndustryShare2025.toFixed(1)}%）です。${soybean}`,sourceIds:['bea-sagdp-2025',...(context.soybeanProduction2026 === null ? [] : ['nass-soy-2026'])]},
     historicalTrajectory:{text:`2020年基準から2025年までの人口変化は${growth}です。人口・産業・過去の得票は背景指標であり、個々の有権者の投票理由を直接示しません。`,sourceIds:['census-pop-2025','fec-pres-2024']},
-    electionMeaning:{text:stateElections.length ? `2026年上院選：${stateElections.map(electionStatusText).join('／')}。下院は全選挙区が改選されます。` : '2026年の上院選はありません。下院は州内の全選挙区が改選されます。',sourceIds:stateElections.length ? [...new Set(stateElections.flatMap(election => election.sourceIds))] : ['house-consensus-2026']},
+    electionMeaning:{text:stateElections.length ? `2026年上院選：${stateElections.map(electionStatusText).join('／')}。下院は全選挙区が改選されます。` : '2026年の上院選はありません。下院は州内の全選挙区が改選されます。',sourceIds:stateElections.length ? [...new Set(stateElections.flatMap(election => [...election.sourceIds,...election.candidates.flatMap(candidate=>candidate.sourceIds)]))] : ['house-consensus-2026']},
     eventIds:stateEventIds(state),
   };
 });
