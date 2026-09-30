@@ -1,3 +1,19 @@
+/** Align a section heading beneath the actual page navigation, without adding CSS anchor padding twice. */
+export function scrollPageHeadingIntoView(target:HTMLElement, behavior:ScrollBehavior) {
+  const nav=document.querySelector<HTMLElement>('main > .jump-nav');
+  const position=nav ? getComputedStyle(nav).position : '';
+  const clearance=nav && (position==='sticky'||position==='fixed') ? nav.getBoundingClientRect().height+8 : 8;
+  window.scrollTo({top:Math.max(0,window.scrollY+target.getBoundingClientRect().top-clearance),behavior});
+}
+
+export function setActivePageNavigation(hash:string) {
+  const route=hash==='#national-overview' ? '#overview' : hash==='#news' ? '#updates' : hash==='#map-heading' ? '#simulator' : hash || '#overview';
+  document.querySelectorAll<HTMLAnchorElement>('main > .jump-nav a').forEach(link=>{
+    if(link.getAttribute('href')===route)link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+  });
+}
+
 /** Disclosure preferences are written only by a user's summary activation. */
 export function scrollStateDetailIntoView(options: ScrollIntoViewOptions) {
   const target = document.querySelector<HTMLElement>('#detail');
@@ -31,6 +47,7 @@ export function bindDisclosurePreference(details: HTMLDetailsElement, key: strin
 
 export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void, closePanel: () => void) {
   let lastHash=location.hash;
+  setActivePageNavigation(location.hash);
   function visit(hash: string, fromHistory=false) {
     if (hash === '#issues') { lastHash=hash; openIssues(fromHistory); return; }
     const id = hash.slice(1);
@@ -40,6 +57,7 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
       return;
     }
     lastHash=hash;
+    setActivePageNavigation(hash);
     closePanel();
     const target = document.getElementById(id);
     if (!target) return;
@@ -50,7 +68,7 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
       const focus = disclosure?.querySelector<HTMLElement>(':scope > summary') ?? target.querySelector<HTMLElement>('h2') ?? target;
       if (focus.tagName !== 'SUMMARY') focus.tabIndex = -1;
       focus.focus({preventScroll:true});
-      target.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+      scrollPageHeadingIntoView(focus,matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
     });
   }
   document.addEventListener('click',event => {
