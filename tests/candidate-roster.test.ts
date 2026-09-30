@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { elections, profiles, seats } from '../src/data/data';
+import { elections, profiles, seats, sources } from '../src/data/data';
 import { houseDistricts } from '../src/data/house';
 import { candidateRosterNotes, isArchivedCandidate } from '../src/candidate-roster';
 import { candidateChoiceOptionsMarkup, candidateRosterNoteMarkup } from '../src/ui/candidate-roster';
@@ -11,6 +11,26 @@ import { createScenarioState, countScenarioSenate } from '../src/scenario/model'
 import { encodeScenario, decodeScenario } from '../src/scenario/storage';
 
 describe('candidate roster verification and saved assumptions', () => {
+  it('verifies the seven Ohio IDs while separating eligibility, party and document dates', () => {
+    const oh=elections.find(e=>e.seatId==='OH-3')!;
+    expect(oh.candidateResearchStatus).toBe('complete');
+    expect(oh.candidates.map(c=>c.candidateId)).toEqual(['cand-oh-sherrod-brown','cand-oh-jon-husted','cand-oh-greg-levy','cand-oh-william-b-redpath','cand-oh-stephen-faris','cand-oh-anthony-holliman','cand-oh-timothy-telymonde']);
+    expect(oh.candidates.find(c=>c.candidateId==='cand-oh-greg-levy')?.partyLabel).toBe('Other-party candidate');
+    for(const c of oh.candidates.filter(c=>c.ballotStage==='write-in')) {
+      expect(c).toMatchObject({status:'confirmed',party:'unknown',partyLabel:'党籍未確認',caucusIntent:'unconfirmed'});
+      expect(c.sourceIds).toContain('oh-cuyahoga-candidates-20260917');
+    }
+    expect(sources.find(s=>s.sourceId==='oh-sos-directive-2026-45')).toMatchObject({publishedAt:'2026-08-25',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'});
+    const html=observationCandidateIntroMarkup(observationFor(oh.electionId)!,oh.candidates,null);
+    expect(html).toContain('印刷候補4人');
+    expect(html).toContain('党派は記載がないため未確認');
+    expect(html).not.toContain('再照合は未完了');
+    const summary=profiles.find(p=>p.stateFips==='39')!;
+    expect(summary.electionMeaning.text).toContain('印刷候補4人・宣言済み書き込み候補3人を確認');
+    expect(summary.electionMeaning.sourceIds).toContain('oh-sos-directive-2026-45');
+    expect(elections.find(e=>e.seatId==='NH-2')?.candidateResearchStatus).toBe('partial');
+    expect(elections.find(e=>e.seatId==='RI-2')?.candidates.find(c=>c.candidateId==='cand-ri-michael-bahry')?.status).toBe('unconfirmed');
+  });
   it('keeps the lower state summaries consistent with current and pending candidates', () => {
     const de=profiles.find(profile=>profile.stateFips==='10')!;
     expect(de.electionMeaning.text).toContain('印刷候補2人・宣言済み書き込み候補3人を確認');
@@ -21,7 +41,7 @@ describe('candidate roster verification and saved assumptions', () => {
     expect(ri.electionMeaning.text).toContain('本選掲載の再確認待ち1人');
     expect(ri.electionMeaning.text).toContain('以前の予備選候補2人は履歴');
     expect(ri.electionMeaning.sourceIds).toContain('cand-ri-ballot-20260930');
-    for(const fips of ['33','39']) expect(profiles.find(profile=>profile.stateFips===fips)!.electionMeaning.text).toContain('最新名簿の再照合は一部未完了');
+    for(const fips of ['33']) expect(profiles.find(profile=>profile.stateFips===fips)!.electionMeaning.text).toContain('最新名簿の再照合は一部未完了');
   });
   it('separates Delaware printed, declared write-in and previous primary candidates', () => {
     const election = elections.find(e=>e.seatId==='DE-2')!;
@@ -41,11 +61,11 @@ describe('candidate roster verification and saved assumptions', () => {
     expect(countScenarioSenate(loaded.state,seats,elections)).toEqual(countScenarioSenate(state,seats,elections));
   });
 
-  it('marks Rhode Island independent-candidate coverage and OH/NH roster checks partial', () => {
+  it('marks Rhode Island independent-candidate coverage and NH roster checks partial', () => {
     const ri = elections.find(e=>e.seatId==='RI-2')!;
     expect(ri.candidates.find(c=>c.candidateId==='cand-ri-michael-bahry')?.status).toBe('unconfirmed');
     expect(candidateChoiceOptionsMarkup(ri,'baseline')).toContain('本選掲載の再確認待ち');
-    for(const seatId of ['OH-3','NH-2']) {
+    for(const seatId of ['NH-2']) {
       const election=elections.find(e=>e.seatId===seatId)!;
       expect(election.candidateResearchStatus).toBe('partial');
       const html=observationCandidateIntroMarkup(observationFor(election.electionId)!,election.candidates,null);

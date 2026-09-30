@@ -63,8 +63,18 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('FL-3','2026-08-18','Safe R','cand-fl',[
     candidate('Neil Gillespie','I','Independent','cand-fl'),candidate('Ashley Moody','R','Republican','cand-fl'),candidate('Angie Nixon','D','Democratic','cand-fl'),
   ]),
-  race('OH-3','2026-05-05','Tossup','oh-candidate-list-2026',[
-    candidate('Sherrod Brown','D','Democratic','oh-candidate-list-2026','general-ballot','cand-oh-sherrod-brown'),candidate('Jon Husted','R','Republican','oh-candidate-list-2026','general-ballot','cand-oh-jon-husted'),candidate('Greg Levy','other','Other-party candidate','oh-candidate-list-2026','general-ballot','cand-oh-greg-levy'),candidate('William B. Redpath','other','Libertarian','oh-candidate-list-2026','general-ballot','cand-oh-william-b-redpath'),candidate('Stephen Faris','other','Declared write-in','oh-candidate-list-2026','write-in','cand-oh-stephen-faris'),candidate('Anthony Holliman','other','Declared write-in','oh-candidate-list-2026','write-in','cand-oh-anthony-holliman'),candidate('Timothy Telymonde','other','Declared write-in','oh-candidate-list-2026','write-in','cand-oh-timothy-telymonde'),
+  race('OH-3','2026-05-05','Tossup','oh-sos-directive-2026-45',[
+    ...[
+      candidate('Sherrod Brown','D','Democratic','oh-sos-directive-2026-45','general-ballot','cand-oh-sherrod-brown'),
+      candidate('Jon Husted','R','Republican','oh-sos-directive-2026-45','general-ballot','cand-oh-jon-husted'),
+      candidate('Greg Levy','other','Other-party candidate','oh-sos-directive-2026-45','general-ballot','cand-oh-greg-levy'),
+      candidate('William B. Redpath','other','Libertarian','oh-sos-directive-2026-45','general-ballot','cand-oh-william-b-redpath'),
+    ].map(item=>({...item,sourceIds:['oh-sos-directive-2026-45','oh-sos-sample-ballot-2026','oh-cuyahoga-candidates-20260917']})),
+    ...[
+      candidate('Stephen Faris','unknown','党籍未確認','oh-sos-directive-2026-45','write-in','cand-oh-stephen-faris'),
+      candidate('Anthony Holliman','unknown','党籍未確認','oh-sos-directive-2026-45','write-in','cand-oh-anthony-holliman'),
+      candidate('Timothy Telymonde','unknown','党籍未確認','oh-sos-directive-2026-45','write-in','cand-oh-timothy-telymonde'),
+    ].map(item=>({...item,sourceIds:['oh-sos-directive-2026-45','oh-cuyahoga-candidates-20260917']})),
   ]),
   race('AL-2','2026-05-19','Safe R','cand-al',[
     candidate('Barry Moore','R','Republican','cand-al'),candidate('Everett Wess','D','Democratic','cand-al-d'),
@@ -215,6 +225,9 @@ const officialCandidateSources: Array<[string,string,string,string]> = [
 ];
 
 export const senateRaceSources: Source[] = [
+  {sourceId:'oh-sos-directive-2026-45',title:'Ohio Directive 2026-45 — Official Ballot',publisher:'Ohio Secretary of State',url:'https://www.ohiosos.gov/assets/dir2026-45-form-of-the-official-ballot-for-the-november%203-general-election.pdf',publishedAt:'2026-08-25',referencePeriod:'VI.H、p7: 2029年1月3日までの上院残任期の州認証済み印刷候補4名。III.B.ii、p4: valid write-in 3名。Greg LevyはOther-party candidate。記名候補の党派記載なし。9月30日に内容を再照合',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
+  {sourceId:'oh-sos-sample-ballot-2026',title:'Ohio official sample ballot — November 3, 2026',publisher:'Ohio Secretary of State',url:'https://www.ohiosos.gov/assets/dir2026-45-official-sample-ballot-november-3-2026.pdf',publishedAt:null,referencePeriod:'p1: 上院残任期欄の印刷候補4名と州表示の党派。様式上の日付8月20日は発行日と断定しない。Directive 2026-45の付属サンプル',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
+  {sourceId:'oh-cuyahoga-candidates-20260917',title:'Cuyahoga County general-election candidate list',publisher:'Cuyahoga County Board of Elections',url:'https://boe.cuyahogacounty.gov/docs/default-source/boe/candidates-page/candidate-list.pdf?sfvrsn=4b1792c0_450',publishedAt:null,updatedAt:'2026-09-17T15:34',referencePeriod:'p5: 印刷4名valid、Stephen Faris・Anthony Holliman・Timothy Telymondeはvalid write-in、3名のparty欄空白。郡一覧の9月17日15:34表示であり州SOSの認証日ではない。LevyのNonpartisan表記は州Other-party candidateと区別',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   {sourceId:'cand-de-general-20260930',title:'2026 Delaware general-election candidate list',publisher:'Delaware Department of Elections',url:'https://elections.delaware.gov/candidates/candidatelist/genl_fcddt_2026.html',publishedAt:null,updatedAt:'2026-09-29',referencePeriod:'11月3日本選のU.S. Senator欄。Chris CoonsとMichael "Dr. Mike" KatzはQualified。通称を表示し既存candidateIdを保持',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   {sourceId:'cand-de-writeins-20260930',title:'2026 Delaware declared write-in candidates',publisher:'Delaware Department of Elections',url:'https://elections.delaware.gov/candidates/candidatelist/genl_wcddt_2026.html',publishedAt:null,referencePeriod:'3郡のU.S. Senator欄でWilliam McVay・John Shulli・Travis Jack StevensのQualifiedを確認。党籍を示さないため新規2人の党籍・会派は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   {sourceId:'cand-ri-ballot-20260930',title:'2026 Rhode Island candidates for Senator in Congress',publisher:'Rhode Island Department of State',url:'https://vote.sos.ri.gov/Candidates/CandidateSearchSummary?Election=18239&OfficeType=620',publishedAt:null,referencePeriod:'9月30日表示のOn Election Ballot欄。John Francis Reed・Raymond T McKayはY、Connor Francis Burbridge・Luis Daniel MunozはN。既存通称・candidateIdを保持。独立候補の全体は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},

@@ -206,7 +206,7 @@ export const evidenceRefs: EvidenceRef[] = [
   {evidenceId:'ev-jackson-priorities',sourceId:'jackson-priorities-2026',locator:'現行prioritiesの候補者方針',checkedAt:'2026-09-11',kind:'observed'},
   {evidenceId:'ev-hr1-rollcall',sourceId:'senate-rollcall-119-372',locator:'H.R.1最終通過：50対50、副大統領Yea、Collins Nay、Husted Yea',checkedAt:'2026-09-11',kind:'observed'},
   {evidenceId:'ev-oh-vacancy',sourceId:'oh-dewine-husted-appointment',locator:'2025-01-17：Vance離任後のHusted任命',checkedAt:'2026-09-11',kind:'observed'},
-  {evidenceId:'ev-oh-official-candidates',sourceId:'oh-candidate-list-2026',locator:'U.S. Senator unexpired term欄：印刷4候補・書き込み3候補',checkedAt:'2026-09-11',kind:'observed'},
+  {evidenceId:'ev-oh-official-candidates',sourceId:'oh-sos-directive-2026-45',locator:'VI.H p7：州認証の印刷4候補、III.B.ii p4：valid write-in 3候補。発行8月25日、9月30日に照合。記名候補の党派記載なし',checkedAt:'2026-09-30',kind:'observed'},
   {evidenceId:'ev-oh-cook-rating',sourceId:'cook-oh-race-2026',locator:'2026-08-20現在Toss Up、2026-04-13 Lean R→Toss Up',checkedAt:'2026-09-11',kind:'observed'},
   {evidenceId:'ev-oh-inside-rating',sourceId:'inside-oh-race-2026',locator:'2026-09-03 Tilt Republican→Toss-up',checkedAt:'2026-09-11',kind:'observed'},
   {evidenceId:'ev-oh-sabato-rating',sourceId:'sabato-oh-change-2026',locator:'2026-06-11 Toss-upへ変更',checkedAt:'2026-09-11',kind:'observed'},

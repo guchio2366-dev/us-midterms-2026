@@ -324,7 +324,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <nav class="jump-nav" aria-label="ページ内メニュー"><a href="#overview">概説・全国情勢</a><a href="#updates">直近の更新</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a></nav>
   ${introductionMarkup()}
   <div class="dateline"><span>サイト内容更新 ${escapeHtml(latestContentDate)}</span><span>上院 通常${regularCount}＋特別${specialCount}</span><span>下院 全435</span><span>候補者 ${candidateCount}人</span><span>版 ${APP_VERSION}</span><button id="reload-app" class="reload-app" type="button">最新版を再読み込み</button></div>
-  <div class="data-caution ${baselineComplete ? 'verified' : ''}" role="note"><strong>${baselineComplete ? '収録範囲' : '基礎情報に未確認項目があります'}</strong><span>上院100議席、2026年35選挙、候補者、統一情勢評価、50州の人口・産業・2024年結果を収録。デラウェアとロードアイランドは9月30日に確認した本選名簿を反映し、以前の予備選候補を区別しています。ロードアイランドの独立候補、Ohio・New Hampshireの最新名簿には再確認待ちがあります。</span></div>
+  <div class="data-caution ${baselineComplete ? 'verified' : ''}" role="note"><strong>${baselineComplete ? '収録範囲' : '基礎情報に未確認項目があります'}</strong><span>上院100議席、2026年35選挙、候補者、統一情勢評価、50州の人口・産業・2024年結果を収録。デラウェアとロードアイランドは9月30日に確認した本選名簿を反映し、以前の予備選候補を区別しています。Ohioは9月30日に州・郡の公式資料で印刷候補4人と記名投票候補3人を照合しました。記名候補の党派、ロードアイランドの独立候補とNew Hampshireの最新名簿には未確認項目があります。</span></div>
   <span id="senate" class="legacy-anchor" aria-hidden="true"></span>
   <section class="workspace" aria-label="上院州別地図と詳細">
     <div class="map-column">
