@@ -1,3 +1,4 @@
+import { normalizeScenarioReasoning, type ScenarioReasoning } from './reasoning';
 import type { Candidate, Caucus, Election, HouseDistrict, Seat } from '../data/model';
 import type { HouseAssumptions, HouseOutcome } from '../logic';
 
@@ -30,6 +31,8 @@ export interface ScenarioState {
   target: ScenarioTarget|null;
   unlockedSeatIds: string[];
   updatedAt: string;
+  /** Optional reasoning; older saved scenarios remain valid. */
+  reasoning?: ScenarioReasoning;
 }
 export interface SavedScenario { id:string; name:string; savedAt:string; state:ScenarioState }
 export interface ScenarioViewState { selectedStateFips:string|null; selectedHouseDistrictId:string|null; compareStateFips:string[]; mapMode:'current'|'rating' }
@@ -91,6 +94,9 @@ function normalizeBaseline(raw: unknown, seats: Seat[]): SenateBaselineSnapshot|
 }
 
 function copyScenarioFields(raw: Record<string,unknown>, clean: ScenarioState, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[], notices: string[]) {
+  const reasonResult=normalizeScenarioReasoning(raw.reasoning,elections);
+  if(reasonResult.reasoning)clean.reasoning=reasonResult.reasoning;
+  notices.push(...reasonResult.notices);
   const electionBySeat = new Map(elections.map(election => [election.seatId,election]));
   const validSeatIds = new Set(seats.map(seat => seat.seatId));
   if (isRecord(raw.senate)) for (const [seatId,value] of Object.entries(raw.senate)) {

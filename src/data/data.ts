@@ -1,3 +1,4 @@
+import { policyAdditionSources } from './policy-additions';
 import { aggregateRatingConsensus,consensusDisplayLabel } from '../rating-consensus';
 import { ratingSnapshotObservations } from './rating-snapshot';
 import type { Election, EventItem, Profile, Seat, Source, State, VicePresident } from './model';
@@ -165,6 +166,7 @@ const checked = (source: Omit<Source,'retrievedAt'|'contentVerifiedAt'>): Source
   ...source, retrievedAt:'2026-09-09', contentVerifiedAt:'2026-09-09',
 });
 export const sources: Source[] = [
+  ...policyAdditionSources,
   checked({sourceId:'senate-members',title:'U.S. Senators — current roster',publisher:'U.S. Senate',url:'https://www.senate.gov/senators/',publishedAt:null,referencePeriod:'2026-09-09閲覧時点の100人・党籍・州・空席照合'}),
   checked({sourceId:'senate-members-xml',title:'Senators contact information — XML roster',publisher:'U.S. Senate',url:'https://www.senate.gov/general/contact_information/senators_cfm.xml',publishedAt:null,updatedAt:ROSTER_SOURCE_UPDATED_AT,referencePeriod:'現職の原表記・Bioguide ID・党籍・州・Class。HTML名簿と照合'}),
   ...([1,2,3] as const).map(senateClass => checked({sourceId:`senate-class-${senateClass}`,title:`Class ${['I','II','III'][senateClass-1]} — Senators and terms`,publisher:'U.S. Senate',url:`https://www.senate.gov/senators/Class_${['I','II','III'][senateClass-1]}.htm`,publishedAt:null,referencePeriod:`Class ${senateClass}の議席一覧と6年任期 ${termByClass[senateClass].join('〜')}`})),
@@ -205,6 +207,7 @@ const profileConsensusBySeat = new Map(aggregateRatingConsensus(elections.map(el
 const electionStatusText = (election: Election) => election.contestStatus === 'general-ballot'
   ? (() => {
       if(election.seatId==='GA-2')return '主要2党候補を公式予備選結果で照合（本選全名簿は未確認、Allen Buckleyは資格なし）。原評価はSabato Likely D／Inside Tilt Dで、弱い優勢のため未配分';
+      if(election.seatId==='NC-2')return `州公式本選候補一覧に4人の掲載を確認（資料9月21日、確認9月30日。認証・適格性欄はなし）、統合評価は${consensusDisplayLabel(profileConsensusBySeat.get(election.seatId))}`;
       if(election.seatId==='KS-2')return '郡公式本選一覧で主要2候補を照合（州の全名簿とDavid Grahamの掲載資格は未確認）。原評価はSabato Lean R／Inside Likely Rで、弱い優勢のため未配分';
       const current = election.candidates.filter(candidate => !isArchivedCandidate(candidate,election));
       const printed = current.filter(candidate => candidate.ballotStage === 'general-ballot' && candidate.status === 'confirmed').length;
@@ -212,7 +215,7 @@ const electionStatusText = (election: Election) => election.contestStatus === 'g
       const pending = current.filter(candidate => candidate.status === 'unconfirmed').length;
       const archived = election.candidates.length - current.length;
       const verification = election.candidateResearchStatus === 'complete' ? 'を確認' : 'を資料に収録（最新名簿の再照合は一部未完了）';
-      return `本選の印刷候補${printed}人${writeIns ? `・宣言済み書き込み候補${writeIns}人` : ''}${verification}${pending ? `、本選掲載の再確認待ち${pending}人` : ''}${archived ? `、以前の予備選候補${archived}人は履歴として区別` : ''}、統合評価は${consensusDisplayLabel(profileConsensusBySeat.get(election.seatId))}`;
+      return `本選の印刷候補${printed}人${writeIns ? `・${election.seatId==='AK-2'?'認証済み記名投票候補':'宣言済み書き込み候補'}${writeIns}人` : ''}${verification}${pending ? `、本選掲載の再確認待ち${pending}人` : ''}${archived ? `、以前の予備選候補${archived}人は履歴として区別` : ''}、統合評価は${consensusDisplayLabel(profileConsensusBySeat.get(election.seatId))}`;
     })()
   : election.contestStatus === 'primary-pending' ? '予備選前で本選候補未確定' : '予備選投票日で結果確定待ち';
 
@@ -225,7 +228,7 @@ export const profiles: Profile[] = states.map(state => {
     ? ` USDAの2026年8月予測では大豆${context.soybeanProduction2026!.toLocaleString('en-US')}千ブッシェル、全米${context.soybeanRank2026}位です。`
     : ' USDA州別表に大豆生産量の掲載はありません。';
   return {
-    stateFips:state.fips,asOf:['DE','RI','OH'].includes(state.abbr) ? '2026-09-30' : '2026-09-09',contentStatus:'確認済み',
+    stateFips:state.fips,asOf:['DE','RI','OH','AK','NC'].includes(state.abbr) ? '2026-09-30' : '2026-09-09',contentStatus:'確認済み',
     politicalBase:{text:`2024年大統領選は${winner}が二大候補票で${context.presidentialMargin2024!.toFixed(1)}ポイント上回りました。2025年推計人口は${context.population2025.toLocaleString('en-US')}人です。`,sourceIds:['fec-pres-2024','census-pop-2025']},
     industryAndIssues:{text:`2025年の民間GDPで最大の2桁産業は${context.topPrivateIndustry2025}（民間GDPの${context.topPrivateIndustryShare2025.toFixed(1)}%）です。${soybean}`,sourceIds:['bea-sagdp-2025',...(context.soybeanProduction2026 === null ? [] : ['nass-soy-2026'])]},
     historicalTrajectory:{text:`2020年基準から2025年までの人口変化は${growth}です。人口・産業・過去の得票は背景指標であり、個々の有権者の投票理由を直接示しません。`,sourceIds:['census-pop-2025','fec-pres-2024']},
@@ -246,4 +249,4 @@ export const events: EventItem[] = states.flatMap(state => {
   return items;
 });
 export const DATA_AS_OF = '2026-09-09';
-export const APP_VERSION = 'ten-state-strong-agreement-2026-09-30';
+export const APP_VERSION = 'policy-reasoning-2026-09-30';
