@@ -150,12 +150,12 @@ describe('primary-source verification',() => {
     expect(validateData(states,seats,elections.map(election => election === special ? {...special,termStart:'2027-01-03'} : election),sources)).toContain(`${special.electionId}: pending inauguration needs a rule and no invented date`);
   });
 
-  it('separates completed general ballots from the two still-pending September primaries',() => {
+  it('separates current general ballots from partially reverified rosters',() => {
     expect(elections.flatMap(election => election.candidates).length).toBeGreaterThan(100);
-    expect(elections.filter(election => election.contestStatus === 'general-ballot')).toHaveLength(33);
-    expect(elections.filter(election => election.candidateResearchStatus === 'complete')).toHaveLength(33);
-    expect(elections.find(election => election.seatId === 'DE-2')).toMatchObject({primaryDate:'2026-09-15',contestStatus:'primary-pending',candidateResearchStatus:'partial'});
-    expect(elections.find(election => election.seatId === 'RI-2')).toMatchObject({primaryDate:'2026-09-09',contestStatus:'primary-result-pending',candidateResearchStatus:'partial'});
+    expect(elections.filter(election => election.contestStatus === 'general-ballot')).toHaveLength(35);
+    expect(elections.filter(election => election.candidateResearchStatus === 'complete')).toHaveLength(32);
+    expect(elections.find(election => election.seatId === 'DE-2')).toMatchObject({primaryDate:'2026-09-15',contestStatus:'general-ballot',candidateResearchStatus:'complete'});
+    expect(elections.find(election => election.seatId === 'RI-2')).toMatchObject({primaryDate:'2026-09-09',contestStatus:'general-ballot',candidateResearchStatus:'partial'});
     expect(elections.every(election => election.candidates.length > 0 && election.rating.category !== 'unavailable' && election.rating.organization === "Sabato's Crystal Ball")).toBe(true);
     expect(elections.find(election => election.seatId === 'OH-3')?.rating.category).toBe('Toss Up');
     expect(elections.find(election => election.seatId === 'NC-2')?.rating.category).toBe('Lean D');

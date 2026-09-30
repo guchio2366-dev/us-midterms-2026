@@ -116,6 +116,8 @@ describe('公開・確認状態',()=>{
   it('shows overdue and failure independently and never converts failure to no change',()=>{
     const d=structuredClone(data);
     d.monitor.state='scheduled';d.monitor.lastCompletedAt=now.toISOString();d.monitor.latestRun.outcome='unchanged';
+    delete d.monitor.latestRun.timingIntegrity;
+    delete d.monitor.latestRun.timingNote;
     expect(monitoringStatus(d,now)).toEqual(['確認した範囲で重要な変更なし']);
     d.monitor.latestRun.outcome='partial';
     expect(monitoringStatus(d,now)).toEqual(['一部の情報源を未確認']);

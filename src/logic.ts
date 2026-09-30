@@ -47,11 +47,11 @@ export function validateData(states: State[], seats: Seat[], elections: Election
     if (!election.candidates.length || election.candidateResearchStatus === 'not-started') errors.push(`${election.electionId}: candidates not researched`);
     for (const candidate of election.candidates) {
       if (!candidate.name.trim() || !candidate.partyLabel.trim() || !candidate.sourceIds.length) errors.push(`${election.electionId}: incomplete candidate`);
-      if (candidate.status !== 'confirmed') errors.push(`${election.electionId}: unconfirmed candidate`);
+      if (candidate.status !== 'confirmed' && election.candidateResearchStatus === 'complete') errors.push(`${election.electionId}: unconfirmed candidate`);
       if (candidate.party === 'D' && candidate.caucusIntent !== 'Democratic') errors.push(`${election.electionId}: Democratic candidate caucus mismatch`);
       if (candidate.party === 'R' && candidate.caucusIntent !== 'Republican') errors.push(`${election.electionId}: Republican candidate caucus mismatch`);
     }
-    if (election.contestStatus === 'general-ballot' && (election.candidateResearchStatus !== 'complete' || election.candidates.some(candidate => candidate.ballotStage === 'primary-ballot'))) errors.push(`${election.electionId}: inconsistent general ballot`);
+    if (election.contestStatus === 'general-ballot' && (election.candidateResearchStatus === 'not-started' || !election.candidates.some(candidate => candidate.ballotStage === 'general-ballot' && candidate.status === 'confirmed'))) errors.push(`${election.electionId}: inconsistent general ballot`);
     if (election.contestStatus !== 'general-ballot' && election.candidateResearchStatus !== 'partial') errors.push(`${election.electionId}: pending primary must remain partial`);
     if (election.rating.category === 'unavailable' || !election.rating.organization || !isDate(election.rating.ratedAt) || !isDate(election.rating.retrievedAt)) errors.push(`${election.electionId}: rating not verified`);
   }

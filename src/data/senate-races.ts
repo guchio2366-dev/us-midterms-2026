@@ -79,8 +79,13 @@ export const senateRaceDetails: SenateRaceDetail[] = [
     candidate('Mark Baisley','R','Republican','cand-co'),candidate('John Hickenlooper','D','Democratic','cand-co'),
   ]),
   race('DE-2','2026-09-15','Safe D','cand-de',[
-    candidate('Jeff Appelhans','D','Democratic','cand-de','primary-ballot'),candidate('Chris Coons','D','Democratic','cand-de','primary-ballot'),candidate('E. No-Trump Hansen','D','Democratic','cand-de','primary-ballot'),candidate('Michael Katz','R','Republican','cand-de','primary-ballot'),candidate('Mary Louve','D','Democratic','cand-de','primary-ballot'),candidate('John Shulli','R','Republican','cand-de','primary-ballot'),
-  ],'primary-pending'),
+    candidate('Chris Coons','D','Democratic','cand-de-general-20260930','general-ballot','cand-de-chris-coons'),
+    candidate('Michael Katz','R','Republican','cand-de-general-20260930','general-ballot','cand-de-michael-katz'),
+    candidate('William McVay','unknown','党籍未確認','cand-de-writeins-20260930','write-in','cand-de-william-mcvay'),
+    {...candidate('John Shulli','R','Republican','cand-de-writeins-20260930','write-in','cand-de-john-shulli'),sourceIds:['cand-de','cand-de-writeins-20260930']},
+    candidate('Travis Jack Stevens','unknown','党籍未確認','cand-de-writeins-20260930','write-in','cand-de-travis-jack-stevens'),
+    candidate('Jeff Appelhans','D','Democratic','cand-de','primary-ballot'),candidate('E. No-Trump Hansen','D','Democratic','cand-de','primary-ballot'),candidate('Mary Louve','D','Democratic','cand-de','primary-ballot'),
+  ]),
   race('GA-2','2026-05-19','Likely D','cand-ga',[
     candidate('Mike Collins','R','Republican','cand-ga'),candidate('Jon Ossoff','D','Democratic','cand-ga'),
   ]),
@@ -142,8 +147,11 @@ export const senateRaceDetails: SenateRaceDetail[] = [
     candidate('Jeff Merkley','D','Democratic','cand-or'),candidate('David Brock Smith','R','Republican','cand-or'),
   ]),
   race('RI-2','2026-09-09','Safe D','cand-ri',[
-    candidate('Michael Bahry','I','Independent','cand-ri'),candidate('Connor Burbridge','D','Democratic','cand-ri','primary-ballot'),candidate('Raymond McKay','R','Republican','cand-ri','primary-ballot'),candidate('Luis Munoz','D','Democratic','cand-ri','primary-ballot'),candidate('Jack Reed','D','Democratic','cand-ri','primary-ballot'),
-  ],'primary-result-pending'),
+    candidate('Jack Reed','D','Democratic','cand-ri-ballot-20260930','general-ballot','cand-ri-jack-reed'),
+    candidate('Raymond McKay','R','Republican','cand-ri-ballot-20260930','general-ballot','cand-ri-raymond-mckay'),
+    {...candidate('Michael Bahry','I','Independent','cand-ri'),status:'unconfirmed'},
+    candidate('Connor Burbridge','D','Democratic','cand-ri','primary-ballot'),candidate('Luis Munoz','D','Democratic','cand-ri','primary-ballot'),
+  ]),
   race('SC-2','2026-06-09','Safe R','cand-sc',[
     candidate('Annie Andrews','D','Democratic','cand-sc'),candidate('Darline Graham','R','Republican','cand-sc'),candidate('Mark Hackett','other','Constitution','cand-sc'),candidate('Kasie Whitener','other','Libertarian','cand-sc'),candidate('Catherine Fleming Bruce','D','Democratic write-in','cand-sc','write-in'),
   ]),
@@ -207,6 +215,9 @@ const officialCandidateSources: Array<[string,string,string,string]> = [
 ];
 
 export const senateRaceSources: Source[] = [
+  {sourceId:'cand-de-general-20260930',title:'2026 Delaware general-election candidate list',publisher:'Delaware Department of Elections',url:'https://elections.delaware.gov/candidates/candidatelist/genl_fcddt_2026.html',publishedAt:null,updatedAt:'2026-09-29',referencePeriod:'11月3日本選のU.S. Senator欄。Chris CoonsとMichael "Dr. Mike" KatzはQualified。通称を表示し既存candidateIdを保持',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
+  {sourceId:'cand-de-writeins-20260930',title:'2026 Delaware declared write-in candidates',publisher:'Delaware Department of Elections',url:'https://elections.delaware.gov/candidates/candidatelist/genl_wcddt_2026.html',publishedAt:null,referencePeriod:'3郡のU.S. Senator欄でWilliam McVay・John Shulli・Travis Jack StevensのQualifiedを確認。党籍を示さないため新規2人の党籍・会派は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
+  {sourceId:'cand-ri-ballot-20260930',title:'2026 Rhode Island candidates for Senator in Congress',publisher:'Rhode Island Department of State',url:'https://vote.sos.ri.gov/Candidates/CandidateSearchSummary?Election=18239&OfficeType=620',publishedAt:null,referencePeriod:'9月30日表示のOn Election Ballot欄。John Francis Reed・Raymond T McKayはY、Connor Francis Burbridge・Luis Daniel MunozはN。既存通称・candidateIdを保持。独立候補の全体は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
   {sourceId:'sabato-senate-2026',title:"2026 Senate ratings",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://centerforpolitics.org/crystalball/2026-senate/',publishedAt:null,updatedAt:'2026-09-22',referencePeriod:'全35選挙の統一情勢評価。Safeは表示上Solidへ正規化',retrievedAt:'2026-09-24',contentVerifiedAt:'2026-09-24'},

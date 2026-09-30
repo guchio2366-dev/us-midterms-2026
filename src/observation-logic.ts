@@ -48,6 +48,7 @@ export function eventsForRace(data: ObservationDataset, electionId: string, now 
 
 export function monitoringStatus(data: ObservationDataset, now = new Date()): string[] {
   const m=data.monitor, labels:string[]=[];
+  if (m.latestRun.timingIntegrity === 'inconsistent') labels.push('確認時刻の記録に不整合');
   if (m.state!=='scheduled') labels.push('定期確認は未接続');
   if (m.latestRun.outcome==='partial') labels.push('一部の情報源を未確認');
   if (m.latestRun.outcome==='reviewing') labels.push('更新内容を確認中');
