@@ -1,5 +1,6 @@
 import type { Election, HouseDistrict, Seat } from '../data/model';
 import { cloneScenario, normalizeScenario, type SavedScenario, type ScenarioLoadResult, type ScenarioState, type SenateBaselineSnapshot } from './model';
+import { normalizeScenarioReasoning, publicScenarioReasoning } from './reasoning';
 
 export const DRAFT_STORAGE_KEY = 'us-midterms-2026:scenario-draft:v2';
 export const SAVED_STORAGE_KEY = 'us-midterms-2026:scenarios:v2';
@@ -86,10 +87,13 @@ function base64UrlToBytes(value: string): Uint8Array {
   return Uint8Array.from(binary,character => character.charCodeAt(0));
 }
 
-export function encodeScenario(state: ScenarioState): string {
+export function encodeScenario(state: ScenarioState, elections?:Election[]): string {
   const shareState = cloneScenario(state);
+  if(shareState.reasoning)shareState.reasoning=publicScenarioReasoning(shareState.reasoning,elections);
   shareState.updatedAt = '';
-  return bytesToBase64Url(new TextEncoder().encode(JSON.stringify(shareState)));
+  const payload=bytesToBase64Url(new TextEncoder().encode(JSON.stringify(shareState)));
+  if(payload.length>12_000)throw new RangeError('共有対象が大きすぎます。公開根拠や仮定を減らしてください。個人メモは共有対象外です。');
+  return payload;
 }
 
 export function decodeScenario(payload: string, seats: Seat[], elections: Election[], houseDistricts: HouseDistrict[], currentBaseline: SenateBaselineSnapshot, legacyBaseline: SenateBaselineSnapshot): ScenarioLoadResult {
@@ -98,7 +102,19 @@ export function decodeScenario(payload: string, seats: Seat[], elections: Electi
   }
   try {
     const text = new TextDecoder().decode(base64UrlToBytes(payload));
-    return normalizeScenario(JSON.parse(text),seats,elections,houseDistricts,currentBaseline,legacyBaseline);
+    const raw:unknown=JSON.parse(text);
+    const reasonNotices:string[]=[];
+    if(raw&&typeof raw==='object'&&!Array.isArray(raw)) {
+      const record=raw as Record<string,unknown>;
+      if(record.reasoning!==undefined){
+        const checked=normalizeScenarioReasoning(record.reasoning,elections);
+        reasonNotices.push(...checked.notices);
+        record.reasoning=publicScenarioReasoning(checked.reasoning,elections);
+      }
+    }
+    const result=normalizeScenario(raw,seats,elections,houseDistricts,currentBaseline,legacyBaseline);
+    result.notices.push(...reasonNotices);
+    return result;
   } catch {
     return {state:normalizeScenario(null,seats,elections,houseDistricts,currentBaseline,legacyBaseline).state,notices:['共有URLを読み取れませんでした。'],staleBaseline:false};
   }

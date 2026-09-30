@@ -7,6 +7,13 @@ import './ui/observation.css';
 import './ui/overview.css';
 import './ui/briefing.css';
 import './ui/compact-briefing.css';
+import './ui/policy-workbench.css';
+import { policyPrototype, policyRefs } from './data/policy-prototype';
+import type { PolicyThemeId, PolicyRef } from './data/policy-prototype-model';
+import { evidenceRefs } from './data/research-sources';
+import { applyReasonedChoice, setCommonAssumption } from './scenario/reasoning';
+import { createPolicyExampleScenarios } from './scenario/policy-examples';
+import { readPolicyAction, refreshPolicyEvidenceControls, renderPolicyWorkbench, renderPolicyReasoningComparison, type PolicyWorkbenchIntent } from './ui/policy-workbench';
 import { briefingElections, locatorMapMarkup } from './ui/briefing';
 import { briefingEvidenceMarkup, briefingComparisonPollsMarkup } from './ui/briefing-polls';
 import { briefingTakeawayMarkup, briefingLensMarkup } from './ui/briefing-lens';
@@ -60,6 +67,10 @@ let scenarioStorageFailed = false;
 let openedFromShare = false;
 let sharedScenarioPending = false;
 let activeIssueId = 'trade-industry';
+let policyThemeId:PolicyThemeId='healthcare';
+let policyElectionId='2026-ME-2-regular';
+let selectedPolicyRef:PolicyRef=policyRefs.medicaidFunding;
+let policyComparison={leftId:null as string|null,rightId:null as string|null};
 let soySort: 'production'|'competitive'|'margin' = 'production';
 let newsTab: NewsFeedTab = 'recent';
 let newsExpanded = false;
@@ -317,7 +328,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div class="mast-inner"><div><div class="eyebrow">U.S. MIDTERMS</div><h1>米国中間選挙 2026</h1></div><div class="mast-election"><span>投開票日・米国現地</span><time datetime="2026-11-03">2026.11.03</time></div></div>
 </header>
 <main>
-  <nav class="jump-nav" aria-label="ページ内メニュー"><a href="#overview">概説・全国情勢</a><a href="#updates">直近の更新</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a></nav>
+  <nav class="jump-nav" aria-label="ページ内メニュー"><a href="#overview">概説・全国情勢</a><a href="#updates">直近の更新</a><a href="#policy-workbench">政策と当落の理由</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a></nav>
   ${introductionMarkup()}
   <div class="dateline"><span>サイト内容更新 ${escapeHtml(latestContentDate)}</span><span>上院 通常${regularCount}＋特別${specialCount}</span><span>下院 全435</span><span>候補者 ${candidateCount}人</span><span>版 ${APP_VERSION}</span><button id="reload-app" class="reload-app" type="button">最新版を再読み込み</button></div>
   <div class="data-caution ${baselineComplete ? 'verified' : ''}" role="note"><strong>${baselineComplete ? '収録範囲' : '基礎情報に未確認項目があります'}</strong><span>上院100議席、2026年35選挙、候補者、統一情勢評価、50州の人口・産業・2024年結果を収録。デラウェアとロードアイランドは9月30日に確認した本選名簿を反映し、以前の予備選候補を区別しています。Ohioは9月30日に州・郡の公式資料で印刷候補4人と記名投票候補3人を照合しました。記名候補の党派、ロードアイランドの独立候補とNew Hampshireの最新名簿には未確認項目があります。</span></div>
@@ -405,7 +416,7 @@ function enhanceLayout() {
 
   const nav = document.querySelector<HTMLElement>('.jump-nav');
   if (nav) {
-    nav.innerHTML = '<a href="#overview">概説・全国情勢</a><a href="#updates">直近の更新</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a>';
+    nav.innerHTML = '<a href="#overview">概説・全国情勢</a><a href="#updates">直近の更新</a><a href="#policy-workbench">政策と当落の理由</a><a href="#powers">議席と権限</a><a href="#simulator">地図・シミュレーション</a><a href="#sources">出典</a>';
   }
 
   const news = document.createElement('section');
@@ -460,6 +471,10 @@ function enhanceLayout() {
   if (overview) overview.after(updates);
   else if (nav) nav.after(updates);
   else main.prepend(updates);
+
+  const policyHost=document.createElement('div');
+  policyHost.id='policy-workbench-host';
+  updates.after(policyHost);
 
   if (powers) {
     const heading = powers.querySelector<HTMLElement>('.section-heading');
@@ -1511,16 +1526,78 @@ function undoScenario() {
   if (selected) selectState(selected,undefined,{focus:false,scroll:false,preserveReturn:true});
 }
 
+
+function renderPolicySection() {
+  const host=document.querySelector<HTMLElement>('#policy-workbench-host');
+  if(!host)return;
+  policyComparison={
+    leftId:savedScenarios.some(s=>s.id===policyComparison.leftId)?policyComparison.leftId:null,
+    rightId:savedScenarios.some(s=>s.id===policyComparison.rightId)?policyComparison.rightId:null,
+  };
+  const options={data:policyPrototype,state:scenarioState,seats,elections,powerRules,
+    sources:[...sources,...observationData.sources],evidence:[...evidenceRefs,...observationData.evidenceRefs],states,
+    themeId:policyThemeId,electionId:policyElectionId,policyRef:selectedPolicyRef,savedScenarios,comparison:policyComparison};
+  host.innerHTML=renderPolicyWorkbench(options);
+  const examples=createPolicyExampleScenarios(currentScenarioBaseline,elections).filter(e=>e.themeId===policyThemeId);
+  if(examples.length===2){
+    const section=host.querySelector('#policy-workbench');
+    section?.insertAdjacentHTML('beforeend',
+      '<details class="pw-examples"><summary>同じ前提から分かれる2つの例</summary><p>利用者が置く条件付きの例です。現在の作業案とは別に表示します。</p>'+
+      renderPolicyReasoningComparison(
+        {id:examples[0].exampleId,name:examples[0].label,savedAt:'2026-09-30',state:examples[0].state},
+        {id:examples[1].exampleId,name:examples[1].label,savedAt:'2026-09-30',state:examples[1].state},options)+
+      '</details>');
+  }
+  host.querySelector('#policy-workbench')?.insertAdjacentHTML('beforeend','<p id="policy-action-status" class="scenario-action-status" aria-live="polite"></p>');
+  const act=(target:Element)=>{
+    const intent=readPolicyAction(target,{data:policyPrototype,elections,savedScenarios,state:scenarioState});
+    const status=host.querySelector<HTMLElement>('#policy-action-status');
+    if(!intent){if(status)status.textContent='前提・州の材料・根拠の組み合わせを確認してください。選んだ根拠に対応する前提または材料も指定してください。';return;}
+    try { applyPolicyIntent(intent); }
+    catch { if(status)status.textContent='理由の対象または根拠を確認できませんでした。作業案は変更していません。'; }
+  };
+  host.querySelectorAll<HTMLFormElement>('form[data-policy-action]').forEach(form=>{form.addEventListener('submit',event=>{event.preventDefault();act(form);});form.addEventListener('change',event=>{if(event.target instanceof Element)refreshPolicyEvidenceControls(event.target,{data:policyPrototype,elections,savedScenarios,state:scenarioState});});});
+  host.querySelectorAll<HTMLButtonElement>('button[data-policy-action]').forEach(button=>button.addEventListener('click',()=>act(button)));
+  host.querySelectorAll<HTMLSelectElement>('select[data-policy-action]').forEach(select=>select.addEventListener('change',()=>act(select)));
+}
+
+function applyPolicyIntent(intent:PolicyWorkbenchIntent) {
+  if(intent.type==='choose-theme'){
+    policyThemeId=intent.themeId;
+    const first=policyPrototype.policies.find(p=>p.themeId===policyThemeId);
+    if(first)selectedPolicyRef={policyId:first.policyId,versionId:first.versionId};
+    renderPolicySection();return;
+  }
+  if(intent.type==='choose-election'){policyElectionId=intent.electionId;renderPolicySection();return;}
+  if(intent.type==='choose-policy'){selectedPolicyRef=intent.policyRef;renderPolicySection();return;}
+  if(intent.type==='choose-comparison'){
+    policyComparison[intent.side==='left'?'leftId':'rightId']=intent.savedScenarioId;
+    renderPolicySection();return;
+  }
+  if(intent.type==='set-common-assumption'){
+    const changed=setCommonAssumption(scenarioState,intent.choice,elections);
+    updateScenario(draft=>Object.assign(draft,changed),{changeLabel:'共通前提を更新'});
+  }else{
+    const election=elections.find(e=>e.electionId===intent.electionId);
+    if(!election)return;
+    const changed=applyReasonedChoice(scenarioState,election,intent.choice,intent.reason,elections);
+    updateScenario(draft=>Object.assign(draft,changed),{refreshState:true,changeLabel:'候補者と当落の理由を更新'});
+  }
+  const status=document.querySelector<HTMLElement>('#policy-action-status');
+  if(status)status.textContent='作業案に記録しました。案の保存で理由も残せます。';
+}
+
 function renderScenarioManager() {
   const host = document.querySelector<HTMLElement>('#scenario-manager');
   if (!host) return;
   const selectedForCompare = new Set(comparedScenarioIds);
   const compared = savedScenarios.filter(item => selectedForCompare.has(item.id));
-  const compareMarkup = compared.length >= 2 ? `<div class="saved-comparison"><h4>保存案の比較</h4>${compared.map(item => { const senateCounts = scenarioCounts(item.state); const houseCounts = simulatedHouseCounts(houseDistricts,item.state.house); return `<article><b>${escapeHtml(item.name)}</b><span>上院 D${senateCounts.Democratic} / R${senateCounts.Republican} / 未配分${senateCounts.unassigned}</span><span>下院 D${houseCounts.Democratic} / R${houseCounts.Republican} / 未確定${houseCounts.unconfirmed}</span><small>${item.state.senateBaseline.kind === 'rating-consensus' ? `暫定配分 ${item.state.senateBaseline.asOf}／${escapeHtml(item.state.senateBaseline.methodVersion ?? '方式未確認')}` : `現保有基準 ${item.state.senateBaseline.asOf}`}／明示した上院仮定 ${Object.keys(item.state.senate).length}件</small></article>`; }).join('')}</div>` : '';
+  const compareMarkup = compared.length >= 2 ? `<div class="saved-comparison"><h4>保存案の比較</h4>${compared.map(item => { const senateCounts = scenarioCounts(item.state); const houseCounts = simulatedHouseCounts(houseDistricts,item.state.house); return `<article><b>${escapeHtml(item.name)}</b><span>上院 D${senateCounts.Democratic} / R${senateCounts.Republican} / 未配分${senateCounts.unassigned}</span><span>下院 D${houseCounts.Democratic} / R${houseCounts.Republican} / 未確定${houseCounts.unconfirmed}</span><small>${item.state.senateBaseline.kind === 'rating-consensus' ? `暫定配分 ${escapeHtml(item.state.senateBaseline.asOf)}／${escapeHtml(item.state.senateBaseline.methodVersion ?? '方式未確認')}` : `現保有基準 ${escapeHtml(item.state.senateBaseline.asOf)}`}／明示した上院仮定 ${Object.keys(item.state.senate).length}件</small></article>`; }).join('')}</div>` : '';
   host.innerHTML = `<div class="scenario-manager-head"><div><p class="kicker">SAVE & COMPARE</p><h3>仮定を保存・比較する</h3><p>自動保存はこのブラウザ内です。名前付き保存は最大${SAVED_SCENARIO_LIMIT}件、比較は3件までです。</p></div><div class="scenario-actions"><button type="button" data-undo-scenario ${previousScenarioState ? '' : 'disabled'}>直前に戻す</button><button type="button" data-share-scenario>URLを共有</button></div></div>
     ${sharedScenarioPending ? '<div class="shared-pending"><b>共有された案を確認中</b><span>既存の作業案はまだ上書きしていません。</span><button type="button" data-accept-shared>この案を作業案にする</button></div>' : ''}
     <div class="scenario-save-row"><label>案の名前<input id="scenario-name" maxlength="40" placeholder="例：民主党51議席案"></label><button type="button" data-save-scenario ${savedScenarios.length >= SAVED_SCENARIO_LIMIT ? 'disabled' : ''}>別の案として保存</button></div>
     <div class="saved-list">${savedScenarios.length ? savedScenarios.map(item => `<article><label class="compare-check"><input type="checkbox" data-compare-scenario="${escapeHtml(item.id)}" ${selectedForCompare.has(item.id) ? 'checked' : ''}><span>比較</span></label><div><b>${escapeHtml(item.name)}</b><small>${escapeHtml(item.savedAt.slice(0,16).replace('T',' '))}／上院基準 ${escapeHtml(item.state.senateBaseline.asOf)}／${escapeHtml(item.state.senateBaseline.methodVersion ?? '現保有会派')}</small></div><button type="button" data-load-scenario="${escapeHtml(item.id)}">開く</button><button type="button" data-delete-scenario="${escapeHtml(item.id)}">削除</button></article>`).join('') : '<p>名前付きの保存案はまだありません。</p>'}</div>${compareMarkup}<p id="scenario-action-status" class="scenario-action-status" aria-live="polite"></p>`;
+  renderPolicySection();
   host.querySelector<HTMLButtonElement>('[data-undo-scenario]')?.addEventListener('click',undoScenario);
   host.querySelector<HTMLButtonElement>('[data-accept-shared]')?.addEventListener('click',() => {
     sharedScenarioPending = false;
@@ -1567,10 +1644,11 @@ function renderScenarioManager() {
   host.querySelector<HTMLButtonElement>('[data-share-scenario]')?.addEventListener('click',async () => {
     const url = new URL(window.location.href);
     url.searchParams.delete('refresh');
-    url.searchParams.set('s',encodeScenario(scenarioState));
+    const status = host.querySelector<HTMLElement>('#scenario-action-status')!;
+    try { url.searchParams.set('s',encodeScenario(scenarioState,elections)); }
+    catch (error) { status.textContent=error instanceof RangeError?'共有する仮定と根拠が多すぎます。公開根拠の選択を減らして再度お試しください。個人メモは共有対象外です。':'共有URLを作成できませんでした。作業案は保持しています。';return; }
     const selectedElection=selected ? electionByState(selected)[0] : undefined;
     if (selectedElection) url.searchParams.set('race',selectedElection.electionId);
-    const status = host.querySelector<HTMLElement>('#scenario-action-status')!;
     if (url.toString().length > 8192) {
       status.textContent = '共有URLが長すぎます。仮定を減らしてから再度お試しください。';
       return;

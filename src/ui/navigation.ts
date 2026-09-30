@@ -51,7 +51,7 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
   function visit(hash: string, fromHistory=false) {
     if (hash === '#issues') { lastHash=hash; openIssues(fromHistory); return; }
     const id = hash.slice(1);
-    if (!['overview','national-overview','updates','news','powers','simulator','map-heading','sources'].includes(id)) {
+    if (!['overview','national-overview','updates','news','policy-workbench','scenario-manager','powers','simulator','map-heading','sources'].includes(id)) {
       if(lastHash==='#issues') closePanel();
       lastHash=hash;
       return;
@@ -76,7 +76,7 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
     const link = (event.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#"]');
     if (!link) return;
     const hash = link.getAttribute('href')!;
-    if (!['#overview','#national-overview','#updates','#news','#powers','#simulator','#map-heading','#sources','#issues'].includes(hash)) return;
+    if (!['#overview','#national-overview','#updates','#news','#policy-workbench','#scenario-manager','#powers','#simulator','#map-heading','#sources','#issues'].includes(hash)) return;
     event.preventDefault();
     if (location.hash !== hash) {
       const url = new URL(location.href);

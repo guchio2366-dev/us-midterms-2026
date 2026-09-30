@@ -79,8 +79,12 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('AL-2','2026-05-19','Safe R','cand-al',[
     candidate('Barry Moore','R','Republican','cand-al'),candidate('Everett Wess','D','Democratic','cand-al-d'),
   ]),
-  race('AK-2','2026-08-18','Tossup','ak-doe-2026-general-candidates',[
-    candidate('Gerald L. Heikes','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-gerald-l-heikes'),candidate('Mary Peltola','D','Democratic','ak-doe-2026-general-candidates','general-ballot','cand-ak-mary-peltola'),candidate('Dan S. Sullivan','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-dan-s-sullivan'),candidate('Daniel J. Sullivan Jr.','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-daniel-j-sullivan-jr'),
+  race('AK-2','2026-08-18','Tossup','ak-doe-2026-general-candidates-20260930',[
+    ...[
+      candidate('Gerald L. Heikes','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-gerald-l-heikes'),candidate('Mary Peltola','D','Democratic','ak-doe-2026-general-candidates','general-ballot','cand-ak-mary-peltola'),candidate('Dan S. Sullivan','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-dan-s-sullivan'),candidate('Daniel J. Sullivan Jr.','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-daniel-j-sullivan-jr'),
+    ].map(item=>({...item,sourceIds:['ak-doe-2026-general-candidates-20260930','ak-doe-2026-general-candidates']})),
+    {...candidate('Sidney “Sid” Hill','unknown','Undeclared','ak-doe-2026-general-candidates-20260930','write-in','cand-ak-sidney-sid-hill'),sourceIds:['ak-doe-2026-general-candidates-20260930']},
+    {...candidate('Heather McElwain','other','Registered Libertarian','ak-doe-2026-general-candidates-20260930','write-in','cand-ak-heather-mcelwain'),sourceIds:['ak-doe-2026-general-candidates-20260930']},
   ]),
   race('AR-2','2026-03-03','Safe R','cand-ar',[
     candidate('Tom Cotton','R','Republican','cand-ar'),candidate('Hallie Shoffner','D','Democratic','cand-ar'),candidate('Jeff Wadlin','other','Libertarian','cand-ar'),
@@ -147,8 +151,13 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('NM-2','2026-06-02','Safe D','cand-nm',[
     candidate('Ben Ray Luján','D','Democratic','cand-nm'),candidate('Larry Marker','R','Republican write-in nominee','cand-nm','write-in'),
   ]),
-  race('NC-2','2026-03-03','Lean D (flip)','cand-nc',[
-    candidate('Shannon Bray','other','Libertarian','cand-nc'),candidate('Roy Cooper','D','Democratic','cand-nc'),candidate('Michael Whatley','R','Republican','cand-nc'),
+  race('NC-2','2026-03-03','Lean D (flip)','cand-nc-general-20260930',[
+    ...[
+      {...candidate('Shannon W. Bray','other','Libertarian','cand-nc','general-ballot','cand-nc-shannon-bray'),personId:'person-shannon-bray'},
+      candidate('Roy Cooper','D','Democratic','cand-nc'),candidate('Michael Whatley','R','Republican','cand-nc'),
+    ].map(item=>({...item,sourceIds:['cand-nc-general-20260930','cand-nc']})),
+    // Confirmed here means the official list contains this entry, not a certification claim.
+    {...candidate('Michael Dublin','other','GRE','cand-nc-general-20260930','general-ballot','cand-nc-michael-dublin'),sourceIds:['cand-nc-general-20260930']},
   ]),
   race('OK-2','2026-06-16','Safe R','cand-ok',[
     candidate('Kevin Hern','R','Republican','cand-ok'),candidate('Ron Meinhardt','I','Independent','cand-ok'),candidate('Curtis Stinnett','I','Independent','cand-ok'),candidate("N'Kiyla Jasmine Thomas",'D','Democratic','cand-ok'),candidate('Sevier White','other','Libertarian','cand-ok'),
@@ -225,6 +234,8 @@ const officialCandidateSources: Array<[string,string,string,string]> = [
 ];
 
 export const senateRaceSources: Source[] = [
+  {sourceId:'cand-nc-general-20260930',title:'2026 North Carolina general-election candidate list grouped by contest',publisher:'North Carolina State Board of Elections',url:'https://s3.amazonaws.com/dl.ncsbe.gov/Elections/2026/Candidate%20Filing/2026_general_candidate_list_by_contest_federal_and_state.pdf',publishedAt:null,updatedAt:'2026-09-21T12:32',referencePeriod:'11月3日本選、p1 US SENATE欄の掲載4名。Michael Dublin（正式名MICHAEL LOUIS DUBLIN JR、GRE、届出6月15日）、Roy Cooper（DEM）、Shannon W. Bray（LIB）、Michael Whatley（REP）。Name on Ballot・Party・Filing Dateを確認。認証・適格性の列はなく認証済みとは断定しない。フッターの9月21日12:32は資料作成時点で、9月30日は取得・内容確認日',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
+  {sourceId:'ak-doe-2026-general-candidates-20260930',title:'2026 Alaska general-election certified Senate candidates and write-ins — September 30 check',publisher:'Alaska Division of Elections',url:'https://www.elections.alaska.gov/candidates/?election=26genr',publishedAt:null,updatedAt:'2026-09-25T08:16',referencePeriod:'11月3日本選、UNITED STATES SENATOR欄の印刷候補4名とCertified Write-In 2名。Sidney “Sid” HillはUndeclared、Heather McElwainはRegistered Libertarian、両名ともCertified。党籍から会派意向は推定しない。現職Dan S. SullivanとDaniel J. Sullivan Jr.を区別。ページ更新9月25日8:16と9月30日の取得・内容確認を区別',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   {sourceId:'oh-sos-directive-2026-45',title:'Ohio Directive 2026-45 — Official Ballot',publisher:'Ohio Secretary of State',url:'https://www.ohiosos.gov/assets/dir2026-45-form-of-the-official-ballot-for-the-november%203-general-election.pdf',publishedAt:'2026-08-25',referencePeriod:'VI.H、p7: 2029年1月3日までの上院残任期の州認証済み印刷候補4名。III.B.ii、p4: valid write-in 3名。Greg LevyはOther-party candidate。記名候補の党派記載なし。9月30日に内容を再照合',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   {sourceId:'oh-sos-sample-ballot-2026',title:'Ohio official sample ballot — November 3, 2026',publisher:'Ohio Secretary of State',url:'https://www.ohiosos.gov/assets/dir2026-45-official-sample-ballot-november-3-2026.pdf',publishedAt:null,referencePeriod:'p1: 上院残任期欄の印刷候補4名と州表示の党派。様式上の日付8月20日は発行日と断定しない。Directive 2026-45の付属サンプル',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   {sourceId:'oh-cuyahoga-candidates-20260917',title:'Cuyahoga County general-election candidate list',publisher:'Cuyahoga County Board of Elections',url:'https://boe.cuyahogacounty.gov/docs/default-source/boe/candidates-page/candidate-list.pdf?sfvrsn=4b1792c0_450',publishedAt:null,updatedAt:'2026-09-17T15:34',referencePeriod:'p5: 印刷4名valid、Stephen Faris・Anthony Holliman・Timothy Telymondeはvalid write-in、3名のparty欄空白。郡一覧の9月17日15:34表示であり州SOSの認証日ではない。LevyのNonpartisan表記は州Other-party candidateと区別',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},

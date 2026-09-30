@@ -11,6 +11,71 @@ import { createScenarioState, countScenarioSenate } from '../src/scenario/model'
 import { encodeScenario, decodeScenario } from '../src/scenario/storage';
 
 describe('candidate roster verification and saved assumptions', () => {
+  it('adds the fourth officially listed NC candidate without claiming certification or a D/R caucus', () => {
+    const nc=elections.find(e=>e.seatId==='NC-2')!;
+    expect(nc.candidates.map(c=>c.candidateId)).toEqual(['cand-nc-shannon-bray','cand-nc-roy-cooper','cand-nc-michael-whatley','cand-nc-michael-dublin']);
+    expect(nc.candidates.filter(c=>c.ballotStage==='general-ballot')).toHaveLength(4);
+    expect(nc.candidates.filter(c=>c.ballotStage==='write-in')).toHaveLength(0);
+    expect(nc.candidates.find(c=>c.candidateId==='cand-nc-michael-dublin')).toMatchObject({name:'Michael Dublin',party:'other',partyLabel:'GRE',status:'confirmed',ballotStage:'general-ballot',caucusIntent:'unconfirmed',sourceIds:['cand-nc-general-20260930']});
+    expect(nc.candidates.find(c=>c.candidateId==='cand-nc-shannon-bray')).toMatchObject({name:'Shannon W. Bray',personId:'person-shannon-bray',caucusIntent:'unconfirmed'});
+    expect(sources.find(s=>s.sourceId==='cand-nc-general-20260930')).toMatchObject({publishedAt:null,updatedAt:'2026-09-21T12:32',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'});
+    expect(candidateRosterNoteMarkup('NC-2')).toContain('掲載確認を州認証済みとは扱いません');
+    expect(candidateRosterNoteMarkup('NC-2')).toContain('届出日は6月15日');
+    expect(profiles.find(p=>p.stateFips==='37')!.electionMeaning.text).toContain('州公式本選候補一覧に4人の掲載を確認');
+  });
+
+  it('separates the four Alaska printed candidates from two certified write-ins and both Sullivan identities', () => {
+    const ak=elections.find(e=>e.seatId==='AK-2')!;
+    expect(ak.candidates.filter(c=>c.ballotStage==='general-ballot').map(c=>c.candidateId)).toEqual(['cand-ak-gerald-l-heikes','cand-ak-mary-peltola','cand-ak-dan-s-sullivan','cand-ak-daniel-j-sullivan-jr']);
+    expect(ak.candidates.filter(c=>c.ballotStage==='write-in').map(c=>c.candidateId)).toEqual(['cand-ak-sidney-sid-hill','cand-ak-heather-mcelwain']);
+    expect(ak.candidates.find(c=>c.candidateId==='cand-ak-sidney-sid-hill')).toMatchObject({name:'Sidney “Sid” Hill',party:'unknown',partyLabel:'Undeclared',status:'confirmed',ballotStage:'write-in',caucusIntent:'unconfirmed'});
+    expect(ak.candidates.find(c=>c.candidateId==='cand-ak-heather-mcelwain')).toMatchObject({name:'Heather McElwain',party:'other',partyLabel:'Registered Libertarian',status:'confirmed',ballotStage:'write-in',caucusIntent:'unconfirmed'});
+    const incumbent=ak.candidates.find(c=>c.candidateId==='cand-ak-dan-s-sullivan')!;
+    const otherSullivan=ak.candidates.find(c=>c.candidateId==='cand-ak-daniel-j-sullivan-jr')!;
+    expect(incumbent.name).toBe('Dan S. Sullivan');
+    expect(otherSullivan.name).toBe('Daniel J. Sullivan Jr.');
+    expect(incumbent.personId).not.toBe(otherSullivan.personId);
+    expect(sources.find(s=>s.sourceId==='ak-doe-2026-general-candidates-20260930')).toMatchObject({publishedAt:null,updatedAt:'2026-09-25T08:16',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'});
+    expect(sources.find(s=>s.sourceId==='ak-doe-2026-general-candidates')?.updatedAt).toBe('2026-09-02');
+    const options=candidateChoiceOptionsMarkup(ak,'baseline');
+    expect(options).toContain('Sidney “Sid” Hill（Undeclared・記名投票候補）');
+    expect(options).toContain('Heather McElwain（Registered Libertarian・記名投票候補）');
+    expect(profiles.find(p=>p.stateFips==='02')!.electionMeaning.text).toContain('印刷候補4人・認証済み記名投票候補2人を確認');
+  });
+
+  it('keeps all previous NC and AK candidate choices and Senate totals when loading old shares', () => {
+    const additions=new Set(['cand-nc-michael-dublin','cand-ak-sidney-sid-hill','cand-ak-heather-mcelwain']);
+    const previousElections=elections.map(e=>({...e,candidates:e.candidates.filter(c=>!additions.has(c.candidateId))}));
+    const baseline=createLegacySenateBaseline(seats);
+    for(const [seatId,candidateIds] of [
+      ['NC-2',['cand-nc-shannon-bray','cand-nc-roy-cooper','cand-nc-michael-whatley']],
+      ['AK-2',['cand-ak-gerald-l-heikes','cand-ak-mary-peltola','cand-ak-dan-s-sullivan','cand-ak-daniel-j-sullivan-jr']],
+    ] as const) for(const candidateId of candidateIds) {
+      const state=createScenarioState(baseline);
+      const election=previousElections.find(e=>e.seatId===seatId)!;
+      state.senate[seatId]={kind:'candidate',electionId:election.electionId,candidateId};
+      const loaded=decodeScenario(encodeScenario(state,previousElections),seats,elections,houseDistricts,baseline,baseline);
+      expect(loaded.state.senate[seatId]).toEqual(state.senate[seatId]);
+      expect(loaded.state.senateBaseline).toEqual(state.senateBaseline);
+      expect(countScenarioSenate(loaded.state,seats,elections)).toEqual(countScenarioSenate(state,seats,previousElections));
+    }
+  });
+
+  it('counts the new GRE and write-in choices as unconfirmed caucuses through share encoding', () => {
+    const baseline=createLegacySenateBaseline(seats);
+    const baselineState=createScenarioState(baseline);
+    const initialCounts=countScenarioSenate(baselineState,seats,elections);
+    for(const candidateId of ['cand-ak-sidney-sid-hill','cand-ak-heather-mcelwain']) {
+      const state=createScenarioState(baseline);
+      state.senate['NC-2']={kind:'candidate',electionId:'2026-NC-2-regular',candidateId:'cand-nc-michael-dublin'};
+      state.senate['AK-2']={kind:'candidate',electionId:'2026-AK-2-regular',candidateId};
+      const loaded=decodeScenario(encodeScenario(state),seats,elections,houseDistricts,baseline,baseline);
+      expect(loaded.state.senate).toEqual(state.senate);
+      const counts=countScenarioSenate(loaded.state,seats,elections);
+      expect(counts).toEqual({...initialCounts,Republican:initialCounts.Republican-2,unconfirmed:initialCounts.unconfirmed+2});
+    }
+  });
+
   it('verifies the seven Ohio IDs while separating eligibility, party and document dates', () => {
     const oh=elections.find(e=>e.seatId==='OH-3')!;
     expect(oh.candidateResearchStatus).toBe('complete');
