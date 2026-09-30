@@ -1835,7 +1835,7 @@ function presidentialShareMarkup(context: typeof stateContexts[number]) {
 
 function stateMetricsMarkup(context: typeof stateContexts[number], stateElections: Election[]) {
   const populationChange = `${context.populationChange2020to2025 >= 0 ? '+' : ''}${context.populationChange2020to2025.toFixed(1)}%`;
-  const raceText = stateElections.length ? stateElections.map(election => `${election.type === 'special' ? '特別' : '通常'}・${displayRatingFor(election)}`).join('／') : '上院選なし';
+  const raceText = stateElections.length ? stateElections.map(election => `${election.type === 'special' ? '特別' : '通常'}・${displayRatingLabel(election)}`).join('／') : '上院選なし';
   const isNotableSoy = stateElections.length > 0 && context.soybeanProduction2026 !== null && context.soybeanRank2026 !== null && context.soybeanRank2026 <= 10;
   const notableRow = isNotableSoy
     ? `<tr><th>特筆すべき指標</th><td>${context.soybeanProduction2026!.toLocaleString('en-US')}千bu（全米${context.soybeanRank2026}位）<small class="metric-note">bu＝ブッシェル。千buは1,000ブッシェル単位です。</small></td></tr>`
