@@ -111,8 +111,9 @@ describe('state briefing', () => {
     expect(filterFeed(recent,null)).toEqual(recent);
   });
 
-  it('places the institutional link beside the first sentence and explains why to read the states', () => {
-    expect(introductionMarkup()).toContain('米国議会は上院と下院から成り、中間選挙は大統領の4年の任期の中間に行われる。<button id="open-civics"');
+  it('retains the institutional entry point and explains why to read the states', () => {
+    expect(introductionMarkup()).toContain('id="open-civics"');
+    expect(introductionMarkup()).toContain('米国中間選挙は大統領の４年の任期の中間に行われる選挙');
     expect(nationalOverviewMarkup()).toContain('両党とも51議席に届かず、10議席が未配分');
     expect(nationalOverviewMarkup()).toContain('href="#updates">10州');
   });

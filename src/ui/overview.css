@@ -130,3 +130,11 @@ main > .jump-nav a[href="#overview"] { border-bottom-color: var(--gold); }
   .mast-election { display: flex; align-items: baseline; gap: 8px; }
   .opening-lead br { display: none; }
 }
+
+/* Approved introductions preserve the full text in the existing composition. */
+#overview :is(.intro-purpose-card,.intro-overview-card,.intro-issues-card,.approved-senate-intro) p, .approved-updates-intro p { font-size: 1rem; line-height: 1.8; margin: 10px 0; }
+.intro-goals { padding-left: 1.5em; line-height: 1.8; }
+.intro-goals li + li { margin-top: 6px; }
+.approved-updates-intro { margin-bottom: 18px; }
+.narrow-reading-order { display: none; }
+@media (max-width: 900px) { .narrow-reading-order { display: block; font-size: .8125rem; color: #52616a; } }

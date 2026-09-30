@@ -15,7 +15,7 @@ import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from 
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
 import { powerTargets } from './data/power-targets';
-import { introductionContent,introductionDetails } from './data/content';
+import { introductionContent,introductionDetails,approvedIntroduction } from './data/content';
 import { houseDistricts,houseSnapshot } from './data/house';
 import { newsItems } from './data/news';
 import { candidateBriefs,historicalResults,issueReports,polls,raceBriefs,ratingObservations,rollCalls } from './data/research';
@@ -237,7 +237,7 @@ function focusSummaryMarkup(election: Election) {
     : researchBriefingParts(election);
   return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><div class="focus-state-title"><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div></div>${body.candidates}</div>
     ${briefingTakeawayMarkup(election.electionId)}
-    <div class="briefing-columns"><div class="briefing-poll-column">${briefingEvidenceMarkup(polls,election.electionId)}${briefingComparisonPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>2機関の原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div><div class="briefing-analysis">${briefingLensMarkup(election.electionId)}</div></div>
+    <div class="briefing-columns"><div class="briefing-poll-column">${briefingEvidenceMarkup(polls,election.electionId)}${['GA-2','KS-2'].includes(election.seatId) ? '<p class="briefing-coverage-note">投票調査は未収録。</p>' : ''}${briefingComparisonPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>2機関の原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div><div class="briefing-analysis">${briefingLensMarkup(election.electionId)}${['GA-2','KS-2'].includes(election.seatId) ? '<p class="briefing-coverage-note">候補者発言の直接引用は未収録。</p>' : ''}</div></div>
     <details class="briefing-context"><summary>州の論点・これまでの経緯を読む</summary>${body.lead}${texasPollContextMarkup(election.electionId)}</details>
     <div class="briefing-footer">${body.details}<button type="button" class="briefing-simulation-link" data-briefing-simulate="${escapeHtml(election.electionId)}">この州の結果を変えてみる →</button></div>`;
 }
@@ -433,7 +433,7 @@ function enhanceLayout() {
   updates.id = 'updates';
   updates.className = 'updates section-block';
   updates.setAttribute('aria-labelledby','updates-heading');
-  updates.innerHTML = '<div class="section-heading"><div><p class="kicker">LATEST BRIEFING</p><h2 id="updates-heading">直近の更新</h2></div><p>州を選び、今週の論点と関連ニュースから選挙の行方を読む。</p></div><div class="updates-grid"></div>';
+  updates.innerHTML = `<div class="section-heading"><div><p class="kicker">LATEST BRIEFING</p><h2 id="updates-heading">直近の更新</h2></div></div><div class="approved-updates-intro">${approvedIntroduction.updates(focusElections.length).map(text=>`<p>${escapeHtml(text)}</p>`).join('')}<p class="narrow-reading-order">縦に並ぶ画面では、投票調査と解釈 → 州の論点 → ニュース・予定の順に表示します。</p></div><div class="updates-grid"></div>`;
   const updatesGrid = updates.querySelector<HTMLElement>('.updates-grid')!;
   const focus = document.createElement('div');
   focus.innerHTML = focusUpdatesMarkup();
