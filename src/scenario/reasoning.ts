@@ -136,7 +136,7 @@ export function applyReasonedChoice(state:ScenarioState,election:Election,choice
   })};
   const result=normalizeScenarioReasoning(reasoning,elections);
   if(!result.reasoning||result.notices.length)throw new Error('州ごとの理由または根拠IDが無効です。');
-  return {...state,senate:{...state.senate,[election.seatId]:{...choice}},reasoning:result.reasoning};
+  return {...state,senate:{...state.senate,[election.seatId]:{...choice}},unlockedSeatIds:state.unlockedSeatIds.filter(id=>id!==election.seatId),reasoning:result.reasoning};
 }
 export function reasonChoiceIsCurrent(state:ScenarioState,election:Election):boolean|null {
   const reason=state.reasoning?.races[election.electionId];
