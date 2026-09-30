@@ -150,7 +150,7 @@ describe('official candidate roster distinctions',() => {
 
     expect(ohio.filter(candidate => candidate.ballotStage === 'general-ballot')).toHaveLength(4);
     expect(ohio.filter(candidate => candidate.ballotStage === 'write-in')).toHaveLength(3);
-    expect(ohio.every(candidate => candidate.sourceIds.includes('oh-candidate-list-2026'))).toBe(true);
+    expect(ohio.every(candidate => candidate.sourceIds.includes('oh-sos-directive-2026-45'))).toBe(true);
   });
 
   it('keeps Alaska\'s two Sullivan candidates as separate people and stable candidate records',() => {

@@ -26,3 +26,15 @@
 PR #32のPages配備（run 36694496572）は成功。親側クラウドChromeで1180×757のTXニュース→OH遷移を再確認し、見出しy220.80〜272.41、固定部bottom151.84で重なり解消を確認。OH/NHの資料時点注記、旧Ohio保存案読み込み、Brown→Husted→Undo、修正前共有URLのBrown復元も確認済み。
 
 同じ再確認でDE/RIの下部要約が過去候補を印刷候補に数えていたことと、footerの古い予備選説明を発見したため補正。下部要約はDE印刷2・記名3・過去3、RI印刷2・再確認待ち1・過去2へ整理し、OH/NHも最新名簿の再照合未完了を明示する。DE/RI要約の確認時点と公式出典を更新。150テストで下部要約の整合性を確認。補正後の実画面は親側で再確認する。
+
+## Ohio公式資料の回復（9月30日・後続更新）
+
+PR #33後、親側クラウドChromeでDE/RI下部・footer・OH/NH注記・sticky・旧共有URL復元が通過。続いてOhioの掲載資格を以下の公式原本で再照合した。
+
+- [州SOS Directive 2026-45](https://www.ohiosos.gov/assets/dir2026-45-form-of-the-official-ballot-for-the-november%203-general-election.pdf)：8月25日発行、9月30日取得・本文照合。VI.H（p7）で印刷4名と党派、III.B.ii（p4）で記名3名を確認。資料の対象は2029年1月3日までの上院残任期。
+- [公式サンプル](https://www.ohiosos.gov/assets/dir2026-45-official-sample-ballot-november-3-2026.pdf)：p1で印刷4名を照合。紙面の8月20日表示は様式の日付として扱い、発行日と断定しない。
+- [Cuyahoga郡一覧](https://boe.cuyahogacounty.gov/docs/default-source/boe/candidates-page/candidate-list.pdf?sfvrsn=4b1792c0_450)：9月17日15:34の資料（親側の視覚確認）、p5を9月30日に本文照合。印刷4名valid、記名3名valid write-inを確認。記名候補の党派欄空白は親側で視覚確認済み。郡一覧の日付を州の認証日として扱わない。Levyの郡Nonpartisan表記に対し、表示には州のOther-party candidateを採用。
+
+7名の候補者IDは保持。掲載資格の調査状態をcompleteへ更新し、記名候補3名の党派・会派は未確認のまま。本文・下部・footerのOhio再照合待ちを更新。NH名簿とRI Bahryは従来の未確認状態を維持。9月29日の観測取得不能記録は過去の実行記録として保持し、9月30日に新しい日次観測を実施したとは扱わない。
+
+変更後の151テスト（13ファイル）とTypeScript/Vite本番ビルド成功。回帰テストは7名のID、印刷/記名の区別、未知党派、原本発行日と確認日、下部要約、NH/RIの未確認維持を確認。公開結果と補正後の実画面確認は当該PRへ記録する。

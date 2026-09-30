@@ -117,7 +117,7 @@ const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: El
   primaryDate: race.primaryDate,
   contestStatus: race.contestStatus,
   candidates: race.candidates,
-  candidateResearchStatus: race.contestStatus === 'general-ballot' && !['RI-2','OH-3','NH-2'].includes(seat.seatId) ? 'complete' : 'partial',
+  candidateResearchStatus: race.contestStatus === 'general-ballot' && !['RI-2','NH-2'].includes(seat.seatId) ? 'complete' : 'partial',
   rating: {raw:race.ratingRaw,category:race.rating,organization:"Sabato's Crystal Ball",ratedAt:'2026-08-26',retrievedAt:'2026-09-09',sourceIds:['sabato-senate-2026']},
   electionRelevance: race.relevance,
   // Verification covers election type, date, seat and term rules, not candidates or ratings.
@@ -220,7 +220,7 @@ export const profiles: Profile[] = states.map(state => {
     ? ` USDAの2026年8月予測では大豆${context.soybeanProduction2026!.toLocaleString('en-US')}千ブッシェル、全米${context.soybeanRank2026}位です。`
     : ' USDA州別表に大豆生産量の掲載はありません。';
   return {
-    stateFips:state.fips,asOf:['DE','RI'].includes(state.abbr) ? '2026-09-30' : '2026-09-09',contentStatus:'確認済み',
+    stateFips:state.fips,asOf:['DE','RI','OH'].includes(state.abbr) ? '2026-09-30' : '2026-09-09',contentStatus:'確認済み',
     politicalBase:{text:`2024年大統領選は${winner}が二大候補票で${context.presidentialMargin2024!.toFixed(1)}ポイント上回りました。2025年推計人口は${context.population2025.toLocaleString('en-US')}人です。`,sourceIds:['fec-pres-2024','census-pop-2025']},
     industryAndIssues:{text:`2025年の民間GDPで最大の2桁産業は${context.topPrivateIndustry2025}（民間GDPの${context.topPrivateIndustryShare2025.toFixed(1)}%）です。${soybean}`,sourceIds:['bea-sagdp-2025',...(context.soybeanProduction2026 === null ? [] : ['nass-soy-2026'])]},
     historicalTrajectory:{text:`2020年基準から2025年までの人口変化は${growth}です。人口・産業・過去の得票は背景指標であり、個々の有権者の投票理由を直接示しません。`,sourceIds:['census-pop-2025','fec-pres-2024']},
