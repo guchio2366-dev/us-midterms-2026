@@ -1,8 +1,10 @@
 import type { Source } from './model';
+import { tenStateSources, tenStateEvidence } from './ten-state-research';
 import type { EvidenceRef } from './research-model';
 
 // Supplemental checks for the conclusion-first state explanations.
 export const briefingLensSources: Source[] = [
+  ...tenStateSources,
   {
     "sourceId": "briefing-dfp-ak-tables-20260817",
     "title": "Alaska Survey — Ranked-choice vote and transfer scenarios",
@@ -46,6 +48,7 @@ export const briefingLensSources: Source[] = [
 ];
 
 export const briefingLensEvidence: EvidenceRef[] = [
+  ...tenStateEvidence,
   {
     "evidenceId": "ev-briefing-ak-rcv",
     "sourceId": "briefing-dfp-ak-tables-20260817",

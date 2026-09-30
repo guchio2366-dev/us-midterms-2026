@@ -13,7 +13,7 @@
 #updates > .section-heading h2 { font-size: 1.625rem; line-height: 1.35; }
 #updates > .section-heading > p { max-width: none; font-size: .875rem; line-height: 1.6; }
 
-/* The location and all eight choices stay together above the reading columns. */
+/* The location and all focus-state choices stay together above the reading columns. */
 #updates .focus-navigation { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 6px 16px; margin-bottom: 12px; }
 #updates .focus-card-heading h3 { margin: 0; font-size: 1rem; line-height: 1.5; }
 #updates .tossup-explainer { min-width: 0; margin: 0; border: 0; }

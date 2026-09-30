@@ -50,17 +50,17 @@ describe('six-state published research package',() => {
 });
 
 describe('news publication and ten-item pagination contract',() => {
-  it('returns twelve published items as a full first page and a two-item second page',() => {
+  it('returns fourteen published items as a full first page and a four-item second page',() => {
     const pageSize = 10;
     const published = getPublishedNews(newsItems);
     const pages = Array.from({length:Math.ceil(published.length / pageSize)},(_,index) =>
       published.slice(index * pageSize,(index + 1) * pageSize));
 
-    expect(published).toHaveLength(12);
-    expect(pages.map(page => page.length)).toEqual([10,2]);
+    expect(published).toHaveLength(14);
+    expect(pages.map(page => page.length)).toEqual([10,4]);
     expect(published.every(item => item.status === 'published')).toBe(true);
     expect(published.some(item => item.newsId === 'news-draft-filter-fixture')).toBe(false);
-    expect(new Set(published.map(item => item.newsId)).size).toBe(12);
+    expect(new Set(published.map(item => item.newsId)).size).toBe(14);
   });
 
   it.each(focusRaces)('$electionId is represented by at least one published news item',({electionId}) => {

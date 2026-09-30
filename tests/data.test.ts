@@ -153,7 +153,7 @@ describe('primary-source verification',() => {
   it('separates current general ballots from partially reverified rosters',() => {
     expect(elections.flatMap(election => election.candidates).length).toBeGreaterThan(100);
     expect(elections.filter(election => election.contestStatus === 'general-ballot')).toHaveLength(35);
-    expect(elections.filter(election => election.candidateResearchStatus === 'complete')).toHaveLength(33);
+    expect(elections.filter(election => election.candidateResearchStatus === 'complete')).toHaveLength(31);
     expect(elections.find(election => election.seatId === 'DE-2')).toMatchObject({primaryDate:'2026-09-15',contestStatus:'general-ballot',candidateResearchStatus:'complete'});
     expect(elections.find(election => election.seatId === 'RI-2')).toMatchObject({primaryDate:'2026-09-09',contestStatus:'general-ballot',candidateResearchStatus:'partial'});
     expect(elections.every(election => election.candidates.length > 0 && election.rating.category !== 'unavailable' && election.rating.organization === "Sabato's Crystal Ball")).toBe(true);
@@ -246,12 +246,12 @@ describe('majority guide',() => {
 });
 
 describe('replaceable editorial UI content',() => {
-  it('publishes twelve sourced news items across two ten-item pages',() => {
+  it('publishes fourteen sourced news items across two ten-item pages',() => {
     const published = getPublishedNews(newsItems);
-    expect(published).toHaveLength(12);
+    expect(published).toHaveLength(14);
     expect(Math.ceil(published.length / 10)).toBe(2);
     expect(published.slice(0,10)).toHaveLength(10);
-    expect(published.slice(10)).toHaveLength(2);
+    expect(published.slice(10)).toHaveLength(4);
     expect(new Set(newsItems.map(item => item.newsId)).size).toBe(newsItems.length);
     expect(published.every(item => item.status === 'published' && item.sourceIds.length > 0)).toBe(true);
     expect(published.some(item => item.newsId === 'news-draft-filter-fixture')).toBe(false);

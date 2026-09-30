@@ -132,7 +132,7 @@ export function normalizeScenario(raw: unknown, seats: Seat[], elections: Electi
   const clean = createScenarioState(baseline);
   clean.baselineVersion = typeof raw.baselineVersion === 'string' ? raw.baselineVersion : SCENARIO_BASELINE_VERSION;
   copyScenarioFields(raw,clean,seats,elections,houseDistricts,notices);
-  const staleBaseline = baseline.snapshotId !== currentBaseline.snapshotId;
-  if (staleBaseline) notices.unshift(`保存案は${baseline.asOf}の上院基準を維持しています。`);
+  const staleBaseline = baseline.snapshotId !== currentBaseline.snapshotId || baseline.methodVersion !== currentBaseline.methodVersion;
+  if (staleBaseline) notices.unshift(`保存案は${baseline.asOf}の上院基準（${baseline.methodVersion ?? '現保有会派'}）を維持しています。最新の配分方式へ自動更新していません。変更する場合は「最新の暫定配分で始め直す」を選んでください。`);
   return {state:clean,notices,staleBaseline};
 }

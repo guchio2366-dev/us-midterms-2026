@@ -61,8 +61,8 @@ describe('state briefing', () => {
   });
 
   it('keeps Iowa in the briefing when it becomes the seventh unallocated seat', () => {
-    expect(focus.map(e=>e.seatId)).toEqual(['AK-2','IA-2','ME-2','MI-2','NH-2','NC-2','OH-3','TX-2']);
-    expect(consensus.filter(c=>['tossup','split','missing'].includes(c.category))).toHaveLength(7);
+    expect(focus.map(e=>e.seatId)).toEqual(['AK-2','GA-2','IA-2','KS-2','ME-2','MI-2','NH-2','NC-2','OH-3','TX-2']);
+    expect(consensus.filter(c=>['lean','tossup','split','missing'].includes(c.category))).toHaveLength(10);
     const changed=consensus.map(c=>['IA-2','GA-2'].includes(c.seatId) ? {...c,category:'missing' as const} : c);
     const expanded=briefingElections(elections,seats,states,changed);
     expect(expanded.filter(e=>e.seatId==='IA-2')).toHaveLength(1);
@@ -113,8 +113,8 @@ describe('state briefing', () => {
 
   it('places the institutional link beside the first sentence and explains why to read the states', () => {
     expect(introductionMarkup()).toContain('米国議会は上院と下院から成り、中間選挙は大統領の4年の任期の中間に行われる。<button id="open-civics"');
-    expect(nationalOverviewMarkup()).toContain('両党とも51議席に届かず、7議席が未配分');
-    expect(nationalOverviewMarkup()).toContain('href="#updates">8つの州');
+    expect(nationalOverviewMarkup()).toContain('両党とも51議席に届かず、10議席が未配分');
+    expect(nationalOverviewMarkup()).toContain('href="#updates">10州');
   });
 
 });

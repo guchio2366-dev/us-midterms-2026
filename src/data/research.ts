@@ -3,6 +3,7 @@ import { issueReportContent } from './issue-report-content';
 import { evidenceRefs } from './research-sources';
 import type { CandidateBrief, HistoricalResult, IssueCaseStudy, IssueReport, Poll, PolicyPosition, RaceBrief, RatingObservation, RollCallVote } from './research-model';
 import { focusCandidateBriefs, focusIssueCases, focusPolls, focusRaceBriefs, focusRatingObservations, focusRollCalls } from './research-focus';
+import { tenStateCandidateBriefs, tenStateRaceBriefs } from './ten-state-research';
 
 const issueReadingGuide = 'この論点は、①生活・産業への影響、②有権者が重視する度合い、③政策への賛否、④候補者選択・投票参加との関係を分けて読みます。';
 const issueCases: Record<string,IssueCaseStudy[]> = {
@@ -175,6 +176,7 @@ export const historicalResults: HistoricalResult[] = [
 ];
 
 export const raceBriefs: RaceBrief[] = [
+  ...tenStateRaceBriefs,
   {
     electionId:'2026-IA-2-regular',updatedAt:'2026-09-26',status:'published',completeness:'substantial',
     headline:'州の基礎党派と異なり、調査・評価機関で先頭や分類が割れる',
@@ -211,6 +213,7 @@ export const raceBriefs: RaceBrief[] = [
 ];
 
 export const candidateBriefs: CandidateBrief[] = [
+  ...tenStateCandidateBriefs,
   {
     candidateId:'cand-ia-ashley-hinson',updatedAt:'2026-09-11',status:'published',
     summary:'本人・陣営資料では、生活費、医療費、農業市場、貿易法執行を前面に出しています。関税回避の取締り支持を、あらゆる関税への包括的支持とは読み替えません。',

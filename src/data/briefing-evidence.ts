@@ -14,6 +14,20 @@ export interface BriefingEvidenceDisplay {
 
 export const briefingEvidenceDisplays: BriefingEvidenceDisplay[] = [
   {
+    electionId:'2026-GA-2-regular',sourceLabel:'Sabato / Inside Elections',
+    periodLabel:'Sabato 9月2日記事 ／ Inside 9月17日版・9月30日照合',
+    populationLabel:'オソフとコリンズの上院選に対する機関の評価',
+    table:{caption:'原評価の方向一致と配分条件は別',columns:['評価機関','原評価'],rows:[['Sabato','Likely D'],['Inside Elections','Tilt D']]},
+    note:'一方がTiltのため未配分。本選世論調査の原票は今回未収録。9月18日の患者報告は無作為の世論調査ではありません。',
+  },
+  {
+    electionId:'2026-KS-2-regular',sourceLabel:'Sabato / Inside Elections',
+    periodLabel:'Sabato 9月22日記事 ／ Inside 9月17日版・9月30日照合',
+    populationLabel:'マーシャルとハミルトンの上院選に対する機関の評価',
+    table:{caption:'原評価の方向一致と配分条件は別',columns:['評価機関','原評価'],rows:[['Sabato','Lean R'],['Inside Elections','Likely R']]},
+    note:'一方がLeanのため未配分。本選世論調査の原票は今回未収録。2024年の大統領得票は今回の候補者支持率ではありません。',
+  },
+  {
     electionId: '2026-AK-2-regular',
     sourceLabel: 'Data for Progress',
     periodLabel: '2026年7月28日〜8月4日',
@@ -78,7 +92,7 @@ export const briefingEvidenceDisplays: BriefingEvidenceDisplay[] = [
       columns: ['評価機関', '原評価'],
       rows: [['Sabato', 'Lean D'], ['Inside Elections', 'Tilt D']],
     },
-    note: 'いずれも民主党寄りの評価。支持率や当選確率ではない。確認範囲は出典に記載。',
+    note: 'いずれも民主党寄りだがLean／Tiltなので未配分。支持率や当選確率ではない。確認範囲は出典に記載。',
   },
   {
     electionId: '2026-OH-3-special',
