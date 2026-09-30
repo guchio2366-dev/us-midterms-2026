@@ -8,7 +8,7 @@
 .mast-election time { font: 700 1.5rem/1.3 Georgia, serif; }
 main > .jump-nav { width: var(--mast-width); margin-inline: calc((100% - var(--mast-width)) / 2); gap: 12px; padding: 0; border-top: 0; }
 main > .jump-nav a { border: 0; border-bottom: 3px solid transparent; padding: 10px 14px; background: transparent; font-size: .875rem; }
-main > .jump-nav a[href="#overview"] { border-bottom-color: var(--gold); }
+main > .jump-nav a[aria-current="location"] { border-bottom-color: var(--gold); }
 #overview, #updates { width: var(--opening-width); margin-inline: calc((100% - var(--opening-width)) / 2); }
 #overview { padding: 18px 0; }
 #overview .overview-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); grid-template-areas: "context senate"; align-items: start; gap: 20px; }
