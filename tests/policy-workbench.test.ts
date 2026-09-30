@@ -38,8 +38,9 @@ describe('policy workbench rendering',()=>{
     expect(markup).toContain('data-policy-action="choose-policy"');
     expect(markup).toContain(policyRefs.hr1.versionId);
     expect(markup).toContain('https://');
-    expect(markup).toContain('選択した候補者 0人');
-    expect(markup).toContain('候補者未評価 100 / 100議席');
+    expect(markup).toContain('上の欄で当選を仮定する候補者を選ぶと、その政策への立場と行動を確認できます。');
+    expect(markup).not.toContain('選択した候補者 0人');
+    expect(markup).not.toContain('候補者未評価 100 / 100議席');
     expect(markup).toContain('共有URLに含まれない');
   });
   it('switches context and policy choices together for tariffs',()=>{
@@ -199,4 +200,17 @@ describe('policy workbench action parsing',()=>{
     if(kind==='too-many-evidence')for(let i=0;i<=REASONING_LIMITS.evidence;i++)values.append('evidenceId','ev-hr1-rollcall');
     expect(parsePolicyIntent('apply-reasoned-choice',values,context())).toBeNull();
   });
+});
+
+it('renders readable versions and original source locators without losing internal selector keys',()=>{
+  const state=applyReasonedChoice(fresh(),me,{kind:'candidate',electionId:me.electionId,candidateId:'cand-me-susan-m-collins'},{assessment:'conditional',assumptionIds:[],factors:[],evidenceIds:[]},elections);
+  const markup=renderPolicyWorkbench({...options(state),policyRef:policyRefs.medicaidWork});
+  const visible=markup.replace(/<[^>]*>/g,'');
+  expect(markup).toContain(policyRefs.medicaidWork.versionId);
+  for(const p of policyPrototype.policies)expect(visible).not.toContain(p.versionId);
+  expect(visible).not.toContain('既存EvidenceRef');
+  expect(visible).not.toContain('ev-prototype-');
+  expect(visible).toContain('就労要件と、子育て・介護・就学の例外についての説明');
+  expect(visible).toContain('選択した候補者 1人');
+  expect(visible).toContain('候補者未評価 99 / 100議席');
 });
