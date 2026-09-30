@@ -54,3 +54,11 @@ export function consensusDisplayRating(result: RatingConsensusSeat|undefined): R
   const strength = /^(safe|solid)\b/.test(raw) ? 'Solid' : /^likely\b/.test(raw) ? 'Likely' : /^(lean|tilt)\b/.test(raw) ? 'Lean' : null;
   return strength ? `${strength} ${result.category}` : 'unavailable';
 }
+
+export function consensusDisplayLabel(result: RatingConsensusSeat|undefined): string {
+  if (!result || result.category === 'missing') return '評価不足';
+  if (result.category === 'lean') return '弱い優勢（Lean/Tilt）・未配分';
+  if (result.category === 'tossup') return '接戦（Toss Up）';
+  if (result.category === 'split') return '評価が分かれる';
+  return consensusDisplayRating(result);
+}

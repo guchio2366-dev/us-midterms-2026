@@ -32,7 +32,7 @@ import { seatBarMarkup, type SeatBarSegment } from './ui/seat-bars';
 import { senateBreakdown, senateCompositionSegments, senateMajorityPath } from './ui/senate-bars';
 import { bindDisclosurePreference, setupPageNavigation, scrollStateDetailIntoView } from './ui/navigation';
 import { RATING_METHOD_VERSION,RATING_SNAPSHOT_AS_OF,RATING_SNAPSHOT_ID,ratingSnapshotObservations } from './data/rating-snapshot';
-import { aggregateRatingConsensus,consensusDisplayRating,ratingConsensusCounts,type RatingConsensusCategory } from './rating-consensus';
+import { aggregateRatingConsensus,consensusDisplayLabel,consensusDisplayRating,ratingConsensusCounts,type RatingConsensusCategory } from './rating-consensus';
 import { observationData, observationFor } from './data/observation';
 import { candidateStageLabel, isArchivedCandidate } from './candidate-roster';
 import { candidateChoiceOptionsMarkup, candidateRosterNoteMarkup } from './ui/candidate-roster';
@@ -105,14 +105,8 @@ const displayRatings = new Map(ratingConsensus.map(result => [result.seatId,cons
 const consensusTossupLabel = '未配分（Lean/Tilt・接戦・評価分裂）';
 const consensusMapNote = `2機関の統合評価（${RATING_SNAPSHOT_AS_OF}集計）。未配分 ${ratingConsensusTotals.lean+ratingConsensusTotals.tossup+ratingConsensusTotals.split+ratingConsensusTotals.missing}議席。両機関が同じ党方向のLikely／Safe／Solidの場合だけ党派側へ配分。Lean／Tilt・接戦・評価分裂・資料不足は未配分。勝率ではない。`;
 function displayRatingFor(election: Election): Rating { return displayRatings.get(election.seatId) ?? 'unavailable'; }
-function displayRatingLabel(election: Election): string {
-  const category = ratingConsensusBySeat.get(election.seatId)?.category;
-  if (category === 'lean') return '弱い優勢（Lean/Tilt）・未配分';
-  if (category === 'tossup') return '接戦（Toss Up）';
-  if (category === 'split') return '評価が分かれる';
-  if (category === 'missing') return '評価不足';
-  return displayRatingFor(election);
-}
+function displayRatingLabel(election: Election): string { return consensusDisplayLabel(ratingConsensusBySeat.get(election.seatId)); }
+
 const focusElections = briefingElections(elections,seats,states,ratingConsensus);
 activeFocusElectionId = focusElections[0]?.electionId ?? null;
 function consensusEvidenceMarkup(election: Election): string {
