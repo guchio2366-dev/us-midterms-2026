@@ -1,6 +1,7 @@
 /** Editorial questions are explicit and independent of source/material ordering.
  * Revisit the finding, limitations and sources together when a new observation arrives.
  */
+import { tenStateLenses } from './ten-state-research';
 export const briefingAxes = {
   consolidate: { label:'支持を固める', description:'自党支持者や、まだ候補を決めていない人が、どちらを選ぶか。' },
   broaden: { label:'支持を広げる', description:'無党派や相手党の支持者にも、候補者の支持が広がっているか。' },
@@ -21,6 +22,7 @@ export interface BriefingLens {
 }
 
 export const briefingLenses: BriefingLens[] = [
+  ...tenStateLenses,
   {
     "electionId": "2026-AK-2-regular",
     "axis": "convert",

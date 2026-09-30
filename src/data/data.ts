@@ -117,7 +117,7 @@ const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: El
   primaryDate: race.primaryDate,
   contestStatus: race.contestStatus,
   candidates: race.candidates,
-  candidateResearchStatus: race.contestStatus === 'general-ballot' && !['RI-2','NH-2'].includes(seat.seatId) ? 'complete' : 'partial',
+  candidateResearchStatus: race.contestStatus === 'general-ballot' && !['RI-2','NH-2','GA-2','KS-2'].includes(seat.seatId) ? 'complete' : 'partial',
   rating: {raw:race.ratingRaw,category:race.rating,organization:"Sabato's Crystal Ball",ratedAt:'2026-08-26',retrievedAt:'2026-09-09',sourceIds:['sabato-senate-2026']},
   electionRelevance: race.relevance,
   // Verification covers election type, date, seat and term rules, not candidates or ratings.
@@ -201,6 +201,8 @@ const stateEventIds = (state: State) => {
 const electionByStateData = (state: State) => elections.filter(election => election.seatId.startsWith(`${state.abbr}-`));
 const electionStatusText = (election: Election) => election.contestStatus === 'general-ballot'
   ? (() => {
+      if(election.seatId==='GA-2')return '主要2党候補を公式予備選結果で照合（本選全名簿は未確認、Allen Buckleyは資格なし）。原評価はSabato Likely D／Inside Tilt Dで、弱い優勢のため未配分';
+      if(election.seatId==='KS-2')return '郡公式本選一覧で主要2候補を照合（州の全名簿とDavid Grahamの掲載資格は未確認）。原評価はSabato Lean R／Inside Likely Rで、弱い優勢のため未配分';
       const current = election.candidates.filter(candidate => !isArchivedCandidate(candidate,election));
       const printed = current.filter(candidate => candidate.ballotStage === 'general-ballot' && candidate.status === 'confirmed').length;
       const writeIns = current.filter(candidate => candidate.ballotStage === 'write-in' && candidate.status === 'confirmed').length;
@@ -241,4 +243,4 @@ export const events: EventItem[] = states.flatMap(state => {
   return items;
 });
 export const DATA_AS_OF = '2026-09-09';
-export const APP_VERSION = 'seat-comparison01-2026-09-13';
+export const APP_VERSION = 'ten-state-strong-agreement-2026-09-30';

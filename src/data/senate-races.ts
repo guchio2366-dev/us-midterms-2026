@@ -97,7 +97,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
     candidate('Jeff Appelhans','D','Democratic','cand-de','primary-ballot'),candidate('E. No-Trump Hansen','D','Democratic','cand-de','primary-ballot'),candidate('Mary Louve','D','Democratic','cand-de','primary-ballot'),
   ]),
   race('GA-2','2026-05-19','Likely D','cand-ga',[
-    candidate('Mike Collins','R','Republican','cand-ga'),candidate('Jon Ossoff','D','Democratic','cand-ga'),
+    {...candidate('Mike Collins','R','Republican','cand-ga'),sourceIds:['ten-ga-gop-runoff','cand-ga']},{...candidate('Jon Ossoff','D','Democratic','cand-ga'),sourceIds:['ten-ga-dem-primary','cand-ga']},
   ]),
   race('ID-2','2026-05-19','Safe R','cand-id',[
     candidate('Todd Achilles','I','Independent','cand-id'),candidate('Natalie Fleming','I','Independent','cand-id'),candidate('Matt Loesby','other','Libertarian','cand-id'),candidate('Jim Risch','R','Republican','cand-id'),
@@ -109,7 +109,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
     candidate('Ashley Hinson','R','Republican','ia-candidate-list-2026','general-ballot','cand-ia-ashley-hinson'),candidate('Thomas Laehn','other','Libertarian','ia-candidate-list-2026','general-ballot','cand-ia-thomas-laehn'),candidate('Josh Turek','D','Democratic','ia-candidate-list-2026','general-ballot','cand-ia-josh-turek'),
   ]),
   race('KS-2','2026-08-04','Lean R','cand-ks',[
-    candidate('Adam Hamilton','D','Democratic','cand-ks'),candidate('Roger Marshall','R','Republican','cand-ks'),
+    {...candidate('Adam Hamilton','D','Democratic','cand-ks'),sourceIds:['ten-ks-general','ten-ks-primary','cand-ks']},{...candidate('Roger Marshall','R','Republican','cand-ks'),sourceIds:['ten-ks-general','ten-ks-primary','cand-ks']},
   ]),
   race('KY-2','2026-05-19','Safe R','cand-ky',[
     candidate('Andy Barr','R','Republican','cand-ky'),candidate('Charles Booker','D','Democratic','cand-ky'),
@@ -234,5 +234,5 @@ export const senateRaceSources: Source[] = [
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
   {sourceId:'sabato-senate-2026',title:"2026 Senate ratings",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://centerforpolitics.org/crystalball/2026-senate/',publishedAt:null,updatedAt:'2026-09-22',referencePeriod:'全35選挙の統一情勢評価。Safeは表示上Solidへ正規化',retrievedAt:'2026-09-24',contentVerifiedAt:'2026-09-24'},
-  {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-09-17',referencePeriod:'全35選挙の現行情勢評価。Tiltを含む元分類を保持',retrievedAt:'2026-09-18',contentVerifiedAt:'2026-09-18'},
+  {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-09-17',referencePeriod:'全35選挙を9月30日に公式APIで再照合し評価値は一致。Tiltを含む元分類を保持。API評価更新9月17日、生成9月29日を区別',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
 ];

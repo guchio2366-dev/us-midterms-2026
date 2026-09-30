@@ -2,7 +2,7 @@ import type { RatingSnapshotObservation } from './data/rating-snapshot';
 import type { Rating } from './data/model';
 
 export type RatingDirection = 'D'|'R'|'T';
-export type RatingConsensusCategory = 'D'|'R'|'tossup'|'split'|'missing';
+export type RatingConsensusCategory = 'D'|'R'|'lean'|'tossup'|'split'|'missing';
 
 export interface RatingConsensusSeat {
   seatId: string;
@@ -28,11 +28,11 @@ export function aggregateRatingConsensus(
     observations.filter(item => item.seatId === seatId).forEach(item => byOrganization.set(item.organizationId,item));
     const normalized = [...byOrganization.values()].map(item => ({...item,direction:normalizeRatingDirection(item.ratingRaw)}));
     const valid = normalized.filter((item): item is typeof item & {direction:RatingDirection} => item.direction !== null);
-    if (valid.length < minimumOrganizations) return {seatId,category:'missing',observations:normalized};
-    const counts: Record<RatingDirection,number> = {D:0,R:0,T:0};
-    valid.forEach(item => { counts[item.direction] += 1; });
-    const winner = (Object.entries(counts) as Array<[RatingDirection,number]>).find(([,count]) => count > valid.length / 2)?.[0];
-    const category: RatingConsensusCategory = winner === 'D' ? 'D' : winner === 'R' ? 'R' : winner === 'T' ? 'tossup' : 'split';
+    if (valid.length < minimumOrganizations || valid.length !== normalized.length) return {seatId,category:'missing',observations:normalized};
+    const directions = new Set(valid.map(item=>item.direction));
+    const direction = valid[0].direction;
+    const strong = valid.every(item=>/^(likely|safe|solid)\s/i.test(item.ratingRaw.trim()));
+    const category: RatingConsensusCategory = directions.size !== 1 ? 'split' : direction === 'T' ? 'tossup' : strong ? direction : 'lean';
     return {seatId,category,observations:normalized};
   });
 }
@@ -41,13 +41,13 @@ export function ratingConsensusCounts(results: readonly RatingConsensusSeat[]) {
   return results.reduce((counts,result) => {
     counts[result.category] += 1;
     return counts;
-  },{D:0,R:0,tossup:0,split:0,missing:0} as Record<RatingConsensusCategory,number>);
+  },{D:0,R:0,lean:0,tossup:0,split:0,missing:0} as Record<RatingConsensusCategory,number>);
 }
 
-/** Direction follows the shared consensus. Strength is Sabato's, not an average. */
+/** Neutral color includes weak agreement; the UI names it unallocated, not a source Toss Up. */
 export function consensusDisplayRating(result: RatingConsensusSeat|undefined): Rating {
   if (!result || result.category === 'missing') return 'unavailable';
-  if (result.category === 'tossup' || result.category === 'split') return 'Toss Up';
+  if (result.category === 'lean' || result.category === 'tossup' || result.category === 'split') return 'Toss Up';
   const sabato = result.observations.find(item => item.organizationId === 'sabato');
   if (sabato?.direction !== result.category) return 'unavailable';
   const raw = sabato.ratingRaw.trim().toLowerCase();

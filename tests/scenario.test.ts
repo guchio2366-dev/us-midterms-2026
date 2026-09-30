@@ -9,7 +9,7 @@ import {
 } from '../src/scenario/model';
 import { createLegacySenateBaseline,createRatingSenateBaseline } from '../src/scenario/baseline';
 import { generateSenatePaths } from '../src/scenario/paths';
-import { decodeScenario,encodeScenario,loadDraft,loadSavedScenarios,persistSavedScenarios,saveDraft,LEGACY_SAVED_STORAGE_KEY,SAVED_STORAGE_KEY } from '../src/scenario/storage';
+import { createSavedScenario,decodeScenario,encodeScenario,loadDraft,loadSavedScenarios,persistSavedScenarios,saveDraft,LEGACY_SAVED_STORAGE_KEY,SAVED_STORAGE_KEY } from '../src/scenario/storage';
 import { aggregateRatingConsensus,consensusDisplayRating } from '../src/rating-consensus';
 import { RATING_METHOD_VERSION,RATING_SNAPSHOT_AS_OF,RATING_SNAPSHOT_ID,ratingSnapshotObservations } from '../src/data/rating-snapshot';
 
@@ -38,9 +38,41 @@ function firstElectionWithBothCaucuses() {
 }
 
 describe('shared scenario state',() => {
-  it('starts a new scenario from the rating consensus with seven seats unassigned',() => {
+  it('preserves the pre-change D46/R47/U7 baseline and Brown choice from an independently encoded old URL',()=>{
+    const oldBaseline={...structuredClone(currentBaseline),snapshotId:'senate-ratings-2026-09-24',asOf:'2026-09-24',methodVersion:'direction-majority-v1'};
+    oldBaseline.outcomes['NC-2']='Democratic';oldBaseline.outcomes['GA-2']='Democratic';oldBaseline.outcomes['KS-2']='Republican';
+    const raw=createScenarioState(oldBaseline);
+    raw.senate['OH-3']={kind:'candidate',electionId:'2026-OH-3-special',candidateId:'cand-oh-sherrod-brown'};
+    const payload=btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(raw)))).replaceAll('+','-').replaceAll('/','_').replace(/=+$/,'');
+    const loaded=decodeScenario(payload,seats,elections,houseDistricts,currentBaseline,legacyBaseline);
+    expect(loaded.state.senateBaseline).toEqual(oldBaseline);
+    expect(loaded.state.senate).toEqual(raw.senate);
+    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:47,Republican:47,none:0,unconfirmed:0,vacant:0,unassigned:6});
+    expect(loaded.staleBaseline).toBe(true);
+    expect(loaded.notices.join(' ')).toContain('自動更新していません');
+  });
+  it('preserves an old named save and draft until an explicit baseline change',()=>{
+    const oldBaseline={...structuredClone(currentBaseline),snapshotId:'senate-ratings-2026-09-24',asOf:'2026-09-24',methodVersion:'direction-majority-v1'};
+    oldBaseline.outcomes['NC-2']='Democratic';oldBaseline.outcomes['GA-2']='Democratic';oldBaseline.outcomes['KS-2']='Republican';
+    const state=createScenarioState(oldBaseline),storage=new MemoryStorage();
+    saveDraft(storage,state);
+    const saved=createSavedScenario('旧配分の案',state);
+    persistSavedScenarios(storage,[saved]);
+    expect(loadDraft(storage,seats,elections,houseDistricts,currentBaseline,legacyBaseline)?.state.senateBaseline).toEqual(oldBaseline);
+    const loaded=loadSavedScenarios(storage,seats,elections,houseDistricts,currentBaseline,legacyBaseline).items[0];
+    expect(loaded.state.senateBaseline).toEqual(oldBaseline);
+    expect(countScenarioSenate(loaded.state,seats,elections)).toMatchObject({Democratic:46,Republican:47,unassigned:7});
+    expect(loaded.id).toBe(saved.id);
+  });
+  it('detects a changed method even when a snapshot identifier is reused',()=>{
+    const state=freshScenario();state.senateBaseline.methodVersion='direction-majority-v1';
+    const loaded=normalizeScenario(state,seats,elections,houseDistricts,currentBaseline,legacyBaseline);
+    expect(loaded.staleBaseline).toBe(true);
+    expect(loaded.state.senateBaseline.methodVersion).toBe('direction-majority-v1');
+  });
+  it('starts a new scenario from the rating consensus with ten seats unassigned',() => {
     const counts = countScenarioSenate(freshScenario(),seats,elections);
-    expect(counts).toEqual({Democratic:46,Republican:47,none:0,unconfirmed:0,vacant:0,unassigned:7});
+    expect(counts).toEqual({Democratic:44,Republican:46,none:0,unconfirmed:0,vacant:0,unassigned:10});
   });
 
   it('keeps a current candidate choice and resolves its caucus',() => {
@@ -87,7 +119,7 @@ describe('shared scenario state',() => {
     changedBaseline.snapshotId = 'later-snapshot';
     changedBaseline.outcomes['MI-2'] = 'Republican';
     const loaded = decodeScenario(encodeScenario(state),seats,elections,houseDistricts,changedBaseline,legacyBaseline);
-    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:46,Republican:47,none:0,unconfirmed:0,vacant:0,unassigned:7});
+    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:44,Republican:46,none:0,unconfirmed:0,vacant:0,unassigned:10});
     expect(loaded.staleBaseline).toBe(true);
   });
 
@@ -102,11 +134,11 @@ describe('shared scenario state',() => {
     const state = freshScenario();
     const election = elections.find(item => currentBaseline.outcomes[item.seatId] === 'unassigned')!;
     state.senate[election.seatId] = {kind:'caucus',electionId:election.electionId,caucus:'Democratic'};
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:47,Republican:47,unassigned:6});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:45,Republican:46,unassigned:9});
     state.senate[election.seatId] = {kind:'caucus',electionId:election.electionId,caucus:'Republican'};
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:46,Republican:48,unassigned:6});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:44,Republican:47,unassigned:9});
     delete state.senate[election.seatId];
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:46,Republican:47,unassigned:7});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:44,Republican:46,unassigned:10});
   });
 
   it('recovers safely from a corrupt browser draft',() => {
@@ -163,16 +195,16 @@ describe('reverse Senate paths',() => {
     const result = generateSenatePaths({seats,elections,scenario:freshScenario(),caucus:'Democratic',threshold:51,limit:3});
 
     expect(result.status).toBe('reached');
-    expect(result.shortage).toBe(5);
+    expect(result.shortage).toBe(7);
     expect(result.paths).toHaveLength(3);
     expect(result.paths[0].addedSeatIds).toHaveLength(result.shortage);
   });
 
-  it('starts the Republican path four seats short without locking automatic ratings',() => {
+  it('starts the Republican path five seats short without locking automatic ratings',() => {
     const result = generateSenatePaths({seats,elections,scenario:freshScenario(),caucus:'Republican',threshold:51,limit:3});
     expect(result.status).toBe('reached');
-    expect(result.shortage).toBe(4);
-    expect(result.paths[0].addedSeatIds).toHaveLength(4);
+    expect(result.shortage).toBe(5);
+    expect(result.paths[0].addedSeatIds).toHaveLength(5);
   });
 
   it('respects explicit choices until the user unlocks them',() => {

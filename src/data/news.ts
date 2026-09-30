@@ -1,6 +1,8 @@
 import type { ResearchNewsItem } from './research-model';
+import { tenStateNews } from './ten-state-research';
 
 export const newsItems: ResearchNewsItem[] = [
+  ...tenStateNews,
   {
     newsId:'news-ia-yougov-poll-2026-09',kind:'election',
     headline:'アイオワ州上院選、YouGov調査は対象定義で差が変化',

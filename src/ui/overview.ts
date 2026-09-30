@@ -69,7 +69,7 @@ export function introductionMarkup() {
 }
 
 export function ratingCategoryLabel(category: RatingConsensusCategory) {
-  const labels = {D:'D側優勢',R:'R側優勢',tossup:'Toss Up',split:'評価分裂',missing:'評価不足'};
+  const labels = {D:'D側へ暫定配分',R:'R側へ暫定配分',lean:'弱い優勢・未配分',tossup:'Toss Up',split:'評価分裂',missing:'評価不足'};
   return labels[category];
 }
 
@@ -98,11 +98,11 @@ function pathMarkup(party: 'Democratic'|'Republican') {
 }
 
 export function nationalOverviewMarkup() {
-  const unresolved = totals.tossup + totals.split + totals.missing;
+  const unresolved = totals.lean + totals.tossup + totals.split + totals.missing;
   const provisional: SeatBarSegment[] = [
     {count:breakdown.fixed.Democratic,label:`非改選・民主党会派 ${breakdown.fixed.Democratic}`,className:'fixed-d'},
     {count:totals.D,label:`改選・D側優勢 ${totals.D}`,className:'consensus-d'},
-    {count:totals.tossup+totals.split,label:`未配分 ${totals.tossup+totals.split}（Toss Up ${totals.tossup}・評価分裂 ${totals.split}）`,className:'consensus-unresolved'},
+    {count:totals.lean+totals.tossup+totals.split,label:`未配分 ${totals.lean+totals.tossup+totals.split}（弱い優勢 ${totals.lean}・Toss Up ${totals.tossup}・評価分裂 ${totals.split}）`,className:'consensus-unresolved'},
     {count:totals.missing,label:`評価不足 ${totals.missing}`,className:'consensus-missing'},
     {count:totals.R,label:`改選・R側優勢 ${totals.R}`,className:'consensus-r'},
     {count:breakdown.fixed.Republican,label:`非改選・共和党会派 ${breakdown.fixed.Republican}`,className:'fixed-r'},
@@ -120,14 +120,14 @@ export function nationalOverviewMarkup() {
     </div>
     <p class="national-type">3本とも全100議席。両端の薄色は非改選、中央${breakdown.contested}議席が今回の改選。</p>
     <div class="senate-comparison">
-      <section class="comparison-row"><div class="comparison-heading"><h3>情勢評価による暫定配分</h3></div>${seatBarMarkup(compactOverviewSegments(provisional),seats.length,'2機関の情勢評価を集計した暫定配分')}<p class="path-equation">未配分 ${unresolved}：接戦 ${totals.tossup}・評価分裂 ${totals.split}${totals.missing ? `・評価不足 ${totals.missing}` : ''}</p></section>
+      <section class="comparison-row"><div class="comparison-heading"><h3>情勢評価による暫定配分</h3></div>${seatBarMarkup(compactOverviewSegments(provisional),seats.length,'2機関の情勢評価を集計した暫定配分')}<p class="path-equation">未配分 ${unresolved}：弱い優勢 ${totals.lean}・接戦 ${totals.tossup}・評価分裂 ${totals.split}${totals.missing ? `・評価不足 ${totals.missing}` : ''}</p></section>
       ${pathMarkup('Democratic')}${pathMarkup('Republican')}
     </div>
     <div class="comparison-legend" aria-label="グラフの凡例"><span><i class="fixed-d"></i><i class="fixed-r"></i>薄色：非改選</span><span><i class="consensus-d"></i><i class="consensus-r"></i>濃色：今回改選</span><span><i class="consensus-unresolved"></i>未配分</span><span><i class="goal-other"></i>残り・配分未指定</span></div>
     <p class="opening-caution">暫定評価であり、当選確率や最終結果ではない。下2本は必要な配分の例。</p>
     <p class="national-conditions">${vpControl} <a href="#powers">採決条件を確認</a></p>
-    <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ方向の議席だけを党派側へ置き、接戦・評価分裂・資料不足は未配分とした。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙を2機関で確認。Solid・Likely・Lean・Tiltは方向だけを使い、強さを平均していない。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
-    <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。未配分の州と追加の注目州を合わせ、<a href="#updates">${featuredStates}つの州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>
+    <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ党方向で、両方ともLikely／Safe／Solidの場合だけ党派側へ置く。一方でもLean／Tilt、接戦、方向不一致、資料不足なら未配分とする。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙の2機関の記録を収録。評価の強さは平均しない。Inside Electionsは9月30日に全件を再照合し評価値は変更なし。Sabato全表の確認日は9月24日のまま。取得できた補助記事の確認日とは区別する。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
+    <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。未配分の州と追加の注目州を合わせ、<a href="#updates">${featuredStates}州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>
   </section>`;
 }
 

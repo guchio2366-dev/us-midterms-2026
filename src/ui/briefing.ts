@@ -4,9 +4,9 @@ import type { Election, Seat, State } from '../data/model';
 import type { RatingConsensusSeat } from '../rating-consensus';
 import { escapeHtml as esc } from './research';
 
-/** Unallocated seats plus the two explicitly requested races; allocation is unchanged. */
+/** All unallocated races; previously requested Iowa and North Carolina remain included. */
 export function briefingElections(elections: Election[], seats: Seat[], states: State[], consensus: RatingConsensusSeat[]) {
-  const unresolved = new Set(consensus.filter(item => ['tossup','split','missing'].includes(item.category)).map(item => item.seatId));
+  const unresolved = new Set(consensus.filter(item => ['lean','tossup','split','missing'].includes(item.category)).map(item => item.seatId));
   unresolved.add('IA-2');
   unresolved.add('NC-2');
   const stateBySeat = new Map(seats.map(seat => [seat.seatId, states.find(state => state.fips === seat.stateFips)]));
