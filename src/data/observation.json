@@ -37,7 +37,7 @@
         "obs-unh-nh-20260924",
         "obs-nyt-siena-nh-20260924"
       ],
-      "note": "Ohio、Texas、North Carolinaの新しい調査原票を確認。OhioはBrown 47.3%・Husted 46.8%、TexasはTalarico 46.8%・Paxton 44.9%、North CarolinaはCooper 53%・Whatley 42%で、いずれも調査方式と比較対象を明記した。Alaskaでは州外勢力をめぐる両陣営の主張、MaineではJackson氏の批判とCollins氏の最終採決・Iran権限決議、New Hampshireでは約5,000万ドルの外部広告、Texasではデータセンター政策を確認し、主張・実績・有権者評価を分離。Sabato・Inside Electionsの統合評価、暫定配分D46・R47・未配分7、旧保存案・共有URLは維持。大統領の対象州訪問は公式公表で確認できず、未公表日程の不存在は断定しない。UNH・NYT/SienaのNew Hampshire調査原票、OH・NH名簿、Quantus Maine、NRSC州別支出のFEC原票は照合待ち。"
+      "note": "Ohio、Texas、North Carolinaの新しい調査原票を確認。OhioはBrown 47.3%・Husted 46.8%、TexasはTalarico 46.8%・Paxton 44.9%、North CarolinaはCooper 53%・Whatley 42%で、いずれも調査方式と比較対象を明記した。Alaskaでは州外勢力をめぐる両陣営の主張、MaineではJackson氏の批判とCollins氏の最終採決・Iran権限決議、New Hampshireでは約5,000万ドルの外部広告、Texasではデータセンター政策を確認し、主張・実績・有権者評価を分離。Sabato・Inside Electionsの統合評価、当時の旧基準による暫定配分D46・R47・未配分7、旧保存案・共有URLは維持。現在の新規案はD44・R46・未配分10で、旧保存案は自動再計算しない。大統領の対象州訪問は公式公表で確認できず、未公表日程の不存在は断定しない。UNH・NYT/SienaのNew Hampshire調査原票、OH・NH名簿、Quantus Maine、NRSC州別支出のFEC原票は照合待ち。"
     }
   },
   "sources": [
@@ -4566,7 +4566,7 @@
       "updatedAt": "2026-09-27",
       "title": "SabatoがアイオワをToss Up、ミシガンをLean Dへ変更",
       "happened": "上院選の情勢評価機関Sabato's Crystal Ballは9月22日、引退する共和党現職の議席を民主党Josh Turek氏と共和党Ashley Hinson氏が争うIowa州をLean RからToss Upへ変更した。引退する民主党現職の議席を民主党Abdul El-Sayed氏と共和党Mike Rogers氏が争うMichigan州はToss UpからLean Dへ、Kansas州はLikely RからLean Rへ変更した。",
-      "meaning": "Inside ElectionsはIowaをTilt R、MichiganをToss Upとしている。このサイトの統合規則では2機関の方向が一致しない議席を未配分にするため、Iowaが7つ目の未配分となり、暫定配分は民主党会派46・共和党会派47・未配分7になる。Michiganは引き続き未配分で、Kansasは共和党側の配分を維持する。",
+      "meaning": "Inside ElectionsはIowaをTilt R、MichiganをToss Upとしている。このサイトの統合規則では2機関の方向が一致しない議席を未配分にするため、Iowaが7つ目の未配分となり、暫定配分は民主党会派46・共和党会派47・未配分7になる。Michiganは引き続き未配分で、Kansasは共和党側の配分を維持した。これは当時の旧集計基準による配分。現在の基準ではKansasも未配分で、全体は民主党会派44・共和党会派46・未配分10。",
       "uncertainty": "情勢評価は勝率でも選挙結果でもなく、候補者への支持移動を直接測る世論調査でもない。Sabatoは全国環境と複数調査を判断材料にしているが、IowaのMarist調査は民主党に良すぎる可能性、MichiganのSuffolk調査は2024年大統領票の想起が実績より民主党寄りだった可能性も本文で指摘している。旧保存案と共有URLは保存時の議席基準を維持する。",
       "evidenceIds": [
         "ev-obs-sabato-changes-20260922"

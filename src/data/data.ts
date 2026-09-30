@@ -1,3 +1,5 @@
+import { aggregateRatingConsensus,consensusDisplayLabel } from '../rating-consensus';
+import { ratingSnapshotObservations } from './rating-snapshot';
 import type { Election, EventItem, Profile, Seat, Source, State, VicePresident } from './model';
 import { civicSources } from './civics';
 import { contextSources, soybeanTrade, stateContexts } from './state-context';
@@ -199,6 +201,7 @@ const stateEventIds = (state: State) => {
   return ids;
 };
 const electionByStateData = (state: State) => elections.filter(election => election.seatId.startsWith(`${state.abbr}-`));
+const profileConsensusBySeat = new Map(aggregateRatingConsensus(elections.map(election=>election.seatId),ratingSnapshotObservations).map(result=>[result.seatId,result]));
 const electionStatusText = (election: Election) => election.contestStatus === 'general-ballot'
   ? (() => {
       if(election.seatId==='GA-2')return '主要2党候補を公式予備選結果で照合（本選全名簿は未確認、Allen Buckleyは資格なし）。原評価はSabato Likely D／Inside Tilt Dで、弱い優勢のため未配分';
@@ -209,7 +212,7 @@ const electionStatusText = (election: Election) => election.contestStatus === 'g
       const pending = current.filter(candidate => candidate.status === 'unconfirmed').length;
       const archived = election.candidates.length - current.length;
       const verification = election.candidateResearchStatus === 'complete' ? 'を確認' : 'を資料に収録（最新名簿の再照合は一部未完了）';
-      return `本選の印刷候補${printed}人${writeIns ? `・宣言済み書き込み候補${writeIns}人` : ''}${verification}${pending ? `、本選掲載の再確認待ち${pending}人` : ''}${archived ? `、以前の予備選候補${archived}人は履歴として区別` : ''}、情勢は${election.rating.category}`;
+      return `本選の印刷候補${printed}人${writeIns ? `・宣言済み書き込み候補${writeIns}人` : ''}${verification}${pending ? `、本選掲載の再確認待ち${pending}人` : ''}${archived ? `、以前の予備選候補${archived}人は履歴として区別` : ''}、統合評価は${consensusDisplayLabel(profileConsensusBySeat.get(election.seatId))}`;
     })()
   : election.contestStatus === 'primary-pending' ? '予備選前で本選候補未確定' : '予備選投票日で結果確定待ち';
 
