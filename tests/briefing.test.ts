@@ -43,7 +43,8 @@ describe('state briefing', () => {
         expect(lens.sourceIds).toContain(ref!.sourceId);
       }
     }
-    expect(briefingLensMarkup('2026-NC-2-regular')).toContain('候補別・党派別調査をまだ収録していない');
+    expect(briefingLensMarkup('2026-NC-2-regular')).toContain('党派別の投票先・投票意向を確認する');
+    expect(briefingLensMarkup('2026-NC-2-regular')).toContain('通常の無作為標本の標本誤差ではない');
     expect(briefingLensMarkup('unknown-election')).toBe('');
   });
 

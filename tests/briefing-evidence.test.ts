@@ -56,7 +56,6 @@ describe('evidence paired with the state conclusion', () => {
 
   it.each([
     ['2026-ME-2-regular', ['登録有権者', '2024年大統領選', 'ハリス', '86%', '5%', 'トランプ', '4%', '89%']],
-    ['2026-MI-2-regular', ['上院', 'エルサイード 48%', 'ロジャーズ 46%', '知事', 'ベンソン 49%', 'ジェームズ 42%']],
     ['2026-NH-2-regular', ['大統領の職務評価', '不支持 56%', '上院の投票先', 'パパス 46% ／ スヌヌ 46%']],
     ['2026-OH-3-special', ['登録有権者', '傾きの追質問', '民主党', '97%', '共和党', '11%', '無党派', '66%', '28%']],
     ['2026-TX-2-regular', ['登録有権者', '民主党', '98%', '1%未満', '共和党', '9%', '87%', '無党派', '55%', '35%']],
@@ -77,13 +76,16 @@ describe('evidence paired with the state conclusion', () => {
     expect(briefingComparisonPollsMarkup(polls, '2026-ME-2-regular')).toContain('data-poll-id="poll-me-yougov-2026-09"');
   });
 
-  it('keeps North Carolina ratings categorical and distinct from candidate percentages', () => {
+  it('keeps North Carolina ratings categorical alongside the confirmed HPU candidate percentages', () => {
     const html = briefingEvidenceMarkup(polls, '2026-NC-2-regular');
     expect(html).toContain('Lean D');
     expect(html).toContain('Tilt D');
     expect(html).toContain('支持率や当選確率ではない');
-    expect(html).not.toContain('briefing-poll-track');
-    expect(html).not.toMatch(/\d%/);
+    expect(pollIds(html)).toEqual(['poll-nc-hpu-2026-09-lv']);
+    expect(html).toContain('<b>50%</b>');
+    expect(html).toContain('<b>42%</b>');
+    expect(html).toContain('credibility interval');
+    expect(html).toContain('通常の標本誤差ではない');
   });
 
   it('retains every published poll exactly once between direct evidence and comparison, including other rounds and populations', () => {

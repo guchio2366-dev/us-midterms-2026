@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-01",
+  "revision": "observation-2026-10-01-poll-sync",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -69,7 +69,7 @@
       "publisher": "Fox News",
       "url": "https://static.foxnews.com/foxnews.com/content/uploads/2026/09/fox_september-24-28-2026_michigan_topline_september-30-release.pdf",
       "publishedAt": "2026-09-30",
-      "referencePeriod": "9月24〜28日、Michigan州の登録有権者1,203人・投票予定者1,028人。投票予定者は民主党Abdul El-Sayed 50%、共和党Mike Rogers 49%、登録有権者は51%対48%。",
+      "referencePeriod": "9月24〜28日、Michigan州の登録有権者1,203人・投票予定者1,028人。Q3は傾きの追質問込みでLV El-Sayed50・Rogers49・未定1%、RV51・48・未定1%。OtherとWouldn’t voteは各0.5%未満。",
       "retrievedAt": "2026-10-01",
       "contentVerifiedAt": "2026-10-01",
       "electionIds": [
@@ -77,10 +77,10 @@
       ],
       "category": "poll",
       "cadence": "daily",
-      "method": "調査PDF原票で実査期間、登録有権者・投票予定者の標本数、電話・SMS方式、両標本の投票意向、誤差を照合",
+      "method": "調査PDF p.1の方法とp.3 Q3で照合。州有権者名簿から無作為抽出、固定電話114・携帯794・SMSからウェブ295。LVは統計モデル。LV ±3・RV ±2.5ポイントの標本誤差。傾きの追質問と*表記を確認",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-01T00:03:27Z"
+      "lastSuccessAt": "2026-10-01T14:38:22Z"
     },
     {
       "sourceId": "obs-ap-ak-ia-projects-20260930",
@@ -454,17 +454,17 @@
       "url": "https://www.highpoint.edu/blog/2026/09/hpu-poll-127-north-carolina-likely-voters-weigh-in-on-u-s-senate-race-and-more/",
       "publishedAt": "2026-09-24",
       "referencePeriod": "9月6〜16日、North Carolina州のオンラインパネル1,003人中、投票予定者と分類された706人。民主党Roy Cooper 50%、共和党Michael Whatley 42%、他候補3%、未定5%。投票予定者のcredibility intervalは±3.9ポイント。",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-01",
+      "contentVerifiedAt": "2026-10-01",
       "electionIds": [
         "2026-NC-2-regular"
       ],
       "category": "poll",
       "cadence": "daily",
-      "method": "大学調査機関の原文で質問文、実査期間、オンラインパネル、登録・投票予定者の判定、標本数、結果、credibility intervalを照合",
+      "method": "大学原文のU.S. Senate Election設問とMethodologyをweb取得で再照合。Dynata非確率パネル、7項目中5〜7点のLV706人とcredibility interval ±3.9。通常の標本誤差は不適切と明記。直接HTML取得はCloudflare応答で不可",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:16:00Z"
+      "lastSuccessAt": "2026-10-01T14:38:22Z"
     },
     {
       "sourceId": "obs-mi-advance-rogers-autoworker-20260924",
@@ -2337,7 +2337,7 @@
     {
       "evidenceId": "ev-obs-fox-mi-20260930",
       "sourceId": "obs-fox-mi-20260930",
-      "locator": "9月24〜28日、登録有権者1,203人・投票予定者1,028人。投票予定者はEl-Sayed 50%、Rogers 49%、未定1%、誤差±3ポイント。登録有権者は51%対48%、誤差±2.5ポイント。",
+      "locator": "9月30日公開PDF p.1 Methodology・p.3 Q3。実査9月24〜28日、LV1,028人はEl-Sayed50・Rogers49・未定1%、標本誤差±3。RV1,203人は51・48・未定1%、標本誤差±2.5。Q3はleaner追質問込み。OtherとWouldn’t voteは各*（0.5%未満）。",
       "checkedAt": "2026-10-01",
       "kind": "observed"
     },
@@ -2477,8 +2477,8 @@
     {
       "evidenceId": "ev-obs-hpu-nc-20260924",
       "sourceId": "obs-hpu-nc-20260924",
-      "locator": "9月6〜16日のオンラインパネル。全1,003人のうち投票予定者と分類した706人ではCooper 50%、Whatley 42%、他候補3%、未定5%。投票予定者のcredibility intervalは±3.9ポイント。",
-      "checkedAt": "2026-09-28",
+      "locator": "9月24日公開のU.S. Senate Election設問とMethodology。実査9月6〜16日、全成人1,003人・登録有権者813人のうち7項目中5〜7点のLV706人ではCooper50・Whatley42・他候補3・未定5%。非確率パネルでLV credibility interval ±3.9、通常の標本誤差は不適切と明記。",
+      "checkedAt": "2026-10-01",
       "kind": "observed"
     },
     {
@@ -3244,12 +3244,13 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-01",
       "headline": "政策の違いが、候補者への距離感につながるか",
-      "featuredSummary": "民主党El-Sayedと共和党Rogersの接戦。新調査ではEl-Sayedが先頭だが単独調査。Rogersの自動車工場勤務は、勤務事実と『完成車組立ライン』という表現を分けて確認する。",
-      "lead": "引退する民主党Gary Peters上院議員の議席を、民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月22〜24日のBIG DATA POLLは投票予定者でEl-Sayed 46.7%、Rogers 42.1%。一方、Rogers氏の自動車工場・組立ライン勤務という説明について、州内報道は1981〜82年に完成車への後付け加工を行うCars & Conceptsで働いた事実を確認したが、UAWと元従業員はChryslerの完成車組立ラインではないと指摘した。陣営は実際に車両を加工するライン作業だったと反論した。",
-      "uncertainty": "BIG DATA POLLの約5ポイント差は単独調査で誤差±4.0ポイント、調査機関は共和党系と分類される。職歴の争点は『勤務したか』ではなく仕事と施設をどう表現するかで、Cars and Concepts勤務自体は陣営と報道が一致している。候補者の経歴表現が有権者評価へ与える効果は未確認。10月8日と21日の討論で直接比較する。",
+      "featuredSummary": "Foxの投票予定者調査は民主党El-Sayed 50%・共和党Rogers 49%。同じ調査の登録有権者は51%・48%。対象の違いと、両候補の政策・経歴への評価を分けて追う。",
+      "lead": "引退する民主党Gary Peters上院議員の議席を、民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月24〜28日のFox調査は投票予定者1,028人でEl-Sayed 50%・Rogers 49%、登録有権者1,203人では51%・48%。未定者への傾きの追質問を含む同一調査の別集計で、時系列の支持変化とは区別する。Rogers氏の自動車工場勤務については、Cars & Conceptsで完成車への後付け加工に従事した事実と『完成車組立ライン』という表現の正確さを分けて確認する。",
+      "uncertainty": "Foxの標本誤差は投票予定者±3・登録有権者±2.5ポイント。OtherとWouldn’t voteは各0.5%未満で0%とは扱わず、小差から当落や支持移動は決めない。職歴の争点は勤務の有無ではなく仕事と施設の表現で、候補者評価への効果は未確認。10月8日と21日の討論で直接比較する。",
       "evidenceIds": [
+        "ev-obs-fox-mi-20260930",
         "ev-obs-ssrs",
         "ev-obs-abdul-ai",
         "ev-obs-rogers-trade",

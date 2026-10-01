@@ -45,7 +45,7 @@ describe('briefing poll bars',()=>{
   it('omits unpublished and other-state records and handles the lack of a recorded poll honestly',()=>{
     const draft={...polls[0],pollId:'draft-only',electionId:'empty',status:'draft' as const};
     expect(briefingPollStudies([...polls,draft],'empty')).toEqual([]);
-    for(const id of ['2026-NH-2-regular','2026-NC-2-regular']) {
+    for(const id of ['2026-NH-2-regular']) {
       const html=briefingPollsMarkup(polls,id);
       expect(html).toContain('まだ収録していません');
       expect(html).not.toContain('briefing-poll-track');

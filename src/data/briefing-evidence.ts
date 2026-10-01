@@ -60,15 +60,14 @@ export const briefingEvidenceDisplays: BriefingEvidenceDisplay[] = [
   },
   {
     electionId: '2026-MI-2-regular',
-    sourceLabel: 'Emerson College Polling',
-    periodLabel: '2026年9月12〜14日',
-    populationLabel: '同じ投票予定者調査の、上院選と知事選の別設問',
-    table: {
-      caption: '選挙ごとの候補者支持率',
-      columns: ['選挙', '民主党候補', '共和党候補'],
-      rows: [['上院', 'エルサイード 48%', 'ロジャーズ 46%'], ['知事', 'ベンソン 49%', 'ジェームズ 42%']],
-    },
-    note: '民主党候補の差は上院2ポイント、知事7ポイント。選挙間の差だけで、個人の投票理由は特定できない。',
+    sourceLabel: 'Fox News Poll',
+    periodLabel: '2026年9月24〜28日実査 ／ 9月30日公表',
+    populationLabel: '同じ上院選調査の投票予定者（LV）と登録有権者（RV）。未定者への傾きの追質問を含む',
+    pollRows: [
+      { pollId:'poll-mi-fox-2026-09-lv',label:'投票予定者（LV）' },
+      { pollId:'poll-mi-fox-2026-09-rv',label:'登録有権者（RV）' },
+    ],
+    note: '同一調査の対象別集計で、時系列の支持変化や独立した2調査ではない。OtherとWouldn’t voteは各0.5%未満を表す*で公表され、0%とは扱わない。',
   },
   {
     electionId: '2026-NH-2-regular',
@@ -84,15 +83,16 @@ export const briefingEvidenceDisplays: BriefingEvidenceDisplay[] = [
   },
   {
     electionId: '2026-NC-2-regular',
-    sourceLabel: 'Sabato / Inside Elections',
-    periodLabel: 'Sabato 9月22日版 ／ Inside 9月17日版',
-    populationLabel: '民主党クーパーと共和党ワトリーの選挙に対する機関の評価',
+    sourceLabel: 'HPU Poll 127 ／ Sabato / Inside Elections',
+    periodLabel: 'HPU 2026年9月6〜16日実査・9月24日公表 ／ 評価はSabato 9月22日版・Inside 9月17日版',
+    populationLabel: 'HPUは非確率オンラインパネルの投票予定者706人。機関の評価は別の材料',
+    pollRows: [{ pollId:'poll-nc-hpu-2026-09-lv',label:'HPUの投票予定者（LV）' }],
     table: {
       caption: '収録した2機関の情勢評価',
       columns: ['評価機関', '原評価'],
       rows: [['Sabato', 'Lean D'], ['Inside Elections', 'Tilt D']],
     },
-    note: 'いずれも民主党寄りだがLean／Tiltなので未配分。支持率や当選確率ではない。確認範囲は出典に記載。',
+    note: 'HPUのcredibility intervalは±3.9ポイントで、通常の標本誤差ではない。2機関の分類は支持率や当選確率ではない。AARPは原資料の再照合が未完了のため、棒グラフには追加していない。',
   },
   {
     electionId: '2026-OH-3-special',
