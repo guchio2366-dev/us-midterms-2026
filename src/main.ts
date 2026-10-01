@@ -561,7 +561,7 @@ function enhanceLayout() {
       intro.textContent = sectionIntroductions.powers;
       disclosureBody.append(intro,overviewCards,details);
     }
-    updates.after(powers);
+    policyHost.after(powers);
   }
 
   if (sim) {
