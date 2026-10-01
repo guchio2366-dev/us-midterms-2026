@@ -1,0 +1,252 @@
+{
+  "runId": "daily-20261001",
+  "timingIntegrity": "consistent",
+  "timingNote": "開始・各情報源の成功・完了は、この実行で実際に確認したUTC時刻の範囲内に記録した。前回ログの時刻不整合は書き換えず、今回の新規記録で解消扱いにしない。",
+  "startedAt": "2026-09-30T23:56:32Z",
+  "completedAt": "2026-10-01T00:08:21Z",
+  "outcome": "partial",
+  "reviewMode": "daily; polls, ratings, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "678ec64db16ed4f768b325ca3c2ebfad6ef3da14",
+  "publishedCommit": "pending",
+  "revision": "observation-2026-10-01",
+  "checkedSourceIds": [
+    "obs-fox-mi-20260930",
+    "obs-ap-ak-ia-projects-20260930",
+    "obs-white-house-ia-steel-20260928",
+    "obs-reuters-ia-cancer-20260929",
+    "obs-wapo-me-corporate-pac-20260930",
+    "obs-senate-hr9340-vote-20260930",
+    "obs-husted-hr9340-20260930",
+    "obs-houston-tx-debate-20260929",
+    "obs-reuters-tx-paxton-audio-20260930",
+    "obs-ap-gop-senate-spending-20260929",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-fox-mi-20260930",
+      "attemptedUrls": ["https://static.foxnews.com/foxnews.com/content/uploads/2026/09/fox_september-24-28-2026_michigan_topline_september-30-release.pdf"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "登録有権者1,203人・投票予定者1,028人、実査期間、電話・SMS方式、50対49と51対48、誤差をPDF原票で照合。"
+    },
+    {
+      "sourceId": "obs-ap-ak-ia-projects-20260930",
+      "attemptedUrls": ["https://apnews.com/article/trump-alaska-south-korea-lng-gas-senate-03d3b10599c166840db2d92b872a8f7e"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Alaska LNG・Iowa製鉄所の大統領発表、Sullivan・Hinson両候補の同席、投資・雇用の計画値、資金進行の未確定点を照合。"
+    },
+    {
+      "sourceId": "obs-white-house-ia-steel-20260928",
+      "attemptedUrls": [
+        "https://www.whitehouse.gov/releases/2026/09/mined-melted-and-poured-in-america-president-trump-reverses-years-of-anti-mining-policy/",
+        "https://www.whitehouse.gov/videos/president-trump-announces-masabi-metallics-new-mega-steel-plant-in-iowa-%F0%9F%87%BA%F0%9F%87%B8/"
+      ],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Iowa製鉄所の候補者同席、恒久雇用1,750人・建設雇用最大6,000人という政府見通しを照合し、実績と区別。"
+    },
+    {
+      "sourceId": "obs-reuters-ia-cancer-20260929",
+      "attemptedUrls": ["https://www.reuters.com/business/healthcare-pharmaceuticals/iowa-soaring-cancer-rates-emerge-key-midterms-issue-2026-09-29/"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Turek・Hinson両候補の保険・検診・水質策、KFF推計、がん罹患率、水質の争点調査を照合。"
+    },
+    {
+      "sourceId": "obs-wapo-me-corporate-pac-20260930",
+      "attemptedUrls": ["https://www.washingtonpost.com/politics/2026/09/30/maines-democratic-candidate-has-campaigned-against-corporate-money-helped-raise-it/"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Jackson氏の現在の企業PAC拒否、州上院民主党委員会での役職、過去の受領、本人・陣営の説明を照合。"
+    },
+    {
+      "sourceId": "obs-senate-hr9340-vote-20260930",
+      "attemptedUrls": [
+        "https://www.dailypress.senate.gov/wednesday-september-30-2026/",
+        "https://www.senate.gov/votes/"
+      ],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "H.R.9340の討論終結が57対43で否決された手続きと、法案が上院通過・成立していないことを上院公式記録で照合。"
+    },
+    {
+      "sourceId": "obs-husted-hr9340-20260930",
+      "attemptedUrls": [
+        "https://www.husted.senate.gov/media/press-releases/democrats-block-husteds-bill-forcing-data-centers-to-pay-their-own-way/",
+        "https://www.husted.senate.gov/wp-content/uploads/2026/07/STR26124.pdf"
+      ],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Husted氏の発表を法案本文と照合し、大規模需要家の増分費用、州規制当局が検討する基準、候補者の表現を区別。"
+    },
+    {
+      "sourceId": "obs-houston-tx-debate-20260929",
+      "attemptedUrls": ["https://www.houstonchronicle.com/politics/texas/article/paxton-talarico-debate-22455301.php"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Foxの条件付き主催表明、Talarico氏の受諾、Paxton氏の未受諾、日時・会場が未合意であることを照合。"
+    },
+    {
+      "sourceId": "obs-reuters-tx-paxton-audio-20260930",
+      "attemptedUrls": [
+        "https://www.reuters.com/world/us/texas-us-senate-candidate-paxton-said-trump-hurt-republicans-new-york-times-says-2026-09-30/",
+        "https://www.houstonchronicle.com/politics/texas/article/paxton-leaked-audio-trump-22456122.php"
+      ],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "私的募金会でのPaxton氏の発言、陣営の文脈反論、未公表の内部数字を照合。"
+    },
+    {
+      "sourceId": "obs-ap-gop-senate-spending-20260929",
+      "attemptedUrls": ["https://apnews.com/article/senate-republicans-georgia-north-carolina-trump-196b287c170f2e8e6386908b441339d2"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "North Carolina・Texas・Georgiaなどの広告支出・予約と党関係者の優先順位説明を照合し、支持率と区別。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://sabatoscrystalball.substack.com/p/rating-changes-toward-democrats-across",
+        "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026"
+      ],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "9月22日版のIowa Toss Up、Michigan Lean D、Kansas Lean Rを含む現行評価に新たな変更がないことを確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": ["https://insideelections.com/ratings/senate"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "9月17日更新の現行評価に新たな変更がなく、統合評価と新規案D44・R46・未配分10を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": ["https://www.whitehouse.gov/briefings-statements/"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "Iowa公式発表を確認。報道された今後のTexas・Ohio訪問は公式の時刻・会場を確認できず、確定予定として追加していない。"
+    },
+    {
+      "sourceId": "obs-quantus-ia-20260930",
+      "attemptedUrls": ["https://quantusinsights.org/f/hinson-and-turek-essentially-tied-in-iowa-us-senate-race"],
+      "attemptedAt": "2026-10-01T00:03:27Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "検索表示の数値は確認したが、本文から実査期間、標本、質問文、方法、誤差を照合できず非掲載。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedUrls": [
+        "https://scholars.unh.edu/survey_center_polls/1005/",
+        "https://scholars.unh.edu/cgi/viewcontent.cgi?article=2004&context=survey_center_polls"
+      ],
+      "attemptedAt": "2026-10-01T00:07:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "抄録と公表日は確認できたが、PDFは403で、標本・質問文・方法・数値を原文照合できず非掲載。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedUrls": ["https://www.nytimes.com/interactive/2026/09/24/polls/times-siena-poll-nh-toplines.html"],
+      "attemptedAt": "2026-10-01T00:07:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原票ページの本文・方法・質問文を取得できず、非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": [
+        "https://www.ohiosos.gov/office/media-center/categories/press-releases/2026-02-19",
+        "https://www.ohiosos.gov/elections/elections-administration/directives"
+      ],
+      "attemptedAt": "2026-10-01T00:07:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "Brown・Hustedの党候補と郡資料の有効な記名3人は確認済みだが、州の一般選挙候補者原票と記名候補の党派を完全照合できず継続確認。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": [
+        "https://www.sos.nh.gov/elections/running-office",
+        "https://www.sos.nh.gov/elections/sample-ballots"
+      ],
+      "attemptedAt": "2026-10-01T00:07:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "選挙日程・予備選結果ページは確認したが、上院一般選挙の候補者・記名候補を一括した州原票を取得できず継続確認。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": ["https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"],
+      "attemptedAt": "2026-10-01T00:07:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文・方法・質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": ["https://www.fec.gov/data/committee/C00027466/"],
+      "attemptedAt": "2026-10-01T00:07:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "FEC概要は確認済みだが、報道された州別予定額の原票を特定できず照合待ち。成功日時を進めていない。"
+    }
+  ],
+  "comparisonAudit": [],
+  "verification": {
+    "tests": "268 passed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "MichiganのFox調査原票、Alaska・Iowaの大統領同席事業発表、Iowaのがん・保険・水質、Maineの資金調達記録、Ohioのデータセンター法案手続き、Texasの討論条件と私的発言、North Carolina・Georgiaなどの共和党資源配分を追加。主張、計画、採決、政策効果、有権者評価を分離した。統合評価と新規案D44・R46・未配分10、既存の保存案・共有URLは維持した。未取得原票は変化なしとせず、情報源別に照合待ちを記録した。"
+}

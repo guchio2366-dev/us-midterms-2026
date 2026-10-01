@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import previousRun from '../docs/observation/runs/daily-20260929.json';
 import { elections, profiles, seats, sources } from '../src/data/data';
 import { houseDistricts } from '../src/data/house';
 import { candidateRosterNotes, isArchivedCandidate } from '../src/candidate-roster';
@@ -140,11 +141,13 @@ describe('candidate roster verification and saved assumptions', () => {
     expect(candidateRosterNoteMarkup('RI-2')).toContain(candidateRosterNotes['RI-2']);
   });
 
-  it('discloses inconsistent recorded times without inventing a new completion time', () => {
-    expect(observationData.monitor.lastCompletedAt).toBe('2026-09-29T00:20:00Z');
-    expect(monitoringStatus(observationData,new Date('2026-09-30T13:00:00Z'))).toContain('確認時刻の記録に不整合');
-    expect(monitoringStatus(observationData,new Date('2026-09-30T13:00:00Z'))).toContain('確認が遅れています');
-    expect(monitoringMarkup()).toContain('実時刻は未確認');
-    expect(monitoringMarkup()).toContain('元の時刻を保持');
+  it('keeps the prior timing discrepancy in its run and shows the new verified completion time', () => {
+    expect(previousRun.timingIntegrity).toBe('inconsistent');
+    expect(previousRun.completedAt).toBe('2026-09-29T00:20:00Z');
+    expect(observationData.monitor.lastCompletedAt).toBe('2026-10-01T00:08:21Z');
+    expect(monitoringStatus(observationData,new Date('2026-10-01T01:00:00Z'))).not.toContain('確認時刻の記録に不整合');
+    expect(monitoringStatus(observationData,new Date('2026-10-01T01:00:00Z'))).toContain('一部の情報源を未確認');
+    expect(monitoringMarkup(new Date('2026-10-01T01:00:00Z'))).not.toContain('実時刻は未確認');
+    expect(monitoringMarkup(new Date('2026-10-01T01:00:00Z'))).toContain('前回ログの時刻不整合は書き換えず');
   });
 });
