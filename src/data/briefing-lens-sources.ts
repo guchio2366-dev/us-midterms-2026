@@ -48,6 +48,21 @@ export const briefingLensSources: Source[] = [
 ];
 
 export const briefingLensEvidence: EvidenceRef[] = [
+  {
+    evidenceId:'ev-briefing-nc-hpu-20260924',sourceId:'obs-hpu-nc-20260924',
+    locator:'9月24日公開のU.S. Senate Election設問とMethodology。実査9月6〜16日、Dynata非確率オンラインパネルのLV706人、Cooper50・Whatley42・他候補3・未定5。7項目中5〜7点でLVと分類。LV credibility interval ±3.9、通常の標本誤差は不適切と明記。',
+    checkedAt:'2026-10-01',kind:'observed',
+  },
+  {
+    evidenceId:'ev-briefing-mi-fox-lv-20260930',sourceId:'obs-fox-mi-20260930',
+    locator:'9月30日公開PDF p.1 Methodology・p.3 Q3 Likely Voters。実査9月24〜28日、LV1,028人、El-Sayed50・Rogers49・未定1、標本誤差±3。未定者へのleaner追質問を含み、Other・Wouldn’t voteは各*（0.5%未満）。LVは投票履歴・関心・意向と属性の統計モデル。',
+    checkedAt:'2026-10-01',kind:'observed',
+  },
+  {
+    evidenceId:'ev-briefing-mi-fox-rv-20260930',sourceId:'obs-fox-mi-20260930',
+    locator:'同じPDF p.1 Methodology・p.3 Q3 Registered Voters。RV1,203人、El-Sayed51・Rogers48・未定1、標本誤差±2.5。州の有権者名簿から無作為抽出し、固定電話114・携帯794・SMSからウェブ295。同じ設問のleaner込み集計で、Other・Wouldn’t voteは各0.5%未満。',
+    checkedAt:'2026-10-01',kind:'observed',
+  },
   ...tenStateEvidence,
   {
     "evidenceId": "ev-briefing-ak-rcv",

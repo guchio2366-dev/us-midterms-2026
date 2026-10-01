@@ -6,6 +6,7 @@ import type { CandidatePolicyRecord, PolicyAction, PolicyPrototypeData, PolicyRe
 import { candidatePolicyKnowledge, comparePolicyScenarios, describePolicyScenario, policyKey } from '../policy-prototype-logic';
 import { candidateForChoice, countScenarioSenate, scenarioChoiceLabel, type SavedScenario, type ScenarioState, type SenateChoice } from '../scenario/model';
 import { reasonChoiceIsCurrent, REASONING_LIMITS, type AssumptionAssessment, type CommonAssumptionChoice, type FactorRole, type RaceReasoning } from '../scenario/reasoning';
+import type { PolicyReadingContext } from '../news-policy-context';
 
 export interface PolicyWorkbenchOptions {
   data:PolicyPrototypeData;
@@ -16,9 +17,11 @@ export interface PolicyWorkbenchOptions {
   sources:Source[];
   evidence:EvidenceRef[];
   states?:State[];
-  themeId?:PolicyThemeId;
+  themeId?:PolicyThemeId|null;
   electionId?:string;
-  policyRef?:PolicyRef;
+  policyRef?:PolicyRef|null;
+  /** Transient material being read; never persisted by the workbench. */
+  readingContext?:PolicyReadingContext|null;
   savedScenarios?:SavedScenario[];
   comparison?:{leftId:string|null;rightId:string|null};
 }
@@ -57,6 +60,13 @@ function sourceLinks(ids:string[],sources:Source[]):string {
     const url=safeUrl(source.url);
     return url?`<a href="${html(url)}" target="_blank" rel="noopener noreferrer">${html(source.publisher)}：${html(source.title)}</a>`:`<span>${html(source.publisher)}：${html(source.title)}</span>`;
   }).join(' / ');
+}
+function readingSources(ids:string[],sources:Source[]):string {
+  return `<ul class="pw-reading-sources">${[...new Set(ids)].map(id=>{
+    const source=sources.find(item=>item.sourceId===id);
+    if(!source)return '<li class="pw-missing">出典未接続</li>';
+    return `<li>${sourceLinks([id],sources)}<small>原資料公表 ${html(source.publishedAt??'日付未確認')}${source.updatedAt?` · 原資料更新 ${html(source.updatedAt)}`:''} · 内容確認 ${html(source.contentVerifiedAt??'日付未確認')}</small>${source.referencePeriod?`<small>資料の対象：${html(source.referencePeriod)}</small>`:''}</li>`;
+  }).join('')}</ul>`;
 }
 function evidenceEntries(options:Pick<PolicyWorkbenchOptions,'data'|'evidence'>) {
   return new Map([...options.evidence,...options.data.additionalEvidence].map(e=>[e.evidenceId,e]));
@@ -104,14 +114,31 @@ function assumptionMarkup(options:PolicyWorkbenchOptions,themeId:PolicyThemeId):
     return `<form class="pw-assumption" data-policy-action="set-common-assumption"><input type="hidden" name="assumptionId" value="${html(a.assumptionId)}"><h4>${html(a.label)}</h4><p>${html(a.description)}</p><div class="pw-form-row"><label>この案の共通前提<select name="assessment">${(['hold','adopt','reject'] as const).map(value=>`<option value="${value}"${selected(value===(current?.assessment??'hold'))}>${assessmentLabels[value]}</option>`).join('')}</select></label><button type="submit">前提を記録</button><span class="pw-status">${current?`記録済み：${assessmentLabels[current.assessment]}`:'未記録'}</span></div><details><summary>採用した公開根拠を選ぶ</summary>${evidenceControls(a.evidenceIds,current?.evidenceIds??[],options)}</details></form>`;
   }).join('')||'<p class="pw-empty">このテーマの共通前提は未収録。</p>';
 }
-function contextMarkup(options:PolicyWorkbenchOptions,themeId:PolicyThemeId):string {
-  const links=options.data.contextLinks.filter(link=>link.themeId===themeId);
+function readingContextMarkup(options:PolicyWorkbenchOptions):string {
+  const context=options.readingContext;
+  if(!context)return '';
+  const theme=options.data.themes.find(item=>item.themeId===context.themeId);
+  const elections=context.electionIds.map(id=>options.elections.find(item=>item.electionId===id)).filter((item):item is Election=>!!item);
+  const url=context.url?safeUrl(context.url):null;
+  const policyRef=options.policyRef===undefined?context.policyRef:options.policyRef;
+  return `<article class="pw-context pw-reading-context" data-policy-reading-context><p class="pw-reading-label">${context.kind==='state'?'選択した州の材料':context.kind==='event'?'いま読んでいる予定':'いま読んでいるニュース・更新'}</p><h4>${html(context.title)}</h4><p>${html(context.summary)}</p><p class="pw-meta">${context.kind==='event'?'予定':'出来事'} ${html(context.eventDate??'日付未確認')} · 原資料公表 ${html(context.sourcePublicationDates.join(' / ')||'日付未確認')} · ${context.kind==='event'?'予定確認':'資料確認（最新）'} ${html(context.checkedAt??'日付未確認')}${context.publishedAt?` · サイト掲載 ${html(context.publishedAt)}`:''}${context.updatedAt?` · サイト更新 ${html(context.updatedAt)}`:''}</p>${elections.length?`<p class="pw-context-races">関連州：${elections.map(election=>html(electionLabel(election,options))).join(' / ')}${theme?` · 論点：${html(theme.label)}`:''}</p>`:theme?`<p class="pw-context-races">論点：${html(theme.label)}</p>`:''}${!policyRef?'<p class="pw-reading-hint" data-policy-unselected>比較する政策版は未選択です。テーマと政策版を選んでください。</p>':''}${context.kind!=='state'||context.fact||context.limit||context.sourceIds.length||context.evidenceIds.length?`<details><summary>この材料の事実・読み方・出典</summary>${context.fact?`<p><b>確認した更新</b>：${html(context.fact)}</p>`:''}${context.limit?`<p><b>読み方・限界</b>：${html(context.limit)}</p>`:''}${context.sourceIds.length?readingSources(context.sourceIds,options.sources):url?`<p><a href="${html(url)}" target="_blank" rel="noopener noreferrer">元の資料を読む</a></p>`:'<p class="pw-meta">出典は未接続。</p>'}${context.evidenceIds.length?evidenceList(context.evidenceIds,options):''}</details>`:''}${context.feedKey?'<button type="button" class="pw-reading-return" data-policy-reading-return>元のニュース・予定に戻る</button>':''}</article>`;
+}
+function contextMarkup(options:PolicyWorkbenchOptions,themeId:PolicyThemeId|null):string {
+  const reading=options.readingContext;
+  const selectedElection=options.electionId??reading?.selectedElectionId;
+  const links=options.data.contextLinks.filter(link=>themeId?link.themeId===themeId:!!reading?.contextLinkIds.includes(link.linkId));
+  const priority=(link:typeof links[number])=>reading?.contextLinkIds.includes(link.linkId)?0:link.electionLinks.some(ref=>ref.electionId===selectedElection)?link.scope==='state'?1:2:3;
+  links.sort((left,right)=>priority(left)-priority(right));
   const markup=(link:typeof links[number])=>`<article class="pw-context"><h4>${html(link.title)}</h4><p>${html(link.description)}</p><p class="pw-meta">出来事 ${html(link.eventDate??'日付未確認')} · 公開 ${html(link.publishedAt??'日付未確認')} · 確認 ${html(link.checkedAt)}</p><p class="pw-context-races">${link.electionLinks.map(ref=>{
     const election=options.elections.find(e=>e.electionId===ref.electionId);
     if(!election)return '';
     return `${html(electionLabel(election,options))}：${ref.candidateIds.map(id=>html(election.candidates.find(c=>c.candidateId===id)?.name??'候補者未接続')).join('・')}${ref.relation==='comparison-context'?'（比較の背景）':''}`;
   }).filter(Boolean).join(' / ')}</p><details><summary>記事・候補者資料と該当箇所</summary><p>${sourceLinks(link.sourceIds,options.sources)}</p>${evidenceList(link.evidenceIds,options)}${list(link.unknowns)}</details></article>`;
-  return links.length?`${markup(links[0])}${links.length>1?`<details class="pw-more-context"><summary>その他の関連資料（${links.length-1}件）</summary>${links.slice(1).map(markup).join('')}</details>`:''}`:'<p class="pw-empty">関連資料は未収録。</p>';
+  const current=readingContextMarkup(options);
+  if(!links.length)return `${current}${themeId?'<p class="pw-empty">関連する政策資料は未収録。</p>':''}`;
+  const first=reading&&priority(links[0])===3?'':markup(links[0]);
+  const more=first?links.slice(1):links;
+  return `${current}${first}${more.length?`<details class="pw-more-context"><summary>その他の関連資料（${more.length}件）</summary>${more.map(markup).join('')}</details>`:''}`;
 }
 function savedReasonMarkup(state:ScenarioState,election:Election,data:PolicyPrototypeData,compact=false):string {
   const reason=state.reasoning?.races[election.electionId];
@@ -173,17 +200,19 @@ function policyAssessmentMarkup(options:PolicyWorkbenchOptions,policy:PolicySpec
 /** Self-contained markup. Scenario mutation and persistence remain with the caller. */
 export function renderPolicyWorkbench(options:PolicyWorkbenchOptions):string {
   const {data}=options;
-  const theme=data.themes.find(t=>t.themeId===options.themeId)??data.themes[0];
-  if(!theme)return '<section class="policy-workbench"><p>政策テーマは未収録。</p></section>';
+  const requestedTheme=options.themeId===undefined?options.readingContext?.themeId:options.themeId;
+  const theme=data.themes.find(t=>t.themeId===requestedTheme)??(!options.readingContext?data.themes[0]:undefined);
+  if(!data.themes.length)return '<section class="policy-workbench"><p>政策テーマは未収録。</p></section>';
   const focusElections=options.elections.filter(e=>data.focusElectionIds.includes(e.electionId));
-  const election=focusElections.find(e=>e.electionId===options.electionId)??focusElections[0];
-  const policies=data.policies.filter(p=>p.themeId===theme.themeId);
-  const policy=policies.find(p=>options.policyRef&&policyKey(p)===policyKey(options.policyRef))??policies[0];
+  const election=focusElections.find(e=>e.electionId===(options.electionId??options.readingContext?.selectedElectionId))??focusElections[0];
+  const policies=theme?data.policies.filter(p=>p.themeId===theme.themeId):[];
+  const requestedPolicy=options.policyRef===undefined?options.readingContext?.policyRef:options.policyRef;
+  const policy=policies.find(p=>requestedPolicy&&policyKey(p)===policyKey(requestedPolicy))??(!options.readingContext&&options.policyRef!==null?policies[0]:undefined);
   const saved=options.savedScenarios??[],left=saved.find(s=>s.id===options.comparison?.leftId),right=saved.find(s=>s.id===options.comparison?.rightId);
-  return `<section class="policy-workbench section-block" id="policy-workbench" aria-labelledby="policy-workbench-heading"><div class="section-heading"><div><p class="kicker">政策と当落の理由</p><h2 id="policy-workbench-heading">同じ論点から、州ごとの選択へ</h2></div></div><p class="section-intro" data-section-intro="policy">${html(sectionIntroductions.policy)}</p><div class="pw-theme-buttons" role="group" aria-label="政策テーマ">${data.themes.map(t=>`<button type="button" data-policy-action="choose-theme" data-theme-id="${html(t.themeId)}" aria-pressed="${t.themeId===theme.themeId}">${html(t.label)}</button>`).join('')}</div><div class="pw-top-grid"><div class="pw-step"><h3><span>1</span>関連する全国・州の資料</h3><p class="section-intro" data-section-intro="context">${html(sectionIntroductions.context)}</p>${contextMarkup(options,theme.themeId)}</div><div class="pw-step"><h3><span>2</span>この案に置く共通前提</h3><p class="section-intro" data-section-intro="assumption">${html(sectionIntroductions.assumption)}</p>${assumptionMarkup(options,theme.themeId)}<p class="pw-meta">利用者の仮定。支持率や当選確率への換算はしない。</p></div></div><div class="pw-choice-grid"><div class="pw-step"><h3><span>3</span>州ごとに候補者と理由を選ぶ</h3><p class="section-intro" data-section-intro="choice">${html(sectionIntroductions.choice)}</p><label class="pw-field">州<select data-policy-action="choose-election">${focusElections.map(e=>`<option value="${html(e.electionId)}"${selected(e.electionId===election?.electionId)}>${html(electionLabel(e,options))}</option>`).join('')}</select></label>${election?raceMarkup(options,election):'<p class="pw-empty">対象選挙は未収録。</p>'}</div><aside class="pw-scenario-summary"><h3>現在の案</h3><p class="section-intro" data-section-intro="counts">${html(sectionIntroductions.counts)}</p>${countsMarkup(options.state,options.seats,options.elections)}<details class="pw-state-choices"><summary>州ごとの選択と理由（${focusElections.length}州）</summary>${raceSummaryMarkup(options)}</details><a href="#scenario-manager">案の保存・共有へ</a><p class="pw-meta">理由の公開IDと選んだ根拠を共有。個人メモは共有URLに含まれない。</p></aside></div><div class="pw-step pw-policy-step"><h3><span>4</span>選んだ候補者の政策記録を確かめる</h3><p class="section-intro" data-section-intro="policyRecords">${html(sectionIntroductions.policyRecords)}</p><label class="pw-field">政策と版<select data-policy-action="choose-policy">${policies.map(p=>`<option value="${html(policyKey(p))}"${selected(p===policy)}>${html(p.title)} — ${html(policyVersionLabel(p))}</option>`).join('')}</select></label>${policy?policyAssessmentMarkup(options,policy):'<p class="pw-empty">政策は未収録。</p>'}</div><div class="pw-comparison"><h3>保存した2案の理由を比べる</h3><p class="section-intro" data-section-intro="reasoningComparison">${html(sectionIntroductions.reasoningComparison)}</p><div class="pw-comparison-pickers">${(['left','right'] as const).map(side=>`<label>${side==='left'?'左の案':'右の案'}<select data-policy-action="choose-comparison" data-side="${side}"><option value="">保存案を選ぶ</option>${saved.map(item=>`<option value="${html(item.id)}"${selected(item.id===options.comparison?.[`${side}Id`])}>${html(item.name)}</option>`).join('')}</select></label>`).join('')}</div>${left&&right?renderPolicyReasoningComparison(left,right,{data,seats:options.seats,elections:options.elections,states:options.states,policyRef:policy,sources:options.sources,evidence:options.evidence}):'<p class="pw-empty">案を保存し、左右で選ぶと、議席・共通前提・州ごとの理由の違いを表示します。</p>'}</div></section>`;
+  return `<section class="policy-workbench section-block" id="policy-workbench" aria-labelledby="policy-workbench-heading"><div class="section-heading"><div><p class="kicker">政策と当落の理由</p><h2 id="policy-workbench-heading">同じ論点から、州ごとの選択へ</h2></div></div><p class="section-intro" data-section-intro="policy">${html(sectionIntroductions.policy)}</p><div class="pw-theme-buttons" role="group" aria-label="政策テーマ">${data.themes.map(t=>`<button type="button" data-policy-action="choose-theme" data-theme-id="${html(t.themeId)}" aria-pressed="${t.themeId===theme?.themeId}">${html(t.label)}</button>`).join('')}</div><div class="pw-top-grid"><div class="pw-step"><h3><span>1</span>関連する全国・州の資料</h3><p class="section-intro" data-section-intro="context">${html(sectionIntroductions.context)}</p>${contextMarkup({...options,electionId:election?.electionId},theme?.themeId??null)}</div><div class="pw-step"><h3><span>2</span>この案に置く共通前提</h3><p class="section-intro" data-section-intro="assumption">${html(sectionIntroductions.assumption)}</p>${theme?assumptionMarkup(options,theme.themeId):`<p class="pw-empty">テーマを選ぶと、比較する共通前提を確認できます。</p>`}<p class="pw-meta">利用者の仮定。支持率や当選確率への換算はしない。</p></div></div><div class="pw-choice-grid"><div class="pw-step"><h3><span>3</span>州ごとに候補者と理由を選ぶ</h3><p class="section-intro" data-section-intro="choice">${html(sectionIntroductions.choice)}</p><label class="pw-field">州<select data-policy-action="choose-election">${focusElections.map(e=>`<option value="${html(e.electionId)}"${selected(e.electionId===election?.electionId)}>${html(electionLabel(e,options))}</option>`).join('')}</select></label>${election?raceMarkup(options,election):'<p class="pw-empty">対象選挙は未収録。</p>'}</div><aside class="pw-scenario-summary"><h3>現在の案</h3><p class="section-intro" data-section-intro="counts">${html(sectionIntroductions.counts)}</p>${countsMarkup(options.state,options.seats,options.elections)}<details class="pw-state-choices"><summary>州ごとの選択と理由（${focusElections.length}州）</summary>${raceSummaryMarkup(options)}</details><a href="#scenario-manager">案の保存・共有へ</a><p class="pw-meta">理由の公開IDと選んだ根拠を共有。個人メモは共有URLに含まれない。</p></aside></div><div class="pw-step pw-policy-step"><h3><span>4</span>選んだ候補者の政策記録を確かめる</h3><p class="section-intro" data-section-intro="policyRecords">${html(sectionIntroductions.policyRecords)}</p><label class="pw-field">政策と版<select data-policy-action="choose-policy">${options.readingContext||!policy?`<option value=""${selected(!policy)}>比較する政策版を選ぶ</option>`:""}${policies.map(p=>`<option value="${html(policyKey(p))}"${selected(p===policy)}>${html(p.title)} — ${html(policyVersionLabel(p))}</option>`).join('')}</select></label>${policy?policyAssessmentMarkup(options,policy):'<p class="pw-empty" data-policy-unselected>比較する政策版を選ぶと、候補者の記録を確認できます。</p>'}</div><div class="pw-comparison"><h3>保存した2案の理由を比べる</h3><p class="section-intro" data-section-intro="reasoningComparison">${html(sectionIntroductions.reasoningComparison)}</p><div class="pw-comparison-pickers">${(['left','right'] as const).map(side=>`<label>${side==='left'?'左の案':'右の案'}<select data-policy-action="choose-comparison" data-side="${side}"><option value="">保存案を選ぶ</option>${saved.map(item=>`<option value="${html(item.id)}"${selected(item.id===options.comparison?.[`${side}Id`])}>${html(item.name)}</option>`).join('')}</select></label>`).join('')}</div>${left&&right?renderPolicyReasoningComparison(left,right,{data,seats:options.seats,elections:options.elections,states:options.states,policyRef:policy,sources:options.sources,evidence:options.evidence}):'<p class="pw-empty">案を保存し、左右で選ぶと、議席・共通前提・州ごとの理由の違いを表示します。</p>'}</div></section>`;
 }
 
-export interface PolicyComparisonOptions {data:PolicyPrototypeData;seats:Seat[];elections:Election[];states?:State[];policyRef?:PolicyRef;sources?:Source[];evidence?:EvidenceRef[]}
+export interface PolicyComparisonOptions {data:PolicyPrototypeData;seats:Seat[];elections:Election[];states?:State[];policyRef?:PolicyRef|null;sources?:Source[];evidence?:EvidenceRef[]}
 function comparisonReason(state:ScenarioState,election:Election,options:PolicyComparisonOptions):string {
   const reason=state.reasoning?.races[election.electionId];
   const linkedEvidence=reason?[...new Set([

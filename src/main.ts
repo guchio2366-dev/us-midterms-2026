@@ -1,5 +1,7 @@
 import { scenarioPathDifficultyLabel } from './ui/scenario-path-labels';
 import { sectionIntroductions } from './data/section-introductions';
+import { resolvePolicyReadingContext, type PolicyReadingContext } from './news-policy-context';
+import { briefingLenses } from './data/briefing-lenses';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
@@ -39,7 +41,7 @@ import { generateSenatePaths, type SenatePath } from './scenario/paths';
 import { createLegacySenateBaseline, createRatingSenateBaseline } from './scenario/baseline';
 import { seatBarMarkup, type SeatBarSegment } from './ui/seat-bars';
 import { senateBreakdown, senateCompositionSegments, senateMajorityPath } from './ui/senate-bars';
-import { bindDisclosurePreference, setupPageNavigation, scrollStateDetailIntoView } from './ui/navigation';
+import { bindDisclosurePreference, setupPageNavigation, scrollStateDetailIntoView, scrollPageHeadingIntoView, setActivePageNavigation } from './ui/navigation';
 import { RATING_METHOD_VERSION,RATING_SNAPSHOT_AS_OF,RATING_SNAPSHOT_ID,ratingSnapshotObservations } from './data/rating-snapshot';
 import { aggregateRatingConsensus,consensusDisplayLabel,consensusDisplayRating,ratingConsensusCounts,type RatingConsensusCategory } from './rating-consensus';
 import { observationData, observationFor } from './data/observation';
@@ -69,9 +71,10 @@ let scenarioStorageFailed = false;
 let openedFromShare = false;
 let sharedScenarioPending = false;
 let activeIssueId = 'trade-industry';
-let policyThemeId:PolicyThemeId='healthcare';
+let policyThemeId:PolicyThemeId|null='healthcare';
 let policyElectionId='2026-ME-2-regular';
-let selectedPolicyRef:PolicyRef=policyRefs.medicaidFunding;
+let selectedPolicyRef:PolicyRef|null=policyRefs.medicaidFunding;
+let policyReadingContext:PolicyReadingContext|null=null;
 let policyComparison={leftId:null as string|null,rightId:null as string|null};
 let soySort: 'production'|'competitive'|'margin' = 'production';
 let newsTab: NewsFeedTab = 'recent';
@@ -92,6 +95,7 @@ let overlayReturnFocus: HTMLElement|null = null;
 let overlayReturnScrollY = 0;
 let overlayHistory: {kind:OverlayKind;newsId:string|null;scrollTop:number}[] = [];
 type NewsReturnState = {feedKey:NewsFeedKey;articleScrollTop:number;tab:NewsFeedTab;raceFilter:string|null;newsPage:number;listScrollTop:number;expanded:boolean};
+let policyReturnNews:NewsReturnState|null=null;
 let stateReturnNews: NewsReturnState|null = null;
 let overlayOriginNewsId: string|null = null;
 let issuesSection: HTMLElement|null = null;
@@ -252,7 +256,7 @@ function focusSummaryMarkup(election: Election) {
     ${briefingTakeawayMarkup(election.electionId)}
     <div class="briefing-columns"><div class="briefing-poll-column">${briefingEvidenceMarkup(polls,election.electionId)}${['GA-2','KS-2'].includes(election.seatId) ? '<p class="briefing-coverage-note">投票調査は未収録。</p>' : ''}${briefingComparisonPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>2機関の原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div><div class="briefing-analysis">${briefingLensMarkup(election.electionId)}${['GA-2','KS-2'].includes(election.seatId) ? '<p class="briefing-coverage-note">候補者発言の直接引用は未収録。</p>' : ''}</div></div>
     <details class="briefing-context"><summary>州の論点・これまでの経緯を読む</summary>${body.lead}${texasPollContextMarkup(election.electionId)}</details>
-    <div class="briefing-footer">${body.details}<button type="button" class="briefing-simulation-link" data-briefing-simulate="${escapeHtml(election.electionId)}">この州の結果を変えてみる →</button></div>`;
+    <div class="briefing-footer">${body.details}<button type="button" class="briefing-simulation-link" data-briefing-policy="${escapeHtml(election.electionId)}">この州の材料から政策を考える →</button><button type="button" class="briefing-simulation-link" data-briefing-simulate="${escapeHtml(election.electionId)}">この州の結果を変えてみる →</button></div>`;
 }
 
 function focusLocatorContent(election: Election) {
@@ -460,6 +464,13 @@ function enhanceLayout() {
   }
   updatesGrid.append(news);
   updates.addEventListener('click',event=>{
+    const policyButton=(event.target as Element).closest<HTMLButtonElement>('[data-briefing-policy]');
+    if(policyButton){
+      const electionId=policyButton.dataset.briefingPolicy;
+      if(!electionId)return;
+      openPolicyStateReading(electionId);
+      return;
+    }
     const button=(event.target as Element).closest<HTMLButtonElement>('[data-briefing-simulate]');
     const election=elections.find(item=>item.electionId===button?.dataset.briefingSimulate);
     const state=election ? stateByFips.get(seatById.get(election.seatId)!.stateFips) : undefined;
@@ -960,6 +971,85 @@ function observationSourceIds(evidenceIds:string[]):string[] {
   return [...new Set(evidenceIds.map(id=>evidenceById.get(id)?.sourceId).filter((id):id is string=>Boolean(id)))];
 }
 
+function policyReadingForFeed(feedKey:NewsFeedKey,selectedElectionId=newsRaceFilter??activeFocusElectionId):PolicyReadingContext|null {
+  const item=feedItemByKey(feedKey,newsItems,observationData);
+  if(!item)return null;
+  const options={data:policyPrototype,elections,seats,states,selectedElectionId,
+    sources:[...sources,...observationData.sources],evidence:[...evidenceRefs,...observationData.evidenceRefs]};
+  if(item.sourceKind==='news'){
+    const source=getPublishedNewsById(newsItems,item.sourceId);
+    if(!source)return null;
+    const linked=linkedUpdatesForNews(source.newsId,observationData);
+    const material={...source,
+      relatedElectionIds:[...new Set([...source.relatedElectionIds,...linked.flatMap(update=>update.electionIds)])],
+      evidenceIds:[...new Set([...source.evidenceIds,...linked.flatMap(update=>update.evidenceIds)])],
+      sourceIds:[...new Set([...source.sourceIds,...linked.flatMap(update=>observationSourceIds(update.evidenceIds))])],
+    };
+    return resolvePolicyReadingContext({...options,source:{kind:'news',item:material}});
+  }
+  if(item.sourceKind==='update'){
+    const source=observationData.updates.find(update=>update.updateId===item.sourceId&&update.status==='published');
+    return source ? resolvePolicyReadingContext({...options,source:{kind:'update',item:source}}) : null;
+  }
+  const source=observationData.events.find(event=>event.eventId===item.sourceId&&event.publicationStatus==='published');
+  return source ? resolvePolicyReadingContext({...options,source:{kind:'event',item:source}}) : null;
+}
+
+/** A reading transition changes view state only; it never records a vote or alters Undo. */
+function openPolicyReading(context:PolicyReadingContext,returnNews:NewsReturnState|null=null) {
+  const originUrl=new URL(window.location.href);
+  policyReadingContext=context;
+  policyReturnNews=returnNews;
+  policyThemeId=context.themeId;
+  selectedPolicyRef=context.policyRef;
+  if(context.selectedElectionId)policyElectionId=context.selectedElectionId;
+  closeOverlay();
+  if(context.feedKey&&originUrl.searchParams.get('newsItem')===context.feedKey)window.history.replaceState(null,'',originUrl);
+  renderPolicySection();
+  const url=new URL(window.location.href);
+  url.searchParams.delete('newsItem');
+  url.hash='policy-workbench';
+  window.history.pushState(null,'',url);
+  setActivePageNavigation('#policy-workbench');
+  requestAnimationFrame(()=>{
+    const heading=document.querySelector<HTMLElement>('#policy-workbench h2');
+    if(!heading)return;
+    heading.tabIndex=-1;
+    heading.focus({preventScroll:true});
+    scrollPageHeadingIntoView(heading,matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+  });
+}
+
+function openPolicyStateReading(electionId:string,fromStateDetail=false) {
+  if(fromStateDetail&&stateReturnNews){
+    const origin=policyReadingForFeed(stateReturnNews.feedKey,electionId);
+    if(origin?.electionIds.includes(electionId)){
+      openPolicyReading({...origin,selectedElectionId:electionId},stateReturnNews);
+      return;
+    }
+  }
+  const lens=briefingLenses.find(item=>item.electionId===electionId);
+  const context=resolvePolicyReadingContext({source:{kind:'state',electionId,summary:lens?.finding,
+    fact:lens?.evidence,limit:lens?.limitation,sourceIds:lens?.sourceIds,evidenceIds:lens?.evidenceIds},
+    data:policyPrototype,elections,seats,states,sources:[...sources,...observationData.sources],evidence:[...evidenceRefs,...observationData.evidenceRefs]});
+  if(!context)return;
+  openPolicyReading(context);
+}
+
+function appendFeedPolicyLink(article:HTMLElement,feedKey:NewsFeedKey) {
+  if(!policyReadingForFeed(feedKey))return;
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='news-cross-link news-policy-entry';
+  button.dataset.policyNews=feedKey;
+  button.textContent='このニュースを材料に考える →';
+  button.addEventListener('click',()=>{
+    const context=policyReadingForFeed(feedKey);
+    if(context)openPolicyReading(context,captureNewsReturn(feedKey));
+  });
+  article.append(button);
+}
+
 function appendFeedStateLinks(article:HTMLElement,feedKey:NewsFeedKey,electionIds:string[]) {
   const entries=[...new Set(electionIds)].map(id=>{
     const election=elections.find(item=>item.electionId===id);
@@ -1004,6 +1094,7 @@ function renderUpdateDetail(updateId:string) {
     }
   }
   appendFeedStateLinks(article,`update:${update.updateId}`,update.electionIds);
+  appendFeedPolicyLink(article,`update:${update.updateId}`);
   const sourceIds=observationSourceIds(update.evidenceIds);
   if(sourceIds.length){const source=document.createElement('details');source.className='source-panel';source.open=true;source.innerHTML='<summary>出典</summary>'+refs(sourceIds);article.append(source);}
   content.replaceChildren(article);
@@ -1045,6 +1136,7 @@ function renderEventDetail(eventId:string) {
     if(resultKey){const button=document.createElement('button');button.type='button';button.className='news-cross-link';button.textContent='結果と判断材料の変化を読む';button.addEventListener('click',()=>openFeedItem(resultKey));article.append(button);}
   }
   appendFeedStateLinks(article,`event:${event.eventId}`,event.relevance.map(item=>item.electionId));
+  appendFeedPolicyLink(article,`event:${event.eventId}`);
   const sourceIds=observationSourceIds([...event.evidenceIds,...event.dateHistory.flatMap(item=>item.evidenceIds)]);
   if(sourceIds.length){const source=document.createElement('details');source.className='source-panel';source.open=true;source.innerHTML='<summary>出典</summary>'+refs(sourceIds);article.append(source);}
   content.replaceChildren(article);
@@ -1152,6 +1244,7 @@ function renderNewsDetail(newsId: string) {
     article.append(analysis);
   }
   appendFeedStateLinks(article,`news:${item.newsId}`,[...item.relatedElectionIds,...linkedUpdates.flatMap(update=>update.electionIds)]);
+  appendFeedPolicyLink(article,`news:${item.newsId}`);
   const sourceDetails = document.createElement('details');
   sourceDetails.className = 'source-panel';
   sourceDetails.open = true;
@@ -1543,7 +1636,7 @@ function renderPolicySection() {
   };
   const options={data:policyPrototype,state:scenarioState,seats,elections,powerRules,
     sources:[...sources,...observationData.sources],evidence:[...evidenceRefs,...observationData.evidenceRefs],states,
-    themeId:policyThemeId,electionId:policyElectionId,policyRef:selectedPolicyRef,savedScenarios,comparison:policyComparison};
+    themeId:policyThemeId,electionId:policyElectionId,policyRef:selectedPolicyRef,readingContext:policyReadingContext,savedScenarios,comparison:policyComparison};
   host.innerHTML=renderPolicyWorkbench(options);
   const examples=createPolicyExampleScenarios(currentScenarioBaseline,elections).filter(e=>e.themeId===policyThemeId);
   if(examples.length===2){
@@ -1552,7 +1645,7 @@ function renderPolicySection() {
       '<details class="pw-examples"><summary>同じ前提から分かれる2つの例</summary><p>利用者が置く条件付きの例です。現在の作業案とは別に表示します。</p>'+
       renderPolicyReasoningComparison(
         {id:examples[0].exampleId,name:examples[0].label,savedAt:'2026-09-30',state:examples[0].state},
-        {id:examples[1].exampleId,name:examples[1].label,savedAt:'2026-09-30',state:examples[1].state},options)+
+        {id:examples[1].exampleId,name:examples[1].label,savedAt:'2026-09-30',state:examples[1].state},{...options,policyRef:selectedPolicyRef??undefined})+
       '</details>');
   }
   host.querySelector('#policy-workbench')?.insertAdjacentHTML('beforeend','<p id="policy-action-status" class="scenario-action-status" aria-live="polite"></p>');
@@ -1566,13 +1659,17 @@ function renderPolicySection() {
   host.querySelectorAll<HTMLFormElement>('form[data-policy-action]').forEach(form=>{form.addEventListener('submit',event=>{event.preventDefault();act(form);});form.addEventListener('change',event=>{if(event.target instanceof Element)refreshPolicyEvidenceControls(event.target,{data:policyPrototype,elections,savedScenarios,state:scenarioState});});});
   host.querySelectorAll<HTMLButtonElement>('button[data-policy-action]').forEach(button=>button.addEventListener('click',()=>act(button)));
   host.querySelectorAll<HTMLSelectElement>('select[data-policy-action]').forEach(select=>select.addEventListener('change',()=>act(select)));
+  host.querySelector<HTMLButtonElement>('[data-policy-reading-return]')?.addEventListener('click',()=>{
+    if(policyReturnNews)restoreNewsReturn(policyReturnNews);
+    else if(policyReadingContext?.feedKey)openFeedItem(policyReadingContext.feedKey);
+  });
 }
 
 function applyPolicyIntent(intent:PolicyWorkbenchIntent) {
   if(intent.type==='choose-theme'){
     policyThemeId=intent.themeId;
     const first=policyPrototype.policies.find(p=>p.themeId===policyThemeId);
-    if(first)selectedPolicyRef={policyId:first.policyId,versionId:first.versionId};
+    selectedPolicyRef=policyReadingContext ? null : first ? {policyId:first.policyId,versionId:first.versionId} : null;
     renderPolicySection();return;
   }
   if(intent.type==='choose-election'){policyElectionId=intent.electionId;renderPolicySection();return;}
@@ -2002,10 +2099,11 @@ function electionCard(election: Election) {
   const writeInMarkup = writeIns.length ? `<details class="candidate-more"><summary>記名投票候補 ${writeIns.length}人</summary><p class="writein-note">候補者名を投票用紙へ書いて投票する候補です。</p><div class="candidate-list">${writeIns.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div></details>` : '';
   const choice = scenarioState.senate[election.seatId];
   const choiceLabel = choice ? scenarioChoiceLabel(choice,election) : `初期値：${outcomeLabel[scenarioState.senateBaseline.outcomes[election.seatId] ?? 'unassigned']}`;
+  const policyEntry=policyPrototype.focusElectionIds.includes(election.electionId) ? `<button type="button" class="briefing-simulation-link" data-briefing-policy="${escapeHtml(election.electionId)}">この州の材料から政策を考える →</button>` : '';
   const outcome = assumptions[election.seatId] ?? scenarioOutcomeForSeat(scenarioState,election.seatId,election);
   const observation = observationFor(election.electionId);
-  if (observation) return `<article class="election-card ${election.type} observation-host"><header class="election-card-head"><b>${election.type==='special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="observation-current"><b>自分の仮定：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p><div class="observation-body">${observationCandidateIntroMarkup(observation,election.candidates,seat.incumbent)}${observationLeadMarkup(observation)}${observationDecisionMarkup(observation)}<section id="${observationAnchor(election.electionId,'choice')}" tabindex="-1" class="election-assumption observation-choice"><h4>当選者を仮定する</h4><p>まだ決められなければ「未配分」のままにできる。</p><label>この選挙の当選仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><small>「初期配分へ戻す」は、この保存案の基準に戻す操作。</small></section>${observationComparisonMarkup(observation,election.candidates)}<details class="observation-candidate-files"><summary>${contestLabel}の候補・政策資料</summary><div class="candidate-list">${featured.map(candidate=>candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}</details>${observationUpdatesMarkup(observation)}${relatedNewsMarkup(election)}<details class="race-full"><summary>世論調査・評価比較・原資料</summary><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${raceResearchMarkup(election)}${attributeRefs(election.attributeSourceIds)}</details><div data-observation-monitor>${monitoringMarkup()}</div></div></article>`;
-  return `<article class="election-card ${election.type}"><header class="election-card-head"><b>${election.type === 'special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${election.type === 'special' ? `<p class="special-term">${election.termStartRule ?? '任期途中の欠員を州法に基づき補充します。'}</p>` : ''}${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${rosterNotesMarkup}${raceLeadMarkup(election)}<section class="candidate-block"><h4>${contestLabel}：${election.candidateResearchStatus === 'complete' ? '投票用紙に載る候補' : '掲載を確認した候補'}${printed.length}人${writeIns.length ? `・記名投票候補${writeIns.length}人` : ''}</h4><div class="candidate-list">${featured.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}${previousCandidatesMarkup}</section><section class="election-assumption"><label>この候補が当選すると仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><p><b>現在の入力：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p></section>${relatedNewsMarkup(election)}<details class="race-full"><summary>調査・世論調査・評価比較・出典を開く</summary>${raceResearchMarkup(election)}${refs(election.candidates.flatMap(candidate=>candidate.sourceIds))}<small class="election-verification">候補者名簿：${election.candidateResearchStatus === 'complete' ? '本選掲載を確認済み（資料の確認日は出典を参照）' : '一部の掲載資格は再確認待ち'}／情勢取得 ${election.rating.retrievedAt}</small>${attributeRefs(election.attributeSourceIds)}</details></article>`;
+  if (observation) return `<article class="election-card ${election.type} observation-host"><header class="election-card-head"><b>${election.type==='special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="observation-current"><b>自分の仮定：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p><div class="observation-body">${observationCandidateIntroMarkup(observation,election.candidates,seat.incumbent)}${observationLeadMarkup(observation)}${policyEntry}${observationDecisionMarkup(observation)}<section id="${observationAnchor(election.electionId,'choice')}" tabindex="-1" class="election-assumption observation-choice"><h4>当選者を仮定する</h4><p>まだ決められなければ「未配分」のままにできる。</p><label>この選挙の当選仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><small>「初期配分へ戻す」は、この保存案の基準に戻す操作。</small></section>${observationComparisonMarkup(observation,election.candidates)}<details class="observation-candidate-files"><summary>${contestLabel}の候補・政策資料</summary><div class="candidate-list">${featured.map(candidate=>candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}</details>${observationUpdatesMarkup(observation)}${relatedNewsMarkup(election)}<details class="race-full"><summary>世論調査・評価比較・原資料</summary><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${raceResearchMarkup(election)}${attributeRefs(election.attributeSourceIds)}</details><div data-observation-monitor>${monitoringMarkup()}</div></div></article>`;
+  return `<article class="election-card ${election.type}"><header class="election-card-head"><b>${election.type === 'special' ? '★ 特別選挙' : '通常選挙'} · Class ${seat.senateClass}</b><span>投票日 ${election.date}</span></header>${election.type === 'special' ? `<p class="special-term">${election.termStartRule ?? '任期途中の欠員を州法に基づき補充します。'}</p>` : ''}${openSeat}<div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p class="rating-evidence">${consensusEvidenceMarkup(election)}</p>${rosterNotesMarkup}${raceLeadMarkup(election)}${policyEntry}<section class="candidate-block"><h4>${contestLabel}：${election.candidateResearchStatus === 'complete' ? '投票用紙に載る候補' : '掲載を確認した候補'}${printed.length}人${writeIns.length ? `・記名投票候補${writeIns.length}人` : ''}</h4><div class="candidate-list">${featured.map(candidate => candidateCardMarkup(candidate,seat,election)).join('')}</div>${otherPrintedMarkup}${writeInMarkup}${previousCandidatesMarkup}</section><section class="election-assumption"><label>この候補が当選すると仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label><p><b>現在の入力：</b>${escapeHtml(choiceLabel)} → ${caucusLabel[outcome]}</p></section>${relatedNewsMarkup(election)}<details class="race-full"><summary>調査・世論調査・評価比較・出典を開く</summary>${raceResearchMarkup(election)}${refs(election.candidates.flatMap(candidate=>candidate.sourceIds))}<small class="election-verification">候補者名簿：${election.candidateResearchStatus === 'complete' ? '本選掲載を確認済み（資料の確認日は出典を参照）' : '一部の掲載資格は再確認待ち'}／情勢取得 ${election.rating.retrievedAt}</small>${attributeRefs(election.attributeSourceIds)}</details></article>`;
 }
 
 function compactCopy(value: string, limit = 190) {
@@ -2046,6 +2144,9 @@ function selectState(state: State, trigger?: HTMLElement, options: {focus?:boole
     });
   }
   bindSenateChoiceControls(detail);
+  detail.querySelectorAll<HTMLButtonElement>('[data-briefing-policy]').forEach(button=>button.addEventListener('click',()=>{
+    if(button.dataset.briefingPolicy)openPolicyStateReading(button.dataset.briefingPolicy,true);
+  }));
   bindObservationJumps(detail);
   detail.querySelectorAll<HTMLButtonElement>('[data-observation-feed]').forEach(button=>button.addEventListener('click',()=>{
     showNewsFeed(button.dataset.observationFeed as NewsFeedTab,button.dataset.observationRace ?? null);
@@ -2345,7 +2446,13 @@ window.addEventListener('popstate',()=>{
   renderFocusSummary(false,false);
   renderNewsList();
   const key=resolveFeedKey(view.get('newsItem'),newsItems,observationData);
-  if(key) openFeedItem(key,{history:'none'});
+  if(key){
+    openFeedItem(key,{history:'none'});
+    if(policyReturnNews?.feedKey===key){
+      const articleScrollTop=policyReturnNews.articleScrollTop;
+      requestAnimationFrame(()=>{const content=document.querySelector<HTMLElement>('#overlay-content');if(content)content.scrollTop=articleScrollTop;});
+    }
+  }
   else if(overlayKind==='news' && location.hash==='#issues'){
     overlayHistory=[];
     openOverlay('issues',undefined,{recordHistory:false});

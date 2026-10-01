@@ -8,7 +8,7 @@ import { tenStateCandidateBriefs, tenStateRaceBriefs } from './ten-state-researc
 const issueReadingGuide = 'この論点は、①生活・産業への影響、②有権者が重視する度合い、③政策への賛否、④候補者選択・投票参加との関係を分けて読みます。';
 const issueCases: Record<string,IssueCaseStudy[]> = {
   'household-economy':[
-    {caseId:'case-mi-close-polls',title:'ミシガン：小差の調査が続く',stateFips:['26'],electionIds:['2026-MI-2-regular'],body:'9月の確認済み3調査はいずれも主要候補間が1.4〜3ポイント差です。生活費や経済を候補者がどう結び付けるかを追いますが、調査の小差から原因を一つに決めません。',sourceIds:['poll-trafalgar-mi-2026-09','poll-ssrs-mi-topline-2026-09','poll-glengariff-mi-2026-09'],evidenceIds:['ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll']},
+    {caseId:'case-mi-close-polls',title:'ミシガン：小差の調査が続く',stateFips:['26'],electionIds:['2026-MI-2-regular'],body:'9月の確認済み4調査はいずれも主要候補間が1〜3ポイント差です。Foxの登録有権者と投票予定者は同一調査の別集計です。生活費や経済を候補者がどう結び付けるかを追いますが、調査の小差から原因を一つに決めません。',sourceIds:['poll-trafalgar-mi-2026-09','poll-ssrs-mi-topline-2026-09','poll-glengariff-mi-2026-09','obs-fox-mi-20260930'],evidenceIds:['ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-obs-fox-mi-20260930']},
   ],
   'trade-industry':[
     {caseId:'case-ia-trade',title:'アイオワ：農業への曝露と候補者の通商方針',stateFips:['19'],electionIds:['2026-IA-2-regular'],body:'Hinsonは農業市場の拡大と貿易法違反への執行を、Turekは農業分野の集中対策と現行platformで関税の見直しを掲げます。経済的な曝露と実際の支持変更は分けて確認します。',sourceIds:['hinson-farm-2026','hinson-trade-2026','turek-rural-plan-2026','turek-platform-2026'],evidenceIds:['ev-hinson-farm','ev-hinson-trade','ev-turek-rural','ev-turek-platform']},
@@ -20,6 +20,39 @@ const issueCases: Record<string,IssueCaseStudy[]> = {
 };
 
 export const polls: Poll[] = [
+  {
+    pollId:'poll-nc-hpu-2026-09-lv',studyId:'study-nc-hpu-127-2026-09',electionId:'2026-NC-2-regular',pollster:'High Point University Survey Research Center',sponsor:null,
+    fieldStart:'2026-09-06',fieldEnd:'2026-09-16',population:'LV',populationLabel:'7項目の判定で投票予定者に分類された人',sampleSize:706,
+    method:'Dynataの非確率オンラインパネルをQualtricsで調査。全成人1,003人のうち自己申告の登録有権者813人から、7項目中5〜7点の706人をLVと分類。英語で実施。',
+    question:'今日、連邦上院選が行われるなら、民主党Roy Cooperか共和党Michael Whatleyのどちらへ投票するか（設問の日本語要約）',questionExact:false,
+    precisionLabel:'credibility interval ±3.9ポイント（通常の標本誤差ではない）',
+    results:[{label:'Roy Cooper',candidateId:'cand-nc-roy-cooper',party:'D',value:50,category:'candidate'},{label:'Michael Whatley',candidateId:'cand-nc-michael-whatley',party:'R',value:42,category:'candidate'},{label:'他の候補',value:3,category:'other-candidate'},{label:'未定',value:5,category:'undecided'}],
+    resultStage:'base',conditionLabel:'初回候補者選択',completeness:'full',residualTreatment:'none',
+    notes:['非確率パネルのため、調査機関は通常の無作為標本のmargin of sampling errorを付けることは適切でないと明記しています。','実査は9月6〜16日、公表は9月24日。706人は全成人・登録有権者全体の標本数ではありません。'],
+    sourceIds:['obs-hpu-nc-20260924'],evidenceIds:['ev-obs-hpu-nc-20260924','ev-briefing-nc-hpu-20260924'],status:'published',
+  },
+  {
+    pollId:'poll-mi-fox-2026-09-lv',studyId:'study-mi-fox-2026-09',electionId:'2026-MI-2-regular',pollster:'Beacon Research / Shaw & Company Research',sponsor:'Fox News',
+    fieldStart:'2026-09-24',fieldEnd:'2026-09-28',population:'LV',populationLabel:'投票履歴・関心等の統計モデルによる投票予定者',sampleSize:1028,
+    method:'州の登録有権者名簿から無作為抽出。全体1,203人は固定電話114人・携帯電話794人の有人調査と、SMSのリンクからのウェブ回答295人。LVは投票履歴・関心・投票意向と属性による統計モデル。',
+    question:'Michiganの連邦上院投票先。未投票者は今日の選択、既投票者は実際の投票先を回答し、未定者にはどちらへ傾くかを追質問（Q3の日本語要約）',questionExact:false,
+    precisionLabel:'標本誤差 ±3ポイント（LV）',
+    results:[{label:'Abdul El-Sayed',candidateId:'cand-mi-abdul-el-sayed',party:'D',value:50,category:'candidate'},{label:'Mike Rogers',candidateId:'cand-mi-mike-rogers',party:'R',value:49,category:'candidate'},{label:'未定',value:1,category:'undecided'}],
+    resultStage:'cumulative-with-leaners',conditionLabel:'未定者への傾きの追質問を含む',completeness:'partial',residualTreatment:'rounding',
+    notes:['Q3は未定者へのleaner追質問を含みます。追質問前の候補者支持率はこの原表から確認できません。','OtherとWouldn’t voteはそれぞれ0.5%未満を表す*で公表。0%や任意の数値へ置き換えず、棒には公表整数値だけを表示します。','同じ調査の登録有権者1,203人の集計は別カードです。独立した2調査や支持の時系列変化とは数えません。'],
+    sourceIds:['obs-fox-mi-20260930'],evidenceIds:['ev-obs-fox-mi-20260930','ev-briefing-mi-fox-lv-20260930'],status:'published',
+  },
+  {
+    pollId:'poll-mi-fox-2026-09-rv',studyId:'study-mi-fox-2026-09',electionId:'2026-MI-2-regular',pollster:'Beacon Research / Shaw & Company Research',sponsor:'Fox News',
+    fieldStart:'2026-09-24',fieldEnd:'2026-09-28',population:'RV',populationLabel:'登録有権者',sampleSize:1203,
+    method:'州の登録有権者名簿から無作為抽出。固定電話114人・携帯電話794人の有人調査と、SMSのリンクからのウェブ回答295人を併用。',
+    question:'Michiganの連邦上院投票先。未投票者は今日の選択、既投票者は実際の投票先を回答し、未定者にはどちらへ傾くかを追質問（Q3の日本語要約）',questionExact:false,
+    precisionLabel:'標本誤差 ±2.5ポイント（RV）',
+    results:[{label:'Abdul El-Sayed',candidateId:'cand-mi-abdul-el-sayed',party:'D',value:51,category:'candidate'},{label:'Mike Rogers',candidateId:'cand-mi-mike-rogers',party:'R',value:48,category:'candidate'},{label:'未定',value:1,category:'undecided'}],
+    resultStage:'cumulative-with-leaners',conditionLabel:'未定者への傾きの追質問を含む',completeness:'partial',residualTreatment:'rounding',
+    notes:['Q3は未定者へのleaner追質問を含みます。追質問前の候補者支持率はこの原表から確認できません。','OtherとWouldn’t voteはそれぞれ0.5%未満を表す*で公表。0%や任意の数値へ置き換えず、棒には公表整数値だけを表示します。','同じ調査の投票予定者1,028人の集計は別カードです。実査は9月24〜28日、公表は9月30日です。'],
+    sourceIds:['obs-fox-mi-20260930'],evidenceIds:['ev-obs-fox-mi-20260930','ev-briefing-mi-fox-rv-20260930'],status:'published',
+  },
   {
     pollId:'poll-ia-marist-2026-09',electionId:'2026-IA-2-regular',pollster:'Marist Poll',sponsor:null,
     fieldStart:'2026-09-17',fieldEnd:'2026-09-20',population:'RV',populationLabel:'登録有権者',sampleSize:1050,
@@ -178,6 +211,22 @@ export const historicalResults: HistoricalResult[] = [
 export const raceBriefs: RaceBrief[] = [
   ...tenStateRaceBriefs,
   {
+    electionId:'2026-NC-2-regular',updatedAt:'2026-10-01',status:'published',completeness:'partial',
+    headline:'HPUの投票予定者調査はクーパー50%・ワトリー42%',
+    summary:'9月6〜16日のHPU調査では、投票予定者706人のRoy Cooper支持が50%、Michael Whatley支持が42%、他候補3%、未定5%でした。9月24日公表の単一のオンラインパネル調査を、ニュース記録から支持率の棒グラフへ追加しました。',
+    balance:'8ポイント差はこの調査で確認した投票先の差です。非確率パネルのcredibility interval ±3.9ポイントを通常の標本誤差と呼ばず、勝率や確定結果へ変換しません。',
+    keyIssues:['候補者支持と投票意向','調査対象・方法の違い'],
+    analysis:[
+      {heading:'確認した投票先',body:'登録有権者813人のうち、7項目中5〜7点で投票予定者に分類された706人の集計です。成人1,003人全体の集計とは区別します。',evidenceKind:'observed',evidenceIds:['ev-briefing-nc-hpu-20260924']},
+      {heading:'支持の広がりを確認するには',body:'全体の候補者差だけでは、無党派や相手党支持者から支持が広がったかは分かりません。独立した後続調査と、党派別の投票先・投票意向が確認材料になります。',evidenceKind:'interpretation',evidenceIds:['ev-briefing-nc-hpu-20260924']},
+    ],
+    supportChange:'単回の横断調査から、同じ人が支持先を変えたとは判断できません。',
+    turnout:'HPUの投票予定者は自己申告の7項目で判定したモデルです。実際の投票率や投票した人の割合とは別です。',
+    updateConditions:['独立した州全体調査の原資料を確認したとき','党派別の投票先と投票意向が公表されたとき','AARP原資料を再取得し、母集団・方法・設問を再照合できたとき'],
+    pollIds:['poll-nc-hpu-2026-09-lv'],ratingIds:[],relatedIssueIds:['household-economy','rights-institutions'],
+    sourceIds:['obs-hpu-nc-20260924'],evidenceIds:['ev-obs-hpu-nc-20260924','ev-briefing-nc-hpu-20260924'],
+  },
+  {
     electionId:'2026-IA-2-regular',updatedAt:'2026-09-26',status:'published',completeness:'substantial',
     headline:'州の基礎党派と異なり、調査・評価機関で先頭や分類が割れる',
     summary:'2024年大統領選では共和党が二桁差で上回りましたが、上院選ではCookとSabatoがToss Up、InsideがTilt Rです。Maristの登録有権者ではTurek 50%・Hinson 42%、勝者予想ではHinson 59%・Turek 37%でした。',
@@ -194,20 +243,20 @@ export const raceBriefs: RaceBrief[] = [
     sourceIds:['obs-marist-ia-20260922','poll-yougov-ia-2026-09','poll-emerson-ia-2026-09','poll-emerson-ia-full-2026-09','poll-suffolk-ia-2026-08','poll-suffolk-ia-method-2026','cook-ia-race-2026','inside-ia-race-2026','sabato-ia-change-2026','sabato-senate-labor-day-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-obs-marist-ia-20260922','ev-ia-yougov-poll','ev-ia-emerson-topline','ev-ia-emerson-method','ev-ia-emerson-full','ev-ia-suffolk-poll','ev-ia-suffolk-method','ev-ia-cook-rating','ev-ia-inside-rating','ev-ia-sabato-rating','ev-sabato-changes-2026-09-22'],
   },
   {
-    electionId:'2026-MI-2-regular',updatedAt:'2026-09-11',status:'published',completeness:'substantial',
+    electionId:'2026-MI-2-regular',updatedAt:'2026-10-01',status:'published',completeness:'substantial',
     headline:'調査は小差が続く一方、SabatoはLean Dへ変更',
-    summary:'ミシガン州は2024年大統領選も僅差でした。9月の3調査ではEl-Sayedが1.5〜3ポイント上、またはRogersが1.4ポイント上。CookとInsideはToss Upを維持し、Sabatoは9月22日にLean Dへ変更しました。',
-    balance:'TrafalgarはEl-Sayed 46.3%・Rogers 44.8%、CNN/SSRSは47%・44%、GlengariffはRogers 45.8%・El-Sayed 44.4%。各調査で先頭や残余回答の分類が異なり、どれも数ポイントの小差です。全6候補を示す調査と二大候補中心の公表値を同じ分母へ作り替えません。',
+    summary:'9月24〜28日のFox調査では、投票予定者のEl-Sayed支持50%・Rogers支持49%、登録有権者は51%・48%でした。同一調査の別集計として分けて表示します。CookとInsideはToss Upを維持し、Sabatoは9月22日にLean Dへ変更しました。',
+    balance:'FoxのLVは1ポイント差、RVは3ポイント差で、未定者への傾きの追質問を含みます。先に収録したTrafalgar、CNN/SSRS、Glengariffも小差ですが、対象・設問・候補者の選択肢が異なります。別調査との差を支持移動や平均・勝率へ変換しません。',
     keyIssues:['生活費・医療費','製造業・関税','候補者の政策的な位置'],
     analysis:[
       {heading:'評価機関の違い',body:'異なる調査が狭い範囲で逆方向を示す中、CookとInsideはToss Up、SabatoはLean Dです。Lean Dも勝敗確定や勝率ではないため、候補者差と未定票を更新の中心に置きます。',evidenceKind:'interpretation',evidenceIds:['ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-mi-inside-rating','ev-sabato-changes-2026-09-22']},
       {heading:'政策差',body:'El-Sayedは医療制度改革、一律的な関税への反対、frontier AIの一時停止を掲げます。Rogersは関税を一律ではなく交渉手段として使う考え、教育・住宅政策を示しています。両者の自己説明として表示し、実現可能性は議会権限と分けます。',evidenceKind:'observed',evidenceIds:['ev-elsayed-priorities','ev-elsayed-tariffs','ev-elsayed-ai','ev-rogers-tariffs','ev-rogers-education','ev-rogers-housing']},
     ],
     supportChange:'直近の横断調査から、同一人物の支持先変更を直接測定したとは扱いません。候補者支持、候補者イメージ、過去投票先は別項目です。',
-    turnout:'LVの作り方は調査ごとに異なります。CNN/SSRSのモデル、Trafalgarの対象、Glengariffの電話調査を同じ参加確率として扱いません。',
-    updateConditions:['追加の独立した州全体調査を確認したとき','未定票・第三候補の比率が継続して変わったとき','評価機関がToss Upから変更したとき'],
-    pollIds:['poll-mi-trafalgar-2026-09','poll-mi-cnn-ssrs-2026-09','poll-mi-glengariff-2026-09'],ratingIds:['rating-mi-cook-2026-08-20','rating-mi-inside-2025-07-24','rating-mi-sabato-2026-08-05','rating-mi-sabato-2026-09-22'],relatedIssueIds:['household-economy','trade-industry','health-family','rights-institutions'],
-    sourceIds:['poll-trafalgar-mi-2026-09','poll-ssrs-me-mi-2026-09','poll-ssrs-mi-topline-2026-09','poll-glengariff-mi-2026-09','cook-mi-race-2026','inside-mi-race-2026','sabato-mi-post-primary-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-mi-inside-rating','ev-mi-sabato-rating','ev-sabato-changes-2026-09-22'],
+    turnout:'FoxのLVは投票履歴・関心・投票意向と属性を使う統計モデルです。LVとRVの差を実際の投票参加や時系列の支持変化とは扱いません。LVの判定は調査ごとに異なります。',
+    updateConditions:['同じ方法・LV判定の後続調査を確認したとき','追質問前の投票先や未定票・第三候補の比率が公表されたとき','評価機関が分類を変更したとき'],
+    pollIds:['poll-mi-fox-2026-09-lv','poll-mi-fox-2026-09-rv','poll-mi-trafalgar-2026-09','poll-mi-cnn-ssrs-2026-09','poll-mi-glengariff-2026-09'],ratingIds:['rating-mi-cook-2026-08-20','rating-mi-inside-2025-07-24','rating-mi-sabato-2026-08-05','rating-mi-sabato-2026-09-22'],relatedIssueIds:['household-economy','trade-industry','health-family','rights-institutions'],
+    sourceIds:['obs-fox-mi-20260930','poll-trafalgar-mi-2026-09','poll-ssrs-me-mi-2026-09','poll-ssrs-mi-topline-2026-09','poll-glengariff-mi-2026-09','cook-mi-race-2026','inside-mi-race-2026','sabato-mi-post-primary-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-obs-fox-mi-20260930','ev-briefing-mi-fox-lv-20260930','ev-briefing-mi-fox-rv-20260930','ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-mi-inside-rating','ev-mi-sabato-rating','ev-sabato-changes-2026-09-22'],
   },
   ...focusRaceBriefs,
 ];
