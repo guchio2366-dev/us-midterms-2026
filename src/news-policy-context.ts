@@ -14,6 +14,7 @@ interface PolicyReadingDetails {
   /** News publication on this site; original source dates are separate. */
   publishedAt:string|null;
   sourcePublicationDates:string[];
+  /** Latest material check for news/update/state; the scheduled event's check for event. */
   checkedAt:string|null;
   updatedAt:string|null;
   electionIds:string[];

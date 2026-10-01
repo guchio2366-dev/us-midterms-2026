@@ -56,7 +56,7 @@ describe('policy workbench reading handoff',()=>{
     const markup=renderPolicyWorkbench({...options(),readingContext});
     const text=visible(markup);
     expect(markup.indexOf(item.headline)).toBeLessThan(markup.indexOf('全国の財政法案と医療をめぐる過去の採決'));
-    expect(text).toContain('出来事 2026-09-18 · 原資料公表 2026-09-18 · 確認 2026-09-30');
+    expect(text).toContain('出来事 2026-09-18 · 原資料公表 2026-09-18 · 資料確認（最新） 2026-09-30');
     expect(text).toContain('サイト掲載 2026-09-18');
     expect(text).toContain(allSources.find(source=>source.sourceId===item.sourceIds[0])!.publisher);
     expect(text).toContain('原資料公表 2026-09-18 · 内容確認 2026-09-30');
