@@ -8,7 +8,7 @@
   "reviewMode": "daily; polls, ratings, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "678ec64db16ed4f768b325ca3c2ebfad6ef3da14",
-  "publishedCommit": "pending",
+  "publishedCommit": "1da3382a58fde8ccd742a0cc2d0106ea968cf8e1",
   "revision": "observation-2026-10-01",
   "checkedSourceIds": [
     "obs-fox-mi-20260930",
@@ -244,9 +244,9 @@
   "verification": {
     "tests": "268 passed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 678ec64db16ed4f768b325ca3c2ebfad6ef3da14 to 1da3382a58fde8ccd742a0cc2d0106ea968cf8e1 without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36795194286",
+    "publicContent": "success; public page showed all seven new observation updates in their related state feeds, the 2026-10-01 09:08 JST monitor time, D44/R46/unassigned10, and the preserved scenario save/share controls"
   },
   "note": "MichiganのFox調査原票、Alaska・Iowaの大統領同席事業発表、Iowaのがん・保険・水質、Maineの資金調達記録、Ohioのデータセンター法案手続き、Texasの討論条件と私的発言、North Carolina・Georgiaなどの共和党資源配分を追加。主張、計画、採決、政策効果、有権者評価を分離した。統合評価と新規案D44・R46・未配分10、既存の保存案・共有URLは維持した。未取得原票は変化なしとせず、情報源別に照合待ちを記録した。"
 }
