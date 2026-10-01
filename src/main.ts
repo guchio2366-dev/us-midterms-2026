@@ -1,4 +1,5 @@
 import { scenarioPathDifficultyLabel } from './ui/scenario-path-labels';
+import { sectionIntroductions } from './data/section-introductions';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry } from 'geojson';
@@ -340,14 +341,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       ${hasRatings?'':'<p class="control-note" id="competitive-note">情勢評価が未取得のため、激戦強調は利用できません。</p>'}
       <div class="search-wrap"><label for="state-search">州を検索・選択</label><select id="state-search"><option value="">50州から選ぶ</option>${states.map(state => `<option value="${state.fips}">${state.nameJa} / ${state.nameEn} (${state.abbr})</option>`).join('')}</select></div>
       <div class="map-head"><div><p class="kicker">SENATE MAP</p><h2 id="map-heading">2026年の上院選挙</h2></div><p id="mode-note">色は対象議席の現保有党。州全体の支持傾向や勝敗予測ではありません。</p></div>
-      <div id="map" class="map" aria-label="米国50州地図"></div><div id="legend" class="legend"></div>
+      <p class="section-intro" data-section-intro="map">${escapeHtml(sectionIntroductions.map)}</p><div id="map" class="map" aria-label="米国50州地図"></div><div id="legend" class="legend"></div>
       <p class="map-note">州の面積は議席数を表しません。アラスカとハワイは投影上、位置・縮尺が調整されています。★は特別選挙です。</p>
       <details class="map-reading-guide"><summary>地図とシミュレーションの読み方</summary><p>「選挙情勢」は評価機関の分類、「投票前の議席」は現職会派を示します。州を選ぶと候補者と根拠を確認でき、当選者・会派の選択は下の議席集計に仮定として反映されます。灰色は未配分で、Lean／Tilt・接戦・評価分裂を含みます。資料不足は別の灰色です。両機関が同じ党方向のLikely／Safe／Solidの場合だけ党派側へ配分し、配分した議席の濃淡にはSabatoの分類を使用します。色は当選確率ではありません。</p><p>サイトの編集日、地図の評価日、州別調査の実施期間・公表日は別の時点です。各表示に付いた日付と、末尾の<a href="#sources">出典・更新情報</a>を確認してください。</p></details>
     </div>
     <aside id="detail" class="detail" aria-live="polite"><div class="empty-detail"><span>STATE BRIEFING</span><h2>州を選択してください</h2><p>地図または検索から、選挙の有無を問わず全50州の情報へ移動できます。</p></div></aside>
   </section>
   <section class="sim" aria-labelledby="sim-heading">
-    <div class="sim-title"><div><p class="kicker">多数派への道</p><h2 id="sim-heading">議席シミュレーション</h2><p>通常${regularCount}件・特別${specialCount}件の今回改選する${targetSeatIds.length}議席について、当選者または参加会派を仮定します。</p></div><div class="sim-reset-actions"><button id="reset">この案の初期値へ戻す</button><button id="senate-latest-reset" type="button">最新の暫定配分で始め直す</button></div></div>
+    <div class="sim-title"><div><p class="kicker">多数派への道</p><h2 id="sim-heading">議席シミュレーション</h2><p>通常${regularCount}件・特別${specialCount}件の今回改選する${targetSeatIds.length}議席について、当選者または参加会派を仮定します。</p><p class="section-intro" data-section-intro="simulation">${escapeHtml(sectionIntroductions.simulation)}</p></div><div class="sim-reset-actions"><button id="reset">この案の初期値へ戻す</button><button id="senate-latest-reset" type="button">最新の暫定配分で始め直す</button></div></div>
     <div class="warning">情勢評価の暫定配分から始めます。接戦や評価が分かれる議席は未配分です。選挙予測・勝率ではありません。</div>
     <details class="vp-sources"><summary>副大統領と決裁票の出典</summary>${refs(vicePresident.sourceIds)}</details>
     <div id="scenario-notices" class="scenario-notices" aria-live="polite"></div>
@@ -380,6 +381,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
   <section id="house" class="section-block house" aria-labelledby="house-heading">
     <div class="section-heading"><div><p class="kicker">HOUSE: ALL 435 SEATS</p><h2 id="house-heading">下院選挙区と多数派</h2></div><p>現議会の構成と2026年選挙の情勢は別のスナップショットです。</p></div>
+    <p class="section-intro" data-section-intro="house">${escapeHtml(sectionIntroductions.house)}</p>
     <div class="house-summary">
       <article><span>現議会 ${houseSnapshot.asOf}</span><strong><i class="blue">${houseSnapshot.Democratic} D</i> / <i class="red">${houseSnapshot.Republican} R</i></strong><small>無所属${houseSnapshot.Independent}・空席${houseSnapshot.vacant}</small></article>
       <article><span>2026年改選</span><strong>435 / 435</strong><small>多数派の基準は218</small></article>
@@ -398,7 +400,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <details class="source-panel"><summary>下院データ・区割りの出典</summary>${refs(['house-clerk-roster','house-consensus-2026','house-boundaries-2026','ncsl-redistricting-2026'])}</details>
   </section>
 
-  <section class="method"><p class="kicker">SOURCES & UPDATES</p><h2>出典と更新</h2><div class="method-grid"><article><b>事実・評価・仮定を分離</b><p>現職と公式統計は事実、情勢分類は評価機関の判断、シミュレーションは利用者の仮定として表示します。</p></article><article><b>資料ごとの時点を表示</b><p>サイト全体の更新日、地図の評価日、州別調査とニュースの対象期間を分けて記録します。</p></article><article><b>地域指標の読み方</b><p>人口、産業、過去の得票は政策の影響を考える材料です。州詳細では候補者の違いと併せて確認できます。</p></article></div><details class="source-panel"><summary>全データソース（${sources.length}件）</summary>${refs(sources.map(source => source.sourceId))}</details></section>
+  <section class="method"><p class="kicker">SOURCES & UPDATES</p><h2>出典と更新</h2><p class="section-intro" data-section-intro="sources">${escapeHtml(sectionIntroductions.sources)}</p><div class="method-grid"><article><b>事実・評価・仮定を分離</b><p>現職と公式統計は事実、情勢分類は評価機関の判断、シミュレーションは利用者の仮定として表示します。</p></article><article><b>資料ごとの時点を表示</b><p>サイト全体の更新日、地図の評価日、州別調査とニュースの対象期間を分けて記録します。</p></article><article><b>地域指標の読み方</b><p>人口、産業、過去の得票は政策の影響を考える材料です。州詳細では候補者の違いと併せて確認できます。</p></article></div><details class="source-panel"><summary>全データソース（${sources.length}件）</summary>${refs(sources.map(source => source.sourceId))}</details></section>
 </main><footer>静的データ版 ${APP_VERSION}。表示ごとに資料名、対象期間、取得日、内容確認日を記録しています。</footer>`;
 
 function enhanceLayout() {
@@ -553,9 +555,13 @@ function enhanceLayout() {
       details.className = 'power-detail-list';
       details.innerHTML = `<summary>8項目の詳しい条件・採決例・出典を読む</summary>`;
       [...disclosureBody.children].filter(child => child !== summary).forEach(child => details.append(child));
-      disclosureBody.append(overviewCards,details);
+      const intro = document.createElement('p');
+      intro.className = 'section-intro';
+      intro.dataset.sectionIntro = 'powers';
+      intro.textContent = sectionIntroductions.powers;
+      disclosureBody.append(intro,overviewCards,details);
     }
-    updates.after(powers);
+    policyHost.after(powers);
   }
 
   if (sim) {
@@ -1594,7 +1600,7 @@ function renderScenarioManager() {
   const selectedForCompare = new Set(comparedScenarioIds);
   const compared = savedScenarios.filter(item => selectedForCompare.has(item.id));
   const compareMarkup = compared.length >= 2 ? `<div class="saved-comparison"><h4>保存案の比較</h4>${compared.map(item => { const senateCounts = scenarioCounts(item.state); const houseCounts = simulatedHouseCounts(houseDistricts,item.state.house); return `<article><b>${escapeHtml(item.name)}</b><span>上院 D${senateCounts.Democratic} / R${senateCounts.Republican} / 未配分${senateCounts.unassigned}</span><span>下院 D${houseCounts.Democratic} / R${houseCounts.Republican} / 未確定${houseCounts.unconfirmed}</span><small>${item.state.senateBaseline.kind === 'rating-consensus' ? `暫定配分 ${escapeHtml(item.state.senateBaseline.asOf)}／${escapeHtml(item.state.senateBaseline.methodVersion ?? '方式未確認')}` : `現保有基準 ${escapeHtml(item.state.senateBaseline.asOf)}`}／明示した上院仮定 ${Object.keys(item.state.senate).length}件</small></article>`; }).join('')}</div>` : '';
-  host.innerHTML = `<div class="scenario-manager-head"><div><p class="kicker">SAVE & COMPARE</p><h3>仮定を保存・比較する</h3><p>自動保存はこのブラウザ内です。名前付き保存は最大${SAVED_SCENARIO_LIMIT}件、比較は3件までです。</p></div><div class="scenario-actions"><button type="button" data-undo-scenario ${previousScenarioState ? '' : 'disabled'}>直前に戻す</button><button type="button" data-share-scenario>URLを共有</button></div></div>
+  host.innerHTML = `<div class="scenario-manager-head"><div><p class="kicker">SAVE & COMPARE</p><h3>仮定を保存・比較する</h3><p class="section-intro" data-section-intro="save">${escapeHtml(sectionIntroductions.save)}</p><p>自動保存はこのブラウザ内です。名前付き保存は最大${SAVED_SCENARIO_LIMIT}件、比較は3件までです。</p></div><div class="scenario-actions"><button type="button" data-undo-scenario ${previousScenarioState ? '' : 'disabled'}>直前に戻す</button><button type="button" data-share-scenario>URLを共有</button></div></div>
     ${sharedScenarioPending ? '<div class="shared-pending"><b>共有された案を確認中</b><span>既存の作業案はまだ上書きしていません。</span><button type="button" data-accept-shared>この案を作業案にする</button></div>' : ''}
     <div class="scenario-save-row"><label>案の名前<input id="scenario-name" maxlength="40" placeholder="例：民主党51議席案"></label><button type="button" data-save-scenario ${savedScenarios.length >= SAVED_SCENARIO_LIMIT ? 'disabled' : ''}>別の案として保存</button></div>
     <div class="saved-list">${savedScenarios.length ? savedScenarios.map(item => `<article><label class="compare-check"><input type="checkbox" data-compare-scenario="${escapeHtml(item.id)}" ${selectedForCompare.has(item.id) ? 'checked' : ''}><span>比較</span></label><div><b>${escapeHtml(item.name)}</b><small>${escapeHtml(item.savedAt.slice(0,16).replace('T',' '))}／上院基準 ${escapeHtml(item.state.senateBaseline.asOf)}／${escapeHtml(item.state.senateBaseline.methodVersion ?? '現保有会派')}</small></div><button type="button" data-load-scenario="${escapeHtml(item.id)}">開く</button><button type="button" data-delete-scenario="${escapeHtml(item.id)}">削除</button></article>`).join('') : '<p>名前付きの保存案はまだありません。</p>'}</div>${compareMarkup}<p id="scenario-action-status" class="scenario-action-status" aria-live="polite"></p>`;
@@ -1668,7 +1674,7 @@ function renderStateCompare() {
   const host = document.querySelector<HTMLElement>('#state-compare');
   if (!host) return;
   const selectedStates = compareStateFips.map(fips => stateByFips.get(fips)).filter((state): state is State => Boolean(state));
-  host.innerHTML = `<div class="state-compare-head"><div><p class="kicker">COMPARE RACES</p><h3>州・候補者を比較</h3><p>州詳細の「比較に追加」から2〜3州を並べます。異なる調査の数字は平均しません。</p></div>${selectedStates.length ? '<button type="button" data-clear-state-compare>比較をクリア</button>' : ''}</div>${selectedStates.length ? `<div class="state-compare-grid">${selectedStates.map(state => {
+  host.innerHTML = `<div class="state-compare-head"><div><p class="kicker">COMPARE RACES</p><h3>州・候補者を比較</h3><p class="section-intro" data-section-intro="stateComparison">${escapeHtml(sectionIntroductions.stateComparison)}</p><p>異なる調査の数字は平均しません。</p></div>${selectedStates.length ? '<button type="button" data-clear-state-compare>比較をクリア</button>' : ''}</div>${selectedStates.length ? `<div class="state-compare-grid">${selectedStates.map(state => {
     const stateElections = electionByState(state);
     const election = stateElections[0];
     if (!election) return `<article><button type="button" data-remove-compare="${state.fips}">×</button><h4>${state.nameJa}</h4><p>2026年の上院選はありません。</p></article>`;
@@ -1717,7 +1723,7 @@ function renderTargetSim() {
   const previewMarkup = previewPath ? `<section class="path-preview" tabindex="-1"><p class="kicker">PREVIEW</p><h4>適用前の確認</h4><p>${previewPath.addedSeatIds.map(seatId => stateByFips.get(seatById.get(seatId)!.stateFips)!.nameJa).join('、')}を${caucusText}として仮定します。適用後は直前に戻せます。</p><div><button type="button" data-confirm-path="${previewPath.pathId}">この経路を適用</button><button type="button" data-cancel-path>取り消す</button></div></section>` : '';
   const senateLine = target.senateThreshold === null ? '上院：数値条件なし' : `上院：全員が選出・出席する例では${target.senateThreshold}議席`;
   const houseLine = target.houseThreshold === null ? '下院：この手続の数値条件なし' : `下院：全員が投票する例では${target.houseThreshold}議席。現在の仮定は${targetHouseCount}、${houseShortage ? `あと${houseShortage}` : '目安を満たす'}`;
-  host.innerHTML = `<div class="target-grid"><div class="target-controls"><p class="kicker">REVERSE PATH</p><h3>権限から必要な議席を逆算</h3><p>制度上の目安と、現在操作中の仮定をつなげます。</p><label class="target-field">手続<select id="target-power">${powerTargets.map(item => `<option value="${item.targetId}" ${item.targetId === target.targetId ? 'selected' : ''}>${item.label}</option>`).join('')}</select></label><label class="target-field">想定する会派<select id="target-party"><option value="Democratic" ${targetParty === 'Democratic' ? 'selected' : ''}>民主党会派</option><option value="Republican" ${targetParty === 'Republican' ? 'selected' : ''}>共和党会派</option></select></label></div><div class="target-rule"><h3>${target.label}</h3><p>${target.requirement}</p><div class="target-thresholds"><p>${senateLine}</p><p>${houseLine}</p></div><p class="target-caution">${target.caution}</p>${pathStatus}${pathsMarkup}${previewMarkup}<p class="target-scope">上院の経路のみ自動生成します。議席は個別議員の賛成票や権限行使の成功を保証しません。</p><button type="button" class="target-manual-button">全35議席の手動仮定を開く</button></div></div>`;
+  host.innerHTML = `<div class="target-grid"><div class="target-controls"><p class="kicker">REVERSE PATH</p><h3>権限から必要な議席を逆算</h3><p class="section-intro" data-section-intro="reverse">${escapeHtml(sectionIntroductions.reverse)}</p><label class="target-field">手続<select id="target-power">${powerTargets.map(item => `<option value="${item.targetId}" ${item.targetId === target.targetId ? 'selected' : ''}>${item.label}</option>`).join('')}</select></label><label class="target-field">想定する会派<select id="target-party"><option value="Democratic" ${targetParty === 'Democratic' ? 'selected' : ''}>民主党会派</option><option value="Republican" ${targetParty === 'Republican' ? 'selected' : ''}>共和党会派</option></select></label></div><div class="target-rule"><h3>${target.label}</h3><p>${target.requirement}</p><div class="target-thresholds"><p>${senateLine}</p><p>${houseLine}</p></div><p class="target-caution">${target.caution}</p>${pathStatus}${pathsMarkup}${previewMarkup}<p class="target-scope">上院の経路のみ自動生成します。議席は個別議員の賛成票や権限行使の成功を保証しません。</p><button type="button" class="target-manual-button">全35議席の手動仮定を開く</button></div></div>`;
   host.querySelector<HTMLSelectElement>('#target-power')!.onchange = event => {
     targetActionId = (event.target as HTMLSelectElement).value;
     targetPreviewPathId = null;

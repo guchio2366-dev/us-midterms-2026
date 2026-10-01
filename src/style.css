@@ -595,3 +595,8 @@ main>.jump-nav a:hover,main>.jump-nav a:focus-visible{background:var(--navy);col
   .updates-grid>.news-section .news-list{max-height:none;overflow:visible}
   .scenario-sticky{position:static;box-shadow:none}
 }
+
+/* Reader introductions accompany the existing controls without changing type size. */
+.section-intro{max-width:76ch;margin:0 0 18px;line-height:1.75;color:var(--ink)}
+.policy-workbench>.section-intro{max-width:90ch;margin:0 0 18px}
+.policy-workbench .pw-step>.section-intro,.policy-workbench .pw-scenario-summary>.section-intro{margin:0 0 12px}
