@@ -39,7 +39,7 @@ export const ratingSnapshotObservations: RatingSnapshotObservation[] = [
     organizationId: 'inside' as const,
     organizationLabel: 'Inside Elections',
     ratingRaw,
-    currentConfirmedAt: '2026-10-01',
+    currentConfirmedAt: '2026-10-02',
     sourceId: 'inside-senate-ratings-2026',
   })),
 ];

@@ -51,7 +51,7 @@ describe('PC opening overview contract', () => {
     expect(visible).toContain('民主党側43議席、共和党側45議席');
     expect(visible).toContain('残る12議席');
     expect(visible).toContain('Sabato’s Crystal Ball：2026-09-24確認');
-    expect(visible).toContain('Inside Elections：2026-10-01確認');
+    expect(visible).toContain('Inside Elections：2026-10-02確認');
     expect(visible).toContain('非改選 34 ＋ 今回必要 17');
     expect(visible).toContain('非改選 31 ＋ 今回必要 20');
     expect(visible).toContain('共和党側は今回19議席を得て50議席でも多数派として運営することが可能');

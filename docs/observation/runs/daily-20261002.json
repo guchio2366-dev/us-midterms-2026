@@ -8,7 +8,7 @@
   "reviewMode": "daily; polls, ratings, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "94a1f15a6590329642ae828d774aed5a65a2343d",
-  "publishedCommit": null,
+  "publishedCommit": "af6c5de039ad2e077762fb3b5e8dbdf313b555e2",
   "revision": "observation-2026-10-02-ratings-and-polls",
   "checkedSourceIds": [
     "obs-fox-ia-20261001",
@@ -185,9 +185,9 @@
   "verification": {
     "tests": "295 passed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 94a1f15a6590329642ae828d774aed5a65a2343d to af6c5de039ad2e077762fb3b5e8dbdf313b555e2 without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/36946018253",
+    "publicContent": "success; public page showed D43/R45/unassigned12, all 12 focus states including Minnesota and Nebraska, the 2026-10-02 09:20 JST monitor time, and the new Inside Elections update"
   },
   "note": "Inside Electionsの7州変更、Iowa・Maine・Ohioの新調査、Ohioの大統領集会予定を追加した。発言、評価、候補支持、調査誤差、政策効果、有権者評価を分離した。統合基準の新規案はD43・R45・未配分12。旧保存案・共有URLは維持。未取得原票は変化なしとせず、情報源別に部分確認・照合待ちを記録した。"
 }
