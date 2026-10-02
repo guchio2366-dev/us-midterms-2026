@@ -1,5 +1,7 @@
 # 現在の実装・公開状況
 
+2026-10-02・評価と調査の更新：Inside Electionsの10月1日版全35選挙を公式APIで照合。AK・GA・MI・MN・NC・NE・TXの7州が変わり、MNはLikely DからLean D、NEはLikely RからLean Rとなったため、双方Likely以上だけを配分する新規案はD43・R45・未配分12へ変更。IAのFox、MEのAARP、OHのSuffolk調査を追加し、10月3日のTrump大統領Ohio集会を確定予定として収録した。AARP原票PDFとQuantus Iowaの方法は照合待ち。旧保存案・共有URLの基準は維持する。[実行記録](docs/observation/runs/daily-20261002.json)。
+
 2026-10-01・ニュースから州・政策の検討へ：NCのHPUとMIのFoxを原典照合してPoll・直接グラフ・解釈へ同期。MIのLV/RVは同じstudyの別集計、HPUのcredibility intervalは通常の標本誤差と区別する。ニュース/州の入口は、読んでいる資料・関連州・論点を政策欄へ渡す読書状態のみを変更。具体政策は直接のfeed参照で特定できる場合だけ選び、未特定は読者が選択する。D44/R46/未配分10、議席仮定、理由、Undo、旧保存共有形式と個人メモ除外は維持。295テストと本番ビルド、ユーザーPC専用ChromeでNC/MI往復・10州・作業案保持・Undo・保存比較共有・旧Brown・390pxを確認。公開・画面判定は当該PRで記録。[調査の根拠・未確認](docs/verification/poll-primary-sync-20261001.md)、[導線・検証](docs/verification/news-policy-context-20261001.md)。
 
 2026-10-01・テスト依存の保守：直接のVitestだけを2.1.9から4.1.11へ更新し、その推移依存をlockへ反映。Vite 6.4.3・TypeScript・アプリの依存と本文/政策データ/保存共有契約は維持。既存npmでのクリーン導入、268テストと本番ビルドが成功し、公開用JS/CSSのSHA-256は更新前と一致。npm audit JSONは更新前5件（critical 1・high 1・moderate 3）から更新後0件。旧npmのlock更新内部エラーは作業フォルダ内の一時npmで回避し、CIのnpm設定は変更していない。Node 20 CIと公開結果は当該PRで確認する。
@@ -72,10 +74,10 @@
 | 冒頭 | 最大1440pxの本文、PCで左6：右4。左上に議席表、左下に3論点、右に暫定総計と「条件＋小さな棒」の3行。詳説のみ開閉、重要な留保は常時表示 | [後続設計・検証](docs/pc-opening-layout-20260922.md) |
 | 直近の更新 | 8州選択と位置図を共通の帯へ配置。最大1280px、州説明7：ニュース3。結論帯の下で直接根拠と解釈を見比べ、比較調査・詳説・出典は欄内で読む | [最新仕様](docs/compact-reading-layout-20260927.md) |
 | 議席評価 | SabatoとInside Electionsの方向が一致する選挙を党派側へ配分。不一致・接戦は未配分。地図とシミュレーションは同じ統合評価を参照 | [評価集計](src/rating-consensus.ts)、[評価スナップショット](src/data/rating-snapshot.ts) |
-| 暫定配分 | 非改選D34・R31に改選D側12・R側16を加え、D46・R47・未配分7。勝率・確定結果ではない | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
+| 暫定配分 | 非改選D34・R31に改選D側9・R側14を加え、D43・R45・未配分12。勝率・確定結果ではない | [初期値](src/scenario/baseline.ts)、[検証](tests/rating-consensus.test.ts) |
 | ニュース | 記事と分析更新を共通フィードで表示。初期3件、一覧を展開すると10件ごとのページング。州選択に連動し、全国へも切替可能 | [共通フィード](src/news-feed.ts)、[最新配置](docs/compact-reading-layout-20260927.md) |
 | 今後の予定 | 将来の公開11件と、結果確認済みの過去1件を同じ欄のタブで表示。州による絞込み、延期・中止・結果記事との相互参照に対応 | [観測データ](src/data/observation.json)、[予定ロジック](src/observation-logic.ts) |
-| 接戦州 | 未配分のAK・ME・MI・NH・OH特別・TXと、IA・NCを特集。IAは既存の公開研究、NCは基本情報を表示。定点観測の6州は従来どおり。選択州のみ位置図で強調 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
+| 接戦州 | 未配分12州を特集。従来のAK・ME・MI・NH・OH特別・TXにIA・NC・GA・KS・MN・NEを加え、収録の深さが異なる州は評価根拠のみと明示する。選択州のみ位置図で強調 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | 候補者比較 | 主要2候補の同じ項目を左右に同時表示。主要3項目を初期表示し、評価・受け止めの2項目はまとめて展開 | [観測データ](src/data/observation.json)、[表示](src/ui/observation.ts) |
 | シミュレーション | 候補者・会派選択、未配分、権限から複数経路の提示、自動保存・名前付き保存・比較・共有URL。保存した基準を最新評価で勝手に上書きしない | [シナリオ](src/scenario/)、[経路](src/scenario/paths.ts) |
 | 小さい画面 | 結論→根拠→解釈→ニュースの縦並び。本文15px以上、操作対象44px以上。ニュースはページ全体のスクロールで読む | [追加CSS](src/ui/compact-briefing.css) |

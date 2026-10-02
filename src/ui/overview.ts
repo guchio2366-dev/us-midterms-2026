@@ -140,8 +140,7 @@ export function nationalOverviewMarkup() {
 
     <p class="national-conditions">${vpControl} <a href="#powers">採決条件を確認</a></p>
     <p class="opening-source-links">${ratingConfirmationMarkup()}（評価の変更日ではなく確認日）</p>
-    <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ党方向で、両方ともLikely／Safe／Solidの場合だけ党派側へ置く。一方でもLean／Tilt、接戦、方向不一致、資料不足なら未配分とする。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙の2機関の記録を収録。評価の強さは平均しない。Inside Electionsは9月30日に全件を再照合し評価値は変更なし。Sabato全表の確認日は9月24日のまま。取得できた補助記事の確認日とは区別する。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
+    <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ党方向で、両方ともLikely／Safe／Solidの場合だけ党派側へ置く。一方でもLean／Tilt、接戦、方向不一致、資料不足なら未配分とする。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙の2機関の記録を収録。評価の強さは平均しない。Inside Electionsは10月1日に全件を再照合し、7州の変更を反映した。Sabato全表の確認日は9月24日のまま。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
     <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。未配分の<a href="#updates">${featuredStates}州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>
   </section>`;
 }
-

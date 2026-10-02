@@ -15,11 +15,11 @@ import {newsItems} from '../src/data/news';
 import {observationData} from '../src/data/observation';
 
 describe('ten-state baseline and sourced additions',()=>{
-  it('allocates D10/R15 of 35 contested seats on top of the unchanged D34/R31 held seats',()=>{
+  it('allocates D9/R14 of 35 contested seats on top of the unchanged D34/R31 held seats',()=>{
     const consensus=aggregateRatingConsensus(elections.map(e=>e.seatId),ratingSnapshotObservations);
-    expect(ratingConsensusCounts(consensus)).toEqual({D:10,R:15,lean:3,tossup:2,split:5,missing:0});
+    expect(ratingConsensusCounts(consensus)).toEqual({D:9,R:14,lean:6,tossup:3,split:3,missing:0});
     const baseline=createRatingSenateBaseline({seats,elections,consensus,snapshotId:RATING_SNAPSHOT_ID,asOf:RATING_SNAPSHOT_AS_OF,methodVersion:RATING_METHOD_VERSION,seatDataVersion:'test'});
-    expect(countScenarioSenate(createScenarioState(baseline),seats,elections)).toEqual({Democratic:44,Republican:46,none:0,unconfirmed:0,vacant:0,unassigned:10});
+    expect(countScenarioSenate(createScenarioState(baseline),seats,elections)).toEqual({Democratic:43,Republican:45,none:0,unconfirmed:0,vacant:0,unassigned:12});
     const neutral=Object.entries(baseline.outcomes).filter(([,value])=>value==='unassigned').map(([id])=>id).sort();
     expect(briefingElections(elections,seats,states,consensus).map(e=>e.seatId).sort()).toEqual(neutral);
   });
@@ -50,7 +50,7 @@ describe('ten-state baseline and sourced additions',()=>{
     expect(tenStateNews.find(n=>n.relatedElectionIds.includes('2026-GA-2-regular'))!.summary).toContain('無作為');
     expect(tenStateSources.find(s=>s.sourceId==='ten-ks-hamilton-platform')).toMatchObject({publishedAt:null,contentVerifiedAt:'2026-09-30'});
     expect(sources.find(s=>s.sourceId==='sabato-senate-2026')!.contentVerifiedAt).toBe('2026-09-24');
-    expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.updatedAt).toBe('2026-09-17');
-    expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.contentVerifiedAt).toBe('2026-09-30');
+    expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.updatedAt).toBe('2026-10-01');
+    expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.contentVerifiedAt).toBe('2026-10-02');
   });
 });

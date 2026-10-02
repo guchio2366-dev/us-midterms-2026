@@ -1,0 +1,193 @@
+{
+  "runId": "daily-20261002",
+  "timingIntegrity": "consistent",
+  "timingNote": "開始・各情報源の成功・完了は、この実行で実際に確認したUTC時刻の範囲内に記録した。検索表示だけの確認や原票未取得は成功扱いにしていない。",
+  "startedAt": "2026-10-01T23:59:53Z",
+  "completedAt": "2026-10-02T00:20:10Z",
+  "outcome": "partial",
+  "reviewMode": "daily; polls, ratings, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は取得済み原文を照合してこの実行で確認を確定した時刻。検索結果だけの取得、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "94a1f15a6590329642ae828d774aed5a65a2343d",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-02-ratings-and-polls",
+  "checkedSourceIds": [
+    "obs-fox-ia-20261001",
+    "obs-aarp-me-20261001",
+    "obs-suffolk-oh-20261001",
+    "obs-gop-trump-oh-event-20261003",
+    "obs-bls-oct",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedUrls": ["https://insideelections.com/ratings/senate"],
+      "attemptedAt": "2026-10-02T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-02T00:03:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "公式APIの全35選挙を照合。10月1日13時23分（米中部時間）更新でAK・GA・MI・MN・NC・NE・TXの7州変更を確認。MN・NEがLikelyからLeanへ移ったため、新規案D43・R45・未配分12へ更新。"
+    },
+    {
+      "sourceId": "obs-fox-ia-20261001",
+      "attemptedUrls": ["https://www.foxnews.com/politics/fox-news-poll-turek-hinson-close-iowa-senate-race"],
+      "attemptedAt": "2026-10-02T00:04:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-02T00:04:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "9月24〜28日、RV1,204人・LV1,008人、電話とSMSウェブ方式、LV49対47、RV50対46、標本誤差、支持の確信度を原文で照合。"
+    },
+    {
+      "sourceId": "obs-aarp-me-20261001",
+      "attemptedUrls": [
+        "https://www.aarp.org/government-elections/maine-election-poll-2026/",
+        "https://www.aarp.org/press/releases/2026-10-01-new-aarp-maine-poll-older-voters-could-play-decisive-role-in-closely-watched-senate-governor-races/"
+      ],
+      "attemptedAt": "2026-10-02T00:05:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-02T00:05:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "公式記事・公式発表とMaine Public・Bangor Daily Newsで9月20〜22日、LV982人、全体50対47、50歳以上44対53を相互照合。原票PDFは取得できず部分確認。"
+    },
+    {
+      "sourceId": "obs-suffolk-oh-20261001",
+      "attemptedUrls": [
+        "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_1_2026_ohio_statewide_embargoed_marginals_part_3.pdf",
+        "https://www.suffolk.edu/academics/research-at-suffolk/political-research-center/polls/other-states"
+      ],
+      "attemptedAt": "2026-10-02T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-02T00:06:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "公式PDFで9月23〜27日、LV500人、Brown46.6・Husted44.0・他候補3.0・未定6.0、誤差±4.4、Trump氏との関係の別設問を照合。"
+    },
+    {
+      "sourceId": "obs-gop-trump-oh-event-20261003",
+      "attemptedUrls": [
+        "https://events.gop.com/events/midterm-rally-in-vandalia-ohio-president-donald-j-trump",
+        "https://apnews.com/article/f1ae89feb3eccd7d8eb49e1c2e14f6dd"
+      ],
+      "attemptedAt": "2026-10-02T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-02T00:07:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "主催者ページで10月3日17時30分（米東部時間）、16時開場、Vandaliaの会場を確認。実施結果とHusted氏の参加・発言は未確認。"
+    },
+    {
+      "sourceId": "obs-bls-oct",
+      "attemptedUrls": [
+        "https://www.bls.gov/schedule/news_release/empsit.htm",
+        "https://www.bls.gov/schedule/news_release/current_year.asp"
+      ],
+      "attemptedAt": "2026-10-02T00:17:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-02T00:17:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "9月雇用統計は10月2日8時30分（米東部時間）の公表予定を維持。確認時点は実施前のため、予定を結果に変更していない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedUrls": [
+        "https://sabatoscrystalball.substack.com/p/rating-changes-toward-democrats-across",
+        "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026"
+      ],
+      "attemptedAt": "2026-10-02T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-02T00:08:00Z",
+      "contentVerifiedAt": "2026-10-02",
+      "scope": "9月22日版のIowa Toss Up、Michigan Lean D、Kansas Lean Rを含む現行評価に新たな変更がないことを確認。公式記事本文はCloudflare制限のため、表題・公表情報と現行表の相互照合を継続。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedUrls": ["https://www.whitehouse.gov/briefings-statements/"],
+      "attemptedAt": "2026-10-02T00:08:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "White House日程にOhio訪問の詳細を確認できなかった。主催者のGOP登録ページとAPで日時・会場・大統領出演を照合し、White House由来の確認成功には置き換えていない。"
+    },
+    {
+      "sourceId": "obs-quantus-ia-20260930",
+      "attemptedUrls": ["https://quantusinsights.org/f/quantus-insights-hinson-holds-narrow-edge-in-iowa-senate-race"],
+      "attemptedAt": "2026-10-02T00:09:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "検索表示で実査期間と数値は確認したが、本文が一般ページを返し、標本、質問文、方法、誤差を原文照合できず非掲載。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedUrls": ["https://www.ohiosos.gov/elections/elections-administration/directives"],
+      "attemptedAt": "2026-10-02T00:10:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "既確認の印刷4名・記名3名から追加原票を確認できず、記名候補の党派を含む州の一括原票は継続確認。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedUrls": ["https://www.sos.nh.gov/elections/running-office", "https://www.sos.nh.gov/elections/sample-ballots"],
+      "attemptedAt": "2026-10-02T00:10:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "上院一般選挙候補者と記名候補を一括した州原票を取得できず継続確認。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedUrls": ["https://quantusinsights.org/polling/f/quantus-survey-collins-and-jackson-even-in-maine-senate-race"],
+      "attemptedAt": "2026-10-02T00:11:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文・方法・質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedUrls": ["https://www.fec.gov/data/committee/C00027466/"],
+      "attemptedAt": "2026-10-02T00:11:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "FEC概要の過去確認は維持するが、報道された州別予定額の原票を特定できず成功日時を進めていない。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedUrls": ["https://scholars.unh.edu/survey_center_polls/1005/"],
+      "attemptedAt": "2026-10-02T00:12:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "PDF原票から標本・質問文・方法・数値を照合できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedUrls": ["https://www.nytimes.com/interactive/2026/09/24/polls/times-siena-poll-nh-toplines.html"],
+      "attemptedAt": "2026-10-02T00:12:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原票ページの本文・方法・質問文を取得できず、非掲載を継続。"
+    }
+  ],
+  "comparisonAudit": [],
+  "verification": {
+    "tests": "295 passed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Inside Electionsの7州変更、Iowa・Maine・Ohioの新調査、Ohioの大統領集会予定を追加した。発言、評価、候補支持、調査誤差、政策効果、有権者評価を分離した。統合基準の新規案はD43・R45・未配分12。旧保存案・共有URLは維持。未取得原票は変化なしとせず、情報源別に部分確認・照合待ちを記録した。"
+}

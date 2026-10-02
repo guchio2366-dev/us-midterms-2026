@@ -37,7 +37,7 @@ describe('PC opening overview contract', () => {
     const tracks = [...html.matchAll(/<div class="seat-composition-track"[^>]*>(.*?)<div class="seat-composition-legend"/gs)];
     expect(tracks).toHaveLength(3);
     const widths = tracks.map(track => [...track[1].matchAll(/style="width:([\d.]+)%"/g)].map(match => Number(match[1])));
-    expect(widths).toEqual([[34,10,10,15,31],[34,17,18,31],[34,15,20,31]]);
+    expect(widths).toEqual([[34,9,12,14,31],[34,17,18,31],[34,15,20,31]]);
     for (const row of widths) expect(row.reduce((sum,n) => sum+n,0)).toBe(100);
     expect(html).toContain('style="left:51%"');
     expect(html).toContain('style="left:49%"');
@@ -46,12 +46,12 @@ describe('PC opening overview contract', () => {
   it('shows the date, uncertainty and tie caveat before the optional method', () => {
     const visible = nationalOverviewMarkup().split('<details class="consensus-method')[0];
     expect(visible).toContain(RATING_SNAPSHOT_AS_OF);
-    expect(visible).toContain('未配分 10：弱い優勢 3・接戦 2・評価分裂 5');
+    expect(visible).toContain('未配分 12：弱い優勢 6・接戦 3・評価分裂 3');
     expect(visible).toContain('配分済みの議席も当選が確定したものではありません');
-    expect(visible).toContain('民主党側44議席、共和党側46議席');
-    expect(visible).toContain('残る10議席');
+    expect(visible).toContain('民主党側43議席、共和党側45議席');
+    expect(visible).toContain('残る12議席');
     expect(visible).toContain('Sabato’s Crystal Ball：2026-09-24確認');
-    expect(visible).toContain('Inside Elections：2026-09-30確認');
+    expect(visible).toContain('Inside Elections：2026-10-01確認');
     expect(visible).toContain('非改選 34 ＋ 今回必要 17');
     expect(visible).toContain('非改選 31 ＋ 今回必要 20');
     expect(visible).toContain('共和党側は今回19議席を得て50議席でも多数派として運営することが可能');

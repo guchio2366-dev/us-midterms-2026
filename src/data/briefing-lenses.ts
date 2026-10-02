@@ -127,6 +127,40 @@ export const briefingLenses: BriefingLens[] = [
     ]
   },
   {
+    "electionId": "2026-MN-2-regular",
+    "axis": "broaden",
+    "question": "共和党候補は、民主党寄りの評価をどこまで縮められるか",
+    "finding": "SabatoはLikely Dを維持する一方、Inside Electionsは10月1日にLikely DからLean Dへ変更した。新基準では未配分になる。",
+    "evidence": "2機関とも民主党方向だが、Inside Electionsが優勢度を一段弱めたため、双方Likely以上という暫定配分の条件を満たさなくなった。",
+    "detail": "評価変更は候補者支持率そのものではない。民主党Peggy Flanagan氏と共和党Michele Tafoya氏を同じ設問で比べる州全体調査と、無党派層の投票意向を確認する。",
+    "nextData": "州全体の本選世論調査、両候補の政策比較、投票予定者の党派別・地域別内訳を確認する。",
+    "limitation": "今回確認したのは評価機関の現行表で、変更理由を示す詳細記事や新しい調査原票は未収録。Leanへの変更だけで支持移動や勝敗を断定しない。",
+    "sourceIds": [
+      "sabato-senate-2026",
+      "inside-senate-ratings-2026"
+    ],
+    "evidenceIds": [
+      "ev-briefing-mn-ratings-20261001"
+    ]
+  },
+  {
+    "electionId": "2026-NE-2-regular",
+    "axis": "broaden",
+    "question": "無所属候補を含む競争で、共和党の優位はどこまで維持されているか",
+    "finding": "SabatoはLikely Rを維持する一方、Inside Electionsは10月1日にLikely RからLean Rへ変更した。新基準では未配分になる。",
+    "evidence": "2機関とも共和党方向だが、Inside Electionsが優勢度を一段弱めたため、双方Likely以上という暫定配分の条件を満たさなくなった。",
+    "detail": "共和党Pete Ricketts氏、無所属Dan Osborn氏、Legal Marijuana NowのMike Marvin氏が掲載されている。評価方向と、無所属候補が当選した場合の会派選択は別に確認する。",
+    "nextData": "3候補を含む本選調査、Osborn氏の会派方針、候補者別の好感度と投票参加見込みを確認する。",
+    "limitation": "今回確認したのは評価機関の現行表で、変更理由を示す詳細記事や新しい調査原票は未収録。無所属という表示から民主・共和いずれの会派に加わるかを推定しない。",
+    "sourceIds": [
+      "sabato-senate-2026",
+      "inside-senate-ratings-2026"
+    ],
+    "evidenceIds": [
+      "ev-briefing-ne-ratings-20261001"
+    ]
+  },
+  {
     "electionId": "2026-OH-3-special",
     "axis": "broaden",
     "question": "ブラウンは、民主党支持者の外にも支持を持つか",

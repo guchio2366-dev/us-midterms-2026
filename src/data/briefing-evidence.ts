@@ -70,6 +70,30 @@ export const briefingEvidenceDisplays: BriefingEvidenceDisplay[] = [
     note: '同一調査の対象別集計で、時系列の支持変化や独立した2調査ではない。OtherとWouldn’t voteは各0.5%未満を表す*で公表され、0%とは扱わない。',
   },
   {
+    electionId: '2026-MN-2-regular',
+    sourceLabel: 'Sabato / Inside Elections',
+    periodLabel: 'Inside 10月1日更新 ／ Sabato 9月24日確認',
+    populationLabel: 'フラナガンとタフォヤの上院選に対する機関の評価',
+    table: {
+      caption: '原評価の方向一致と配分条件は別',
+      columns: ['評価機関', '原評価'],
+      rows: [['Sabato', 'Likely D'], ['Inside Elections', 'Lean D']],
+    },
+    note: 'InsideがLikely DからLean Dへ変更したため未配分。評価は候補者支持率や当選確率ではなく、新しい本選世論調査の原票は今回未収録。',
+  },
+  {
+    electionId: '2026-NE-2-regular',
+    sourceLabel: 'Sabato / Inside Elections',
+    periodLabel: 'Inside 10月1日更新 ／ Sabato 9月24日確認',
+    populationLabel: 'リケッツ、オズボーン、マービンの上院選に対する機関の評価',
+    table: {
+      caption: '原評価の方向一致と配分条件は別',
+      columns: ['評価機関', '原評価'],
+      rows: [['Sabato', 'Likely R'], ['Inside Elections', 'Lean R']],
+    },
+    note: 'InsideがLikely RからLean Rへ変更したため未配分。評価は候補者支持率や当選確率ではなく、無所属候補の会派選択も示さない。',
+  },
+  {
     electionId: '2026-NH-2-regular',
     sourceLabel: 'co/efficient',
     periodLabel: '2026年9月9〜11日',

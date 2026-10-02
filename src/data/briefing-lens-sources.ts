@@ -49,6 +49,16 @@ export const briefingLensSources: Source[] = [
 
 export const briefingLensEvidence: EvidenceRef[] = [
   {
+    evidenceId:'ev-briefing-mn-ratings-20261001',sourceId:'inside-senate-ratings-2026',
+    locator:'Inside Elections公式APIの2026-10-01 13:23 CT更新でMN-2をLikely DemocraticからLean Democraticへ変更。Sabatoは9月24日確認のLikely D。両機関の現在値と確認日を分けて記録。',
+    checkedAt:'2026-10-02',kind:'observed',
+  },
+  {
+    evidenceId:'ev-briefing-ne-ratings-20261001',sourceId:'inside-senate-ratings-2026',
+    locator:'Inside Elections公式APIの2026-10-01 13:23 CT更新でNE-2をLikely RepublicanからLean Republicanへ変更。Sabatoは9月24日確認のLikely R。両機関の現在値と確認日を分けて記録。',
+    checkedAt:'2026-10-02',kind:'observed',
+  },
+  {
     evidenceId:'ev-briefing-nc-hpu-20260924',sourceId:'obs-hpu-nc-20260924',
     locator:'9月24日公開のU.S. Senate Election設問とMethodology。実査9月6〜16日、Dynata非確率オンラインパネルのLV706人、Cooper50・Whatley42・他候補3・未定5。7項目中5〜7点でLVと分類。LV credibility interval ±3.9、通常の標本誤差は不適切と明記。',
     checkedAt:'2026-10-01',kind:'observed',
