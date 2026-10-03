@@ -8,13 +8,13 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-03T00:12:00Z",
+    "lastCompletedAt": "2026-10-03T00:24:11Z",
     "latestRun": {
       "runId": "daily-20261003",
       "timingIntegrity": "consistent",
       "timingNote": "開始・各情報源の成功・完了は、この実行で実際に確認したUTC時刻の範囲内に記録した。公表済み結果、確認済み予定、部分確認を分けて記録した。",
       "startedAt": "2026-10-03T00:01:50Z",
-      "completedAt": "2026-10-03T00:12:00Z",
+      "completedAt": "2026-10-03T00:24:11Z",
       "outcome": "partial",
       "checkedSourceIds": [
         "obs-cbs-me-20261002",

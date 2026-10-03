@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261003",
   "startedAt": "2026-10-03T00:01:50Z",
-  "completedAt": "2026-10-03T00:12:00Z",
+  "completedAt": "2026-10-03T00:24:11Z",
   "outcome": "partial",
   "reviewMode": "daily; polls, official releases, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "3fccce2210b89ce15ed2a23d95e1dfc744b09b04",
-  "publishedCommit": null,
+  "publishedCommit": "ad090413b86c49a6bde001ee904f7977f49e49ef",
   "revision": "observation-2026-10-03-polls-jobs-and-travel",
   "checkedSourceIds": [
     "obs-cbs-me-20261002",
@@ -171,9 +171,9 @@
   "verification": {
     "tests": "295 passed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 3fccce2210b89ce15ed2a23d95e1dfc744b09b04 to content commit ad090413b86c49a6bde001ee904f7977f49e49ef without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/37081690979 completed successfully at 2026-10-03T00:21:56Z",
+    "publicContent": "success; 2026-10-03T00:24:11Zに公開画面でD43・R45・未配分12、Maine調査、BLS雇用統計、Texasの10月7日予定、最終確認時刻を照合"
   },
   "note": "Maineの新調査、BLS結果、Texasの大統領訪問と次回予定、Kansas・North Carolinaの広告配分を追加。発言、企業・陣営の主張、政策効果、有権者評価を分離した。統合評価とD43・R45・未配分12、旧保存案・共有URLは維持。"
 }
