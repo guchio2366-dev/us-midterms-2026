@@ -1,5 +1,7 @@
 # 現在の実装・公開状況
 
+2026-10-03・調査、雇用統計、確認済み日程の更新：CBS/YouGovのMaine原票で投票予定者50対50と、候補者・政権への別設問を追加。BLSの9月雇用統計を予定から結果へ相互参照し、全国値と州別の効果を分けた。Trump大統領のDenton訪問結果、10月7日のSan Antonio集会、10月3日のOhio集会での大統領発言時刻を確認。共和党系外部団体のKansas広告予約とNorth Carolinaの今後の広告停止は報道値として追加した。統合評価のD43・R45・未配分12、旧保存案・共有URLは維持する。[実行記録](docs/observation/runs/daily-20261003.json)。
+
 2026-10-02・評価と調査の更新：Inside Electionsの10月1日版全35選挙を公式APIで照合。AK・GA・MI・MN・NC・NE・TXの7州が変わり、MNはLikely DからLean D、NEはLikely RからLean Rとなったため、双方Likely以上だけを配分する新規案はD43・R45・未配分12へ変更。IAのFox、MEのAARP、OHのSuffolk調査を追加し、10月3日のTrump大統領Ohio集会を確定予定として収録した。AARP原票PDFとQuantus Iowaの方法は照合待ち。旧保存案・共有URLの基準は維持する。[実行記録](docs/observation/runs/daily-20261002.json)。
 
 2026-10-01・ニュースから州・政策の検討へ：NCのHPUとMIのFoxを原典照合してPoll・直接グラフ・解釈へ同期。MIのLV/RVは同じstudyの別集計、HPUのcredibility intervalは通常の標本誤差と区別する。ニュース/州の入口は、読んでいる資料・関連州・論点を政策欄へ渡す読書状態のみを変更。具体政策は直接のfeed参照で特定できる場合だけ選び、未特定は読者が選択する。D44/R46/未配分10、議席仮定、理由、Undo、旧保存共有形式と個人メモ除外は維持。295テストと本番ビルド、ユーザーPC専用ChromeでNC/MI往復・10州・作業案保持・Undo・保存比較共有・旧Brown・390pxを確認。公開・画面判定は当該PRで記録。[調査の根拠・未確認](docs/verification/poll-primary-sync-20261001.md)、[導線・検証](docs/verification/news-policy-context-20261001.md)。

@@ -1,0 +1,179 @@
+{
+  "runId": "daily-20261003",
+  "startedAt": "2026-10-03T00:01:50Z",
+  "completedAt": "2026-10-03T00:12:00Z",
+  "outcome": "partial",
+  "reviewMode": "daily; polls, official releases, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "3fccce2210b89ce15ed2a23d95e1dfc744b09b04",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-03-polls-jobs-and-travel",
+  "checkedSourceIds": [
+    "obs-cbs-me-20261002",
+    "obs-bls-jobs-20261002",
+    "obs-axios-tx-denton-20261002",
+    "obs-texas-tribune-tx-san-antonio-20261002",
+    "obs-cbs-slf-ks-nc-20261002",
+    "obs-factbase-trump-calendar-20261003",
+    "obs-gop-trump-oh-event-20261003",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-cbs-me-20261002",
+      "attemptedAt": "2026-10-03T00:04:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-03T00:04:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "CBS本文と公式46ページ原票で実査、50対50、誤差、政権・候補評価を照合。本文はRV1,114人、原票はRV1,144人で一致せず、原票値を採用して部分確認とした。"
+    },
+    {
+      "sourceId": "obs-bls-jobs-20261002",
+      "attemptedAt": "2026-10-03T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:05:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "BLS本文で公表時刻、非農業部門雇用2万9千人増、失業率4.2%、労働参加率61.8%、主要産業の小幅変化を確認。"
+    },
+    {
+      "sourceId": "obs-axios-tx-denton-20261002",
+      "attemptedAt": "2026-10-03T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:06:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "Denton訪問、Trump氏のPaxton氏支持、企業側の雇用説明を照合。企業主張と関税効果を分けた。"
+    },
+    {
+      "sourceId": "obs-texas-tribune-tx-san-antonio-20261002",
+      "attemptedAt": "2026-10-03T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:07:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "RNC当局者に基づく10月7日Freeman Coliseum、16時30分開演、18時Trump氏発言、Paxton氏登壇を確認。結果は未実施。"
+    },
+    {
+      "sourceId": "obs-cbs-slf-ks-nc-20261002",
+      "attemptedAt": "2026-10-03T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:08:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "Kansasの広告予約980万ドル、North Carolinaの既支出3,000万ドル超、今後の停止を確認。予約、FEC既支出、関係者情報を区別。"
+    },
+    {
+      "sourceId": "obs-factbase-trump-calendar-20261003",
+      "attemptedAt": "2026-10-03T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:09:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "10月3日のVandalia訪問と19時の大統領発言を確認。GOP主催者の17時30分は集会開始として併記。"
+    },
+    {
+      "sourceId": "obs-gop-trump-oh-event-20261003",
+      "attemptedAt": "2026-10-03T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:09:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "会場・開場・集会開始を再確認。実施結果とHusted氏の登壇は現地時刻前のため未確認。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-03T00:10:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:10:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "現行評価に新たな変更なし。公式記事の取得制限は既存の留保を維持。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-03T00:10:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-03T00:10:00Z",
+      "contentVerifiedAt": "2026-10-03",
+      "scope": "10月1日版から新たな評価変更なし。D43・R45・未配分12を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-03T00:10:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "White House本文から予定を直接取得できず、Factba.se掲載の公式日程とGOP主催者情報を相互照合。White House由来の成功には置き換えていない。"
+    },
+    {
+      "sourceId": "obs-quantus-ia-20260930",
+      "attemptedAt": "2026-10-03T00:10:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "方法、標本、質問文、誤差の原文を取得できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-03T00:10:40Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "既確認名簿から追加原票を確認できず、記名候補党派の照合待ちを維持。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-03T00:10:50Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "一般選挙候補と記名候補を一括した州原票を取得できず継続確認。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedAt": "2026-10-03T00:11:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文、方法、質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedAt": "2026-10-03T00:11:10Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "州別予定額のFEC原票を特定できず、既存の成功日時を進めていない。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedAt": "2026-10-03T00:11:20Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "PDF原票の標本、質問文、方法、数値を照合できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedAt": "2026-10-03T00:11:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原票本文、方法、質問文を取得できず非掲載を継続。"
+    }
+  ],
+  "comparisonAudit": [],
+  "verification": {
+    "tests": "295 passed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Maineの新調査、BLS結果、Texasの大統領訪問と次回予定、Kansas・North Carolinaの広告配分を追加。発言、企業・陣営の主張、政策効果、有権者評価を分離した。統合評価とD43・R45・未配分12、旧保存案・共有URLは維持。"
+}
