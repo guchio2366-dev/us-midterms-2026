@@ -1,5 +1,7 @@
 # 現在の実装・公開状況
 
+2026-10-03・12州の政策入口を接続：MN/NEの州材料ボタンが旧10州の政策対象制限で無反応になることを公開Chromeで再現し、選択・理由保存の対象と上限を12州へそろえた。候補者別の政策材料は既存10州のまま、MN/NEの未収録を表示し、共通の政策・制度条件へ進める。政策記録・要因・共通前提の適用州・出典日は補完しない。現在のD43/R45/未配分12と旧保存案の100議席基準を維持。304テスト・型検査・本番ビルドと専用ChromeのMN/NE入口・政策未選択・作業案保持を確認。独立画面判定・CI・公開結果は当該PRで記録する。[対象と検証](docs/verification/focus-policy-entry-20261003.md)。
+
 2026-10-03・調査、雇用統計、確認済み日程の更新：CBS/YouGovのMaine原票で投票予定者50対50と、候補者・政権への別設問を追加。BLSの9月雇用統計を予定から結果へ相互参照し、全国値と州別の効果を分けた。Trump大統領のDenton訪問結果、10月7日のSan Antonio集会、10月3日のOhio集会での大統領発言時刻を確認。共和党系外部団体のKansas広告予約とNorth Carolinaの今後の広告停止は報道値として追加した。統合評価のD43・R45・未配分12、旧保存案・共有URLは維持する。[実行記録](docs/observation/runs/daily-20261003.json)。
 
 2026-10-02・評価と調査の更新：Inside Electionsの10月1日版全35選挙を公式APIで照合。AK・GA・MI・MN・NC・NE・TXの7州が変わり、MNはLikely DからLean D、NEはLikely RからLean Rとなったため、双方Likely以上だけを配分する新規案はD43・R45・未配分12へ変更。IAのFox、MEのAARP、OHのSuffolk調査を追加し、10月3日のTrump大統領Ohio集会を確定予定として収録した。AARP原票PDFとQuantus Iowaの方法は照合待ち。旧保存案・共有URLの基準は維持する。[実行記録](docs/observation/runs/daily-20261002.json)。

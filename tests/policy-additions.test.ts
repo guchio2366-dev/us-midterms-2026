@@ -43,12 +43,13 @@ describe('ten-state additive policy evidence', () => {
     expect(new Set(policyAdditionPolicies.map(policyKey)).size).toBe(policyAdditionPolicies.length);
     expect(new Set(policyAdditionRecords.map(r => r.recordId)).size).toBe(policyAdditionRecords.length);
     expect(new Set(policyAdditionSources.map(s => s.sourceId)).size).toBe(policyAdditionSources.length);
-    expect(new Set(data.focusElectionIds)).toEqual(new Set([
+    const researchedElectionIds = [
       '2026-AK-2-regular', '2026-ME-2-regular', '2026-MI-2-regular', '2026-NH-2-regular',
       '2026-OH-3-special', '2026-TX-2-regular', '2026-IA-2-regular', '2026-NC-2-regular',
       '2026-GA-2-regular', '2026-KS-2-regular',
-    ]));
-    for (const electionId of data.focusElectionIds) {
+    ];
+    expect(new Set(data.focusElectionIds)).toEqual(new Set([...researchedElectionIds, '2026-MN-2-regular', '2026-NE-2-regular']));
+    for (const electionId of researchedElectionIds) {
       for (const themeId of ['healthcare', 'tariffs']) {
         expect(data.factors.some(f => f.electionId === electionId && f.themeId === themeId)).toBe(true);
       }
