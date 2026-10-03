@@ -292,7 +292,7 @@ export const policyAdditionSourceReviews: PolicyPrototypeData['sourceReviews'] =
 export type PolicyAdditions = Pick<PolicyPrototypeData, 'focusElectionIds' | 'policies' | 'candidateRecords' | 'contextLinks' | 'factors' | 'assumptions' | 'additionalEvidence' | 'sourceReviews'>;
 
 export const policyAdditions: PolicyAdditions = {
-  focusElectionIds: Object.values(election), policies: policyAdditionPolicies,
+  focusElectionIds: [...Object.values(election), '2026-MN-2-regular', '2026-NE-2-regular'], policies: policyAdditionPolicies,
   candidateRecords: policyAdditionRecords, contextLinks: policyAdditionContexts,
   factors: policyAdditionFactors, assumptions: policyAdditionAssumptions,
   additionalEvidence: policyAdditionEvidence, sourceReviews: policyAdditionSourceReviews,

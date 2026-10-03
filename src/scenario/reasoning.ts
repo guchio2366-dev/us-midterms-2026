@@ -3,7 +3,7 @@ import { policyPrototype } from '../data/policy-prototype';
 import type { ScenarioState, SenateChoice } from './model';
 
 export const REASONING_VERSION=1 as const;
-export const REASONING_LIMITS={bytes:16_384,common:8,races:10,factors:8,evidence:12,privateNote:800} as const;
+export const REASONING_LIMITS={bytes:16_384,common:8,races:12,factors:8,evidence:12,privateNote:800} as const;
 export type AssumptionAssessment='adopt'|'reject'|'hold';
 export type FactorRole='counterweight'|'candidate-case'|'background'|'uncertain';
 export interface CommonAssumptionChoice { assumptionId:string;assessment:AssumptionAssessment;evidenceIds:string[] }

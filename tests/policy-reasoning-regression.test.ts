@@ -103,9 +103,9 @@ describe('policy reasoning compatibility regressions',()=>{
     expect(snapshot.privateNote).toBe('PRIVATE SNAPSHOT NOTE');
   });
 
-  it('accepts reasons for all ten focus elections and preserves them through sharing',()=>{
-    expect(policyPrototype.focusElectionIds).toHaveLength(10);
-    expect(REASONING_LIMITS.races).toBe(10);
+  it('accepts reasons for all twelve focus elections and preserves them through sharing',()=>{
+    expect(policyPrototype.focusElectionIds).toHaveLength(12);
+    expect(REASONING_LIMITS.races).toBe(12);
     let state=fresh();
     for(const electionId of policyPrototype.focusElectionIds){
       const election=elections.find(e=>e.electionId===electionId)!;
@@ -119,7 +119,7 @@ describe('policy reasoning compatibility regressions',()=>{
     }
   });
 
-  it('rejects eleven race reasons without replacing the saved baseline or choices',()=>{
+  it('rejects thirteen race reasons without replacing the saved baseline or choices',()=>{
     const state=fresh();
     state.reasoning={version:1,commonAssumptions:[],races:{}};
     for(const election of elections.filter(e=>policyPrototype.focusElectionIds.includes(e.electionId))){
@@ -129,7 +129,7 @@ describe('policy reasoning compatibility regressions',()=>{
     }
     const extra=elections.find(e=>!policyPrototype.focusElectionIds.includes(e.electionId))!;
     state.reasoning.races[extra.electionId]={assessment:'hold',choiceAtAssessment:null,assumptionIds:[],factors:[],evidenceIds:[]};
-    expect(Object.keys(state.reasoning.races)).toHaveLength(11);
+    expect(Object.keys(state.reasoning.races)).toHaveLength(13);
     for(const loaded of [normalize(state),decode(independentPayload(state))]){
       expect(loaded.state.senate).toEqual(state.senate);
       expect(loaded.state.senateBaseline).toEqual(state.senateBaseline);
