@@ -1,5 +1,8 @@
 import { scenarioPathDifficultyLabel } from './ui/scenario-path-labels';
 import { sectionIntroductions } from './data/section-introductions';
+import { applyReaderLayout, openReaderDestination } from './ui/reader-layout';
+import { renderReaderOutlook } from './ui/reader-outlook';
+import { renderReaderIssues } from './ui/reader-issues';
 import { resolvePolicyReadingContext, type PolicyReadingContext } from './news-policy-context';
 import { briefingLenses } from './data/briefing-lenses';
 import { geoAlbersUsa, geoPath } from 'd3-geo';
@@ -12,6 +15,7 @@ import './ui/overview.css';
 import './ui/briefing.css';
 import './ui/compact-briefing.css';
 import './ui/policy-workbench.css';
+import './ui/reader-layout.css';
 import { policyPrototype, policyRefs } from './data/policy-prototype';
 import type { PolicyThemeId, PolicyRef } from './data/policy-prototype-model';
 import { evidenceRefs } from './data/research-sources';
@@ -21,6 +25,7 @@ import { readPolicyAction, refreshPolicyEvidenceControls, renderPolicyWorkbench,
 import { briefingElections, locatorMapMarkup } from './ui/briefing';
 import { briefingEvidenceMarkup, briefingComparisonPollsMarkup } from './ui/briefing-polls';
 import { briefingTakeawayMarkup, briefingLensMarkup } from './ui/briefing-lens';
+import { renderReaderCandidateSummary } from './ui/reader-candidate-summary';
 import { texasPollContextMarkup } from './ui/texas-poll-context';
 import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
@@ -125,7 +130,7 @@ function displayRatingFor(election: Election): Rating { return displayRatings.ge
 function displayRatingLabel(election: Election): string { return consensusDisplayLabel(ratingConsensusBySeat.get(election.seatId)); }
 
 const focusElections = briefingElections(elections,seats,states,ratingConsensus);
-activeFocusElectionId = focusElections[0]?.electionId ?? null;
+activeFocusElectionId = focusElections.find(election=>election.electionId==='2026-ME-2-regular')?.electionId ?? focusElections[0]?.electionId ?? null;
 function consensusEvidenceMarkup(election: Election): string {
   const result = ratingConsensusBySeat.get(election.seatId);
   if (!result) return '統合評価の資料不足';
@@ -252,7 +257,9 @@ function focusSummaryMarkup(election: Election) {
   const body = observation
     ? observationBriefingParts(observation,election.candidates,seat.incumbent)
     : researchBriefingParts(election);
-  return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><div class="focus-state-title"><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div></div>${body.candidates}</div>
+  return `<div class="focus-summary-heading"><div><p class="kicker">${escapeHtml(state.nameEn.toUpperCase())}</p><div class="focus-state-title"><h3>${escapeHtml(state.nameJa)}${election.type === 'special' ? '・特別選挙' : ''}</h3><span class="focus-status ${classification.className}">${escapeHtml(classification.label)}</span></div></div></div>
+    ${renderReaderCandidateSummary(election)}
+    <details class="reader-candidate-roster"><summary>この州の候補者名簿・掲載状況</summary>${body.candidates}</details>
     ${briefingTakeawayMarkup(election.electionId)}
     <div class="briefing-columns"><div class="briefing-poll-column">${briefingEvidenceMarkup(polls,election.electionId)}${['GA-2','KS-2'].includes(election.seatId) ? '<p class="briefing-coverage-note">投票調査は未収録。</p>' : ''}${briefingComparisonPollsMarkup(polls,election.electionId)}<details class="briefing-ratings"><summary>2機関の原評価と確認日</summary><p>${consensusEvidenceMarkup(election)}</p>${refs(ratingConsensusBySeat.get(election.seatId)?.observations.map(item=>item.sourceId) ?? [])}</details></div><div class="briefing-analysis">${briefingLensMarkup(election.electionId)}${['GA-2','KS-2'].includes(election.seatId) ? '<p class="briefing-coverage-note">候補者発言の直接引用は未収録。</p>' : ''}</div></div>
     <details class="briefing-context"><summary>州の論点・これまでの経緯を読む</summary>${body.lead}${texasPollContextMarkup(election.electionId)}</details>
@@ -561,7 +568,7 @@ function enhanceLayout() {
     if (disclosureBody && !disclosureBody.querySelector('.power-overview')) {
       const overviewCards = document.createElement('div');
       overviewCards.className = 'power-overview';
-      overviewCards.innerHTML = '<article><b>法律・予算</b><p>両院で可決し、大統領の署名または拒否権の覆しで成立する。歳出は下院と上院の合意が必要。</p></article><article><b>人事</b><p>上院が閣僚・裁判官などの指名を承認する。下院は承認投票に加わらない。</p></article><article><b>調査・監督</b><p>委員会の公聴会、資料要求、予算審査を通じて政権を検証する。</p></article>';
+      overviewCards.innerHTML = '<article><b>法律・予算</b><p>両院が同じ内容を可決し、大統領への手続を経る。歳出は下院と上院の合意が必要。</p></article><article><b>人事</b><p>上院が閣僚・裁判官などの指名を承認する。下院は承認投票に加わらない。</p></article><article><b>調査・監督</b><p>委員会の公聴会、資料要求、予算審査を通じて政権を検証する。</p></article>';
       const details = document.createElement('details');
       details.className = 'power-detail-list';
       details.innerHTML = `<summary>8項目の詳しい条件・採決例・出典を読む</summary>`;
@@ -1630,6 +1637,7 @@ function undoScenario() {
 function renderPolicySection() {
   const host=document.querySelector<HTMLElement>('#policy-workbench-host');
   if(!host)return;
+  const disclosureState=new Map([...host.querySelectorAll<HTMLDetailsElement>('[data-policy-disclosure]')].map(details=>[details.dataset.policyDisclosure,details.open]));
   policyComparison={
     leftId:savedScenarios.some(s=>s.id===policyComparison.leftId)?policyComparison.leftId:null,
     rightId:savedScenarios.some(s=>s.id===policyComparison.rightId)?policyComparison.rightId:null,
@@ -1638,6 +1646,10 @@ function renderPolicySection() {
     sources:[...sources,...observationData.sources],evidence:[...evidenceRefs,...observationData.evidenceRefs],states,
     themeId:policyThemeId,electionId:policyElectionId,policyRef:selectedPolicyRef,readingContext:policyReadingContext,savedScenarios,comparison:policyComparison};
   host.innerHTML=renderPolicyWorkbench(options);
+  host.querySelectorAll<HTMLDetailsElement>('[data-policy-disclosure]').forEach(details=>{
+    const open=disclosureState.get(details.dataset.policyDisclosure);
+    if(open!==undefined)details.open=open;
+  });
   const examples=createPolicyExampleScenarios(currentScenarioBaseline,elections).filter(e=>e.themeId===policyThemeId);
   if(examples.length===2){
     const section=host.querySelector('#policy-workbench');
@@ -2365,6 +2377,37 @@ function renderHouseSim() {
 }
 
 enhanceLayout();
+applyReaderLayout(renderReaderIssues(),renderReaderOutlook());
+document.addEventListener('click',event=>{
+  const target=event.target as Element;
+  const feed=target.closest<HTMLButtonElement>('[data-reader-feed]');
+  if(feed?.dataset.readerFeed){openFeedItem(feed.dataset.readerFeed);return;}
+  const policy=target.closest<HTMLButtonElement>('[data-reader-policy-election]');
+  if(policy?.dataset.readerPolicyElection){openPolicyStateReading(policy.dataset.readerPolicyElection);return;}
+  const issue=target.closest<HTMLButtonElement>('[data-reader-issue]');
+  if(issue?.dataset.readerIssue){
+    activeIssueId=issue.dataset.readerIssue;
+    openOverlay('issues');
+    return;
+  }
+  const state=target.closest<HTMLButtonElement>('[data-reader-state]');
+  if(state?.dataset.readerState){
+    const view=new URL(location.href);
+    view.hash='reader-03';
+    view.searchParams.set('briefRace',state.dataset.readerState);
+    view.searchParams.set('newsRace',state.dataset.readerState);
+    history.pushState(null,'',view);
+    activeFocusElectionId=state.dataset.readerState;
+    renderFocusSummary(false);
+    const heading=document.querySelector<HTMLElement>('#reader-03-heading');
+    if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});scrollPageHeadingIntoView(heading,matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth');}
+    return;
+  }
+},true);
+document.addEventListener('click',event=>{
+  const target=event.target as Element;
+  if(target.closest('[data-briefing-simulate],[data-all-races],[data-power-target]'))openReaderDestination(document.getElementById('simulator'));
+},true);
 document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.onclick = () => {
   const next = button.dataset.mode as 'current'|'rating';
   setMapMode(next);

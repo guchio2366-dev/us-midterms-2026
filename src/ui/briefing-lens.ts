@@ -10,8 +10,8 @@ export function briefingTakeawayMarkup(electionId: string): string {
   const lens = briefingLenses.find(item => item.electionId === electionId);
   if (!lens) return '';
   const display = briefingEvidenceDisplay(electionId);
-  return `<section class="briefing-takeaway" aria-label="この州の結論">
-    <b class="briefing-takeaway-label">この州の結論</b>
+  return `<section class="briefing-takeaway" aria-label="収録した調査から読めること">
+    <b class="briefing-takeaway-label">収録した調査から読めること</b>
     <h4>${esc(lens.finding)}</h4>
     <p class="briefing-takeaway-meta">${display ? `${esc(display.sourceLabel)} · ${esc(display.periodLabel)}` : '収録した資料から読む'}</p>
   </section>`;
