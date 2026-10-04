@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261004",
   "startedAt": "2026-10-04T00:00:14Z",
-  "completedAt": "2026-10-04T00:18:03Z",
+  "completedAt": "2026-10-04T00:30:08Z",
   "outcome": "partial",
   "reviewMode": "daily; polls, official releases, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "2a44dd76949c3d46edc10dd9df6722dfe3b199b4",
-  "publishedCommit": null,
+  "publishedCommit": "caaaa4f4d9c580790a79d522b320d0d7e08ba612",
   "revision": "observation-2026-10-04-polls-rally-and-spending",
   "checkedSourceIds": [
     "obs-fox-tx-20261001",
@@ -160,11 +160,11 @@
   ],
   "comparisonAudit": [],
   "verification": {
-    "tests": "pending",
-    "build": "pending",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "tests": "304 passed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "success; main advanced from 2a44dd76949c3d46edc10dd9df6722dfe3b199b4 to content commit caaaa4f4d9c580790a79d522b320d0d7e08ba612 without force",
+    "pages": "success; https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/37165061305 completed successfully in 44 seconds",
+    "publicContent": "success; 2026-10-04T00:30:08Zに公開画面でD43・R45・未配分12、AlaskaのQuantus調査と外部支出、TexasのFox LV調査、Ohio集会結果、最終確認時刻を照合"
   },
   "note": "TexasとAlaskaの新調査、Ohio集会の実施結果、Alaskaの独立支出を追加。発言、広告支出、政策効果、有権者評価を分離した。Inside Electionsの研究表示を10月1日版へ同期。統合評価とD43・R45・未配分12、旧保存案・共有URLは維持。Sabato・White House本文、OH・NH名簿などは照合待ち。"
 }
