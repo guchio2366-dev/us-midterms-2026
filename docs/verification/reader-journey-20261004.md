@@ -72,3 +72,14 @@ PCは左端の固定目次に01〜06を表示し、現在の節を強調する�
 - 原本にある未確認を反対の見出しへ分類しない。全政策記録の公開テキストから内部EvidenceRef/ev-prototypeの説明を除き、実原文の箇所または未特定を表示。数字・ID・確認日は保持。
 - 日次observation、評価snapshot、候補名簿、政策record、ニュース、保存model/storage、package-lockは基点d0a066ffとバイト一致。
 - [候補の実画面](../previews/reader-journey-20261004/README.md)。親による視覚判定、PRのCI、配備と公開実操作はこの時点で未実施。
+
+## 公開確認（10月4日12:02 UTC）
+
+- 親が冒頭・02〜06・390pxの7画像を実画素で確認し、初回新構成として目視合格。
+- [PR #47](https://github.com/guchio2366-dev/us-midterms-2026/pull/47) head `0b8dddf0a61a8ff7b830ffe3c2c80abeb2237eec` の[CI](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/37199692540)成功。Node 20.20.2で382 tests・型検査・本番ビルドを確認。
+- 最新main `d0a066ff` と一致を再確認してマージ。公開コミット `0d85ba50e311cb3599f8d2a7d4193026e181e537` の[Pages](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/37200494091) build/deploy両方成功。deploy logのpages_build_versionも一致。
+- [公開サイト](https://guchio2366-dev.github.io/us-midterms-2026/)の配信JS `index-DIpcZQuj.js` SHA-256 `61a71ad4ed50b0a24cc7f18f4fea7c3c8fe1eef9df4ffbf7d5bacf86551bf03e`、CSS `index-BcsPyVHM.css` SHA-256 `8a48f616eb7695e6ac4666374c72e4a2791eabf5a89f053347e95526d1fe04a0` はローカル本番ビルドと完全一致。
+- 公開版をユーザーPC専用Chrome154で再検証。1180×757の左目次6項目と現在地、候補政策の先読み、12州切替、争点→州→政策→制度条件、見通しの引用元詳細と戻る、旧保存hashの祖先開閉、Back/Forwardを確認。390×844で横溢れなし、見出しが目次に隠れない。
+- 公開版でも共通前提による議席非変更、理由陳腐化、候補変更・Undo、2案保存・理由比較、個人メモ共有除外、共有待ちで元作業案を上書きしないことを確認。独立旧Brown fixtureのD47/R47/未配分6・旧基準通知を維持。
+- 閉じた任意シミュレーション内で上院50州・下院435区が初期化され、上院地図→Ohio→Brown→Undo、下院AK-ALの仮定が上院議席に混ざらないことを確認。
+- 生の調査・評価・候補者・政策データは基点と一致。未収録候補政策と未確認事項は保持。今回の主要検証に未解消の阻害事項はない。
