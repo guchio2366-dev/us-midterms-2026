@@ -178,6 +178,7 @@ export const ratingObservations: RatingObservation[] = [
   {ratingId:'rating-ia-sabato-2026-09-22',electionId:'2026-IA-2-regular',organization:"Sabato's Crystal Ball",ratingRaw:'Toss-up',category:'Toss Up',ratedAt:'2026-09-22',retrievedAt:'2026-09-24',sourceIds:['sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-sabato-changes-2026-09-22'],status:'published'},
   {ratingId:'rating-mi-cook-2026-08-20',electionId:'2026-MI-2-regular',organization:'The Cook Political Report',ratingRaw:'Toss Up',category:'Toss Up',ratedAt:'2026-08-20',retrievedAt:'2026-09-11',sourceIds:['cook-mi-race-2026'],evidenceIds:['ev-mi-cook-rating'],status:'published'},
   {ratingId:'rating-mi-inside-2025-07-24',electionId:'2026-MI-2-regular',organization:'Inside Elections',ratingRaw:'Toss-up',category:'Toss Up',ratedAt:'2025-07-24',retrievedAt:'2026-09-11',sourceIds:['inside-mi-race-2026'],evidenceIds:['ev-mi-inside-rating'],status:'published'},
+  {ratingId:'rating-mi-inside-2026-10-01',electionId:'2026-MI-2-regular',organization:'Inside Elections',ratingRaw:'Tilt Democrat',category:'Tilt D',ratedAt:'2026-10-01',retrievedAt:'2026-10-04',sourceIds:['inside-senate-ratings-2026'],evidenceIds:['ev-briefing-inside-ratings-20261001'],status:'published'},
   {ratingId:'rating-mi-sabato-2026-08-05',electionId:'2026-MI-2-regular',organization:"Sabato's Crystal Ball",ratingRaw:'Toss-up',category:'Toss Up',ratedAt:'2026-08-05',retrievedAt:'2026-09-11',sourceIds:['sabato-mi-post-primary-2026'],evidenceIds:['ev-mi-sabato-rating'],status:'published'},
   {ratingId:'rating-mi-sabato-2026-09-22',electionId:'2026-MI-2-regular',organization:"Sabato's Crystal Ball",ratingRaw:'Leans Democrat',category:'Lean D',ratedAt:'2026-09-22',retrievedAt:'2026-09-24',sourceIds:['sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-sabato-changes-2026-09-22'],status:'published'},
   {
@@ -245,18 +246,18 @@ export const raceBriefs: RaceBrief[] = [
   {
     electionId:'2026-MI-2-regular',updatedAt:'2026-10-01',status:'published',completeness:'substantial',
     headline:'調査は小差が続く一方、SabatoはLean Dへ変更',
-    summary:'9月24〜28日のFox調査では、投票予定者のEl-Sayed支持50%・Rogers支持49%、登録有権者は51%・48%でした。同一調査の別集計として分けて表示します。CookとInsideはToss Upを維持し、Sabatoは9月22日にLean Dへ変更しました。',
+    summary:'9月24〜28日のFox調査では、投票予定者のEl-Sayed支持50%・Rogers支持49%、登録有権者は51%・48%でした。同一調査の別集計として分けて表示します。Sabatoは9月22日にLean D、Insideは10月1日にTilt Dへ変更し、CookはToss Upを維持しています。',
     balance:'FoxのLVは1ポイント差、RVは3ポイント差で、未定者への傾きの追質問を含みます。先に収録したTrafalgar、CNN/SSRS、Glengariffも小差ですが、対象・設問・候補者の選択肢が異なります。別調査との差を支持移動や平均・勝率へ変換しません。',
     keyIssues:['生活費・医療費','製造業・関税','候補者の政策的な位置'],
     analysis:[
-      {heading:'評価機関の違い',body:'異なる調査が狭い範囲で逆方向を示す中、CookとInsideはToss Up、SabatoはLean Dです。Lean Dも勝敗確定や勝率ではないため、候補者差と未定票を更新の中心に置きます。',evidenceKind:'interpretation',evidenceIds:['ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-mi-inside-rating','ev-sabato-changes-2026-09-22']},
+      {heading:'評価機関の違い',body:'異なる調査が狭い範囲で逆方向を示す中、SabatoはLean D、InsideはTilt Dへ変更し、CookはToss Upです。弱い民主党方向の評価も勝敗確定や勝率ではないため、候補者差と未定票を更新の中心に置きます。',evidenceKind:'interpretation',evidenceIds:['ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-briefing-inside-ratings-20261001','ev-sabato-changes-2026-09-22']},
       {heading:'政策差',body:'El-Sayedは医療制度改革、一律的な関税への反対、frontier AIの一時停止を掲げます。Rogersは関税を一律ではなく交渉手段として使う考え、教育・住宅政策を示しています。両者の自己説明として表示し、実現可能性は議会権限と分けます。',evidenceKind:'observed',evidenceIds:['ev-elsayed-priorities','ev-elsayed-tariffs','ev-elsayed-ai','ev-rogers-tariffs','ev-rogers-education','ev-rogers-housing']},
     ],
     supportChange:'直近の横断調査から、同一人物の支持先変更を直接測定したとは扱いません。候補者支持、候補者イメージ、過去投票先は別項目です。',
     turnout:'FoxのLVは投票履歴・関心・投票意向と属性を使う統計モデルです。LVとRVの差を実際の投票参加や時系列の支持変化とは扱いません。LVの判定は調査ごとに異なります。',
     updateConditions:['同じ方法・LV判定の後続調査を確認したとき','追質問前の投票先や未定票・第三候補の比率が公表されたとき','評価機関が分類を変更したとき'],
-    pollIds:['poll-mi-fox-2026-09-lv','poll-mi-fox-2026-09-rv','poll-mi-trafalgar-2026-09','poll-mi-cnn-ssrs-2026-09','poll-mi-glengariff-2026-09'],ratingIds:['rating-mi-cook-2026-08-20','rating-mi-inside-2025-07-24','rating-mi-sabato-2026-08-05','rating-mi-sabato-2026-09-22'],relatedIssueIds:['household-economy','trade-industry','health-family','rights-institutions'],
-    sourceIds:['obs-fox-mi-20260930','poll-trafalgar-mi-2026-09','poll-ssrs-me-mi-2026-09','poll-ssrs-mi-topline-2026-09','poll-glengariff-mi-2026-09','cook-mi-race-2026','inside-mi-race-2026','sabato-mi-post-primary-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-obs-fox-mi-20260930','ev-briefing-mi-fox-lv-20260930','ev-briefing-mi-fox-rv-20260930','ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-mi-inside-rating','ev-mi-sabato-rating','ev-sabato-changes-2026-09-22'],
+    pollIds:['poll-mi-fox-2026-09-lv','poll-mi-fox-2026-09-rv','poll-mi-trafalgar-2026-09','poll-mi-cnn-ssrs-2026-09','poll-mi-glengariff-2026-09'],ratingIds:['rating-mi-cook-2026-08-20','rating-mi-inside-2025-07-24','rating-mi-inside-2026-10-01','rating-mi-sabato-2026-08-05','rating-mi-sabato-2026-09-22'],relatedIssueIds:['household-economy','trade-industry','health-family','rights-institutions'],
+    sourceIds:['obs-fox-mi-20260930','poll-trafalgar-mi-2026-09','poll-ssrs-me-mi-2026-09','poll-ssrs-mi-topline-2026-09','poll-glengariff-mi-2026-09','cook-mi-race-2026','inside-mi-race-2026','inside-senate-ratings-2026','sabato-mi-post-primary-2026','sabato-rating-changes-2026-09-22','270towin-sabato-senate-2026-09-22'],evidenceIds:['ev-obs-fox-mi-20260930','ev-briefing-mi-fox-lv-20260930','ev-briefing-mi-fox-rv-20260930','ev-mi-trafalgar-poll','ev-mi-ssrs-poll','ev-mi-glengariff-poll','ev-mi-cook-rating','ev-briefing-inside-ratings-20261001','ev-mi-sabato-rating','ev-sabato-changes-2026-09-22'],
   },
   ...focusRaceBriefs,
 ];

@@ -12,9 +12,9 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(78);
+    expect(recent).toHaveLength(82);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(64);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(68);
     expect(upcoming).toHaveLength(16);
     expect(upcoming.filter(item=>item.sourceId==='bls-jobs-2026-10-02')).toHaveLength(1);
     expect(filterFeed(upcoming,'2026-AK-2-regular')).toHaveLength(5);
@@ -69,7 +69,7 @@ describe('ニュース・予定の共通フィード',()=>{
   it('orders future events by date and resolves legacy update and event links',()=>{
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
     expect(upcoming.map(item=>item.sourceId)).toEqual([
-      'oh-trump-vandalia-rally-2026-10-03','me-debate-2026-10-06','tx-trump-san-antonio-rally-2026-10-07','mi-debate-2026-10-08','me-debate-2026-10-08','me-debate-2026-10-13','bls-cpi-2026-10-14','me-debate-2026-10-15','ak-senate-debate-2026-10-15','bls-state-jobs-2026-10-20','mi-debate-2026-10-21','bls-jobs-2026-10-02','tx-talarico-tribune-festival-2026-09-24','mi-harris-el-sayed-2026-09-22','tx-paxton-cruz-rally-2026-09-21','ak-bycatch-markup-2026-09-16',
+      'me-debate-2026-10-06','tx-trump-san-antonio-rally-2026-10-07','mi-debate-2026-10-08','me-debate-2026-10-08','me-debate-2026-10-13','bls-cpi-2026-10-14','me-debate-2026-10-15','ak-senate-debate-2026-10-15','bls-state-jobs-2026-10-20','mi-debate-2026-10-21','oh-trump-vandalia-rally-2026-10-03','bls-jobs-2026-10-02','tx-talarico-tribune-festival-2026-09-24','mi-harris-el-sayed-2026-09-22','tx-paxton-cruz-rally-2026-09-21','ak-bycatch-markup-2026-09-16',
     ]);
     expect(legacyObservationFeedKey('2026-MI-2-regular','obs-update-mi-ai-2026-09-09',newsItems,observationData)).toBe('update:obs-update-mi-ai-2026-09-09');
     expect(legacyObservationFeedKey('2026-ME-2-regular','me-debate-2026-10-06',newsItems,observationData)).toBe('event:me-debate-2026-10-06');

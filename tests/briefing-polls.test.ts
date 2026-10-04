@@ -38,9 +38,12 @@ describe('briefing poll bars',()=>{
     expect(ak).toContain('最終RCVラウンド');expect(ak).toContain('第1選択');
     expect(ak).toContain('内訳未掲載 <b>5%</b>');
     const tx=briefingPollStudies(polls,'2026-TX-2-regular');
-    expect(tx[1].map(p=>p.resultStage)).toEqual(['base','cumulative-with-leaners']);
-    expect(briefingPollMarkup(tx[1][0])).toContain('<b>43.4%</b>');
-    expect(briefingPollMarkup(tx[1][1])).toContain('未定者のleaner回答を割当後');
+    const overton=tx.find(study=>study.some(p=>p.pollId==='poll-tx-overton-2026-08-base'))!;
+    expect(overton.map(p=>p.resultStage)).toEqual(['base','cumulative-with-leaners']);
+    expect(briefingPollMarkup(overton[0])).toContain('<b>43.4%</b>');
+    expect(briefingPollMarkup(overton[1])).toContain('未定者のleaner回答を割当後');
+    const fox=tx.find(study=>study.some(p=>p.pollId==='poll-tx-fox-2026-09-lv'))!;
+    expect(fox.map(p=>p.pollId)).toEqual(['poll-tx-fox-2026-09-lv','poll-tx-fox-2026-09-rv']);
   });
   it('omits unpublished and other-state records and handles the lack of a recorded poll honestly',()=>{
     const draft={...polls[0],pollId:'draft-only',electionId:'empty',status:'draft' as const};

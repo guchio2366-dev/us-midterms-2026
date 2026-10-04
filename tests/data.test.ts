@@ -405,7 +405,7 @@ describe('sourced race research contract',() => {
 
   it('keeps rating history within one organization',() => {
     const history = getRatingHistory(ratingObservations,'2026-AK-2-regular','Inside Elections');
-    expect(history.map(item => item.ratingRaw)).toEqual(['Solid Republican','Lean Republican','Tilt Republican']);
-    expect(history.at(-1)).toMatchObject({ratingRaw:'Tilt Republican',category:'Tilt R'});
+    expect(history.map(item => item.ratingRaw)).toEqual(['Solid Republican','Lean Republican','Tilt Republican','Toss-up']);
+    expect(history.at(-1)).toMatchObject({ratingRaw:'Toss-up',category:'Toss Up'});
   });
 });

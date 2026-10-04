@@ -1,0 +1,170 @@
+{
+  "runId": "daily-20261004",
+  "startedAt": "2026-10-04T00:00:14Z",
+  "completedAt": "2026-10-04T00:18:03Z",
+  "outcome": "partial",
+  "reviewMode": "daily; polls, official releases, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "2a44dd76949c3d46edc10dd9df6722dfe3b199b4",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-04-polls-rally-and-spending",
+  "checkedSourceIds": [
+    "obs-fox-tx-20261001",
+    "obs-quantus-ak-20261002",
+    "obs-reuters-oh-rally-20261003",
+    "obs-alaska-public-spending-20261002",
+    "obs-gop-trump-oh-event-20261003",
+    "obs-factbase-trump-calendar-20261003",
+    "obs-inside",
+    "obs-sabato",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-fox-tx-20261001",
+      "attemptedAt": "2026-10-04T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:05:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "Fox公式記事と18ページ原票を照合。9月24〜28日、RV1,203人、LV881人、投票意向LV51対49・RV53対46、方法と誤差を確認。支持確実度と生活費の重要度は別設問として分離した。"
+    },
+    {
+      "sourceId": "obs-quantus-ak-20261002",
+      "attemptedAt": "2026-10-04T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:06:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "Quantus公式本文で9月28〜30日、全LV758人、上院設問回答737人、第1順位Sullivan46.1%・Peltola45.5%、設計調整後誤差±4ポイントを確認。二者比較は順位選択投票の最終再配分予測として扱わない。"
+    },
+    {
+      "sourceId": "obs-reuters-oh-rally-20261003",
+      "attemptedAt": "2026-10-04T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:07:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "Vandalia集会の実施、Husted氏の投票参加・物価・イラン戦争に関する発言、参加者のデータセンターへの異なる反応を確認。友好的な会場の取材を州全体の評価とは扱わない。"
+    },
+    {
+      "sourceId": "obs-alaska-public-spending-20261002",
+      "attemptedAt": "2026-10-04T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:08:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "8月予備選後の独立支出3,100万ドル超、約7割が候補者への反対支出、Sullivan氏支援側がPeltola氏支援側を約700万ドル上回るとの集計を確認。支出額を支持率や広告効果へ置き換えない。"
+    },
+    {
+      "sourceId": "obs-gop-trump-oh-event-20261003",
+      "attemptedAt": "2026-10-04T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:09:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "GOP主催者の元予定とReutersの実施結果を相互参照し、予定をcompletedへ変更して結果記事へ接続した。"
+    },
+    {
+      "sourceId": "obs-factbase-trump-calendar-20261003",
+      "attemptedAt": "2026-10-04T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:09:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "前日確認済みの大統領日程と実施報道を照合。予定時刻と集会開始時刻の区別を維持した。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-04T00:10:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-04T00:10:00Z",
+      "contentVerifiedAt": "2026-10-04",
+      "scope": "公式APIの10月1日版を再確認し、AK Toss-up、MI Tilt D、TX Tilt Rへ研究表示を同期。統合評価D43・R45・未配分12は変わらない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-04T00:10:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-09-24T00:08:00Z",
+      "contentVerifiedAt": "2026-09-24",
+      "scope": "公式記事本文は取得制限が続き、10月4日の全表成功には置き換えていない。9月24日の最終成功と既存留保を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-04T00:10:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "White House本文から日程を直接取得できず、前日確認済みのFactba.se日程とReutersの実施結果を相互参照。White House由来の成功には置き換えていない。"
+    },
+    {
+      "sourceId": "obs-quantus-ia-20260930",
+      "attemptedAt": "2026-10-04T00:11:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "方法、標本、質問文、誤差の原文を取得できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-04T00:11:10Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "既確認名簿から追加原票を確認できず、記名候補党派の照合待ちを維持。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-04T00:11:20Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "一般選挙候補と記名候補を一括した州原票を取得できず継続確認。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedAt": "2026-10-04T00:11:30Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文、方法、質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedAt": "2026-10-04T00:11:40Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "州別予定額のFEC原票を特定できず、既存の成功日時を進めていない。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedAt": "2026-10-04T00:11:50Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "PDF原票の標本、質問文、方法、数値を照合できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedAt": "2026-10-04T00:12:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "原票本文、方法、質問文を取得できず非掲載を継続。"
+    }
+  ],
+  "comparisonAudit": [],
+  "verification": {
+    "tests": "pending",
+    "build": "pending",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "TexasとAlaskaの新調査、Ohio集会の実施結果、Alaskaの独立支出を追加。発言、広告支出、政策効果、有権者評価を分離した。Inside Electionsの研究表示を10月1日版へ同期。統合評価とD43・R45・未配分12、旧保存案・共有URLは維持。Sabato・White House本文、OH・NH名簿などは照合待ち。"
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-03-polls-jobs-and-travel",
+  "revision": "observation-2026-10-04-polls-rally-and-spending",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,22 +8,21 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-03T00:24:11Z",
+    "lastCompletedAt": "2026-10-04T00:18:03Z",
     "latestRun": {
-      "runId": "daily-20261003",
+      "runId": "daily-20261004",
       "timingIntegrity": "consistent",
       "timingNote": "開始・各情報源の成功・完了は、この実行で実際に確認したUTC時刻の範囲内に記録した。公表済み結果、確認済み予定、部分確認を分けて記録した。",
-      "startedAt": "2026-10-03T00:01:50Z",
-      "completedAt": "2026-10-03T00:24:11Z",
+      "startedAt": "2026-10-04T00:00:14Z",
+      "completedAt": "2026-10-04T00:18:03Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-cbs-me-20261002",
-        "obs-bls-jobs-20261002",
-        "obs-axios-tx-denton-20261002",
-        "obs-texas-tribune-tx-san-antonio-20261002",
-        "obs-cbs-slf-ks-nc-20261002",
-        "obs-factbase-trump-calendar-20261003",
+        "obs-fox-tx-20261001",
+        "obs-quantus-ak-20261002",
+        "obs-reuters-oh-rally-20261003",
+        "obs-alaska-public-spending-20261002",
         "obs-gop-trump-oh-event-20261003",
+        "obs-factbase-trump-calendar-20261003",
         "obs-sabato",
         "obs-inside",
         "obs-white-house"
@@ -37,10 +36,78 @@
         "obs-unh-nh-20260924",
         "obs-nyt-siena-nh-20260924"
       ],
-      "note": "CBSのMaine原票で投票予定者50対50と候補・政権への別設問を照合。9月雇用統計を予定から実施確認へ変更した。Trump大統領のDenton訪問結果、10月7日のSan Antonio集会、10月3日のOhioでの大統領発言時刻を確認。共和党系外部団体のKansas予約とNorth Carolinaの今後の広告停止は報道値として追加した。統合評価とD43・R45・未配分12、既存の保存案・共有URLは維持。CBS Maine本文と原票の登録有権者標本数の差、広告予約の実支出・効果、OH・NH名簿などは照合待ち。"
+      "note": "TexasとAlaskaの新調査、Ohio集会の実施結果、Alaskaの独立支出を追加。発言、広告支出、政策効果、有権者評価を分離した。Inside Electionsの研究表示を10月1日版へ同期。統合評価とD43・R45・未配分12、既存の保存案・共有URLは維持。Sabato・White House本文、OH・NH名簿などは照合待ち。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-fox-tx-20261001",
+      "title": "Texas Senate and Governor — September 24–28, 2026",
+      "publisher": "Fox News Poll / Beacon Research / Shaw & Company Research",
+      "url": "https://static.foxnews.com/foxnews.com/content/uploads/2026/10/fox_september-24-28-2026_texas_topline_october-1-release.pdf",
+      "publishedAt": "2026-10-01",
+      "referencePeriod": "9月24〜28日のTexas州調査。登録有権者と投票予定者の候補支持、支持の確実さ、生活費、候補評価、方法を原票で照合。",
+      "retrievedAt": "2026-10-04",
+      "contentVerifiedAt": "2026-10-04",
+      "electionIds": ["2026-TX-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公式topline PDFの設問3、方法欄、LV・RV別集計を照合。未定者へのleaner追質問を含むため初回回答とは区別し、LVとRVを混ぜない",
+      "alternativeUrl": "https://www.foxnews.com/politics/fox-news-poll-its-lone-star-senate-showdown-between-talarico-paxton",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-04T00:08:00Z"
+    },
+    {
+      "sourceId": "obs-quantus-ak-20261002",
+      "title": "Quantus Insights Survey: Sullivan, Peltola Deadlocked in Alaska",
+      "publisher": "Quantus Insights",
+      "url": "https://quantusinsights.org/f/quantus-insights-survey-sullivan-peltola-deadlocked-in-alaska",
+      "publishedAt": "2026-10-02",
+      "referencePeriod": "9月28〜30日のAlaska州調査。第1順位、2候補設問、leaner込み集計、候補者評価、方法を確認。",
+      "retrievedAt": "2026-10-04",
+      "contentVerifiedAt": "2026-10-04",
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "Quantusの公表本文で、全758人と上院設問回答737人、第1順位、2候補設問、leaner込みを分けて確認。順位選択投票の最終集計を測る調査ではない",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-04T00:07:00Z"
+    },
+    {
+      "sourceId": "obs-reuters-oh-rally-20261003",
+      "title": "Trump heads to Ohio rally as Republicans defend Senate seat in close race",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/world/us/trump-speak-ohio-rally-republicans-defend-senate-seat-close-race-2026-10-03/",
+      "publishedAt": "2026-10-03",
+      "referencePeriod": "10月3日のVandalia集会、Husted氏の登壇・発言、集会参加者への取材。",
+      "retrievedAt": "2026-10-04",
+      "contentVerifiedAt": "2026-10-04",
+      "electionIds": ["2026-OH-3-special"],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "Reutersの現地取材で予定の実施と候補者発言を確認。候補者の主張、友好的な集会参加者の反応、州全体の有権者評価を分ける",
+      "alternativeUrl": "https://apnews.com/article/a86aad6b19d4afb2c505b902171ebd8e",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-04T00:03:00Z"
+    },
+    {
+      "sourceId": "obs-alaska-public-spending-20261002",
+      "title": "Outside groups spend more than $31 million on Alaska U.S. Senate race",
+      "publisher": "Alaska Public Media",
+      "url": "https://alaskapublic.org/news/politics/2026-10-02/outside-groups-spend-more-than-31-million-on-alaska-u-s-senate-race",
+      "publishedAt": "2026-10-02",
+      "referencePeriod": "8月予備選後のAlaska上院選における独立支出と広告の内訳。",
+      "retrievedAt": "2026-10-04",
+      "contentVerifiedAt": "2026-10-04",
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "州内公共メディアがFEC独立支出報告を集計した記事を確認。支出額、支持・反対の対象、候補者陣営の資金、広告効果を区別する",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-04T00:04:00Z"
+    },
     {
       "sourceId": "obs-cbs-me-20261002",
       "title": "CBS News poll finds voters split on state v. national focus in tied Maine Senate race",
@@ -2506,6 +2573,34 @@
   ],
   "evidenceRefs": [
     {
+      "evidenceId": "ev-obs-fox-tx-20261001",
+      "sourceId": "obs-fox-tx-20261001",
+      "locator": "公式topline PDFの設問3。9月24〜28日、州有権者名簿から無作為抽出したRV1,203人（誤差±2.5）と、そのうち確率モデルで分類したLV881人（±3.0）。leaner込みでLVはTalarico 51%・Paxton 49%・未定1%、RVは53%・46%・未定1%。LVでは候補支持の87%が確実、生活費を投票に非常に重要とする回答は68%。LVとRV、候補支持、争点重要度は別集計・別設問。",
+      "checkedAt": "2026-10-04",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-quantus-ak-20261002",
+      "sourceId": "obs-quantus-ak-20261002",
+      "locator": "9月28〜30日、Alaskaの投票予定者758人（上院設問回答737人）、調査全体の設計効果調整済み誤差±4.0。第1順位はSullivan 46.1%・Peltola 45.5%・未定5.0%、その他2候補計2.9%。2候補設問は46.5対46.2、leaner込みの全候補設問は46.8対46.5、2候補設問は47.8対47.2。約0.6ポイント差は候補差の約8ポイント誤差より小さく、RCV最終集計の予測ではない。",
+      "checkedAt": "2026-10-04",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-oh-rally-20261003",
+      "sourceId": "obs-reuters-oh-rally-20261003",
+      "locator": "10月3日、Trump大統領と共和党現職Husted氏がVandalia集会に登壇。Husted氏は投票参加を呼びかけ、記者団にイラン戦争を『米国の条件で』終わらせる必要と物価引下げへの取組を説明した。Reutersが取材した参加者のデータセンターへの意見は賛否が分かれた。友好的な集会と少数の参加者取材は州全体の支持率を示さない。",
+      "checkedAt": "2026-10-04",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-alaska-public-spending-20261002",
+      "sourceId": "obs-alaska-public-spending-20261002",
+      "locator": "Alaska Public MediaがFEC報告から集計したところ、8月予備選後の独立支出は3,100万ドル超、約70%が候補への反対広告。共和党Sullivan氏を支援する団体は民主党Peltola氏を支援する団体より約700万ドル多く支出した。独立支出は候補者陣営と調整できず、支出額は支持率や広告効果を示さない。候補者陣営の次のFEC報告期限は10月15日。",
+      "checkedAt": "2026-10-04",
+      "kind": "reported"
+    },
+    {
       "evidenceId": "ev-obs-cbs-me-20261002",
       "sourceId": "obs-cbs-me-20261002",
       "locator": "9月23日〜10月1日、Maine州の投票予定者はJackson50%・Collins50%。登録有権者ではTrump不支持62%、政策がMaine経済を傷つけた57%、CollinsがTrumpに同調し過ぎ53%。一方、候補支持の10%は変更余地あり。公式原票はRV1,144人・誤差±4.7と記すが、CBS本文は1,114人としており不一致を残す。候補支持、政権評価、変更可能性は別設問。",
@@ -3868,11 +3963,11 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-04",
       "headline": "経済・移民への評価と、支持層の投票参加",
-      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。新調査はTalaricoが先頭。Paxton側の対中投資批判と、関連業界につながる寄付者からの献金を同じ基準で検証する。",
-      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月19〜22日のTexas Public Opinion Research調査は投票予定者でTalarico 49%、Paxton 44%。Paxton氏側はTalarico氏を中国系投資で攻撃しているが、Houston ChronicleはPaxton陣営と関連PACが、中国からTexas不動産への投資を仲介する企業に関係する3人から計4万ドルを受けたと報じた。陣営は献金への質問に直接答えず、対中国共産党の訴訟実績を強調した。",
-      "uncertainty": "Texas Public Opinion Researchの5ポイント差は同機関の8月調査から1ポイント縮小し、単独調査で誤差±3.6ポイント。寄付は同陣営で最大級ではなく、寄付者・企業は取材に回答していない。献金だけで政策変更、違法行為、寄付者の影響力、有権者の評価は判断できない。討論は複数の招待があるが双方合意の日程は未確認。",
+      "featuredSummary": "民主党Talaricoと共和党Paxtonの接戦。Fox調査はLVで51対49、RVで53対46。母集団、投票参加、候補評価を分けて見る。",
+      "lead": "民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月24〜28日のFox News調査は、投票予定者881人でTalarico 51%、Paxton 49%、登録有権者1,203人で53%、46%だった。LVでは候補支持の87%が確実と答えた。生活費を投票に極めて重要とするLVは68%で、生活費を重視する層はTalarico氏を19ポイント上回って支持した。候補支持、投票参加モデル、争点の重要度は別の集計として読む。",
+      "uncertainty": "FoxのLV差は誤差±3ポイント内で、RVとの差も同じ調査の異なる母集団による。7月のFox調査はRVのみで、今回のLVとの差を支持移動とは呼べない。leaner追質問込みの支持率であり、生活費の重要度や候補評価から個々の投票理由を断定できない。討論は複数の招待があるが双方合意の日程は未確認。",
       "evidenceIds": [
         "ev-obs-emerson-tx",
         "ev-obs-texas-tribune-spending",
@@ -3890,13 +3985,14 @@
         {
           "materialId": "tx-turnout",
           "title": "支持が実際の投票になるか",
-          "fact": "9月調査ではEmersonがTalarico 47%・Paxton 46%、ReconMRが49%・43%、Texas Public Opinion Researchが49%・44%。方法、実査期間、言語、標本数は異なる。",
+          "fact": "9月24〜28日のFox調査はLVでTalarico 51%・Paxton 49%、RVで53%・46%。先行するEmerson、ReconMR、Texas Public Opinion Researchとも方法、実査期間、言語、標本数、投票参加モデルが異なる。",
         "meaning": "一つの数字で決めず、候補者評価、争点、無党派層、実際の投票参加が後続調査でも再現するかを見る。",
-        "limit": "異なる調査の差は支持率の上昇・低下を示さない。党派・年齢・人種別の部分標本は州全体より不確か。",
+          "limit": "異なる調査やFoxのLV・RVの差は、同じ人の支持率上昇・低下を示さない。党派・年齢・人種別の部分標本は州全体より不確か。",
           "evidenceIds": [
           "ev-obs-emerson-tx-20260917",
             "ev-obs-reconmr-tx-20260917",
-            "ev-obs-tpor-tx-20260925"
+            "ev-obs-tpor-tx-20260925",
+            "ev-obs-fox-tx-20261001"
           ]
         },
         {
@@ -4058,11 +4154,11 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-10-04",
       "headline": "漁業と資源開発の利益を、地元へどう戻すか",
-      "featuredSummary": "共和党現職Dan S. Sullivanと民主党Mary Peltolaの接戦。3つの9月調査で先頭が一致せず、10月15日の直接討論で漁業・生活費への回答を比べる。",
-      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月8〜11日のAARP調査は第1順位でPeltola 46%、Sullivan 41%、9月14〜17日のco/efficient調査はSullivan 48%、Peltola 46%。新たに確認した9月22〜24日のTrafalgar調査はSullivan 46.8%、Peltola 45.5%だった。Sullivan氏の混獲削減法案は委員会を通過後、全会一致による即時通過には異議が出た。両氏は10月15日の州内放送討論会で直接比較される予定。",
-      "uncertainty": "3調査は実査期間、方法、調査主体、順位再配分の示し方が異なり、数字の差を支持移動とは呼べない。Trafalgarは共和党系と分類される調査機関で、Sullivan氏のリードは誤差内。同姓のDaniel J. Sullivan Jr.は別候補で、第1順位と最終ラウンドを分ける。法案の迅速手続き不成立は最終否決や廃案ではなく、成立・魚資源・得票への効果は未確認。",
+      "featuredSummary": "共和党現職Dan S. Sullivanと民主党Mary Peltolaの接戦。Quantusの第1順位は46.1対45.5。4つの9月調査で先頭と集計段階がそろわない。",
+      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月28〜30日のQuantus調査は、第1順位でSullivan 46.1%、Peltola 45.5%、2候補設問のleaner込みで47.8%、47.2%だった。AARP、co/efficient、Trafalgarを含む9月調査は先頭と質問形式が一致しない。独立支出は8月予備選後に3,100万ドルを超え、Sullivan氏を支援する団体が約700万ドル多く支出した。両氏は10月15日の州内放送討論会で直接比較される予定。",
+      "uncertainty": "Quantusの候補差は1ポイント未満で、候補差の誤差は約8ポイント。各調査は実査期間、方法、調査主体、順位再配分の示し方が異なり、数字の差を支持移動とは呼べない。同姓のDaniel J. Sullivan Jr.は別候補で、第1順位、2候補設問、leaner込み、最終ラウンドを分ける。独立支出額は支持率や広告効果を示さない。",
       "evidenceIds": [
         "ev-obs-dfp-ak",
         "ev-obs-ak-fisheries-debate",
@@ -4096,14 +4192,15 @@
         {
           "materialId": "ak-transfer",
           "title": "第1希望と最終的な選択を分ける",
-          "fact": "AARP調査は第1順位でPeltola 46%・Sullivan 41%、co/efficient調査はSullivan 48%・Peltola 46%、Trafalgar調査はSullivan 46.8%・Peltola 45.5%だった。",
+          "fact": "Quantus調査は第1順位でSullivan 46.1%・Peltola 45.5%、2候補設問のleaner込みで47.8%・47.2%。AARPは第1順位でPeltola 46%・Sullivan 41%、co/efficientは48%・46%、Trafalgarは46.8%・45.5%だった。",
           "meaning": "一つの先頭候補だけで決めず、質問方法と実査期間、第1順位、他候補からの移転を分けて見る。",
-          "limit": "調査上の再配分は実際の投票・集計ではない。AARP調査では11%が最終的に両主要候補を順位付けせず、3調査は方法も異なる。Trafalgarの約1.3ポイント差も誤差内。",
+          "limit": "調査上の再配分や2候補設問は実際の投票・集計ではない。AARP調査では11%が最終的に両主要候補を順位付けせず、4調査は方法も異なる。QuantusとTrafalgarの差はいずれも誤差内。",
           "evidenceIds": [
             "ev-obs-dfp-ak",
             "ev-obs-coefficient-ak-20260917",
             "ev-obs-aarp-ak-20260917",
-            "ev-obs-trafalgar-ak-20260925"
+            "ev-obs-trafalgar-ak-20260925",
+            "ev-obs-quantus-ak-20261002"
           ]
         }
       ],
@@ -4423,19 +4520,19 @@
       "date": "2026-10-03",
       "time": "17:30",
       "timezone": "America/New_York",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-10-03",
-      "evidenceIds": ["ev-obs-gop-trump-oh-event-20261003", "ev-obs-factbase-trump-oh-20261003"],
+      "checkedAt": "2026-10-04",
+      "evidenceIds": ["ev-obs-gop-trump-oh-event-20261003", "ev-obs-factbase-trump-oh-20261003", "ev-obs-reuters-oh-rally-20261003"],
       "relevance": [
         {
           "electionId": "2026-OH-3-special",
-          "why": "Trump大統領が接戦のOhio州を訪れ、共和党現職Husted氏への支持と政権実績をどう訴えるかを確認する機会。",
-          "watch": "集会は17時30分開始、大統領発言は19時予定。実施・中止・延期、Husted氏の登壇、生活費・データセンター・Brown氏への発言を確認する。友好的な集会の反応を州全体の支持に置き換えない。",
+          "why": "Trump大統領と共和党現職Husted氏が登壇し、Husted氏が投票参加、物価、イラン戦争を訴えた実施済み集会。",
+          "watch": "後続調査で投票参加意向、物価評価、データセンターへの態度を確認する。友好的な集会と参加者取材の反応を州全体の支持に置き換えない。",
           "materialIds": ["oh-cost", "oh-jobs"]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-oh-trump-rally-2026-10-03",
       "publicationStatus": "published"
     },
     {
@@ -4910,6 +5007,62 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-tx-fox-poll-2026-10-01",
+      "status": "published",
+      "electionIds": ["2026-TX-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-01",
+      "updatedAt": "2026-10-04",
+      "title": "テキサス州Fox調査はLVで51対49――RVとの差と共和党内の結集度を分ける",
+      "happened": "9月24〜28日のFox News調査で、投票予定者881人の支持は民主党James Talarico氏51%、共和党Ken Paxton氏49%、未定1%だった。登録有権者1,203人では53%対46%。LVではTalarico支持者の89%、Paxton支持者の85%が支持を変えないと答えた。",
+      "meaning": "LVの2ポイント差は誤差±3ポイント内で、接戦を示す一つの材料である。登録有権者では7ポイント差だが、投票参加モデルを通したLVでは差が縮むため、候補支持と実際の投票参加を分けて追う。共和党予備選でCornyn氏に投票したLVの20%がTalarico氏を支持したという内訳は、Paxton氏の党内結集を確認する材料になる。",
+      "uncertainty": "単一調査で勝者や支持移動は確定しない。7月調査はRVのみで、今回のLVとは直接比較できない。候補支持はleaner追質問込みであり、生活費を重視する回答、Trump大統領への評価、候補支持の理由も別設問である。",
+      "evidenceIds": ["ev-obs-fox-tx-20261001"]
+    },
+    {
+      "updateId": "obs-update-ak-quantus-poll-2026-10-02",
+      "status": "published",
+      "electionIds": ["2026-AK-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-02",
+      "updatedAt": "2026-10-04",
+      "title": "アラスカ州Quantus調査は第1順位46.1対45.5――実質的な同率",
+      "happened": "9月28〜30日のQuantus Insights調査で、第1順位は共和党現職Dan Sullivan氏46.1%、民主党Mary Peltola氏45.5%、未定5.0%、その他2候補計2.9%だった。2候補だけを示した設問は46.5%対46.2%、leaner込みでも全候補設問46.8%対46.5%、2候補設問47.8%対47.2%だった。",
+      "meaning": "どの設問でも候補差は1ポイント未満で、この調査単独では先頭を判断しにくい。AARP、co/efficient、Trafalgarと合わせても先頭候補が一致せず、質問形式、第1順位、2候補設問、leaner込みを分けて読む必要がある。",
+      "uncertainty": "調査全体の誤差は±4ポイントで、2候補差の誤差は約8ポイントと公表されている。上院設問は737人で、Alaskaの順位選択投票の全順位や実際の移転を測った最終集計予測ではない。横断調査間の差を同じ有権者の支持移動とは扱わない。",
+      "evidenceIds": ["ev-obs-quantus-ak-20261002"]
+    },
+    {
+      "updateId": "obs-update-oh-trump-rally-2026-10-03",
+      "status": "published",
+      "electionIds": ["2026-OH-3-special"],
+      "eventId": "oh-trump-vandalia-rally-2026-10-03",
+      "newsId": null,
+      "eventDate": "2026-10-03",
+      "updatedAt": "2026-10-04",
+      "title": "オハイオ州Vandalia集会を実施――Husted氏は投票参加と物価を訴え",
+      "happened": "10月3日、Trump大統領と共和党現職Jon Husted氏がVandaliaの集会に登壇した。Husted氏は支持者へ投票参加を呼びかけ、記者団にイラン戦争を米国の条件で終わらせる必要と、物価引下げに取り組んでいると説明した。",
+      "meaning": "確認済み予定を実施結果へ更新した。Husted氏は大統領との共同登壇を、共和党支持層の投票参加と生活費の訴えにつなげた。Reutersが取材した参加者のデータセンターへの意見は賛否が分かれ、党派的な集会内でもこの争点が一様でない例になった。",
+      "uncertainty": "候補者の物価・戦争に関する発言は政策効果の実証ではない。友好的な集会の拍手や少数の参加者取材はOhio州全体の有権者評価ではなく、支持率への効果は未確認。Reuters取材時点でBrown陣営の回答はなかった。",
+      "evidenceIds": ["ev-obs-reuters-oh-rally-20261003", "ev-obs-gop-trump-oh-event-20261003", "ev-obs-factbase-trump-oh-20261003"]
+    },
+    {
+      "updateId": "obs-update-ak-outside-spending-2026-10-02",
+      "status": "published",
+      "electionIds": ["2026-AK-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-02",
+      "updatedAt": "2026-10-04",
+      "title": "アラスカ上院選の独立支出3,100万ドル超――約7割が反対広告",
+      "happened": "Alaska Public MediaがFEC報告から集計したところ、8月予備選後の独立支出は3,100万ドルを超え、約70%が候補への反対広告だった。Sullivan氏を支援する団体は、Peltola氏を支援する団体より約700万ドル多く支出した。",
+      "meaning": "接戦州として州外資金が集中し、共和党側の外部団体が支出量で上回っている。どちらの候補を支援・反対する支出か、候補者本人の資金、広告内容を分けて追う。",
+      "uncertainty": "独立支出団体は候補者陣営と調整できず、支出額は有権者の支持や広告効果を示さない。候補者陣営の最新収支は10月15日のFEC報告期限後に確認する必要がある。",
+      "evidenceIds": ["ev-obs-alaska-public-spending-20261002"]
+    },
     {
       "updateId": "obs-update-me-cbs-poll-2026-10-02",
       "status": "published",

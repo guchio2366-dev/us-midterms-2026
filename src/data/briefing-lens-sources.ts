@@ -49,6 +49,11 @@ export const briefingLensSources: Source[] = [
 
 export const briefingLensEvidence: EvidenceRef[] = [
   {
+    evidenceId:'ev-briefing-inside-ratings-20261001',sourceId:'inside-senate-ratings-2026',
+    locator:'Inside Elections公式APIの2026-10-01 13:23 CT更新。AK-2はTilt RからToss-up、MI-2はToss-upからTilt D、TX-2はLean RからTilt R。分類の方向と強さを保持し、統合評価・当選確率・勝敗確定とは区別。',
+    checkedAt:'2026-10-04',kind:'observed',
+  },
+  {
     evidenceId:'ev-briefing-mn-ratings-20261001',sourceId:'inside-senate-ratings-2026',
     locator:'Inside Elections公式APIの2026-10-01 13:23 CT更新でMN-2をLikely DemocraticからLean Democraticへ変更。Sabatoは9月24日確認のLikely D。両機関の現在値と確認日を分けて記録。',
     checkedAt:'2026-10-02',kind:'observed',

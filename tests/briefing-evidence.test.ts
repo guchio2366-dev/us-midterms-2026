@@ -96,7 +96,9 @@ describe('evidence paired with the state conclusion', () => {
       expect(new Set(actual).size, lens.electionId).toBe(actual.length);
     }
     const comparison = briefingComparisonPollsMarkup(polls, '2026-AK-2-regular');
-    expect(pollIds(comparison.split('<details')[0])).toEqual(['poll-ak-asr-2026-08-final']);
+    expect(pollIds(comparison.split('<details')[0])).toEqual(['poll-ak-quantus-2026-09-first']);
+    expect(comparison).toContain('data-poll-id="poll-ak-quantus-2026-09-two-candidate"');
+    expect(comparison).toContain('data-poll-id="poll-ak-asr-2026-08-final"');
     expect(comparison).toContain('data-poll-id="poll-ak-dfp-2026-08-first"');
     expect(comparison).not.toContain('data-poll-id="poll-ak-dfp-2026-08-final"');
     const ia = briefingComparisonPollsMarkup(polls, '2026-IA-2-regular');
