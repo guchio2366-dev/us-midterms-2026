@@ -1,0 +1,174 @@
+{
+  "runId": "daily-20261005",
+  "startedAt": "2026-10-05T00:04:15Z",
+  "completedAt": "2026-10-05T00:19:50Z",
+  "outcome": "partial",
+  "reviewMode": "monday full candidate comparison and rebuttal audit; polls, official releases, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "96b5a51f43b645ce49c8ac7ea41a74adc7ec8ab2",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-05-monday-comparison-audit",
+  "checkedSourceIds": [
+    "obs-siena-five-state-20261003",
+    "obs-alaska-public-peltola-voters-20260929",
+    "obs-guardian-peltola-response-20260924",
+    "obs-wapo-nh-profile-20261003",
+    "obs-wapo-nc-profile-20261004",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-siena-five-state-20261003",
+      "attemptedAt": "2026-10-05T00:05:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-05T00:05:00Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "Siena公式公表ページでAK・IA・KS・OH・TXの投票予定者の候補別数値を照合。詳細topline・cross-tabを取得できず、実査期間、標本、誤差、質問文、未定割合、leaner処理は未確認。構造化調査と評価変更には使用しない。"
+    },
+    {
+      "sourceId": "obs-alaska-public-peltola-voters-20260929",
+      "attemptedAt": "2026-10-05T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-05T00:06:00Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "告発報道を受けたPeltola支持者への州内取材を確認。失望と投票継続の理由を分け、無作為・代表標本ではないことを明記。"
+    },
+    {
+      "sourceId": "obs-guardian-peltola-response-20260924",
+      "attemptedAt": "2026-10-05T00:06:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-05T00:06:30Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "元職員の告発、Peltola陣営の誇張との反論、悲嘆の背景説明、元職員による擁護を分離。説明を反証や免責へ置き換えない。"
+    },
+    {
+      "sourceId": "obs-wapo-nh-profile-20261003",
+      "attemptedAt": "2026-10-05T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-05T00:07:00Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "Sununu氏とTrump政権の案件別の一致・相違、Pappas氏の党からの独立性の説明、3郡での有権者取材を確認。記事が参照する調査原票は未取得のため数値へ転用しない。"
+    },
+    {
+      "sourceId": "obs-wapo-nc-profile-20261004",
+      "attemptedAt": "2026-10-05T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-05T00:08:00Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "Cooper氏の超党派実績・Medicaid拡大、共和党側の治安批判と反論、Whatley氏とTrump氏の関係、外部支出縮小を確認。広告判断を勝敗予測へ置き換えない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-05T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-05T00:09:00Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "公式の2026 rating changesページを再確認。9月22日以後の上院評価変更は表示されず、既存の評価を維持。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-05T00:09:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-05T00:09:30Z",
+      "contentVerifiedAt": "2026-10-05",
+      "scope": "公式上院評価ページの10月1日更新と見通しを再確認。統合評価D43・R45・未配分12を変える新更新はない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-05T00:10:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-01T00:03:27Z",
+      "contentVerifiedAt": "2026-10-01",
+      "scope": "White Houseの10月4日までの公式発表は確認したが、対象州での新しい大統領日程を示す公式日程本文は取得できず、成功日時を進めていない。既確認の10月7日San Antonio集会は既存予定のまま。"
+    },
+    {
+      "sourceId": "obs-quantus-ia-20260930",
+      "attemptedAt": "2026-10-05T00:10:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "方法、標本、質問文、誤差の原文を取得できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-05T00:10:40Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "既確認名簿から追加原票を確認できず、記名候補党派の照合待ちを維持。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-05T00:10:50Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "一般選挙候補と記名候補を一括した州原票を取得できず継続確認。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedAt": "2026-10-05T00:11:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "本文、方法、質問文を取得できず、数値は非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-axios-nrsc-spending-20260918",
+      "attemptedAt": "2026-10-05T00:11:10Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-09-23T00:05:00Z",
+      "contentVerifiedAt": "2026-09-23",
+      "scope": "州別予定額のFEC原票を特定できず、既存の成功日時を進めていない。"
+    },
+    {
+      "sourceId": "obs-unh-nh-20260924",
+      "attemptedAt": "2026-10-05T00:11:20Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "報道で数値は参照されたが、PDF原票の標本、質問文、方法を照合できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-nyt-siena-nh-20260924",
+      "attemptedAt": "2026-10-05T00:11:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "報道で数値は参照されたが、原票本文、方法、質問文を取得できず非掲載を継続。"
+    }
+  ],
+  "comparisonAudit": [
+    {"electionId":"2026-AK-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"updated","scope":"元職員の告発、陣営反論、支持者取材、Siena部分確認を反映。行為の確定、政策効果、代表的な有権者評価を分離。"},
+    {"electionId":"2026-ME-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"CBS原票、中絶、判事承認、財政、党内結集の反証を再点検。新しい原文確認なし。"},
+    {"electionId":"2026-MI-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"経歴、政策、Iran戦争、党内結集、勤務歴表現、Fox・BIG DATA POLLを再点検。"},
+    {"electionId":"2026-OH-3-special","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"政策・採決、銀行、データセンター、Vandalia集会、既存調査を再点検。Sienaは詳細表未取得のため比較本文に未反映。"},
+    {"electionId":"2026-TX-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"政策、献金、党内結集、討論提案、Fox等の原票を再点検。Sienaは詳細表未取得のため比較本文に未反映。"},
+    {"electionId":"2026-NH-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"updated","scope":"両候補の党・政権からの独立性を案件別の一致・相違で更新。有権者取材と代表調査を分離。"},
+    {"electionId":"2026-IA-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"既存候補資料とFox・Marist等の原票を再点検。Sienaは詳細表未取得、Quantusは方法未取得のため構造化値へ未反映。"},
+    {"electionId":"2026-NC-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"updated","scope":"Cooper氏の実績、共和党側の治安批判と反論、Whatley氏の政権との関係、広告資源判断を追加。"},
+    {"electionId":"2026-GA-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"候補者公式資料、医療、通商、公式名簿、10月8日討論予定を再点検。新しい原文確認なし。"},
+    {"electionId":"2026-KS-2-regular","fields":["career","materials","statedPlan","recordAndEvaluation","voters"],"result":"checked-no-analysis-change","scope":"農業・関税・医療・候補者名簿の既存反証を再点検。Sienaは詳細表未取得のため構造化値へ未反映。"},
+    {"electionId":"2026-MN-2-regular","fields":["rating","candidateMaterialCoverage","counterevidence"],"result":"partial-no-fabrication","scope":"統合評価と公式候補表示を再点検。候補者比較本文は未収録のため、未確認項目を補完せず評価根拠のみ維持。"},
+    {"electionId":"2026-NE-2-regular","fields":["rating","candidateMaterialCoverage","counterevidence"],"result":"partial-no-fabrication","scope":"統合評価と公式候補表示を再点検。候補者比較本文は未収録のため、未確認項目を補完せず評価根拠のみ維持。"}
+  ],
+  "verification": {
+    "tests": "382 passed after npm ci restored the clean worktree dependencies; the first attempt stopped because vitest was not installed, not because a test failed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "月曜の候補者比較と反証を12州で再点検。Siena公式公表値は詳細表未取得を明記して部分確認とし、Alaska、New Hampshire、North Carolinaの新しい比較材料を発言・反論・政策効果・有権者評価に分離して追加。D43・R45・未配分12、旧保存案・共有URLを維持。"
+}

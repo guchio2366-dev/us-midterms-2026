@@ -12,9 +12,13 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(82);
+    expect(recent).toHaveLength(86);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(68);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(72);
+    expect(recent.some(item=>item.sourceId==='obs-update-siena-five-state-2026-10-03')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-ak-peltola-workplace-response-2026-09-29')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-nh-independence-profile-2026-10-03')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-nc-cooper-whatley-profile-2026-10-04')).toBe(true);
     expect(upcoming).toHaveLength(16);
     expect(upcoming.filter(item=>item.sourceId==='bls-jobs-2026-10-02')).toHaveLength(1);
     expect(filterFeed(upcoming,'2026-AK-2-regular')).toHaveLength(5);
