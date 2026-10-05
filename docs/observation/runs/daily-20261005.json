@@ -6,7 +6,7 @@
   "reviewMode": "monday full candidate comparison and rebuttal audit; polls, official releases, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "96b5a51f43b645ce49c8ac7ea41a74adc7ec8ab2",
-  "publishedCommit": null,
+  "publishedCommit": "80663013a6d036de0b722b61ac05ec9697b98bc1",
   "revision": "observation-2026-10-05-monday-comparison-audit",
   "checkedSourceIds": [
     "obs-siena-five-state-20261003",
@@ -166,9 +166,9 @@
   "verification": {
     "tests": "382 passed after npm ci restored the clean worktree dependencies; the first attempt stopped because vitest was not installed, not because a test failed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success at 2026-10-05T00:22:18Z; main advanced from 96b95470e006890c032f2566f59ac20fdf19274c to 80663013a6d036de0b722b61ac05ec9697b98bc1 with force=false",
+    "pages": "success; GitHub Pages workflow run 37247358636 completed at 2026-10-05T00:24:34Z",
+    "publicContent": "success at 2026-10-05T00:26:56Z; production shows D43/R45/unassigned12, 12 focus states, the Siena partial-confirmation update, Alaska/New Hampshire/North Carolina Monday-audit updates, and the preserved saved-scenario/share entry point"
   },
   "note": "月曜の候補者比較と反証を12州で再点検。Siena公式公表値は詳細表未取得を明記して部分確認とし、Alaska、New Hampshire、North Carolinaの新しい比較材料を発言・反論・政策効果・有権者評価に分離して追加。D43・R45・未配分12、旧保存案・共有URLを維持。"
 }
