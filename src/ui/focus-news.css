@@ -1,0 +1,116 @@
+#updates .reader-candidate-context > small { margin-top: 10px; }
+#updates .reader-candidate-context h5 {
+  margin: 16px 0 10px;
+  color: #28566d;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+#updates .reader-candidate-context .reader-candidate-context-paragraph,
+#updates .reader-candidate-comparison > p {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+#updates .reader-candidate-context .reader-paragraph-sources {
+  margin-top: 5px;
+  padding-top: 0;
+  border-top: 0;
+}
+#updates .reader-candidate-context .reader-paragraph-sources > summary {
+  min-height: 32px;
+  line-height: 1.6;
+}
+#updates .reader-candidate-comparison {
+  margin: 16px 0;
+  padding: 14px;
+  border-left: 3px solid #67a5b0;
+  background: #f3f8fa;
+}
+#updates .reader-candidate-comparison details > summary {
+  min-height: 36px;
+  color: #315568;
+  font-size: .8125rem;
+  cursor: pointer;
+}
+
+/* Keep the selected state's news beside the main reading column on a PC.
+   Only the news body scrolls; its heading and switches remain visible. */
+@media screen and (min-width: 960px) {
+  #updates .updates-grid {
+    grid-template-columns: minmax(0, 1fr) clamp(15rem, 25vw, 20rem);
+  }
+  #updates #news {
+    position: sticky;
+    top: 16px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 32px);
+    min-height: 0;
+    align-self: start;
+  }
+  #updates .news-sticky-controls { flex: 0 0 auto; }
+  #updates .news-reading-body {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
+    padding: 3px 5px 5px 3px;
+    scroll-padding-block: 6px;
+  }
+  #updates .news-reading-body:focus-visible {
+    outline: 3px solid #2769aa;
+    outline-offset: -3px;
+  }
+  #updates .news-section .news-list {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+  #updates #news .news-summary {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+  #updates .news-section .news-scroll-hint {
+    display: block;
+    margin: 0 0 5px;
+    color: #52616a;
+    font-size: .75rem;
+  }
+}
+
+/* On small PC screens, reserve readable widths for both candidate columns.
+   These values meet the existing desktop spacing again at 1280px. */
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .reader-experience {
+    --reader-rail: clamp(144px, calc(20.3125vw - 64px), 196px);
+    --reader-pc-gap: clamp(16px, calc(6.25vw - 48px), 32px);
+  }
+  .reader-experience main {
+    padding-left: calc(var(--reader-rail) + var(--reader-pc-gap));
+    padding-right: var(--reader-pc-gap);
+  }
+  .reader-experience .mast {
+    padding-left: calc(var(--reader-rail) + var(--reader-pc-gap));
+    padding-right: var(--reader-pc-gap);
+  }
+  .reader-experience footer { padding-left: calc(var(--reader-rail) + var(--reader-pc-gap)); }
+  .reader-experience main > .reader-navigation { padding: 20px 8px; }
+  .reader-experience .reader-nav-title { margin: 0 10px 16px; }
+  .reader-experience main > .reader-navigation a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    min-height: 88px;
+    padding: 8px;
+  }
+  .reader-experience .reader-nav-number { flex-basis: 28px; width: 28px; height: 28px; }
+  #updates .updates-grid {
+    grid-template-columns: minmax(0, 1fr) clamp(220px, calc(39.0625vw - 180px), 320px);
+    gap: clamp(12px, calc(3.125vw - 20px), 20px);
+    padding: clamp(12px, calc(2.34375vw - 12px), 18px);
+  }
+  #updates .news-section { padding-left: clamp(10px, calc(3.90625vw - 30px), 20px); }
+  #updates .reader-candidate-grid { gap: clamp(10px, calc(1.5625vw - 6px), 14px); }
+  #updates .reader-candidate-card { padding: clamp(10px, calc(2.34375vw - 14px), 16px); }
+}

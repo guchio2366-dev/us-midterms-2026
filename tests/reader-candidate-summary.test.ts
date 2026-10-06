@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { elections } from '../src/data/data';
 import { policyPrototype } from '../src/data/policy-prototype';
 import { renderReaderCandidateSummary } from '../src/ui/reader-candidate-summary';
+import { readerCandidateExplanations } from '../src/data/reader-candidate-explanations';
 
 const election=(id:string)=>elections.find(item=>item.electionId===id)!;
 const visible=(markup:string)=>markup.replace(/<[^>]*>/g,'');
@@ -16,6 +17,7 @@ describe('state candidate summaries use existing public materials',()=>{
     const markup=renderReaderCandidateSummary(current);
     const ids=[...markup.matchAll(/data-reader-candidate="([^"]+)"/g)].map(match=>match[1]);
     expect(ids).toHaveLength(2);
+    expect(current.candidates.find(candidate=>candidate.candidateId===ids[0])?.party).toBe('R');
     expect(markup).toContain('reader-candidate-grid');
     expect(markup).toContain(`data-reader-policy-election="${id}"`);
     for(const candidateId of ids){
@@ -25,6 +27,7 @@ describe('state candidate summaries use existing public materials',()=>{
       expect(candidateCard).toContain(`data-reader-party="${candidate.party}"`);
       if(candidate.party==='D')expect(candidateCard).toContain('民主党');
       if(candidate.party==='R')expect(candidateCard).toContain('共和党');
+      if(candidate.party==='I')expect(candidateCard).toContain('無所属');
       expect([...candidateCard.matchAll(/data-reader-policy-record=/g)].length).toBeLessThanOrEqual(2);
     }
     expect(JSON.stringify({current,policyPrototype})).toBe(before);
@@ -58,8 +61,13 @@ describe('state candidate summaries use existing public materials',()=>{
     expect(elsayed).toContain('反対：広範で一律的な対カナダ関税');
     expect(elsayed).not.toContain('支持：将来のMedicaid資金削減');
     expect(rogers).toContain('条件付き支持：対象を絞った関税');
-    expect(rogers).toContain('一律の関税適用');
+    expect(rogers).toContain('関税を一律に通用する解決策とすること');
     expect(rogers).not.toContain('支持：Medicare for All');
+    expect(rogers).not.toContain('行動日 2026-08-29');
+    expect(rogers).toContain('公表年・行動年');
+    const rogersAction=policyPrototype.candidateRecords.find(record=>record.recordId==='position-rogers-targeted')!.actions[0];
+    expect(rogersAction.actionDate).toBeNull();
+    expect(rogersAction.datePrecision).toBe('unknown');
   });
 
   it('does not turn Sununu missing ACA stance into opposition to Pappas proposal',()=>{
@@ -95,23 +103,39 @@ describe('state candidate summaries use existing public materials',()=>{
     expect(marshall).not.toContain('成立済み');
   });
 
-  it.each(['2026-MN-2-regular','2026-NE-2-regular'])('does not invent policy records or research dates in %s',id=>{
+
+  it.each(readerCandidateExplanations)('keeps every supplied paragraph in the candidate explanation: $candidateId',entry=>{
+    const markup=card(renderReaderCandidateSummary(election(entry.electionId)),entry.candidateId);
+    expect(markup).toContain(`data-candidate-context="${entry.candidateId}"`);
+    expect(markup).toContain(`政策説明の内容確認 ${entry.checkedAt}`);
+    for(const section of entry.sections){
+      expect(markup).toContain(section.heading);
+      for(const paragraph of section.paragraphs){
+        const escaped=paragraph.text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+        expect(markup).toContain(`<p class="reader-candidate-context-paragraph">${escaped}</p>`);
+      }
+    }
+    expect(markup).not.toContain('出典未接続');
+    expect(markup).not.toContain('根拠の該当箇所は未接続。');
+  });
+
+  it.each(['2026-MN-2-regular','2026-NE-2-regular'])('adds campaign context without inventing versioned policy records in %s',id=>{
     const markup=renderReaderCandidateSummary(election(id));
-    expect(markup.match(/候補者別の政策材料は未収録。/g)).toHaveLength(2);
+    expect(markup.match(/data-candidate-context=/g)).toHaveLength(2);
+    expect(markup).not.toContain('候補者別の政策材料は未収録。');
     expect(markup).not.toContain('data-reader-policy-record');
-    expect(markup).not.toContain('資料公表');
-    expect(markup).not.toContain('公約資料時点');
-    expect(markup).not.toContain('内容確認 2026-10-04');
   });
 
   it('preserves the actual Nebraska independent party label without guessing a caucus',()=>{
     const current=election('2026-NE-2-regular'),markup=renderReaderCandidateSummary(current);
     const osborn=current.candidates.find(candidate=>candidate.candidateId==='cand-ne-dan-osborn')!;
     expect(card(markup,osborn.candidateId)).toContain(osborn.partyLabel);
+    expect(card(markup,osborn.candidateId)).toContain('無所属');
     expect(markup).toContain('Pete Ricketts');
     expect(markup).not.toContain('Mike Marvin');
     expect(markup).not.toContain('民主党会派');
     expect(markup).not.toContain('共和党会派');
+    expect([...markup.matchAll(/data-reader-party="([^"]+)"/g)].map(match=>match[1])).toEqual(['R','I']);
   });
 
   it('identifies the actual Alaska senator rather than the similarly named other candidate',()=>{
