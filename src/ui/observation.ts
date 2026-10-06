@@ -26,7 +26,7 @@ export function observationLeadMarkup(race:RaceObservation) {
 
 const candidateNameKey=(value:string|null)=>(value ?? '').toLowerCase().replace(/\b(jr|sr|ii|iii|iv)\b\.?/g,'').split(/[^a-z]+/).filter(token=>token.length>1).join('-');
 const comparisonCandidatesFor=(race:RaceObservation,candidates:Candidate[])=>[...new Set(race.comparison.flatMap(row=>row.cells.map(cell=>cell.candidateId)))].map(id=>candidates.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>Boolean(candidate)).sort((a,b)=>Number(b.party==='R')-Number(a.party==='R'));
-const candidatePartyLabel=(candidate:Candidate)=>candidate.party==='D' && !candidate.partyLabel.includes('民主党') ? `${candidate.partyLabel}（民主党）` : candidate.party==='R' && !candidate.partyLabel.includes('共和党') ? `${candidate.partyLabel}（共和党）` : candidate.partyLabel;
+const candidatePartyLabel=(candidate:Candidate)=>candidate.party==='D' && !candidate.partyLabel.includes('民主党') ? `${candidate.partyLabel}（民主党）` : candidate.party==='R' && !candidate.partyLabel.includes('共和党') ? `${candidate.partyLabel}（共和党）` : candidate.party==='I' && !candidate.partyLabel.includes('無所属') ? `${candidate.partyLabel}（無所属）` : candidate.partyLabel;
 
 export function observationCandidateIntroMarkup(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
   const comparisonCandidates=comparisonCandidatesFor(race,candidates);

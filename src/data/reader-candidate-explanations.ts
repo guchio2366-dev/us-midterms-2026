@@ -1,5 +1,6 @@
 import type { Source } from './model';
 import type { EvidenceRef } from './research-model';
+import { policyAdditionSources } from './policy-additions';
 import {
   candidateExplanations as alaskaExplanations,
   candidateExplanationSources as alaskaSources,
@@ -15,6 +16,16 @@ import {
   candidateExplanationSources as northernSources,
   candidateExplanationEvidence as northernEvidence,
 } from './reader-candidate-context-north';
+import {
+  candidateExplanations as nebraskaNewHampshireExplanations,
+  candidateExplanationSources as nebraskaNewHampshireSources,
+  candidateExplanationEvidence as nebraskaNewHampshireEvidence,
+} from './reader-candidate-context-ne-nh';
+import {
+  candidateExplanations as southernExplanations,
+  candidateExplanationSources as southernSources,
+  candidateExplanationEvidence as southernEvidence,
+} from './reader-candidate-context-south';
 
 export interface ReaderCandidateParagraph {
   text: string;
@@ -37,12 +48,32 @@ export interface ReaderCandidateComparison extends ReaderCandidateParagraph {
   checkedAt: string;
 }
 
+// These House originals are shared by the Georgia and New Hampshire copy.
+// Keep one recheck record per source; candidate-specific evidence identifies
+// whose vote or which text was checked, without changing the old policy records.
+const sharedSourceReviewScopes: Record<string, string> = {
+  'policy-house-roll11': '2026-10-06再確認：PappasとMike Collinsの氏名・州・党派・票と、H.R.1834下院通過採決という対象',
+  'policy-hr1834-eh': '2026-10-06再確認：Section 1(a)〜(c)の2028年への変更と、2025年12月31日後の課税年への適用',
+  'policy-house-roll65': '2026-10-06再確認：Pappasの賛成票と、H.J.Res.72下院通過採決という対象',
+  'policy-hjres72-eh': '2026-10-06再確認：EO14193の2025年2月1日の非常事態を終了する下院通過版。全関税の撤廃や最終成立は確認していない',
+};
+const sharedReviewedSources: Source[] = policyAdditionSources
+  .filter(source => Object.hasOwn(sharedSourceReviewScopes, source.sourceId))
+  .map(source => ({
+    ...source,
+    referencePeriod: `${source.referencePeriod}。${sharedSourceReviewScopes[source.sourceId]}`,
+    retrievedAt: '2026-10-06',
+    contentVerifiedAt: '2026-10-06',
+  }));
+
 // Reader copy supplied after primary-source review on 2026-10-06. It explains
 // the scope of the evidence; it does not alter any versioned policy position.
 export const readerCandidateExplanations: ReaderCandidateExplanation[] = [
   ...alaskaExplanations,
   ...northCarolinaMinnesotaExplanations,
   ...northernExplanations,
+  ...nebraskaNewHampshireExplanations,
+  ...southernExplanations,
   {
     electionId: '2026-ME-2-regular',
     candidateId: 'cand-me-susan-m-collins',
@@ -127,9 +158,12 @@ export const readerCandidateComparisons: ReaderCandidateComparison[] = [
 // M1, M2, M4 and M6 reuse the existing source IDs. The state packages also
 // include rechecked metadata, applied after the base registry in reader lookups.
 export const readerCandidateExplanationSources: Source[] = [
+  ...sharedReviewedSources,
   ...alaskaSources,
   ...northCarolinaMinnesotaSources,
   ...northernSources,
+  ...nebraskaNewHampshireSources,
+  ...southernSources,
   {
     sourceId: 'candidate-collins-track-record-20261006',
     title: 'Track Record',
@@ -176,6 +210,8 @@ export const readerCandidateExplanationEvidence: EvidenceRef[] = [
   ...alaskaEvidence,
   ...northCarolinaMinnesotaEvidence,
   ...northernEvidence,
+  ...nebraskaNewHampshireEvidence,
+  ...southernEvidence,
   {
     evidenceId: 'ev-collins-track-record-20261006',
     sourceId: 'candidate-collins-track-record-20261006',

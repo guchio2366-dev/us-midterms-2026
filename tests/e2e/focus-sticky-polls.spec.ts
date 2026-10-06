@@ -39,25 +39,41 @@ const sourceById = new Map([
   ...policyAdditionSources, ...readerCandidateExplanationSources,
 ].map(source => [source.sourceId, source]));
 
-async function expectFullCandidateParagraph(paragraph: Locator, expected: ReaderCandidateParagraph, sourceDetails: Locator) {
-  await expect(paragraph).toHaveText(expected.text);
-  expect(await paragraph.textContent()).toBe(expected.text);
-  await expectNoClosedDisclosure(paragraph);
-  const style = await paragraph.evaluate(node => ({
-    details: !!node.closest('details'), clamp: getComputedStyle(node).webkitLineClamp,
-    font: Number.parseFloat(getComputedStyle(node).fontSize), overflow: getComputedStyle(node).overflowY,
+async function expectFullCandidateParagraphs(paragraphs: Locator, expectedParagraphs: ReaderCandidateParagraph[]) {
+  await expect(paragraphs).toHaveCount(expectedParagraphs.length);
+  // Collect every paragraph and its adjacent references in the same frame.
+  // This preserves all copy/source checks without a round trip for each link.
+  const rendered = await paragraphs.evaluateAll(nodes => nodes.map(node => {
+    const style = getComputedStyle(node);
+    const details = node.nextElementSibling;
+    return {
+      text: node.textContent,
+      visible: node.getClientRects().length > 0 && style.visibility === 'visible',
+      detailsAncestor: !!node.closest('details'), clamp: style.webkitLineClamp,
+      font: Number.parseFloat(style.fontSize), overflow: style.overflowY,
+      width: node.getBoundingClientRect().width,
+      referencesAdjacent: details instanceof HTMLDetailsElement,
+      sources: [...(details?.querySelectorAll('.reader-candidate-sources a') ?? [])].map(link => ({
+        href: link.getAttribute('href'), target: link.getAttribute('target'), rel: link.getAttribute('rel'),
+      })),
+    };
   }));
-  expect(style).toEqual({ details: false, clamp: 'none', font: 16, overflow: 'visible' });
-  const links = sourceDetails.locator('.reader-candidate-sources a');
-  const expectedUrls = [...new Set(expected.sourceIds)].map(id => {
-    const source = sourceById.get(id);
-    expect(source, `Source ${id} should be connected`).toBeDefined();
-    return new URL(source!.url).href;
-  });
-  expect(await links.evaluateAll(nodes => nodes.map(node => node.getAttribute('href')))).toEqual(expectedUrls);
-  for (const link of await links.all()) {
-    await expect(link).toHaveAttribute('target', '_blank');
-    await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  for (const [index, expected] of expectedParagraphs.entries()) {
+    const actual = rendered[index];
+    expect(actual.text).toBe(expected.text);
+    expect(actual.visible).toBe(true);
+    expect(actual.detailsAncestor).toBe(false);
+    expect(actual.clamp).toBe('none');
+    expect(actual.font).toBeGreaterThanOrEqual(16);
+    expect(actual.width, 'PC candidate prose should retain a readable column width').toBeGreaterThanOrEqual(220);
+    expect(actual.overflow).toBe('visible');
+    expect(actual.referencesAdjacent).toBe(true);
+    const expectedUrls = [...new Set(expected.sourceIds)].map(id => {
+      const source = sourceById.get(id);
+      expect(source, `Source ${id} should be connected`).toBeDefined();
+      return new URL(source!.url).href;
+    });
+    expect(actual.sources).toEqual(expectedUrls.map(href => ({ href, target: '_blank', rel: 'noopener noreferrer' })));
   }
 }
 
@@ -289,16 +305,12 @@ test.describe('PC focus polls and sticky news', () => {
           candidateCount++;
           const context = page.locator(`[data-candidate-context="${entry.candidateId}"]`);
           const expectedParagraphs = entry.sections.flatMap(section => section.paragraphs);
-          await expect(context.locator('.reader-candidate-context-paragraph')).toHaveCount(expectedParagraphs.length);
-          for (const [paragraphIndex, expected] of expectedParagraphs.entries()) {
-            await expectFullCandidateParagraph(context.locator('.reader-candidate-context-paragraph').nth(paragraphIndex), expected,
-              context.locator('.reader-paragraph-sources').nth(paragraphIndex));
-            candidateParagraphCount++;
-          }
+          await expectFullCandidateParagraphs(context.locator('.reader-candidate-context-paragraph'), expectedParagraphs);
+          candidateParagraphCount += expectedParagraphs.length;
         }
         for (const [comparisonIndex, expected] of readerCandidateComparisons.filter(entry => entry.electionId === id).entries()) {
           const comparison = page.locator('.reader-candidate-comparison').nth(comparisonIndex);
-          await expectFullCandidateParagraph(comparison.locator(':scope > p'), expected, comparison.locator(':scope > details'));
+          await expectFullCandidateParagraphs(comparison.locator(':scope > p'), [expected]);
           comparisonCount++;
         }
         if (id === '2026-ME-2-regular') {

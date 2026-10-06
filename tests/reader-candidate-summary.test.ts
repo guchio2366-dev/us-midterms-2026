@@ -27,6 +27,7 @@ describe('state candidate summaries use existing public materials',()=>{
       expect(candidateCard).toContain(`data-reader-party="${candidate.party}"`);
       if(candidate.party==='D')expect(candidateCard).toContain('民主党');
       if(candidate.party==='R')expect(candidateCard).toContain('共和党');
+      if(candidate.party==='I')expect(candidateCard).toContain('無所属');
       expect([...candidateCard.matchAll(/data-reader-policy-record=/g)].length).toBeLessThanOrEqual(2);
     }
     expect(JSON.stringify({current,policyPrototype})).toBe(before);
@@ -102,14 +103,6 @@ describe('state candidate summaries use existing public materials',()=>{
     expect(marshall).not.toContain('成立済み');
   });
 
-  it.each(['2026-NE-2-regular'])('does not invent policy records or research dates in %s',id=>{
-    const markup=renderReaderCandidateSummary(election(id));
-    expect(markup.match(/候補者別の政策材料は未収録。/g)).toHaveLength(2);
-    expect(markup).not.toContain('data-reader-policy-record');
-    expect(markup).not.toContain('資料公表');
-    expect(markup).not.toContain('公約資料時点');
-    expect(markup).not.toContain('内容確認 2026-10-04');
-  });
 
   it.each(readerCandidateExplanations)('keeps every supplied paragraph in the candidate explanation: $candidateId',entry=>{
     const markup=card(renderReaderCandidateSummary(election(entry.electionId)),entry.candidateId);
@@ -126,8 +119,8 @@ describe('state candidate summaries use existing public materials',()=>{
     expect(markup).not.toContain('根拠の該当箇所は未接続。');
   });
 
-  it('adds Minnesota campaign context without inventing versioned policy records',()=>{
-    const markup=renderReaderCandidateSummary(election('2026-MN-2-regular'));
+  it.each(['2026-MN-2-regular','2026-NE-2-regular'])('adds campaign context without inventing versioned policy records in %s',id=>{
+    const markup=renderReaderCandidateSummary(election(id));
     expect(markup.match(/data-candidate-context=/g)).toHaveLength(2);
     expect(markup).not.toContain('候補者別の政策材料は未収録。');
     expect(markup).not.toContain('data-reader-policy-record');
@@ -137,6 +130,7 @@ describe('state candidate summaries use existing public materials',()=>{
     const current=election('2026-NE-2-regular'),markup=renderReaderCandidateSummary(current);
     const osborn=current.candidates.find(candidate=>candidate.candidateId==='cand-ne-dan-osborn')!;
     expect(card(markup,osborn.candidateId)).toContain(osborn.partyLabel);
+    expect(card(markup,osborn.candidateId)).toContain('無所属');
     expect(markup).toContain('Pete Ricketts');
     expect(markup).not.toContain('Mike Marvin');
     expect(markup).not.toContain('民主党会派');

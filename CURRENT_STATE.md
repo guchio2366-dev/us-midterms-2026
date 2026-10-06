@@ -1,6 +1,6 @@
 # 現在の実装・公開状況
 
-2026-10-06・支持率と候補者全文、PCニュース固定の改善候補（未公開）：PR #50を含む最新main `fa30638367cc1f0aa1d1a784b004c4b33e74757d` から新規ブランチ `feat/focus-polls-sticky-20261006` で作業。[Draft PR #51](https://github.com/guchio2366-dev/us-midterms-2026/pull/51)へ保存。調査の棒を細くし、共和党を左・民主党を右へ統一する。無所属は独自のラベルと色を保持する。提供された候補者原稿を通常表示の全文と段落別の出典で接続し、旧版の政策記録・未確認事項とは区別する。PCでは州のニュース見出し・切替を固定し、右本文のみをスクロールできる。本文16段落・議席配分・調査数値・保存互換性を維持。検証・画像・残課題は[今回の記録](docs/verification/focus-polls-sticky-20261006.md)。最終画面確認と公開判断は親と調整する。
+2026-10-06・支持率と候補者全文、PCニュース固定の改善候補（未公開）：PR #50を含む最新main `fa30638367cc1f0aa1d1a784b004c4b33e74757d` から新規ブランチ `feat/focus-polls-sticky-20261006` で作業。[Draft PR #51](https://github.com/guchio2366-dev/us-midterms-2026/pull/51)へ保存。調査の棒を細くし、共和党を左・民主党を右へ統一する。無所属は独自のラベルと色を保持する。全12州24候補の提供原稿83段落と比較補足1段落を通常表示の全文と段落別の出典で接続し、旧版の政策記録・未確認事項とは区別する。PCでは州のニュース見出し・切替を固定し、右本文のみをスクロールできる。1024px前後は左目次・右欄・余白を調整し、16pxの候補者2列を読みやすくする。本文16段落・議席配分・調査数値・保存互換性を維持。検証・画像・残課題は[今回の記録](docs/verification/focus-polls-sticky-20261006.md)。最終画面確認と公開判断は親と調整する。
 
 PR #50 の公開処理確認：レビュー済みhead `1e20652bee9ff6276a5cd7739412f6584ec82dcb`、mainマージ `fa30638367cc1f0aa1d1a784b004c4b33e74757d`。両コミットのtree `f4917f5a1adf2ee0025a25d9a0e39a6f8243b82d` が一致。[CI](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/37428540802) は421単体・36ブラウザ成功、[Pages](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/37432120607) は07:50:31 UTCに成功。Pages artifact `11397726014` のHTML/JS/CSSがレビュー済みビルドと一致。ただし本環境の公開URL取得はプロキシの `Tunnel connection failed: 403 Forbidden` で拒否され、公開URLの実表示確認は未完了。許可された通常経路以外での取得は行わない。
 

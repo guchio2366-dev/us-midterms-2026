@@ -137,7 +137,7 @@ export const policyAdditionPolicies: PolicySpec[] = [
   spec(p.upfrontPrices, 'healthcare', '受診前の実際の医療価格開示', 'Marshallの9月23日発表が説明する価格透明化。Patients Deserve Price Tags Actを進める全会一致同意を求めたが異議があった。', ['ten-ks-marshall-health'], [ev('marshall-upfront-prices')], 'described-design', '2026-09-23', ['法案全文・版・条項は未収録。手続の働きかけを可決・成立とは扱わない。'], ['ordinary-law', 'oversight']),
   spec(p.priceConsentRequest, 'healthcare', 'Patients Deserve Price Tags Actへの全会一致同意要求', '2026年9月23日にMarshallが同名法案を進める同意を求め、異議で進まなかったという特定の手続。', ['ten-ks-marshall-health'], [ev('marshall-upfront-prices')], 'historical-measure', '2026-09-23', ['法案全体の要求を個別条項への賛否に置き換えない。法案番号・全文・可決は未確認。'], ['ordinary-law']),
   spec(p.reciprocalTariffs, 'tariffs', '交渉手段としての相互関税', 'Marshallの2025年2月13日の支持声明が説明する相互関税。個別税率や後日の法令全体ではない。', ['ten-ks-marshall-tariffs'], ['ev-ten-ks-marshall-tariffs'], 'described-design', '2025-02-13', ['対象国・品目・税率、2026年の同一設計への立場は未確認。']),
-  spec(p.tariffApproval, 'tariffs', '新関税への議会承認を求める方針', 'Hamiltonの候補者方針にある、新しい関税への議会承認。既存関税の一括撤廃案とは区別。', ['ten-ks-hamilton-platform'], ['ev-ten-ks-hamilton-platform'], 'campaign-proposal', null, ['承認の時期・例外・法案番号は未確認。公開日・発言日不明。既存の9月30日照合を再利用。']),
+  spec(p.tariffApproval, 'tariffs', '新関税への議会承認を求める方針', 'Hamiltonの候補者方針にある、新しい関税への議会承認。既存関税の一括撤廃案とは区別。', ['ten-ks-hamilton-platform'], ['ev-ten-ks-hamilton-platform'], 'campaign-proposal', null, ['承認時期はこの9月30日版の確認時には未収録。10月6日に確認した発効前の承認方針は、候補者の全文説明と段落出典へ接続。例外・法案番号・公開日・発言日は未確認。']),
   spec(p.acaHamilton, 'healthcare', 'ACA保険料補助の復活', 'Hamiltonの候補者方針にあるACA保険料補助の復活。延長期間と具体法案は特定されていない。', ['ten-ks-hamilton-platform'], ['ev-ten-ks-hamilton-platform'], 'campaign-proposal', null, ['期間・所得条件・財源は未確認。公開日・発言日不明。']),
   spec(p.ruralHospitals, 'healthcare', '地方病院への支援', 'Hamiltonが候補者方針で掲げる地方病院支援。Medicaidの個別条項や他候補の透明化案とは別政策。', ['ten-ks-hamilton-platform'], ['ev-ten-ks-hamilton-platform'], 'campaign-proposal', null, ['支援額、対象施設、財源、法案は未確認。公開日・発言日不明。'], ['ordinary-law', 'oversight']),
 ];
@@ -200,7 +200,7 @@ export const policyAdditionRecords: CandidatePolicyRecord[] = [
     ['tariff-approval', p.tariffApproval, '新関税への議会承認を求める方針を掲げる。'],
     ['aca-restore', p.acaHamilton, 'ACA保険料補助の復活を掲げる。'],
     ['rural-hospitals', p.ruralHospitals, '地方病院への支援を掲げる。'],
-  ] as const).map(([key, r, text]) => position(`position-hamilton-${key}`, candidate.hamilton, election.ks, r, 'support', 'campaign-as-of', checked, [action(`action-hamilton-${key}-priority`, 'stated-priority', text, ['ten-ks-hamilton-platform'], ['ev-ten-ks-hamilton-platform'], null, 'Existing September 30 candidate-platform review; corresponding tariff or health section.')], [], ['公開日・発言日、具体法案は未確認。今回の取得失敗を新たな本文照合の成功とは扱わない。'])),
+  ] as const).map(([key, r, text]) => position(`position-hamilton-${key}`, candidate.hamilton, election.ks, r, 'support', 'campaign-as-of', checked, [action(`action-hamilton-${key}-priority`, 'stated-priority', text, ['ten-ks-hamilton-platform'], ['ev-ten-ks-hamilton-platform'], null, 'Existing September 30 candidate-platform review; corresponding tariff or health section.')], [], ['公開日・発言日、具体法案は未確認。取得失敗の留保は9月30日時点の再点検に関する過去の記録。10月6日の取得・本文再確認は候補者の全文説明と段落出典へ別途反映。'])),
 ];
 
 const context = (

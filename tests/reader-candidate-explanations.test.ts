@@ -19,13 +19,15 @@ const sourceById = new Map([...sources, ...readerCandidateExplanationSources].ma
 const evidenceById = new Map<string, EvidenceRef>([...evidenceRefs, ...policyPrototype.additionalEvidence, ...readerCandidateExplanationEvidence].map(evidence => [evidence.evidenceId, evidence]));
 
 describe('candidate explanations supplied after primary-source review', () => {
-  it('keeps the supplied candidate explanations complete without implying coverage for the remaining states', () => {
-    expect(readerCandidateExplanations).toHaveLength(14);
+  it('keeps all twelve supplied states and twenty-four candidate explanations complete', () => {
+    expect(readerCandidateExplanations).toHaveLength(24);
     expect(new Set(readerCandidateExplanations.map(item => item.electionId))).toEqual(new Set([
       maineId, '2026-AK-2-regular', '2026-NC-2-regular', '2026-MN-2-regular',
       '2026-MI-2-regular', '2026-IA-2-regular', '2026-OH-3-special',
+      '2026-NE-2-regular', '2026-NH-2-regular',
+      '2026-TX-2-regular', '2026-GA-2-regular', '2026-KS-2-regular',
     ]));
-    expect(readerCandidateExplanations.flatMap(item => item.sections.flatMap(section => section.paragraphs))).toHaveLength(49);
+    expect(readerCandidateExplanations.flatMap(item => item.sections.flatMap(section => section.paragraphs))).toHaveLength(83);
     for (const [electionId, count, expectedHash] of [
       ['2026-AK-2-regular', 8, '5268db9b7b02eaac31d0e26cd06dbd8f6956095f50f107e74986a5140dc6b629'],
       ['2026-NC-2-regular', 6, '5a4ca12b87f17fd9c74b303893cc9d39eebd6fce186a48620b30b1516cc392a3'],
@@ -33,6 +35,11 @@ describe('candidate explanations supplied after primary-source review', () => {
       ['2026-MI-2-regular', 7, '8c75e4b3da1e441ddf076fc963d578813e6b350d90403af95a5ad3c3e19f33bd'],
       ['2026-IA-2-regular', 8, '25c2fa8f7754d9707d786224c074a6a723a3188bbd37c614268a226bdbdbc04d'],
       ['2026-OH-3-special', 7, '9efacb66e7f985b853f614f09837f18bdc507de6e142b6652c8b8a945e251ab9'],
+      ['2026-NE-2-regular', 6, '758aad29362cf272ed4f16c35e9ead6622a262f9d76d6bddf1d420a95fb0a105'],
+      ['2026-NH-2-regular', 7, '44c787b8f492452bf4c2b7d95ab1bc6425bed1204f064c5ca7a860b5c96ad945'],
+      ['2026-TX-2-regular', 7, '671ad8de238ea750866b084b281f1693e3ffffab9be5187eef257a914011cf60'],
+      ['2026-GA-2-regular', 7, 'cb6cb3412bcc3e2439ee7256a12af2a982858599dc7b071efe38769b3bbe92ae'],
+      ['2026-KS-2-regular', 7, 'e7a8435f2146977eecd8e42618c40a293abf9dc841d291cc96540642cbafc534'],
     ] as const) {
       const paragraphs = readerCandidateExplanations.filter(item => item.electionId === electionId)
         .flatMap(item => item.sections.flatMap(section => section.paragraphs));
@@ -112,6 +119,18 @@ describe('candidate explanations supplied after primary-source review', () => {
     expect(sourceById.get('jackson-priorities-2026')!.referencePeriod).toContain('2026-09-11');
     expect(evidenceById.get('ev-jackson-priorities')!.note).toContain('退役軍人の具体策は今回未再確認');
     expect(candidateBriefs.find(item => item.candidateId === jacksonId)!.updatedAt).toBe('2026-09-11');
+  });
+
+  it('keeps shared House-source rechecks unique without changing the originals’ publication dates or policy records', () => {
+    for (const sourceId of ['policy-house-roll11', 'policy-hr1834-eh', 'policy-house-roll65', 'policy-hjres72-eh']) {
+      const base = sources.find(source => source.sourceId === sourceId)!;
+      const updated = readerCandidateExplanationSources.filter(source => source.sourceId === sourceId);
+      expect(updated, sourceId).toHaveLength(1);
+      expect(updated[0], sourceId).toMatchObject({ url: base.url, publishedAt: base.publishedAt, contentVerifiedAt: '2026-10-06' });
+    }
+    const sununu = policyPrototype.candidateRecords.find(record => record.recordId === 'position-sununu-hr1834-unconfirmed')!;
+    expect(sununu).toMatchObject({ stance: 'unknown', stancePeriod: 'unknown', stanceAsOf: null, stanceEvidenceIds: [] });
+    expect(policyPrototype.candidateRecords.filter(record => record.electionId === '2026-NE-2-regular')).toHaveLength(0);
   });
 
   it('does not turn Jackson’s current Medicare for All pledge into a different Medicaid or El-Sayed policy stance', () => {
