@@ -239,14 +239,14 @@
 .reader-experience #national-overview .reader-allocation-charts .provisional-totals{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:8px 0;padding:0;background:transparent}
 .reader-allocation-charts .provisional-totals>div{display:flex;align-items:baseline;justify-content:center;gap:6px;padding:6px 0}
 .reader-allocation-charts .provisional-totals span{font-size:.8125rem}
-.reader-allocation-charts .provisional-totals b{font-size:1.6rem;line-height:1.3}
+.reader-experience #national-overview .reader-allocation-charts .provisional-totals b{font-size:1.6rem;line-height:1.3}
 .reader-allocation-charts .senate-comparison{margin:10px 0 0;gap:10px}
 .reader-allocation-charts .comparison-row{display:block;padding:10px 0 0;border-top:1px solid #d6e0e5}
 .reader-allocation-charts .comparison-heading{display:flex;justify-content:space-between;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:0 0 7px}
 .reader-allocation-charts .comparison-heading h3{font-family:inherit;font-size:.875rem;margin:0}
 .reader-allocation-charts .comparison-heading>span{font-size:.75rem}
 .reader-allocation-charts .seat-composition{margin:0}
-.reader-allocation-charts .seat-composition-track{height:24px}
+.reader-experience #national-overview .reader-allocation-charts .seat-composition-track{height:24px}
 .reader-allocation-charts .seat-segment span{font-size:.8125rem}
 .reader-allocation-charts .seat-segment.tiny span{display:inline}
 .reader-allocation-charts .seat-composition-legend{display:none}
@@ -261,7 +261,7 @@
 .reader-national-map>.map-head>p{font-size:.875rem;line-height:1.7;margin:6px 0;max-width:none}
 .reader-experience .reader-map-workspace{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:0;align-items:start}
 .reader-map-workspace>.map-column{position:sticky;top:16px;grid-column:1;grid-row:1}
-.reader-map-workspace>.detail{grid-column:2;grid-row:1;height:auto;max-height:none;min-height:0;overflow:visible}
+.reader-map-workspace>.detail{grid-column:2;grid-row:1;height:auto;max-height:none;min-height:var(--map-column-height,0px);overflow:visible}
 .reader-map-workspace .state-detail-scroll{overflow:visible;max-height:none;scrollbar-gutter:auto}
 .reader-map-workspace .map svg{max-height:min(350px,42dvh)}
 .reader-map-workspace .section-intro{font-size:.875rem;margin:6px 0}
@@ -286,7 +286,7 @@
  .reader-allocation-charts{position:static;width:100%;max-width:520px;justify-self:center}
  .reader-experience .reader-map-workspace{grid-template-columns:minmax(0,1fr)}
  .reader-map-workspace>.map-column{position:static;grid-column:1;grid-row:1}
- .reader-map-workspace>.detail{grid-column:1;grid-row:2;height:auto;max-height:none;overflow:visible}
+ .reader-map-workspace>.detail{grid-column:1;grid-row:2;height:auto;max-height:none;min-height:0;overflow:visible}
  .reader-map-workspace .map svg{max-height:none}
  .reader-map-context{grid-template-columns:1fr}
  .reader-map-workspace .detail p,.reader-map-workspace .detail li,.reader-map-workspace .detail dd{font-size:1rem!important}

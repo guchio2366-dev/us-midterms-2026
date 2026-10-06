@@ -27,7 +27,7 @@ import { briefingEvidenceMarkup, briefingComparisonPollsMarkup, briefingHeadline
 import { briefingTakeawayMarkup, briefingLensMarkup } from './ui/briefing-lens';
 import { renderReaderCandidateSummary } from './ui/reader-candidate-summary';
 import { texasPollContextMarkup } from './ui/texas-poll-context';
-import { introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
+import { featuredAllocationSummary, introductionMarkup, nationalOverviewMarkup, ratingCategoryLabel } from './ui/overview';
 import { APP_VERSION,DATA_AS_OF,elections,events,profiles,seats,sources,states,vicePresident } from './data/data';
 import { issueCategories,powerRules } from './data/civics';
 import { powerTargets } from './data/power-targets';
@@ -284,7 +284,7 @@ function renderFocusLocator() {
 function focusUpdatesMarkup() {
   const active = focusElections.find(election => election.electionId === activeFocusElectionId) ?? focusElections[0];
   const leaningCount = focusElections.filter(election => ['D','R'].includes(ratingConsensusBySeat.get(election.seatId)?.category ?? '')).length;
-  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><h3>過半数の行方を左右する${focusElections.length}州</h3></div></div><details class="tossup-explainer"><summary>この${focusElections.length}州を取り上げる理由</summary><p>弱い優勢${ratingConsensusTotals.lean}州・接戦${ratingConsensusTotals.tossup}州・評価が分かれる${ratingConsensusTotals.split}州${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}州` : ''}${leaningCount ? `・優勢側のある${leaningCount}州` : ''}。両機関が同じ党方向で、どちらもLikely／Safe／Solidの場合だけ配分する。どちらかがLean／Tiltなら、方向が一致していても未配分にする。冒頭の未配分の州を中心に読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。資料の収録範囲は州ごとに異なり、最新ニュースや本選調査を一律に確認したものではない。</p></details><div class="focus-selector"><figure id="focus-locator" class="briefing-locator">${active ? focusLocatorContent(active) : ''}</figure><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
+  return `<article class="updates-card focus-card"><div class="focus-card-heading"><div><h3>過半数の行方を左右する${new Set(focusElections.map(election=>seatById.get(election.seatId)!.stateFips)).size}州</h3></div></div><details class="tossup-explainer"><summary>この${new Set(focusElections.map(election=>seatById.get(election.seatId)!.stateFips)).size}州を取り上げる理由</summary><p>弱い優勢${ratingConsensusTotals.lean}議席・接戦${ratingConsensusTotals.tossup}議席・評価が分かれる${ratingConsensusTotals.split}議席${ratingConsensusTotals.missing ? `・評価不足${ratingConsensusTotals.missing}議席` : ''}${leaningCount ? `・優勢側のある${leaningCount}議席` : ''}。両機関が同じ党方向で、どちらもLikely／Safe／Solidの場合だけ配分する。どちらかがLean／Tiltなら、方向が一致していても未配分にする。冒頭の未配分の州を中心に読む。接戦（Toss Up）は2機関とも優勢側を判断しにくい選挙、評価が分かれる州は機関間で方向が一致しない選挙。評価不足も未配分に含む。優勢側のある州も併せて追い、接戦州の結果と合わせて過半数への道筋を読む。優勢とされた州も当選確定ではない。資料の収録範囲は州ごとに異なり、最新ニュースや本選調査を一律に確認したものではない。</p></details><div class="focus-selector"><figure id="focus-locator" class="briefing-locator">${active ? focusLocatorContent(active) : ''}</figure><div class="focus-tabs" role="tablist" aria-label="過半数の行方を左右する州を切り替える">${focusElections.map(election => {
     const state = stateByFips.get(seatById.get(election.seatId)!.stateFips)!;
     const selected = election.electionId === active?.electionId;
     const classification = focusClassification(election);
@@ -358,7 +358,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <div class="map-head"><div><p class="kicker">SENATE MAP</p><h2 id="map-heading">2026年の上院選挙</h2></div><p id="mode-note">色は対象議席の現保有党。州全体の支持傾向や勝敗予測ではありません。</p></div>
       <p class="section-intro" data-section-intro="map">${escapeHtml(sectionIntroductions.map)}</p><div id="map" class="map" aria-label="米国50州地図"></div><div id="legend" class="legend"></div>
       <p class="map-note">州の面積は議席数を表しません。アラスカとハワイは投影上、位置・縮尺が調整されています。★は特別選挙です。</p>
-      <details class="map-reading-guide"><summary>地図とシミュレーションの読み方</summary><p>「選挙情勢」は評価機関の分類、「投票前の議席」は現職会派を示します。州を選ぶと候補者と根拠を確認でき、当選者・会派の選択は下の議席集計に仮定として反映されます。灰色は未配分で、Lean／Tilt・接戦・評価分裂を含みます。資料不足は別の灰色です。両機関が同じ党方向のLikely／Safe／Solidの場合だけ党派側へ配分し、配分した議席の濃淡にはSabatoの分類を使用します。色は当選確率ではありません。</p><p>サイトの編集日、地図の評価日、州別調査の実施期間・公表日は別の時点です。各表示に付いた日付と、末尾の<a href="#sources">出典・更新情報</a>を確認してください。</p></details>
+      <details class="map-reading-guide"><summary>地図とシミュレーションの読み方</summary><p>「選挙情勢」は評価機関の分類、「投票前の議席」は現職会派を示します。州を選ぶと候補者と根拠を確認でき、当選者・会派の選択は議席集計に仮定として反映されます。灰色は未配分で、Lean／Tilt・接戦・評価分裂を含みます。資料不足は別の灰色です。両機関が同じ党方向のLikely／Safe／Solidの場合だけ党派側へ配分し、配分した議席の濃淡にはSabatoの分類を使用します。色は当選確率ではありません。</p><p>サイトの編集日、地図の評価日、州別調査の実施期間・公表日は別の時点です。各表示に付いた日付と、末尾の<a href="#sources">出典・更新情報</a>を確認してください。</p></details>
     </div>
     <aside id="detail" class="detail" aria-live="polite"><div class="empty-detail"><span>STATE BRIEFING</span><h2>州を選択してください</h2><p>地図または検索から、選挙の有無を問わず全50州の情報へ移動できます。</p></div></aside>
   </section>
@@ -462,7 +462,10 @@ function enhanceLayout() {
   updates.id = 'updates';
   updates.className = 'updates section-block';
   updates.setAttribute('aria-labelledby','updates-heading');
-  updates.innerHTML = `<div class="section-heading"><div><p class="kicker">LATEST BRIEFING</p><h2 id="updates-heading">直近の更新</h2></div></div><div class="approved-updates-intro">${approvedIntroduction.updates(focusElections.length).map(text=>`<p>${escapeHtml(text)}</p>`).join('')}<p class="narrow-reading-order">縦に並ぶ画面では、投票調査と解釈 → 州の論点 → ニュース・予定の順に表示します。</p></div><div class="updates-grid"></div>`;
+  const featuredCoverage=featuredAllocationSummary();
+  const updatesIntroduction=approvedIntroduction.updates(featuredCoverage.stateCount).map((text,index)=>
+    index===0 && !featuredCoverage.corresponds ? text.replace('未配分とした州','未配分の選挙がある州など') : text);
+  updates.innerHTML = `<div class="section-heading"><div><p class="kicker">LATEST BRIEFING</p><h2 id="updates-heading">直近の更新</h2></div></div><div class="approved-updates-intro">${updatesIntroduction.map(text=>`<p>${escapeHtml(text)}</p>`).join('')}<p class="narrow-reading-order">縦に並ぶ画面では、投票調査と解釈 → 州の論点 → ニュース・予定の順に表示します。</p></div><div class="updates-grid"></div>`;
   const updatesGrid = updates.querySelector<HTMLElement>('.updates-grid')!;
   const focus = document.createElement('div');
   focus.innerHTML = focusUpdatesMarkup();
@@ -743,7 +746,7 @@ function setupWorkspaceHeightSync() {
   workspace.dataset.heightSync = 'true';
   const split = matchMedia('(min-width: 960px) and (orientation: landscape) and (min-height: 600px)');
   const sync = () => {
-    if (!split.matches || workspace.classList.contains('reader-map-workspace')) {
+    if (!split.matches) {
       workspace.style.removeProperty('--map-column-height');
       return;
     }

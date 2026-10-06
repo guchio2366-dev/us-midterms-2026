@@ -1,8 +1,13 @@
+import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 import {
   capture, captureElement, expectCurrentStage, expectNoClosedDisclosure, expectNoPageOverflow,
   goToStage, ready, seedOldScenario, settleScroll, storageSnapshot,
 } from './reader-helpers';
+
+const observation = JSON.parse(readFileSync(new URL('../../src/data/observation.json', import.meta.url), 'utf8')) as {
+  events: { eventId: string; publicationStatus: string; relevance: { electionId: string }[] }[];
+};
 
 test('the six reading topics stay in order while four navigation entries preserve their meaning', async ({ page }, testInfo) => {
   const { entries } = await seedOldScenario(page);
@@ -197,6 +202,12 @@ test('each featured state reaches its next evidence and upcoming feed in a singl
     await expect(page.locator('#news-heading')).toBeFocused();
     expect(new URL(page.url()).searchParams.get('newsRace')).toBe(id);
     expect(new URL(page.url()).searchParams.get('newsTab')).toBe('upcoming');
+    const recordedEvents = observation.events.filter(event => event.publicationStatus === 'published'
+      && event.relevance.some(relevance => relevance.electionId === id)).map(event => `event:${event.eventId}`);
+    const visibleEvents = await page.locator('#news-list [data-feed-key]').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-feed-key')!));
+    expect(visibleEvents.every(key => recordedEvents.includes(key))).toBe(true);
+    if (!recordedEvents.length) await expect(page.locator('#news-list .news-empty')).toHaveText('表示できる予定がありません。');
+    else expect(visibleEvents.length).toBeGreaterThan(0);
     await expectCurrentStage(page, 'reader-03');
     expect(await storageSnapshot(page)).toEqual(entries);
   }
