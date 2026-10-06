@@ -1577,14 +1577,21 @@ function updateScenario(mutator: (draft: ScenarioState) => void, options: {refre
   renderScenarioManager();
   renderStateCompare();
   if (options.refreshState && selected) selectState(selected,undefined,{focus:false,scroll:false,preserveReturn:true});
-  if (options.focusSelector) requestAnimationFrame(() => document.querySelector<HTMLElement>(options.focusSelector!)?.focus());
+  if (options.focusSelector) requestAnimationFrame(() => document.querySelector<HTMLElement>(options.focusSelector!)?.focus({preventScroll:true}));
 }
 
-function setSenateChoice(seatId: string, encoded: string) {
+function setSenateChoice(seatId: string, encoded: string, origin:HTMLSelectElement|HTMLButtonElement) {
   const election = elections.find(item => item.seatId === seatId);
   if (!election) return;
   // Only an explicit winner choice opens the editor; map/state reading never does.
   openReaderDestination(document.getElementById('simulator'));
+  // The same race can appear in the map detail, comparison and manual controls.
+  // Restore the originating control after rerender, never the first duplicate on the page.
+  const container=origin.closest<HTMLElement>('#state-compare, #seat-controls, #detail');
+  const control=origin instanceof HTMLButtonElement && origin.dataset.candidateChoice
+    ? `[data-candidate-choice="${origin.dataset.candidateChoice}"]`
+    : `[data-senate-choice="${seatId}"]`;
+  const focusSelector=container ? `#${container.id} ${control}` : control;
   const state = stateByFips.get(seatById.get(seatId)!.stateFips)!;
   const choiceText = encoded === 'baseline' ? '初期配分へ戻す'
     : encoded === 'unassigned' ? '未配分へ変更'
@@ -1601,7 +1608,7 @@ function setSenateChoice(seatId: string, encoded: string) {
       if (caucus in caucusLabel) draft.senate[seatId] = {kind:'caucus',electionId:election.electionId,caucus};
     }
     draft.unlockedSeatIds = draft.unlockedSeatIds.filter(id => id !== seatId);
-  },{refreshState:true,focusSelector:`[data-senate-choice="${seatId}"]`,changeLabel:`${state.nameJa}を${choiceText}`});
+  },{refreshState:true,focusSelector,changeLabel:`${state.nameJa}を${choiceText}`});
 }
 
 function currentScenarioChoiceValue(election: Election) {
@@ -1621,8 +1628,8 @@ function senateChoiceOptions(election: Election) {
 }
 
 function bindSenateChoiceControls(root: ParentNode = document) {
-  root.querySelectorAll<HTMLSelectElement>('[data-senate-choice]').forEach(element => element.onchange = () => setSenateChoice(element.dataset.senateChoice!,element.value));
-  root.querySelectorAll<HTMLButtonElement>('[data-candidate-choice]').forEach(button => button.onclick = () => setSenateChoice(button.dataset.seat!,`candidate:${button.dataset.candidateChoice}`));
+  root.querySelectorAll<HTMLSelectElement>('[data-senate-choice]').forEach(element => element.onchange = () => setSenateChoice(element.dataset.senateChoice!,element.value,element));
+  root.querySelectorAll<HTMLButtonElement>('[data-candidate-choice]').forEach(button => button.onclick = () => setSenateChoice(button.dataset.seat!,`candidate:${button.dataset.candidateChoice}`,button));
 }
 
 function scenarioCounts(state: ScenarioState) {
@@ -2513,10 +2520,18 @@ renderScenarioManager();
 renderStateCompare();
 renderScenarioNotices();
 setMapMode('rating');
+const windowLoaded=document.readyState==='complete' ? Promise.resolve() : new Promise<void>(resolve=>{
+  window.addEventListener('load',()=>resolve(),{once:true});
+});
+const initialGeometryReady=Promise.all([
+  initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; }),
+  initHouseMap().catch(() => { document.querySelector('#house-map')!.innerHTML = '<p class="error">同梱された下院選挙区データを読み込めませんでした。</p>'; }),
+  document.fonts?.ready ?? Promise.resolve(),windowLoaded,
+]);
 setupPageNavigation(fromHistory => {
   if(fromHistory) overlayHistory=[];
   openOverlay('issues',undefined,{recordHistory:!fromHistory});
-},closeOverlay);
+},closeOverlay,initialGeometryReady);
 window.addEventListener('popstate',()=>{
   const view=new URL(window.location.href).searchParams;
   newsTab=view.get('newsTab')==='upcoming' ? 'upcoming' : 'recent';
@@ -2540,8 +2555,6 @@ window.addEventListener('popstate',()=>{
   }
   else if(overlayKind==='news') closeOverlay();
 });
-initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; });
-initHouseMap().catch(() => { document.querySelector('#house-map')!.innerHTML = '<p class="error">同梱された下院選挙区データを読み込めませんでした。</p>'; });
 
 // Deep links carry only a reading position; initialization of the scenario above
 // continues to own saved baselines, pending shares and all seat choices.

@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 import {
-  expectCurrentStage, expectHeadingInView, expectNoClosedDisclosure, expectNoPageOverflow,
+  DRAFT_STORAGE_KEY, expectCurrentStage, expectHeadingInView, expectNoClosedDisclosure, expectNoPageOverflow,
   goToStage, ready, seedOldScenario, settleScroll, storageSnapshot,
 } from './reader-helpers';
 
@@ -105,6 +105,45 @@ test('explicitly comparing a non-election state reveals comparison and still sup
   await expect(simulation).toHaveAttribute('open', '');
   expect(await page.locator('#sim-result').textContent()).toBe(scenarioSummary);
   expect(await storageSnapshot(page)).toEqual(entries);
+  await expectNoPageOverflow(page);
+});
+
+test('repeated Texas comparison choices keep focus and scroll in the comparison card', async ({ page }) => {
+  const { state } = await seedOldScenario(page);
+  await goToStage(page, 'reader-04');
+  await page.locator('#state-search').selectOption('48');
+  await settleScroll(page);
+  await page.locator('#detail [data-compare-state="48"]').click();
+  await settleScroll(page);
+  const comparison = page.locator('#state-compare');
+  await expectNoClosedDisclosure(comparison);
+  const choice = comparison.locator('[data-senate-choice="TX-2"]');
+  const candidates = await choice.locator('option[value^="candidate:"]').evaluateAll(options =>
+    options.map(option => (option as HTMLOptionElement).value));
+  expect(candidates.length).toBeGreaterThanOrEqual(2);
+
+  for (const value of [candidates[0], candidates[1], candidates[0]]) {
+    await choice.scrollIntoViewIfNeeded();
+    await choice.focus();
+    await settleScroll(page);
+    const beforeScroll = await page.evaluate(() => window.scrollY);
+    await choice.selectOption(value);
+    await expect.poll(async () => JSON.parse((await storageSnapshot(page))[DRAFT_STORAGE_KEY]!).senate['TX-2'].candidateId)
+      .toBe(value.slice('candidate:'.length));
+    await settleScroll(page);
+    await expect(choice).toHaveValue(value);
+    await expect(choice).toBeFocused();
+    const afterScroll = await page.evaluate(() => window.scrollY);
+    // The duplicate control in state detail is thousands of pixels away. A
+    // rerender must restore the comparison control that the reader actually used.
+    expect(Math.abs(afterScroll - beforeScroll), `scroll moved from ${beforeScroll} to ${afterScroll}`)
+      .toBeLessThan(page.viewportSize()!.height / 2);
+  }
+  const draft = JSON.parse((await storageSnapshot(page))[DRAFT_STORAGE_KEY]!);
+  expect(draft.senate['OH-3']).toEqual(state.senate['OH-3']);
+  expect(draft.senateBaseline).toEqual(state.senateBaseline);
+  expect(draft.house).toEqual(state.house);
+  expect(draft.reasoning.privateNote).toBe(state.reasoning!.privateNote);
   await expectNoPageOverflow(page);
 });
 

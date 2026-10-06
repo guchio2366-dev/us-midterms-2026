@@ -92,11 +92,11 @@ export function bindDisclosurePreference(details: HTMLDetailsElement, key: strin
   });
 }
 
-export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void, closePanel: () => void) {
+export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void, closePanel: () => void, layoutReady?:Promise<unknown>) {
   let lastHash=location.hash;
   let scrollTimer:number|null=null;
   setActivePageNavigation(location.hash);
-  function visit(hash: string, fromHistory=false) {
+  function visit(hash: string, fromHistory=false, behavior?:ScrollBehavior, stillAllowed?:()=>boolean) {
     const issueTarget=hash==='#issues' ? document.getElementById('issues') : null;
     if (hash === '#issues' && !issueTarget?.closest('main')) { lastHash=hash; setActivePageNavigation(hash); openIssues(fromHistory); return; }
     const id = hash === '#senate' ? 'map-heading' : hash.slice(1);
@@ -115,10 +115,11 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
       : id === 'powers' ? document.querySelector<HTMLDetailsElement>('#power-disclosure') : null;
     if (disclosure) disclosure.open = true;
     requestAnimationFrame(() => {
+      if(stillAllowed && !stillAllowed()) return;
       const focus = disclosure?.querySelector<HTMLElement>(':scope > summary') ?? (/^H[1-6]$/.test(target.tagName) ? target : target.querySelector<HTMLElement>('h2') ?? target);
       if (focus.tagName !== 'SUMMARY') focus.tabIndex = -1;
       focus.focus({preventScroll:true});
-      scrollPageHeadingIntoView(focus,matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+      scrollPageHeadingIntoView(focus,behavior ?? (matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'));
     });
   }
   document.addEventListener('click',event => {
@@ -155,4 +156,25 @@ export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void,
   window.addEventListener('resize',afterScroll);
   if (!location.hash) updateReadingPosition();
   visit(location.hash,true);
+  if(layoutReady) {
+    const initialUrl=location.href;
+    const initialHash=location.hash;
+    const query=new URL(initialUrl).searchParams;
+    // Race and article links have a dedicated startup router with its own target.
+    if(!navigableHashes.has(initialHash) || query.has('race') || query.has('newsItem')) return;
+    let interacted=false;
+    const cancel=()=>{interacted=true;};
+    const events=['pointerdown','keydown','wheel','touchstart'] as const;
+    events.forEach(event=>window.addEventListener(event,cancel,{capture:true,passive:true}));
+    const cleanup=()=>events.forEach(event=>window.removeEventListener(event,cancel,true));
+    const stillAllowed=()=>!interacted && location.href===initialUrl;
+    // Fonts, map geometry and native reload restoration can all move the first target.
+    // Correct that one initial position only; never pull an active reader back.
+    void layoutReady.then(()=>{
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        if(stillAllowed()) visit(initialHash,true,'auto',stillAllowed);
+        requestAnimationFrame(cleanup);
+      }));
+    },cleanup);
+  }
 }
