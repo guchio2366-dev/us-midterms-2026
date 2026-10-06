@@ -2255,7 +2255,8 @@ function electionLabelForSeat(seatId: string) {
   return elections.filter(election => election.seatId === seatId).map(election => election.type === 'special' ? '特別' : '通常').join('・');
 }
 function renderSim() {
-  const activeSeatId = (document.activeElement as HTMLElement | null)?.dataset.senateChoice;
+  const activeControl=document.activeElement as HTMLElement|null;
+  const activeSeatId=activeControl?.closest('#seat-controls') ? activeControl.dataset.senateChoice : undefined;
   const counts = scenarioCounts(scenarioState);
   const explicit = Object.entries(scenarioState.senate);
   const unresolved = counts.none + counts.unconfirmed + counts.vacant + counts.unassigned;
@@ -2286,7 +2287,7 @@ function renderSim() {
     selectState(state,button);
     scrollStateDetailIntoView({behavior:'instant',block:'start'});
   }));
-  if (activeSeatId) document.querySelector<HTMLElement>(`#seat-controls [data-senate-choice="${activeSeatId}"]`)?.focus();
+  if (activeSeatId) document.querySelector<HTMLElement>(`#seat-controls [data-senate-choice="${activeSeatId}"]`)?.focus({preventScroll:true});
 }
 
 function renderIssueDetail() {

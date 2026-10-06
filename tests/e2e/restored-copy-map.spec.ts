@@ -122,22 +122,34 @@ test('repeated Texas comparison choices keep focus and scroll in the comparison 
     options.map(option => (option as HTMLOptionElement).value));
   expect(candidates.length).toBeGreaterThanOrEqual(2);
 
-  for (const value of [candidates[0], candidates[1], candidates[0]]) {
-    await choice.scrollIntoViewIfNeeded();
-    await choice.focus();
-    await settleScroll(page);
-    const beforeScroll = await page.evaluate(() => window.scrollY);
-    await choice.selectOption(value);
-    await expect.poll(async () => JSON.parse((await storageSnapshot(page))[DRAFT_STORAGE_KEY]!).senate['TX-2'].candidateId)
-      .toBe(value.slice('candidate:'.length));
-    await settleScroll(page);
-    await expect(choice).toHaveValue(value);
-    await expect(choice).toBeFocused();
-    const afterScroll = await page.evaluate(() => window.scrollY);
-    // The duplicate control in state detail is thousands of pixels away. A
-    // rerender must restore the comparison control that the reader actually used.
-    expect(Math.abs(afterScroll - beforeScroll), `scroll moved from ${beforeScroll} to ${afterScroll}`)
-      .toBeLessThan(page.viewportSize()!.height / 2);
+  const manualDisclosure = page.locator('#seat-controls').locator('xpath=ancestor::details[1]');
+  await expect(manualDisclosure).not.toHaveAttribute('open', '');
+  for (const manualOpen of [false, true]) {
+    await test.step(`Comparison changes with manual all-seat controls ${manualOpen ? 'open' : 'closed'}`, async () => {
+      if (manualOpen) {
+        await manualDisclosure.locator(':scope > summary').click();
+        await expect(manualDisclosure).toHaveAttribute('open', '');
+        await expect(page.locator('#seat-controls [data-senate-choice="TX-2"]')).toBeVisible();
+      }
+      const selections = manualOpen ? [candidates[1], candidates[0], candidates[1]] : [candidates[0], candidates[1], candidates[0]];
+      for (const value of selections) {
+        await choice.scrollIntoViewIfNeeded();
+        await choice.focus();
+        await settleScroll(page);
+        const beforeScroll = await page.evaluate(() => window.scrollY);
+        await choice.selectOption(value);
+        await expect.poll(async () => JSON.parse((await storageSnapshot(page))[DRAFT_STORAGE_KEY]!).senate['TX-2']?.candidateId)
+          .toBe(value.slice('candidate:'.length));
+        await settleScroll(page);
+        await expect(choice).toHaveValue(value);
+        await expect(choice).toBeFocused();
+        const afterScroll = await page.evaluate(() => window.scrollY);
+        // Duplicates exist in both state detail and optional manual controls. A
+        // rerender must retain the comparison control that was actually used.
+        expect(Math.abs(afterScroll - beforeScroll), `scroll moved from ${beforeScroll} to ${afterScroll}`)
+          .toBeLessThan(page.viewportSize()!.height / 2);
+      }
+    });
   }
   const draft = JSON.parse((await storageSnapshot(page))[DRAFT_STORAGE_KEY]!);
   expect(draft.senate['OH-3']).toEqual(state.senate['OH-3']);
