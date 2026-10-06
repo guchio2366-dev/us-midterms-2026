@@ -12,8 +12,8 @@ import { newsItems } from '../src/data/news';
 import { ratingSnapshotObservations } from '../src/data/rating-snapshot';
 import { aggregateRatingConsensus } from '../src/rating-consensus';
 import { buildRecentFeed, buildUpcomingFeed, filterFeed } from '../src/news-feed';
-import { briefingElections, locatorMapMarkup } from '../src/ui/briefing';
-import { observationBriefingMarkup, observationBriefingParts, observationComparisonMarkup } from '../src/ui/observation';
+import { briefingElections, featuredAllocationCoverage, locatorMapMarkup } from '../src/ui/briefing';
+import { observationBriefingMarkup, observationBriefingParts, observationComparisonMarkup, observationBriefingNextMarkup } from '../src/ui/observation';
 import { introductionMarkup, nationalOverviewMarkup } from '../src/ui/overview';
 import approvedCopy from '../src/data/approved-reader-copy.json';
 
@@ -71,6 +71,43 @@ describe('state briefing', () => {
     expect(expanded.some(e=>e.seatId==='GA-2')).toBe(true);
   });
 
+  it('verifies that the current twelve featured states correspond to the twelve unallocated seats', () => {
+    const coverage=featuredAllocationCoverage(focus,seats,consensus);
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:12,matched:12,corresponds:true});
+    expect(coverage.description).toContain('12州は、現在の暫定配分で未配分となっている12議席に対応');
+    expect([...new Set(focus.map(e=>e.seatId))].sort()).toEqual(consensus
+      .filter(item=>['lean','tossup','split','missing'].includes(item.category)).map(item=>item.seatId).sort());
+  });
+
+  it('does not claim exact correspondence when an editorially retained state becomes allocated', () => {
+    const changed=consensus.map(item=>item.seatId==='IA-2'?{...item,category:'D' as const}:item);
+    const retained=briefingElections(elections,seats,states,changed);
+    expect(retained.some(e=>e.seatId==='IA-2')).toBe(true);
+    const coverage=featuredAllocationCoverage(retained,seats,changed);
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:11,matched:11,corresponds:false});
+    expect(coverage.description).toContain('12州には、現在の未配分11議席のうち11議席');
+    expect(coverage.description).not.toContain('議席に対応します');
+  });
+
+  it('compares seat identities even when the featured and unallocated counts happen to match', () => {
+    const mismatched=[...focus.filter(e=>e.seatId!=='TX-2'),elections.find(e=>e.seatId==='AL-2')!];
+    const coverage=featuredAllocationCoverage(mismatched,seats,consensus);
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:12,matched:11,corresponds:false});
+    expect(coverage.description).toContain('未配分12議席のうち11議席');
+  });
+
+  it('counts a future second contest in the same state as a seat without inventing an extra state', () => {
+    const alaska=focus.find(e=>e.seatId==='AK-2')!;
+    const alaskaSeat=seats.find(seat=>seat.seatId==='AK-2')!;
+    const alaskaRating=consensus.find(item=>item.seatId==='AK-2')!;
+    const additional={...alaska,electionId:'2026-AK-3-special',seatId:'AK-3'};
+    const expandedSeats=[...seats,{...alaskaSeat,seatId:'AK-3'}];
+    const expandedConsensus=[...consensus,{...alaskaRating,seatId:'AK-3'}];
+    const coverage=featuredAllocationCoverage([...focus,additional,additional],expandedSeats,expandedConsensus);
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:13,matched:13,corresponds:true});
+    expect(coverage.description).toContain('12州は、現在の暫定配分で未配分となっている13議席に対応');
+  });
+
   it('highlights exactly the selected state using the shared 50-state geometry', () => {
     const topo=topology as unknown as Topology;
     const collection=feature(topo,topo.objects.states) as unknown as FeatureCollection;
@@ -111,6 +148,25 @@ describe('state briefing', () => {
       for(const feed of [recent,upcoming]) expect(filterFeed(feed,e.electionId).every(i=>i.relatedElectionIds.includes(e.electionId))).toBe(true);
     }
     expect(filterFeed(recent,null)).toEqual(recent);
+  });
+
+  it('exposes every recorded watch-point title with one disclosure and does not turn undated checks into events',()=>{
+    for(const race of observationData.races.filter(race=>race.status==='published')) {
+      const html=observationBriefingNextMarkup(race.electionId,'次の観測データ',race);
+      expect(html).toContain(`id="briefing-next-${race.electionId}"`);
+      expect(html).toContain('<h4>次の確認材料</h4>');
+      expect(html).toContain('<h5>見通しを変え得る材料</h5>');
+      expect(html).toContain('公表日が決まった予定とは分けて');
+      for(const item of race.watchItems) {
+        expect(html).toContain(`<summary>${item.title}</summary>`);
+        expect(html).toContain(item.what);
+        expect(html).toContain(item.how);
+      }
+      expect((html.match(/<details>/g)??[]).length).toBe(race.watchItems.length);
+    }
+    const missing=observationBriefingNextMarkup('missing',undefined,undefined);
+    expect(missing).toContain('具体的な材料は未収録です');
+    expect(missing).not.toContain('<details>');
   });
 
   it('retains the institutional entry point and explains why to read the states', () => {

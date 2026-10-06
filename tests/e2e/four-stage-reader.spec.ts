@@ -13,6 +13,7 @@ test('captures the opening and all four stages in the real browser', async ({ pa
   for (const stage of stages) {
     await goToStage(page, stage.id);
     await capture(page, testInfo, `${stage.number}-${stage.capture}`);
+    if (stage.id === 'reader-01') await captureElement(page, testInfo, '01-mechanisms-complete', page.locator('#overview'));
   }
   await goToStage(page, 'reader-03');
   await page.locator('.reader-full-map-link a[href="#map-heading"]').click();
@@ -70,6 +71,58 @@ test('four-stage navigation, current position and history preserve the saved dra
   expect(await storageSnapshot(page)).toEqual(entries);
 });
 
+test('direct legacy links and vertical reading reveal the whole current navigation item without changing page scroll or focus', async ({ page }) => {
+  const expectWholeCurrentItem = async () => {
+    const current = page.locator('main > .reader-navigation a[aria-current="location"]');
+    const geometry = await current.evaluate(link => {
+      const item = link.getBoundingClientRect();
+      const nav = link.parentElement!.getBoundingClientRect();
+      return { left: item.left, right: item.right, navLeft: nav.left, navRight: nav.right };
+    });
+    expect(geometry.left).toBeGreaterThanOrEqual(geometry.navLeft - 1);
+    expect(geometry.right).toBeLessThanOrEqual(geometry.navRight + 1);
+  };
+  for (const hash of ['#map-heading', '#senate', '#detail']) {
+    await page.goto(`./${hash}`);
+    await ready(page);
+    await expectCurrentStage(page, 'reader-03');
+    await expectWholeCurrentItem();
+    await page.reload();
+    await ready(page);
+    await expectCurrentStage(page, 'reader-03');
+    await expectWholeCurrentItem();
+  }
+
+  await goToStage(page, 'reader-01');
+  const unchangedStorage = await storageSnapshot(page);
+  const scroll = await page.locator('#reader-03-heading').evaluate(heading => {
+    const nav = document.querySelector('main > .reader-navigation')!;
+    const clearance = getComputedStyle(nav).position === 'sticky' ? nav.getBoundingClientRect().height + 8 : 16;
+    window.scrollTo({ top: scrollY + heading.getBoundingClientRect().top - clearance, behavior: 'instant' });
+    return { y: scrollY, focusId: document.activeElement?.id };
+  });
+  await settleScroll(page);
+  await expectCurrentStage(page, 'reader-03');
+  await expectWholeCurrentItem();
+  expect(await page.evaluate(() => scrollY)).toBeCloseTo(scroll.y, 0);
+  expect(await page.evaluate(() => document.activeElement?.id)).toBe(scroll.focusId);
+
+  // Force the horizontal rail back to its start, then let the normal read-position
+  // observer expose the current item. It must never use vertical scrollIntoView.
+  const stationary = await page.locator('main > .reader-navigation').evaluate(nav => {
+    nav.scrollLeft = 0;
+    const before = { y: scrollY, focusId: document.activeElement?.id };
+    window.dispatchEvent(new Event('scroll'));
+    return before;
+  });
+  await settleScroll(page);
+  await expectWholeCurrentItem();
+  expect(await page.evaluate(() => scrollY)).toBeCloseTo(stationary.y, 0);
+  expect(await page.evaluate(() => document.activeElement?.id)).toBe(stationary.focusId);
+  expect(await storageSnapshot(page)).toEqual(unchangedStorage);
+  await expectNoPageOverflow(page);
+});
+
 test('legacy section and numbered-heading links reveal their semantic content', async ({ page }) => {
   const { entries } = await seedOldScenario(page);
   const destinations = [
@@ -80,9 +133,9 @@ test('legacy section and numbered-heading links reveal their semantic content', 
     { id: 'policy-workbench', stage: 'reader-03', disclosure: 'reader-05' },
     { id: 'powers', stage: 'reader-04', disclosure: 'power-disclosure' },
     { id: 'scenario-manager', stage: 'reader-04', disclosure: 'reader-simulation-disclosure' },
-    { id: 'map-heading', stage: 'reader-04', disclosure: null },
-    { id: 'senate', target: 'map-heading', stage: 'reader-04', disclosure: null },
-    { id: 'detail', stage: 'reader-04', disclosure: null },
+    { id: 'map-heading', stage: 'reader-03', disclosure: null },
+    { id: 'senate', target: 'map-heading', stage: 'reader-03', disclosure: null },
+    { id: 'detail', stage: 'reader-03', disclosure: null },
     { id: 'sources', stage: 'reader-06', disclosure: null },
   ];
   for (const destination of destinations) {

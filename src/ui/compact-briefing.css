@@ -201,3 +201,53 @@
   #updates .news-section { padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--rule); }
   #updates .briefing-takeaway { break-inside: avoid; }
 }
+
+/* State identity and the latest recorded polls can be read together. */
+#updates .focus-summary-heading { display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 2fr); align-items: start; gap: 16px; }
+#updates .focus-summary-heading .focus-state-heading { min-width: 0; padding-top: 4px; }
+#updates .focus-state-title { align-items: flex-start; }
+#updates .focus-rating-note { color: #59666e; font-size: .8125rem; line-height: 1.55; }
+#updates .briefing-headline-polls { min-width: 0; }
+#updates .briefing-headline-polls > h4 { margin: 0 0 8px; font-size: .875rem; }
+#updates .briefing-headline-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+#updates .briefing-poll-compact { min-width: 0; padding: 10px; border: 1px solid #d8dedb; border-radius: 4px; background: #fafbf9; }
+#updates .briefing-compact-pollster { display: block; font-size: .8125rem; line-height: 1.5; }
+#updates .briefing-poll-compact .briefing-poll-track { height: 16px; margin: 8px 0; }
+#updates .briefing-poll-compact .briefing-poll-labels { display: block; }
+#updates .briefing-poll-compact .briefing-poll-labels li { display: grid; grid-template-columns: 9px minmax(0, 1fr) auto; gap: 5px; align-items: baseline; margin: 3px 0; font-size: .8125rem; }
+#updates .briefing-poll-compact .briefing-poll-labels i { align-self: center; }
+#updates .briefing-poll-compact .briefing-poll-labels b { white-space: nowrap; font-variant-numeric: tabular-nums; }
+#updates .briefing-compact-note, #updates .briefing-headline-note { margin: 6px 0 0; color: #52616a; font-size: .8125rem; line-height: 1.55; }
+#updates .briefing-headline-empty p { margin: 0; font-size: .875rem; }
+#updates .briefing-next-nav { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 10px 0; border-block: 1px solid var(--rule); }
+#updates .briefing-next-nav :is(button, a) { display: inline-flex; align-items: center; min-height: 44px; padding: 7px 10px; border: 1px solid #a6b9c2; border-radius: 4px; background: #f4f8fa; color: #174f9e; font: inherit; font-size: .875rem; line-height: 1.5; text-decoration: none; cursor: pointer; }
+#updates .briefing-poll-details { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--rule); }
+#updates .briefing-poll-details > h4 { margin-bottom: 14px; }
+#updates .briefing-next-materials { margin-top: 18px; padding: 14px; border: 1px solid #cedbdc; border-radius: 4px; background: #f5f8f7; scroll-margin-top: 100px; }
+#updates .briefing-next-materials > h5 { margin: 16px 0 8px; color: var(--navy); font-size: .9375rem; }
+#updates .briefing-next-materials .briefing-next-note { color: #58666c; font-size: .8125rem; }
+#updates .briefing-next-materials details { margin-top: 8px; border-top: 1px solid #d5dfdf; }
+#updates .briefing-next-materials summary { min-height: 44px; padding: 8px 0; color: #174f9e; font-size: .9375rem; line-height: 1.6; cursor: pointer; }
+#updates .briefing-next-materials ul { padding-left: 20px; }
+#updates .briefing-next-materials li { margin: 8px 0; font-size: .9375rem; line-height: 1.6; }
+
+/* A party is stated in Japanese as well as carried by its color. */
+#updates .reader-candidate-card[data-reader-party="D"] { border-top: 4px solid #2766a3; }
+#updates .reader-candidate-card[data-reader-party="R"] { border-top: 4px solid #b84249; }
+#updates .reader-candidate-card[data-reader-party="I"] { border-top: 4px solid #765696; }
+#updates .reader-candidate-card .reader-candidate-party { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: .875rem; font-weight: 700; }
+#updates [data-reader-party="D"] .reader-candidate-party { color: #174e86; background: #e9f2fc; }
+#updates [data-reader-party="R"] .reader-candidate-party { color: #942b36; background: #fff0f1; }
+#updates [data-reader-party="I"] .reader-candidate-party { color: #61437e; background: #f1ecf8; }
+
+@container briefing (max-width: 42rem) {
+  #updates .focus-summary-heading { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  #updates .focus-summary-heading { grid-template-columns: minmax(0, 1fr); }
+  #updates .briefing-next-nav { align-items: stretch; }
+  #updates .briefing-next-nav :is(button, a) { flex: 1 1 15rem; }
+}
+@media (max-width: 480px) {
+  #updates .briefing-headline-grid { grid-template-columns: minmax(0, 1fr); }
+}

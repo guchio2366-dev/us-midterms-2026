@@ -6,8 +6,8 @@ export const DRAFT_STORAGE_KEY = 'us-midterms-2026:scenario-draft:v2';
 export const SAVED_STORAGE_KEY = 'us-midterms-2026:scenarios:v2';
 export const stages = [
   { id: 'reader-01', number: '01', label: '中間選挙の仕組み', capture: 'mechanisms' },
-  { id: 'reader-04', number: '02', label: '議会の議席配分', capture: 'seats' },
-  { id: 'reader-03', number: '03', label: '各州の情勢と候補者', capture: 'states' },
+  { id: 'reader-04', number: '02', label: '上院の情勢と51議席への配分', capture: 'seats' },
+  { id: 'reader-03', number: '03', label: '注目12州の情勢と候補者', capture: 'states' },
   { id: 'reader-06', number: '04', label: '今後の見通し', capture: 'outlook' },
 ] as const;
 

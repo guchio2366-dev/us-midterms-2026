@@ -17,13 +17,13 @@ export function briefingTakeawayMarkup(electionId: string): string {
   </section>`;
 }
 
-export function briefingLensMarkup(electionId: string): string {
+export function briefingLensMarkup(electionId: string, options: { includeNextData?: boolean } = {}): string {
   const lens = briefingLenses.find(item => item.electionId === electionId);
   if (!lens) return '';
   return `<section class="briefing-lens" aria-label="勝敗を読む視点">
     <div class="briefing-lens-heading"><b>論点の解説</b><span>${esc(briefingAxes[lens.axis].label)}</span></div>
     <p>${esc(lens.evidence)}</p>
-    <div class="briefing-lens-next"><b>次に確認するデータ</b><p>${esc(lens.nextData)}</p></div>
+    ${options.includeNextData === false ? '' : `<div class="briefing-lens-next"><b>次に確認するデータ</b><p>${esc(lens.nextData)}</p></div>`}
     <details><summary>詳しい読み方・出典</summary>
       <p><b>${esc(lens.question)}</b>${esc(lens.detail)}</p>
       <p class="briefing-lens-limit">${esc(lens.limitation)}</p>

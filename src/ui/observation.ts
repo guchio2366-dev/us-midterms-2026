@@ -26,12 +26,13 @@ export function observationLeadMarkup(race:RaceObservation) {
 
 const candidateNameKey=(value:string|null)=>(value ?? '').toLowerCase().replace(/\b(jr|sr|ii|iii|iv)\b\.?/g,'').split(/[^a-z]+/).filter(token=>token.length>1).join('-');
 const comparisonCandidatesFor=(race:RaceObservation,candidates:Candidate[])=>[...new Set(race.comparison.flatMap(row=>row.cells.map(cell=>cell.candidateId)))].map(id=>candidates.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>Boolean(candidate));
+const candidatePartyLabel=(candidate:Candidate)=>candidate.party==='D' && !candidate.partyLabel.includes('民主党') ? `${candidate.partyLabel}（民主党）` : candidate.party==='R' && !candidate.partyLabel.includes('共和党') ? `${candidate.partyLabel}（共和党）` : candidate.partyLabel;
 
 export function observationCandidateIntroMarkup(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
   const comparisonCandidates=comparisonCandidatesFor(race,candidates);
   if (!comparisonCandidates.length) return '';
   const seatId = race.electionId.split('-').slice(1,3).join('-');
-  return `${candidateRosterNoteMarkup(seatId)}<section class="observation-candidate-intro" aria-label="主要候補"><span>主要候補</span><div>${comparisonCandidates.map(candidate=>`<article><i class="party-dot party-${esc(candidate.party)}" aria-hidden="true"></i><p><b>${esc(candidate.name)}</b><small>${esc(candidate.partyLabel)}${candidateNameKey(candidate.name)===candidateNameKey(incumbent) ? '・現職' : ''}</small></p></article>`).join('')}</div></section>`;
+  return `${candidateRosterNoteMarkup(seatId)}<section class="observation-candidate-intro" aria-label="主要候補"><span>主要候補</span><div>${comparisonCandidates.map(candidate=>`<article data-candidate-party="${esc(candidate.party)}"><i class="party-dot party-${esc(candidate.party)}" aria-hidden="true"></i><p><b>${esc(candidate.name)}</b><small>${esc(candidatePartyLabel(candidate))}${candidateNameKey(candidate.name)===candidateNameKey(incumbent) ? '・現職' : ''}</small></p></article>`).join('')}</div></section>`;
 }
 
 export function observationDecisionMarkup(race:RaceObservation) {
@@ -43,7 +44,7 @@ export function observationComparisonMarkup(race:RaceObservation,candidates:Cand
   const comparisonCandidates=comparisonCandidatesFor(race,candidates);
   const rowMarkup=(row:RaceObservation['comparison'][number])=>`<section class="observation-comparison-item"><h5>${esc(row.label)}</h5><div class="observation-comparison-row">${comparisonCandidates.map(candidate=>{
     const cell=row.cells.find(item=>item.candidateId===candidate.candidateId);
-    return `<article aria-label="${esc(candidate.name)}・${esc(row.label)}">${cell ? `<span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${evidenceMarkup(cell.evidenceIds)}` : '<span class="observation-kind">未確認</span><p>この項目は確認できる資料を追加中。</p>'}</article>`;
+    return `<article aria-label="${esc(candidate.name)}・${esc(row.label)}" data-candidate-party="${esc(candidate.party)}"><p class="observation-cell-candidate"><b>${esc(candidate.name)}</b><span>${esc(candidatePartyLabel(candidate))}</span></p>${cell ? `<span class="observation-kind">${labels[cell.kind]}</span><p>${esc(cell.text)}</p>${evidenceMarkup(cell.evidenceIds)}` : '<span class="observation-kind">未確認</span><p>この項目は確認できる資料を追加中。</p>'}</article>`;
   }).join('')}</div></section>`;
   const primary=race.comparison.slice(0,3);
   const supplementary=race.comparison.slice(3);
@@ -59,14 +60,19 @@ export function observationBriefingParts(race:RaceObservation,candidates:Candida
       <p class="observation-uncertainty"><b>まだ分からないこと</b>${esc(race.uncertainty)}</p>${evidenceMarkup(race.evidenceIds)}
       <section class="observation-materials"><h4>判断材料を詳しく読む</h4>${race.materials.map(m=>`<article><h5>${esc(m.title)}</h5><p>${esc(m.fact)}</p><p><b>分析</b> ${esc(m.meaning)}</p><p class="observation-limit">${esc(m.limit)}</p>${evidenceMarkup(m.evidenceIds)}</article>`).join('')}</section>
       ${observationComparisonMarkup(race,candidates,'briefing',true)}
-      <section class="briefing-watch"><h4>次に確認したい点</h4>${race.watchItems.map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}</section>
     </div></details>`;
   return {candidates:candidateIntro,lead,details};
 }
 
+/** The dates feed and undated watch points remain distinct, with one disclosure at most. */
+export function observationBriefingNextMarkup(electionId:string,nextData:string|undefined,race:RaceObservation|undefined,updateConditions:string[]=[]):string {
+  const conditions = race?.watchItems ?? [];
+  return `<section class="briefing-next-materials" id="briefing-next-${esc(electionId)}" tabindex="-1" aria-label="次の確認材料"><h4>次の確認材料</h4><p>${esc(nextData ?? (conditions.length || updateConditions.length ? '収録した確認材料を以下に示します。' : 'この州の次の確認材料は、まだ収録していません。'))}</p><h5>見通しを変え得る材料</h5>${conditions.length ? `<p class="briefing-next-note">公表日が決まった予定とは分けて、何を確かめるかを示します。</p>${conditions.map(w=>`<details><summary>${esc(w.title)}</summary><p>${esc(w.what)}</p><p>${esc(w.how)}</p></details>`).join('')}` : updateConditions.length ? `<ul>${updateConditions.map(condition=>`<li>${esc(condition)}</li>`).join('')}</ul>` : '<p>具体的な材料は未収録です。新しい資料を確認したら追加します。</p>'}</section>`;
+}
+
 export function observationBriefingMarkup(race:RaceObservation,candidates:Candidate[],incumbent:string|null) {
   const parts = observationBriefingParts(race,candidates,incumbent);
-  return parts.candidates + parts.lead + parts.details;
+  return parts.candidates + parts.lead + parts.details + observationBriefingNextMarkup(race.electionId,undefined,race);
 }
 
 export function observationUpdateMarkup(update:ObservationUpdate,electionId:string) {

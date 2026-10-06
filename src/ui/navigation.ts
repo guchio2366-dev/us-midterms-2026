@@ -8,7 +8,7 @@ const readerAliases: Record<string,string> = {
   '#overview':'#reader-01', '#national-overview':'#reader-04', '#issues':'#reader-03',
   '#reader-02':'#reader-03', '#reader-05':'#reader-03',
   '#updates':'#reader-03', '#news':'#reader-03', '#policy-workbench':'#reader-03',
-  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-04', '#senate':'#reader-04', '#detail':'#reader-04',
+  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-03', '#senate':'#reader-03', '#detail':'#reader-03',
   '#scenario-manager':'#reader-04', '#sources':'#reader-06',
 };
 
@@ -52,6 +52,17 @@ export function setActivePageNavigation(hash:string) {
     if(link.getAttribute('href')===route)link.setAttribute('aria-current','location');
     else link.removeAttribute('aria-current');
   });
+  // On a narrow screen the rail becomes a horizontal strip. Direct legacy links
+  // and ordinary page reading must reveal the current item too, without moving
+  // the page vertically or focusing a navigation link.
+  const current=links.find(link=>link.getAttribute('href')===route);
+  const nav=current?.parentElement;
+  if(current && nav && getComputedStyle(nav).position==='sticky') {
+    const item=current.getBoundingClientRect();
+    const viewport=nav.getBoundingClientRect();
+    if(item.left<viewport.left) nav.scrollLeft+=item.left-viewport.left;
+    else if(item.right>viewport.right) nav.scrollLeft+=item.right-viewport.right;
+  }
 }
 
 /** Disclosure preferences are written only by a user's summary activation. */

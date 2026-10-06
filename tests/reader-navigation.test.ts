@@ -10,6 +10,9 @@ class ReadingNode {
   tabIndex=-1;
   top=0;
   height=60;
+  left=0;
+  width=180;
+  scrollLeft=0;
   style={scrollMarginTop:''};
   css={position:'static',top:'0px'};
   focus=vi.fn();
@@ -21,7 +24,7 @@ class ReadingNode {
   setAttribute(name:string,value:string) {this.attributes.set(name,value);}
   removeAttribute(name:string) {this.attributes.delete(name);}
   hasAttribute(name:string) {return this.attributes.has(name);}
-  getBoundingClientRect() {return {top:this.top,height:this.height};}
+  getBoundingClientRect() {return {top:this.top,height:this.height,left:this.left,right:this.left+this.width,width:this.width};}
   matches(selector:string) {return selector==='main > .jump-nav' && this.tagName==='NAV' && this.parentElement?.tagName==='MAIN';}
   closest(selector:string):ReadingNode|null {
     for(let node:ReadingNode|null=this;node;node=node.parentElement) {
@@ -86,7 +89,7 @@ afterEach(()=>{vi.clearAllTimers();vi.useRealTimers();vi.unstubAllGlobals();});
 describe('four-stage reading navigation',()=>{
   it.each([
     ['#overview',0],['#national-overview',1],['#issues',2],['#updates',2],['#news',2],
-    ['#policy-workbench',2],['#powers',1],['#simulator',1],['#map-heading',1],['#senate',1],['#detail',1],['#scenario-manager',1],['#sources',3],
+    ['#policy-workbench',2],['#powers',1],['#simulator',1],['#map-heading',2],['#senate',2],['#detail',2],['#scenario-manager',1],['#sources',3],
     ['#reader-02',2],['#reader-05',2],
   ] as const)('keeps the old %s location associated with its reading section', (hash,index)=>{
     const page=browser();setActivePageNavigation(hash);
@@ -98,6 +101,37 @@ describe('four-stage reading navigation',()=>{
     const page=browser();page.add('DIV','overview',page.sections[3]);setActivePageNavigation('#overview');
     expect(page.links[3].getAttribute('aria-current')).toBe('location');
     expect(page.links[0].hasAttribute('aria-current')).toBe(false);
+  });
+
+  it('reveals only the hidden horizontal portion of the current sticky navigation item without moving or focusing the page',()=>{
+    const page=browser('','sticky');page.nav.width=390;page.nav.scrollLeft=20;
+    const current=page.links[2];current.left=350;current.width=180;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(160);
+    expect(current.getAttribute('aria-current')).toBe('location');
+    current.left=-25;current.width=140;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(135);
+    current.left=10;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(135);
+    expect(page.scrollTo).not.toHaveBeenCalled();
+    for(const link of page.links) {
+      expect(link.focus).not.toHaveBeenCalled();
+      expect(link.scrollIntoView).not.toHaveBeenCalled();
+    }
+    expect(page.storage.setItem).not.toHaveBeenCalled();
+  });
+
+  it('leaves horizontal scroll unchanged in the fixed desktop navigation',()=>{
+    const page=browser();page.nav.width=180;page.nav.scrollLeft=20;
+    page.links[2].left=350;page.links[2].width=180;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(20);
+    expect(page.links[2].getAttribute('aria-current')).toBe('location');
+    expect(page.scrollTo).not.toHaveBeenCalled();
+    expect(page.links[2].focus).not.toHaveBeenCalled();
+    expect(page.links[2].scrollIntoView).not.toHaveBeenCalled();
   });
 
   it('opens all containing disclosures before focusing a legacy save destination without changing storage',()=>{
@@ -123,7 +157,7 @@ describe('four-stage reading navigation',()=>{
 
   it.each(['#map-heading','#senate','#detail'])('routes %s to the visible map or state heading without opening simulation',hash=>{
     const page=browser(hash);
-    const workspace=page.add('SECTION','national-map-workspace',page.sections[1]);
+    const workspace=page.add('SECTION','national-map-workspace',page.sections[2]);
     workspace.setAttribute('class','workspace reader-map-workspace');
     page.add('SPAN','senate',workspace);
     const mapHeading=page.add('H2','map-heading',workspace);mapHeading.top=100;
@@ -136,7 +170,7 @@ describe('four-stage reading navigation',()=>{
     expect(target.focus).toHaveBeenCalledWith({preventScroll:true});
     expect(page.scrollTo).toHaveBeenCalledWith({top:hash==='#detail'?324:284,behavior:'smooth'});
     expect(optional.open).toBe(false);
-    expect(page.links[1].getAttribute('aria-current')).toBe('location');
+    expect(page.links[2].getAttribute('aria-current')).toBe('location');
     expect(page.location.hash).toBe(hash);
     expect(page.pushState).not.toHaveBeenCalled();
     expect(page.storage.getItem).not.toHaveBeenCalled();expect(page.storage.setItem).not.toHaveBeenCalled();
@@ -144,7 +178,7 @@ describe('four-stage reading navigation',()=>{
 
   it('follows the stage-three full-map link to its heading while preserving query state',()=>{
     const page=browser('#reader-03');
-    const heading=page.add('H2','map-heading',page.sections[1]);heading.top=100;
+    const heading=page.add('H2','map-heading',page.sections[2]);heading.top=100;
     const link=page.add('A','',page.sections[2]);link.setAttribute('href','#map-heading');
     const optional=page.add('DETAILS','reader-simulation-disclosure',page.sections[1]);
     setupPageNavigation(vi.fn(),vi.fn());
@@ -155,7 +189,7 @@ describe('four-stage reading navigation',()=>{
     const url=new URL(page.location.href);
     expect(url.searchParams.get('s')).toBe('independent-old-fixture');
     expect(url.searchParams.get('newsRace')).toBe('2026-OH-3-special');
-    expect(page.links[1].getAttribute('aria-current')).toBe('location');
+    expect(page.links[2].getAttribute('aria-current')).toBe('location');
     expect(optional.open).toBe(false);
     expect(page.storage.setItem).not.toHaveBeenCalled();
   });
@@ -229,7 +263,7 @@ describe('four-stage reading navigation',()=>{
 
   it('does not offset visible map detail for the optional simulation header',()=>{
     const page=browser();
-    const workspace=page.add('SECTION','national-map-workspace',page.sections[1]);
+    const workspace=page.add('SECTION','national-map-workspace',page.sections[2]);
     workspace.setAttribute('class','workspace reader-map-workspace');
     const target=page.add('ASIDE','detail',workspace);page.add('H2','state-detail-heading',target);
     const optional=page.add('DETAILS','reader-simulation-disclosure',page.sections[1]);

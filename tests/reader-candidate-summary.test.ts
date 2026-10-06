@@ -6,7 +6,7 @@ import { renderReaderCandidateSummary } from '../src/ui/reader-candidate-summary
 const election=(id:string)=>elections.find(item=>item.electionId===id)!;
 const visible=(markup:string)=>markup.replace(/<[^>]*>/g,'');
 function card(markup:string,candidateId:string):string {
-  const start=markup.indexOf(`<article class="reader-candidate-card" data-reader-candidate="${candidateId}">`);
+  const start=markup.indexOf(`<article class="reader-candidate-card" data-reader-candidate="${candidateId}"`);
   return start<0?'':markup.slice(start,markup.indexOf('</article>',start)+10);
 }
 
@@ -21,6 +21,10 @@ describe('state candidate summaries use existing public materials',()=>{
     for(const candidateId of ids){
       expect(current.candidates.some(candidate=>candidate.candidateId===candidateId&&candidate.ballotStage!=='primary-ballot')).toBe(true);
       const candidateCard=card(markup,candidateId);
+      const candidate=current.candidates.find(candidate=>candidate.candidateId===candidateId)!;
+      expect(candidateCard).toContain(`data-reader-party="${candidate.party}"`);
+      if(candidate.party==='D')expect(candidateCard).toContain('民主党');
+      if(candidate.party==='R')expect(candidateCard).toContain('共和党');
       expect([...candidateCard.matchAll(/data-reader-policy-record=/g)].length).toBeLessThanOrEqual(2);
     }
     expect(JSON.stringify({current,policyPrototype})).toBe(before);

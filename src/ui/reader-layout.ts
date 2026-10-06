@@ -1,10 +1,11 @@
 import { readerSections } from '../data/reader-journey';
 import { escapeHtml as esc } from './research';
+import { featuredAllocationSummary } from './overview';
 import { readerCompositionSourcesMarkup, readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
 
 export function readerNavigationMarkup() {
   return `<p class="reader-nav-title">読む順序</p>${readerSections.map(section=>{
-    const parts=section.id==='reader-01' ? ['中間選挙の','仕組み'] : section.id==='reader-03' ? ['各州の情勢と','候補者'] : [section.title];
+    const parts=section.id==='reader-01' ? ['中間選挙の','仕組み'] : section.id==='reader-04' ? ['上院の情勢と','51議席への配分'] : section.id==='reader-03' ? ['注目州の情勢と','候補者'] : [section.title];
     return `<a href="#${section.id}"><span class="reader-nav-number">${section.number}</span><span>${parts.map(part=>`<span class="reader-nav-phrase">${esc(part)}</span>`).join('')}<small class="reader-current-label">現在地</small></span></a>`;
   }).join('')}`;
 }
@@ -18,7 +19,7 @@ export function openReaderDestination(target: Element|null) {
 
 function sectionMarkup(index:number) {
   const section=readerSections[index];
-  return `<header class="reader-section-heading"><span class="reader-section-number" aria-hidden="true">${section.number}</span><div><h2 id="${section.id}-heading">${esc(section.title)}</h2><p>${esc(section.introduction)}</p></div></header>`;
+  return `<header class="reader-section-heading"><span class="reader-section-number" aria-hidden="true">${section.number}</span><div><h2 id="${section.id}-heading">${esc(section.id==='reader-03' ? `注目${featuredAllocationSummary().stateCount}州の情勢と候補者` : section.title)}</h2><p>${esc(section.introduction)}</p></div></header>`;
 }
 
 /** Move the existing interactive nodes, rather than replacing their state or event bindings. */
@@ -81,16 +82,21 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   // The national map is a primary reading interaction, not a simulation disclosure.
   // Reuse its controls, paths and detail node so every existing event remains bound.
   workspace.classList.add('reader-map-workspace');
-  workspace.setAttribute('aria-label','全国50州の上院選挙地図・議席配分・州詳細');
+  workspace.setAttribute('aria-label','全国50州の上院選挙地図と選択州の説明');
   const mapColumn=workspace.querySelector<HTMLElement>('.map-column');
   if(senate) workspace.prepend(senate);
   const mapHeading=mapColumn?.querySelector('.map-head');
-  if(mapColumn && mapHeading) mapColumn.prepend(mapHeading);
+  const mapSection=document.createElement('section');
+  mapSection.className='reader-national-map';
+  mapSection.setAttribute('aria-labelledby','map-heading');
+  if(mapHeading) mapSection.append(mapHeading);
+  // Keep the interactive map sticky; long guidance remains directly below the map.
+  const mapGuide=mapColumn?.querySelector('.map-reading-guide');
   const mapContext=document.createElement('div');
   mapContext.className='reader-map-context';
   mapContext.append(composition);
-  mapColumn?.after(mapContext);
-  sections[1].append(workspace);
+  if(mapGuide) mapContext.append(mapGuide);
+  mapSection.append(workspace,mapContext);
 
   updates.querySelector('.section-heading')?.remove();
   updates.setAttribute('aria-labelledby','reader-03-heading');
@@ -98,7 +104,11 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   mapLink.className='reader-full-map-link';
   mapLink.innerHTML='<a href="#map-heading">全国50州の上院選挙地図を見る →</a>';
   updates.prepend(mapLink);
-  sections[2].append(updates);
+  const featuredIntro=document.createElement('p');
+  featuredIntro.className='reader-featured-allocation';
+  featuredIntro.textContent=featuredAllocationSummary().description;
+  updates.prepend(featuredIntro);
+  sections[2].append(updates,mapSection);
 
   // All allocation prerequisites remain visible, before optional source/method detail.
   sections[1].append(national);
@@ -123,7 +133,10 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   policyDetails.className='reader-context-disclosure';
   policyDetails.innerHTML='<summary id="reader-05-heading"><b>候補者の政策と採決記録を詳しく比較する</b><span>政策ごとの賛否・条件・当落の理由</span></summary>';
   policyDetails.append(policy);
-  if(issueIntroduction) sections[2].append(issueIntroduction);
+  if(issueIntroduction) {
+    issueIntroduction.insertAdjacentHTML('afterbegin','<p class="reader-issues-bridge">ここまで見た州の情勢や候補者への支持は、どの論点・出来事で変わり得るでしょうか。全国に共通する論点と、州ごとの違いをつなげて読みます。</p>');
+    sections[2].append(issueIntroduction);
+  }
   sections[2].append(issues,policyDetails);
   const powerDetails=document.createElement('details');
   powerDetails.className='reader-context-disclosure';
