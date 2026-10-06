@@ -10,6 +10,7 @@
 .reader-experience main>.reader-navigation a:hover{background:#dce9ee;color:var(--navy)}
 .reader-experience main>.reader-navigation a[aria-current="location"]{background:var(--reader-teal);color:#fff}
 .reader-nav-number{display:grid;place-items:center;flex:0 0 34px;height:34px;border:1px solid #adbdca;border-radius:50%;background:#fff;color:#285e83;font:700 1rem Georgia,serif}
+.reader-nav-phrase{display:inline-block;white-space:nowrap}
 .reader-navigation a[aria-current="location"] .reader-nav-number{border-color:#fff;color:var(--reader-teal)}
 .reader-current-label{display:none;margin-top:3px;font-size:.72rem;font-weight:500}
 .reader-navigation a[aria-current="location"] .reader-current-label{display:block}
@@ -31,6 +32,23 @@
 .reader-institution .intro-overview-card>.opening-seats{grid-column:2;grid-row:3/5;align-self:start}
 .reader-institution .intro-overview-card>.opening-footnote{grid-column:2;font-size:.8rem!important}
 .reader-institution .intro-overview-card>.opening-details{grid-column:1/-1}
+.reader-mechanism-context,.reader-current-composition{padding:22px 24px;margin:20px 0;border:1px solid #d9e2e7;border-radius:6px;background:#fff}
+.reader-mechanism-context h3,.reader-current-composition h3{margin:0 0 12px;color:var(--navy);font-size:1.15rem;line-height:1.5}
+.reader-mechanism-context>p,.reader-majority-context>p{font-size:1rem;line-height:1.85;margin:12px 0}
+.reader-current-composition .opening-seats{width:100%;margin:14px 0}
+.reader-composition-date{font-size:.8125rem;line-height:1.75;color:#526977;margin:14px 0 8px}
+.reader-majority-context h3{margin-top:24px}
+.reader-context-sources{margin-top:16px;border-top:1px solid #dce5e9;padding-top:8px}
+.reader-context-sources summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:#315568;font-weight:700}
+.reader-context-sources li,.reader-context-sources p,.reader-context-source-line{font-size:.8125rem!important;line-height:1.75!important;color:#526977;overflow-wrap:anywhere}
+.reader-context-sources li{margin:8px 0}
+.reader-context-disclosure{margin:22px 0;border:1px solid #bfcfd8;border-radius:6px;background:#fff;scroll-margin-top:88px}
+.reader-context-disclosure>summary{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;min-height:64px;padding:16px 20px;color:#244c62;cursor:pointer}
+.reader-context-disclosure>summary span{font-size:.875rem;color:#586b79}
+.reader-context-disclosure>summary::after{content:'＋';font-size:1.3rem;margin-left:auto}
+.reader-context-disclosure[open]>summary::after{content:'−'}
+.reader-context-disclosure>summary::-webkit-details-marker{display:none}
+.reader-context-content,.reader-context-disclosure>#policy-workbench-host,.reader-context-disclosure>#powers{padding:20px 24px;margin:0;border-top:1px solid #d5e0e5}
 .reader-experience #national-overview{margin:0;padding:24px;border:1px solid #d9e2e7;background:#fff;border-radius:6px}
 .reader-experience #national-overview .approved-senate-intro p{font-size:1rem;line-height:1.85}
 .reader-experience #national-overview .provisional-totals{margin:18px 0}
@@ -59,6 +77,7 @@
 .reader-outlook-card,.reader-issue-card{min-width:0;padding:20px;border:1px solid #d6e0e5;border-radius:6px;background:#fff}
 .reader-outlook-card h4,.reader-issue-card h3{margin:8px 0 14px;font-size:1.2rem;line-height:1.5;color:var(--navy)}
 .reader-outlook-card p,.reader-issue-card p{font-size:.9375rem;line-height:1.8}
+.reader-outlook-card p>b{display:block;margin-bottom:4px;color:#315568}
 .reader-outlook-date,.reader-outlook-limit{color:#617381;font-size:.8125rem!important}
 .reader-outlook-card button,.reader-issues button{min-height:44px;padding:8px 12px;border:1px solid #91b3c2;border-radius:4px;background:#f2f8fa;color:#204e68;font-size:.9rem;font-weight:700;cursor:pointer}
 .reader-outlook-card details,.reader-issue-card details{margin:16px 0;padding-top:12px;border-top:1px solid #dce5e9}
@@ -91,7 +110,8 @@
  .reader-section-number{font-size:2.2rem}
  .reader-section-heading>div{padding-left:12px}
  .reader-issue-grid,.reader-outlook-grid{grid-template-columns:1fr}
- .reader-experience #national-overview,.reader-experience #overview .opening-card{padding:18px}
+ .reader-experience #national-overview,.reader-experience #overview .opening-card,.reader-mechanism-context,.reader-current-composition{padding:18px}
+ .reader-context-content,.reader-context-disclosure>#policy-workbench-host,.reader-context-disclosure>#powers{padding:16px}
  .reader-optional-simulation>.sim{padding:16px}
 }
 

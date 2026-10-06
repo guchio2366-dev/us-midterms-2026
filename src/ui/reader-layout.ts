@@ -1,8 +1,12 @@
 import { readerIntroduction, readerSections } from '../data/reader-journey';
 import { escapeHtml as esc } from './research';
+import { readerCompositionSourcesMarkup, readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
 
 export function readerNavigationMarkup() {
-  return `<p class="reader-nav-title">読む順序</p>${readerSections.map(section=>`<a href="#${section.id}"><span class="reader-nav-number">${section.number}</span><span>${esc(section.title)}<small class="reader-current-label">現在地</small></span></a>`).join('')}`;
+  return `<p class="reader-nav-title">読む順序</p>${readerSections.map(section=>{
+    const parts=section.id==='reader-01' ? ['中間選挙の','仕組み'] : section.id==='reader-03' ? ['各州の情勢と','候補者'] : [section.title];
+    return `<a href="#${section.id}"><span class="reader-nav-number">${section.number}</span><span>${parts.map(part=>`<span class="reader-nav-phrase">${esc(part)}</span>`).join('')}<small class="reader-current-label">現在地</small></span></a>`;
+  }).join('')}`;
 }
 
 /** Open only the UI disclosures needed for an explicit destination. No scenario is written. */
@@ -59,11 +63,18 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   const institutionHeading=institution.querySelector<HTMLElement>('#overview-heading');
   if(institutionHeading) institutionHeading.textContent='今回選び直す議席';
   sections[0].append(overview);
+  overview.insertAdjacentHTML('beforeend',readerMechanismContextMarkup());
 
-  const issues=document.createElement('div');
-  issues.className='reader-issues';
-  issues.innerHTML=issuesMarkup;
-  sections[1].append(issues);
+  // Current composition belongs next to the majority conditions, before state details.
+  const composition=document.createElement('article');
+  composition.className='reader-current-composition';
+  composition.innerHTML='<h3>現在の議席と今回の改選範囲</h3>';
+  const seatTable=institution.querySelector('.opening-seats');
+  const seatFootnote=institution.querySelector('.opening-footnote');
+  if(seatTable) composition.append(seatTable);
+  if(seatFootnote) composition.append(seatFootnote);
+  composition.insertAdjacentHTML('beforeend',readerCompositionSourcesMarkup());
+  sections[1].append(composition);
 
   updates.querySelector('.approved-updates-intro')?.remove();
   updates.querySelector('.section-heading')?.remove();
@@ -78,30 +89,45 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
     explanation.append(allocationCopy);
     national.querySelector('.consensus-method')?.before(explanation);
   }
-  sections[3].append(national);
+  sections[1].append(national);
+  sections[1].insertAdjacentHTML('beforeend',readerMajorityContextMarkup());
   const optional=document.createElement('details');
   optional.className='reader-optional-simulation';
   optional.id='reader-simulation-disclosure';
   optional.innerHTML='<summary><b>自分の見立てを議席数で確かめる</b><span>地図・当選者の仮定・保存・共有を開く</span></summary>';
   optional.append(simulator);
-  sections[3].append(optional);
+  sections[1].append(optional);
   const view=new URL(location.href);
   if(view.searchParams.has('s') || view.searchParams.has('race')) optional.open=true;
 
-  sections[4].append(policy,powers);
-  sections[5].insertAdjacentHTML('beforeend',outlookMarkup);
+  // Older numbered links keep their subject. These are optional contextual details,
+  // not additional reading stages, and moving nodes retains event listeners/state.
+  const issues=document.createElement('details');
+  issues.id='reader-02';
+  issues.className='reader-context-disclosure reader-issues';
+  issues.innerHTML='<summary id="reader-02-heading"><b>争点から州・候補者の違いを読む</b><span>医療・関税の事例と8つの論点</span></summary><div class="reader-context-content">'+issuesMarkup+'</div>';
+  const policyDetails=document.createElement('details');
+  policyDetails.id='reader-05';
+  policyDetails.className='reader-context-disclosure';
+  policyDetails.innerHTML='<summary id="reader-05-heading"><b>候補者の政策と採決記録を詳しく比較する</b><span>政策ごとの賛否・条件・当落の理由</span></summary>';
+  policyDetails.append(policy);
+  sections[2].append(issues,policyDetails);
+  const powerDetails=document.createElement('details');
+  powerDetails.className='reader-context-disclosure';
+  powerDetails.innerHTML='<summary><b>多数派でできることと、採決の条件</b><span>両院の権限・大統領との関係</span></summary>';
+  powerDetails.append(powers);
+  sections[1].insertBefore(powerDetails,optional);
+  sections[3].insertAdjacentHTML('beforeend',outlookMarkup);
   const sourceDisclosure=document.createElement('details');
   sourceDisclosure.className='reader-source-disclosure';
   sourceDisclosure.innerHTML='<summary>全体の出典と更新情報を読む</summary>';
   sourceDisclosure.append(sources);
-  sections[5].append(sourceDisclosure);
+  sections[3].append(sourceDisclosure);
 
   const nextMessages=[
-    '次は、候補者や政党を選ぶ争点を確認します。',
-    '同じ争点が、州の事情や候補者によってどう受け止められるかを見ていきます。',
-    '各州の当落を、上院全体の議席配分と合わせて考えます。',
-    '議席配分に加え、候補者の立場と採決手続から政策の実現条件を確認します。',
-    '現在の見通しと、次に確認すべき材料をまとめます。',
+    '現在の議席から、各党が多数派になるための条件を確認します。',
+    '多数派への条件を踏まえ、注目州で何が争われているかを読みます。',
+    '州ごとの材料を踏まえ、現在の見通しと次の確認点をまとめます。',
   ];
   sections.slice(0,-1).forEach((section,index)=>{
     const next=readerSections[index+1];

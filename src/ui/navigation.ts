@@ -1,10 +1,14 @@
-const readerHashes = ['#reader-01','#reader-02','#reader-03','#reader-04','#reader-05','#reader-06'];
+import { readerSections } from '../data/reader-journey';
+
+const readerHashes: string[] = readerSections.map(section=>`#${section.id}`);
 const legacyHashes = ['#overview','#national-overview','#updates','#news','#policy-workbench','#scenario-manager','#powers','#simulator','#map-heading','#sources','#issues'];
-const navigableHashes = new Set([...readerHashes,...legacyHashes]);
+const numberedReaderHashes = ['#reader-01','#reader-02','#reader-03','#reader-04','#reader-05','#reader-06'];
+const navigableHashes = new Set([...numberedReaderHashes,...numberedReaderHashes.map(hash=>`${hash}-heading`),...legacyHashes]);
 const readerAliases: Record<string,string> = {
-  '#overview':'#reader-01', '#national-overview':'#reader-04', '#issues':'#reader-02',
-  '#updates':'#reader-03', '#news':'#reader-03', '#policy-workbench':'#reader-05',
-  '#powers':'#reader-05', '#simulator':'#reader-04', '#map-heading':'#reader-04',
+  '#overview':'#reader-01', '#national-overview':'#reader-04', '#issues':'#reader-03',
+  '#reader-02':'#reader-03', '#reader-05':'#reader-03',
+  '#updates':'#reader-03', '#news':'#reader-03', '#policy-workbench':'#reader-03',
+  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-04',
   '#scenario-manager':'#reader-04', '#sources':'#reader-06',
 };
 

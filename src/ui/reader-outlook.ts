@@ -71,7 +71,7 @@ function ratingSourcesMarkup() {
   }).join('／');
 }
 
-/** Content for section 06. The surrounding section heading and approved introduction belong to main.ts. */
+/** Content for stage 04 (stable legacy anchor reader-06). Heading belongs to reader-layout.ts. */
 export function renderReaderOutlook(now = new Date(), data: ObservationDataset = observationData) {
   const materials = readerOutlookMaterials(data, now);
   const Democratic = baseline.fixed.Democratic + ratingCounts.D;

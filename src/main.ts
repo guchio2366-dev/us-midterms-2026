@@ -1372,8 +1372,15 @@ function bindIssuePowerLinks() {
       if (disclosure) disclosure.open = true;
       const powerDetails = document.querySelector<HTMLDetailsElement>('.power-detail-list');
       if (powerDetails) powerDetails.open = true;
-      const target = link.dataset.powerLink ? document.querySelector(matchMedia('(max-width: 800px)').matches ? `#power-card-${link.dataset.powerLink}` : `#power-${link.dataset.powerLink}`) : null;
-      (target ?? document.querySelector('#powers'))?.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
+      const target = link.dataset.powerLink ? document.querySelector<HTMLElement>(matchMedia('(max-width: 800px)').matches ? `#power-card-${link.dataset.powerLink}` : `#power-${link.dataset.powerLink}`) : null;
+      const destination = target ?? document.querySelector<HTMLElement>('#powers');
+      if(destination) {
+        openReaderDestination(destination);
+        destination.tabIndex=-1;
+        destination.focus({preventScroll:true});
+        setActivePageNavigation('#powers');
+        scrollPageHeadingIntoView(destination,matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+      }
     };
   });
   document.querySelectorAll<HTMLButtonElement>('#issue-detail [data-issue-power-target]').forEach(button => {
