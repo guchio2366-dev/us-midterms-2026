@@ -10,6 +10,9 @@ class ReadingNode {
   tabIndex=-1;
   top=0;
   height=60;
+  left=0;
+  width=180;
+  scrollLeft=0;
   style={scrollMarginTop:''};
   css={position:'static',top:'0px'};
   focus=vi.fn();
@@ -21,7 +24,7 @@ class ReadingNode {
   setAttribute(name:string,value:string) {this.attributes.set(name,value);}
   removeAttribute(name:string) {this.attributes.delete(name);}
   hasAttribute(name:string) {return this.attributes.has(name);}
-  getBoundingClientRect() {return {top:this.top,height:this.height};}
+  getBoundingClientRect() {return {top:this.top,height:this.height,left:this.left,right:this.left+this.width,width:this.width};}
   matches(selector:string) {return selector==='main > .jump-nav' && this.tagName==='NAV' && this.parentElement?.tagName==='MAIN';}
   closest(selector:string):ReadingNode|null {
     for(let node:ReadingNode|null=this;node;node=node.parentElement) {
@@ -98,6 +101,37 @@ describe('four-stage reading navigation',()=>{
     const page=browser();page.add('DIV','overview',page.sections[3]);setActivePageNavigation('#overview');
     expect(page.links[3].getAttribute('aria-current')).toBe('location');
     expect(page.links[0].hasAttribute('aria-current')).toBe(false);
+  });
+
+  it('reveals only the hidden horizontal portion of the current sticky navigation item without moving or focusing the page',()=>{
+    const page=browser('','sticky');page.nav.width=390;page.nav.scrollLeft=20;
+    const current=page.links[2];current.left=350;current.width=180;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(160);
+    expect(current.getAttribute('aria-current')).toBe('location');
+    current.left=-25;current.width=140;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(135);
+    current.left=10;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(135);
+    expect(page.scrollTo).not.toHaveBeenCalled();
+    for(const link of page.links) {
+      expect(link.focus).not.toHaveBeenCalled();
+      expect(link.scrollIntoView).not.toHaveBeenCalled();
+    }
+    expect(page.storage.setItem).not.toHaveBeenCalled();
+  });
+
+  it('leaves horizontal scroll unchanged in the fixed desktop navigation',()=>{
+    const page=browser();page.nav.width=180;page.nav.scrollLeft=20;
+    page.links[2].left=350;page.links[2].width=180;
+    setActivePageNavigation('#map-heading');
+    expect(page.nav.scrollLeft).toBe(20);
+    expect(page.links[2].getAttribute('aria-current')).toBe('location');
+    expect(page.scrollTo).not.toHaveBeenCalled();
+    expect(page.links[2].focus).not.toHaveBeenCalled();
+    expect(page.links[2].scrollIntoView).not.toHaveBeenCalled();
   });
 
   it('opens all containing disclosures before focusing a legacy save destination without changing storage',()=>{

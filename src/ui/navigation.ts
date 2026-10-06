@@ -52,6 +52,17 @@ export function setActivePageNavigation(hash:string) {
     if(link.getAttribute('href')===route)link.setAttribute('aria-current','location');
     else link.removeAttribute('aria-current');
   });
+  // On a narrow screen the rail becomes a horizontal strip. Direct legacy links
+  // and ordinary page reading must reveal the current item too, without moving
+  // the page vertically or focusing a navigation link.
+  const current=links.find(link=>link.getAttribute('href')===route);
+  const nav=current?.parentElement;
+  if(current && nav && getComputedStyle(nav).position==='sticky') {
+    const item=current.getBoundingClientRect();
+    const viewport=nav.getBoundingClientRect();
+    if(item.left<viewport.left) nav.scrollLeft+=item.left-viewport.left;
+    else if(item.right>viewport.right) nav.scrollLeft+=item.right-viewport.right;
+  }
 }
 
 /** Disclosure preferences are written only by a user's summary activation. */
