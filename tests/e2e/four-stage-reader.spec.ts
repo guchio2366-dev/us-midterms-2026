@@ -128,7 +128,7 @@ test('all twelve state tabs and policy reading remain read-only', async ({ page 
     await page.locator(`#focus-race-panel [data-reader-policy-election="${id}"]`).click();
     await settleScroll(page);
     await expect(page.locator('#reader-05')).toHaveAttribute('open', '');
-    await expect(page.locator('[data-policy-action="choose-election"]')).toHaveValue(id);
+    await expect(page.locator('select[data-policy-action="choose-election"]')).toHaveValue(id);
     await expect(page.locator('[data-policy-reading-context]')).toBeVisible();
     await expectCurrentStage(page, 'reader-03');
     if (id.includes('-MN-') || id.includes('-NE-')) {
