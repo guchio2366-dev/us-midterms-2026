@@ -21,6 +21,21 @@ const issueCases: Record<string,IssueCaseStudy[]> = {
 
 export const polls: Poll[] = [
   {
+    pollId:'poll-nh-rasmussen-2026-10',electionId:'2026-NH-2-regular',pollster:'Rasmussen Reports',sponsor:null,
+    fieldStart:'2026-10-02',fieldEnd:'2026-10-04',population:'LV',populationLabel:'投票予定者',sampleSize:979,
+    method:'電話とオンラインを併用。実査はPulse Opinion Research。',
+    question:'Thinking about the US Senate race in New Hampshire, if the election were held today, for whom would you vote?',questionExact:true,
+    precisionLabel:'標本誤差 ±3ポイント（95%信頼水準）',
+    results:[
+      {label:'Chris Pappas',candidateId:'cand-nh-chris-pappas',party:'D',value:49,category:'candidate'},
+      {label:'John Sununu',candidateId:'cand-nh-john-e-sununu',party:'R',value:44,category:'candidate'},
+      {label:'Edmond Laplante',party:'other',value:3,category:'other-candidate'},
+      {label:'未定',value:4,category:'undecided'},
+    ],
+    notes:['質問文にはほかの独立系候補も含まれるが、記事は個別値を掲載していません。0%と補完せず、記事に公表された4区分だけを表示します。','9月のco/efficient調査とは調査機関・標本・方法が異なるため、差を同じ有権者の支持移動とは扱いません。'],
+    completeness:'partial',residualTreatment:'none',sourceIds:['obs-rasmussen-nh-20261005'],evidenceIds:['ev-obs-rasmussen-nh-20261005'],status:'published',
+  },
+  {
     pollId:'poll-nc-hpu-2026-09-lv',studyId:'study-nc-hpu-127-2026-09',electionId:'2026-NC-2-regular',pollster:'High Point University Survey Research Center',sponsor:null,
     fieldStart:'2026-09-06',fieldEnd:'2026-09-16',population:'LV',populationLabel:'7項目の判定で投票予定者に分類された人',sampleSize:706,
     method:'Dynataの非確率オンラインパネルをQualtricsで調査。全成人1,003人のうち自己申告の登録有権者813人から、7項目中5〜7点の706人をLVと分類。英語で実施。',

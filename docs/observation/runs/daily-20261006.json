@@ -1,0 +1,59 @@
+{
+  "runId": "daily-20261006",
+  "startedAt": "2026-10-06T00:02:00Z",
+  "completedAt": "2026-10-06T00:18:00Z",
+  "outcome": "partial",
+  "reviewMode": "daily polls, official releases, candidate and state reporting, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "2991c15d7601b36499014d063f7310b50e15e8af",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-06-polls-events-energy",
+  "checkedSourceIds": [
+    "obs-rasmussen-nh-20261005",
+    "obs-cbs-mi-mitchell-20261005",
+    "obs-mi-democrats-obama-20261005",
+    "obs-doe-ak-transmission-20261005",
+    "obs-reuters-ak-vance-20261005",
+    "obs-ap-ne-trump-rally-20261005",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house",
+    "obs-maine-debates"
+  ],
+  "pendingSourceIds": [
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {"sourceId":"obs-rasmussen-nh-20261005","attemptedAt":"2026-10-06T00:05:00Z","status":"checked","lastSuccessAt":"2026-10-06T00:05:00Z","contentVerifiedAt":"2026-10-06","scope":"公式記事と質問表で10月2〜4日、LV979人、Pappas49・Sununu44・Laplante3・未定4、誤差±3、電話・オンライン併用を照合。他候補を0%と補完しない。"},
+    {"sourceId":"obs-cbs-mi-mitchell-20261005","attemptedAt":"2026-10-06T00:06:00Z","status":"partial","lastSuccessAt":"2026-10-06T00:06:00Z","contentVerifiedAt":"2026-10-06","scope":"CBS本文でEl-Sayed45.6・Rogers41.4・未定6、誤差±3.8を確認。標本数、収集方法、質問文の原票は未取得のため構造化Pollには追加しない。"},
+    {"sourceId":"obs-mi-democrats-obama-20261005","attemptedAt":"2026-10-06T00:06:30Z","status":"checked","lastSuccessAt":"2026-10-06T00:06:30Z","contentVerifiedAt":"2026-10-06","scope":"州民主党の公式発表とAPで10月24日Detroit集会を照合。時刻・会場は未公表。"},
+    {"sourceId":"obs-doe-ak-transmission-20261005","attemptedAt":"2026-10-06T00:07:00Z","status":"checked","lastSuccessAt":"2026-10-06T00:07:00Z","contentVerifiedAt":"2026-10-06","scope":"DOE公式発表で最大1.5億ドル、非連邦2.68億ドル、計画総額4.18億ドル、223マイルを照合。意向・計画・完成後を、支出・完成・効果実現と分離。"},
+    {"sourceId":"obs-reuters-ak-vance-20261005","attemptedAt":"2026-10-06T00:07:30Z","status":"checked","lastSuccessAt":"2026-10-06T00:07:30Z","contentVerifiedAt":"2026-10-06","scope":"Vance副大統領のAlaska訪問と上院選の文脈を確認。訪問を支持効果と扱わない。"},
+    {"sourceId":"obs-ap-ne-trump-rally-20261005","attemptedAt":"2026-10-06T00:08:00Z","status":"checked","lastSuccessAt":"2026-10-06T00:08:00Z","contentVerifiedAt":"2026-10-06","scope":"10月5日のGrand Island集会実施、Ricketts氏支援、物価・燃料・牛肉輸入の州内背景を確認。"},
+    {"sourceId":"obs-sabato","attemptedAt":"2026-10-06T00:09:00Z","status":"checked","lastSuccessAt":"2026-10-06T00:09:00Z","contentVerifiedAt":"2026-10-06","scope":"公式rating changesを再確認。統合配分を変える新しい上院評価変更はなし。"},
+    {"sourceId":"obs-inside","attemptedAt":"2026-10-06T00:09:30Z","status":"checked","lastSuccessAt":"2026-10-06T00:09:30Z","contentVerifiedAt":"2026-10-06","scope":"公式上院評価ページを再確認。10月1日版から統合配分を変える新更新なし。"},
+    {"sourceId":"obs-white-house","attemptedAt":"2026-10-06T00:10:00Z","status":"partial","lastSuccessAt":"2026-10-01T00:03:27Z","contentVerifiedAt":"2026-10-01","scope":"対象州の新しい公式大統領日程本文は取得できず成功日時を進めない。Michigan・Maine・Ohioへの言及は暫定的で、予定へ追加しない。"},
+    {"sourceId":"obs-maine-debates","attemptedAt":"2026-10-06T00:10:30Z","status":"checked","lastSuccessAt":"2026-10-06T00:10:30Z","contentVerifiedAt":"2026-10-06","scope":"APの10月5日掲載本文で10月6日を4討論会の初回と確認。開始前のためscheduledを維持。"},
+    {"sourceId":"obs-quantus-ia-20260930","attemptedAt":"2026-10-06T00:11:00Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"方法、標本、質問文、誤差の原文を取得できず非掲載を継続。"},
+    {"sourceId":"obs-roster-oh","attemptedAt":"2026-10-06T00:11:10Z","status":"partial","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"主要候補以外の党派原票は照合待ちを維持。"},
+    {"sourceId":"obs-roster-nh","attemptedAt":"2026-10-06T00:11:20Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"州の全候補名簿原票は未取得。Rasmussenの質問文を公式名簿の代替にしない。"},
+    {"sourceId":"obs-quantus-me-20260917","attemptedAt":"2026-10-06T00:11:30Z","status":"unavailable","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"本文、方法、質問文を取得できず数値は非掲載を継続。"},
+    {"sourceId":"obs-axios-nrsc-spending-20260918","attemptedAt":"2026-10-06T00:11:40Z","status":"reviewing","lastSuccessAt":"2026-09-23T00:05:00Z","contentVerifiedAt":"2026-09-23","scope":"州別予定額のFEC原票を特定できず、成功日時を進めない。"},
+    {"sourceId":"obs-unh-nh-20260924","attemptedAt":"2026-10-06T00:11:50Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"PDF原票の標本、質問文、方法を照合できず非掲載を継続。"},
+    {"sourceId":"obs-nyt-siena-nh-20260924","attemptedAt":"2026-10-06T00:12:00Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"原票本文、方法、質問文を取得できず非掲載を継続。"}
+  ],
+  "verification": {
+    "tests": "382 passed after npm ci restored the clean worktree dependencies; the first attempt stopped because vitest was not installed, not because a test failed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "NHの完全なRasmussen調査、MIの部分確認調査とObama氏集会予定、AKのDOE資金意向、NEのTrump氏集会結果を追加。発言・資金意向・予定・効果・有権者評価を分離し、D43・R45・未配分12、旧保存案・共有URLを維持。"
+}
