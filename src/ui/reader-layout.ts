@@ -1,9 +1,12 @@
 import { readerIntroduction, readerSections } from '../data/reader-journey';
 import { escapeHtml as esc } from './research';
-import { readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
+import { readerCompositionSourcesMarkup, readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
 
 export function readerNavigationMarkup() {
-  return `<p class="reader-nav-title">読む順序</p>${readerSections.map(section=>`<a href="#${section.id}"><span class="reader-nav-number">${section.number}</span><span>${esc(section.title)}<small class="reader-current-label">現在地</small></span></a>`).join('')}`;
+  return `<p class="reader-nav-title">読む順序</p>${readerSections.map(section=>{
+    const parts=section.id==='reader-01' ? ['中間選挙の','仕組み'] : section.id==='reader-03' ? ['各州の情勢と','候補者'] : [section.title];
+    return `<a href="#${section.id}"><span class="reader-nav-number">${section.number}</span><span>${parts.map(part=>`<span class="reader-nav-phrase">${esc(part)}</span>`).join('')}<small class="reader-current-label">現在地</small></span></a>`;
+  }).join('')}`;
 }
 
 /** Open only the UI disclosures needed for an explicit destination. No scenario is written. */
@@ -70,6 +73,7 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   const seatFootnote=institution.querySelector('.opening-footnote');
   if(seatTable) composition.append(seatTable);
   if(seatFootnote) composition.append(seatFootnote);
+  composition.insertAdjacentHTML('beforeend',readerCompositionSourcesMarkup());
   sections[1].append(composition);
 
   updates.querySelector('.approved-updates-intro')?.remove();

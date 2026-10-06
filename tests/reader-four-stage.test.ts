@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { readerIntroduction, readerSections } from '../src/data/reader-journey';
 import { houseSnapshot } from '../src/data/house';
-import { readerMajorityContextMarkup, readerMechanismContextMarkup } from '../src/ui/reader-context';
+import { readerCompositionSourcesMarkup, readerMajorityContextMarkup, readerMechanismContextMarkup } from '../src/ui/reader-context';
+import { ROSTER_VERIFIED_AT } from '../src/data/verified-roster';
 import { readerNavigationMarkup } from '../src/ui/reader-layout';
 
 describe('four-stage reader contract',()=>{
@@ -18,7 +19,19 @@ describe('four-stage reader contract',()=>{
     ]);
     expect(navigation).not.toContain('href="#reader-02"');
     expect(navigation).not.toContain('href="#reader-05"');
+    expect(navigation).toContain('<span class="reader-nav-phrase">仕組み</span>');
+    expect(navigation).toContain('<span class="reader-nav-phrase">候補者</span>');
     expect(readerIntroduction).toContain('議会の多数派への条件');
+  });
+
+  it('keeps membership dates and sources next to the current-seat table',()=>{
+    const html=readerCompositionSourcesMarkup();
+    expect(html).toContain(`上院 ${ROSTER_VERIFIED_AT}確認`);
+    expect(html).toContain(`下院 ${houseSnapshot.asOf}時点`);
+    expect(html).toContain('日々のニュース・情勢評価の更新日とは異なります');
+    expect(html).toContain('https://www.senate.gov/senators/');
+    expect(html).toContain('https://www.democrats.senate.gov/about-senate-dems/our-caucus');
+    expect(html).toContain('https://clerk.house.gov/xml/lists/MemberData.xml');
   });
 
   it('distinguishes political evaluation, state nomination rules and endorsements with official sources',()=>{
