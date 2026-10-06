@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { introductionMarkup, nationalOverviewMarkup, compactOverviewSegments } from '../src/ui/overview';
 import { approvedIntroduction } from '../src/data/content';
 import { RATING_SNAPSHOT_AS_OF } from '../src/data/rating-snapshot';
+import approvedCopy from '../src/data/approved-reader-copy.json';
 
 describe('PC opening overview contract', () => {
   it('keeps current seats and election scope together without duplicate charts', () => {
@@ -22,11 +23,10 @@ describe('PC opening overview contract', () => {
   it('retains full introductory copy, issue explanations and existing overlay entry points', () => {
     const html = introductionMarkup();
     for (const text of approvedIntroduction.issues) expect(html).toContain(text);
-    for (const goal of approvedIntroduction.goals) expect(html).toContain(goal);
-    expect(html).toContain(approvedIntroduction.purpose);
-    expect(html).toContain('上院が下院に優越するわけではなく');
-    expect(html).toContain('現在は任命された後任議員が務めており');
-    expect(html).toContain('Class IIの33議席');
+    expect(html).toContain(approvedCopy.sections['このサイトについて'][0].text);
+    expect(html).toContain('上院が下院より上位にあるわけではなく');
+    expect(html).toContain('現在は州知事が任命した後任議員が務めており');
+    expect(html).toContain('Class IIに属する33議席');
     expect(html).toContain('id="open-civics"');
     expect(html).toContain('id="open-issues"');
     expect(html).not.toContain('常時自動更新');
@@ -47,14 +47,14 @@ describe('PC opening overview contract', () => {
     const visible = nationalOverviewMarkup().split('<details class="consensus-method')[0];
     expect(visible).toContain(RATING_SNAPSHOT_AS_OF);
     expect(visible).toContain('未配分 12：弱い優勢 6・接戦 3・評価分裂 3');
-    expect(visible).toContain('配分済みの議席も当選が確定したものではありません');
+    expect(visible).toContain('当選が確定した議席数や、当選確率を計算した結果ではありません');
     expect(visible).toContain('民主党側43議席、共和党側45議席');
     expect(visible).toContain('残る12議席');
     expect(visible).toContain('Sabato’s Crystal Ball：2026-09-24確認');
     expect(visible).toContain('Inside Elections：2026-10-02確認');
     expect(visible).toContain('非改選 34 ＋ 今回必要 17');
     expect(visible).toContain('非改選 31 ＋ 今回必要 20');
-    expect(visible).toContain('共和党側は今回19議席を得て50議席でも多数派として運営することが可能');
+    expect(visible).toContain('共和党側は今回19議席を獲得して合計50議席となった場合でも');
     expect(visible).toContain('副大統領が決裁票');
   });
 

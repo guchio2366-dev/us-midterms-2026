@@ -1,4 +1,4 @@
-import { expect, type Page, type TestInfo } from '@playwright/test';
+import { expect, type Locator, type Page, type TestInfo } from '@playwright/test';
 import type { ScenarioState } from '../../src/scenario/model';
 import { oldBrownFixture } from './fixtures/old-brown';
 
@@ -69,6 +69,36 @@ export async function capture(page: Page, testInfo: TestInfo, name: string) {
   const path = testInfo.outputPath(`${testInfo.project.name}-${name}.png`);
   await page.screenshot({ path, animations: 'disabled' });
   await testInfo.attach(`${testInfo.project.name}: ${name}`, { path, contentType: 'image/png' });
+}
+
+/** Capture a complete reading surface when it is taller than a phone viewport. */
+export async function captureElement(page: Page, testInfo: TestInfo, name: string, target: Locator) {
+  await settleScroll(page);
+  const path = testInfo.outputPath(`${testInfo.project.name}-${name}.png`);
+  await target.screenshot({ path, animations: 'disabled' });
+  await testInfo.attach(`${testInfo.project.name}: ${name}`, { path, contentType: 'image/png' });
+}
+
+export async function expectNoClosedDisclosure(target: Locator) {
+  await expect(target).toBeVisible();
+  const closedAncestors = await target.evaluate(element => {
+    const closed = [];
+    for (let node: Element | null = element; node; node = node.parentElement) {
+      if (node instanceof HTMLDetailsElement && !node.open) closed.push(node.id || node.className);
+    }
+    return closed;
+  });
+  expect(closedAncestors).toEqual([]);
+}
+
+export async function expectHeadingInView(page: Page, selector: string) {
+  const geometry = await page.locator(selector).evaluate(heading => {
+    const nav = document.querySelector('main > .reader-navigation')!;
+    const clearance = getComputedStyle(nav).position === 'sticky' ? nav.getBoundingClientRect().bottom : 0;
+    return { top: heading.getBoundingClientRect().top, clearance, height: innerHeight };
+  });
+  expect(geometry.top).toBeGreaterThanOrEqual(geometry.clearance - 1);
+  expect(geometry.top).toBeLessThan(geometry.height / 2);
 }
 
 export async function storageSnapshot(page: Page): Promise<Record<string, string | null>> {

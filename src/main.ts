@@ -485,8 +485,7 @@ function enhanceLayout() {
     document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
     selectState(state,button ?? undefined,{focus:false,scroll:false});
     const heading=document.querySelector<HTMLElement>('#state-detail-heading');
-    const target=matchMedia('(max-width: 959px)').matches ? heading : document.querySelector('#simulator');
-    target?.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    scrollStateDetailIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
     heading?.focus({preventScroll:true});
   });
   if (overview) overview.after(updates);
@@ -650,7 +649,8 @@ function enhanceLayout() {
 
   bindFocusTabs();
   document.querySelector<HTMLButtonElement>('[data-all-races]')?.addEventListener('click',() => {
-    document.querySelector('#simulator')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    const heading=document.querySelector<HTMLElement>('#map-heading');
+    if(heading) scrollPageHeadingIntoView(heading,matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
   });
   document.querySelectorAll<HTMLButtonElement>('[data-overview-news]').forEach(button => button.addEventListener('click',() => {
     const newsId = button.dataset.overviewNews;
@@ -721,7 +721,7 @@ function setupWorkspaceHeightSync() {
   workspace.dataset.heightSync = 'true';
   const split = matchMedia('(min-width: 960px) and (orientation: landscape) and (min-height: 600px)');
   const sync = () => {
-    if (!split.matches) {
+    if (!split.matches || workspace.classList.contains('reader-map-workspace')) {
       workspace.style.removeProperty('--map-column-height');
       return;
     }
@@ -1335,7 +1335,7 @@ function renderIssueReportNotice() {
       closeOverlay();
       document.querySelector<HTMLSelectElement>('#state-search')!.value = state.fips;
       selectState(state);
-      document.querySelector('#senate')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+      scrollStateDetailIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
     };
   });
   wrapper.querySelectorAll<HTMLButtonElement>('[data-issue-news]').forEach(button => button.addEventListener('click',() => {
@@ -1577,12 +1577,21 @@ function updateScenario(mutator: (draft: ScenarioState) => void, options: {refre
   renderScenarioManager();
   renderStateCompare();
   if (options.refreshState && selected) selectState(selected,undefined,{focus:false,scroll:false,preserveReturn:true});
-  if (options.focusSelector) requestAnimationFrame(() => document.querySelector<HTMLElement>(options.focusSelector!)?.focus());
+  if (options.focusSelector) requestAnimationFrame(() => document.querySelector<HTMLElement>(options.focusSelector!)?.focus({preventScroll:true}));
 }
 
-function setSenateChoice(seatId: string, encoded: string) {
+function setSenateChoice(seatId: string, encoded: string, origin:HTMLSelectElement|HTMLButtonElement) {
   const election = elections.find(item => item.seatId === seatId);
   if (!election) return;
+  // Only an explicit winner choice opens the editor; map/state reading never does.
+  openReaderDestination(document.getElementById('simulator'));
+  // The same race can appear in the map detail, comparison and manual controls.
+  // Restore the originating control after rerender, never the first duplicate on the page.
+  const container=origin.closest<HTMLElement>('#state-compare, #seat-controls, #detail');
+  const control=origin instanceof HTMLButtonElement && origin.dataset.candidateChoice
+    ? `[data-candidate-choice="${origin.dataset.candidateChoice}"]`
+    : `[data-senate-choice="${seatId}"]`;
+  const focusSelector=container ? `#${container.id} ${control}` : control;
   const state = stateByFips.get(seatById.get(seatId)!.stateFips)!;
   const choiceText = encoded === 'baseline' ? '初期配分へ戻す'
     : encoded === 'unassigned' ? '未配分へ変更'
@@ -1599,7 +1608,7 @@ function setSenateChoice(seatId: string, encoded: string) {
       if (caucus in caucusLabel) draft.senate[seatId] = {kind:'caucus',electionId:election.electionId,caucus};
     }
     draft.unlockedSeatIds = draft.unlockedSeatIds.filter(id => id !== seatId);
-  },{refreshState:true,focusSelector:`[data-senate-choice="${seatId}"]`,changeLabel:`${state.nameJa}を${choiceText}`});
+  },{refreshState:true,focusSelector,changeLabel:`${state.nameJa}を${choiceText}`});
 }
 
 function currentScenarioChoiceValue(election: Election) {
@@ -1619,8 +1628,8 @@ function senateChoiceOptions(election: Election) {
 }
 
 function bindSenateChoiceControls(root: ParentNode = document) {
-  root.querySelectorAll<HTMLSelectElement>('[data-senate-choice]').forEach(element => element.onchange = () => setSenateChoice(element.dataset.senateChoice!,element.value));
-  root.querySelectorAll<HTMLButtonElement>('[data-candidate-choice]').forEach(button => button.onclick = () => setSenateChoice(button.dataset.seat!,`candidate:${button.dataset.candidateChoice}`));
+  root.querySelectorAll<HTMLSelectElement>('[data-senate-choice]').forEach(element => element.onchange = () => setSenateChoice(element.dataset.senateChoice!,element.value,element));
+  root.querySelectorAll<HTMLButtonElement>('[data-candidate-choice]').forEach(button => button.onclick = () => setSenateChoice(button.dataset.seat!,`candidate:${button.dataset.candidateChoice}`,button));
 }
 
 function scenarioCounts(state: ScenarioState) {
@@ -1793,14 +1802,38 @@ function renderStateCompare() {
   host.innerHTML = `<div class="state-compare-head"><div><p class="kicker">COMPARE RACES</p><h3>州・候補者を比較</h3><p class="section-intro" data-section-intro="stateComparison">${escapeHtml(sectionIntroductions.stateComparison)}</p><p>異なる調査の数字は平均しません。</p></div>${selectedStates.length ? '<button type="button" data-clear-state-compare>比較をクリア</button>' : ''}</div>${selectedStates.length ? `<div class="state-compare-grid">${selectedStates.map(state => {
     const stateElections = electionByState(state);
     const election = stateElections[0];
-    if (!election) return `<article><button type="button" data-remove-compare="${state.fips}">×</button><h4>${state.nameJa}</h4><p>2026年の上院選はありません。</p></article>`;
+    if (!election) return `<article><button type="button" class="compare-remove" data-remove-compare="${state.fips}" aria-label="${state.nameJa}を比較から外す">×</button><h4>${state.nameJa}</h4><p>2026年の上院選はありません。</p></article>`;
     const brief = getRaceBrief(raceBriefs,election.electionId);
     const featured = getFeaturedCandidates(election.candidates,null,new Set(candidateBriefs.map(item => item.candidateId))).slice(0,3);
     return `<article><button type="button" class="compare-remove" data-remove-compare="${state.fips}" aria-label="${state.nameJa}を比較から外す">×</button><h4>${state.nameJa}</h4><div class="rating-badge"><span>${displayRatingLabel(election)}</span><small>2機関の統合評価・${RATING_SNAPSHOT_AS_OF}集計</small></div><p>${escapeHtml(observationFor(election.electionId)?.featuredSummary ?? brief?.summary ?? election.electionRelevance)}</p><dl><div><dt>主要候補</dt><dd>${featured.map(candidate => escapeHtml(candidate.name)).join('／')}</dd></div><div><dt>主な論点</dt><dd>${brief ? brief.keyIssues.slice(0,3).map(escapeHtml).join('／') : '詳細資料を確認中'}</dd></div></dl><label>この候補が当選すると仮定<select data-senate-choice="${election.seatId}">${senateChoiceOptions(election)}</select></label></article>`;
   }).join('')}</div>` : '<p class="compare-empty">比較する州はまだ選ばれていません。</p>'}`;
-  host.querySelector<HTMLButtonElement>('[data-clear-state-compare]')?.addEventListener('click',() => { compareStateFips = []; renderStateCompare(); });
-  host.querySelectorAll<HTMLButtonElement>('[data-remove-compare]').forEach(button => button.addEventListener('click',() => { compareStateFips = compareStateFips.filter(fips => fips !== button.dataset.removeCompare); renderStateCompare(); }));
+  host.querySelector<HTMLButtonElement>('[data-clear-state-compare]')?.addEventListener('click',() => { compareStateFips = []; renderStateCompare(); focusStateCompare(); });
+  host.querySelectorAll<HTMLButtonElement>('[data-remove-compare]').forEach(button => button.addEventListener('click',() => { compareStateFips = compareStateFips.filter(fips => fips !== button.dataset.removeCompare); renderStateCompare(); focusStateCompare(); }));
+  document.querySelectorAll<HTMLButtonElement>('#detail [data-compare-state]').forEach(button=>{
+    const included=compareStateFips.includes(button.dataset.compareState!);
+    button.setAttribute('aria-pressed',String(included));
+    button.textContent=included ? '比較から外す' : '比較に追加';
+  });
   bindSenateChoiceControls(host);
+}
+
+/** An explicit comparison action reveals its result without changing any seat assumptions. */
+function focusStateCompare() {
+  const host=document.querySelector<HTMLElement>('#state-compare');
+  if(!host) return;
+  openReaderDestination(host);
+  const heading=host.querySelector<HTMLElement>('h3') ?? host;
+  heading.tabIndex=-1;
+  heading.focus({preventScroll:true});
+  let clearance=16;
+  document.querySelectorAll<HTMLElement>('main > .jump-nav, #scenario-sticky').forEach(header=>{
+    const style=getComputedStyle(header);
+    if(style.position!=='sticky') return;
+    clearance=Math.max(clearance,(Number.parseFloat(style.top)||0)+header.getBoundingClientRect().height+12);
+  });
+  host.style.scrollMarginTop=`${clearance}px`;
+  host.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  setActivePageNavigation('#simulator');
 }
 
 function targetDifficultyLabel(path: SenatePath) { return scenarioPathDifficultyLabel(path); }
@@ -2136,6 +2169,7 @@ function selectState(state: State, trigger?: HTMLElement, options: {focus?:boole
   const previousScrollTop = sameState ? (detail.querySelector<HTMLElement>('#state-detail-scroll')?.scrollTop ?? 0) : 0;
   const openDetailIndexes = sameState ? new Set([...detail.querySelectorAll<HTMLDetailsElement>('details')].flatMap((item,index) => item.open ? [index] : [])) : new Set<number>();
   selected = state;
+  document.querySelector<HTMLSelectElement>('#state-search')!.value=state.fips;
   const viewUrl=new URL(window.location.href);
   const firstElection=electionByState(state)[0];
   if (firstElection) viewUrl.searchParams.set('race',firstElection.electionId);
@@ -2163,6 +2197,9 @@ function selectState(state: State, trigger?: HTMLElement, options: {focus?:boole
     });
   }
   bindSenateChoiceControls(detail);
+  detail.querySelectorAll<HTMLElement>('.election-assumption').forEach(control=>{
+    control.insertAdjacentHTML('beforeend','<p class="reader-sim-result-link"><a href="#simulator">議席配分・保存・比較へ →</a></p>');
+  });
   detail.querySelectorAll<HTMLButtonElement>('[data-briefing-policy]').forEach(button=>button.addEventListener('click',()=>{
     if(button.dataset.briefingPolicy)openPolicyStateReading(button.dataset.briefingPolicy,true);
   }));
@@ -2175,11 +2212,12 @@ function selectState(state: State, trigger?: HTMLElement, options: {focus?:boole
     if(key) openFeedItem(key);
   }));
   detail.querySelector<HTMLButtonElement>('[data-compare-state]')?.addEventListener('click',() => {
-    if (inCompare) compareStateFips = compareStateFips.filter(fips => fips !== state.fips);
+    if (compareStateFips.includes(state.fips)) compareStateFips = compareStateFips.filter(fips => fips !== state.fips);
     else if (compareStateFips.length < 3) compareStateFips = [...compareStateFips,state.fips];
     else addScenarioNotice('比較できる州は3州までです。');
     renderStateCompare();
     selectState(state,undefined,{focus:false,scroll:false,preserveReturn:true});
+    focusStateCompare();
   });
   document.querySelectorAll<HTMLButtonElement>('#detail [data-race-issue]').forEach(button => button.onclick = () => {
     activeIssueId = button.dataset.raceIssue ?? activeIssueId;
@@ -2211,13 +2249,14 @@ function selectState(state: State, trigger?: HTMLElement, options: {focus?:boole
     if (scroller) scroller.scrollTop = sameState ? previousScrollTop : 0;
   });
   const splitLayout = matchMedia('(min-width: 960px) and (orientation: landscape) and (min-height: 600px)').matches;
-  if (options.scroll !== false && !splitLayout) scrollStateDetailIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
+  if (options.scroll !== false && (!splitLayout || detail.closest('.reader-map-workspace'))) scrollStateDetailIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
 }
 function electionLabelForSeat(seatId: string) {
   return elections.filter(election => election.seatId === seatId).map(election => election.type === 'special' ? '特別' : '通常').join('・');
 }
 function renderSim() {
-  const activeSeatId = (document.activeElement as HTMLElement | null)?.dataset.senateChoice;
+  const activeControl=document.activeElement as HTMLElement|null;
+  const activeSeatId=activeControl?.closest('#seat-controls') ? activeControl.dataset.senateChoice : undefined;
   const counts = scenarioCounts(scenarioState);
   const explicit = Object.entries(scenarioState.senate);
   const unresolved = counts.none + counts.unconfirmed + counts.vacant + counts.unassigned;
@@ -2248,7 +2287,7 @@ function renderSim() {
     selectState(state,button);
     scrollStateDetailIntoView({behavior:'instant',block:'start'});
   }));
-  if (activeSeatId) document.querySelector<HTMLElement>(`#seat-controls [data-senate-choice="${activeSeatId}"]`)?.focus();
+  if (activeSeatId) document.querySelector<HTMLElement>(`#seat-controls [data-senate-choice="${activeSeatId}"]`)?.focus({preventScroll:true});
 }
 
 function renderIssueDetail() {
@@ -2291,7 +2330,7 @@ function renderSoyTable() {
     }
     document.querySelector<HTMLSelectElement>('#state-search')!.value = state.fips;
     selectState(state);
-    document.querySelector('#senate')!.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+    scrollStateDetailIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
   });
 }
 
@@ -2413,7 +2452,7 @@ document.addEventListener('click',event=>{
 },true);
 document.addEventListener('click',event=>{
   const target=event.target as Element;
-  if(target.closest('[data-briefing-simulate],[data-all-races],[data-power-target]'))openReaderDestination(document.getElementById('simulator'));
+  if(target.closest('[data-briefing-simulate],[data-power-target]'))openReaderDestination(document.getElementById('simulator'));
 },true);
 document.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.onclick = () => {
   const next = button.dataset.mode as 'current'|'rating';
@@ -2482,10 +2521,18 @@ renderScenarioManager();
 renderStateCompare();
 renderScenarioNotices();
 setMapMode('rating');
+const windowLoaded=document.readyState==='complete' ? Promise.resolve() : new Promise<void>(resolve=>{
+  window.addEventListener('load',()=>resolve(),{once:true});
+});
+const initialGeometryReady=Promise.all([
+  initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; }),
+  initHouseMap().catch(() => { document.querySelector('#house-map')!.innerHTML = '<p class="error">同梱された下院選挙区データを読み込めませんでした。</p>'; }),
+  document.fonts?.ready ?? Promise.resolve(),windowLoaded,
+]);
 setupPageNavigation(fromHistory => {
   if(fromHistory) overlayHistory=[];
   openOverlay('issues',undefined,{recordHistory:!fromHistory});
-},closeOverlay);
+},closeOverlay,initialGeometryReady);
 window.addEventListener('popstate',()=>{
   const view=new URL(window.location.href).searchParams;
   newsTab=view.get('newsTab')==='upcoming' ? 'upcoming' : 'recent';
@@ -2509,8 +2556,6 @@ window.addEventListener('popstate',()=>{
   }
   else if(overlayKind==='news') closeOverlay();
 });
-initMap().catch(() => { document.querySelector('#map')!.innerHTML = '<p class="error">同梱された州境データを読み込めませんでした。ローカル開発サーバーまたはプレビューで開いてください。</p>'; });
-initHouseMap().catch(() => { document.querySelector('#house-map')!.innerHTML = '<p class="error">同梱された下院選挙区データを読み込めませんでした。</p>'; });
 
 // Deep links carry only a reading position; initialization of the scenario above
 // continues to own saved baselines, pending shares and all seat choices.

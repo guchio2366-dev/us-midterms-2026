@@ -15,6 +15,7 @@ import { buildRecentFeed, buildUpcomingFeed, filterFeed } from '../src/news-feed
 import { briefingElections, locatorMapMarkup } from '../src/ui/briefing';
 import { observationBriefingMarkup, observationBriefingParts, observationComparisonMarkup } from '../src/ui/observation';
 import { introductionMarkup, nationalOverviewMarkup } from '../src/ui/overview';
+import approvedCopy from '../src/data/approved-reader-copy.json';
 
 const consensus = aggregateRatingConsensus(elections.map(e=>e.seatId),ratingSnapshotObservations);
 const focus = briefingElections(elections,seats,states,consensus);
@@ -114,7 +115,7 @@ describe('state briefing', () => {
 
   it('retains the institutional entry point and explains why to read the states', () => {
     expect(introductionMarkup()).toContain('id="open-civics"');
-    expect(introductionMarkup()).toContain('米国中間選挙は大統領の４年の任期の中間に行われる選挙');
+    expect(introductionMarkup()).toContain(approvedCopy.sections['米国中間選挙の概説'][0].text);
     expect(nationalOverviewMarkup()).toContain('両党とも51議席に届かず、12議席が未配分');
     expect(nationalOverviewMarkup()).toContain('href="#updates">12州');
   });

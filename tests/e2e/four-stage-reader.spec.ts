@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import {
-  capture, DRAFT_STORAGE_KEY, expectCurrentStage, expectNoPageOverflow, goToStage,
+  capture, captureElement, DRAFT_STORAGE_KEY, expectCurrentStage, expectHeadingInView,
+  expectNoClosedDisclosure, expectNoPageOverflow, goToStage,
   ready, SAVED_STORAGE_KEY, seedOldScenario, settleScroll, stages, storageSnapshot,
 } from './reader-helpers';
 
@@ -8,10 +9,19 @@ test('captures the opening and all four stages in the real browser', async ({ pa
   await page.goto('./');
   await ready(page);
   await capture(page, testInfo, '00-opening');
+  await captureElement(page, testInfo, '00-opening-complete', page.locator('.reader-opening'));
   for (const stage of stages) {
     await goToStage(page, stage.id);
     await capture(page, testInfo, `${stage.number}-${stage.capture}`);
   }
+  await goToStage(page, 'reader-03');
+  await page.locator('.reader-full-map-link a[href="#map-heading"]').click();
+  await settleScroll(page);
+  await capture(page, testInfo, '05-national-map-context');
+  await captureElement(page, testInfo, '05-national-map-full', page.locator('#map'));
+  await page.locator('#state-search').selectOption('39');
+  await settleScroll(page);
+  await capture(page, testInfo, '06-selected-state-ohio');
 });
 
 test('four-stage navigation, current position and history preserve the saved draft', async ({ page }, testInfo) => {
@@ -37,13 +47,7 @@ test('four-stage navigation, current position and history preserve the saved dra
     await expect(page.locator(`#${stage.id} > .reader-section-heading .reader-section-number`)).toHaveText(stage.number);
     expect(new URL(page.url()).searchParams.get('newsRace')).toBe('2026-ME-2-regular');
     expect(new URL(page.url()).hash).toBe(`#${stage.id}`);
-    const geometry = await page.locator(`#${stage.id}-heading`).evaluate(heading => {
-      const nav = document.querySelector('main > .reader-navigation')!;
-      const clearance = getComputedStyle(nav).position === 'sticky' ? nav.getBoundingClientRect().bottom : 0;
-      return { top: heading.getBoundingClientRect().top, clearance, height: innerHeight };
-    });
-    expect(geometry.top).toBeGreaterThanOrEqual(geometry.clearance - 1);
-    expect(geometry.top).toBeLessThan(geometry.height / 2);
+    await expectHeadingInView(page, `#${stage.id}-heading`);
     await expectNoPageOverflow(page);
   }
   await page.goBack();
@@ -76,24 +80,26 @@ test('legacy section and numbered-heading links reveal their semantic content', 
     { id: 'policy-workbench', stage: 'reader-03', disclosure: 'reader-05' },
     { id: 'powers', stage: 'reader-04', disclosure: 'power-disclosure' },
     { id: 'scenario-manager', stage: 'reader-04', disclosure: 'reader-simulation-disclosure' },
-    { id: 'map-heading', stage: 'reader-04', disclosure: 'reader-simulation-disclosure' },
+    { id: 'map-heading', stage: 'reader-04', disclosure: null },
+    { id: 'senate', target: 'map-heading', stage: 'reader-04', disclosure: null },
+    { id: 'detail', stage: 'reader-04', disclosure: null },
     { id: 'sources', stage: 'reader-06', disclosure: null },
   ];
   for (const destination of destinations) {
     await test.step(`#${destination.id}`, async () => {
       await page.goto(`./#${destination.id}`);
+      // Each route must work on an independent deep-link load; same-document hash
+      // navigation alone would retain disclosures opened by the preceding case.
+      await page.reload();
       await ready(page);
-      await expect(page.locator(`#${destination.id}`)).toBeVisible();
+      const target = page.locator(`#${destination.target ?? destination.id}`);
+      await expectNoClosedDisclosure(target);
       await expectCurrentStage(page, destination.stage);
       if (destination.disclosure) await expect(page.locator(`#${destination.disclosure}`)).toHaveAttribute('open', '');
-      const closedAncestors = await page.locator(`#${destination.id}`).evaluate(target => {
-        const closed = [];
-        for (let node: Element | null = target; node; node = node.parentElement) {
-          if (node instanceof HTMLDetailsElement && !node.open) closed.push(node.id || node.className);
-        }
-        return closed;
-      });
-      expect(closedAncestors).toEqual([]);
+      if (['map-heading', 'senate', 'detail'].includes(destination.id)) {
+        await expect(page.locator('#reader-simulation-disclosure')).not.toHaveAttribute('open', '');
+        await expectHeadingInView(page, destination.id === 'detail' ? '#detail h2' : '#map-heading');
+      }
       expect(new URL(page.url()).hash).toBe(`#${destination.id}`);
       expect(await storageSnapshot(page)).toEqual(entries);
       await expectNoPageOverflow(page);
@@ -178,9 +184,11 @@ test('old Brown proposal supports candidate changes, save, compare, share and Un
     });
   });
   const { state } = await seedOldScenario(page);
-  await page.goto('./?race=2026-OH-3-special#simulator');
+  await page.goto('./?race=2026-OH-3-special#detail');
   await ready(page);
-  await expect(page.locator('#reader-simulation-disclosure')).toHaveAttribute('open', '');
+  await expect(page.locator('#reader-simulation-disclosure')).not.toHaveAttribute('open', '');
+  await expectNoClosedDisclosure(page.locator('#map'));
+  await expectNoClosedDisclosure(page.locator('#detail'));
   const choice = page.locator('#detail [data-senate-choice="OH-3"]');
   await expect(choice).toHaveValue('candidate:cand-oh-sherrod-brown');
   await expect(page.locator('#sim-result .scenario-baseline-note')).toContainText('2026-09-24');
@@ -189,6 +197,7 @@ test('old Brown proposal supports candidate changes, save, compare, share and Un
     options.map(option => (option as HTMLOptionElement).value).find(value => value !== 'candidate:cand-oh-sherrod-brown'));
   expect(next).toBeTruthy();
   await choice.selectOption(next!);
+  await expect(page.locator('#reader-simulation-disclosure')).toHaveAttribute('open', '');
   await expect.poll(async () => JSON.parse((await storageSnapshot(page))[DRAFT_STORAGE_KEY]!).senate['OH-3'].candidateId)
     .toBe(next!.slice('candidate:'.length));
   await page.locator('#scenario-name').fill('E2E 比較案');
