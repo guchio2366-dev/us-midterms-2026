@@ -21,7 +21,7 @@ describe('four-stage reader contract',()=>{
     expect(navigation).not.toContain('href="#reader-05"');
     expect(navigation).toContain('<span class="reader-nav-phrase">仕組み</span>');
     expect(navigation).toContain('<span class="reader-nav-phrase">候補者</span>');
-    expect(readerIntroduction).toContain('議会の多数派への条件');
+    expect(readerIntroduction).toContain('米国中間選挙の動向と見通しを、自ら判断できるようになるサイトです。');
   });
 
   it('keeps membership dates and sources next to the current-seat table',()=>{

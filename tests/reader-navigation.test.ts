@@ -28,6 +28,7 @@ class ReadingNode {
       if(selector==='main' && node.tagName==='MAIN')return node;
       if(selector==='section[id^="reader-"]' && node.tagName==='SECTION' && /^reader-0[1-6]$/.test(node.id))return node;
       if(selector==='a[href^="#"]' && node.tagName==='A' && node.getAttribute('href')?.startsWith('#'))return node;
+      if(selector.startsWith('.') && node.getAttribute('class')?.split(/\s+/).includes(selector.slice(1)))return node;
     }
     return null;
   }
@@ -85,7 +86,7 @@ afterEach(()=>{vi.clearAllTimers();vi.useRealTimers();vi.unstubAllGlobals();});
 describe('four-stage reading navigation',()=>{
   it.each([
     ['#overview',0],['#national-overview',1],['#issues',2],['#updates',2],['#news',2],
-    ['#policy-workbench',2],['#powers',1],['#simulator',1],['#map-heading',1],['#scenario-manager',1],['#sources',3],
+    ['#policy-workbench',2],['#powers',1],['#simulator',1],['#map-heading',1],['#senate',1],['#detail',1],['#scenario-manager',1],['#sources',3],
     ['#reader-02',2],['#reader-05',2],
   ] as const)('keeps the old %s location associated with its reading section', (hash,index)=>{
     const page=browser();setActivePageNavigation(hash);
@@ -118,6 +119,45 @@ describe('four-stage reading navigation',()=>{
     const page=browser();const heading=page.sections[3].querySelector('h2')!;heading.top=120;
     scrollPageHeadingIntoView(heading as unknown as HTMLElement,'auto');
     expect(page.scrollTo).toHaveBeenCalledWith({top:304,behavior:'auto'});
+  });
+
+  it.each(['#map-heading','#senate','#detail'])('routes %s to the visible map or state heading without opening simulation',hash=>{
+    const page=browser(hash);
+    const workspace=page.add('SECTION','national-map-workspace',page.sections[1]);
+    workspace.setAttribute('class','workspace reader-map-workspace');
+    page.add('SPAN','senate',workspace);
+    const mapHeading=page.add('H2','map-heading',workspace);mapHeading.top=100;
+    const detail=page.add('ASIDE','detail',workspace);
+    const stateHeading=page.add('H2','state-detail-heading',detail);stateHeading.top=140;
+    const optional=page.add('DETAILS','reader-simulation-disclosure',page.sections[1]);
+    page.add('SECTION','simulator',optional);
+    setupPageNavigation(vi.fn(),vi.fn());
+    const target=hash==='#detail'?stateHeading:mapHeading;
+    expect(target.focus).toHaveBeenCalledWith({preventScroll:true});
+    expect(page.scrollTo).toHaveBeenCalledWith({top:hash==='#detail'?324:284,behavior:'smooth'});
+    expect(optional.open).toBe(false);
+    expect(page.links[1].getAttribute('aria-current')).toBe('location');
+    expect(page.location.hash).toBe(hash);
+    expect(page.pushState).not.toHaveBeenCalled();
+    expect(page.storage.getItem).not.toHaveBeenCalled();expect(page.storage.setItem).not.toHaveBeenCalled();
+  });
+
+  it('follows the stage-three full-map link to its heading while preserving query state',()=>{
+    const page=browser('#reader-03');
+    const heading=page.add('H2','map-heading',page.sections[1]);heading.top=100;
+    const link=page.add('A','',page.sections[2]);link.setAttribute('href','#map-heading');
+    const optional=page.add('DETAILS','reader-simulation-disclosure',page.sections[1]);
+    setupPageNavigation(vi.fn(),vi.fn());
+    const preventDefault=vi.fn();page.domListeners.get('click')!({target:link,preventDefault});
+    expect(preventDefault).toHaveBeenCalledOnce();
+    expect(heading.focus).toHaveBeenCalledWith({preventScroll:true});
+    expect(page.location.hash).toBe('#map-heading');
+    const url=new URL(page.location.href);
+    expect(url.searchParams.get('s')).toBe('independent-old-fixture');
+    expect(url.searchParams.get('newsRace')).toBe('2026-OH-3-special');
+    expect(page.links[1].getAttribute('aria-current')).toBe('location');
+    expect(optional.open).toBe(false);
+    expect(page.storage.setItem).not.toHaveBeenCalled();
   });
 
   it('clears the horizontal sticky menu on a narrow screen and uses reduced motion',()=>{
@@ -185,6 +225,20 @@ describe('four-stage reading navigation',()=>{
     expect(details.open).toBe(true);expect(heading.focus).toHaveBeenCalledWith({preventScroll:true});
     expect(target.style.scrollMarginTop).toBe('98px');
     expect(target.scrollIntoView).toHaveBeenCalledWith({block:'start',behavior:'auto'});
+  });
+
+  it('does not offset visible map detail for the optional simulation header',()=>{
+    const page=browser();
+    const workspace=page.add('SECTION','national-map-workspace',page.sections[1]);
+    workspace.setAttribute('class','workspace reader-map-workspace');
+    const target=page.add('ASIDE','detail',workspace);page.add('H2','state-detail-heading',target);
+    const optional=page.add('DETAILS','reader-simulation-disclosure',page.sections[1]);
+    const sticky=page.add('DIV','scenario-sticky',optional);sticky.css={position:'sticky',top:'16px'};sticky.height=70;
+    scrollStateDetailIntoView({block:'start',behavior:'auto'});
+    expect(optional.open).toBe(false);
+    expect(target.style.scrollMarginTop).toBe('16px');
+    expect(target.scrollIntoView).toHaveBeenCalledWith({block:'start',behavior:'auto'});
+    expect(page.storage.getItem).not.toHaveBeenCalled();expect(page.storage.setItem).not.toHaveBeenCalled();
   });
 
   it('revealing nested reading content never changes its remembered disclosure preference',()=>{

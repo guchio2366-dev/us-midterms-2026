@@ -8,6 +8,7 @@ import { escapeHtml } from './research';
 import { seatBarMarkup, type SeatBarSegment } from './seat-bars';
 import { senateBreakdown, senateMajorityPath } from './senate-bars';
 import { briefingElections } from './briefing';
+import { approvedAllocationParagraphs, approvedInstitutionParagraphs, renderApprovedAbout, renderApprovedParagraphs, type ReaderCopyFacts } from './approved-reader-copy';
 
 const breakdown = senateBreakdown(seats, elections);
 const consensus = aggregateRatingConsensus(uniqueElectionSeatIds(elections), ratingSnapshotObservations);
@@ -33,18 +34,32 @@ export function ratingConfirmationMarkup() {
   }).join('／');
 }
 
+export function currentReaderCopyFacts():ReaderCopyFacts {
+  const dates=(organizationId:string)=>[...new Set(ratingSnapshotObservations.filter(item=>item.organizationId===organizationId).map(item=>item.currentConfirmedAt).filter(Boolean))].sort();
+  return {
+    senateTotal:seats.length,contested:breakdown.contested,houseTotal:houseSnapshot.total,
+    regular:uniqueElectionSeatIds(elections.filter(election=>election.type==='regular')).length,
+    special:uniqueElectionSeatIds(elections.filter(election=>election.type==='special')).length,stateCount:states.length,
+    fixedDemocratic:breakdown.fixed.Democratic,fixedRepublican:breakdown.fixed.Republican,
+    allocatedDemocratic:totals.D,allocatedRepublican:totals.R,
+    unallocated:totals.lean+totals.tossup+totals.split+totals.missing,
+    ratingAsOf:RATING_SNAPSHOT_AS_OF,sabatoConfirmedAt:dates('sabato'),insideConfirmedAt:dates('inside'),
+    electionDate:elections[0].date,vicePresident,
+  };
+}
+
 export function introductionMarkup() {
   const counts = currentCaucusCounts(seats);
   const regular = uniqueElectionSeatIds(elections.filter(election => election.type === 'regular')).length;
   const special = uniqueElectionSeatIds(elections.filter(election => election.type === 'special')).length;
-  const institution = approvedIntroduction.institution(seats.length,breakdown.contested,houseSnapshot.total,regular,special,states.length);
+  const institution = approvedInstitutionParagraphs(currentReaderCopyFacts());
   return `<section id="overview" class="introduction section-block" aria-labelledby="overview-heading">
     <div class="overview-grid">
       <div class="opening-context">
-      <section class="opening-card intro-purpose-card" aria-labelledby="site-purpose-heading"><h2 id="site-purpose-heading">このサイトについて</h2><p>${escapeHtml(approvedIntroduction.purpose)}</p><p>このサイトにおける目標は以下の３つです。</p><ol class="intro-goals">${approvedIntroduction.goals.map(goal=>`<li>${escapeHtml(goal)}</li>`).join('')}</ol></section>
+      <section class="opening-card intro-purpose-card" aria-labelledby="site-purpose-heading"><h2 id="site-purpose-heading">このサイトについて</h2>${renderApprovedAbout()}</section>
       <section class="opening-card intro-overview-card" aria-labelledby="overview-heading">
         <p class="kicker">OVERVIEW</p><h2 id="overview-heading">米国中間選挙の概説</h2>
-        ${paragraphs(institution.slice(0,2))}
+        ${renderApprovedParagraphs(institution,'institution')}
         <table class="opening-seats"><caption class="visually-hidden">現在の議席と今回の改選範囲</caption>
           <thead><tr><th scope="col">議院</th><th scope="col">現在の議席</th><th scope="col">今回の改選</th></tr></thead>
           <tbody>
@@ -53,8 +68,7 @@ export function introductionMarkup() {
           </tbody>
         </table>
         <p class="opening-footnote">上院は会派別。下院は独立${houseSnapshot.Independent}・空席${houseSnapshot.vacant}を含む。</p>
-        <details class="opening-details"><summary>制度・出典を読む</summary><div>
-          ${paragraphs(institution.slice(2))}
+        <details class="opening-details"><summary>制度の出典と補足を読む</summary><div>
           <button id="open-civics" class="opening-text-button" type="button">Class制度・特別選挙を詳しく読む</button>
           <p class="opening-source-links">${sourceLinks(introductionContent.institutionSourceIds)}</p>
         </div></details>
@@ -113,18 +127,10 @@ export function nationalOverviewMarkup() {
     {count:breakdown.fixed.Republican,label:`非改選・共和党会派 ${breakdown.fixed.Republican}`,className:'fixed-r'},
   ];
   const majority = Math.floor(seats.length / 2)+1;
-  const senateIntro = [
-    `上院は、人口にかかわらず各州２人、合計${seats.length}人で構成されます。今回改選されない議席を出発点に、改選される議席が全体の議席配分に与える影響を確認できます。`,
-    `非改選議席は、民主党側${breakdown.fixed.Democratic}議席、共和党側${breakdown.fixed.Republican}議席です。${majority}議席の過半数まで、それぞれ民主党側${majority-breakdown.fixed.Democratic}議席、共和党側${majority-breakdown.fixed.Republican}議席が必要です。民主党側には、民主党会派に参加する無所属議員も含みます。`,
-    '各州の情勢については、選挙を分析するSabato’s Crystal BallとInside Electionsの２機関が、世論調査などをもとに、どちらの党が優勢かを評価しています。このサイトでは、両機関が同じ党についてLikely（優勢）以上と評価する議席を、その党側へ暫定的に配分します。',
-    `この改選分を非改選議席に加えると、民主党側${breakdown.fixed.Democratic+totals.D}議席、共和党側${breakdown.fixed.Republican+totals.R}議席になります。残る${unresolved}議席は、少なくとも一方の評価がLean（やや優勢）・Tilt（わずかに優勢）の場合や、接戦・評価の不一致などにより、どちらの党にも配分していない議席です。これが『未配分』であり、注目州として詳しく取り上げます。配分済みの議席も当選が確定したものではありません。`,
-  ];
-  const vpControl = vicePresident.verificationStatus === 'confirmed' && vicePresident.party === 'R'
-    ? `なお、上院の採決が${seats.length/2}対${seats.length/2}の場合、副大統領が決裁票を投じることができます。現在の副大統領は共和党の${vicePresident.name === 'JD Vance' ? 'バンス' : vicePresident.name}氏のため、共和党側は今回${Math.max(0,seats.length/2-breakdown.fixed.Republican)}議席を得て${seats.length/2}議席でも多数派として運営することが可能です。`
-    : '副大統領の氏名・党派は未確認です。';
+  const senateIntro = approvedAllocationParagraphs(currentReaderCopyFacts());
   return `<section id="national-overview" class="national-overview national-card opening-card" aria-labelledby="national-overview-heading">
     <div class="opening-national-heading"><div><p class="kicker">SENATE OUTLOOK</p><h2 id="national-overview-heading">上院の情勢と51議席への配分</h2></div><span class="opening-total">全${seats.length}議席</span></div>
-    <div class="approved-senate-intro">${paragraphs(senateIntro)}</div>
+    <div class="approved-senate-intro">${renderApprovedParagraphs(senateIntro,'allocation')}</div>
     <p class="opening-asof">情勢評価の暫定配分 <span>集計基準 ${RATING_SNAPSHOT_AS_OF}</span></p>
     <div class="provisional-totals" aria-label="情勢評価による暫定配分">
       <div class="provisional-d"><span>民主</span><b>${breakdown.fixed.Democratic+totals.D}</b></div>
@@ -138,7 +144,7 @@ export function nationalOverviewMarkup() {
     </div>
     <div class="comparison-legend" aria-label="グラフの凡例"><span><i class="fixed-d"></i><i class="fixed-r"></i>薄色：非改選</span><span><i class="consensus-d"></i><i class="consensus-r"></i>濃色：今回改選</span><span><i class="consensus-unresolved"></i>未配分</span><span><i class="goal-other"></i>残り・配分未指定</span></div>
 
-    <p class="national-conditions">${vpControl} <a href="#powers">採決条件を確認</a></p>
+    <p class="national-conditions"><a href="#powers">採決条件を確認</a></p>
     <p class="opening-source-links">${ratingConfirmationMarkup()}（評価の変更日ではなく確認日）</p>
     <details class="consensus-method opening-details"><summary>配分の考え方・出典</summary><div><p>SabatoとInside Electionsで最後に確認できた評価を機械的に統合した暫定配分である。2機関が同じ党方向で、両方ともLikely／Safe／Solidの場合だけ党派側へ置く。一方でもLean／Tilt、接戦、方向不一致、資料不足なら未配分とする。下の2本は51議席に届く配分例である。</p><p>集計基準日 ${RATING_SNAPSHOT_AS_OF}／方式 ${RATING_METHOD_VERSION}。全${breakdown.contested}選挙の2機関の記録を収録。評価の強さは平均しない。Inside Electionsは10月1日に全件を再照合し、7州の変更を反映した。Sabato全表の確認日は9月24日のまま。資料ごとの確認日は内訳を参照。</p><p>副大統領に関する確認日：${escapeHtml(vicePresident.verifiedAt ?? '未確認')}。</p>${ratingDetailsMarkup()}<p class="opening-source-links">${sourceLinks(['sabato-senate-2026','inside-senate-ratings-2026'])}</p></div></details>
     <div class="majority-bridge"><h3>${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '上院の過半数は、まだ見通せない。' : '過半数の行方を、州ごとに読む。'}</h3><p>現在の統合評価では${breakdown.fixed.Democratic+totals.D < 51 && breakdown.fixed.Republican+totals.R < 51 ? '両党とも51議席に届かず、' : ''}${unresolved}議席が未配分。未配分の<a href="#updates">${featuredStates}州で何が争われているか</a>を見ていく。</p><small>優勢とされた議席も当選確定ではない。</small></div>

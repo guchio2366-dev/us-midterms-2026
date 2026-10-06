@@ -1,14 +1,14 @@
 import { readerSections } from '../data/reader-journey';
 
 const readerHashes: string[] = readerSections.map(section=>`#${section.id}`);
-const legacyHashes = ['#overview','#national-overview','#updates','#news','#policy-workbench','#scenario-manager','#powers','#simulator','#map-heading','#sources','#issues'];
+const legacyHashes = ['#overview','#national-overview','#updates','#news','#policy-workbench','#scenario-manager','#powers','#simulator','#map-heading','#senate','#detail','#sources','#issues'];
 const numberedReaderHashes = ['#reader-01','#reader-02','#reader-03','#reader-04','#reader-05','#reader-06'];
 const navigableHashes = new Set([...numberedReaderHashes,...numberedReaderHashes.map(hash=>`${hash}-heading`),...legacyHashes]);
 const readerAliases: Record<string,string> = {
   '#overview':'#reader-01', '#national-overview':'#reader-04', '#issues':'#reader-03',
   '#reader-02':'#reader-03', '#reader-05':'#reader-03',
   '#updates':'#reader-03', '#news':'#reader-03', '#policy-workbench':'#reader-03',
-  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-04',
+  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-04', '#senate':'#reader-04', '#detail':'#reader-04',
   '#scenario-manager':'#reader-04', '#sources':'#reader-06',
 };
 
@@ -65,8 +65,12 @@ export function scrollStateDetailIntoView(options: ScrollIntoViewOptions) {
     const style = getComputedStyle(header);
     if (style.position !== 'sticky' && style.position !== 'fixed') return;
     if (style.position==='fixed' && header.matches('main > .jump-nav')) return;
+    // This header is confined to the optional editor, below the visible map detail.
+    if (header.id === 'scenario-sticky' && target.closest('.reader-map-workspace')) return;
     const top = Number.parseFloat(style.top);
-    if (Number.isFinite(top)) offset = Math.max(offset,top + header.getBoundingClientRect().height + 12);
+    const rect=header.getBoundingClientRect();
+    if (rect.height <= 0 || (header.id === 'scenario-sticky' && rect.top > Math.max(0,top))) return;
+    if (Number.isFinite(top)) offset = Math.max(offset,top + rect.height + 12);
   });
   target.style.scrollMarginTop = `${offset}px`;
   target.scrollIntoView(options);
@@ -90,12 +94,12 @@ export function bindDisclosurePreference(details: HTMLDetailsElement, key: strin
 
 export function setupPageNavigation(openIssues: (fromHistory?: boolean) => void, closePanel: () => void) {
   let lastHash=location.hash;
-  let scrollTimer: ReturnType<typeof window.setTimeout>|null=null;
+  let scrollTimer:number|null=null;
   setActivePageNavigation(location.hash);
   function visit(hash: string, fromHistory=false) {
     const issueTarget=hash==='#issues' ? document.getElementById('issues') : null;
     if (hash === '#issues' && !issueTarget?.closest('main')) { lastHash=hash; setActivePageNavigation(hash); openIssues(fromHistory); return; }
-    const id = hash.slice(1);
+    const id = hash === '#senate' ? 'map-heading' : hash.slice(1);
     if (!navigableHashes.has(hash)) {
       if(lastHash==='#issues') closePanel();
       lastHash=hash;

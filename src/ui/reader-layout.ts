@@ -1,4 +1,4 @@
-import { readerIntroduction, readerSections } from '../data/reader-journey';
+import { readerSections } from '../data/reader-journey';
 import { escapeHtml as esc } from './research';
 import { readerCompositionSourcesMarkup, readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
 
@@ -26,14 +26,18 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   const main=document.querySelector<HTMLElement>('main');
   const nav=main?.querySelector<HTMLElement>(':scope > .jump-nav');
   const overview=document.getElementById('overview');
+  const purpose=overview?.querySelector<HTMLElement>('.intro-purpose-card');
   const institution=overview?.querySelector<HTMLElement>('.intro-overview-card');
+  const issueIntroduction=overview?.querySelector<HTMLElement>('.intro-issues-card');
   const national=document.getElementById('national-overview');
   const updates=document.getElementById('updates');
   const simulator=document.getElementById('simulator');
+  const workspace=document.querySelector<HTMLElement>('.workspace');
+  const senate=document.getElementById('senate');
   const policy=document.getElementById('policy-workbench-host');
   const powers=document.getElementById('powers');
   const sources=document.getElementById('sources');
-  if(!main || !nav || !overview || !institution || !national || !updates || !simulator || !policy || !powers || !sources) return;
+  if(!main || !nav || !overview || !purpose || !institution || !national || !updates || !simulator || !workspace || !policy || !powers || !sources) return;
 
   document.body.classList.add('reader-experience');
   nav.classList.add('reader-navigation');
@@ -42,8 +46,10 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
 
   const hero=document.createElement('section');
   hero.className='reader-opening';
-  hero.setAttribute('aria-labelledby','reader-opening-heading');
-  hero.innerHTML=`<h2 id="reader-opening-heading">このサイトについて</h2><p class="reader-opening-copy">${esc(readerIntroduction)}</p><a class="reader-start" href="#reader-01">01 中間選挙の仕組みから読む →</a>`;
+  hero.setAttribute('aria-labelledby','site-purpose-heading');
+  // Keep the approved purpose and every goal explanation as their original nodes.
+  hero.append(purpose);
+  hero.insertAdjacentHTML('beforeend','<a class="reader-start" href="#reader-01">01 中間選挙の仕組みから読む →</a>');
   nav.after(hero);
 
   const sections=readerSections.map((item,index)=>{
@@ -57,11 +63,9 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
     return section;
   });
 
-  // The updated introduction replaces the old purpose/issue introductions, retaining factual details.
+  // The approved purpose is already in the opening; the complete institution text stays here.
   overview.replaceChildren(institution);
   overview.classList.add('reader-institution');
-  const institutionHeading=institution.querySelector<HTMLElement>('#overview-heading');
-  if(institutionHeading) institutionHeading.textContent='今回選び直す議席';
   sections[0].append(overview);
   overview.insertAdjacentHTML('beforeend',readerMechanismContextMarkup());
 
@@ -74,31 +78,39 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   if(seatTable) composition.append(seatTable);
   if(seatFootnote) composition.append(seatFootnote);
   composition.insertAdjacentHTML('beforeend',readerCompositionSourcesMarkup());
-  sections[1].append(composition);
+  // The national map is a primary reading interaction, not a simulation disclosure.
+  // Reuse its controls, paths and detail node so every existing event remains bound.
+  workspace.classList.add('reader-map-workspace');
+  workspace.setAttribute('aria-label','全国50州の上院選挙地図・議席配分・州詳細');
+  const mapColumn=workspace.querySelector<HTMLElement>('.map-column');
+  if(senate) workspace.prepend(senate);
+  const mapHeading=mapColumn?.querySelector('.map-head');
+  if(mapColumn && mapHeading) mapColumn.prepend(mapHeading);
+  const mapContext=document.createElement('div');
+  mapContext.className='reader-map-context';
+  mapContext.append(composition);
+  mapColumn?.after(mapContext);
+  sections[1].append(workspace);
 
-  updates.querySelector('.approved-updates-intro')?.remove();
   updates.querySelector('.section-heading')?.remove();
   updates.setAttribute('aria-labelledby','reader-03-heading');
+  const mapLink=document.createElement('div');
+  mapLink.className='reader-full-map-link';
+  mapLink.innerHTML='<a href="#map-heading">全国50州の上院選挙地図を見る →</a>';
+  updates.prepend(mapLink);
   sections[2].append(updates);
 
-  const allocationCopy=national.querySelector('.approved-senate-intro');
-  if(allocationCopy) {
-    const explanation=document.createElement('details');
-    explanation.className='reader-allocation-explanation';
-    explanation.innerHTML='<summary>非改選議席と暫定配分の読み方</summary>';
-    explanation.append(allocationCopy);
-    national.querySelector('.consensus-method')?.before(explanation);
-  }
+  // All allocation prerequisites remain visible, before optional source/method detail.
   sections[1].append(national);
   sections[1].insertAdjacentHTML('beforeend',readerMajorityContextMarkup());
   const optional=document.createElement('details');
   optional.className='reader-optional-simulation';
   optional.id='reader-simulation-disclosure';
-  optional.innerHTML='<summary><b>自分の見立てを議席数で確かめる</b><span>地図・当選者の仮定・保存・共有を開く</span></summary>';
+  optional.innerHTML='<summary><b>自分の見立てを議席数で確かめる</b><span>当選者の仮定・保存・比較・共有を開く</span></summary>';
   optional.append(simulator);
   sections[1].append(optional);
   const view=new URL(location.href);
-  if(view.searchParams.has('s') || view.searchParams.has('race')) optional.open=true;
+  if(view.searchParams.has('s')) optional.open=true;
 
   // Older numbered links keep their subject. These are optional contextual details,
   // not additional reading stages, and moving nodes retains event listeners/state.
@@ -111,6 +123,7 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   policyDetails.className='reader-context-disclosure';
   policyDetails.innerHTML='<summary id="reader-05-heading"><b>候補者の政策と採決記録を詳しく比較する</b><span>政策ごとの賛否・条件・当落の理由</span></summary>';
   policyDetails.append(policy);
+  if(issueIntroduction) sections[2].append(issueIntroduction);
   sections[2].append(issues,policyDetails);
   const powerDetails=document.createElement('details');
   powerDetails.className='reader-context-disclosure';
