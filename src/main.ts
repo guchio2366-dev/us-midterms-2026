@@ -16,6 +16,7 @@ import './ui/briefing.css';
 import './ui/compact-briefing.css';
 import './ui/policy-workbench.css';
 import './ui/reader-layout.css';
+import './ui/focus-news.css';
 import { policyPrototype, policyRefs } from './data/policy-prototype';
 import type { PolicyThemeId, PolicyRef } from './data/policy-prototype-model';
 import { evidenceRefs } from './data/research-sources';
@@ -442,7 +443,18 @@ function enhanceLayout() {
   news.className = 'section-block news-section';
   news.setAttribute('aria-labelledby', 'news-heading');
   news.innerHTML = '<div class="section-heading"><div><p class="kicker">NEWS & EVENTS</p><h3 id="news-heading">ニュース・今後の予定</h3></div></div><div class="news-scope" role="group" aria-label="ニュースの対象"><button type="button" data-news-scope="state" aria-pressed="true">この州</button><button type="button" data-news-scope="all" aria-pressed="false">全国</button></div><p class="news-editorial-note">選んだ州に関係する出来事と、その背景を読む。</p><div class="news-tabs" role="tablist" aria-label="ニュースと予定を切り替える"><button id="news-tab-recent" type="button" role="tab" aria-selected="true" aria-controls="news-feed-panel" data-news-tab="recent">最近のニュース</button><button id="news-tab-upcoming" type="button" role="tab" aria-selected="false" aria-controls="news-feed-panel" data-news-tab="upcoming" tabindex="-1">今後の予定</button></div><div id="news-race-filter" class="news-race-filter" hidden><span></span></div><p class="news-scroll-hint">枠内をスクロールして続きを読む</p><div id="news-feed-panel" role="tabpanel" aria-labelledby="news-tab-recent"><div class="news-frame"><div id="news-list" class="news-list" tabindex="0" aria-label="最近のニュース一覧"></div><div id="news-scrollbar" class="custom-scrollbar" role="scrollbar" aria-label="ニュース一覧のスクロール位置" aria-controls="news-list" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><span class="scroll-thumb"></span></div></div><div class="news-pagination"><span id="news-page-status" aria-live="polite"></span><div><button id="news-prev" type="button">前の10件</button><button id="news-next" type="button">次の10件</button></div></div></div><button id="news-expand" class="news-expand" type="button" aria-expanded="false" aria-controls="news-list">ニュース一覧を見る</button><div data-observation-monitor></div>';
+  const newsControls=document.createElement('div');
+  newsControls.className='news-sticky-controls';
+  while(news.firstElementChild && news.firstElementChild.id!=='news-feed-panel') newsControls.append(news.firstElementChild);
+  const newsBody=document.createElement('div');
+  newsBody.className='news-reading-body';
+  newsBody.tabIndex=0;
+  newsBody.setAttribute('role','region');
+  newsBody.setAttribute('aria-label','ニュース・予定の本文をスクロール');
+  while(news.firstElementChild) newsBody.append(news.firstElementChild);
+  news.append(newsControls,newsBody);
   news.querySelector<HTMLButtonElement>('#news-expand')?.addEventListener('click',()=>{
+    newsScrollTops[newsTab]=newsScrollElement()?.scrollTop ?? 0;
     newsExpanded=!newsExpanded;
     newsPages[newsTab]=0;
     renderNewsList();
@@ -483,6 +495,7 @@ function enhanceLayout() {
       newsRaceFilter=feedButton.dataset.briefingRace ?? activeFocusElectionId;
       newsTab='upcoming';
       newsPages.upcoming=0;
+      newsScrollTops.upcoming=0;
       newsExpanded=true;
       renderNewsList();
       updateNewsViewUrl();
@@ -710,7 +723,7 @@ function enhanceLayout() {
     newsPages[newsTab] = Math.max(0, newsPages[newsTab] - 1);
     renderNewsList();
     const list=document.querySelector<HTMLElement>('#news-list');
-    list?.scrollIntoView({block:'start'});
+    if(!isNewsSidebarVisible()) list?.scrollIntoView({block:'start'});
     list?.focus({preventScroll:true});
   });
   document.querySelector<HTMLButtonElement>('#news-next')?.addEventListener('click', () => {
@@ -718,7 +731,7 @@ function enhanceLayout() {
     newsPages[newsTab] += 1;
     renderNewsList();
     const list=document.querySelector<HTMLElement>('#news-list');
-    list?.scrollIntoView({block:'start'});
+    if(!isNewsSidebarVisible()) list?.scrollIntoView({block:'start'});
     list?.focus({preventScroll:true});
   });
   document.querySelectorAll<HTMLButtonElement>('[data-news-tab]').forEach(button=>button.addEventListener('click',()=>setNewsTab(button.dataset.newsTab as NewsFeedTab)));
@@ -834,15 +847,27 @@ function updateNewsViewUrl(replace=true) {
   if(replace) window.history.replaceState(null,'',url); else window.history.pushState(null,'',url);
 }
 
+function newsScrollElement():HTMLElement|null {
+  const body=document.querySelector<HTMLElement>('#news .news-reading-body');
+  return body && getComputedStyle(body).overflowY==='auto' ? body : document.querySelector<HTMLElement>('#news-list');
+}
+
+function isNewsSidebarVisible():boolean {
+  const news=document.querySelector<HTMLElement>('#news');
+  if(!news || getComputedStyle(news).position!=='sticky')return false;
+  const rect=news.getBoundingClientRect();
+  return rect.top>=0 && rect.bottom<=window.innerHeight+1;
+}
+
 function setNewsTab(tab:NewsFeedTab,options:{focus?:boolean;updateUrl?:boolean;expanded?:boolean}={}) {
-  const currentList=document.querySelector<HTMLElement>('#news-list');
+  const currentList=newsScrollElement();
   if(currentList) newsScrollTops[newsTab]=currentList.scrollTop;
   if(options.expanded!==undefined) newsExpanded=options.expanded;
   else if(newsTab!==tab) newsExpanded=false;
   newsTab=tab;
   renderNewsList();
   if(options.updateUrl!==false) updateNewsViewUrl();
-  if(options.focus!==false) document.querySelector<HTMLButtonElement>(`[data-news-tab="${tab}"]`)?.focus();
+  if(options.focus!==false) document.querySelector<HTMLButtonElement>(`[data-news-tab="${tab}"]`)?.focus({preventScroll:isNewsSidebarVisible()});
 }
 
 function showNewsFeed(tab:NewsFeedTab,electionId:string|null) {
@@ -857,7 +882,7 @@ function showNewsFeed(tab:NewsFeedTab,electionId:string|null) {
   setNewsItemUrl(null,'replace');
   updateNewsViewUrl();
   const news=document.querySelector<HTMLElement>('#news');
-  news?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
+  if(!isNewsSidebarVisible()) news?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
   requestAnimationFrame(()=>document.querySelector<HTMLButtonElement>(`[data-news-tab="${tab}"]`)?.focus({preventScroll:true}));
 }
 
@@ -951,7 +976,7 @@ function renderNewsList() {
   next.textContent=newsTab==='recent' ? '次の10件' : '次の予定';
   previous.disabled = newsPages[newsTab] === 0;
   next.disabled = newsPages[newsTab] >= pageCount - 1;
-  requestAnimationFrame(()=>{ list.scrollTop=newsScrollTops[newsTab]; });
+  requestAnimationFrame(()=>{ const scroll=newsScrollElement();if(scroll)scroll.scrollTop=newsScrollTops[newsTab]; });
   setupScrollIndicator('news-list', 'news-scrollbar');
 }
 
@@ -959,7 +984,7 @@ function captureNewsReturn(feedKey: NewsFeedKey): NewsReturnState {
   const content = document.querySelector<HTMLElement>('#overlay-content');
   const stored = [...overlayHistory].reverse().find(entry => entry.kind === 'news' && entry.newsId === feedKey);
   const articleScrollTop = overlayKind === 'news' && overlayNewsId === feedKey ? (content?.scrollTop ?? 0) : (stored?.scrollTop ?? 0);
-  return {feedKey,articleScrollTop,tab:newsTab,raceFilter:newsRaceFilter,newsPage:newsPages[newsTab],listScrollTop:document.querySelector<HTMLElement>('#news-list')?.scrollTop ?? 0,expanded:newsExpanded};
+  return {feedKey,articleScrollTop,tab:newsTab,raceFilter:newsRaceFilter,newsPage:newsPages[newsTab],listScrollTop:newsScrollElement()?.scrollTop ?? 0,expanded:newsExpanded};
 }
 
 function restoreNewsReturn(state: NewsReturnState) {
@@ -969,8 +994,8 @@ function restoreNewsReturn(state: NewsReturnState) {
   newsPages[state.tab] = state.newsPage;
   newsScrollTops[state.tab]=state.listScrollTop;
   renderNewsList();
-  const list = document.querySelector<HTMLElement>('#news-list');
-  if (list) list.scrollTop = state.listScrollTop;
+  const scroll = newsScrollElement();
+  if (scroll) scroll.scrollTop = state.listScrollTop;
   openFeedItem(state.feedKey,{history:'push'});
   requestAnimationFrame(() => {
     const content = document.querySelector<HTMLElement>('#overlay-content');
@@ -2554,14 +2579,17 @@ setupPageNavigation(fromHistory => {
   openOverlay('issues',undefined,{recordHistory:!fromHistory});
 },closeOverlay,initialGeometryReady);
 window.addEventListener('popstate',()=>{
+  // Article-only history keeps the list DOM and its return-focus element intact.
+  const previousNewsTab=newsTab,previousNewsRace=newsRaceFilter,previousFocusRace=activeFocusElectionId;
+  newsScrollTops[newsTab]=newsScrollElement()?.scrollTop ?? 0;
   const view=new URL(window.location.href).searchParams;
   newsTab=view.get('newsTab')==='upcoming' ? 'upcoming' : 'recent';
   const race=view.get('newsRace');
   const briefRace=view.get('briefRace') ?? race;
   if(focusElections.some(item=>item.electionId===briefRace)) activeFocusElectionId=briefRace;
   newsRaceFilter=race && elections.some(item=>item.electionId===race) ? race : view.get('newsScope')==='all' ? null : activeFocusElectionId;
-  renderFocusSummary(false,false);
-  renderNewsList();
+  if(previousFocusRace!==activeFocusElectionId) renderFocusSummary(false,false);
+  if(previousNewsTab!==newsTab || previousNewsRace!==newsRaceFilter) renderNewsList();
   const key=resolveFeedKey(view.get('newsItem'),newsItems,observationData);
   if(key){
     openFeedItem(key,{history:'none'});

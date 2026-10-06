@@ -146,8 +146,8 @@ test('all featured states show labeled party colors and dated poll summaries bef
     const compactPolls = summary.locator('[data-summary-poll-id]');
     expect(await compactPolls.count()).toBeLessThanOrEqual(2);
     if (await compactPolls.count()) {
-      await expect(summary).toContainText('情勢評価・当選確率とは別の実測値');
-      if (await compactPolls.count() === 2) await expect(summary).toContainText('日付・対象・質問が異なり、平均していません');
+      await expect(panel.locator('.focus-rating-note')).toContainText('情勢評価');
+      if (await compactPolls.count() === 2) await expect(summary).toContainText('日付・対象・質問は調査ごとに異なります（平均なし）');
       for (const compact of await compactPolls.all()) {
         await expectNoClosedDisclosure(compact);
         await expect(compact.locator('time')).toHaveAttribute('datetime', /^2026-\d{2}-\d{2}$/);
