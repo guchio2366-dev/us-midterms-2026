@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { readerSections } from '../src/data/reader-journey';
 import { revealPageTarget, scrollPageHeadingIntoView, scrollStateDetailIntoView, setActivePageNavigation, setupPageNavigation } from '../src/ui/navigation';
 
 /** The navigation uses browser geometry, focus and history, but no scenario data. */
@@ -48,8 +49,8 @@ function browser(hash='',position='fixed',reducedMotion=false) {
   };
   const main=add('MAIN','',null);
   const nav=add('NAV','',main);nav.css.position=position;nav.height=position==='fixed'?720:64;
-  const sections=Array.from({length:6},(_,index)=>{
-    const section=add('SECTION',`reader-0${index+1}`,main);section.top=index*1000;section.height=1000;
+  const sections=readerSections.map((item,index)=>{
+    const section=add('SECTION',item.id,main);section.top=index*1000;section.height=1000;
     const heading=add('H2',`${section.id}-heading`,section);heading.top=section.top;
     return section;
   });
@@ -81,10 +82,11 @@ function browser(hash='',position='fixed',reducedMotion=false) {
 beforeEach(()=>vi.useFakeTimers());
 afterEach(()=>{vi.clearAllTimers();vi.useRealTimers();vi.unstubAllGlobals();});
 
-describe('six-section reading navigation',()=>{
+describe('four-stage reading navigation',()=>{
   it.each([
-    ['#overview',0],['#national-overview',3],['#issues',1],['#updates',2],['#news',2],
-    ['#policy-workbench',4],['#powers',4],['#simulator',3],['#map-heading',3],['#scenario-manager',3],['#sources',5],
+    ['#overview',0],['#national-overview',1],['#issues',2],['#updates',2],['#news',2],
+    ['#policy-workbench',2],['#powers',1],['#simulator',1],['#map-heading',1],['#scenario-manager',1],['#sources',3],
+    ['#reader-02',2],['#reader-05',2],
   ] as const)('keeps the old %s location associated with its reading section', (hash,index)=>{
     const page=browser();setActivePageNavigation(hash);
     expect(page.links[index].getAttribute('aria-current')).toBe('location');
@@ -99,7 +101,7 @@ describe('six-section reading navigation',()=>{
 
   it('opens all containing disclosures before focusing a legacy save destination without changing storage',()=>{
     const page=browser('#scenario-manager');
-    const outer=page.add('DETAILS','optional-simulation',page.sections[3]);
+    const outer=page.add('DETAILS','optional-simulation',page.sections[1]);
     const inner=page.add('DETAILS','optional-save',outer);
     const target=page.add('SECTION','scenario-manager',inner);target.top=100;
     const heading=page.add('H2','save-heading',target);heading.top=100;
@@ -113,7 +115,7 @@ describe('six-section reading navigation',()=>{
   });
 
   it('does not subtract the height of the fixed left sidebar from a heading',()=>{
-    const page=browser();const heading=page.sections[4].querySelector('h2')!;heading.top=120;
+    const page=browser();const heading=page.sections[3].querySelector('h2')!;heading.top=120;
     scrollPageHeadingIntoView(heading as unknown as HTMLElement,'auto');
     expect(page.scrollTo).toHaveBeenCalledWith({top:304,behavior:'auto'});
   });
@@ -126,8 +128,8 @@ describe('six-section reading navigation',()=>{
 
   it('preserves the scenario and article parameters when following a new section link',()=>{
     const page=browser();setupPageNavigation(vi.fn(),vi.fn());
-    const preventDefault=vi.fn();page.domListeners.get('click')!({target:page.links[4],preventDefault});
-    expect(preventDefault).toHaveBeenCalledOnce();expect(page.location.hash).toBe('#reader-05');
+    const preventDefault=vi.fn();page.domListeners.get('click')!({target:page.links[3],preventDefault});
+    expect(preventDefault).toHaveBeenCalledOnce();expect(page.location.hash).toBe('#reader-06');
     const url=new URL(page.location.href);expect(url.searchParams.get('s')).toBe('independent-old-fixture');
     expect(url.searchParams.get('newsRace')).toBe('2026-OH-3-special');
     expect(page.storage.setItem).not.toHaveBeenCalled();
@@ -135,7 +137,7 @@ describe('six-section reading navigation',()=>{
 
   it('leaves modified clicks and unrelated anchors to the browser',()=>{
     const page=browser();setupPageNavigation(vi.fn(),vi.fn());const preventDefault=vi.fn();
-    page.domListeners.get('click')!({target:page.links[4],ctrlKey:true,preventDefault});
+    page.domListeners.get('click')!({target:page.links[3],ctrlKey:true,preventDefault});
     const external=page.add('A','',page.main);external.setAttribute('href','#an-article-footnote');
     page.domListeners.get('click')!({target:external,preventDefault});
     expect(preventDefault).not.toHaveBeenCalled();expect(page.pushState).not.toHaveBeenCalled();
@@ -143,42 +145,42 @@ describe('six-section reading navigation',()=>{
 
   it('restores the section on back/forward without creating another history entry',()=>{
     const page=browser('#reader-01');setupPageNavigation(vi.fn(),vi.fn());
-    page.location.hash='#reader-05';page.location.href=page.location.href.replace('#reader-01','#reader-05');
+    page.location.hash='#reader-06';page.location.href=page.location.href.replace('#reader-01','#reader-06');
     page.windowListeners.get('popstate')!();
-    expect(page.links[4].getAttribute('aria-current')).toBe('location');
-    expect(page.sections[4].querySelector('h2')!.focus).toHaveBeenCalledOnce();
+    expect(page.links[3].getAttribute('aria-current')).toBe('location');
+    expect(page.sections[3].querySelector('h2')!.focus).toHaveBeenCalledOnce();
     page.windowListeners.get('hashchange')!();
-    expect(page.sections[4].querySelector('h2')!.focus).toHaveBeenCalledOnce();
+    expect(page.sections[3].querySelector('h2')!.focus).toHaveBeenCalledOnce();
     expect(page.pushState).not.toHaveBeenCalled();expect(page.storage.setItem).not.toHaveBeenCalled();
   });
 
   it('follows the section being read after smooth scrolling stops without rewriting URL or storage',()=>{
-    const page=browser('#reader-02');setupPageNavigation(vi.fn(),vi.fn());
+    const page=browser('#reader-04');setupPageNavigation(vi.fn(),vi.fn());
     page.sections.forEach((section,index)=>{section.top=(index-2)*1000+20;});
     page.windowListeners.get('scroll')!();vi.advanceTimersByTime(90);
     expect(page.links[1].getAttribute('aria-current')).toBe('location');
     page.windowListeners.get('scroll')!();vi.advanceTimersByTime(120);
     expect(page.links[2].getAttribute('aria-current')).toBe('location');
-    expect(page.location.hash).toBe('#reader-02');expect(page.pushState).not.toHaveBeenCalled();
+    expect(page.location.hash).toBe('#reader-04');expect(page.pushState).not.toHaveBeenCalled();
     expect(page.storage.setItem).not.toHaveBeenCalled();
   });
 
   it('keeps the old issues hash inline when its content is in the reading document',()=>{
-    const page=browser('#issues');page.add('SECTION','issues',page.sections[1]);const openIssues=vi.fn();
+    const page=browser('#issues');page.add('SECTION','issues',page.sections[2]);const openIssues=vi.fn();
     setupPageNavigation(openIssues,vi.fn());expect(openIssues).not.toHaveBeenCalled();
-    expect(page.links[1].getAttribute('aria-current')).toBe('location');
+    expect(page.links[2].getAttribute('aria-current')).toBe('location');
   });
 
   it('retains the legacy issues overlay when its node is not in main',()=>{
     const page=browser('#issues');page.add('SECTION','issues',null);const openIssues=vi.fn();
     setupPageNavigation(openIssues,vi.fn());expect(openIssues).toHaveBeenCalledWith(true);
-    expect(page.links[1].getAttribute('aria-current')).toBe('location');
+    expect(page.links[2].getAttribute('aria-current')).toBe('location');
   });
 
   it('opens a state destination and ignores the left sidebar while clearing an actual sticky seat header',()=>{
-    const page=browser();const details=page.add('DETAILS','optional-map',page.sections[3]);
+    const page=browser();const details=page.add('DETAILS','optional-map',page.sections[1]);
     const target=page.add('ASIDE','detail',details);const heading=page.add('H2','state-detail-heading',target);
-    const sticky=page.add('DIV','scenario-sticky',page.sections[3]);sticky.css={position:'sticky',top:'16px'};sticky.height=70;
+    const sticky=page.add('DIV','scenario-sticky',page.sections[1]);sticky.css={position:'sticky',top:'16px'};sticky.height=70;
     scrollStateDetailIntoView({block:'start',behavior:'auto'});
     expect(details.open).toBe(true);expect(heading.focus).toHaveBeenCalledWith({preventScroll:true});
     expect(target.style.scrollMarginTop).toBe('98px');
@@ -186,14 +188,14 @@ describe('six-section reading navigation',()=>{
   });
 
   it('revealing nested reading content never changes its remembered disclosure preference',()=>{
-    const page=browser();const outer=page.add('DETAILS','outer',page.sections[4]);const inner=page.add('DETAILS','inner',outer);
+    const page=browser();const outer=page.add('DETAILS','outer',page.sections[3]);const inner=page.add('DETAILS','inner',outer);
     const target=page.add('H2','target',inner);expect(revealPageTarget(target as unknown as HTMLElement)).toBe(true);
     expect(revealPageTarget(target as unknown as HTMLElement)).toBe(false);
     expect(page.storage.getItem).not.toHaveBeenCalled();expect(page.storage.setItem).not.toHaveBeenCalled();
   });
 
   it('also opens a disclosure when the disclosure itself is the reading destination',()=>{
-    const page=browser();const target=page.add('DETAILS','optional-reading',page.sections[4]);
+    const page=browser();const target=page.add('DETAILS','optional-reading',page.sections[3]);
     expect(revealPageTarget(target as unknown as HTMLElement)).toBe(true);expect(target.open).toBe(true);
     expect(page.storage.setItem).not.toHaveBeenCalled();
   });
