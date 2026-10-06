@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261006",
   "startedAt": "2026-10-06T00:02:00Z",
-  "completedAt": "2026-10-06T00:18:00Z",
+  "completedAt": "2026-10-06T00:21:30Z",
   "outcome": "partial",
   "reviewMode": "daily polls, official releases, candidate and state reporting, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "2991c15d7601b36499014d063f7310b50e15e8af",
-  "publishedCommit": null,
+  "publishedCommit": "69004a07315c2fc0395eb748bc65e4fc4bd90a8d",
   "revision": "observation-2026-10-06-polls-events-energy",
   "checkedSourceIds": [
     "obs-rasmussen-nh-20261005",
@@ -51,9 +51,9 @@
   "verification": {
     "tests": "382 passed after npm ci restored the clean worktree dependencies; the first attempt stopped because vitest was not installed, not because a test failed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success at 2026-10-06T00:19:00Z; main advanced from 2991c15d7601b36499014d063f7310b50e15e8af to 69004a07315c2fc0395eb748bc65e4fc4bd90a8d with force=false",
+    "pages": "success; GitHub Pages workflow run 37393368245 completed in 47 seconds",
+    "publicContent": "success at 2026-10-06T00:21:30Z; production shows D43, R45, unassigned 12, the 12 focus states, the new NH Rasmussen poll, MI Obama event, AK and NE updates, and preserved save/share controls"
   },
   "note": "NHの完全なRasmussen調査、MIの部分確認調査とObama氏集会予定、AKのDOE資金意向、NEのTrump氏集会結果を追加。発言・資金意向・予定・効果・有権者評価を分離し、D43・R45・未配分12、旧保存案・共有URLを維持。"
 }
