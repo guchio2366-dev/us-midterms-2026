@@ -51,6 +51,11 @@
 .observation-comparison-item > h5 { margin: 0 0 8px !important; font-size: 15px !important; }
 .observation-comparison-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .observation-comparison-row > article { min-width: 0; padding: 14px; border: 1px solid #d4dcda; background: #fafbf9; }
+.observation-comparison-row > article[data-candidate-party="D"], .observation-candidate-intro article[data-candidate-party="D"] { border-top: 3px solid #2766a3; }
+.observation-comparison-row > article[data-candidate-party="R"], .observation-candidate-intro article[data-candidate-party="R"] { border-top: 3px solid #b84249; }
+.observation-cell-candidate { display: flex; flex-wrap: wrap; gap: 3px 8px; margin: 0 0 8px !important; }
+.observation-cell-candidate b { color: var(--navy); }
+.observation-cell-candidate span { font-size: .8125rem; }
 .observation-comparison-more { margin-top: 8px; border-top: 1px solid #d4dcda; }
 .observation-comparison-more > summary { font-weight: 700; }
 .observation-comparison-row h5 .party-dot { display: inline-block; margin-right: 8px; }
@@ -82,7 +87,6 @@
   .observation-candidate-intro > div { grid-template-columns: minmax(0, 1fr); }
   .observation-candidate-head { position: static; }
   .observation-comparison-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .observation-comparison-row > article::before { content: attr(aria-label); display: block; margin-bottom: 7px; color: var(--navy); font-size: 13px; font-weight: 800; }
 }
 @media (prefers-reduced-motion: reduce) {
   .observation-body { scroll-behavior: auto; }

@@ -9,8 +9,8 @@ describe('four-stage reader contract',()=>{
   it('puts seat conditions before states and preserves the old semantic section IDs',()=>{
     expect(readerSections.map(({id,number,title})=>({id,number,title}))).toEqual([
       {id:'reader-01',number:'01',title:'中間選挙の仕組み'},
-      {id:'reader-04',number:'02',title:'議会の議席配分'},
-      {id:'reader-03',number:'03',title:'各州の情勢と候補者'},
+      {id:'reader-04',number:'02',title:'上院の情勢と51議席への配分'},
+      {id:'reader-03',number:'03',title:'注目州の情勢と候補者'},
       {id:'reader-06',number:'04',title:'今後の見通し'},
     ]);
     const navigation=readerNavigationMarkup();

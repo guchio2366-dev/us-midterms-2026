@@ -146,7 +146,10 @@ test('measures compact spacing against restoration CSS without changing any read
   expect(after.opening.height).toBeLessThan(before.opening.height);
   expect(after.approvedCopy.every(paragraph => paragraph.fontSize >= 16)).toBe(true);
   expect(after.mapViewBox).toBe(before.mapViewBox);
-  expect(after.map.width).toBeGreaterThanOrEqual(before.map.width - 1);
+  // The approved reading layout permits a smaller map beside the complete state
+  // explanation. Preserve the full geography and usable marks instead of the old width.
+  expect(after.map.width).toBeGreaterThanOrEqual(300);
+  expect(after.mapSvg.width).toBeLessThanOrEqual(after.map.width + 1);
   await expect(page.locator('#map [data-state-fips]')).toHaveCount(50);
   await expect(page.locator('#reader-simulation-disclosure')).not.toHaveAttribute('open', '');
   expect(await storageSnapshot(page)).toEqual(originalStorage);

@@ -23,13 +23,35 @@ const stageLabels: Record<NonNullable<Poll['resultStage']>,string> = {
   'cumulative-with-leaners':'未定者の回答を割当後', final:'最終順位選択ラウンド',
 };
 
+const pollCondition = (poll: Poll) => poll.conditionLabel ?? (poll.resultStage ? stageLabels[poll.resultStage] : '候補者選択');
+const pollPartyLabel = (result: PollResult) => result.party === 'D' ? '民主党' : result.party === 'R' ? '共和党' : result.party === 'I' ? '無所属' : '';
+
+/** Use one recorded population/round from each study, never a calculated polling average. */
+export function briefingHeadlinePollsMarkup(items: Poll[], electionId: string): string {
+  const selected = briefingPollStudies(items,electionId).slice(0,2).map(study=>study[0]);
+  if (!selected.length) return '<section class="briefing-headline-polls briefing-headline-empty" aria-label="収録済み調査の支持率"><h4>世論調査の支持率</h4><p>棒グラフに掲載できる確認済みの調査結果は、まだ収録していません。</p></section>';
+  return `<section class="briefing-headline-polls" aria-label="収録済み調査の支持率"><h4>世論調査の支持率</h4><div class="briefing-headline-grid">${selected.map(poll=>{
+    const sampleScope=directPollRows(items,electionId).find(row=>row.poll.pollId===poll.pollId)?.sampleScope;
+    const total=poll.results.reduce((sum,result)=>sum+result.value,0);
+    const denominator=Math.max(100,total);
+    const remainder=total<99.99 && (poll.residualTreatment ?? 'unreported')==='unreported' ? Number((100-total).toFixed(2)) : 0;
+    const results=[...poll.results].sort((a,b)=>['d','r','undecided','other'].indexOf(colorKey(a))-['d','r','undecided','other'].indexOf(colorKey(b)));
+    return `<article class="briefing-poll-compact" data-summary-poll-id="${esc(poll.pollId)}"><b class="briefing-compact-pollster">${esc(poll.sponsor ?? poll.pollster)}</b>
+      <div class="briefing-poll-track" aria-hidden="true">${results.map(result=>`<i class="briefing-poll-${colorKey(result)}" style="width:${result.value/denominator*100}%"></i>`).join('')}${remainder ? `<i class="briefing-poll-unreported" style="width:${remainder/denominator*100}%"></i>` : ''}</div>
+      <ul class="briefing-poll-labels">${results.map(result=>`<li><i class="briefing-poll-${colorKey(result)}" aria-hidden="true"></i><span>${esc(result.label)}${pollPartyLabel(result) ? `（${pollPartyLabel(result)}）` : ''}</span> <b>${result.value}%</b></li>`).join('')}${remainder ? `<li><i class="briefing-poll-unreported" aria-hidden="true"></i><span>内訳未掲載</span> <b>${remainder}%</b></li>` : ''}</ul>
+      <p class="briefing-compact-note"><time datetime="${esc(poll.fieldEnd)}">${esc(poll.fieldStart)}〜${esc(poll.fieldEnd)}</time><br>${sampleScope==='study' ? `調査全体 ${poll.sampleSize.toLocaleString('ja-JP')}人（${esc(poll.populationLabel)}。最終集計の人数ではない）` : `${esc(poll.populationLabel)} ${poll.sampleSize.toLocaleString('ja-JP')}人`} · ${esc(pollCondition(poll))}${poll.completeness==='partial' ? ' · 部分公開' : ''}</p>
+      <p class="briefing-compact-note">${sampleScope==='study' ? '調査全体の公表値：' : ''}${esc(poll.precisionLabel ?? '誤差の記載なし')}${poll.residualTreatment==='rounding' || total>100.01 ? ` · 合計${Number(total.toFixed(2))}%（丸め）` : ''}</p>
+    </article>`;
+  }).join('')}</div><p class="briefing-headline-note">情勢評価・当選確率とは別の実測値。${selected.length>1 ? '各調査は日付・対象・質問が異なり、平均していません。' : ''}詳しい設問・別集計・出典は候補者説明の後にあります。</p></section>`;
+}
+
 export function briefingPollMarkup(poll: Poll, options: { sampleScope?: 'study' } = {}) {
   // Keep published values. The visual denominator only accommodates rounded totals over 100.
   const total = poll.results.reduce((sum,r)=>sum+r.value,0);
   const denominator = Math.max(100,total);
   const remainder = total < 99.99 && (poll.residualTreatment ?? 'unreported') === 'unreported' ? Number((100-total).toFixed(2)) : 0;
   const results = [...poll.results].sort((a,b)=>['d','r','undecided','other'].indexOf(colorKey(a))-['d','r','undecided','other'].indexOf(colorKey(b)));
-  const condition = poll.conditionLabel ?? (poll.resultStage ? stageLabels[poll.resultStage] : '候補者選択');
+  const condition = pollCondition(poll);
   const sources = [...new Set(poll.sourceIds)].flatMap(id=>{
     const source = allSources.find(s=>s.sourceId===id);
     return source ? [`<a href="${esc(source.url)}" target="_blank" rel="noreferrer">${esc(source.title)}</a>`] : [];

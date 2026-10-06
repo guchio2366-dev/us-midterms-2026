@@ -16,7 +16,26 @@ const copyGroups = [
   { prefix: 'allocation', source: '上院の情勢と51議席への配分', host: '#reader-04', count: 7 },
 ] as const;
 
-test('all sixteen approved paragraphs are visible and opening and institution text are unchanged', async ({ page }) => {
+// Independently reviewed values for the included 2026-10-01 rating snapshot.
+// A deliberate data update must update these facts after review; no output from
+// the paragraph renderer is reused as the expected text in the real browser.
+function approvedAllocationForCurrentSnapshot() {
+  const source = approved.sections['上院の情勢と51議席への配分'].map(paragraph => paragraph.text);
+  return [
+    source[0], source[1],
+    source[2].replace('両方が同じ党を優勢と評価している議席', '両方が同じ党についてLikely（優勢）以上と評価している議席')
+      .replace('「やや優勢」など優位の小さい評価でも、2機関の方向が一致していれば配分に含めます。', '「やや優勢」（Lean）や「わずかに優勢」（Tilt）は、2機関の方向が一致していても未配分に含めます。'),
+    source[3].replace('民主党側が12議席、共和党側が16議席', '民主党側が9議席、共和党側が14議席')
+      .replace('民主党側46議席、共和党側47議席', '民主党側43議席、共和党側45議席'),
+    source[4].replaceAll('7議席', '12議席')
+      .replace('残る12議席は、', '残る12議席は、少なくとも一方が「やや優勢」（Lean）や「わずかに優勢」（Tilt）と評価している場合、')
+      .replace('評価の方向が一致していない議席です。', '配分基準を満たしていない議席です。'),
+    source[5].replace('2026年9月24日', '2026年10月1日').replace('Inside Electionsは9月18日', 'Inside Electionsは10月2日'),
+    source[6],
+  ];
+}
+
+test('all sixteen approved paragraphs and their sources remain fully visible with only reviewed fact substitutions', async ({ page }) => {
   await page.goto('./');
   await ready(page);
   const before = await storageSnapshot(page);
@@ -40,10 +59,13 @@ test('all sixteen approved paragraphs are visible and opening and institution te
       expect(layout.height).toBeGreaterThan(0);
       expect(layout.lineClamp).toBe('none');
       expect(layout.overflowY).not.toBe('hidden');
-      if (group.prefix === 'about' || group.prefix === 'institution') {
-        // Current 2026 institutional facts match the approved fixture. textContent
-        // also preserves every approved goal and its full explanation exactly.
-        expect(await paragraph.textContent()).toBe(approved.sections[group.source][index].text);
+      const expected = group.prefix === 'allocation'
+        ? approvedAllocationForCurrentSnapshot()[index] : approved.sections[group.source][index].text;
+      expect(await paragraph.textContent()).toBe(expected);
+      for (const link of approved.sections[group.source][index].links) {
+        const sourceLink = paragraph.locator('xpath=..').getByRole('link', { name: link.label, exact: true });
+        await expectNoClosedDisclosure(sourceLink);
+        await expect(sourceLink).toHaveAttribute('href', link.url);
       }
     }
   }
@@ -55,7 +77,8 @@ test('all sixteen approved paragraphs are visible and opening and institution te
 
 test('explicitly comparing a non-election state reveals comparison and still supports removal', async ({ page }) => {
   const { entries } = await seedOldScenario(page);
-  await goToStage(page, 'reader-04');
+  await page.goto('./#map-heading');
+  await ready(page);
   const simulation = page.locator('#reader-simulation-disclosure');
   const comparison = page.locator('#state-compare');
   const scenarioSummary = await page.locator('#sim-result').textContent();
@@ -110,7 +133,8 @@ test('explicitly comparing a non-election state reveals comparison and still sup
 
 test('repeated Texas comparison choices keep focus and scroll in the comparison card', async ({ page }) => {
   const { state } = await seedOldScenario(page);
-  await goToStage(page, 'reader-04');
+  await page.goto('./#map-heading');
+  await ready(page);
   await page.locator('#state-search').selectOption('48');
   await settleScroll(page);
   await page.locator('#detail [data-compare-state="48"]').click();
@@ -129,6 +153,7 @@ test('repeated Texas comparison choices keep focus and scroll in the comparison 
       if (manualOpen) {
         await manualDisclosure.locator(':scope > summary').click();
         await expect(manualDisclosure).toHaveAttribute('open', '');
+        await expect(page.locator('#seat-controls [data-senate-choice]')).toHaveCount(35);
         await expect(page.locator('#seat-controls [data-senate-choice="TX-2"]')).toBeVisible();
       }
       const selections = manualOpen ? [candidates[1], candidates[0], candidates[1]] : [candidates[0], candidates[1], candidates[0]];
@@ -159,7 +184,7 @@ test('repeated Texas comparison choices keep focus and scroll in the comparison 
   await expectNoPageOverflow(page);
 });
 
-test('stage 03 returns directly to the visible national map without opening simulation', async ({ page }) => {
+test('stage 03 continues directly to the visible national map without opening simulation', async ({ page }) => {
   const { entries } = await seedOldScenario(page);
   await goToStage(page, 'reader-03');
   const mapLink = page.locator('#reader-03 .reader-full-map-link a[href="#map-heading"]');
@@ -167,7 +192,7 @@ test('stage 03 returns directly to the visible national map without opening simu
   await expect(mapLink).toContainText('全国50州');
   await mapLink.click();
   await settleScroll(page);
-  await expectCurrentStage(page, 'reader-04');
+  await expectCurrentStage(page, 'reader-03');
   await expectHeadingInView(page, '#map-heading');
   await expectNoClosedDisclosure(page.locator('#map'));
   await expectNoClosedDisclosure(page.locator('#detail'));

@@ -8,7 +8,7 @@ const readerAliases: Record<string,string> = {
   '#overview':'#reader-01', '#national-overview':'#reader-04', '#issues':'#reader-03',
   '#reader-02':'#reader-03', '#reader-05':'#reader-03',
   '#updates':'#reader-03', '#news':'#reader-03', '#policy-workbench':'#reader-03',
-  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-04', '#senate':'#reader-04', '#detail':'#reader-04',
+  '#powers':'#reader-04', '#simulator':'#reader-04', '#map-heading':'#reader-03', '#senate':'#reader-03', '#detail':'#reader-03',
   '#scenario-manager':'#reader-04', '#sources':'#reader-06',
 };
 

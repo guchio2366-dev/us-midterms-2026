@@ -80,9 +80,9 @@ test('legacy section and numbered-heading links reveal their semantic content', 
     { id: 'policy-workbench', stage: 'reader-03', disclosure: 'reader-05' },
     { id: 'powers', stage: 'reader-04', disclosure: 'power-disclosure' },
     { id: 'scenario-manager', stage: 'reader-04', disclosure: 'reader-simulation-disclosure' },
-    { id: 'map-heading', stage: 'reader-04', disclosure: null },
-    { id: 'senate', target: 'map-heading', stage: 'reader-04', disclosure: null },
-    { id: 'detail', stage: 'reader-04', disclosure: null },
+    { id: 'map-heading', stage: 'reader-03', disclosure: null },
+    { id: 'senate', target: 'map-heading', stage: 'reader-03', disclosure: null },
+    { id: 'detail', stage: 'reader-03', disclosure: null },
     { id: 'sources', stage: 'reader-06', disclosure: null },
   ];
   for (const destination of destinations) {
