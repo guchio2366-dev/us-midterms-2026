@@ -8,10 +8,11 @@ import { observationData } from '../data/observation';
 import { policyPrototype } from '../data/policy-prototype';
 import { policyKey } from '../policy-prototype-logic';
 import { policyVersionLabel } from './policy-version-labels';
+import { readerCandidateExplanations, readerCandidateComparisons, readerCandidateExplanationSources, readerCandidateExplanationEvidence } from '../data/reader-candidate-explanations';
 
 const html=(value:unknown)=>String(value??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
-const sourceById=new Map([...sources,...observationData.sources].map(source=>[source.sourceId,source]));
-const evidenceById=new Map<string,EvidenceRef>([...evidenceRefs,...observationData.evidenceRefs,...policyPrototype.additionalEvidence].map(evidence=>[evidence.evidenceId,evidence]));
+const sourceById=new Map([...sources,...observationData.sources,...readerCandidateExplanationSources].map(source=>[source.sourceId,source]));
+const evidenceById=new Map<string,EvidenceRef>([...evidenceRefs,...observationData.evidenceRefs,...policyPrototype.additionalEvidence,...readerCandidateExplanationEvidence].map(evidence=>[evidence.evidenceId,evidence]));
 const policyByKey=new Map(policyPrototype.policies.map(policy=>[policyKey(policy),policy]));
 const stanceLabels={support:'支持',conditional:'条件付き支持',oppose:'反対',unknown:'未確認'} as const;
 const actionLabels={
@@ -40,7 +41,7 @@ function sourceDetails(sourceIds:string[],evidenceIds:string[]):string {
     return source?`<li>${sourceLink(source)}</li>`:'<li>出典未接続</li>';
   }).join('')}</ul>${evidenceIds.length?`<ul class="reader-candidate-evidence">${[...new Set(evidenceIds)].map(id=>{
     const entry=evidenceById.get(id);
-    return entry?`<li>${html(readerLocator(entry))}<small>該当箇所確認 ${html(entry.checkedAt)}</small></li>`:'<li>根拠の該当箇所は未接続。</li>';
+    return entry?`<li>${html(readerLocator(entry))}${entry.note?`<p class="reader-evidence-note">${html(entry.note)}</p>`:''}<small>該当箇所確認 ${html(entry.checkedAt)}</small></li>`:'<li>根拠の該当箇所は未接続。</li>';
   }).join('')}</ul>`:''}`;
 }
 function briefFor(candidate:Candidate):CandidateBrief|undefined {
@@ -58,6 +59,12 @@ function recordDetails(record:CandidatePolicyRecord):string {
   const policy=policyByKey.get(policyKey(record))!;
   return `<section class="reader-candidate-record-details"><h5>${html(policy.title)}：行動の記録</h5><ul>${record.actions.map(action=>`<li><b>${actionLabels[action.kind]}${action.kind==='vote'?`（${action.vote==='yea'?'賛成':'反対'}）`:''}</b> · ${action.scope==='exact-policy'?'この政策版':action.scope==='whole-measure'?'法案全体':'関連論点'}<p>${html(action.text)}</p><small>行動日 ${html(action.actionDate??'不明')} · 確認日 ${html(action.checkedAt)}</small>${action.targetPolicyRef?`<small>対象：${html(policyByKey.get(policyKey(action.targetPolicyRef))?.title??'政策の記録は未接続')}</small>`:''}</li>`).join('')}</ul>${record.unknowns.length?`<p>${record.unknowns.map(html).join('／')}</p>`:''}</section>`;
 }
+function candidateExplanation(candidate:Candidate,election:Election):string {
+  const entry=readerCandidateExplanations.find(item=>item.electionId===election.electionId&&item.candidateId===candidate.candidateId);
+  if(!entry)return '';
+  return `<div class="reader-candidate-context" data-candidate-context="${html(candidate.candidateId)}"><small>政策説明の内容確認 ${html(entry.checkedAt)}</small>${entry.sections.map(section=>`<section><h5>${html(section.heading)}</h5>${section.paragraphs.map(paragraph=>`<p class="reader-candidate-context-paragraph">${html(paragraph.text)}</p><details class="reader-paragraph-sources"><summary>この段落の出典・確認箇所</summary>${sourceDetails(paragraph.sourceIds,paragraph.evidenceIds)}</details>`).join('')}</section>`).join('')}</div>`;
+}
+
 function candidateCard(candidate:Candidate,election:Election):string {
   const brief=briefFor(candidate),records=recordsFor(candidate,election);
   const forward=records.find(record=>(record.stance==='support'||record.stance==='conditional')&&record.stancePeriod==='campaign-as-of')
@@ -72,14 +79,16 @@ function candidateCard(candidate:Candidate,election:Election):string {
   const sourceIds=[...(brief?.sourceIds??[]),...usedRecords.flatMap(record=>record.actions.flatMap(action=>action.sourceIds))];
   const evidenceIds=[...(brief?.evidenceIds??[]),...usedRecords.flatMap(record=>[...record.stanceEvidenceIds,...record.actions.flatMap(action=>action.evidenceIds)])];
   const hasMaterials=!!brief||records.length>0;
+  const explanation=candidateExplanation(candidate,election);
   const partyLabel=candidate.party==='D' && !candidate.partyLabel.includes('民主党') ? `${candidate.partyLabel}（民主党）` : candidate.party==='R' && !candidate.partyLabel.includes('共和党') ? `${candidate.partyLabel}（共和党）` : candidate.partyLabel;
-  return `<article class="reader-candidate-card" data-reader-candidate="${html(candidate.candidateId)}" data-reader-party="${html(candidate.party)}"><header><h4>${html(candidate.name)}</h4><p class="reader-candidate-party">${html(partyLabel)}${candidate.status==='unconfirmed'?' · 本選名簿確認待ち':''}${candidate.ballotStage==='write-in'?' · 記名候補':''}</p></header>${hasMaterials?`<div class="reader-candidate-direction"><h5>進めたい政策・支持する設計</h5>${forward?policySummary(forward):briefForward?`<p>${html(briefForward)}</p><small>候補者資料の方針 · 解説更新 ${html(brief!.updatedAt)}</small>`:'<p>具体的な公約・支持する設計は未収録。</p>'}</div><div class="reader-candidate-direction"><h5>${scrutinyHeading}</h5>${scrutiny?policySummary(scrutiny):briefOpposition?`<p>${html(briefOpposition)}</p><small>候補者資料の立場 · 解説更新 ${html(brief!.updatedAt)}</small>`:'<p>具体的な政策への慎重・反対の立場は未確認。</p>'}</div><details><summary>この要約の記録・条件・出典</summary>${sourceDetails(sourceIds,evidenceIds)}${usedRecords.map(recordDetails).join('')}</details>`:'<p class="reader-candidate-missing">候補者別の政策材料は未収録。</p>'}</article>`;
+  const previousSummary=hasMaterials?`<div class="reader-candidate-direction"><h5>進めたい政策・支持する設計</h5>${forward?policySummary(forward):briefForward?`<p>${html(briefForward)}</p><small>候補者資料の方針 · 解説更新 ${html(brief!.updatedAt)}</small>`:'<p>具体的な公約・支持する設計は未収録。</p>'}</div><div class="reader-candidate-direction"><h5>${scrutinyHeading}</h5>${scrutiny?policySummary(scrutiny):briefOpposition?`<p>${html(briefOpposition)}</p><small>候補者資料の立場 · 解説更新 ${html(brief!.updatedAt)}</small>`:'<p>具体的な政策への慎重・反対の立場は未確認。</p>'}</div><details><summary>この要約の記録・条件・出典</summary>${sourceDetails(sourceIds,evidenceIds)}${usedRecords.map(recordDetails).join('')}</details>`:'<p class="reader-candidate-missing">候補者別の政策材料は未収録。</p>';
+  return `<article class="reader-candidate-card" data-reader-candidate="${html(candidate.candidateId)}" data-reader-party="${html(candidate.party)}"><header><h4>${html(candidate.name)}</h4><p class="reader-candidate-party">${html(partyLabel)}${candidate.status==='unconfirmed'?' · 本選名簿確認待ち':''}${candidate.ballotStage==='write-in'?' · 記名候補':''}</p></header>${explanation}${explanation&&hasMaterials?`<details class="reader-candidate-previous"><summary>これまでの政策別の記録・未確認事項</summary>${previousSummary}</details>`:explanation?'':previousSummary}</article>`;
 }
 /** A reading summary only: neither election outcomes nor saved scenarios are accepted or changed. */
 export function renderReaderCandidateSummary(election:Election):string {
   const current=election.candidates.filter(candidate=>candidate.ballotStage!=='primary-ballot');
   const pair=specifiedDisplayPairs[election.electionId];
-  const candidates=(pair?pair.map(id=>current.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>!!candidate):current.filter(candidate=>candidate.party==='D'||candidate.party==='R')).slice(0,2);
+  const candidates=(pair?pair.map(id=>current.find(candidate=>candidate.candidateId===id)).filter((candidate):candidate is Candidate=>!!candidate):current.filter(candidate=>candidate.party==='D'||candidate.party==='R')).slice(0,2).sort((a,b)=>Number(b.party==='R')-Number(a.party==='R'));
   if(!candidates.length)return '<section class="reader-candidate-summary"><h4>候補者の政策と記録</h4><p>主要候補の政策材料は未収録。</p></section>';
-  return `<section class="reader-candidate-summary" aria-label="主要候補の政策と記録"><div class="reader-candidate-grid">${candidates.map(candidate=>candidateCard(candidate,election)).join('')}</div><button type="button" class="reader-candidate-policy-link" data-reader-policy-election="${html(election.electionId)}">この州の政策版・行動の記録を詳しく読む →</button></section>`;
+  return `<section class="reader-candidate-summary" aria-label="主要候補の政策と記録"><div class="reader-candidate-grid">${candidates.map(candidate=>candidateCard(candidate,election)).join('')}</div>${readerCandidateComparisons.filter(item=>item.electionId===election.electionId).map(item=>`<section class="reader-candidate-comparison"><h4>今回の資料で比べる</h4><p>${html(item.text)}</p><details><summary>比較の出典・確認箇所</summary>${sourceDetails(item.sourceIds,item.evidenceIds)}</details></section>`).join('')}<button type="button" class="reader-candidate-policy-link" data-reader-policy-election="${html(election.electionId)}">この州の政策版・行動の記録を詳しく読む →</button></section>`;
 }

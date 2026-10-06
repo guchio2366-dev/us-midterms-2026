@@ -321,7 +321,7 @@ export const candidateBriefs: CandidateBrief[] = [
     currentPositions:['関税を選択的な交渉手段として用い、カナダとの合意を求める','phonics、Title I tutoring、職業教育の拡充','529資金の住宅頭金利用、家賃履歴の信用評価、住宅供給促進'],
     record:['元連邦下院議員'],supportAndFinance:[],
     differences:['El-Sayedより市場・規制面の住宅策を重視し、関税を政策手段として残す'],
-    policyPositions:['製造業・通商','教育','住宅'],opposedPolicies:['一律の関税適用'],
+    policyPositions:['製造業・通商','教育','住宅'],opposedPolicies:['関税を一律に通用する解決策とすること'],
     sourceIds:['rogers-tariffs-2026','rogers-education-2026','rogers-housing-2026'],evidenceIds:['ev-rogers-tariffs','ev-rogers-education','ev-rogers-housing'],
   },
   ...focusCandidateBriefs,

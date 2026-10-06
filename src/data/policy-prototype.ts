@@ -80,7 +80,7 @@ const basePolicyPrototype:PolicyPrototypeData={
     record('position-collins-canada-emergency',collins,me,policyRefs.canadaEmergency,'support',[action('action-collins-sjres37-vote','vote','非常事態終了決議の上院採決で賛成。','senate-rollcall-119-160','ev-rollcall-160-republicans','2025-04-02','exact-policy','yea')]),
     record('position-elsayed-blanket-canada',elsayed,mi,policyRefs.blanketCanada,'oppose',[action('action-elsayed-canada-statement','statement','一律的な対カナダ関税への反対を表明。','elsayed-tariffs-2026','ev-elsayed-tariffs','2026-09-01')]),
     record('position-elsayed-targeted',elsayed,mi,policyRefs.targetedTariffs,'conditional',[action('action-elsayed-targeted-statement','statement','対象を絞った関税を支持する考えを述べる。','elsayed-tariffs-2026','ev-elsayed-tariffs','2026-09-01')],['対象を絞ること。具体対象・税率は未確認。']),
-    record('position-rogers-targeted',rogers,mi,policyRefs.targetedTariffs,'conditional',[action('action-rogers-targeted-statement','statement','一律適用ではなく選択的な交渉手段として用いる方針。','rogers-tariffs-2026','ev-rogers-tariffs','2026-08-29')],['一律適用ではなく交渉手段として使う。']),
+    record('position-rogers-targeted',rogers,mi,policyRefs.targetedTariffs,'conditional',[action('action-rogers-targeted-statement','statement','関税を必要な手段としつつ、州内産業に合う交渉結果を求める方針。','rogers-tariffs-2026','ev-rogers-tariffs',null)],['一律に通用する解決策とはせず、州内産業に合う交渉結果を求める。'],['2026年10月6日の再確認で声明ページはAug 29のみと確認。公表年・行動年の独立した根拠は未確認。']),
     record('position-hinson-trade-enforcement','cand-ia-ashley-hinson',ia,policyRefs.tradeEnforcement,'support',[action('action-hinson-trade-statement','statement','貿易法違反と関税回避の取締りを発表。','hinson-trade-2026','ev-hinson-trade','2026-09-01')]),
   ],
   additionalEvidence:[
