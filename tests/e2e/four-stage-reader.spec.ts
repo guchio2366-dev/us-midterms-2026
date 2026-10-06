@@ -13,6 +13,7 @@ test('captures the opening and all four stages in the real browser', async ({ pa
   for (const stage of stages) {
     await goToStage(page, stage.id);
     await capture(page, testInfo, `${stage.number}-${stage.capture}`);
+    if (stage.id === 'reader-01') await captureElement(page, testInfo, '01-mechanisms-complete', page.locator('#overview'));
   }
   await goToStage(page, 'reader-03');
   await page.locator('.reader-full-map-link a[href="#map-heading"]').click();

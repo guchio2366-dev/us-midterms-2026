@@ -211,6 +211,9 @@ test('stage 03 continues directly to the visible national map without opening si
 });
 
 test('every national-map state changes detail while the old saved scenario stays untouched', async ({ page }) => {
+  // Fifty complete real-keyboard selection cycles are intentionally exhaustive.
+  // Keep each assertion's normal deadline while allowing the full loop on slower runners.
+  test.setTimeout(150_000);
   // Other tests exercise smooth navigation; reduced motion keeps fifty complete
   // keyboard read/return cycles deterministic without skipping real UI events.
   await page.emulateMedia({ reducedMotion: 'reduce' });
