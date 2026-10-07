@@ -21,8 +21,8 @@ const insideRatings: Record<string,string> = {
   'RI-2':'Solid D','SD-2':'Solid R','TN-2':'Solid R','VA-2':'Solid D','WV-2':'Solid R',
 };
 
-export const RATING_SNAPSHOT_ID = 'senate-ratings-2026-10-01-strong-agreement-v2';
-export const RATING_SNAPSHOT_AS_OF = '2026-10-01';
+export const RATING_SNAPSHOT_ID = 'senate-ratings-2026-10-06-strong-agreement-v2';
+export const RATING_SNAPSHOT_AS_OF = '2026-10-06';
 export const RATING_METHOD_VERSION = 'unanimous-likely-or-stronger-v2';
 
 export const ratingSnapshotObservations: RatingSnapshotObservation[] = [
@@ -31,7 +31,7 @@ export const ratingSnapshotObservations: RatingSnapshotObservation[] = [
     organizationId: 'sabato' as const,
     organizationLabel: "Sabato's Crystal Ball",
     ratingRaw: race.ratingRaw,
-    currentConfirmedAt: '2026-09-24',
+    currentConfirmedAt: '2026-10-07',
     sourceId: 'sabato-senate-2026',
   })),
   ...Object.entries(insideRatings).map(([seatId,ratingRaw]) => ({

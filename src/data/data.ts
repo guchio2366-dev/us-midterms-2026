@@ -121,7 +121,7 @@ const electionBase = (seat: Seat, type: Election['type'], attributeSourceIds: El
   contestStatus: race.contestStatus,
   candidates: race.candidates,
   candidateResearchStatus: race.contestStatus === 'general-ballot' && !['RI-2','NH-2','GA-2','KS-2'].includes(seat.seatId) ? 'complete' : 'partial',
-  rating: {raw:race.ratingRaw,category:race.rating,organization:"Sabato's Crystal Ball",ratedAt:'2026-08-26',retrievedAt:'2026-09-09',sourceIds:['sabato-senate-2026']},
+  rating: {raw:race.ratingRaw,category:race.rating,organization:"Sabato's Crystal Ball",ratedAt:'2026-10-06',retrievedAt:'2026-10-07',sourceIds:['sabato-senate-2026']},
   electionRelevance: race.relevance,
   // Verification covers election type, date, seat and term rules, not candidates or ratings.
   verificationStatus: 'confirmed',

@@ -1,0 +1,57 @@
+{
+  "runId": "daily-20261007",
+  "startedAt": "2026-10-07T00:03:29Z",
+  "completedAt": "2026-10-07T00:19:17Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "052e463bdd7a71f2908031cecbe672d597345528",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-07-debate-ratings-voting-costs",
+  "checkedSourceIds": [
+    "obs-wgme-me-debate-20261006",
+    "obs-wapo-cook-ratings-20261006",
+    "obs-reuters-oh-early-voting-20261006",
+    "obs-reuters-northeast-heating-20261006",
+    "obs-mysa-tx-rally-confirmation-20261006",
+    "obs-sabato",
+    "obs-inside"
+  ],
+  "pendingSourceIds": [
+    "obs-cook-ratings-20261006",
+    "obs-white-house",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {"sourceId":"obs-wgme-me-debate-20261006","attemptedAt":"2026-10-07T00:05:00Z","status":"checked","lastSuccessAt":"2026-10-07T00:05:00Z","contentVerifiedAt":"2026-10-07","scope":"10月6日19時の初回討論会実施、冒頭発言、生活費への回答を州内局の記事2本で照合。候補者主張、政策効果、有権者評価を分離。"},
+    {"sourceId":"obs-sabato","attemptedAt":"2026-10-07T00:07:30Z","status":"checked","lastSuccessAt":"2026-10-07T00:07:30Z","contentVerifiedAt":"2026-10-07","scope":"公式Substack本文でAlaska上院Toss-up→Leans D、South Carolina上院Safe R→Likely R、上院全体D方向49・R方向47・Toss-up 4を照合。"},
+    {"sourceId":"obs-cook-ratings-20261006","attemptedAt":"2026-10-07T00:05:20Z","status":"partial","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"公式検索表示でKansas、New Hampshire、North Carolinaの変更を確認したが、公式本文は403で取得不能。成功日時を設定しない。"},
+    {"sourceId":"obs-wapo-cook-ratings-20261006","attemptedAt":"2026-10-07T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-07T00:05:30Z","contentVerifiedAt":"2026-10-07","scope":"Cookの3州の変更前後を同日報道で相互照合。第三の評価機関の変更を既存の2機関統合配分には混ぜない。"},
+    {"sourceId":"obs-reuters-oh-early-voting-20261006","attemptedAt":"2026-10-07T00:06:00Z","status":"checked","lastSuccessAt":"2026-10-07T00:06:00Z","contentVerifiedAt":"2026-10-07","scope":"Ohio期日前投票開始、Medina郡初日の党派登録別人数、2024年初日比較を照合。1郡1日から州全体や候補得票を推定しない。"},
+    {"sourceId":"obs-reuters-northeast-heating-20261006","attemptedAt":"2026-10-07T00:06:30Z","status":"checked","lastSuccessAt":"2026-10-07T00:06:30Z","contentVerifiedAt":"2026-10-07","scope":"暖房油価格、家計負担推計、New England利用世帯、Collins・King両氏らの備蓄放出要請、DOE未回答を照合。"},
+    {"sourceId":"obs-mysa-tx-rally-confirmation-20261006","attemptedAt":"2026-10-07T00:07:00Z","status":"checked","lastSuccessAt":"2026-10-07T00:07:00Z","contentVerifiedAt":"2026-10-07","scope":"San Antonio訪問、会場、Secret Service・FAA準備、大統領発言18時見込みを照合。開始時刻は14時30分と16時30分が相違するため確定扱いしない。"},
+    {"sourceId":"obs-inside","attemptedAt":"2026-10-07T00:08:00Z","status":"checked","lastSuccessAt":"2026-10-07T00:08:00Z","contentVerifiedAt":"2026-10-07","scope":"公式上院評価ページは10月1日版。Sabatoの新変更と組み合わせても統合配分はD43・R45・未配分12を維持。"},
+    {"sourceId":"obs-white-house","attemptedAt":"2026-10-07T00:07:10Z","status":"partial","lastSuccessAt":"2026-10-01T00:03:27Z","contentVerifiedAt":"2026-10-01","scope":"公式News・Briefings・Presidential Actionsに10月7日San Antonio日程本文を確認できず、成功日時を進めない。州内報道を公式日程の代替にしない。"},
+    {"sourceId":"obs-quantus-ia-20260930","attemptedAt":"2026-10-07T00:08:10Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"方法、標本、質問文、誤差の原文を取得できず非掲載を継続。"},
+    {"sourceId":"obs-roster-oh","attemptedAt":"2026-10-07T00:08:20Z","status":"partial","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"主要候補以外の党派原票は照合待ちを維持。期日前投票報道を候補名簿の代替にしない。"},
+    {"sourceId":"obs-roster-nh","attemptedAt":"2026-10-07T00:08:30Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"州の全候補名簿原票は未取得。調査質問文を公式名簿の代替にしない。"},
+    {"sourceId":"obs-quantus-me-20260917","attemptedAt":"2026-10-07T00:08:40Z","status":"unavailable","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"本文、方法、質問文を取得できず数値は非掲載を継続。"},
+    {"sourceId":"obs-axios-nrsc-spending-20260918","attemptedAt":"2026-10-07T00:08:50Z","status":"reviewing","lastSuccessAt":"2026-09-23T00:05:00Z","contentVerifiedAt":"2026-09-23","scope":"州別予定額のFEC原票を特定できず、成功日時を進めない。"},
+    {"sourceId":"obs-unh-nh-20260924","attemptedAt":"2026-10-07T00:09:00Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"PDF原票の標本、質問文、方法を照合できず非掲載を継続。"},
+    {"sourceId":"obs-nyt-siena-nh-20260924","attemptedAt":"2026-10-07T00:09:10Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"原票本文、方法、質問文を取得できず非掲載を継続。"}
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci restored the clean worktree dependencies; the first test run found eight expected-value updates caused by the confirmed event and rating-category change, and all passed after those contracts were updated",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Sabato・Cookの評価変更、Maine初回討論会、Ohio期日前投票、Maine・New Hampshireの暖房油負担を追加。Texasの大統領訪問は確認したが開始時刻差とWhite House未確認を明記。候補者公式ニュース欄も検索し、既存記事の繰り返しや陣営広告だけで新たな効果・支持を作らなかった。"
+}

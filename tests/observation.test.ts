@@ -145,6 +145,6 @@ describe('公開・確認状態',()=>{
     expect(html).toContain(e.candidates.find(c=>c.candidateId===r.comparison[0].cells[0].candidateId)!.name);
     const me=observationFor('2026-ME-2-regular')!;
     expect(observationDecisionMarkup(me)).toContain('この州の今後の予定を見る');
-    expect(observationDecisionMarkup(me)).not.toContain('2026-10-06');
+    expect(observationDecisionMarkup(me)).not.toContain('me-debate-2026-10-06');
   });
 });

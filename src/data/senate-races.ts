@@ -79,7 +79,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('AL-2','2026-05-19','Safe R','cand-al',[
     candidate('Barry Moore','R','Republican','cand-al'),candidate('Everett Wess','D','Democratic','cand-al-d'),
   ]),
-  race('AK-2','2026-08-18','Tossup','ak-doe-2026-general-candidates-20260930',[
+  race('AK-2','2026-08-18','Lean D','ak-doe-2026-general-candidates-20260930',[
     ...[
       candidate('Gerald L. Heikes','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-gerald-l-heikes'),candidate('Mary Peltola','D','Democratic','ak-doe-2026-general-candidates','general-ballot','cand-ak-mary-peltola'),candidate('Dan S. Sullivan','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-dan-s-sullivan'),candidate('Daniel J. Sullivan Jr.','R','Republican','ak-doe-2026-general-candidates','general-ballot','cand-ak-daniel-j-sullivan-jr'),
     ].map(item=>({...item,sourceIds:['ak-doe-2026-general-candidates-20260930','ak-doe-2026-general-candidates']})),
@@ -171,7 +171,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
     {...candidate('Michael Bahry','I','Independent','cand-ri'),status:'unconfirmed'},
     candidate('Connor Burbridge','D','Democratic','cand-ri','primary-ballot'),candidate('Luis Munoz','D','Democratic','cand-ri','primary-ballot'),
   ]),
-  race('SC-2','2026-06-09','Safe R','cand-sc',[
+  race('SC-2','2026-06-09','Likely R','cand-sc',[
     candidate('Annie Andrews','D','Democratic','cand-sc'),candidate('Darline Graham','R','Republican','cand-sc'),candidate('Mark Hackett','other','Constitution','cand-sc'),candidate('Kasie Whitener','other','Libertarian','cand-sc'),candidate('Catherine Fleming Bruce','D','Democratic write-in','cand-sc','write-in'),
   ]),
   race('SD-2','2026-06-02','Safe R','cand-sd',[
@@ -244,6 +244,6 @@ export const senateRaceSources: Source[] = [
   {sourceId:'cand-ri-ballot-20260930',title:'2026 Rhode Island candidates for Senator in Congress',publisher:'Rhode Island Department of State',url:'https://vote.sos.ri.gov/Candidates/CandidateSearchSummary?Election=18239&OfficeType=620',publishedAt:null,referencePeriod:'9月30日表示のOn Election Ballot欄。John Francis Reed・Raymond T McKayはY、Connor Francis Burbridge・Luis Daniel MunozはN。既存通称・candidateIdを保持。独立候補の全体は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
-  {sourceId:'sabato-senate-2026',title:"2026 Senate ratings",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://centerforpolitics.org/crystalball/2026-senate/',publishedAt:null,updatedAt:'2026-09-22',referencePeriod:'全35選挙の統一情勢評価。Safeは表示上Solidへ正規化',retrievedAt:'2026-09-24',contentVerifiedAt:'2026-09-24'},
+  {sourceId:'sabato-senate-2026',title:"Four Rating Changes, Headlined by Alaska Senate Moving to Leans Democratic",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://sabatoscrystalball.substack.com/p/four-rating-changes-headlined-by',publishedAt:'2026-10-06',updatedAt:'2026-10-06',referencePeriod:'全35選挙の統一情勢評価。AK上院をToss-upからLean D、SC上院をSafe RからLikely Rへ変更。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-07',contentVerifiedAt:'2026-10-07'},
   {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-10-01',referencePeriod:'全35選挙を10月2日に公式APIで再照合。AK・GA・MI・MN・NC・NE・TXの変更と、ME・NH・OH・IAなどの現行値を確認。Tiltを含む元分類を保持',retrievedAt:'2026-10-02',contentVerifiedAt:'2026-10-02'},
 ];

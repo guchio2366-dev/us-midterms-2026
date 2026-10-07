@@ -17,10 +17,10 @@ describe('reader outlook uses current evidence without turning choices into fore
   it('shows current rating baseline, classified unallocated seats, and separate confirmation dates', () => {
     const html = renderReaderOutlook(now, empty());
     expect(html).toContain('民主党側43議席、共和党側45議席、未配分12議席');
-    expect(html).toContain('弱い優勢6・接戦3・評価分裂3');
+    expect(html).toContain('弱い優勢6・接戦2・評価分裂4');
     expect(html).toContain('利用者が保存した当落案とは別の現在評価');
     expect(html).toContain(`集計基準 ${RATING_SNAPSHOT_AS_OF}`);
-    expect(html).toContain('2026-09-24確認');
+    expect(html).toContain('2026-10-07確認');
     expect(html).toContain('2026-10-02確認');
     expect(html).toContain('評価の変更日ではなく確認日');
     expect(html).not.toMatch(/data-(?:choice|policy-choice|save-scenario|reset)/);
