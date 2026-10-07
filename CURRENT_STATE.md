@@ -1,5 +1,7 @@
 # 現在の実装・公開状況
 
+2026-10-07・現在議席から読む配置改善候補（未公開）：PR #51を含む最新main `ce7cb8ed2f22402de1b5938d1aa83b72096d1465` から `feat/current-seats-first-20261007` で作業。上院の図は現在の会派構成（改選・非改選）→PCで横並びの民主党側・共和党側の51議席条件→情勢評価による暫定配分の順へ整理。名簿の確認日と出典を現在構成に添え、全国地図下の重複ブロックを撤去した。固有の下院構成は制度説明に短く残す。①の「政権への評価と、候補者選び」、承認済み16段落、候補者全文、日次データと保存互換性は維持する。PC 3サイズ・関連操作の検証と確認資料は[今回の記録](docs/verification/current-seats-first-20261007.md)。最終画面確認前にマージ・公開しない。
+
 2026-10-07・日次観測：SabatoのAlaska上院Toss-up→Leans DとSouth Carolina上院Safe R→Likely R、CookのKansas・New Hampshire・North Carolina変更、Maine初回討論会、Ohio期日前投票開始、Maine・New Hampshireの暖房油負担を照合。Inside Electionsとの2機関統合ではD43・R45・未配分12を維持。TexasのSan Antonio大統領訪問は確認したが、公開開始時刻は資料間で相違し、White House公式日程は未確認。[実行記録](docs/observation/runs/daily-20261007.json)。
 
 2026-10-06・支持率と候補者全文、PCニュース固定の改善候補（未公開）：PR #50を含む最新main `fa30638367cc1f0aa1d1a784b004c4b33e74757d` から新規ブランチ `feat/focus-polls-sticky-20261006` で作業。[Draft PR #51](https://github.com/guchio2366-dev/us-midterms-2026/pull/51)へ保存。調査の棒を細くし、共和党を左・民主党を右へ統一する。無所属は独自のラベルと色を保持する。全12州24候補の提供原稿83段落と比較補足1段落を通常表示の全文と段落別の出典で接続し、旧版の政策記録・未確認事項とは区別する。PCでは州のニュース見出し・切替を固定し、右本文のみをスクロールできる。1024px前後は左目次・右欄・余白を調整し、16pxの候補者2列を読みやすくする。本文16段落・議席配分・調査数値・保存互換性を維持。検証・画像・残課題は[今回の記録](docs/verification/focus-polls-sticky-20261006.md)。最終画面確認と公開判断は親と調整する。

@@ -24,7 +24,7 @@ describe('four-stage reader contract',()=>{
     expect(readerIntroduction).toContain('米国中間選挙の動向と見通しを、自ら判断できるようになるサイトです。');
   });
 
-  it('keeps membership dates and sources next to the current-seat table',()=>{
+  it('keeps membership dates and sources with the corresponding chamber',()=>{
     const html=readerCompositionSourcesMarkup();
     expect(html).toContain(`上院 ${ROSTER_VERIFIED_AT}確認`);
     expect(html).toContain(`下院 ${houseSnapshot.asOf}時点`);
@@ -32,6 +32,15 @@ describe('four-stage reader contract',()=>{
     expect(html).toContain('https://www.senate.gov/senators/');
     expect(html).toContain('https://www.democrats.senate.gov/about-senate-dems/our-caucus');
     expect(html).toContain('https://clerk.house.gov/xml/lists/MemberData.xml');
+    const senate=readerCompositionSourcesMarkup('senate');
+    expect(senate).toContain(`上院 ${ROSTER_VERIFIED_AT}確認`);
+    expect(senate).toContain('https://www.senate.gov/senators/');
+    expect(senate).not.toContain('下院');
+    expect(senate).not.toContain('clerk.house.gov');
+    const house=readerCompositionSourcesMarkup('house');
+    expect(house).toContain(`下院 ${houseSnapshot.asOf}時点`);
+    expect(house).toContain('https://clerk.house.gov/xml/lists/MemberData.xml');
+    expect(house).not.toContain('上院');
   });
 
   it('distinguishes political evaluation, state nomination rules and endorsements with official sources',()=>{

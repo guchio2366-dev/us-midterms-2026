@@ -4,14 +4,20 @@ import { ROSTER_VERIFIED_AT } from '../data/verified-roster';
 import { escapeHtml as esc } from './research';
 
 /** Membership snapshots have their own dates, independent of news and rating updates. */
-export function readerCompositionSourcesMarkup() {
+export function readerCompositionSourcesMarkup(chamber:'senate'|'house'|'both'='both') {
   const houseSource=sources.find(source=>source.sourceId===houseSnapshot.sourceIds[0]);
-  const links=['senate-members','democratic-caucus','republican-conference',...houseSnapshot.sourceIds]
+  const ids=chamber==='senate' ? ['senate-members','democratic-caucus','republican-conference']
+    : chamber==='house' ? houseSnapshot.sourceIds
+    : ['senate-members','democratic-caucus','republican-conference',...houseSnapshot.sourceIds];
+  const links=ids
     .flatMap(id=>{
       const source=sources.find(item=>item.sourceId===id);
       return source ? [`<a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">${esc(source.title)}</a>`] : [];
     }).join('／');
-  return `<p class="reader-composition-date">議席資料の時点：上院 ${esc(ROSTER_VERIFIED_AT)}確認／下院 ${esc(houseSnapshot.asOf)}時点${houseSource?.contentVerifiedAt ? `（${esc(houseSource.contentVerifiedAt)}確認）` : ''}。日々のニュース・情勢評価の更新日とは異なります。</p><p class="reader-context-source-line">名簿・会派の出典：${links}</p>`;
+  const senateDate=`上院 ${esc(ROSTER_VERIFIED_AT)}確認`;
+  const houseDate=`下院 ${esc(houseSnapshot.asOf)}時点${houseSource?.contentVerifiedAt ? `（${esc(houseSource.contentVerifiedAt)}確認）` : ''}`;
+  const date=chamber==='senate' ? senateDate : chamber==='house' ? houseDate : `${senateDate}／${houseDate}`;
+  return `<p class="reader-composition-date">議席資料の時点：${date}。日々のニュース・情勢評価の更新日とは異なります。</p><details class="reader-membership-sources"><summary>名簿・会派の出典</summary><p class="reader-context-source-line">${links}</p></details>`;
 }
 
 /** Institutional context checked against the linked official sources on 2026-10-06. */
