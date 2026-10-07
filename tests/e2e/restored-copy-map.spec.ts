@@ -16,7 +16,7 @@ const copyGroups = [
   { prefix: 'allocation', source: '上院の情勢と51議席への配分', host: '#reader-04', count: 7 },
 ] as const;
 
-// Independently reviewed values for the included 2026-10-01 rating snapshot.
+// Existing main's 2026-10-06 rating snapshot; Sabato confirmed on 2026-10-07.
 // A deliberate data update must update these facts after review; no output from
 // the paragraph renderer is reused as the expected text in the real browser.
 function approvedAllocationForCurrentSnapshot() {
@@ -30,7 +30,7 @@ function approvedAllocationForCurrentSnapshot() {
     source[4].replaceAll('7議席', '12議席')
       .replace('残る12議席は、', '残る12議席は、少なくとも一方が「やや優勢」（Lean）や「わずかに優勢」（Tilt）と評価している場合、')
       .replace('評価の方向が一致していない議席です。', '配分基準を満たしていない議席です。'),
-    source[5].replace('2026年9月24日', '2026年10月1日').replace('Inside Electionsは9月18日', 'Inside Electionsは10月2日'),
+    source[5].replace('2026年9月24日', '2026年10月6日').replace('Sabatoは9月24日', 'Sabatoは10月7日').replace('Inside Electionsは9月18日', 'Inside Electionsは10月2日'),
     source[6],
   ];
 }

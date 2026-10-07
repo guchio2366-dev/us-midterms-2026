@@ -24,7 +24,7 @@ describe('four-stage reader contract',()=>{
     expect(readerIntroduction).toContain('米国中間選挙の動向と見通しを、自ら判断できるようになるサイトです。');
   });
 
-  it('keeps membership dates and sources next to the current-seat table',()=>{
+  it('keeps membership dates and sources with the corresponding chamber',()=>{
     const html=readerCompositionSourcesMarkup();
     expect(html).toContain(`上院 ${ROSTER_VERIFIED_AT}確認`);
     expect(html).toContain(`下院 ${houseSnapshot.asOf}時点`);
@@ -32,15 +32,23 @@ describe('four-stage reader contract',()=>{
     expect(html).toContain('https://www.senate.gov/senators/');
     expect(html).toContain('https://www.democrats.senate.gov/about-senate-dems/our-caucus');
     expect(html).toContain('https://clerk.house.gov/xml/lists/MemberData.xml');
+    const senate=readerCompositionSourcesMarkup('senate');
+    expect(senate).toContain(`上院 ${ROSTER_VERIFIED_AT}確認`);
+    expect(senate).toContain('https://www.senate.gov/senators/');
+    expect(senate).not.toContain('下院');
+    expect(senate).not.toContain('clerk.house.gov');
+    const house=readerCompositionSourcesMarkup('house');
+    expect(house).toContain(`下院 ${houseSnapshot.asOf}時点`);
+    expect(house).toContain('https://clerk.house.gov/xml/lists/MemberData.xml');
+    expect(house).not.toContain('上院');
   });
 
-  it('distinguishes political evaluation, state nomination rules and endorsements with official sources',()=>{
+  it('shows the approved political-evaluation paragraph and removes the former nomination explanation',()=>{
     const html=readerMechanismContextMarkup();
-    expect(html).toContain('大統領を選び直す選挙ではありません');
-    expect(html).toContain('制度上の信任投票ではありません');
-    expect(html).toContain('多くの州では、予備選など');
-    expect(html).toContain('推薦の有無が立候補の許可を決めるわけではありません');
-    expect(html).toContain('大統領・副大統領候補を選ぶ全国党大会');
+    const visible=html.slice(0,html.indexOf('<details'));
+    const paragraphs=[...visible.matchAll(/<p>(.*?)<\/p>/g)].map(match=>match[1]);
+    expect(paragraphs).toEqual(['中間選挙は、政権の実績に対する有権者の評価が表れる機会です。結果は残り2年間の政策実現を左右します。ただし、大統領の続投を決める選挙ではなく、候補者個人や地域の事情も勝敗に影響します。']);
+    expect(visible).not.toMatch(/予備選|推薦|全国党大会/);
     for(const source of ['usa.gov/midterm-elections','archives.gov/founding-docs/constitution-transcript',
       'fec.gov/introduction-campaign-finance/election-results-and-voting-information/', 'usa.gov/national-conventions']) {
       expect(html).toContain(`https://www.${source}`);

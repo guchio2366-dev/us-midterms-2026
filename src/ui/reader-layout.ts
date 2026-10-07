@@ -1,7 +1,7 @@
 import { readerSections } from '../data/reader-journey';
 import { escapeHtml as esc } from './research';
 import { featuredAllocationSummary } from './overview';
-import { readerCompositionSourcesMarkup, readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
+import { readerMajorityContextMarkup, readerMechanismContextMarkup } from './reader-context';
 
 export function readerNavigationMarkup() {
   return `<p class="reader-nav-title">読む順序</p>${readerSections.map(section=>{
@@ -70,15 +70,6 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   sections[0].append(overview);
   overview.insertAdjacentHTML('beforeend',readerMechanismContextMarkup());
 
-  // Current composition belongs next to the majority conditions, before state details.
-  const composition=document.createElement('article');
-  composition.className='reader-current-composition';
-  composition.innerHTML='<h3>現在の議席と今回の改選範囲</h3>';
-  const seatTable=institution.querySelector('.opening-seats');
-  const seatFootnote=institution.querySelector('.opening-footnote');
-  if(seatTable) composition.append(seatTable);
-  if(seatFootnote) composition.append(seatFootnote);
-  composition.insertAdjacentHTML('beforeend',readerCompositionSourcesMarkup());
   // The national map is a primary reading interaction, not a simulation disclosure.
   // Reuse its controls, paths and detail node so every existing event remains bound.
   workspace.classList.add('reader-map-workspace');
@@ -94,7 +85,6 @@ export function applyReaderLayout(issuesMarkup:string,outlookMarkup:string) {
   const mapGuide=mapColumn?.querySelector('.map-reading-guide');
   const mapContext=document.createElement('div');
   mapContext.className='reader-map-context';
-  mapContext.append(composition);
   if(mapGuide) mapContext.append(mapGuide);
   mapSection.append(workspace,mapContext);
 

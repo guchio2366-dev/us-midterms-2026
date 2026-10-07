@@ -11,6 +11,10 @@ const observation = JSON.parse(readFileSync(new URL('../../src/data/observation.
 
 test('the six reading topics stay in order while four navigation entries preserve their meaning', async ({ page }, testInfo) => {
   const { entries } = await seedOldScenario(page);
+  const mechanism=page.locator('.reader-mechanism-context > p');
+  await expectNoClosedDisclosure(mechanism);
+  await expect(mechanism).toHaveText(['中間選挙は、政権の実績に対する有権者の評価が表れる機会です。結果は残り2年間の政策実現を左右します。ただし、大統領の続投を決める選挙ではなく、候補者個人や地域の事情も勝敗に影響します。']);
+  if(testInfo.project.name.startsWith('desktop')) await captureElement(page,testInfo,'reader-approved-mechanism',page.locator('.reader-mechanism-context'));
   const order = ['#reader-01', '#reader-04', '#updates', '.reader-national-map', '.intro-issues-card', '#reader-06'];
   for (const selector of order) await expectNoClosedDisclosure(page.locator(selector));
   expect(await page.evaluate(selectors => selectors.slice(1).every((selector, index) =>
@@ -20,12 +24,10 @@ test('the six reading topics stay in order while four navigation entries preserv
   await expect(page.locator('.intro-issues-card h2')).toHaveText('選挙を見る主な論点');
   await expect(page.locator('#reader-03 #map')).toHaveCount(1);
   await expect(page.locator('#reader-04 #map')).toHaveCount(0);
-  await expect(page.locator('#reader-03 .reader-current-composition')).toHaveCount(1);
-  const placement = await page.locator('.reader-current-composition').evaluate(table => ({
-    inDetail: Boolean(table.closest('#detail')),
-    afterMap: Boolean(document.querySelector('#map')!.compareDocumentPosition(table) & Node.DOCUMENT_POSITION_FOLLOWING),
-  }));
-  expect(placement).toEqual({ inDetail: false, afterMap: true });
+  await expect(page.locator('.reader-current-composition')).toHaveCount(0);
+  await expect(page.locator('#reader-04 .current-seat-composition')).toHaveCount(1);
+  await expect(page.locator('.reader-map-context .map-reading-guide')).toHaveCount(1);
+  await expect(page.locator('.reader-house-snapshot')).toHaveCount(1);
 
   await page.goto('./#map-heading');
   await ready(page);
@@ -46,9 +48,26 @@ test('complete allocation prose sits beside small labeled comparison graphs with
   const charts = page.locator('.reader-allocation-charts');
   await expectNoClosedDisclosure(prose);
   await expectNoClosedDisclosure(charts);
-  await expect(charts.locator('.comparison-row')).toHaveCount(3);
+  await expect(charts.locator('.comparison-row')).toHaveCount(4);
   await expect(charts).toContainText('非改選');
   await expect(charts).toContainText('51議席');
+  await expect(charts.locator('.current-seat-composition')).toContainText('民主党側 47');
+  await expect(charts.locator('.current-seat-composition')).toContainText('共和党側 53');
+  const sequence = await charts.evaluate(root => ['.current-seat-composition','.majority-conditions','.provisional-allocation']
+    .slice(1).every((selector,index)=>Boolean(root.querySelector(['.current-seat-composition','.majority-conditions'][index])!.compareDocumentPosition(root.querySelector(selector)!) & Node.DOCUMENT_POSITION_FOLLOWING)));
+  expect(sequence).toBe(true);
+  const paths=await charts.locator('.majority-path').evaluateAll(nodes=>nodes.map(node=>{
+    const card=node.getBoundingClientRect();
+    const bar=node.querySelector('.seat-composition-track')!.getBoundingClientRect();
+    return {x:card.x,top:card.top,width:bar.width};
+  }));
+  if (testInfo.project.name.startsWith('desktop')) {
+    expect(Math.abs(paths[0].top-paths[1].top)).toBeLessThan(1);
+    expect(paths[1].x).toBeGreaterThan(paths[0].x);
+  } else {
+    expect(paths[1].top).toBeGreaterThan(paths[0].top);
+  }
+  expect(Math.abs(paths[0].width-paths[1].width)).toBeLessThan(1);
   const geometry = await page.evaluate(() => {
     const prose = document.querySelector('.approved-senate-intro')!.getBoundingClientRect();
     const charts = document.querySelector('.reader-allocation-charts')!.getBoundingClientRect();
@@ -67,6 +86,22 @@ test('complete allocation prose sits beside small labeled comparison graphs with
   await capture(page, testInfo, 'reader-flow-allocation');
   await captureElement(page, testInfo, 'reader-flow-allocation-complete', page.locator('.reader-allocation-layout'));
   await expectNoPageOverflow(page);
+  if (testInfo.project.name.startsWith('desktop')) {
+    for (const viewport of [{width:1280,height:720},{width:1024,height:768}]) {
+      await page.setViewportSize(viewport);
+      await goToStage(page, 'reader-04');
+      const size=await charts.locator('.majority-path').evaluateAll(nodes=>nodes.map(node=>{
+        const card=node.getBoundingClientRect(),bar=node.querySelector('.seat-composition-track')!.getBoundingClientRect();
+        return {x:card.x,top:card.top,width:bar.width};
+      }));
+      expect(Math.abs(size[0].top-size[1].top)).toBeLessThan(1);
+      expect(size[1].x).toBeGreaterThan(size[0].x);
+      expect(Math.abs(size[0].width-size[1].width)).toBeLessThan(1);
+      await expectNoPageOverflow(page);
+      await capture(page,testInfo,`reader-flow-allocation-${viewport.width}`);
+      await captureElement(page,testInfo,`reader-flow-allocation-charts-${viewport.width}`,charts);
+    }
+  }
 });
 
 test('desktop keeps the whole map alongside long state reading and mobile uses one page scroll', async ({ page }, testInfo) => {

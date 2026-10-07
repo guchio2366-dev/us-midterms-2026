@@ -5,16 +5,14 @@ import { RATING_SNAPSHOT_AS_OF } from '../src/data/rating-snapshot';
 import approvedCopy from '../src/data/approved-reader-copy.json';
 
 describe('PC opening overview contract', () => {
-  it('keeps current seats and election scope together without duplicate charts', () => {
+  it('keeps the unique House snapshot in the introduction without the duplicate seat table', () => {
     const html = introductionMarkup();
-    expect(html).toContain('現在の議席と今回の改選範囲');
-    expect(html).toContain('民主 47');
-    expect(html).toContain('共和 53');
+    expect(html).not.toContain('現在の議席と今回の改選範囲');
+    expect(html).not.toContain('class="opening-seats"');
     expect(html).toContain('民主 214');
     expect(html).toContain('共和 218');
-    expect(html).toContain('<b>35</b>');
-    expect(html).toContain('<b>435</b>');
-    expect(html).toContain('通常33＋特別2');
+    expect(html).toContain('35議席');
+    expect(html).toContain('435議席');
     expect(html).toContain('独立1・空席2');
     expect(html).not.toContain('seat-composition-track');
     expect(html).not.toContain('id="intro-disclosure"');
@@ -32,15 +30,20 @@ describe('PC opening overview contract', () => {
     expect(html).not.toContain('常時自動更新');
   });
 
-  it('uses three equally normalized, aligned 100-seat charts', () => {
+  it('shows current composition, the two majority conditions and then the provisional outlook on one 100-seat scale', () => {
     const html = nationalOverviewMarkup();
     const tracks = [...html.matchAll(/<div class="seat-composition-track"[^>]*>(.*?)<div class="seat-composition-legend"/gs)];
-    expect(tracks).toHaveLength(3);
+    expect(tracks).toHaveLength(4);
     const widths = tracks.map(track => [...track[1].matchAll(/style="width:([\d.]+)%"/g)].map(match => Number(match[1])));
-    expect(widths).toEqual([[34,9,12,14,31],[34,17,18,31],[34,15,20,31]]);
+    expect(widths).toEqual([[34,13,22,31],[34,17,18,31],[34,15,20,31],[34,9,12,14,31]]);
     for (const row of widths) expect(row.reduce((sum,n) => sum+n,0)).toBe(100);
     expect(html).toContain('style="left:51%"');
     expect(html).toContain('style="left:49%"');
+    expect(html).toContain('現在の議員を改選対象と非改選に分けた図で、選挙後の予測ではない');
+    expect(html).toContain('民主党側 <b>47</b>');
+    expect(html).toContain('共和党側 <b>53</b>');
+    expect(html.indexOf('current-seat-composition')).toBeLessThan(html.indexOf('majority-conditions'));
+    expect(html.indexOf('majority-conditions')).toBeLessThan(html.indexOf('provisional-allocation'));
   });
 
   it('shows the date, uncertainty and tie caveat before the optional method', () => {
@@ -80,7 +83,7 @@ describe('PC opening overview contract', () => {
     const html = introductionMarkup() + nationalOverviewMarkup();
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(html.match(/role="img" aria-label=/g)).toHaveLength(3);
+    expect(html.match(/role="img" aria-label=/g)).toHaveLength(4);
     expect(html).toContain('非改選・民主党会派 34');
     expect(html).toContain('非改選・共和党会派 31');
   });
