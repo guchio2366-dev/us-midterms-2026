@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261007",
   "startedAt": "2026-10-07T00:03:29Z",
-  "completedAt": "2026-10-07T00:19:17Z",
+  "completedAt": "2026-10-07T00:26:30Z",
   "outcome": "partial",
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "052e463bdd7a71f2908031cecbe672d597345528",
-  "publishedCommit": null,
+  "publishedCommit": "eae206384b8ef3ca551893de986c36f82a746a64",
   "revision": "observation-2026-10-07-debate-ratings-voting-costs",
   "checkedSourceIds": [
     "obs-wgme-me-debate-20261006",
@@ -49,9 +49,9 @@
   "verification": {
     "tests": "455 passed after npm ci restored the clean worktree dependencies; the first test run found eight expected-value updates caused by the confirmed event and rating-category change, and all passed after those contracts were updated",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main moved from 052e463bdd7a71f2908031cecbe672d597345528 to eae206384b8ef3ca551893de986c36f82a746a64 without force",
+    "pages": "success; Deploy to GitHub Pages run 37551816491 completed successfully at 2026-10-07T00:25:29Z",
+    "publicContent": "success; public page verified after deployment with D43・R45・unassigned12, the Oct. 6 rating item, Maine debate and heating-oil items, and the Oct. 7 Texas schedule visible"
   },
   "note": "Sabato・Cookの評価変更、Maine初回討論会、Ohio期日前投票、Maine・New Hampshireの暖房油負担を追加。Texasの大統領訪問は確認したが開始時刻差とWhite House未確認を明記。候補者公式ニュース欄も検索し、既存記事の繰り返しや陣営広告だけで新たな効果・支持を作らなかった。"
 }
