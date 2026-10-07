@@ -11,6 +11,10 @@ const observation = JSON.parse(readFileSync(new URL('../../src/data/observation.
 
 test('the six reading topics stay in order while four navigation entries preserve their meaning', async ({ page }, testInfo) => {
   const { entries } = await seedOldScenario(page);
+  const mechanism=page.locator('.reader-mechanism-context > p');
+  await expectNoClosedDisclosure(mechanism);
+  await expect(mechanism).toHaveText(['中間選挙は、政権の実績に対する有権者の評価が表れる機会です。結果は残り2年間の政策実現を左右します。ただし、大統領の続投を決める選挙ではなく、候補者個人や地域の事情も勝敗に影響します。']);
+  if(testInfo.project.name.startsWith('desktop')) await captureElement(page,testInfo,'reader-approved-mechanism',page.locator('.reader-mechanism-context'));
   const order = ['#reader-01', '#reader-04', '#updates', '.reader-national-map', '.intro-issues-card', '#reader-06'];
   for (const selector of order) await expectNoClosedDisclosure(page.locator(selector));
   expect(await page.evaluate(selectors => selectors.slice(1).every((selector, index) =>

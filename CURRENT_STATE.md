@@ -1,6 +1,6 @@
 # 現在の実装・公開状況
 
-2026-10-07・現在議席から読む配置改善候補（未公開）：PR #51を含む最新main `ce7cb8ed2f22402de1b5938d1aa83b72096d1465` から `feat/current-seats-first-20261007` で作業。上院の図は現在の会派構成（改選・非改選）→PCで横並びの民主党側・共和党側の51議席条件→情勢評価による暫定配分の順へ整理。名簿の確認日と出典を現在構成に添え、全国地図下の重複ブロックを撤去した。固有の下院構成は制度説明に短く残す。①の「政権への評価と、候補者選び」、承認済み16段落、候補者全文、日次データと保存互換性は維持する。PC 3サイズ・関連操作の検証と確認資料は[今回の記録](docs/verification/current-seats-first-20261007.md)。最終画面確認前にマージ・公開しない。
+2026-10-07・現在議席から読む配置改善候補（未公開）：PR #51を含む最新main `ce7cb8ed2f22402de1b5938d1aa83b72096d1465` から `feat/current-seats-first-20261007` で作業し、[Draft PR #52](https://github.com/guchio2366-dev/us-midterms-2026/pull/52)に保存。上院の図は現在の会派構成（改選・非改選）→PCで横並びの民主党側・共和党側の51議席条件→情勢評価による暫定配分の順へ整理。名簿の確認日と出典を現在構成に添え、全国地図下の重複ブロックを撤去した。固有の下院構成は制度説明に短く残す。①は16:49 JSTのユーザー了承を受けた承認文へ局所置換し、この箇所の予備選・推薦・全国党大会の本文説明を外す。承認済み16段落、候補者全文、日次データと保存互換性は維持する。PC 3サイズ・関連操作の検証と確認資料は[今回の記録](docs/verification/current-seats-first-20261007.md)。最終画面確認前にマージ・公開しない。
 
 2026-10-07・日次観測：SabatoのAlaska上院Toss-up→Leans DとSouth Carolina上院Safe R→Likely R、CookのKansas・New Hampshire・North Carolina変更、Maine初回討論会、Ohio期日前投票開始、Maine・New Hampshireの暖房油負担を照合。Inside Electionsとの2機関統合ではD43・R45・未配分12を維持。TexasのSan Antonio大統領訪問は確認したが、公開開始時刻は資料間で相違し、White House公式日程は未確認。[実行記録](docs/observation/runs/daily-20261007.json)。
 
