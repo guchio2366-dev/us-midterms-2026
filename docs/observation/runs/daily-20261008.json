@@ -1,0 +1,62 @@
+{
+  "runId": "daily-20261008",
+  "startedAt": "2026-10-07T23:55:34Z",
+  "completedAt": null,
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "4af5b82b0c24c1192a1502ca771e4ee36fbb1210",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-08-polls-trade-texas-rally",
+  "checkedSourceIds": [
+    "obs-marist-me-20261006",
+    "obs-suffolk-ia-20261007",
+    "obs-quantus-mi-20261007",
+    "obs-rogers-tariff-ad-20261007",
+    "obs-reuters-mi-tariff-20261007",
+    "obs-ap-tx-mi-live-20261007",
+    "obs-white-house-tx-20261007",
+    "obs-white-house",
+    "obs-wmtw-me-debate-20261008"
+  ],
+  "pendingSourceIds": [
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {"sourceId":"obs-marist-me-20261006","attemptedAt":"2026-10-07T23:58:30Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"公式本文で10月1〜4日、登録有権者1,505人、Jackson 51%・Collins 47%、勝者予想Collins 57%・Jackson 41%、方法と誤差を照合。支持先と勝者予想を分けた。"},
+    {"sourceId":"obs-suffolk-ia-20261007","attemptedAt":"2026-10-07T23:59:00Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"公式PDFで10月1〜4日、投票予定者500人、全3候補、未定、質問文、電話調査、誤差±4.4ポイントを照合。"},
+    {"sourceId":"obs-quantus-mi-20261007","attemptedAt":"2026-10-07T23:58:00Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"公式本文で10月5〜6日、投票予定者762人、初回回答・leaner込み・未定、候補差の誤差約±7.8ポイントを照合。"},
+    {"sourceId":"obs-rogers-tariff-ad-20261007","attemptedAt":"2026-10-07T23:57:30Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"陣営公式発表と広告全文でCanada関税戦争の即時終結、NRSCとの7桁規模の共同広告枠を確認。物価低下と税負担批判は陣営の主張として記録。"},
+    {"sourceId":"obs-reuters-mi-tariff-20261007","attemptedAt":"2026-10-07T23:57:40Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"Rogers氏の現在の広告、9月までの関税擁護、El-Sayed氏の反論、Michiganの越境供給網への懸念を照合。立場変更と効果を分けた。"},
+    {"sourceId":"obs-ap-tx-mi-live-20261007","attemptedAt":"2026-10-07T23:56:30Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"San Antonio集会でのPaxton氏の演説とTrump氏の支援、Michigan関税広告への大統領の説明を本文で照合。会場反応を有権者評価と扱わない。"},
+    {"sourceId":"obs-white-house-tx-20261007","attemptedAt":"2026-10-07T23:56:50Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"White House公式発表で10月7日のTrump大統領のTexas再訪を確認。政策成果の列挙は政権の自己評価として区別。"},
+    {"sourceId":"obs-white-house","attemptedAt":"2026-10-07T23:57:00Z","status":"checked","lastSuccessAt":"2026-10-08T00:00:00Z","contentVerifiedAt":"2026-10-08","scope":"公式発表一覧を検索しTexas訪問の当日発表を確認。将来のMaine訪問は大統領の可能性発言だけで日程未確定のため予定に追加しない。"},
+    {"sourceId":"obs-alaska-survey-research-20261007","attemptedAt":"2026-10-07T23:59:30Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"集計表示で10月1〜3日、最終再配分51%対49%を確認したが、調査原文、標本、質問文、方法を取得できず非掲載。"},
+    {"sourceId":"obs-cook-ratings-20261006","attemptedAt":"2026-10-08T00:00:10Z","status":"partial","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"前回から公式本文403を継続。新たな評価変更を原文確認できず、部分確認を成功や変化なしへ置き換えない。"},
+    {"sourceId":"obs-quantus-ia-20260930","attemptedAt":"2026-10-08T00:00:20Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"方法、標本、質問文、誤差の原文を取得できず非掲載を継続。今回のSuffolk原票を別調査の代替にしない。"},
+    {"sourceId":"obs-roster-oh","attemptedAt":"2026-10-08T00:00:30Z","status":"partial","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"主要候補以外の党派原票は照合待ちを維持。報道や調査質問文を候補名簿の代替にしない。"},
+    {"sourceId":"obs-roster-nh","attemptedAt":"2026-10-08T00:00:40Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"州の全候補名簿原票は未取得。調査質問文を公式名簿の代替にしない。"},
+    {"sourceId":"obs-quantus-me-20260917","attemptedAt":"2026-10-08T00:00:50Z","status":"unavailable","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"本文、方法、質問文を取得できず数値は非掲載を継続。今回のMarist原票を別調査の確認に使わない。"},
+    {"sourceId":"obs-axios-nrsc-spending-20260918","attemptedAt":"2026-10-08T00:01:00Z","status":"reviewing","lastSuccessAt":"2026-09-23T00:05:00Z","contentVerifiedAt":"2026-09-23","scope":"州別予定額のFEC原票を特定できず成功日時を進めない。Rogers陣営発表の広告枠は候補者・NRSCの別発表として扱う。"},
+    {"sourceId":"obs-unh-nh-20260924","attemptedAt":"2026-10-08T00:01:10Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"PDF原票の標本、質問文、方法を照合できず非掲載を継続。"},
+    {"sourceId":"obs-nyt-siena-nh-20260924","attemptedAt":"2026-10-08T00:01:20Z","status":"reviewing","lastSuccessAt":null,"contentVerifiedAt":null,"scope":"原票本文、方法、質問文を取得できず非掲載を継続。"},
+    {"sourceId":"obs-wmtw-me-debate-20261008","attemptedAt":"2026-10-08T00:01:40Z","status":"checked","lastSuccessAt":"2026-10-08T00:01:40Z","contentVerifiedAt":"2026-10-08","scope":"WMTW主催局が10月8日20時米東部時間の討論会と両候補の参加を再確認。確認時点は実施前のため予定のまま。"},
+    {"sourceId":"obs-fox2-mi-debates","attemptedAt":"2026-10-08T00:01:50Z","status":"partial","lastSuccessAt":"2026-09-28T00:06:00Z","contentVerifiedAt":"2026-09-28","scope":"WOOD主催局はrobotsで本文取得不能。既存の確認済み予定を維持し、確認時点は実施前のため結果を先取りしない。"}
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci restored the clean worktree dependencies; the first run found four expected-value changes from the new updates, completed event, and current monitor note, and all passed after those contracts were updated",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Maine・Iowa・Michiganの新調査、MichiganのCanada関税広告、Texasの大統領・Paxton集会結果を追加。Alaska Survey Research新調査は原文・標本・質問文・方法を取得できず非掲載。10月8日米東部時間のMaine・Michigan討論会は実施前のため予定を維持。D43・R45・未配分12、保存案・共有URLは変更していない。"
+}
