@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261008",
   "startedAt": "2026-10-07T23:55:34Z",
-  "completedAt": null,
+  "completedAt": "2026-10-08T00:10:10Z",
   "outcome": "partial",
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "4af5b82b0c24c1192a1502ca771e4ee36fbb1210",
-  "publishedCommit": null,
+  "publishedCommit": "32335f77b2fbeb64e3ec17bd8565f5795f36fa85",
   "revision": "observation-2026-10-08-polls-trade-texas-rally",
   "checkedSourceIds": [
     "obs-marist-me-20261006",
@@ -54,9 +54,9 @@
   "verification": {
     "tests": "455 passed after npm ci restored the clean worktree dependencies; the first run found four expected-value changes from the new updates, completed event, and current monitor note, and all passed after those contracts were updated",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 4af5b82b0c24c1192a1502ca771e4ee36fbb1210 to 32335f77b2fbeb64e3ec17bd8565f5795f36fa85 with an expected-head lease and force disabled",
+    "pages": "success; Deploy to GitHub Pages run 37706234899 completed successfully at 2026-10-08T00:10:04Z",
+    "publicContent": "success; live page showed D43, R45, unassigned 12, the three 2026-10-08 explanations, the completed Texas rally result, and the still-future Maine and Michigan debate entries"
   },
   "note": "Maine・Iowa・Michiganの新調査、MichiganのCanada関税広告、Texasの大統領・Paxton集会結果を追加。Alaska Survey Research新調査は原文・標本・質問文・方法を取得できず非掲載。10月8日米東部時間のMaine・Michigan討論会は実施前のため予定を維持。D43・R45・未配分12、保存案・共有URLは変更していない。"
 }
