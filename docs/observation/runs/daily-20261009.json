@@ -1,0 +1,183 @@
+{
+  "runId": "daily-20261009",
+  "startedAt": "2026-10-09T00:03:42Z",
+  "completedAt": "2026-10-09T00:11:53Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。開始中の予定、検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
+  "baseCommit": "aaab47d08d5d0a3f7018ad0c8b7f07d6d3dd6e68",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-09-yougov-mi-debate-tx-debate",
+  "checkedSourceIds": [
+    "obs-ap-mi-debate-20261008",
+    "obs-ap-tx-debate-20261008",
+    "obs-yougov-seven-state-20261007",
+    "obs-yougov-ks-20261007",
+    "obs-yougov-nh-20261007",
+    "obs-yougov-mi-20261007",
+    "obs-yougov-ne-20261007",
+    "obs-yougov-oh-20261007",
+    "obs-yougov-tx-20261007",
+    "obs-wmtw-me-debate-20261008",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-yougov-seven-state-20261007",
+      "attemptedAt": "2026-10-09T00:06:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式概要で投票予定者モデル、実査期間、州別標本と誤差の範囲を確認。候補値は6州の原票PDFで個別照合した。"
+    },
+    {
+      "sourceId": "obs-yougov-ks-20261007",
+      "attemptedAt": "2026-10-09T00:07:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式PDFでKansasの標本2,255人、実査期間、誤差±3.2、候補値、質問文、未定者の再質問・配分方法を照合。"
+    },
+    {
+      "sourceId": "obs-yougov-nh-20261007",
+      "attemptedAt": "2026-10-09T00:07:10Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式PDFでNew Hampshireの標本1,520人、誤差±3.9、Pappas 51%・Sununu 43%・その他1%・未定4%を照合。"
+    },
+    {
+      "sourceId": "obs-yougov-mi-20261007",
+      "attemptedAt": "2026-10-09T00:07:20Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式PDFでMichiganの標本3,949人、誤差±2.5、El-Sayed 49%・Rogers 48%・その他1%・未定2%を照合。"
+    },
+    {
+      "sourceId": "obs-yougov-ne-20261007",
+      "attemptedAt": "2026-10-09T00:07:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式PDFでNebraskaの標本1,809人、誤差±3.3、Osborn 48%・Ricketts 47%・その他0%・未定3%を照合。"
+    },
+    {
+      "sourceId": "obs-yougov-oh-20261007",
+      "attemptedAt": "2026-10-09T00:07:40Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式PDFでOhioの標本3,780人、誤差±2.5、Brown 49%・Husted 45%・その他2%・未定4%を照合。"
+    },
+    {
+      "sourceId": "obs-yougov-tx-20261007",
+      "attemptedAt": "2026-10-09T00:07:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "公式PDFでTexasの標本3,625人、誤差±3、Talarico 50%・Paxton 44%・その他2%・未定3%を照合。"
+    },
+    {
+      "sourceId": "obs-ap-mi-debate-20261008",
+      "attemptedAt": "2026-10-09T00:05:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "AP実施後記事でMichigan討論会の完了と、Iran戦争、Canada関税、ICE、海外軍事支援への両候補の回答を照合。"
+    },
+    {
+      "sourceId": "obs-ap-tx-debate-20261008",
+      "attemptedAt": "2026-10-09T00:05:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "Trump大統領の討論要求、Talarico氏の受諾、Paxton氏の未回答、合意済み日時がないことを照合。架空の予定を追加しない。"
+    },
+    {
+      "sourceId": "obs-wmtw-me-debate-20261008",
+      "attemptedAt": "2026-10-09T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:08:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "主催局の20時開始を再確認。確認時点は開始直後で、完了・発言・検証結果を確認できないため予定の結果は照合待ち。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-09T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:05:00Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "現行評価を確認。統合配分を変える新たな評価変更は確認されなかった。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-09T00:05:10Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:05:10Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "現行評価を確認。統合配分を変える新たな評価変更は確認されなかった。"
+    },
+    {
+      "sourceId": "obs-cook-ratings-20261006",
+      "attemptedAt": "2026-10-09T00:05:20Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式本文の完全取得は引き続きできず、部分確認を成功や変化なしへ置き換えない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-09T00:04:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-09T00:04:50Z",
+      "contentVerifiedAt": "2026-10-09",
+      "scope": "White House公式発表を確認。対象接戦州への新たな確定済み大統領日程は確認されず、予定を追加しない。"
+    },
+    {
+      "sourceId": "obs-alaska-survey-research-20261007",
+      "attemptedAt": "2026-10-09T00:08:20Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "調査原文、標本、質問文、方法を取得できず、非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-09T00:08:30Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "主要候補以外の州公式名簿原票は照合待ち。YouGov質問表を公式名簿の代替にしない。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-09T00:08:40Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州公式の全候補名簿原票は未取得。YouGov質問表を公式名簿の代替にしない。"
+    }
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci; first run found the three expected new updates and the completed Michigan event ordering, and all passed after contracts were updated",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "YouGovのKansas・New Hampshire・Michigan・Nebraska・Ohio・Texas原票、Michigan討論会の結果、Texasの討論要求を追加。Maine討論会は開始直後で完了・発言結果を確認できないため予定のまま照合待ち。D43・R45・未配分12、保存案・共有URLは変更していない。"
+}
