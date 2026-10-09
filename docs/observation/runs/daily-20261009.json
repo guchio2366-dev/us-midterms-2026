@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261009",
   "startedAt": "2026-10-09T00:03:42Z",
-  "completedAt": "2026-10-09T00:11:53Z",
+  "completedAt": "2026-10-09T00:18:04Z",
   "outcome": "partial",
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。開始中の予定、検索表示だけ、部分確認、本文取得不能を成功に置き換えない。",
   "baseCommit": "aaab47d08d5d0a3f7018ad0c8b7f07d6d3dd6e68",
-  "publishedCommit": null,
+  "publishedCommit": "e9dd0325bd8e9d51d7dba0234e7aa8026fda5f06",
   "revision": "observation-2026-10-09-yougov-mi-debate-tx-debate",
   "checkedSourceIds": [
     "obs-ap-mi-debate-20261008",
@@ -175,9 +175,9 @@
   "verification": {
     "tests": "455 passed after npm ci; first run found the three expected new updates and the completed Michigan event ordering, and all passed after contracts were updated",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from aaab47d08d5d0a3f7018ad0c8b7f07d6d3dd6e68 to e9dd0325bd8e9d51d7dba0234e7aa8026fda5f06 with expected-head lease and force disabled",
+    "pages": "success; Deploy to GitHub Pages run 37863971195 completed successfully at 2026-10-09T00:17:42Z",
+    "publicContent": "success; live page showed D43, R45, unassigned 12, the three 2026-10-09 explanations, the completed Michigan debate, and the Maine debate still awaiting a result"
   },
   "note": "YouGovのKansas・New Hampshire・Michigan・Nebraska・Ohio・Texas原票、Michigan討論会の結果、Texasの討論要求を追加。Maine討論会は開始直後で完了・発言結果を確認できないため予定のまま照合待ち。D43・R45・未配分12、保存案・共有URLは変更していない。"
 }
