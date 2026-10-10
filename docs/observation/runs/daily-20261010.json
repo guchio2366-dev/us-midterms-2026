@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261010",
   "startedAt": "2026-10-09T23:59:25Z",
-  "completedAt": "2026-10-10T00:09:07Z",
+  "completedAt": "2026-10-10T00:13:53Z",
   "outcome": "partial",
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。選挙集会とWhite House公務、候補者の主張と効果、討論会前の調査と討論会結果を分ける。",
   "baseCommit": "b9810bf3c7dbfb74c4ac78769162d4f87392f285",
-  "publishedCommit": null,
+  "publishedCommit": "c7183e884c024f4a3d074982926a226d6e44eb05",
   "revision": "observation-2026-10-10-maine-poll-debates-alaska-rally",
   "checkedSourceIds": [
     "obs-wapo-schar-me-20261009",
@@ -139,9 +139,9 @@
   "verification": {
     "tests": "455 passed after npm ci; initial run found the three expected new updates, three new events, and the updated monitoring note, and all passed after contracts were updated",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from b9810bf3c7dbfb74c4ac78769162d4f87392f285 to c7183e884c024f4a3d074982926a226d6e44eb05 with expected-head lease and force disabled",
+    "pages": "success; Deploy to GitHub Pages run 38008075130 completed successfully at 2026-10-10T00:13:53Z",
+    "publicContent": "success; live page showed D43, R45, unassigned 12, the three 2026-10-10 explanations, the completed Maine and Georgia debates, and the October 13 Alaska rally"
   },
   "note": "Washington Post–ScharのMaine調査、MaineとGeorgiaの討論会結果、10月13日のAlaska選挙集会を追加。D43・R45・未配分12、保存案・共有URLは変更していない。"
 }
