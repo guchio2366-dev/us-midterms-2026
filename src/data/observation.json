@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-09-yougov-mi-debate-tx-debate",
+  "revision": "observation-2026-10-10-maine-poll-debates-alaska-rally",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,25 +8,21 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-09T00:11:53Z",
+    "lastCompletedAt": "2026-10-10T00:09:07Z",
     "latestRun": {
-      "runId": "daily-20261009",
+      "runId": "daily-20261010",
       "timingIntegrity": "consistent",
-      "timingNote": "開始・各情報源の成功・完了は、この実行で実際に確認したUTC時刻の範囲内に記録した。完了済みのMichigan討論会、開始直後のMaine討論会、原票確認済み調査、未合意の討論提案を分けた。",
-      "startedAt": "2026-10-09T00:03:42Z",
-      "completedAt": "2026-10-09T00:11:53Z",
+      "timingNote": "開始・各情報源の成功・完了は、この実行で実際に確認したUTC時刻の範囲内に記録した。完了したMaine・Georgia討論会、調査期間が討論会前のMaine調査、将来のAlaska選挙集会を分けた。",
+      "startedAt": "2026-10-09T23:59:25Z",
+      "completedAt": "2026-10-10T00:09:07Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-ap-mi-debate-20261008",
-        "obs-ap-tx-debate-20261008",
-        "obs-yougov-seven-state-20261007",
-        "obs-yougov-ks-20261007",
-        "obs-yougov-nh-20261007",
-        "obs-yougov-mi-20261007",
-        "obs-yougov-ne-20261007",
-        "obs-yougov-oh-20261007",
-        "obs-yougov-tx-20261007",
-        "obs-wmtw-me-debate-20261008",
+        "obs-wapo-schar-me-20261009",
+        "obs-wmtw-me-debate-result-20261008",
+        "obs-maine-morning-star-debate-20261008",
+        "obs-ajc-ga-debate-20261008",
+        "obs-gop-ak-trump-rally-20261013",
+        "obs-alaska-public-media-trump-rally-20261008",
         "obs-sabato",
         "obs-inside",
         "obs-white-house"
@@ -42,10 +38,112 @@
         "obs-unh-nh-20260924",
         "obs-nyt-siena-nh-20260924"
       ],
-      "note": "YouGovのKansas・New Hampshire・Michigan・Nebraska・Ohio・Texas原票、Michigan討論会の実施結果、Texas討論要求を照合。Maine討論会は確認時点で開始直後のため結果を未確認として予定を維持した。評価機関に新たな統合変更はなく、D43・R45・未配分12、既存の保存案・共有URLを変更していない。"
+      "note": "Washington Post–ScharのMaine原票、MaineとGeorgiaの討論会結果、10月13日のAlaska選挙集会を照合。集会は共和党の選挙行事でありWhite House公式日程とは分けた。評価機関に新たな統合変更はなく、D43・R45・未配分12、既存の保存案・共有URLを変更していない。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-wapo-schar-me-20261009",
+      "title": "Washington Post–Schar School poll of Maine likely voters",
+      "publisher": "The Washington Post / Schar School",
+      "url": "https://www.washingtonpost.com/documents/916dd450-a193-4312-9a75-1b14dd95cc28.pdf",
+      "publishedAt": "2026-10-09",
+      "referencePeriod": "9月30日〜10月5日のMaine州投票予定者800人。候補支持、争点別の信頼、生活費負担、Trump・候補者評価。",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
+      "electionIds": ["2026-ME-2-regular"],
+      "category": "poll",
+      "cadence": "event-driven",
+      "method": "原票PDFの質問文、標本、混合調査方式、誤差を照合。調査期間が両討論会より前であることを明記",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z"
+    },
+    {
+      "sourceId": "obs-wmtw-me-debate-result-20261008",
+      "title": "Fact-checking Maine Senate debate between Susan Collins and Troy Jackson on Roe v. Wade, electric rates, Iran",
+      "publisher": "WMTW",
+      "url": "https://www.wmtw.com/article/maine-senate-debate-fact-check-collins-jackson/74086597",
+      "publishedAt": "2026-10-09",
+      "referencePeriod": "10月8日のMaine上院候補第2回討論会の実施と、生活費・Iran戦争・中絶をめぐる両候補の応酬。",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
+      "electionIds": ["2026-ME-2-regular"],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "主催局の実施後記事で討論会の完了と主要発言を確認し、主張と検証済み効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z"
+    },
+    {
+      "sourceId": "obs-maine-morning-star-debate-20261008",
+      "title": "Debate over energy costs highlights how differently Jackson and Collins approach governing",
+      "publisher": "Maine Morning Star",
+      "url": "https://mainemorningstar.com/2026/10/08/debate-over-energy-costs-highlights-how-differently-jackson-and-collins-approach-governing/",
+      "publishedAt": "2026-10-08",
+      "referencePeriod": "10月8日の第2回討論会での暖房・電力費、Trump政権との距離、Iran戦争をめぐる発言。",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
+      "electionIds": ["2026-ME-2-regular"],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "州内取材で主催局の記事を相互照合し、候補者の批判と政策効果を分ける",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z"
+    },
+    {
+      "sourceId": "obs-ajc-ga-debate-20261008",
+      "title": "Recap: Highlights of Georgia U.S. Senate debate between Collins, Ossoff",
+      "publisher": "The Atlanta Journal-Constitution",
+      "url": "https://www.ajc.com/politics/2026/10/georgia-us-senate-race-jon-ossoff-and-mike-collins-debate/",
+      "publishedAt": "2026-10-08",
+      "referencePeriod": "10月8日のGeorgia上院候補第1回討論会の実施と、経済・移民・Iran戦争・データセンター・医療をめぐる発言。",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
+      "electionIds": ["2026-GA-2-regular"],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "州内紙の実施後記事と放送局の全編動画・要約を照合し、応酬を有権者評価へ置き換えない",
+      "alternativeUrl": "https://www.wtoc.com/video/2026/10/09/watch-full-georgia-us-senate-debate/",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z"
+    },
+    {
+      "sourceId": "obs-gop-ak-trump-rally-20261013",
+      "title": "Midterm Rally in Wasilla, Alaska featuring President Donald J. Trump",
+      "publisher": "Republican National Committee",
+      "url": "https://events.gop.com/events/midterm-rally-in-wasilla-alaska-president-donald-j-trump",
+      "publishedAt": "2026-10-08",
+      "referencePeriod": "10月13日にWasillaで予定されるTrump大統領の選挙集会。開場、開始、演説予定時刻と会場。",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "official-schedule",
+      "cadence": "event-driven",
+      "method": "共和党の公式イベント登録ページで日時・会場を確認。White Houseの公務日程とは別の選挙行事として扱う",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z"
+    },
+    {
+      "sourceId": "obs-alaska-public-media-trump-rally-20261008",
+      "title": "Trump plans Wasilla rally for Sullivan and Begich",
+      "publisher": "Alaska Public Media",
+      "url": "https://alaskapublic.org/news/politics/elections/2026-10-08/trump-to-rally-for-sullivan-in-wasilla-next-week",
+      "publishedAt": "2026-10-08",
+      "referencePeriod": "共和党側が10月13日のWasilla集会をSullivan上院議員とBegich下院議員の支援行事と説明。",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
+      "electionIds": ["2026-AK-2-regular"],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "州内公共メディアで行事の目的と演説予定時刻を相互照合",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z"
+    },
     {
       "sourceId": "obs-ap-mi-debate-20261008",
       "title": "Rogers and El-Sayed debate for first time in Michigan's Senate race",
@@ -2036,8 +2134,8 @@
       "url": "https://sabatoscrystalball.substack.com/p/four-rating-changes-headlined-by",
       "publishedAt": "2026-10-06",
       "referencePeriod": "Alaska上院をToss-upからLeans Democratic、South Carolina上院をSafe RepublicanからLikely Republicanへ変更。上院全体はD方向49、R方向47、Toss-up 4。",
-      "retrievedAt": "2026-10-09",
-      "contentVerifiedAt": "2026-10-09",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
       "electionIds": [
         "2026-IA-2-regular",
         "2026-NC-2-regular",
@@ -2058,7 +2156,7 @@
       "method": "Sabato公式Substackの分析本文、変更理由、変更後評価を照合",
       "alternativeUrl": "https://www.270towin.com/2026-senate-election/sabatos-crystal-ball-senate-2026",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-09T00:05:00Z"
+      "lastSuccessAt": "2026-10-10T00:01:30Z"
     },
     {
       "sourceId": "obs-270towin-sabato-20260922",
@@ -2088,8 +2186,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・10月1日更新。AK・GA・MI・MN・NC・NE・TXの変更と全35選挙の現行値を公式APIで確認。",
-      "retrievedAt": "2026-10-09",
-      "contentVerifiedAt": "2026-10-09",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -2109,7 +2207,7 @@
       "method": "公式APIのcurrent_rating・previous_rating・last_updatedを全35選挙で照合し、生成時刻と評価変更時刻を区別",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-09T00:05:10Z"
+      "lastSuccessAt": "2026-10-10T00:01:40Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -2118,8 +2216,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-10-09",
-      "contentVerifiedAt": "2026-10-09",
+      "retrievedAt": "2026-10-10",
+      "contentVerifiedAt": "2026-10-10",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-IA-2-regular",
@@ -2134,7 +2232,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-09T00:04:50Z"
+      "lastSuccessAt": "2026-10-10T00:01:20Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -3174,6 +3272,12 @@
     }
   ],
   "evidenceRefs": [
+    {"evidenceId":"ev-obs-wapo-schar-me-20261009","sourceId":"obs-wapo-schar-me-20261009","locator":"9月30日〜10月5日のMaine州投票予定者800人でJackson氏50%、Collins氏46%、誤差±3.6ポイント。Collins氏は連邦資金獲得と超党派性、Jackson氏は中絶、汚職、Maine理解、生活費、医療で相対的な信頼を得た。調査は両討論会前で、候補差は誤差内。","checkedAt":"2026-10-10","kind":"observed"},
+    {"evidenceId":"ev-obs-wmtw-me-debate-result-20261008","sourceId":"obs-wmtw-me-debate-result-20261008","locator":"10月8日のWMTW討論会は実施。両候補は中絶、関税、Iran戦争、Collins氏のTrump政権との投票一致率を争った。WMTW・PolitiFactは個別主張を検証しており、討論会発言を事実認定や有権者評価へ置き換えない。","checkedAt":"2026-10-10","kind":"reported"},
+    {"evidenceId":"ev-obs-maine-morning-star-debate-20261008","sourceId":"obs-maine-morning-star-debate-20261008","locator":"第2回討論会では暖房油などエネルギー費が中心争点。両候補はLIHEAP拡大を支持し、Collins氏はweatherization拡大と政権への働きかけ、Jackson氏はIran戦争と費用負担を結び付けた。Jackson氏はCollins夫妻の投資利益を主張しCollins氏は否定。記事は戦争権限採決の時期差も確認した。","checkedAt":"2026-10-10","kind":"reported"},
+    {"evidenceId":"ev-obs-ajc-ga-debate-20261008","sourceId":"obs-ajc-ga-debate-20261008","locator":"10月8日、民主党現職Ossoff氏と共和党Collins氏はAtlanta News First主催の1時間の初回討論会を実施。Iran戦争、移民、選挙の信頼、Israel、生活費のほか、互いの経歴・関係者への批判を応酬した。次回Atlanta Press Club討論会は10月13日予定。","checkedAt":"2026-10-10","kind":"reported"},
+    {"evidenceId":"ev-obs-gop-ak-trump-rally-20261013","sourceId":"obs-gop-ak-trump-rally-20261013","locator":"共和党公式イベントページは10月13日、WasillaのMenard Memorial Sports Centerで正午開場、14時開始、Trump大統領の演説を15時30分と案内。選挙行事でありWhite Houseの公務日程とは別に扱う。","checkedAt":"2026-10-10","kind":"scheduled"},
+    {"evidenceId":"ev-obs-alaska-public-media-trump-rally-20261008","sourceId":"obs-alaska-public-media-trump-rally-20261008","locator":"Alaska Public MediaはRNC発表に基づき、10月13日のWasilla集会が共和党現職Dan Sullivan氏の再選支援を目的とすると報道。演説予定時刻・会場を公式登録と相互照合した。","checkedAt":"2026-10-10","kind":"reported"},
     {"evidenceId":"ev-obs-ap-mi-debate-20261008","sourceId":"obs-ap-mi-debate-20261008","locator":"10月8日のMichigan上院候補討論会は実施。Rogers氏はIran戦争の早期終結とCanada関税戦争の終結を重ねて主張し、MinnesotaでのICE対応を『おそらく適切でなかった』と述べた。El-Sayed氏はTrump氏への追随を批判し、海外の戦争への資金拠出に反対した。激しい応酬や発言は政策効果・有権者評価を示さない。","checkedAt":"2026-10-09","kind":"reported"},
     {"evidenceId":"ev-obs-ap-tx-debate-20261008","sourceId":"obs-ap-tx-debate-20261008","locator":"Trump大統領はTalarico氏とPaxton氏に討論を要求し、Talarico氏は賛同。Paxton氏は確認時点で公に回答しておらず、日時・会場・主催者が合意された討論会はない。提案を予定として掲載しない。","checkedAt":"2026-10-09","kind":"reported"},
     {"evidenceId":"ev-obs-yougov-ks-20261007","sourceId":"obs-yougov-ks-20261007","locator":"9月24日〜10月4日のKansas州投票予定者2,255人。Hamilton氏48%、Marshall氏45%、その他1%、未定5%、誤差±3.2ポイント。未定者は希望を再質問して配分した方式で、単一調査から勝敗や支持移動を確定しない。","checkedAt":"2026-10-09","kind":"observed"},
@@ -4078,11 +4182,11 @@
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-08",
-      "headline": "支持先と勝者予想の違いを、討論会の主張と分ける",
-      "featuredSummary": "Maristの登録有権者調査はJackson 51%・Collins 47%。一方、勝者予想はCollins 57%・Jackson 41%。投票先、勝者予想、討論会での主張を別々に読む。",
-      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。Maristの10月1〜4日調査は登録有権者でJackson 51%・Collins 47%だが、誰が勝つと思うかではCollins 57%・Jackson 41%だった。10月6日の初回討論会で両氏は連邦実績と生活費の責任を争い、8日には2回目を予定している。",
-      "uncertainty": "Maristの候補差4ポイントは誤差±3.8ポイントとほぼ同幅で、CBSの投票予定者同率調査とは対象・方法が異なる。候補支持と勝者予想は別設問であり、回答理由や支持移動、討論会の効果は確定できない。",
+      "updatedAt": "2026-10-10",
+      "headline": "小差の調査と、2回目の討論会で示した責任論を分ける",
+      "featuredSummary": "Washington Post–Scharの投票予定者調査はJackson 50%・Collins 46%で誤差内。Collinsは連邦資金と超党派性、Jacksonは生活費・中絶・医療で相対的に信頼された。調査は2回の討論会前で、討論会効果とは扱わない。",
+      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。9月30日〜10月5日のWashington Post–Schar調査は投票予定者800人でJackson 50%・Collins 46%。10月8日の第2回討論会では暖房・電力費、Iran戦争、Trump政権との距離、中絶を争った。",
+      "uncertainty": "Washington Post–Scharの候補差4ポイントは誤差±3.6ポイントの範囲内で、調査期間は両討論会より前。争点別の信頼、候補支持、勝者予想、討論会発言は別の測定であり、発言の効果や支持移動、勝敗は確定できない。",
       "evidenceIds": [
         "ev-obs-ssrs",
         "ev-obs-collins",
@@ -4099,13 +4203,16 @@
         "ev-obs-wgme-me-debate-opening-20261006",
         "ev-obs-wgme-me-debate-affordability-20261006",
         "ev-obs-reuters-northeast-heating-20261006",
-        "ev-obs-marist-me-20261006"
+        "ev-obs-marist-me-20261006",
+        "ev-obs-wapo-schar-me-20261009",
+        "ev-obs-wmtw-me-debate-result-20261008",
+        "ev-obs-maine-morning-star-debate-20261008"
       ],
       "materials": [
         {
           "materialId": "me-incumbent",
-          "title": "初回討論会は、実績と生活費の責任を比較",
-          "fact": "10月6日の討論会で、Collinsは歳出委員会でMaineの672事業に15億ドルを確保したと述べ、薬価・住宅の取組を訴えた。JacksonはKavanaugh判事承認票とRoe撤廃を批判し、予算、SNAP・暖房支援、Iran戦争、関税が生活費を押し上げたと主張した。",
+          "title": "2回の討論会で、実績・生活費・政権との距離を比較",
+          "fact": "10月6日の初回討論会でCollinsは連邦資金の確保を、Jacksonは生活費への採決責任を訴えた。8日の第2回では、両氏がLIHEAP拡大を支持。Collinsはweatherization拡大と政権への働きかけ、JacksonはIran戦争と暖房費を結び付けた。",
           "meaning": "現職が挙げる連邦での実績と、対立候補が問う採決責任を、同じ政策分野と時間軸で比べる材料になる。",
           "limit": "事業額、生活費の原因、政策の成果はいずれも候補者の討論会発言を含む。討論会の実施や主張だけでは効果・支持率・得票を確認できない。",
           "evidenceIds": [
@@ -4115,7 +4222,9 @@
           "ev-obs-reuters-byrne",
             "ev-obs-reuters-canada-tariffs-20260917",
             "ev-obs-wgme-me-debate-opening-20261006",
-            "ev-obs-wgme-me-debate-affordability-20261006"
+            "ev-obs-wgme-me-debate-affordability-20261006",
+            "ev-obs-wmtw-me-debate-result-20261008",
+            "ev-obs-maine-morning-star-debate-20261008"
           ]
         },
         {
@@ -4235,17 +4344,19 @@
             {
               "candidateId": "cand-me-troy-d-jackson",
               "kind": "observed",
-              "text": "CBS調査で支持50%。登録有権者の56%は、州と全国民主党の優先が違う場合にJacksonはMaineを優先すると答えた。候補支持と能力評価は別設問で、得票理由の確定ではない。",
+              "text": "Washington Post–Schar調査で支持50%。中絶、汚職、Maine理解、生活費、医療ではCollinsより信頼された。候補支持と争点別評価は別設問で、得票理由の確定ではない。",
               "evidenceIds": [
-                "ev-obs-cbs-me-20261002"
+                "ev-obs-cbs-me-20261002",
+                "ev-obs-wapo-schar-me-20261009"
               ]
             },
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "CBS調査で支持50%。登録有権者の53%はTrumpに同調し過ぎ、46%はMaineを全国共和党より優先すると答えた。支持と政権との距離への評価は別設問である。",
+              "text": "Washington Post–Schar調査で支持46%。連邦資金獲得と超党派性ではJacksonより信頼された一方、58%がTrumpを支持し過ぎると回答。支持と能力・政権距離の評価は別設問である。",
               "evidenceIds": [
-                "ev-obs-cbs-me-20261002"
+                "ev-obs-cbs-me-20261002",
+                "ev-obs-wapo-schar-me-20261009"
               ]
             }
           ]
@@ -5239,6 +5350,48 @@
   ],
   "events": [
     {
+      "eventId": "ak-trump-wasilla-rally-2026-10-13",
+      "title": "アラスカ州・Trump大統領とSullivan氏のWasilla選挙集会",
+      "date": "2026-10-13",
+      "time": "14:00",
+      "timezone": "America/Anchorage",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-10-10",
+      "evidenceIds": ["ev-obs-gop-ak-trump-rally-20261013", "ev-obs-alaska-public-media-trump-rally-20261008"],
+      "relevance": [{"electionId":"2026-AK-2-regular","why":"Trump大統領が共和党現職Sullivan氏の再選を支援する確認済みの選挙集会。","watch":"実施・中止・延期と、Trump氏、Sullivan氏、対立候補Peltola氏の発言を確認する。集会規模や反応を州全体の支持へ置き換えない。","materialIds":[]}],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
+    },
+    {
+      "eventId": "ga-debate-2026-10-08",
+      "title": "ジョージア州上院候補第1回討論会（Atlanta News First）",
+      "date": "2026-10-08",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "completed",
+      "dateHistory": [],
+      "checkedAt": "2026-10-10",
+      "evidenceIds": ["ev-obs-ajc-ga-debate-20261008"],
+      "relevance": [{"electionId":"2026-GA-2-regular","why":"民主党現職Ossoff氏と共和党Collins氏が同じ場で経済・移民・外交・選挙制度を説明した初回本選討論会。","watch":"10月13日の次回討論会で回答が一貫するかを確認し、応酬を支持率へ置き換えない。","materialIds":[]}],
+      "resultUpdateId": "obs-update-ga-debate-2026-10-08",
+      "publicationStatus": "published"
+    },
+    {
+      "eventId": "ga-debate-2026-10-13",
+      "title": "ジョージア州上院候補討論会（Atlanta Press Club）",
+      "date": "2026-10-13",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-10-10",
+      "evidenceIds": ["ev-obs-ajc-ga-debate-20261008"],
+      "relevance": [{"electionId":"2026-GA-2-regular","why":"初回討論会後に予定されるOssoff氏とCollins氏の次の直接比較機会。","watch":"実施・中止・延期、参加者、同じ争点への回答を確認する。時刻は主催者の確定情報を得るまで掲載しない。","materialIds":[]}],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
+    },
+    {
       "eventId": "ne-trump-ricketts-rally-2026-10-05",
       "title": "ネブラスカ州・Trump大統領とRicketts氏のGrand Island集会",
       "date": "2026-10-05",
@@ -5502,12 +5655,14 @@
       "date": "2026-10-08",
       "time": "20:00",
       "timezone": "America/New_York",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-10-09",
+      "checkedAt": "2026-10-10",
       "evidenceIds": [
         "ev-obs-maine-debates",
-        "ev-obs-wmtw-me-debate-20261008"
+        "ev-obs-wmtw-me-debate-20261008",
+        "ev-obs-wmtw-me-debate-result-20261008",
+        "ev-obs-maine-morning-star-debate-20261008"
       ],
       "relevance": [
         {
@@ -5520,7 +5675,7 @@
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-me-debate-2026-10-08",
       "publicationStatus": "published"
     },
     {
@@ -5763,6 +5918,48 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-me-wapo-poll-2026-10-09",
+      "status": "published",
+      "electionIds": ["2026-ME-2-regular"],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-09",
+      "updatedAt": "2026-10-10",
+      "title": "メーン州：小差の調査でも、候補者ごとの強みは争点で分かれる",
+      "happened": "Washington Post–Scharが9月30日〜10月5日に投票予定者800人を調査し、民主党Troy Jackson氏50%、共和党現職Susan Collins氏46%だった。Collins氏は連邦資金獲得と超党派性、Jackson氏は中絶、汚職、Maine理解、生活費、医療で相対的に信頼された。",
+      "meaning": "単純な候補支持だけでなく、現職の連邦での実績と、挑戦者の生活費・権利・地元理解への評価を分けて比較できる。",
+      "uncertainty": "4ポイント差は誤差±3.6ポイントの範囲内。調査は10月6日と8日の討論会より前で、討論会による支持変化や勝敗は示さない。争点別の信頼も各候補への投票理由そのものではない。",
+      "evidenceIds": ["ev-obs-wapo-schar-me-20261009"]
+    },
+    {
+      "updateId": "obs-update-me-debate-2026-10-08",
+      "status": "published",
+      "electionIds": ["2026-ME-2-regular"],
+      "eventId": "me-debate-2026-10-08",
+      "newsId": null,
+      "eventDate": "2026-10-08",
+      "updatedAt": "2026-10-10",
+      "title": "メーン州：第2回討論会で、暖房費と政権への働きかけを比較",
+      "happened": "10月8日のWMTW討論会は予定どおり実施された。両候補はLIHEAP拡大を支持。Collins氏はweatherization拡大とTrump政権への働きかけを挙げ、Jackson氏はIran戦争と暖房費を結び付けてCollins氏の採決を批判した。中絶、関税、政権との投票一致率も争点になった。",
+      "meaning": "同じ家計負担に対し、現職が挙げる行政への働きかけと、対立候補が問う戦争・採決責任を同じ場で比べられた。",
+      "uncertainty": "Jackson氏によるCollins夫妻の投資利益への主張とCollins氏の否定は対立したままで、討論会だけでは事実認定できない。各提案の実施・費用効果と有権者の評価も未確認。",
+      "evidenceIds": ["ev-obs-wmtw-me-debate-result-20261008", "ev-obs-maine-morning-star-debate-20261008"]
+    },
+    {
+      "updateId": "obs-update-ga-debate-2026-10-08",
+      "status": "published",
+      "electionIds": ["2026-GA-2-regular"],
+      "eventId": "ga-debate-2026-10-08",
+      "newsId": null,
+      "eventDate": "2026-10-08",
+      "updatedAt": "2026-10-10",
+      "title": "ジョージア州：初回討論会で、Iran戦争と選挙制度への距離を比較",
+      "happened": "民主党現職Jon Ossoff氏と共和党Mike Collins氏は10月8日、初の本選討論会を実施した。Ossoff氏はIran戦争の人的・燃料費負担とCollins氏のTrump大統領への追随を批判。Collins氏は攻撃を擁護し、写真付き身分証など選挙制度への不信を取り上げた。移民、Israel、生活費や互いの経歴も争った。",
+      "meaning": "統合Toss Up対象のGeorgiaで、外交・選挙制度・生活費について両候補の立場を同じ場で比較できた。10月13日の次回討論会で説明が一貫するかが次の確認点になる。",
+      "uncertainty": "討論会は個人的な批判も多く、主張や印象から政策効果・事実関係・支持率は確定できない。次回討論会は時刻を確認できていないため、日付だけを予定として掲載する。",
+      "evidenceIds": ["ev-obs-ajc-ga-debate-20261008"]
+    },
     {
       "updateId": "obs-update-mi-debate-2026-10-08",
       "status": "published",

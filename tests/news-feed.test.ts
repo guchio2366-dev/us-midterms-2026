@@ -12,9 +12,12 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(100);
+    expect(recent).toHaveLength(103);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(86);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(89);
+    expect(recent.some(item=>item.sourceId==='obs-update-me-wapo-poll-2026-10-09')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-me-debate-2026-10-08')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-ga-debate-2026-10-08')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-mi-debate-2026-10-08')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-yougov-six-state-2026-10-07')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-tx-debate-demand-2026-10-08')).toBe(true);
@@ -23,9 +26,9 @@ describe('ニュース・予定の共通フィード',()=>{
     expect(recent.some(item=>item.sourceId==='obs-update-ak-peltola-workplace-response-2026-09-29')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-nh-independence-profile-2026-10-03')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-nc-cooper-whatley-profile-2026-10-04')).toBe(true);
-    expect(upcoming).toHaveLength(18);
+    expect(upcoming).toHaveLength(21);
     expect(upcoming.filter(item=>item.sourceId==='bls-jobs-2026-10-02')).toHaveLength(1);
-    expect(filterFeed(upcoming,'2026-AK-2-regular')).toHaveLength(5);
+    expect(filterFeed(upcoming,'2026-AK-2-regular')).toHaveLength(6);
     expect(filterFeed(upcoming,'2026-ME-2-regular')).toHaveLength(7);
   });
 
@@ -77,7 +80,7 @@ describe('ニュース・予定の共通フィード',()=>{
   it('orders future events by date and resolves legacy update and event links',()=>{
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
     expect(upcoming.map(item=>item.sourceId)).toEqual([
-      'me-debate-2026-10-08','me-debate-2026-10-13','bls-cpi-2026-10-14','me-debate-2026-10-15','ak-senate-debate-2026-10-15','bls-state-jobs-2026-10-20','mi-debate-2026-10-21','mi-obama-elsayed-rally-2026-10-24','mi-debate-2026-10-08','tx-trump-san-antonio-rally-2026-10-07','me-debate-2026-10-06','ne-trump-ricketts-rally-2026-10-05','oh-trump-vandalia-rally-2026-10-03','bls-jobs-2026-10-02','tx-talarico-tribune-festival-2026-09-24','mi-harris-el-sayed-2026-09-22','tx-paxton-cruz-rally-2026-09-21','ak-bycatch-markup-2026-09-16',
+      'ak-trump-wasilla-rally-2026-10-13','ga-debate-2026-10-13','me-debate-2026-10-13','bls-cpi-2026-10-14','me-debate-2026-10-15','ak-senate-debate-2026-10-15','bls-state-jobs-2026-10-20','mi-debate-2026-10-21','mi-obama-elsayed-rally-2026-10-24','ga-debate-2026-10-08','me-debate-2026-10-08','mi-debate-2026-10-08','tx-trump-san-antonio-rally-2026-10-07','me-debate-2026-10-06','ne-trump-ricketts-rally-2026-10-05','oh-trump-vandalia-rally-2026-10-03','bls-jobs-2026-10-02','tx-talarico-tribune-festival-2026-09-24','mi-harris-el-sayed-2026-09-22','tx-paxton-cruz-rally-2026-09-21','ak-bycatch-markup-2026-09-16',
     ]);
     expect(legacyObservationFeedKey('2026-MI-2-regular','obs-update-mi-ai-2026-09-09',newsItems,observationData)).toBe('update:obs-update-mi-ai-2026-09-09');
     expect(legacyObservationFeedKey('2026-ME-2-regular','me-debate-2026-10-06',newsItems,observationData)).toBe('event:me-debate-2026-10-06');

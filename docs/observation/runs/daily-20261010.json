@@ -1,0 +1,147 @@
+{
+  "runId": "daily-20261010",
+  "startedAt": "2026-10-09T23:59:25Z",
+  "completedAt": "2026-10-10T00:09:07Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。選挙集会とWhite House公務、候補者の主張と効果、討論会前の調査と討論会結果を分ける。",
+  "baseCommit": "b9810bf3c7dbfb74c4ac78769162d4f87392f285",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-10-maine-poll-debates-alaska-rally",
+  "checkedSourceIds": [
+    "obs-wapo-schar-me-20261009",
+    "obs-wmtw-me-debate-result-20261008",
+    "obs-maine-morning-star-debate-20261008",
+    "obs-ajc-ga-debate-20261008",
+    "obs-gop-ak-trump-rally-20261013",
+    "obs-alaska-public-media-trump-rally-20261008",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-wapo-schar-me-20261009",
+      "attemptedAt": "2026-10-10T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "原票PDFで実査期間、800人の投票予定者標本、混合調査方式、誤差±3.6、候補支持と争点別評価を照合。調査期間が両討論会前であることを分離した。"
+    },
+    {
+      "sourceId": "obs-wmtw-me-debate-result-20261008",
+      "attemptedAt": "2026-10-10T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "主催局とPolitiFactの実施後記事で第2回討論会の完了と、中絶・関税・Iran戦争・政権との投票一致率をめぐる発言を照合。"
+    },
+    {
+      "sourceId": "obs-maine-morning-star-debate-20261008",
+      "attemptedAt": "2026-10-10T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "州内取材で暖房費、LIHEAP、政権への働きかけ、Iran戦争、戦争権限採決の時期差を相互照合。候補者の投資利益をめぐる主張と否定は未決着として分けた。"
+    },
+    {
+      "sourceId": "obs-ajc-ga-debate-20261008",
+      "attemptedAt": "2026-10-10T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "州内紙の実施後記事と放送映像で初回討論会の完了、主要争点、10月13日の次回討論会日付を照合。次回の時刻は未確認。"
+    },
+    {
+      "sourceId": "obs-gop-ak-trump-rally-20261013",
+      "attemptedAt": "2026-10-10T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "共和党公式イベント登録で10月13日、Wasilla、14時開始、15時30分演説、会場を確認。White House公務日程ではなく選挙行事として掲載。"
+    },
+    {
+      "sourceId": "obs-alaska-public-media-trump-rally-20261008",
+      "attemptedAt": "2026-10-10T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:02:00Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "州内公共メディアでSullivan氏の再選支援という行事目的と演説予定時刻を相互照合。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-10T00:01:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:01:30Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "現行評価を確認。統合配分を変える新たな評価変更は確認されなかった。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-10T00:01:40Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:01:40Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "現行評価を確認。統合配分を変える新たな評価変更は確認されなかった。"
+    },
+    {
+      "sourceId": "obs-cook-ratings-20261006",
+      "attemptedAt": "2026-10-10T00:01:45Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式本文の完全取得は引き続きできず、部分確認を成功や変化なしへ置き換えない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-10T00:01:20Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-10T00:01:20Z",
+      "contentVerifiedAt": "2026-10-10",
+      "scope": "White House公式発表を確認。対象州への新たな公務日程は確認されず、Alaskaの選挙集会とは別に記録した。"
+    },
+    {
+      "sourceId": "obs-alaska-survey-research-20261007",
+      "attemptedAt": "2026-10-10T00:02:10Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州内報道には数値があるが、調査原文、標本、質問文、方法を取得できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-10T00:02:20Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "主要候補以外の州公式名簿原票は照合待ち。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-10T00:02:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州公式の全候補名簿原票は未取得。"
+    }
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci; initial run found the three expected new updates, three new events, and the updated monitoring note, and all passed after contracts were updated",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Washington Post–ScharのMaine調査、MaineとGeorgiaの討論会結果、10月13日のAlaska選挙集会を追加。D43・R45・未配分12、保存案・共有URLは変更していない。"
+}
