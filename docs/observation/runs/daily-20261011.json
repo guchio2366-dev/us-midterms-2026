@@ -1,0 +1,156 @@
+{
+  "runId": "daily-20261011",
+  "startedAt": "2026-10-11T00:00:34Z",
+  "completedAt": "2026-10-11T00:13:02Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。候補者の発言・推薦・組織動員と有権者評価、実施済み討論会と将来の討論会、方法の異なる調査を分ける。",
+  "baseCommit": "84aadfa",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-11-iowa-debate-poll-labor-kansas-coalition",
+  "checkedSourceIds": [
+    "obs-emerson-ia-20261009",
+    "obs-iowa-pbs-debate-20261007",
+    "obs-iowa-capital-dispatch-debate-20261007",
+    "obs-nexstar-ia-debate-20261013",
+    "obs-ap-mi-uaw-20261010",
+    "obs-wapo-ks-republicans-20261010",
+    "obs-nexstar-ks-debate-20261021",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-sabato",
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-emerson-ia-20261009",
+      "attemptedAt": "2026-10-11T00:01:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:02:00Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "公式発表と全回答表で投票予定者650人、実査期間、全3候補、未定、争点、混合収集、信頼区間を照合。Suffolk・Sienaと先頭が異なることを支持移動とせず掲載。"
+    },
+    {
+      "sourceId": "obs-iowa-pbs-debate-20261007",
+      "attemptedAt": "2026-10-11T00:02:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:02:10Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "主催局の番組ページで10月7日の初回本選討論会、両候補参加、全編公開を確認。"
+    },
+    {
+      "sourceId": "obs-iowa-capital-dispatch-debate-20261007",
+      "attemptedAt": "2026-10-11T00:02:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:02:10Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "州内取材で立法記録、生活費、Iran戦争、関税、倫理をめぐる発言を照合。候補者の自己評価と確認済み記録を分離。"
+    },
+    {
+      "sourceId": "obs-nexstar-ia-debate-20261013",
+      "attemptedAt": "2026-10-11T00:05:20Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:05:30Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "主催社発表で10月13日21時CT、両候補、WHO 13スタジオ、放送・配信局を再確認。"
+    },
+    {
+      "sourceId": "obs-ap-mi-uaw-20261010",
+      "attemptedAt": "2026-10-11T00:02:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:03:00Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "UAWの推薦・戸別訪問、組合員の生活費への関心と党派分裂、両陣営の労働政策説明を照合。推薦・動員・投票先を分離。"
+    },
+    {
+      "sourceId": "obs-wapo-ks-republicans-20261010",
+      "attemptedAt": "2026-10-11T00:03:10Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:03:20Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "共和党元知事2人のHamilton氏支持、100人超の支援組織、未推薦の元知事、両党の広告投資を照合。推薦を有権者全体の支持へ置き換えない。"
+    },
+    {
+      "sourceId": "obs-nexstar-ks-debate-20261021",
+      "attemptedAt": "2026-10-11T00:05:40Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:06:00Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "10月21日19時CTの討論会を単独発表と9月29日の公式一覧で相互照合。単独発表の曜日誤記を記録し、日付・時刻・参加候補・会場を掲載。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-11T00:01:30Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:01:40Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "公式APIの現行評価を確認。10月1日以降の変更はなく、統合配分を変える新材料なし。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-11T00:01:10Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-10T00:01:30Z",
+      "contentVerifiedAt": null,
+      "scope": "現行評価ページは403で完全取得できず、前回成功を当日の成功や変化なしへ置き換えない。"
+    },
+    {
+      "sourceId": "obs-cook-ratings-20261006",
+      "attemptedAt": "2026-10-11T00:01:15Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式本文の完全取得は引き続きできず、部分確認を成功や変化なしへ置き換えない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-11T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-11T00:01:20Z",
+      "contentVerifiedAt": "2026-10-11",
+      "scope": "White House公式発表を確認。対象州への新たな公務日程は確認されず、党・候補者主催の選挙行事とは別に記録。"
+    },
+    {
+      "sourceId": "obs-alaska-survey-research-20261007",
+      "attemptedAt": "2026-10-11T00:04:10Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州内報道の数値に対し、調査原文、標本、質問文、方法を取得できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-11T00:04:20Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "主要候補以外の州公式名簿原票は照合待ち。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-11T00:04:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州公式の全候補名簿原票は未取得。"
+    }
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "Iowaの初回討論会とEmerson/Nexstar調査、MichiganのUAW動員、Kansasの共和党元知事2人によるHamilton氏支持を追加。Iowa・Kansasの将来討論会を予定化し、Kansas公式発表の曜日誤記を明記。D43・R45・未配分12、保存案・共有URLは変更していない。"
+}

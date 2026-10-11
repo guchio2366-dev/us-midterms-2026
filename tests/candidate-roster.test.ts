@@ -150,6 +150,6 @@ describe('candidate roster verification and saved assumptions', () => {
     expect(monitoringStatus(observationData,new Date('2026-10-02T01:00:00Z'))).not.toContain('確認時刻の記録に不整合');
     expect(monitoringStatus(observationData,new Date('2026-10-02T01:00:00Z'))).toContain('一部の情報源を未確認');
     expect(monitoringMarkup(new Date('2026-10-02T01:00:00Z'))).not.toContain('実時刻は未確認');
-    expect(monitoringMarkup(new Date('2026-10-02T01:00:00Z'))).toContain('完了したMaine・Georgia討論会、調査期間が討論会前のMaine調査、将来のAlaska選挙集会を分けた');
+    expect(monitoringMarkup(new Date('2026-10-02T01:00:00Z'))).toContain('Iowaの実施済み初回討論会、方法の異なる新調査、将来のIowa・Kansas討論会を分けた');
   });
 });
