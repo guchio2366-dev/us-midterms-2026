@@ -6,7 +6,7 @@
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。候補者の発言・推薦・組織動員と有権者評価、実施済み討論会と将来の討論会、方法の異なる調査を分ける。",
   "baseCommit": "84aadfa",
-  "publishedCommit": null,
+  "publishedCommit": "fbd1da029fbd9b1912562beb86708f4e05fdf3f3",
   "revision": "observation-2026-10-11-iowa-debate-poll-labor-kansas-coalition",
   "checkedSourceIds": [
     "obs-emerson-ia-20261009",
@@ -148,9 +148,9 @@
   "verification": {
     "tests": "455 passed after npm ci",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 84aadfaacf4b446744ccf1796a7ca265a7256e40 to fbd1da029fbd9b1912562beb86708f4e05fdf3f3 with expected-head verification and force disabled",
+    "pages": "success; GitHub Pages run 38097887481 completed at 2026-10-11T00:17:29Z",
+    "publicContent": "success; live page confirmed D43/R45/unassigned12, all four new explanations, and the Iowa Oct 13 and Kansas Oct 21 debate schedules"
   },
   "note": "Iowaの初回討論会とEmerson/Nexstar調査、MichiganのUAW動員、Kansasの共和党元知事2人によるHamilton氏支持を追加。Iowa・Kansasの将来討論会を予定化し、Kansas公式発表の曜日誤記を明記。D43・R45・未配分12、保存案・共有URLは変更していない。"
 }
