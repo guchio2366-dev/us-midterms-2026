@@ -1,0 +1,164 @@
+{
+  "runId": "daily-20261013",
+  "startedAt": "2026-10-12T23:59:43Z",
+  "completedAt": "2026-10-13T00:01:20Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel; delayed Monday full comparison and rebuttal audit after the prior environment failure",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。候補者の発言と独立した反証、公式原票と見出しだけの部分確認、選挙集会とWhite House公務、将来予定と実施結果を分ける。",
+  "baseCommit": "2aa3756f00a50a51f04301b71d5c74045bb1950b",
+  "publishedCommit": "pending",
+  "revision": "observation-2026-10-13-five-state-polls-texas-fact-check",
+  "checkedSourceIds": [
+    "obs-rasmussen-me-20261009",
+    "obs-trafalgar-tx-20261009",
+    "obs-ap-tx-fact-check-20261012",
+    "obs-nexstar-ia-debate-20261013",
+    "obs-gop-ak-trump-rally-20261013",
+    "obs-wabi-me-debate-20261013",
+    "obs-inside",
+    "obs-sabato",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-insider-ak-ks-mi-20261011",
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-rasmussen-me-20261009",
+      "attemptedAt": "2026-10-13T00:00:15Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:20Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "公式本文・設問・クロス集計で804人の投票予定者、実査期間、候補値、未定、電話・オンライン収集、誤差±3を照合。2ポイント差を勝敗や支持移動にしない。"
+    },
+    {
+      "sourceId": "obs-trafalgar-tx-20261009",
+      "attemptedAt": "2026-10-13T00:00:40Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:50Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "公式PDFで1,086人の投票予定者、実査期間、質問文、全候補、未定、回答率5.4%、誤差±2.9、信頼水準95%を照合。"
+    },
+    {
+      "sourceId": "obs-insider-ak-ks-mi-20261011",
+      "attemptedAt": "2026-10-13T00:00:25Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式記事の見出し値、各州1,200人、実査期間、誤差±2.83、重み付けを確認。サイト障害で質問文、全選択肢、収集方法、Alaskaの順位選択投票の段階を取得できず、部分確認を成功へ置き換えない。"
+    },
+    {
+      "sourceId": "obs-ap-tx-fact-check-20261012",
+      "attemptedAt": "2026-10-13T00:00:25Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:30Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "施設の否定、候補者・陣営の説明、公開行事、時系列、APが確認した画像を照合。施設入所の虚偽主張とインフルエンザ回復の説明、選挙効果を分離。"
+    },
+    {
+      "sourceId": "obs-nexstar-ia-debate-20261013",
+      "attemptedAt": "2026-10-12T23:59:53Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-12T23:59:58Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "主催社発表で10月13日21時CT、両候補、会場、放送・配信を再確認。確認時点は実施前。"
+    },
+    {
+      "sourceId": "obs-gop-ak-trump-rally-20261013",
+      "attemptedAt": "2026-10-12T23:59:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:00Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "共和党公式登録で10月13日、Wasilla、14時開始、15時30分演説、会場を再確認。White House公務日程とは別の選挙行事。確認時点は実施前。"
+    },
+    {
+      "sourceId": "obs-wabi-me-debate-20261013",
+      "attemptedAt": "2026-10-13T00:00:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:05Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "主催局で10月13日19時ET、Collins氏とJackson氏、放送・オンライン配信を再確認。確認時点は実施前。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-13T00:00:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:10Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "公式の現行評価を確認。10月6日以降、統合配分を変える新たな変更なし。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-13T00:00:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:10Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "公式の現行評価を確認。10月1日以降、統合配分を変える新たな変更なし。"
+    },
+    {
+      "sourceId": "obs-cook-ratings-20261006",
+      "attemptedAt": "2026-10-13T00:00:05Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式一覧の取得範囲は限定され、全変更理由の本文照合は未完。部分確認を成功や変化なしへ置き換えない。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-13T00:00:10Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:00:15Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "White House公式発表を確認。対象州への新たな公務日程は確認されず、Alaskaの党主催選挙集会とは別に記録。"
+    },
+    {
+      "sourceId": "obs-comparison-rebuttal-audit-20261013",
+      "attemptedAt": "2026-10-13T00:00:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-13T00:01:10Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "AK・ME・MI・OH特別・TX・NHと統合Toss Upの候補者解説、根拠ID、反証・未確認表現を遅延した月曜相当として全項目再点検。新たな訂正はなく、Texasの虚偽情報反証は時点更新として観測記事へ追加。"
+    },
+    {
+      "sourceId": "obs-alaska-survey-research-20261007",
+      "attemptedAt": "2026-10-13T00:00:35Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州内報道の数値に対し、調査原文、標本、質問文、方法を取得できず非掲載を継続。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-13T00:00:35Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "主要候補以外の州公式名簿原票は照合待ち。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-13T00:00:35Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州公式の全候補名簿原票は未取得。"
+    }
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci; initial run correctly failed two stale count/copy expectations, which were updated for the two new public items and monitoring note, then all tests passed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "MaineとTexasの公式原票、Alaska・Kansas・Michiganの部分確認調査、Texasの虚偽情報反証を追加。Maine・Iowaの討論会とAlaskaの選挙集会は米国時間10月13日の実施前として予定を維持。D43・R45・未配分12、保存案・共有URLを変更していない。"
+}

@@ -12,9 +12,11 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(107);
+    expect(recent).toHaveLength(109);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(93);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(95);
+    expect(recent.some(item=>item.sourceId==='obs-update-five-state-polls-2026-10-11')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-tx-talarico-false-rumor-2026-10-12')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-ks-republican-support-2026-10-10')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-mi-uaw-2026-10-10')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-ia-emerson-2026-10-09')).toBe(true);
