@@ -6,7 +6,7 @@
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, schedules and presidential travel; delayed Monday full comparison and rebuttal audit after the prior environment failure",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。候補者の発言と独立した反証、公式原票と見出しだけの部分確認、選挙集会とWhite House公務、将来予定と実施結果を分ける。",
   "baseCommit": "2aa3756f00a50a51f04301b71d5c74045bb1950b",
-  "publishedCommit": "pending",
+  "publishedCommit": "4d9bf0f2d05a6cad7133a2b3eeabdf55147f266d",
   "revision": "observation-2026-10-13-five-state-polls-texas-fact-check",
   "checkedSourceIds": [
     "obs-rasmussen-me-20261009",
@@ -156,9 +156,9 @@
   "verification": {
     "tests": "455 passed after npm ci; initial run correctly failed two stale count/copy expectations, which were updated for the two new public items and monitoring note, then all tests passed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from 2aa3756f00a50a51f04301b71d5c74045bb1950b to 4d9bf0f2d05a6cad7133a2b3eeabdf55147f266d with expected-head verification and force disabled",
+    "pages": "success; GitHub Pages run 38325748751 completed successfully in 41 seconds",
+    "publicContent": "success; live page confirmed D43/R45/unassigned 12, both new explanations, the Maine October 13 debate, and the 2026-10-13 09:01 JST monitoring timestamp"
   },
   "note": "MaineとTexasの公式原票、Alaska・Kansas・Michiganの部分確認調査、Texasの虚偽情報反証を追加。Maine・Iowaの討論会とAlaskaの選挙集会は米国時間10月13日の実施前として予定を維持。D43・R45・未配分12、保存案・共有URLを変更していない。"
 }
