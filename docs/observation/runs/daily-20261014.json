@@ -1,0 +1,177 @@
+{
+  "runId": "daily-20261014",
+  "startedAt": "2026-10-14T00:01:38Z",
+  "completedAt": "2026-10-14T00:22:29Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, polls, event outcomes and confirmed presidential travel; Wednesday run, so no Monday full comparison audit",
+  "timestampConvention": "成功日時は原文をこの実行で照合した時刻。候補者の提案と効果、争点別評価と投票先、終了した予定と進行中・開始前の予定を分ける。",
+  "baseCommit": "c18b6b43a5dc4341e723f59084da7ec6c834a377",
+  "publishedCommit": "pending",
+  "revision": "observation-2026-10-14-mi-ai-debate-and-campaign-schedules",
+  "checkedSourceIds": [
+    "obs-abdul-ai-control-20261013",
+    "obs-wapo-mi-ai-20261013",
+    "obs-wapo-debates-live-20261013",
+    "obs-sherrod-obama-rally-20261024",
+    "obs-ideastream-oh-obama-rally-20261013",
+    "obs-white-house-midterm-travel-20261013",
+    "obs-cbs-ga-trump-rally-20261016",
+    "obs-newscentermaine-debate-20261015",
+    "obs-inside",
+    "obs-sabato",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-gpb-ga-debate-20261013",
+    "obs-gop-ak-trump-rally-20261013",
+    "obs-nexstar-ia-debate-20261013",
+    "obs-insider-ak-ks-mi-20261011",
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924"
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-abdul-ai-control-20261013",
+      "attemptedAt": "2026-10-14T00:06:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:06:10Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "候補者原文でfrontier AI停止、超知能・再帰的自己改良の禁止、独立監督機関、内部告発者保護、事故報告・緊急対応を確認。提案と成立・効果を分離。"
+    },
+    {
+      "sourceId": "obs-wapo-mi-ai-20261013",
+      "attemptedAt": "2026-10-14T00:06:15Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:06:20Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "El-Sayed氏案、Rogers氏の州内データセンター1年停止案、関連投資、Sienaの争点別評価と2%の最重要争点回答を照合。投票先と政策効果を分離。"
+    },
+    {
+      "sourceId": "obs-wapo-debates-live-20261013",
+      "attemptedAt": "2026-10-14T00:07:10Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-14T00:07:20Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "Maine討論の開始・主要発言・1時間枠を確認。全編と個別主張の最終検証は未取得。Georgiaは開始直後、Iowaは開始前で結果を先取りしない。"
+    },
+    {
+      "sourceId": "obs-sherrod-obama-rally-20261024",
+      "attemptedAt": "2026-10-14T00:07:55Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:08:00Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "Brown陣営の原文でObama元大統領の10月24日Cleveland集会を確認。時刻・会場は未公表。"
+    },
+    {
+      "sourceId": "obs-ideastream-oh-obama-rally-20261013",
+      "attemptedAt": "2026-10-14T00:08:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:08:10Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "州内公共メディアで日付・都市とBrown氏、Acton氏、Obama元大統領の参加を相互照合。共同登壇と得票効果を分離。"
+    },
+    {
+      "sourceId": "obs-white-house-midterm-travel-20261013",
+      "attemptedAt": "2026-10-14T00:08:20Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:08:30Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "White House公式発表でGeorgiaを含む追加中間選挙日程を確認。候補者同席と集会詳細は別資料で照合。"
+    },
+    {
+      "sourceId": "obs-cbs-ga-trump-rally-20261016",
+      "attemptedAt": "2026-10-14T00:08:35Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:08:40Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "10月16日Dalton、13時30分集会開始、15時大統領発言を確認。Mike Collins氏ら候補者の参加は未発表。"
+    },
+    {
+      "sourceId": "obs-gpb-ga-debate-20261013",
+      "attemptedAt": "2026-10-14T00:08:55Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-14T00:09:00Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "主催公共局で10月13日20時の配信を確認。確認時点は開始直後で、終了・発言内容は未確認。"
+    },
+    {
+      "sourceId": "obs-newscentermaine-debate-20261015",
+      "attemptedAt": "2026-10-14T00:09:15Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:09:20Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "公式配信ページで10月15日19時、Collins氏とJackson氏を確認。従来記録の20時を訂正。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-14T00:05:15Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:05:20Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "公式の現行評価を確認。10月1日以降、統合配分を変える新たな変更なし。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-14T00:05:05Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-14T00:05:10Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "公式の現行評価を確認。10月6日以降、統合配分を変える新たな変更なし。"
+    },
+    {
+      "sourceId": "obs-gop-ak-trump-rally-20261013",
+      "attemptedAt": "2026-10-14T00:09:30Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-10-13T00:00:00Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "確認時点は集会予定時間帯。大統領のAlaska到着は確認したが、集会終了・演説原文・Sullivan氏の発言は未確認。"
+    },
+    {
+      "sourceId": "obs-nexstar-ia-debate-20261013",
+      "attemptedAt": "2026-10-14T00:09:40Z",
+      "status": "reviewing",
+      "lastSuccessAt": "2026-10-12T23:59:58Z",
+      "contentVerifiedAt": "2026-10-13",
+      "scope": "確認時点は21時（米中部時間）の開始前。予定を維持し、結果は未確認。"
+    },
+    {
+      "sourceId": "obs-cook-ratings-20261006",
+      "attemptedAt": "2026-10-14T00:05:25Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式一覧の取得範囲は限定され、全変更理由の本文照合は未完。部分確認を成功や変化なしへ置き換えない。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-14T00:10:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "主要候補以外の州公式名簿原票は照合待ち。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-14T00:10:00Z",
+      "status": "reviewing",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "州公式の全候補名簿原票は未取得。"
+    }
+  ],
+  "verification": {
+    "tests": "455 passed after npm ci; the first run correctly failed three stale count/order/timing-note expectations, which were updated for two new public updates, two new events and the current monitoring note, then all tests passed",
+    "build": "success; Vite emitted its existing chunk-size advisory, not an error",
+    "mainFastForward": "pending",
+    "pages": "pending",
+    "publicContent": "pending"
+  },
+  "note": "MichiganのAI政策比較、Maine第3回討論の結果、GeorgiaとOhioの選挙日程を追加。Maine最終討論の時刻を19時へ訂正。Alaska集会・Georgia討論・Iowa討論は確認時点の状態を明示し、結果を先取りしていない。D43・R45・未配分12、保存案・共有URLを変更していない。"
+}
