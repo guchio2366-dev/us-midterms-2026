@@ -1,12 +1,12 @@
 {
   "runId": "daily-20261014",
   "startedAt": "2026-10-14T00:01:38Z",
-  "completedAt": "2026-10-14T00:22:29Z",
+  "completedAt": "2026-10-14T00:29:09Z",
   "outcome": "partial",
   "reviewMode": "daily ratings, candidate releases, state reporting, polls, event outcomes and confirmed presidential travel; Wednesday run, so no Monday full comparison audit",
   "timestampConvention": "成功日時は原文をこの実行で照合した時刻。候補者の提案と効果、争点別評価と投票先、終了した予定と進行中・開始前の予定を分ける。",
   "baseCommit": "c18b6b43a5dc4341e723f59084da7ec6c834a377",
-  "publishedCommit": "pending",
+  "publishedCommit": "e2459efd8ff5b9725efdb4f6e6d5fe1ea7bf1a3f",
   "revision": "observation-2026-10-14-mi-ai-debate-and-campaign-schedules",
   "checkedSourceIds": [
     "obs-abdul-ai-control-20261013",
@@ -169,9 +169,9 @@
   "verification": {
     "tests": "455 passed after npm ci; the first run correctly failed three stale count/order/timing-note expectations, which were updated for two new public updates, two new events and the current monitoring note, then all tests passed",
     "build": "success; Vite emitted its existing chunk-size advisory, not an error",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success; main advanced from c18b6b43a5dc4341e723f59084da7ec6c834a377 to e2459efd8ff5b9725efdb4f6e6d5fe1ea7bf1a3f with expected-head verification and force disabled",
+    "pages": "success; GitHub Pages run 38490312009 completed successfully in 48 seconds",
+    "publicContent": "success; live page confirmed D43/R45/unassigned 12, the Michigan AI comparison, Maine debate result, corrected October 15 Maine debate time, and the 2026-10-14 09:22 JST monitoring timestamp"
   },
   "note": "MichiganのAI政策比較、Maine第3回討論の結果、GeorgiaとOhioの選挙日程を追加。Maine最終討論の時刻を19時へ訂正。Alaska集会・Georgia討論・Iowa討論は確認時点の状態を明示し、結果を先取りしていない。D43・R45・未配分12、保存案・共有URLを変更していない。"
 }
