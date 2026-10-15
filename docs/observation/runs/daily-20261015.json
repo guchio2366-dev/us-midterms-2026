@@ -1,0 +1,32 @@
+{
+  "runId": "daily-20261015",
+  "startedAt": "2026-10-14T23:58:45Z",
+  "completedAt": "2026-10-15T00:13:22Z",
+  "outcome": "partial",
+  "reviewMode": "daily ratings, candidate releases, state reporting, new polls, event outcomes and confirmed presidential travel; Thursday run, so no Monday full comparison audit",
+  "timestampConvention": "原文の確認日時と記事の公表日、討論会・集会の実施日を区別。成功日時はこの実行で確認した時刻。未確認・アクセス制限を変化なしと扱わない。",
+  "baseCommit": "3d7b24098f44f792d91a2520ae24f895094a525b",
+  "publishedCommit": "cade7db47dbbbbc2030461c09a7a7c0c471f1fd2",
+  "revision": "observation-2026-10-15-sabato-ratings-and-event-results",
+  "checkedSourceIds": ["obs-ut-texas-poll-20261013", "obs-sabato-ratings-20261014", "obs-sabato", "obs-inside", "obs-gpb-ga-debate-result-20261014", "obs-reuters-ak-rally-result-20261014", "obs-ap-ak-rally-result-20261013", "obs-radioiowa-ia-debate-result-20261014"],
+  "pendingSourceIds": ["obs-white-house", "obs-insider-ak-ks-mi-20261011", "obs-cook-ratings-20261006", "obs-alaska-survey-research-20261007", "obs-quantus-ia-20260930", "obs-roster-oh", "obs-roster-nh", "obs-quantus-me-20260917", "obs-axios-nrsc-spending-20260918", "obs-unh-nh-20260924", "obs-nyt-siena-nh-20260924"],
+  "sourceChecks": [
+    {"sourceId":"obs-sabato-ratings-20261014","attemptedAt":"2026-10-15T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-15T00:05:35Z","contentVerifiedAt":"2026-10-15","scope":"公式Substack本文でKS、NE、NH、MN、MSの評価変更5件と判断理由を照合。Center for Politics本体は取得制限、公式配信は全文取得。"},
+    {"sourceId":"obs-sabato","attemptedAt":"2026-10-15T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-15T00:05:35Z","contentVerifiedAt":"2026-10-15","scope":"公式配信の現行変更を全35選挙の評価データに反映。Sabato単独のD方向49・R方向46・Toss-up 5と統合配分を分離。"},
+    {"sourceId":"obs-inside","attemptedAt":"2026-10-15T00:09:50Z","status":"checked","lastSuccessAt":"2026-10-15T00:10:00Z","contentVerifiedAt":"2026-10-15","scope":"公式JSON APIの全35選挙を再取得。last_updatedは10月1日のままで、KSはLikely R、NHはToss-upを維持。統合配分D43・R45・未配分12を再計算。"},
+    {"sourceId":"obs-gpb-ga-debate-result-20261014","attemptedAt":"2026-10-15T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-15T00:05:35Z","contentVerifiedAt":"2026-10-15","scope":"GPB州内取材で10月13日のAtlanta Press Club討論1時間の実施と関税・医療・Iran戦争の発言を確認。"},
+    {"sourceId":"obs-reuters-ak-rally-result-20261014","attemptedAt":"2026-10-15T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-15T00:05:35Z","contentVerifiedAt":"2026-10-15","scope":"Reuters現地取材で10月13日Wasilla集会とSullivan・Trump両氏の燃料費・Iran戦争への発言を確認。"},
+    {"sourceId":"obs-ap-ak-rally-result-20261013","attemptedAt":"2026-10-15T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-15T00:05:35Z","contentVerifiedAt":"2026-10-15","scope":"APライブ記事で集会終了を確認。Taiwan向けLNG購入と投資はTrump氏の発言で、Taiwan側・White Houseの独立確認がない。"},
+    {"sourceId":"obs-radioiowa-ia-debate-result-20261014","attemptedAt":"2026-10-15T00:05:30Z","status":"checked","lastSuccessAt":"2026-10-15T00:05:35Z","contentVerifiedAt":"2026-10-15","scope":"州内ラジオの取材でWHO 13の10月13日討論実施とロシア産ディーゼル・データセンター・移民の回答を確認。"},
+    {"sourceId":"obs-ut-texas-poll-20261013","attemptedAt":"2026-10-15T00:08:15Z","status":"checked","lastSuccessAt":"2026-10-15T00:08:25Z","contentVerifiedAt":"2026-10-15","scope":"大学本文と279ページの公式クロス集計で9月25日〜10月5日、投票予定者861人、Talarico 50・Paxton 47・Brown 1・その他2、誤差±3.34、方法を照合。"},
+    {"sourceId":"obs-white-house","attemptedAt":"2026-10-15T00:09:50Z","status":"partial","lastSuccessAt":"2026-10-14T00:09:00Z","contentVerifiedAt":"2026-10-14","scope":"10月13日のAlaska訪問を公式発表で再確認。10月16日Georgia予定は前回確認済みだが、公式の新たな全日程一覧と候補者同席の再照合は未完了。"}
+  ],
+  "verification": {
+    "tests": "success: npm test (455 passed, 33 files)",
+    "build": "success: npm run build",
+    "mainFastForward": "success: 3d7b24098f44f792d91a2520ae24f895094a525b -> cade7db47dbbbbc2030461c09a7a7c0c471f1fd2, expected SHA一致、force=false",
+    "pages": "success: GitHub Pages run 38659140967, completed 2026-10-15T00:17:47Z",
+    "publicContent": "success: https://guchio2366-dev.github.io/us-midterms-2026/ で2026-10-14集計・D43/R45/未配分12・Sabato記事・Alaska/Georgia結果・今後の予定を表示確認"
+  },
+  "note": "Sabatoの10月14日評価変更とInside Elections公式APIを再照合。Texas大学調査を原票付きで追加。Alaska集会・Georgia/Iowa討論の結果を元の予定へ相互リンクした。発言、調査、成立済み事実、効果を区別。統合D43・R45・未配分12、既存の保存案と共有URLを維持。"
+}
