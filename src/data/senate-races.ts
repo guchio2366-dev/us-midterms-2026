@@ -112,7 +112,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('IA-2','2026-06-02','Tossup','ia-candidate-list-2026',[
     candidate('Ashley Hinson','R','Republican','ia-candidate-list-2026','general-ballot','cand-ia-ashley-hinson'),candidate('Thomas Laehn','other','Libertarian','ia-candidate-list-2026','general-ballot','cand-ia-thomas-laehn'),candidate('Josh Turek','D','Democratic','ia-candidate-list-2026','general-ballot','cand-ia-josh-turek'),
   ]),
-  race('KS-2','2026-08-04','Lean R','cand-ks',[
+  race('KS-2','2026-08-04','Tossup','cand-ks',[
     {...candidate('Adam Hamilton','D','Democratic','cand-ks'),sourceIds:['ten-ks-general','ten-ks-primary','cand-ks']},{...candidate('Roger Marshall','R','Republican','cand-ks'),sourceIds:['ten-ks-general','ten-ks-primary','cand-ks']},
   ]),
   race('KY-2','2026-05-19','Safe R','cand-ky',[
@@ -130,19 +130,19 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('MI-2','2026-08-04','Lean D','mi-candidate-list-2026',[
     candidate('Lydia Christensen','other','Libertarian','mi-candidate-list-2026','general-ballot','cand-mi-lydia-christensen'),candidate('Abdul El-Sayed','D','Democratic','mi-candidate-list-2026','general-ballot','cand-mi-abdul-el-sayed'),candidate('Tim Long','other','U.S. Taxpayers','mi-candidate-list-2026','general-ballot','cand-mi-tim-long'),candidate('Douglas P. Marsh','other','Green','mi-candidate-list-2026','general-ballot','cand-mi-douglas-p-marsh'),candidate('Mike Rogers','R','Republican','mi-candidate-list-2026','general-ballot','cand-mi-mike-rogers'),candidate('Walter P. Kristy','other','Natural Law','mi-candidate-list-2026','general-ballot','cand-mi-walter-p-kristy'),
   ]),
-  race('MN-2','2026-08-11','Likely D','cand-mn',[
+  race('MN-2','2026-08-11','Lean D','cand-mn',[
     candidate('Peggy Flanagan','D','DFL','cand-mn'),candidate('Michele Tafoya','R','Republican','cand-mn'),
   ]),
-  race('MS-2','2026-03-10','Safe R','cand-ms',[
+  race('MS-2','2026-03-10','Likely R','cand-ms',[
     candidate('Scott Colom','D','Democratic','cand-ms'),candidate('Cindy Hyde-Smith','R','Republican','cand-ms'),candidate('Ty Pinkins','I','Independent','cand-ms'),
   ]),
   race('MT-2','2026-06-02','Safe R','cand-mt',[
     candidate('Kurt Alme','R','Republican','cand-mt'),candidate('Kyle Austin','other','Libertarian','cand-mt'),candidate('Alani Bankhead','D','Democratic','cand-mt'),candidate('Seth Bodnar','I','Independent','cand-mt'),
   ]),
-  race('NE-2','2026-05-12','Likely R','cand-ne',[
+  race('NE-2','2026-05-12','Lean R','cand-ne',[
     candidate('Mike Marvin','other','Legal Marijuana Now','cand-ne'),candidate('Dan Osborn','I','Independent','cand-ne'),candidate('Pete Ricketts','R','Republican','cand-ne'),
   ]),
-  race('NH-2','2026-09-08','Lean D','cand-nh',[
+  race('NH-2','2026-09-08','Likely D','cand-nh',[
     candidate('Chris Pappas','D','Democratic','cand-nh'),candidate('John E. Sununu','R','Republican','cand-nh'),
   ]),
   race('NJ-2','2026-06-02','Safe D','cand-nj',[
@@ -244,6 +244,6 @@ export const senateRaceSources: Source[] = [
   {sourceId:'cand-ri-ballot-20260930',title:'2026 Rhode Island candidates for Senator in Congress',publisher:'Rhode Island Department of State',url:'https://vote.sos.ri.gov/Candidates/CandidateSearchSummary?Election=18239&OfficeType=620',publishedAt:null,referencePeriod:'9月30日表示のOn Election Ballot欄。John Francis Reed・Raymond T McKayはY、Connor Francis Burbridge・Luis Daniel MunozはN。既存通称・candidateIdを保持。独立候補の全体は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
-  {sourceId:'sabato-senate-2026',title:"Four Rating Changes, Headlined by Alaska Senate Moving to Leans Democratic",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://sabatoscrystalball.substack.com/p/four-rating-changes-headlined-by',publishedAt:'2026-10-06',updatedAt:'2026-10-06',referencePeriod:'全35選挙の統一情勢評価。AK上院をToss-upからLean D、SC上院をSafe RからLikely Rへ変更。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-07',contentVerifiedAt:'2026-10-07'},
-  {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-10-01',referencePeriod:'全35選挙を10月2日に公式APIで再照合。AK・GA・MI・MN・NC・NE・TXの変更と、ME・NH・OH・IAなどの現行値を確認。Tiltを含む元分類を保持',retrievedAt:'2026-10-02',contentVerifiedAt:'2026-10-02'},
+  {sourceId:'sabato-senate-2026',title:"Five Senate Rating Changes as Close Battle for Majority Control Rages",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close',publishedAt:'2026-10-14',updatedAt:'2026-10-14',referencePeriod:'全35選挙の統一情勢評価。KS Lean R→Toss-up、NE Likely R→Lean R、NH Lean D→Likely D、MN Likely D→Lean D、MS Safe R→Likely R。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-15',contentVerifiedAt:'2026-10-15'},
+  {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-10-01',referencePeriod:'全35選挙を10月15日に公式APIで再照合。最終更新は10月1日のまま。AK・GA・MI・MN・NC・NE・TXの変更と、ME・NH・OH・IAなどの現行値を確認。Tiltを含む元分類を保持',retrievedAt:'2026-10-15',contentVerifiedAt:'2026-10-15'},
 ];

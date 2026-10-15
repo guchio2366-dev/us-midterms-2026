@@ -20,8 +20,8 @@ describe('senate rating consensus',() => {
   });
   it('retains source confirmation dates independently of the new method date',()=>{
     expect(RATING_METHOD_VERSION).toBe('unanimous-likely-or-stronger-v2');
-    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-07')).toBe(true);
-    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-02')).toBe(true);
+    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-15')).toBe(true);
+    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-15')).toBe(true);
   });
   it('normalizes source vocabulary without converting strength into probability',() => {
     expect(normalizeRatingDirection('Safe D')).toBe('D');
@@ -58,7 +58,7 @@ describe('senate rating consensus',() => {
     expect(mapSeatIds).toEqual(['AK-2','GA-2','IA-2','KS-2','ME-2','MI-2','MN-2','NC-2','NE-2','NH-2','OH-3','TX-2']);
     const baseline = createRatingSenateBaseline({seats,elections,consensus:results,snapshotId:'test',asOf:'test',methodVersion:'test',seatDataVersion:'test'});
     expect(mapSeatIds).toEqual(Object.entries(baseline.outcomes).filter(([,value]) => value === 'unassigned').map(([seatId]) => seatId).sort());
-    expect(elections.find(election => election.seatId === 'NH-2')?.rating.category).toBe('Lean D');
+    expect(elections.find(election => election.seatId === 'NH-2')?.rating.category).toBe('Likely D');
   });
 
   it('retains Sabato strength only after the direction agrees',() => {

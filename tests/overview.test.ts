@@ -49,12 +49,12 @@ describe('PC opening overview contract', () => {
   it('shows the date, uncertainty and tie caveat before the optional method', () => {
     const visible = nationalOverviewMarkup().split('<details class="consensus-method')[0];
     expect(visible).toContain(RATING_SNAPSHOT_AS_OF);
-    expect(visible).toContain('未配分 12：弱い優勢 6・接戦 2・評価分裂 4');
+    expect(visible).toContain('未配分 12：弱い優勢 5・接戦 2・評価分裂 5');
     expect(visible).toContain('当選が確定した議席数や、当選確率を計算した結果ではありません');
     expect(visible).toContain('民主党側43議席、共和党側45議席');
     expect(visible).toContain('残る12議席');
-    expect(visible).toContain('Sabato’s Crystal Ball：2026-10-07確認');
-    expect(visible).toContain('Inside Elections：2026-10-02確認');
+    expect(visible).toContain('Sabato’s Crystal Ball：2026-10-15確認');
+    expect(visible).toContain('Inside Elections：2026-10-15確認');
     expect(visible).toContain('非改選 34 ＋ 今回必要 17');
     expect(visible).toContain('非改選 31 ＋ 今回必要 20');
     expect(visible).toContain('共和党側は今回19議席を獲得して合計50議席となった場合でも');
