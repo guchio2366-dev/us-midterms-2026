@@ -24,7 +24,7 @@ function electionForState(abbr:string):Election {
   return election;
 }
 const previousFocus=['AK','GA','IA','KS','ME','MI','NH','NC','TX','OH'].map(electionForState);
-const addedFocus=['MN','NE'].map(electionForState);
+const addedFocus=['MN','NE','SC'].map(electionForState);
 const expectedFocus=[...previousFocus,...addedFocus];
 const currentBaseline=createRatingSenateBaseline({
   seats,elections,consensus:aggregateRatingConsensus(elections.map(election=>election.seatId),ratingSnapshotObservations),
@@ -50,14 +50,14 @@ class MemoryStorage implements Storage {
   removeItem(key:string){this.values.delete(key);}
   setItem(key:string,value:string){this.values.set(key,value);}
 }
-function twelveReasons():ScenarioState {
+function thirteenReasons():ScenarioState {
   return expectedFocus.reduce((state,election)=>applyReasonedChoice(state,election,candidateChoice(election),bareReason,elections),fresh());
 }
 
-describe('twelve-state policy entry boundary',()=>{
-  it('aligns all twelve unassigned state entries with resolver, selection parser and reason normalization',()=>{
+describe('thirteen-state policy entry boundary',()=>{
+  it('aligns all thirteen unassigned state entries with resolver, selection parser and reason normalization',()=>{
     expect(policyPrototype.focusElectionIds.slice().sort()).toEqual(expectedFocus.map(election=>election.electionId).sort());
-    expect(REASONING_LIMITS.races).toBe(12);
+    expect(REASONING_LIMITS.races).toBe(13);
     expect(elections.filter(election=>currentBaseline.outcomes[election.seatId]==='unassigned').map(election=>election.electionId).sort()).toEqual([...policyPrototype.focusElectionIds].sort());
     let state=fresh();
     for(const election of expectedFocus){
@@ -83,7 +83,7 @@ describe('twelve-state policy entry boundary',()=>{
     expect(Object.keys(normalized.reasoning!.races).sort()).toEqual(expectedFocus.map(election=>election.electionId).sort());
   });
 
-  it('allows every current MN/NE roster candidate without inventing policy records or positions',()=>{
+  it('allows every current MN/NE/SC roster candidate without inventing policy records or positions',()=>{
     for(const election of addedFocus){
       expect(policyPrototype.candidateRecords.filter(record=>record.electionId===election.electionId)).toEqual([]);
       expect(policyPrototype.factors.filter(factor=>factor.electionId===election.electionId)).toEqual([]);
@@ -106,7 +106,7 @@ describe('twelve-state policy entry boundary',()=>{
     }
   });
 
-  it('shows MN/NE as selected states with unresearched candidate-policy coverage',()=>{
+  it('shows MN/NE/SC as selected states with unresearched candidate-policy coverage',()=>{
     for(const election of addedFocus){
       const state=applyReasonedChoice(fresh(),election,candidateChoice(election),bareReason,elections);
       const markup=renderPolicyWorkbench({data:policyPrototype,state,seats,elections,states,powerRules,sources:[...sources,...observationData.sources],evidence:[...evidenceRefs,...observationData.evidenceRefs],electionId:election.electionId,themeId:'healthcare',policyRef:policyPrototype.policies[0]});
@@ -119,13 +119,13 @@ describe('twelve-state policy entry boundary',()=>{
     }
   });
 
-  it('rejects foreign candidates and legacy premises or evidence borrowed into MN/NE',()=>{
+  it('rejects foreign candidates and legacy premises or evidence borrowed into MN/NE/SC',()=>{
     const assumption=policyPrototype.assumptions.find(assumption=>assumption.evidenceIds.length)!;
     const state=setCommonAssumption(fresh(),{assumptionId:assumption.assumptionId,assessment:'adopt',evidenceIds:[]},elections);
     for(const [index,election] of addedFocus.entries()){
       const candidate=candidateChoice(election);
       if(candidate.kind!=='candidate')throw new Error('Expected roster candidate');
-      const foreign=candidateChoice(addedFocus[1-index]);
+      const foreign=candidateChoice(addedFocus[(index+1)%addedFocus.length]);
       if(foreign.kind!=='candidate')throw new Error('Expected foreign roster candidate');
       const context={data:policyPrototype,elections,state};
       expect(parsePolicyIntent('apply-reasoned-choice',fields({electionId:election.electionId,candidateId:foreign.candidateId}),context)).toBeNull();
@@ -135,13 +135,13 @@ describe('twelve-state policy entry boundary',()=>{
     }
   });
 
-  it('round-trips twelve reasons through draft, named save and public URL while keeping notes local',()=>{
-    const state=twelveReasons(),storage=new MemoryStorage();
+  it('round-trips thirteen reasons through draft, named save and public URL while keeping notes local',()=>{
+    const state=thirteenReasons(),storage=new MemoryStorage();
     state.reasoning!.privateNote='LOCAL SCENARIO NOTE';
     state.reasoning!.races[addedFocus[0].electionId].privateNote='LOCAL MN NOTE';
     const before=JSON.stringify(state);
     expect(saveDraft(storage,state).ok).toBe(true);
-    expect(persistSavedScenarios(storage,[{id:'twelve-reasons',name:'12州の案',savedAt:'2026-10-03T00:00:00Z',state}]).ok).toBe(true);
+    expect(persistSavedScenarios(storage,[{id:'thirteen-reasons',name:'13州の案',savedAt:'2026-10-03T00:00:00Z',state}]).ok).toBe(true);
     const draft=loadDraft(storage,seats,elections,houseDistricts,currentBaseline,legacyBaseline)!;
     const saved=loadSavedScenarios(storage,seats,elections,houseDistricts,currentBaseline,legacyBaseline);
     const shared=decode(encodeScenario(state,elections));
@@ -149,7 +149,7 @@ describe('twelve-state policy entry boundary',()=>{
       expect(loaded.notices).toEqual([]);
       expect(loaded.state.senate).toEqual(state.senate);
       expect(loaded.state.senateBaseline).toEqual(state.senateBaseline);
-      expect(Object.keys(loaded.state.reasoning!.races)).toHaveLength(12);
+      expect(Object.keys(loaded.state.reasoning!.races)).toHaveLength(13);
     }
     expect(saved.notices).toEqual([]);
     expect(saved.items[0].state.reasoning).toEqual(draft.state.reasoning);
@@ -161,11 +161,11 @@ describe('twelve-state policy entry boundary',()=>{
     expect(JSON.stringify(state)).toBe(before);
   });
 
-  it('rejects thirteen incoming reasons without discarding valid choices or the full saved baseline',()=>{
-    const state=twelveReasons();
+  it('rejects fourteen incoming reasons without discarding valid choices or the full saved baseline',()=>{
+    const state=thirteenReasons();
     const outside=elections.find(election=>!policyPrototype.focusElectionIds.includes(election.electionId))!;
     state.reasoning!.races[outside.electionId]={assessment:'hold',choiceAtAssessment:null,assumptionIds:[],factors:[],evidenceIds:[]};
-    expect(Object.keys(state.reasoning!.races)).toHaveLength(13);
+    expect(Object.keys(state.reasoning!.races)).toHaveLength(14);
     for(const loaded of [normalize(state),decode(independentPayload(state))]){
       expect(loaded.state.reasoning).toBeUndefined();
       expect(loaded.notices.length).toBeGreaterThan(0);
@@ -175,8 +175,8 @@ describe('twelve-state policy entry boundary',()=>{
     }
   });
 
-  it('drops an out-of-scope reason within the count limit and keeps the other eleven',()=>{
-    const state=twelveReasons();
+  it('drops an out-of-scope reason within the count limit and keeps the other twelve',()=>{
+    const state=thirteenReasons();
     const outside=elections.find(election=>!policyPrototype.focusElectionIds.includes(election.electionId))!;
     delete state.reasoning!.races[addedFocus[0].electionId];
     state.reasoning!.races[outside.electionId]={assessment:'hold',choiceAtAssessment:null,assumptionIds:[],factors:[],evidenceIds:[]};
@@ -184,17 +184,18 @@ describe('twelve-state policy entry boundary',()=>{
     expect(resolvePolicyReadingContext({source:{kind:'state',electionId:outside.electionId},data:policyPrototype,elections,seats,states})).toBeNull();
     for(const loaded of [normalize(state),decode(independentPayload(state))]){
       expect(loaded.state.reasoning!.races[outside.electionId]).toBeUndefined();
-      expect(Object.keys(loaded.state.reasoning!.races)).toHaveLength(11);
+      expect(Object.keys(loaded.state.reasoning!.races)).toHaveLength(12);
       expect(loaded.state.senate).toEqual(state.senate);
       expect(loaded.state.senateBaseline).toEqual(state.senateBaseline);
       expect(loaded.notices.length).toBeGreaterThan(0);
     }
   });
 
-  it.each(['recorded','missing'] as const)('preserves an old ten-state %s premise snapshot and all 100 outcomes when adding MN/NE',snapshot=>{
+  it.each(['recorded','missing'] as const)('preserves an old ten-state %s premise snapshot and all 100 outcomes when adding MN/NE/SC',snapshot=>{
     const oldBaseline={...structuredClone(currentBaseline),snapshotId:'senate-ratings-2026-09-24',asOf:'2026-09-24',methodVersion:'direction-majority-v1'};
     oldBaseline.outcomes[addedFocus[0].seatId]='Democratic';
     oldBaseline.outcomes[addedFocus[1].seatId]='Republican';
+    oldBaseline.outcomes['SC-2']='Republican';
     let state=createScenarioState(oldBaseline);
     for(const election of previousFocus)state=applyReasonedChoice(state,election,candidateChoice(election),bareReason,elections);
     const assumption=policyPrototype.assumptions.find(assumption=>previousFocus.some(election=>assumption.electionIds.includes(election.electionId)))!;

@@ -75,8 +75,9 @@ describe('complete approved reader prose, protected against summarization',()=>{
       ratingAsOf:'2026-10-07',sabatoConfirmedAt:['2026-10-06'],insideConfirmedAt:['2026-10-07']};
     const actual=approvedAllocationParagraphs(changed).map(item=>item.text);
     const expected=expectedAllocation();
-    expected[3]=expected[3].replace('民主党側が9議席、共和党側が14議席','民主党側が10議席、共和党側が13議席')
-      .replace('民主党側43議席、共和党側45議席','民主党側44議席、共和党側44議席');
+    expected[3]=expected[3].replace('民主党側が9議席、共和党側が13議席','民主党側が10議席、共和党側が13議席')
+      .replace('民主党側43議席、共和党側44議席','民主党側44議席、共和党側44議席');
+    expected[4]=expected[4].replaceAll('13議席','12議席');
     expected[5]='この配分の集計基準日は2026年10月7日です。機関ごとの確認日は異なり、Sabatoは10月6日、Inside Electionsは10月7日の記録を使っています。';
     expect(actual).toEqual(expected);
   });

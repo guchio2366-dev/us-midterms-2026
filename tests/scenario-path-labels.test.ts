@@ -11,8 +11,8 @@ it('summarizes the neutral path category as unallocated while retaining weak and
   const baseline=createRatingSenateBaseline({seats,elections,consensus,snapshotId:RATING_SNAPSHOT_ID,asOf:RATING_SNAPSHOT_AS_OF,methodVersion:RATING_METHOD_VERSION,seatDataVersion:'test'});
   const ratings=new Map(consensus.map(c=>[c.seatId,consensusDisplayRating(c)]));
   const path=generateSenatePaths({seats,elections,scenario:createScenarioState(baseline),caucus:'Republican',threshold:50,limit:1,ratings}).paths[0];
-  expect(path.difficulty['Toss Up']).toBe(5);
-  expect(scenarioPathDifficultyLabel(path)).toBe('未配分 5議席');
+  expect(path.difficulty['Toss Up']).toBe(6);
+  expect(scenarioPathDifficultyLabel(path)).toBe('未配分 6議席');
 });
 it('retains stronger-rating labels and the no-additional-seat state',()=>{
   expect(scenarioPathDifficultyLabel({difficulty:{'Likely R':2,'Toss Up':1}})).toBe('Likely R 2議席／未配分 1議席');

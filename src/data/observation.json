@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-15-sabato-ratings-and-event-results",
+  "revision": "observation-2026-10-16-inside-ratings-cpi-maine",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,23 +8,19 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-15T00:13:22Z",
+    "lastCompletedAt": "2026-10-16T00:09:31Z",
     "latestRun": {
-      "runId": "daily-20261015",
+      "runId": "daily-20261016",
       "timingIntegrity": "consistent",
-      "timingNote": "情報源ごとの成功日時と未取得を区別した。集会・討論の実施と効果を分け、予定の結果は元の予定と相互参照する。",
-      "startedAt": "2026-10-14T23:58:45Z",
-      "completedAt": "2026-10-15T00:13:22Z",
+      "timingNote": "評価更新、統計の公表日、速報の確認範囲、当日の成功日時を分離。未取得を変化なしとしない。",
+      "startedAt": "2026-10-16T00:02:23Z",
+      "completedAt": "2026-10-16T00:09:31Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-ut-texas-poll-20261013",
-        "obs-sabato-ratings-20261014",
-        "obs-sabato",
         "obs-inside",
-        "obs-gpb-ga-debate-result-20261014",
-        "obs-reuters-ak-rally-result-20261014",
-        "obs-ap-ak-rally-result-20261013",
-        "obs-radioiowa-ia-debate-result-20261014"
+        "obs-inside-ratings-20261015",
+        "obs-bls-cpi-20261014",
+        "obs-white-house-midterm-travel-20261013"
       ],
       "pendingSourceIds": [
         "obs-insider-ak-ks-mi-20261011",
@@ -37,12 +33,118 @@
         "obs-axios-nrsc-spending-20260918",
         "obs-unh-nh-20260924",
         "obs-nyt-siena-nh-20260924",
-        "obs-white-house"
+        "obs-white-house",
+        "obs-sabato",
+        "obs-insider-tx-ks-me-20261015",
+        "obs-pressherald-me-debate-20261015"
       ],
-      "note": "Sabatoの10月14日変更5件とInside Electionsの公式API全35選挙、Texas大学調査の原票、10月13日Alaska集会・Georgia/Iowa討論の実施を照合。Sabato単独のKansas Toss-up変更後も統合配分D43・R45・未配分12を維持。既存の候補名簿・一部調査は再照合待ち。Maine・Alaskaの10月15日討論は未実施。"
+      "note": "Inside Electionsの変更5件を公式APIで確認し、SCを追加した13州・D43/R44/未配分13へ。CPI結果とMaine討論実施を元予定へ相互リンク。Maine全編・新調査原票・Sabato公式の再取得等は未完了。確認のみの州の分析日は保持。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-insider-tx-ks-me-20261015",
+      "title": "InsiderAdvantage公式関連記事欄：10月15日付Texas・Kansas・Maine調査",
+      "publisher": "InsiderAdvantage",
+      "url": "https://insideradvantage.com/insideradvantage-u-s-senate-surveys-alaska-ranks-choice-peltola-50-sullivan-48-kansas-hamilton-48-marshall-47-michigan-el-sayed-48-rogers-46/",
+      "publishedAt": null,
+      "referencePeriod": "公式サイト関連記事欄で10月13〜14日、各州LV 1200人、text/panel、誤差2.83%と新調査の存在を確認。記事リンクの取得失敗、全選択肢・質問文・topline未取得のため支持率の掲載は保留。",
+      "retrievedAt": "2026-10-16",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-TX-2-regular",
+        "2026-KS-2-regular",
+        "2026-ME-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "event-driven",
+      "method": "公式サイト関連記事欄で10月13〜14日、各州LV 1200人、text/panel、誤差2.83%と新調査の存在を確認。記事リンクの取得失敗、全選択肢・質問文・topline未取得のため支持率の掲載は保留。",
+      "alternativeUrl": null,
+      "checkStatus": "partial",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-pressherald-me-debate-20261015",
+      "title": "Susan Collins and Troy Jackson debate for a final time — live updates",
+      "publisher": "Portland Press Herald",
+      "url": "https://www.pressherald.com/2026/10/15/susan-collins-and-troy-jackson-debate-for-a-final-time/",
+      "publishedAt": "2026-10-15",
+      "referencePeriod": "主催紙の19時54分までの速報で実施と発言を確認。全編、終了時の発言、事後の支持変化は未確認。",
+      "retrievedAt": "2026-10-16",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "主催紙の19時54分までの速報で実施と発言を確認。全編、終了時の発言、事後の支持変化は未確認。",
+      "alternativeUrl": null,
+      "checkStatus": "partial",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-bls-cpi-20261014",
+      "title": "Consumer Price Index — September 2026",
+      "publisher": "米労働統計局 BLS",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+      "publishedAt": "2026-10-14",
+      "referencePeriod": "10月14日8時30分ET公表。CPI-U全国値と表の季節調整を照合。月次変化、年次変化、候補者への評価を分ける。",
+      "retrievedAt": "2026-10-16",
+      "contentVerifiedAt": "2026-10-16",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-IA-2-regular",
+        "2026-NC-2-regular",
+        "2026-GA-2-regular",
+        "2026-KS-2-regular",
+        "2026-MN-2-regular",
+        "2026-NE-2-regular",
+        "2026-SC-2-regular",
+        "2026-OH-3-special"
+      ],
+      "category": "official",
+      "cadence": "event-driven",
+      "method": "10月14日8時30分ET公表。CPI-U全国値と表の季節調整を照合。月次変化、年次変化、候補者への評価を分ける。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-16T00:09:31Z"
+    },
+    {
+      "sourceId": "obs-inside-ratings-20261015",
+      "title": "Inside Elections — October 15 Senate ratings",
+      "publisher": "Inside Elections",
+      "url": "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json",
+      "publishedAt": "2026-10-15",
+      "referencePeriod": "公式APIの35選挙を照合。FL・TX・SC・NH・KSの変更5件。APIのspecialフラグは地元の特別選挙識別へ転用しない。評価理由の会員本文は未取得。",
+      "retrievedAt": "2026-10-16",
+      "contentVerifiedAt": "2026-10-16",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-IA-2-regular",
+        "2026-NC-2-regular",
+        "2026-GA-2-regular",
+        "2026-KS-2-regular",
+        "2026-MN-2-regular",
+        "2026-NE-2-regular",
+        "2026-SC-2-regular",
+        "2026-OH-3-special",
+        "2026-FL-3-special"
+      ],
+      "category": "rating",
+      "cadence": "event-driven",
+      "method": "公式APIの35選挙を照合。FL・TX・SC・NH・KSの変更5件。APIのspecialフラグは地元の特別選挙識別へ転用しない。評価理由の会員本文は未取得。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-16T00:09:31Z"
+    },
     {
       "sourceId": "obs-ut-texas-poll-20261013",
       "title": "Latest UT/Texas Politics Poll Finds Historic Levels of Competition in Texas Midterm Elections",
@@ -237,15 +339,17 @@
       "url": "https://www.whitehouse.gov/releases/2026/10/katie-zacharia-delivers-powerful-inaugural-briefing-as-37th-white-house-press-secretary/",
       "publishedAt": "2026-10-13",
       "referencePeriod": "White Houseが発表したTrump大統領のGeorgia、Kentucky、Floridaを含む中間選挙日程。",
-      "retrievedAt": "2026-10-14",
-      "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-GA-2-regular"],
+      "retrievedAt": "2026-10-16",
+      "contentVerifiedAt": "2026-10-16",
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "category": "official",
       "cadence": "event-driven",
       "method": "White House公式発表で州を確認し、日時・会場・候補者同席は州内報道と主催者情報で別に照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-14T00:08:30Z"
+      "lastSuccessAt": "2026-10-16T00:09:31Z"
     },
     {
       "sourceId": "obs-cbs-ga-trump-rally-20261016",
@@ -339,9 +443,13 @@
       "url": "https://insideradvantage.com/insideradvantage-u-s-senate-surveys-alaska-ranks-choice-peltola-50-sullivan-48-kansas-hamilton-48-marshall-47-michigan-el-sayed-48-rogers-46/",
       "publishedAt": "2026-10-11",
       "referencePeriod": "10月9〜10日の各州投票予定者1,200人。Alaska、Kansas、Michiganの見出し値、誤差、重み付け。",
-      "retrievedAt": "2026-10-13",
+      "retrievedAt": "2026-10-16",
       "contentVerifiedAt": null,
-      "electionIds": ["2026-AK-2-regular", "2026-KS-2-regular", "2026-MI-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-KS-2-regular",
+        "2026-MI-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式記事で見出し値、標本、実査期間、誤差、重み付けを確認。サイト障害で全選択肢、質問文、収集方法、Alaskaの順位選択投票の段階は未取得",
@@ -2615,7 +2723,7 @@
       "cadence": "daily",
       "method": "Sabato公式Substackの分析本文、変更理由、変更後評価を照合",
       "alternativeUrl": "https://centerforpolitics.org/crystalball/five-senate-rating-changes-as-close-battle-for-majority-control-rages/",
-      "checkStatus": "checked",
+      "checkStatus": "partial",
       "lastSuccessAt": "2026-10-15T00:05:35Z"
     },
     {
@@ -2645,29 +2753,30 @@
       "publisher": "Inside Elections 上院評価",
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
-      "referencePeriod": "2026年上院選・10月1日更新。AK・GA・MI・MN・NC・NE・TXの変更と全35選挙の現行値を公式APIで確認。",
-      "retrievedAt": "2026-10-15",
-      "contentVerifiedAt": "2026-10-15",
+      "referencePeriod": "2026年上院選・10月15日更新。FL・TX・SC・NH・KSの変更5件と全35選挙の現行値を公式APIで確認。",
+      "retrievedAt": "2026-10-16",
+      "contentVerifiedAt": "2026-10-16",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
         "2026-MI-2-regular",
         "2026-TX-2-regular",
         "2026-NH-2-regular",
-        "2026-OH-3-special",
         "2026-IA-2-regular",
         "2026-NC-2-regular",
         "2026-GA-2-regular",
         "2026-KS-2-regular",
         "2026-MN-2-regular",
-        "2026-NE-2-regular"
+        "2026-NE-2-regular",
+        "2026-SC-2-regular",
+        "2026-OH-3-special"
       ],
       "category": "rating",
       "cadence": "daily",
       "method": "公式APIのcurrent_rating・previous_rating・last_updatedを全35選挙で照合し、生成時刻と評価変更時刻を区別",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-15T00:10:00Z"
+      "lastSuccessAt": "2026-10-16T00:09:31Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -3733,6 +3842,27 @@
     }
   ],
   "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-inside-ratings-20261015",
+      "sourceId": "obs-inside-ratings-20261015",
+      "locator": "last_updated 2026-10-15T13:35:48-05:00。FL Solid Republican→Likely Republican、TX Tilt Republican→Toss-up、SC Likely Republican→Lean Republican、NH Toss-up→Tilt Democrat、KS Likely Republican→Tilt Republican。全35選挙の評価を照合。理由の本文は未確認。",
+      "checkedAt": "2026-10-16",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-bls-cpi-20261014",
+      "sourceId": "obs-bls-cpi-20261014",
+      "locator": "Summary / Table A：9月CPI-Uは季節調整済み前月比+0.6%、未調整前年同月比+3.7%。ガソリンは季節調整済み前月比+9.1%、総合月次上昇の半分超を占める。食品・エネルギーを除く指数は前月比+0.3%。",
+      "checkedAt": "2026-10-16",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-pressherald-me-debate-20261015",
+      "sourceId": "obs-pressherald-me-debate-20261015",
+      "locator": "主催紙10月15日速報、19:47司法改革、19:51銃規制、19:54外交。実施と該当発言を照合。全編と終了時刻の確認ではない。",
+      "checkedAt": "2026-10-16",
+      "kind": "observed"
+    },
     {"evidenceId":"ev-obs-ut-texas-poll-20261013","sourceId":"obs-ut-texas-poll-20261013","locator":"9月25日〜10月5日のTexas州投票予定者861人でTalarico氏50%、Paxton氏47%、自由党Brown氏1%、その他2%。標本誤差±3.34ポイント。YouGovオンラインパネルの登録有権者1,200人から投票予定者を抽出。3ポイント差は誤差内で、単一調査から勝敗・支持移動を断定しない。","checkedAt":"2026-10-15","kind":"observed"},
     {"evidenceId":"ev-obs-sabato-ratings-20261014","sourceId":"obs-sabato-ratings-20261014","locator":"公式配信本文はKansasをLean R→Toss-up、NebraskaをLikely R→Lean R、New HampshireをLean D→Likely D、MinnesotaをLikely D→Lean D、MississippiをSafe R→Likely Rへ変更。Sabato単独の議席方向49D・46R・5Toss-upは統合配分とは異なる。","checkedAt":"2026-10-15","kind":"observed"},
     {"evidenceId":"ev-obs-gpb-ga-debate-result-20261014","sourceId":"obs-gpb-ga-debate-result-20261014","locator":"GPBは10月13日の1時間の討論を取材。Ossoff氏は関税・Medicaid削減撤回とIran戦争終結を訴え、Collins氏は関税擁護、国内エネルギー増産、ACA批判を表明。主張の効果と有権者評価は未確認。","checkedAt":"2026-10-15","kind":"reported"},
@@ -4670,10 +4800,10 @@
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-10",
-      "headline": "小差の調査と、2回目の討論会で示した責任論を分ける",
-      "featuredSummary": "Washington Post–Scharの投票予定者調査はJackson 50%・Collins 46%で誤差内。Collinsは連邦資金と超党派性、Jacksonは生活費・中絶・医療で相対的に信頼された。調査は2回の討論会前で、討論会効果とは扱わない。",
-      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。9月30日〜10月5日のWashington Post–Schar調査は投票予定者800人でJackson 50%・Collins 46%。10月8日の第2回討論会では暖房・電力費、Iran戦争、Trump政権との距離、中絶を争った。",
+      "updatedAt": "2026-10-16",
+      "headline": "小差の調査と、最終討論で示した具体策を分ける",
+      "featuredSummary": "最終討論では最高裁の任期制限や銃購入年齢の引上げで立場が分かれた。既掲載の候補支持調査は討論前のもので、討論の効果とは扱わない。",
+      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。9月30日〜10月5日のWashington Post–Schar調査は投票予定者800人でJackson 50%・Collins 46%。10月8日の第2回討論会では暖房・電力費、Iran戦争、Trump政権との距離、中絶を争った。 10月15日の最終討論では司法と銃規制の具体策も比較された。速報の確認範囲は現地19時54分まで。",
       "uncertainty": "Washington Post–Scharの候補差4ポイントは誤差±3.6ポイントの範囲内で、調査期間は両討論会より前。争点別の信頼、候補支持、勝者予想、討論会発言は別の測定であり、発言の効果や支持移動、勝敗は確定できない。",
       "evidenceIds": [
         "ev-obs-ssrs",
@@ -4694,7 +4824,8 @@
         "ev-obs-marist-me-20261006",
         "ev-obs-wapo-schar-me-20261009",
         "ev-obs-wmtw-me-debate-result-20261008",
-        "ev-obs-maine-morning-star-debate-20261008"
+        "ev-obs-maine-morning-star-debate-20261008",
+        "ev-obs-pressherald-me-debate-20261015"
       ],
       "materials": [
         {
@@ -4706,8 +4837,8 @@
           "evidenceIds": [
             "ev-obs-collins",
             "ev-obs-maine-public-collins-payout",
-          "ev-obs-jackson-byrne",
-          "ev-obs-reuters-byrne",
+            "ev-obs-jackson-byrne",
+            "ev-obs-reuters-byrne",
             "ev-obs-reuters-canada-tariffs-20260917",
             "ev-obs-wgme-me-debate-opening-20261006",
             "ev-obs-wgme-me-debate-affordability-20261006",
@@ -4757,22 +4888,24 @@
             {
               "candidateId": "cand-me-troy-d-jackson",
               "kind": "observed",
-              "text": "皆保険、薬価引下げ、労働者への減税、連邦での中絶権保護を提案。2010年の反対姿勢から転じ、2023年には州の中絶アクセス拡大法案を共同提出した。",
+              "text": "皆保険、薬価引下げ、労働者への減税、連邦での中絶権保護を提案。2010年の反対姿勢から転じ、2023年には州の中絶アクセス拡大法案を共同提出した。 10月15日討論では最高裁判事の任期制限を支持。",
               "evidenceIds": [
                 "ev-obs-jackson-policy",
-                "ev-obs-vox-me-abortion-20260922"
+                "ev-obs-vox-me-abortion-20260922",
+                "ev-obs-pressherald-me-debate-20261015"
               ]
             },
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "2025年の財政法案と2026年9月のTrumpの5,000ドル給付案には異論を示した。一方、Kavanaugh判事や9月15日のMatthew Byrne判事の承認に投票。Dobbs判決には異論を示したが、Kavanaugh承認票は後悔していないと説明した。",
+              "text": "2025年の財政法案と2026年9月のTrumpの5,000ドル給付案には異論を示した。一方、Kavanaugh判事や9月15日のMatthew Byrne判事の承認に投票。Dobbs判決には異論を示したが、Kavanaugh承認票は後悔していないと説明した。 10月15日討論では最高裁判事の任期制限に反対。",
               "evidenceIds": [
                 "ev-obs-collins",
                 "ev-obs-maine-public-collins-payout",
                 "ev-obs-jackson-byrne",
                 "ev-obs-reuters-byrne",
-                "ev-obs-vox-me-abortion-20260922"
+                "ev-obs-vox-me-abortion-20260922",
+                "ev-obs-pressherald-me-debate-20261015"
               ]
             }
           ]
@@ -6105,11 +6238,12 @@
       "date": "2026-10-14",
       "time": "08:30",
       "timezone": "America/New_York",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-09-15",
+      "checkedAt": "2026-10-16",
       "evidenceIds": [
-        "ev-obs-bls-oct"
+        "ev-obs-bls-oct",
+        "ev-obs-bls-cpi-20261014"
       ],
       "relevance": [
         {
@@ -6149,7 +6283,7 @@
           "materialIds": []
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-cpi-2026-10-14",
       "publicationStatus": "published"
     },
     {
@@ -6296,12 +6430,13 @@
       "date": "2026-10-15",
       "time": "19:00",
       "timezone": "America/New_York",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-10-14",
+      "checkedAt": "2026-10-16",
       "evidenceIds": [
         "ev-obs-maine-debates",
-        "ev-obs-newscentermaine-debate-20261015"
+        "ev-obs-newscentermaine-debate-20261015",
+        "ev-obs-pressherald-me-debate-20261015"
       ],
       "relevance": [
         {
@@ -6314,7 +6449,7 @@
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-me-debate-2026-10-15",
       "publicationStatus": "published"
     },
     {
@@ -6505,6 +6640,76 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-inside-ratings-2026-10-15",
+      "status": "published",
+      "electionIds": [
+        "2026-SC-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-KS-2-regular",
+        "2026-FL-3-special"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-15",
+      "updatedAt": "2026-10-16",
+      "title": "Inside Electionsが5州変更：サウスカロライナも未配分へ",
+      "happened": "共和党現職Darline Graham氏と民主党Annie Andrews氏らのサウスカロライナ上院選で、Inside Electionsが共和党の評価をLikelyからLeanへ弱めた。TexasはTilt RからToss-up、New HampshireはToss-upからTilt D、KansasはLikely RからTilt R、Florida特別選挙はSolid RからLikely Rへ変更した。",
+      "meaning": "2機関とも同じ党をLikely以上と評価した議席だけを配分する既存方式では、SCを共和党側から未配分へ移し、民主43・共和44・未配分13となる。TXは2機関とも接戦、NHは民主党方向で一致しても弱い優勢のため未配分を維持。KSも未配分、FLは共和党側を維持する。",
+      "uncertainty": "実際に議席を失った、あるいは勝率が変わったという数字ではない。評価理由の会員本文は未取得。SCの詳細な候補者比較は準備中で、他州の政策材料を流用しない。",
+      "evidenceIds": [
+        "ev-obs-inside-ratings-20261015"
+      ]
+    },
+    {
+      "updateId": "obs-update-me-debate-2026-10-15",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": "me-debate-2026-10-15",
+      "newsId": null,
+      "eventDate": "2026-10-15",
+      "updatedAt": "2026-10-16",
+      "title": "メーン最終討論を実施：司法・銃規制の相違を確認",
+      "happened": "メーン上院選の共和党現職Susan Collins氏と民主党Troy Jackson元州上院議長が10月15日、Bangorで討論した。主催紙の速報では、Jackson氏が最高裁判事の任期制限を支持し、Collins氏は反対。銃購入年齢の引上げにはCollins氏が検討の余地を示し、Jackson氏は反対した。",
+      "meaning": "同じ場で示した具体策を比較する材料。党派の一般像だけで両候補の立場を決めず、政策ごとの一致と相違を見る。",
+      "uncertainty": "確認できた速報は現地19時54分まで。実施は確認済みだが全編・終了時の発言は未確認。提案の成立、効果、討論の勝敗、有権者の支持変化は確認できない。",
+      "evidenceIds": [
+        "ev-obs-pressherald-me-debate-20261015"
+      ]
+    },
+    {
+      "updateId": "obs-update-cpi-2026-10-14",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular",
+        "2026-IA-2-regular",
+        "2026-NC-2-regular",
+        "2026-GA-2-regular",
+        "2026-KS-2-regular",
+        "2026-MN-2-regular",
+        "2026-NE-2-regular",
+        "2026-SC-2-regular",
+        "2026-OH-3-special"
+      ],
+      "eventId": "bls-cpi-2026-10-14",
+      "newsId": null,
+      "eventDate": "2026-10-14",
+      "updatedAt": "2026-10-16",
+      "title": "9月の米物価は前月比0.6%上昇：ガソリンが大きく寄与",
+      "happened": "BLSは10月14日、9月の消費者物価指数CPI-Uを公表した。総合は季節調整済み前月比0.6%上昇、前年同月比3.7%上昇。ガソリンは前月比9.1%上昇し、総合の月次上昇の半分超を占めた。食品・エネルギーを除く指数は前月比0.3%上昇した。",
+      "meaning": "接戦州の候補者が訴える生活費対策を読む全国の背景。物価水準が下がったかと、上昇率が鈍ったかを区別し、燃料・医療・住宅など対策の対象を確かめる材料になる。",
+      "uncertainty": "全国の価格統計であり、州別家計の負担、候補者の責任・政策効果、有権者の支持を測る調査ではない。これだけで選挙情勢を変更しない。",
+      "evidenceIds": [
+        "ev-obs-bls-cpi-20261014"
+      ]
+    },
     {
       "updateId": "obs-update-tx-ut-poll-2026-10-13",
       "status": "published",

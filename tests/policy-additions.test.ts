@@ -48,7 +48,7 @@ describe('ten-state additive policy evidence', () => {
       '2026-OH-3-special', '2026-TX-2-regular', '2026-IA-2-regular', '2026-NC-2-regular',
       '2026-GA-2-regular', '2026-KS-2-regular',
     ];
-    expect(new Set(data.focusElectionIds)).toEqual(new Set([...researchedElectionIds, '2026-MN-2-regular', '2026-NE-2-regular']));
+    expect(new Set(data.focusElectionIds)).toEqual(new Set([...researchedElectionIds, '2026-MN-2-regular', '2026-NE-2-regular', '2026-SC-2-regular']));
     for (const electionId of researchedElectionIds) {
       for (const themeId of ['healthcare', 'tariffs']) {
         expect(data.factors.some(f => f.electionId === electionId && f.themeId === themeId)).toBe(true);
