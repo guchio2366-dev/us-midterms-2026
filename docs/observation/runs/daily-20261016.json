@@ -5,7 +5,7 @@
   "outcome": "partial",
   "reviewMode": "Friday daily review: original six states and integrated unallocated states, now thirteen including SC; not the Monday full comparison audit",
   "baseCommit": "fdff6ca29bcbd9e644fc8d53a7b997098989e862",
-  "publishedCommit": null,
+  "publishedCommit": "23f79f7cb337ff6c85cd6af0afef5bf234c8ec5b",
   "revision": "observation-2026-10-16-inside-ratings-cpi-maine",
   "checkedSourceIds": [
     "obs-inside",
@@ -372,9 +372,9 @@
   "verification": {
     "tests": "success: npm test (458 passed, 33 files); initial local expected-count/date assertions corrected before publication",
     "build": "success: npm run build; final post-log validation and git diff --check passed",
-    "mainFastForward": "pending",
-    "pages": "pending",
-    "publicContent": "pending"
+    "mainFastForward": "success: expected main fdff6ca29bcbd9e644fc8d53a7b997098989e862 advanced to its direct child 23f79f7cb337ff6c85cd6af0afef5bf234c8ec5b with force=false",
+    "pages": "success: https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/38828724953 (content commit)",
+    "publicContent": "success: live page reloaded after deployment; D43/R44/U13, 13 focus tabs, SC unallocated map and explicitly unrecorded policy materials, all three new article titles, CPI body 0.6%/3.7%/9.1% with permanent BLS link and original-event button verified. Historical saved-scenario baselines and shared URLs verified by regression tests."
   },
   "note": "情報源台帳の全件照合ではない。notCheckedSourceIdsの成功日・本文更新日は進めていない。新調査原票、Maine全編、Sabato再取得などを変化なしとして扱わない。"
 }
