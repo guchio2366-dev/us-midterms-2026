@@ -395,7 +395,19 @@
     "artifact": "dist/assets/index-DscVOEmg.js; CSS index-Dsomt5uB.css. Generated dist is not included in the source commit; Pages rebuilds it."
   },
   "deployment": {
-    "status": "pending",
-    "note": "検証・公開結果は後続の実行記録コミットへ追記。"
+    "status": "success",
+    "publishedCommit": "1e4402817da1ac2475cc91965e0f4cd87beb8af1",
+    "workflowRunId": 38985286522,
+    "workflowUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/38985286522",
+    "workflowCompletedAt": "2026-10-17T00:13:09Z",
+    "publicVerifiedAt": "2026-10-17T00:14:49Z",
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicChecks": [
+      "公開DOMのscriptがindex-DscVOEmg.jsと一致",
+      "ME記事詳細で49%対47%、500人、±4.4pt、最終討論前・York County別標本の留保を確認",
+      "TX記事詳細で質問票回答とPaxton過去発言の区別、事業者負担・燃料税の相違、効果未確認を確認",
+      "最終確認2026/10/17 09:08、民主43・共和44・未配分13、予定日経過の結果確認待ち2件を確認"
+    ],
+    "note": "最新mainを再確認し、expected_sha付きforce:falseの通常fast-forwardで公開。配備成功と公開本文確認後に本記録を追記。"
   }
 }
