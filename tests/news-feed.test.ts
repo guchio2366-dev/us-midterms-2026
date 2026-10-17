@@ -12,9 +12,11 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(119);
+    expect(recent).toHaveLength(121);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(105);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(107);
+    expect(recent.some(item=>item.sourceId==='obs-update-me-suffolk-2026-10-14')).toBe(true);
+    expect(recent.some(item=>item.sourceId==='obs-update-tx-qa-2026-10-13')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-sabato-ratings-2026-10-14')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-ga-debate-2026-10-13')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-ak-trump-rally-2026-10-13')).toBe(true);

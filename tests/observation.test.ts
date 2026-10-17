@@ -17,6 +17,27 @@ const event=(overrides:Partial<ObservationEvent>={}):ObservationEvent=>{
 };
 
 describe('接戦州の編集データ',()=>{
+  it('keeps the Suffolk statewide poll distinct from the later final debate and county sample',()=>{
+    const u=data.updates.find(u=>u.updateId==='obs-update-me-suffolk-2026-10-14')!;
+    expect(u.happened).toContain('Jackson 49%・Collins 47%');
+    expect(u.uncertainty).toContain('±4.4');
+    expect(u.uncertainty).toContain('最終討論より前');
+    expect(u.uncertainty).toContain('York County');
+    expect(u.eventId).toBeNull();
+  });
+  it('distinguishes direct questionnaire answers from reconstructed statements',()=>{
+    const u=data.updates.find(u=>u.updateId==='obs-update-tx-qa-2026-10-13')!;
+    expect(u.uncertainty).toContain('Paxton氏本人の新たな回答ではない');
+    expect(u.uncertainty).toContain('効果、有権者の支持は未確認');
+  });
+  it('does not publish an unverified BGSU poll or complete inaccessible event results',()=>{
+    expect(data.sources.find(s=>s.sourceId==='obs-bgsu-oh-20261016')!.lastSuccessAt).toBeNull();
+    expect(data.updates.some(u=>u.evidenceIds.includes('ev-obs-bgsu-oh-20261016'))).toBe(false);
+    for(const id of ['ak-senate-debate-2026-10-15','ga-trump-dalton-rally-2026-10-16']){
+      const e=data.events.find(e=>e.eventId===id)!;
+      expect(e.status).toBe('scheduled');expect(e.resultUpdateId).toBeNull();
+    }
+  });
   it('connects every initial focus race, candidate, and source without orphaned references',()=>{
     const initial=['2026-AK-2-regular','2026-ME-2-regular','2026-MI-2-regular','2026-OH-3-special','2026-TX-2-regular','2026-NH-2-regular'];
     for(const id of initial) expect(observationFor(id),id).toBeDefined();

@@ -150,6 +150,6 @@ describe('candidate roster verification and saved assumptions', () => {
     expect(monitoringStatus(observationData,new Date('2026-10-02T01:00:00Z'))).not.toContain('確認時刻の記録に不整合');
     expect(monitoringStatus(observationData,new Date('2026-10-02T01:00:00Z'))).toContain('一部の情報源を未確認');
     expect(monitoringMarkup(new Date('2026-10-02T01:00:00Z'))).not.toContain('実時刻は未確認');
-    expect(monitoringMarkup(new Date('2026-10-02T01:00:00Z'))).toContain('評価更新、統計の公表日、速報の確認範囲、当日の成功日時を分離');
+    expect(monitoringMarkup(new Date('2026-10-02T01:00:00Z'))).toContain('実査日・公表日・分析更新日を区別');
   });
 });

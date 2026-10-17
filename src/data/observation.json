@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-16-inside-ratings-cpi-maine",
+  "revision": "observation-2026-10-17-maine-poll-texas-comparison",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,19 +8,20 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-16T00:09:31Z",
+    "lastCompletedAt": "2026-10-17T00:08:35Z",
     "latestRun": {
-      "runId": "daily-20261016",
+      "runId": "daily-20261017",
       "timingIntegrity": "consistent",
-      "timingNote": "評価更新、統計の公表日、速報の確認範囲、当日の成功日時を分離。未取得を変化なしとしない。",
-      "startedAt": "2026-10-16T00:02:23Z",
-      "completedAt": "2026-10-16T00:09:31Z",
+      "timingNote": "成功日時は各原文を照合後に時計で記録。実査日・公表日・分析更新日を区別し、失敗は前回成功日時を保持。",
+      "startedAt": "2026-10-17T00:02:13Z",
+      "completedAt": "2026-10-17T00:08:35Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-inside",
-        "obs-inside-ratings-20261015",
-        "obs-bls-cpi-20261014",
-        "obs-white-house-midterm-travel-20261013"
+        "obs-suffolk-me-20261014",
+        "obs-tribune-tx-qa-20261013",
+        "obs-jackson-news-20261017",
+        "obs-sabato-ratings-20261014",
+        "obs-nexstar-ks-debate-20261021"
       ],
       "pendingSourceIds": [
         "obs-insider-ak-ks-mi-20261011",
@@ -36,12 +37,150 @@
         "obs-white-house",
         "obs-sabato",
         "obs-insider-tx-ks-me-20261015",
-        "obs-pressherald-me-debate-20261015"
+        "obs-pressherald-me-debate-20261015",
+        "obs-bgsu-oh-20261016",
+        "obs-alaska-debate-result-20261015",
+        "obs-ga-trump-result-20261016",
+        "obs-white-house-ga-20261016",
+        "obs-inside"
       ],
-      "note": "Inside Electionsの変更5件を公式APIで確認し、SCを追加した13州・D43/R44/未配分13へ。CPI結果とMaine討論実施を元予定へ相互リンク。Maine全編・新調査原票・Sabato公式の再取得等は未完了。確認のみの州の分析日は保持。"
+      "note": "MaineのSuffolk原票とTexasの候補者質問票を照合し公開。BGSU Ohio原票PDFは403、Alaska討論・Georgia大統領集会の結果本文は取得失敗で結果確認待ち。13州の検索は実施したが全登録先・全比較項目を照合した日ではない。D43/R44/未配分13と保存共有基準を維持。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-suffolk-me-20261014",
+      "title": "Suffolk University Maine Likely Voters — October 8–11, 2026",
+      "publisher": "Suffolk University",
+      "url": "https://www.suffolk.edu/-/media/suffolk/documents/academics/research-at-suffolk/suprc/polls/other-states/2026/10_14_2026_maine_statewide_marginals.pdf?hash=7FCED62D765CBEF2DB2EFD7ADF0213034C981FE0&la=en",
+      "publishedAt": "2026-10-14",
+      "referencePeriod": "Suffolk University調査。10月8〜11日、投票する可能性が非常に高い・ある程度ある登録有権者500人、固定・携帯電話の生インタビュー、全体の標本誤差±4.4ポイント。方法ページと原票Q7・Q9を照合。Q7は当日なら誰へ投票／傾いているか、Collins 47.0%、Jackson 49.0%、未定3.8%、回答拒否0.2%。York County 300人の別標本は州全体へ転用しない。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": "2026-10-17",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "Suffolk University調査。10月8〜11日、投票する可能性が非常に高い・ある程度ある登録有権者500人、固定・携帯電話の生インタビュー、全体の標本誤差±4.4ポイント。方法ページと原票Q7・Q9を照合。Q7は当日なら誰へ投票／傾いているか、Collins 47.0%、Jackson 49.0%、未定3.8%、回答拒否0.2%。York County 300人の別標本は州全体へ転用しない。",
+      "alternativeUrl": "https://www.suffolk.edu/academics/research-at-suffolk/political-research-center/polls/other-states",
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-17T00:08:35Z"
+    },
+    {
+      "sourceId": "obs-tribune-tx-qa-20261013",
+      "title": "On the issues: A Q&A with U.S. Senate candidates James Talarico, Ken Paxton and Ted Brown",
+      "publisher": "The Texas Tribune",
+      "url": "https://www.texastribune.org/2026/10/13/talarico-paxton-texas-us-senate-2026-election-q-and-a/",
+      "publishedAt": "2026-10-13",
+      "referencePeriod": "10月13日付候補者質問票。データセンターと連邦ガソリン税の節を照合。Talarico・Ted Brownは回答、Paxtonは回答せず記者が過去の発言から構成。候補者の公約と実施効果・有権者評価を区別。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": "2026-10-17",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "10月13日付候補者質問票。データセンターと連邦ガソリン税の節を照合。Talarico・Ted Brownは回答、Paxtonは回答せず記者が過去の発言から構成。候補者の公約と実施効果・有権者評価を区別。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-17T00:08:35Z"
+    },
+    {
+      "sourceId": "obs-bgsu-oh-20261016",
+      "title": "BGSU October 2026 Ohio Likely Voters Poll",
+      "publisher": "Bowling Green State University",
+      "url": "https://www.bgsu.edu/arts-and-sciences/democracy-and-public-policy-research-network/bgsu-poll.html",
+      "publishedAt": null,
+      "referencePeriod": "公式分析本文で9月29日〜10月9日、YouGovと実施したウェブ調査、Ohio投票予定者1000人、誤差±3.95ポイントを確認。Brown 48%・Husted 42%、勝者予想48%対48%は別設問。Toplinesリポジトリは取得したがPDFは403。設問全文・全選択肢・Ohio標本の詳細な重み付けは未照合のため、新しい支持率の公開は保留。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公式分析本文で9月29日〜10月9日、YouGovと実施したウェブ調査、Ohio投票予定者1000人、誤差±3.95ポイントを確認。Brown 48%・Husted 42%、勝者予想48%対48%は別設問。Toplinesリポジトリは取得したがPDFは403。設問全文・全選択肢・Ohio標本の詳細な重み付けは未照合のため、新しい支持率の公開は保留。",
+      "alternativeUrl": "https://scholarworks.bgsu.edu/depo/31/",
+      "checkStatus": "partial",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-alaska-debate-result-20261015",
+      "title": "Sullivan and Peltola trade verbal blows during Debate for the State",
+      "publisher": "Alaska Public Media",
+      "url": "https://alaskapublic.org/news/politics/elections/2026-10-15/sullivan-and-peltola-trade-verbal-blows-accuse-the-other-of-lying-during-debate-for-the-state",
+      "publishedAt": "2026-10-15",
+      "referencePeriod": "検索で結果記事を発見。記事と主催局動画ページの本文取得に失敗。検索抜粋から実施・発言・結果記事を公開せず、元予定ak-senate-debate-2026-10-15は結果確認待ち。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "検索で結果記事を発見。記事と主催局動画ページの本文取得に失敗。検索抜粋から実施・発言・結果記事を公開せず、元予定ak-senate-debate-2026-10-15は結果確認待ち。",
+      "alternativeUrl": "https://video.alaskapublic.org/video/debate-for-the-state-2026-us-senate-n8szip/",
+      "checkStatus": "unavailable",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-ga-trump-result-20261016",
+      "title": "Trump rallies with top Republicans in Georgia",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/trump-midterms-georgia-mike-collins-rick-jackson-ff7106bde832ad59f318daff14018dbf",
+      "publishedAt": "2026-10-16",
+      "referencePeriod": "検索でDalton集会結果を発見したが本文を取得できず、WABE・FOX5・WRDW等の原文も取得失敗。元予定ga-trump-dalton-rally-2026-10-16の実施・発言は照合待ち。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "検索でDalton集会結果を発見したが本文を取得できず、WABE・FOX5・WRDW等の原文も取得失敗。元予定ga-trump-dalton-rally-2026-10-16の実施・発言は照合待ち。",
+      "alternativeUrl": null,
+      "checkStatus": "unavailable",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-white-house-ga-20261016",
+      "title": "President Trump Returns to Georgia with a Record of Results",
+      "publisher": "The White House",
+      "url": "https://www.whitehouse.gov/releases/2026/10/president-trump-returns-to-georgia-with-a-record-of-results/",
+      "publishedAt": "2026-10-16",
+      "referencePeriod": "公式発表を検索で発見したが本文の取得失敗。将来の対象州日程の新規確定や集会結果へ転用しない。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
+      "category": "official",
+      "cadence": "daily",
+      "method": "公式発表を検索で発見したが本文の取得失敗。将来の対象州日程の新規確定や集会結果へ転用しない。",
+      "alternativeUrl": null,
+      "checkStatus": "unavailable",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-jackson-news-20261017",
+      "title": "Troy Jackson news and press index",
+      "publisher": "Troy Jackson campaign",
+      "url": "https://www.jacksonformaine.com/news",
+      "publishedAt": null,
+      "referencePeriod": "公式ニュース一覧の先頭10月13日分から10月6日分まで確認。陣営の討論勝利宣言は中立的な勝敗評価としない。個別記事・全期間の照合完了を意味しない。",
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": "2026-10-17",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "daily",
+      "method": "公式ニュース一覧の先頭10月13日分から10月6日分まで確認。陣営の討論勝利宣言は中立的な勝敗評価としない。個別記事・全期間の照合完了を意味しない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-17T00:08:35Z"
+    },
     {
       "sourceId": "obs-insider-tx-ks-me-20261015",
       "title": "InsiderAdvantage公式関連記事欄：10月15日付Texas・Kansas・Maine調査",
@@ -169,15 +308,21 @@
       "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
       "publishedAt": "2026-10-14",
       "referencePeriod": "Kansas、Nebraska、New Hampshire、Minnesota、Mississippiの上院評価を変更。Sabato単独では民主方向49・共和方向46・Toss-up 5。",
-      "retrievedAt": "2026-10-15",
-      "contentVerifiedAt": "2026-10-15",
-      "electionIds": ["2026-KS-2-regular", "2026-NE-2-regular", "2026-NH-2-regular", "2026-MN-2-regular", "2026-MS-2-regular"],
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": "2026-10-17",
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NE-2-regular",
+        "2026-NH-2-regular",
+        "2026-MN-2-regular",
+        "2026-MS-2-regular"
+      ],
       "category": "rating",
       "cadence": "daily",
       "method": "執筆者の公式Substack配信の本文と変更理由を原文照合。Center for Politics本体はアクセス制限のため配信原文を用いた。",
       "alternativeUrl": "https://centerforpolitics.org/crystalball/five-senate-rating-changes-as-close-battle-for-majority-control-rages/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-15T00:05:35Z"
+      "lastSuccessAt": "2026-10-17T00:08:35Z"
     },
     {
       "sourceId": "obs-gpb-ga-debate-result-20261014",
@@ -600,15 +745,17 @@
       "url": "https://www.nexstar.tv/nexstars-kansas-television-stations-to-air-exclusive-live-debate-between-candidates-for-us-senate/",
       "publishedAt": "2026-10-07",
       "referencePeriod": "10月21日19〜20時（米中部時間）のKansas上院候補討論会。公式単独発表は曜日を誤記し、先行する公式一覧は水曜と記載。",
-      "retrievedAt": "2026-10-11",
-      "contentVerifiedAt": "2026-10-11",
-      "electionIds": ["2026-KS-2-regular"],
+      "retrievedAt": "2026-10-17",
+      "contentVerifiedAt": "2026-10-17",
+      "electionIds": [
+        "2026-KS-2-regular"
+      ],
       "category": "calendar",
       "cadence": "weekly",
       "method": "主催社の単独発表と9月29日の公式討論会一覧で日付・時刻・参加候補・会場を相互照合し、曜日の不一致を注記",
       "alternativeUrl": "https://www.nexstar.tv/nexstars-local-television-stations-to-host-and-air-41-live-candidate-debates-prior-to-midterm-elections/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-11T00:06:00Z"
+      "lastSuccessAt": "2026-10-17T00:08:35Z"
     },
     {
       "sourceId": "obs-wapo-schar-me-20261009",
@@ -2645,7 +2792,7 @@
       "url": "https://www.ohiosos.gov/elections/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-28",
+      "retrievedAt": "2026-10-17",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-OH-3-special"
@@ -2654,7 +2801,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "unavailable",
+      "checkStatus": "partial",
       "lastSuccessAt": null
     },
     {
@@ -2683,7 +2830,7 @@
       "url": "https://www.sos.nh.gov/elections",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-09-28",
+      "retrievedAt": "2026-10-17",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-NH-2-regular"
@@ -2775,7 +2922,7 @@
       "cadence": "daily",
       "method": "公式APIのcurrent_rating・previous_rating・last_updatedを全35選挙で照合し、生成時刻と評価変更時刻を区別",
       "alternativeUrl": null,
-      "checkStatus": "checked",
+      "checkStatus": "partial",
       "lastSuccessAt": "2026-10-16T00:09:31Z"
     },
     {
@@ -3843,6 +3990,20 @@
   ],
   "evidenceRefs": [
     {
+      "evidenceId": "ev-obs-suffolk-me-20261014",
+      "sourceId": "obs-suffolk-me-20261014",
+      "locator": "原票p2 Q7、p3 Q9。方法は公式Other StatesページのOctober 14 Maine節。",
+      "checkedAt": "2026-10-17",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-tribune-tx-qa-20261013",
+      "sourceId": "obs-tribune-tx-qa-20261013",
+      "locator": "冒頭の回答者説明、Data centers節、Federal gas tax節。Paxtonは過去発言から記者が構成。",
+      "checkedAt": "2026-10-17",
+      "kind": "claim"
+    },
+    {
       "evidenceId": "ev-obs-inside-ratings-20261015",
       "sourceId": "obs-inside-ratings-20261015",
       "locator": "last_updated 2026-10-15T13:35:48-05:00。FL Solid Republican→Likely Republican、TX Tilt Republican→Toss-up、SC Likely Republican→Lean Republican、NH Toss-up→Tilt Democrat、KS Likely Republican→Tilt Republican。全35選挙の評価を照合。理由の本文は未確認。",
@@ -4800,10 +4961,10 @@
     {
       "electionId": "2026-ME-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-16",
+      "updatedAt": "2026-10-17",
       "headline": "小差の調査と、最終討論で示した具体策を分ける",
-      "featuredSummary": "最終討論では最高裁の任期制限や銃購入年齢の引上げで立場が分かれた。既掲載の候補支持調査は討論前のもので、討論の効果とは扱わない。",
-      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。9月30日〜10月5日のWashington Post–Schar調査は投票予定者800人でJackson 50%・Collins 46%。10月8日の第2回討論会では暖房・電力費、Iran戦争、Trump政権との距離、中絶を争った。 10月15日の最終討論では司法と銃規制の具体策も比較された。速報の確認範囲は現地19時54分まで。",
+      "featuredSummary": "Suffolkの10月8〜11日調査はJackson 49%・Collins 47%で小差。燃料費が家計への最大の負担という回答もあるが、支持の理由や最終討論の効果とは断定できない。",
+      "lead": "共和党現職スーザン・コリンズ上院議員と、民主党トロイ・ジャクソン元州上院議長が争う。10月8〜11日のSuffolk調査は投票予定者500人でJackson 49%・Collins 47%、全体の標本誤差±4.4ポイント。10月15日の最終討論では司法と銃規制の具体策も比較されたが、この調査は討論前のもの。討論速報の確認範囲は現地19時54分まで。",
       "uncertainty": "Washington Post–Scharの候補差4ポイントは誤差±3.6ポイントの範囲内で、調査期間は両討論会より前。争点別の信頼、候補支持、勝者予想、討論会発言は別の測定であり、発言の効果や支持移動、勝敗は確定できない。",
       "evidenceIds": [
         "ev-obs-ssrs",
@@ -4825,7 +4986,8 @@
         "ev-obs-wapo-schar-me-20261009",
         "ev-obs-wmtw-me-debate-result-20261008",
         "ev-obs-maine-morning-star-debate-20261008",
-        "ev-obs-pressherald-me-debate-20261015"
+        "ev-obs-pressherald-me-debate-20261015",
+        "ev-obs-suffolk-me-20261014"
       ],
       "materials": [
         {
@@ -4965,19 +5127,17 @@
             {
               "candidateId": "cand-me-troy-d-jackson",
               "kind": "observed",
-              "text": "Washington Post–Schar調査で支持50%。中絶、汚職、Maine理解、生活費、医療ではCollinsより信頼された。候補支持と争点別評価は別設問で、得票理由の確定ではない。",
+              "text": "Suffolkの10月8〜11日調査で49%、Collins氏47%。投票予定者500人、標本誤差±4.4ポイント。10月15日の最終討論より前の調査であり、その効果や勝敗を示さない。",
               "evidenceIds": [
-                "ev-obs-cbs-me-20261002",
-                "ev-obs-wapo-schar-me-20261009"
+                "ev-obs-suffolk-me-20261014"
               ]
             },
             {
               "candidateId": "cand-me-susan-m-collins",
               "kind": "observed",
-              "text": "Washington Post–Schar調査で支持46%。連邦資金獲得と超党派性ではJacksonより信頼された一方、58%がTrumpを支持し過ぎると回答。支持と能力・政権距離の評価は別設問である。",
+              "text": "Suffolkの10月8〜11日調査で47%、Jackson氏49%。投票予定者500人、標本誤差±4.4ポイント。10月15日の最終討論より前の調査であり、その効果や勝敗を示さない。",
               "evidenceIds": [
-                "ev-obs-cbs-me-20261002",
-                "ev-obs-wapo-schar-me-20261009"
+                "ev-obs-suffolk-me-20261014"
               ]
             }
           ]
@@ -5406,7 +5566,7 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-09",
+      "updatedAt": "2026-10-17",
       "headline": "経済・移民への評価と、支持層の投票参加",
       "featuredSummary": "YouGovの投票予定者調査はTalarico 50%・Paxton 44%。Trump大統領も討論を求め、Talaricoは受諾したが、双方合意の日程はない。",
       "lead": "民主党James Talarico州下院議員と共和党Ken Paxton州司法長官が争う。YouGovの9月28日〜10月5日調査はTalarico氏50%、Paxton氏44%。Trump大統領は両候補に討論を求め、Talarico氏は賛同したが、Paxton氏は確認時点で公に回答していない。日時・会場・主催者が合意された討論会はない。",
@@ -5424,17 +5584,18 @@
         "ev-obs-tpor-tx-20260925",
         "ev-obs-houston-chronicle-paxton-china-donors-20260922",
         "ev-obs-yougov-tx-20261007",
-        "ev-obs-ap-tx-debate-20261008"
+        "ev-obs-ap-tx-debate-20261008",
+        "ev-obs-tribune-tx-qa-20261013"
       ],
       "materials": [
         {
           "materialId": "tx-turnout",
           "title": "支持が実際の投票になるか",
           "fact": "9月24〜28日のFox調査はLVでTalarico 51%・Paxton 49%、RVで53%・46%。先行するEmerson、ReconMR、Texas Public Opinion Researchとも方法、実査期間、言語、標本数、投票参加モデルが異なる。",
-        "meaning": "一つの数字で決めず、候補者評価、争点、無党派層、実際の投票参加が後続調査でも再現するかを見る。",
+          "meaning": "一つの数字で決めず、候補者評価、争点、無党派層、実際の投票参加が後続調査でも再現するかを見る。",
           "limit": "異なる調査やFoxのLV・RVの差は、同じ人の支持率上昇・低下を示さない。党派・年齢・人種別の部分標本は州全体より不確か。",
           "evidenceIds": [
-          "ev-obs-emerson-tx-20260917",
+            "ev-obs-emerson-tx-20260917",
             "ev-obs-reconmr-tx-20260917",
             "ev-obs-tpor-tx-20260925",
             "ev-obs-fox-tx-20261001"
@@ -5486,19 +5647,21 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "claim",
-              "text": "最低賃金の引上げ、富裕層・法人への課税、医療費や住宅費の軽減、子ども税額控除の拡大を提案。",
+              "text": "最低賃金の引上げ、富裕層・法人への課税、医療費や住宅費の軽減、子ども税額控除の拡大を提案。 10月13日付質問票ではデータセンターの設備費を事業者負担とし、連邦の最低基準と地元の決定権を求めた。",
               "evidenceIds": [
                 "ev-obs-talarico-policy",
-                "ev-obs-houston-chronicle-tx-rally-result-20260921"
+                "ev-obs-houston-chronicle-tx-rally-result-20260921",
+                "ev-obs-tribune-tx-qa-20261013"
               ]
             },
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "claim",
-              "text": "減税、国境管理と送還、America First政策の推進を掲げる。9月21日の集会では医療・住宅・育児の税負担軽減を具体策として挙げた。",
+              "text": "減税、国境管理と送還、America First政策の推進を掲げる。9月21日の集会では医療・住宅・育児の税負担軽減を具体策として挙げた。 Tribuneが過去発言から整理した立場ではデータセンターの設備費の事業者負担・節水・税優遇終了を支持。質問票には回答していない。",
               "evidenceIds": [
                 "ev-obs-paxton-policy",
-                "ev-obs-houston-chronicle-tx-rally-result-20260921"
+                "ev-obs-houston-chronicle-tx-rally-result-20260921",
+                "ev-obs-tribune-tx-qa-20261013"
               ]
             }
           ]
@@ -5558,26 +5721,26 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "observed",
-          "text": "YouGovの9月28日〜10月5日調査で50%、Paxton氏44%。9月の他調査でも数値上競り合うが、広告を『競争力の証拠』とする本人の解釈と、代表調査による有権者評価を分ける。",
-            "evidenceIds": [
-              "ev-obs-emerson-tx-20260917",
+              "text": "YouGovの9月28日〜10月5日調査で50%、Paxton氏44%。9月の他調査でも数値上競り合うが、広告を『競争力の証拠』とする本人の解釈と、代表調査による有権者評価を分ける。",
+              "evidenceIds": [
+                "ev-obs-emerson-tx-20260917",
                 "ev-obs-reconmr-tx-20260917",
                 "ev-obs-houston-chronicle-tx-ads-20260919",
-            "ev-obs-tpor-tx-20260925",
-            "ev-obs-yougov-tx-20261007"
+                "ev-obs-tpor-tx-20260925",
+                "ev-obs-yougov-tx-20261007"
               ]
             },
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "observed",
-          "text": "YouGovの9月28日〜10月5日調査で44%、Talarico氏50%。9月の他調査でも40%台だった。接戦への本人の説明、集会の拍手、広告支出を州全体の支持変化とは扱わない。",
-            "evidenceIds": [
-              "ev-obs-emerson-tx-20260917",
+              "text": "YouGovの9月28日〜10月5日調査で44%、Talarico氏50%。9月の他調査でも40%台だった。接戦への本人の説明、集会の拍手、広告支出を州全体の支持変化とは扱わない。",
+              "evidenceIds": [
+                "ev-obs-emerson-tx-20260917",
                 "ev-obs-reconmr-tx-20260917",
                 "ev-obs-houston-chronicle-tx-ads-20260919",
                 "ev-obs-houston-chronicle-tx-rally-result-20260921",
-            "ev-obs-tpor-tx-20260925",
-            "ev-obs-yougov-tx-20261007"
+                "ev-obs-tpor-tx-20260925",
+                "ev-obs-yougov-tx-20261007"
               ]
             }
           ]
@@ -6046,9 +6209,18 @@
       "timezone": "America/Chicago",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-10-11",
-      "evidenceIds": ["ev-obs-nexstar-ks-debate-20261021"],
-      "relevance": [{"electionId":"2026-KS-2-regular","why":"Marshall氏とHamilton氏が経済成長、インフラ、医療を同じ場で説明する州内放送の討論会。","watch":"日付・時刻と実施を再確認する。単独発表は曜日を誤記しているため、延期・訂正を追い、回答を有権者評価へ置き換えない。","materialIds":[]}],
+      "checkedAt": "2026-10-17",
+      "evidenceIds": [
+        "ev-obs-nexstar-ks-debate-20261021"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-KS-2-regular",
+          "why": "Marshall氏とHamilton氏が経済成長、インフラ、医療を同じ場で説明する州内放送の討論会。",
+          "watch": "日付・時刻と実施を再確認する。単独発表は曜日を誤記しているため、延期・訂正を追い、回答を有権者評価へ置き換えない。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": null,
       "publicationStatus": "published"
     },
@@ -6640,6 +6812,42 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-me-suffolk-2026-10-14",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-14",
+      "updatedAt": "2026-10-17",
+      "title": "メーン州：Suffolk調査は49%対47%、最終討論前の小差",
+      "happened": "共和党現職スーザン・コリンズ上院議員と民主党トロイ・ジャクソン元州上院議長のメーン上院選。Suffolk Universityが10月14日に公表した調査はJackson 49%・Collins 47%、未定3.8%・回答拒否0.2%。10月8〜11日に投票予定の登録有権者500人へ固定・携帯電話で生インタビューした。",
+      "meaning": "家計に最も影響する経済問題ではガソリン・燃料価格が35.6%で最多。暖房費など生活費をめぐる候補者の具体策を比べる背景になるが、これは候補者支持とは別の質問である。",
+      "uncertainty": "全体の標本誤差は±4.4ポイント。2ポイント差から勝敗や支持の変化を断定しない。10月15日の最終討論より前の実査なので討論の効果ではない。別途調査したYork County 300人の結果を州全体へ置き換えない。",
+      "evidenceIds": [
+        "ev-obs-suffolk-me-20261014"
+      ]
+    },
+    {
+      "updateId": "obs-update-tx-qa-2026-10-13",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-13",
+      "updatedAt": "2026-10-17",
+      "title": "テキサス州：データセンター費用とガソリン税、候補者の具体策を比較",
+      "happened": "共和党ケン・パクストン州司法長官と民主党ジェームズ・タラリコ州下院議員らが争うテキサス上院選。10月13日付Texas Tribune質問票でTalarico氏はデータセンターの設備費の事業者負担、連邦の最低基準、地元の決定権を提案。Paxton氏も費用の事業者負担・節水・税優遇終了を支持してきたと記者が過去発言から整理した。",
+      "meaning": "費用を住民へ転嫁しないという共通点と、規制や地元判断の仕組みを分けて比べられる。燃料税ではTalarico氏が一時停止、Paxton氏が恒久廃止を掲げる。第三党のリバタリアンTed Brown氏も恒久廃止を回答した。",
+      "uncertainty": "質問票に回答したのはTalarico氏とBrown氏で、Paxton氏本人の新たな回答ではない。政策の実現、電気代・燃料価格への効果、有権者の支持は未確認。",
+      "evidenceIds": [
+        "ev-obs-tribune-tx-qa-20261013"
+      ]
+    },
     {
       "updateId": "obs-update-inside-ratings-2026-10-15",
       "status": "published",
