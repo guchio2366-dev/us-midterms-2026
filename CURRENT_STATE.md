@@ -1,5 +1,7 @@
 # 現在の実装・公開状況
 
+2026-10-18・日次観測：Alaska討論とGeorgia大統領集会の結果原文を確認し、元予定と相互参照。Maine最終討論は翌日の主催局詳報まで補足し、Minnesota討論の主催局要旨を追加。Michiganの10月21日討論は19時、KS/NC/IAの大統領発言予定は主催者で確認。BGSU原票PDFは403、全評価表・全比較項目の照合は未完了。D43/R44/未配分13、保存案・共有URL・画面を維持。[情報源別の確認範囲と公開結果](docs/observation/runs/daily-20261018.json)。
+
 2026-10-17・日次観測：MaineのSuffolk調査原票・方法とTexas Tribune候補者質問票を照合。Maineは最終討論前の調査と明記し、Texasは直接回答と記者による過去発言の整理を区別した。BGSU Ohio原票PDFは403、Alaska討論・Georgia大統領集会の結果原文は取得失敗で結果確認待ち。議席配分D43/R44/未配分13、保存案・共有URL・他州の分析日は維持。[情報源別の確認範囲と公開結果](docs/observation/runs/daily-20261017.json)。
 
 2026-10-16・Inside Elections評価変更と予定結果：公式APIの10月15日変更5件を反映。SCがLikely R→Lean Rとなり、新規案の統合配分はD43/R44/未配分13。TXは2機関ともToss-up、NHは弱いD方向で未配分を維持。SCの候補選択・政策入口・理由保存対象を追加し、候補別政策材料は未収録のまま。旧保存案・共有URLの配分は上書きしない。BLSの9月CPI公表とMaine最終討論の実施を元予定へ相互リンク。Maine速報は19:54まで、全編は照合待ち。新調査原票・Sabato公式再取得等の未完了を[実行記録](docs/observation/runs/daily-20261016.json)に明記。

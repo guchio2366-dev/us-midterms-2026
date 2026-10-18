@@ -30,13 +30,30 @@ describe('接戦州の編集データ',()=>{
     expect(u.uncertainty).toContain('Paxton氏本人の新たな回答ではない');
     expect(u.uncertainty).toContain('効果、有権者の支持は未確認');
   });
-  it('does not publish an unverified BGSU poll or complete inaccessible event results',()=>{
+  it('withholds the unverified BGSU poll and links newly verified event results',()=>{
     expect(data.sources.find(s=>s.sourceId==='obs-bgsu-oh-20261016')!.lastSuccessAt).toBeNull();
     expect(data.updates.some(u=>u.evidenceIds.includes('ev-obs-bgsu-oh-20261016'))).toBe(false);
     for(const id of ['ak-senate-debate-2026-10-15','ga-trump-dalton-rally-2026-10-16']){
       const e=data.events.find(e=>e.eventId===id)!;
+      expect(e.status).toBe('completed');
+      expect(data.updates.find(u=>u.updateId===e.resultUpdateId)?.eventId).toBe(id);
+      expect(e.checkedAt).toBe('2026-10-18');
+    }
+  });
+  it('uses presidential remarks times rather than program starts',()=>{
+    for(const state of ['ks','ia']){
+      const e=data.events.find(e=>e.eventId===`${state}-trump-rally-2026-10-${state==='ks'?'19':'22'}`)!;
+      expect(e.time).toBe('18:00');expect(e.timezone).toBe('America/Chicago');
       expect(e.status).toBe('scheduled');expect(e.resultUpdateId).toBeNull();
     }
+    expect(data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!.relevance[0].why).toContain('会場は未発表');
+    expect(data.events.find(e=>e.eventId==='mi-debate-2026-10-21')!.time).toBe('19:00');
+  });
+  it('expands Maine recap without claiming a full recording audit or polling effect',()=>{
+    const u=data.updates.find(u=>u.updateId==='obs-update-me-debate-2026-10-15')!;
+    expect(u.happened).toContain('Citizens United');
+    expect(u.uncertainty).toContain('逐語監査ではない');
+    expect(u.uncertainty).toContain('支持変化は未確認');
   });
   it('connects every initial focus race, candidate, and source without orphaned references',()=>{
     const initial=['2026-AK-2-regular','2026-ME-2-regular','2026-MI-2-regular','2026-OH-3-special','2026-TX-2-regular','2026-NH-2-regular'];
