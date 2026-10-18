@@ -40,7 +40,7 @@
   "note": "AK討論・GA集会の結果を元予定と相互参照。ME詳報を補足、MN討論の主催局要旨を追加。MI討論時刻とKS/NC/IAの大統領発言予定を主催者で確認。BGSU原票PDF403、評価全表・全候補者比較の網羅確認は未完了。D43/R44/未配分13と保存共有基準を維持。",
   "reviewMode": "Sunday daily; AK ME MI OH-special TX NH plus GA IA KS MN NE NC SC; no full Monday audit",
   "baseCommit": "b90f03485655641665ae2dc3983f48893d56c603",
-  "publishedCommit": null,
+  "publishedCommit": "b75ef625ad12248fe9968c4585a5819ff3fcb916",
   "revision": "observation-2026-10-18-debates-rallies",
   "sourceChecks": [
     {
@@ -453,6 +453,24 @@
     "initialValidation": "Local checks initially caught stale feed fixtures and a retrieval/verification date inconsistency; corrected before any publication."
   },
   "deployment": {
-    "status": "pending"
+    "status": "success",
+    "sourceCommit": "b75ef625ad12248fe9968c4585a5819ff3fcb916",
+    "initialSourceCommit": "c9111777a625f7fdf97a414bfce12efc037b3398",
+    "initialPagesRun": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39081952745",
+    "pagesRun": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39082075293",
+    "pagesConclusion": "success",
+    "verifiedAt": "2026-10-18T00:16:26Z",
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicJs": "/us-midterms-2026/assets/index-CyFh2SJ6.js",
+    "publicVerification": [
+      "Public browser loaded the same JS filename as the final tested local build.",
+      "AK/GA/MN result articles and Maine extended recap rendered with uncertainty text.",
+      "AK result-to-original-event link opened the completed event with reciprocal result control.",
+      "KS/NC/IA future rally cards rendered; IA venue remains explicitly unannounced.",
+      "MI October 21 19:00 Detroit renders October 22 08:00 Japan.",
+      "D43/R44/unallocated13 and the October15 rating basis remain unchanged."
+    ],
+    "publicationMethod": "Normal fast-forward Git data ref updates with expected_sha and force:false. No generated dist files uploaded.",
+    "note": "First Pages deployment succeeded; source-scope wording was then clarified and the final source deployment also succeeded. This log-only child commit records the verified source deployment."
   }
 }
