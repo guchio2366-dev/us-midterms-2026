@@ -112,7 +112,7 @@
   "note": "MI調査の公開要旨・設問、NHの社会保障フォーラムと実績への反証、SC/MI大統領予定を確認。6州60比較セルを点検したが全根拠原文・追加7州の全候補者本文は未完了。TX CBS原票、名簿・評価全表等は未確認を明記。D43/R44/未配分13と保存共有・画面は維持。",
   "reviewMode": "Monday weekly audit, partial primary-source coverage",
   "baseCommit": "f7705aaab3ac305f49bc4a8ef6f09dbd2f3d1c2e",
-  "publishedCommit": null,
+  "publishedCommit": "3e7503887aaf70c9aa9e011b45522e7db171e579",
   "revision": "observation-2026-10-19-poll-forum-weekly",
   "sourceChecks": [
     {
@@ -1605,6 +1605,23 @@
     "localPreview": "Not launched: data-only change and managed Sites preview has no control-browser skill. Public Pages content verification is performed separately after deployment."
   },
   "deployment": {
-    "status": "pending"
+    "status": "verified",
+    "sourceCommit": "3e7503887aaf70c9aa9e011b45522e7db171e579",
+    "workflowRunId": 39180444095,
+    "workflowUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39180444095",
+    "conclusion": "success",
+    "publicVerifiedAt": "2026-10-19T00:25:19Z",
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "jsAsset": "index-j79XinYY.js",
+    "cssAsset": "index-Dsomt5uB.css",
+    "method": "Normal fast-forward with expected main SHA and force:false. Public browser reloaded after successful Pages workflow; script and stylesheet names match local production build.",
+    "checks": [
+      "Public national allocation remains D43/R44/unallocated13; monitor shows 2026/10/19 09:17 JST and incomplete-source warning.",
+      "MI article detail displays 46/44, LV798, October12–14, margin3, full-crosstab limitation and both original links.",
+      "NH article detail displays separate interviews, policy differences and unknown effects; original-event button opens completed retrospective event with reciprocal result link.",
+      "SC rally detail displays October21 19:00 ET / October22 08:00 JST, Pendleton arena and organizer source.",
+      "MI rally detail displays October25 15:00 ET / October26 04:00 JST, venue and candidate participation unconfirmed."
+    ],
+    "recordCommitNote": "This deployment record is committed separately after source publication; it does not modify application data or assets."
   }
 }
