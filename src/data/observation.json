@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-18-debates-rallies",
+  "revision": "observation-2026-10-19-poll-forum-weekly",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,25 +8,42 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-18T00:10:09Z",
+    "lastCompletedAt": "2026-10-19T00:17:50Z",
     "latestRun": {
-      "runId": "daily-20261018",
-      "timingIntegrity": "consistent",
-      "timingNote": "原文照合後の時計で成功日時を記録。実査日・公表日・分析更新日を区別。取得失敗・部分確認は前回の成功日時を維持。",
-      "startedAt": "2026-10-18T00:02:38Z",
-      "completedAt": "2026-10-18T00:10:09Z",
+      "runId": "daily-20261019",
+      "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+      "startedAt": "2026-10-19T00:03:43Z",
+      "completedAt": "2026-10-19T00:17:50Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-alaska-debate-result-20261015",
-        "obs-ap-ak-debate-result-20261015",
-        "obs-gpb-ga-trump-result-20261016",
-        "obs-mainepublic-me-debate-recap-20261016",
-        "obs-wxyz-mi-debate-20261021",
-        "obs-mpr-mn-debate-result-20261016",
-        "obs-gop-ks-rally-20261019",
-        "obs-gop-nc-rally-20261020",
-        "obs-gop-ia-rally-20261022",
-        "obs-sabato-ratings-20261014"
+        "obs-peltola",
+        "obs-sullivan",
+        "obs-jackson-policy",
+        "obs-jackson-bio",
+        "obs-collins",
+        "obs-rogers-bio",
+        "obs-abdul-ai",
+        "obs-brown-policy",
+        "obs-brown-bio",
+        "obs-husted-bio",
+        "obs-talarico-policy",
+        "obs-paxton-policy",
+        "obs-pappas",
+        "obs-nh-wbur",
+        "obs-talarico-bio",
+        "obs-paxton-bio",
+        "obs-sullivan-endorsements",
+        "obs-guardian-peltola-response-20260924",
+        "obs-jackson-news-20261017",
+        "obs-bls-oct",
+        "obs-sabato-ratings-20261014",
+        "obs-rasmussen-mi-20261014",
+        "obs-rasmussen-mi-questions-20261014",
+        "obs-inklink-nh-aarp-20261014",
+        "obs-pappas-aarp-20261014",
+        "obs-nhpr-pappas-record-20261013",
+        "obs-gop-sc-rally-20261021",
+        "obs-gop-mi-rally-20261025"
       ],
       "pendingSourceIds": [
         "obs-insider-ak-ks-mi-20261011",
@@ -46,12 +63,219 @@
         "obs-bgsu-oh-20261016",
         "obs-ga-trump-result-20261016",
         "obs-white-house-ga-20261016",
-        "obs-inside"
+        "obs-inside",
+        "obs-reuters-democratic-unity-20260919",
+        "obs-cbs-tx-20261018-pending",
+        "obs-vox-me-abortion-20260922",
+        "obs-mainepublic-me-debate-recap-20261016",
+        "obs-maine-public-collins-payout",
+        "obs-jackson-byrne",
+        "obs-reuters-byrne",
+        "obs-maine-debates",
+        "obs-me-manchin-endorsement",
+        "obs-suffolk-me-20261014",
+        "obs-mi-rogers-residency",
+        "obs-mi-advance-rogers-autoworker-20260924",
+        "obs-abdul-ai-control-20261013",
+        "obs-wapo-mi-ai-20261013",
+        "obs-reuters-mi-rogers-iran-20260921",
+        "obs-cbs-detroit-harris-elsayed-20260922",
+        "obs-rogers-trade",
+        "obs-abdul-trade",
+        "obs-ap-mi-convention",
+        "obs-elsayed-piker-statement-20260824",
+        "obs-ap-mi-harris-elsayed-result-20260922",
+        "obs-ap-mi-rogers-coalition-20260921",
+        "obs-hr1-vote",
+        "obs-husted-hr1",
+        "obs-oh-heartland-husted",
+        "obs-reuters-oh-pac-spending-20260918",
+        "obs-reuters-oh-data-centers-20260919",
+        "obs-yougov-oh-20261007",
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-tribune-tx-qa-20261013",
+        "obs-chron-tx-bush-cornyn-fundraiser-20260922",
+        "obs-paxton-trial",
+        "obs-houston-chronicle-paxton-china-donors-20260922",
+        "obs-emerson-tx-20260917",
+        "obs-reconmr-tx-20260917",
+        "obs-houston-chronicle-tx-ads-20260919",
+        "obs-tpor-tx-20260925",
+        "obs-yougov-tx-20261007",
+        "obs-ak-fisheries-debate",
+        "obs-ap-ak-debate-result-20261015",
+        "obs-ak-bycatch-bill",
+        "obs-commerce-bycatch-20260916",
+        "obs-sullivan-bycatch-committee-20260916",
+        "obs-sullivan-bycatch-floor-20260923",
+        "obs-seafoodsource-bycatch-floor-20260925",
+        "obs-dfp-ak",
+        "obs-coefficient-ak-20260917",
+        "obs-aarp-ak-20260917",
+        "obs-trafalgar-ak-20260925",
+        "obs-siena-five-state-20261003",
+        "obs-alaska-public-peltola-voters-20260929",
+        "obs-wapo-nh-profile-20261003",
+        "obs-rasmussen-nh-20261005",
+        "obs-coefficient-nh",
+        "obs-yougov-nh-20261007"
       ],
-      "note": "AK討論・GA集会の結果を元予定と相互参照。ME詳報を補足、MN討論の主催局要旨を追加。MI討論時刻とKS/NC/IAの大統領発言予定を主催者で確認。BGSU原票PDF403、評価全表・全候補者比較の網羅確認は未完了。D43/R44/未配分13と保存共有基準を維持。"
+      "note": "MI調査の公開要旨・設問、NHの社会保障フォーラムと実績への反証、SC/MI大統領予定を確認。6州60比較セルを点検したが全根拠原文・追加7州の全候補者本文は未完了。TX CBS原票、名簿・評価全表等は未確認を明記。D43/R44/未配分13と保存共有・画面は維持。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-gop-mi-rally-20261025",
+      "title": "President Trump rally in St. Clair County",
+      "publisher": "Trump 47 Committee / GOP",
+      "url": "https://events.gop.com/events/midterm-rally-in-st-clair-mi-president-donald-j-trump-djt47",
+      "publishedAt": null,
+      "referencePeriod": "主催者の開催日・Remarks Begin時刻・場所を照合。会場は未発表。上院候補の参加は未確認。 政府の公務日程とは区別。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "calendar",
+      "cadence": "daily",
+      "method": "主催者の開催日・Remarks Begin時刻・場所を照合。会場は未発表。上院候補の参加は未確認。 政府の公務日程とは区別。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
+    {
+      "sourceId": "obs-gop-sc-rally-20261021",
+      "title": "President Trump rally in Pendleton",
+      "publisher": "Trump 47 Committee / GOP",
+      "url": "https://events.gop.com/events/midterm-rally-in-clemson-sc-president-donald-j-trump-djt47",
+      "publishedAt": null,
+      "referencePeriod": "主催者の開催日・Remarks Begin時刻・場所を照合。Clemson UniversityのT. Ed Garrison Arena（所在地Pendleton）。 政府の公務日程とは区別。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-SC-2-regular"
+      ],
+      "category": "calendar",
+      "cadence": "daily",
+      "method": "主催者の開催日・Remarks Begin時刻・場所を照合。Clemson UniversityのT. Ed Garrison Arena（所在地Pendleton）。 政府の公務日程とは区別。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
+    {
+      "sourceId": "obs-cbs-tx-20261018-pending",
+      "title": "Texas Senate — CBS News / YouGov",
+      "publisher": "CBS News / YouGov",
+      "url": "https://www.cbsnews.com/news/texas-senate-talarico-paxton-poll/",
+      "publishedAt": "2026-10-18",
+      "referencePeriod": "記事本文の方法注記は一度取得。再取得はInternal Error。詳細原票・設問・LV標本と数値の照合未完了につき新規調査値は公開しない。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "記事本文の方法注記は一度取得。再取得はInternal Error。詳細原票・設問・LV標本と数値の照合未完了につき新規調査値は公開しない。",
+      "alternativeUrl": null,
+      "checkStatus": "partial",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-nhpr-pappas-record-20261013",
+      "title": "Pappas’s DC record is up for interpretation",
+      "publisher": "NHPR",
+      "url": "https://www.nhpr.org/nh-news/2026-10-13/pappas-senate-race-nh-newhampshire-midterm-2026-record-congress",
+      "publishedAt": "2026-10-13",
+      "referencePeriod": "本文のSununuによる実績批判、Pappasの反論、立法評価研究者の評価を照合。法案数そのものの原票再集計や政策効果の確認ではない。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "本文のSununuによる実績批判、Pappasの反論、立法評価研究者の評価を照合。法案数そのものの原票再集計や政策効果の確認ではない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
+    {
+      "sourceId": "obs-pappas-aarp-20261014",
+      "title": "Pappas on Social Security at AARP forum",
+      "publisher": "Chris Pappas for Senate",
+      "url": "https://chrispappas.org/2026/10/at-aarp-candidate-forum-chris-pappas-makes-it-clear-that-he-stands-with-seniors-will-always-protect-social-security/",
+      "publishedAt": "2026-10-14",
+      "referencePeriod": "陣営発表の給付削減反対を照合。対立候補の政策に関する批判は陣営の評価であり独立認定ではない。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "candidate",
+      "cadence": "daily",
+      "method": "陣営発表の給付削減反対を照合。対立候補の政策に関する批判は陣営の評価であり独立認定ではない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
+    {
+      "sourceId": "obs-inklink-nh-aarp-20261014",
+      "title": "Pappas, Sununu pledge to protect Social Security, differ on solutions",
+      "publisher": "Manchester Ink Link",
+      "url": "https://manchester.inklink.news/pappas-sununu-pledge-to-protect-social-security-differ-on-solutions/",
+      "publishedAt": "2026-10-14",
+      "referencePeriod": "現地取材の実施日・場所・両候補の発言・別々の面談形式を照合。Sununuの在任期数に不正確な記述があるため採用しない。動画全編・財政効果は未監査。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "daily",
+      "method": "現地取材の実施日・場所・両候補の発言・別々の面談形式を照合。Sununuの在任期数に不正確な記述があるため採用しない。動画全編・財政効果は未監査。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-mi-questions-20261014",
+      "title": "Questions — Michigan Senate, October 12–14",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/questions/questions_michigan_senate_october_12_14_2026",
+      "publishedAt": null,
+      "referencePeriod": "公式設問1は今日上院選があれば誰へ投票するかを6候補で質問。798人、実査日、誤差を公開要旨と照合。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公式設問1は今日上院選があれば誰へ投票するかを6候補で質問。798人、実査日、誤差を公開要旨と照合。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-mi-20261014",
+      "title": "Michigan Senate: El-Sayed 46%, Rogers 44%",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_michigan_senate",
+      "publishedAt": null,
+      "referencePeriod": "公開要旨と別ページの質問文を照合。10月12〜14日、Michigan LV798人、電話・オンライン、Pulse Opinion Research実査、95%標本誤差±3ポイント。ページ公開日は本文表示で未確認。全クロス集計とNatural Law候補の個別値は未取得。",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公開要旨と別ページの質問文を照合。10月12〜14日、Michigan LV798人、電話・オンライン、Pulse Opinion Research実査、95%標本誤差±3ポイント。ページ公開日は本文表示で未確認。全クロス集計とNatural Law候補の個別値は未取得。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
+    },
     {
       "sourceId": "obs-gop-ia-rally-20261022",
       "title": "President Trump rally in Sioux City",
@@ -325,8 +549,8 @@
       "url": "https://www.jacksonformaine.com/news",
       "publishedAt": null,
       "referencePeriod": "公式ニュース一覧の先頭10月13日分から10月6日分まで確認。陣営の討論勝利宣言は中立的な勝敗評価としない。個別記事・全期間の照合完了を意味しない。",
-      "retrievedAt": "2026-10-17",
-      "contentVerifiedAt": "2026-10-17",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -335,7 +559,7 @@
       "method": "公式ニュース一覧の先頭10月13日分から10月6日分まで確認。陣営の討論勝利宣言は中立的な勝敗評価としない。個別記事・全期間の照合完了を意味しない。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-17T00:08:35Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-insider-tx-ks-me-20261015",
@@ -464,8 +688,8 @@
       "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
       "publishedAt": "2026-10-14",
       "referencePeriod": "Kansas、Nebraska、New Hampshire、Minnesota、Mississippiの上院評価を変更。Sabato単独では民主方向49・共和方向46・Toss-up 5。",
-      "retrievedAt": "2026-10-18",
-      "contentVerifiedAt": "2026-10-18",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-KS-2-regular",
         "2026-NE-2-regular",
@@ -478,7 +702,7 @@
       "method": "10月14日の公式記事本文を再確認。現行全表リンクは取得失敗。記事の成功と全表未確認を区別。",
       "alternativeUrl": "https://centerforpolitics.org/crystalball/five-senate-rating-changes-as-close-battle-for-majority-control-rages/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-18T00:10:09Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-gpb-ga-debate-result-20261014",
@@ -1566,15 +1790,17 @@
       "url": "https://www.theguardian.com/us-news/2026/sep/24/mary-peltola-campaign-allegations",
       "publishedAt": "2026-09-24",
       "referencePeriod": "元職員の告発に対するPeltola陣営の反論、本人が夫と母の死後に抱えた悲嘆という説明、元職員による擁護。",
-      "retrievedAt": "2026-10-05",
-      "contentVerifiedAt": "2026-10-05",
-      "electionIds": ["2026-AK-2-regular"],
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "告発と陣営の反論を別の主張として記録。悲嘆の説明を告発の反証や行為の免責とは扱わない",
       "alternativeUrl": "https://alaskapublic.org/news/politics/2026-09-24/new-york-times-reports-peltola-has-repeatedly-blown-up-at-aides-and-campaign-staff",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-05T00:06:30Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-wapo-nh-profile-20261003",
@@ -2506,8 +2732,8 @@
       "url": "https://www.collins.senate.gov/newsroom/senator-collins-statement-on-the-senate-reconciliation-bill",
       "publishedAt": "2025-07-01",
       "referencePeriod": "Medicaidと地方病院を理由に反対。減税延長は支持し、地方病院基金の増額でも懸念を解消できないと説明",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -2516,7 +2742,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-jackson-policy",
@@ -2525,8 +2751,8 @@
       "url": "https://www.jacksonformaine.com/priorities",
       "publishedAt": null,
       "referencePeriod": "Medicare for All、薬価引下げ、労働者減税、ICE廃止、中絶の権利",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -2535,7 +2761,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-jackson-bio",
@@ -2544,8 +2770,8 @@
       "url": "https://www.jacksonformaine.com/about",
       "publishedAt": null,
       "referencePeriod": "北部メーンの林業労働、州議会20年・上院議長6年、本人が挙げる学校給食・地方医療の実績",
-      "retrievedAt": "2026-09-23",
-      "contentVerifiedAt": "2026-09-23",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -2554,7 +2780,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-23T00:05:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-maine-debates",
@@ -2582,8 +2808,8 @@
       "url": "https://abdulforsenate.com/2026/09/new-dr-abdul-el-sayed-calls-for-pausing-ai-development/",
       "publishedAt": "2026-09-09",
       "referencePeriod": "AI開発停止、労働者保護・安全審査の提案。末尾のMichigan出身・大学歴とMedicare for All",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -2592,7 +2818,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-rogers-trade",
@@ -2620,8 +2846,8 @@
       "url": "https://rogersforsenate.com/meet-mike",
       "publishedAt": null,
       "referencePeriod": "Livingston County出身、陸軍・FBI・州議会・連邦下院情報委員長、529制度・教育貯蓄の自己評価",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -2630,7 +2856,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-brown-policy",
@@ -2639,8 +2865,8 @@
       "url": "https://www.sherrodbrown.com/our-fight/",
       "publishedAt": null,
       "referencePeriod": "薬価、公共料金、データセンターが生む電力費用の負担、議員の株取引規制",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-OH-3-special"
       ],
@@ -2649,7 +2875,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-brown-bio",
@@ -2658,8 +2884,8 @@
       "url": "https://www.sherrodbrown.com/",
       "publishedAt": null,
       "referencePeriod": "Mansfield出身、労働者・年金・薬価の実績についての本人説明",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-OH-3-special"
       ],
@@ -2668,7 +2894,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-husted-bio",
@@ -2677,8 +2903,8 @@
       "url": "https://www.jonhustedforsenate.com/bio/",
       "publishedAt": null,
       "referencePeriod": "州副知事・州務長官・州下院議長、Intel投資誘致、TechCred等の職業訓練、規制削減の自己評価",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-OH-3-special"
       ],
@@ -2687,7 +2913,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-talarico-policy",
@@ -2696,8 +2922,8 @@
       "url": "https://jamestalarico.com/issue/taxes-cost-of-living/",
       "publishedAt": null,
       "referencePeriod": "最低賃金15ドル、富裕層・法人税、医療費、公的保険選択肢、Trump関税の撤回。州議会の薬価・住宅政策についての自己評価",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -2706,7 +2932,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-talarico-bio",
@@ -2715,8 +2941,8 @@
       "url": "https://jamestalarico.com/meet-james-talarico/",
       "publishedAt": null,
       "referencePeriod": "公立中学校教員、州下院議員、神学校での学び。政策との関連がある職歴を採用",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -2725,7 +2951,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-paxton-policy",
@@ -2734,8 +2960,8 @@
       "url": "https://www.kenpaxton.com/issues",
       "publishedAt": null,
       "referencePeriod": "America First、Trumpの優先政策、減税・国境管理・送還の主張",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -2744,7 +2970,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-paxton-bio",
@@ -2753,8 +2979,8 @@
       "url": "https://www.kenpaxton.com/about",
       "publishedAt": null,
       "referencePeriod": "州司法長官、州上下院・弁護士としての経歴。Biden政権への訴訟を実績として挙げる本人説明",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-TX-2-regular"
       ],
@@ -2763,7 +2989,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-peltola",
@@ -2772,8 +2998,8 @@
       "url": "https://marypeltola.com/",
       "publishedAt": null,
       "referencePeriod": "Kuskokwim川流域での漁業経験、生活費と漁業、党派より州の利益を優先する主張",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -2782,7 +3008,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-sullivan",
@@ -2791,8 +3017,8 @@
       "url": "https://dansullivanforalaska.com/",
       "publishedAt": null,
       "referencePeriod": "2015年上院就任、海兵隊での勤務、減税・エネルギー開発・防衛の実績についての本人説明",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -2801,7 +3027,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-sullivan-endorsements",
@@ -2810,8 +3036,8 @@
       "url": "https://dansullivanforalaska.com/endorsements/",
       "publishedAt": null,
       "referencePeriod": "商工会議所、Teamsters Local 959等の労組を含む推薦一覧。推薦と組合員個人の投票は別",
-      "retrievedAt": "2026-09-14",
-      "contentVerifiedAt": "2026-09-14",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -2820,7 +3046,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-14T00:10:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-nh-wbur",
@@ -2829,8 +3055,8 @@
       "url": "https://www.wbur.org/news/2026/08/11/new-hampshire-senate-pappas-sununu",
       "publishedAt": "2026-08-11",
       "referencePeriod": "両候補への取材：生活費・医療、減税・独立性、Trump推薦と過去の対立。末尾の訂正（Sununu本人は登録ロビイストではない）を反映",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-NH-2-regular"
       ],
@@ -2839,7 +3065,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-pappas",
@@ -2848,8 +3074,8 @@
       "url": "https://chrispappas.org/",
       "publishedAt": null,
       "referencePeriod": "Manchesterの公立学校・家業のレストラン、候補者としての主張",
-      "retrievedAt": "2026-09-28",
-      "contentVerifiedAt": "2026-09-28",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-NH-2-regular"
       ],
@@ -2858,7 +3084,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-28T00:22:00Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-bls-oct",
@@ -2867,8 +3093,8 @@
       "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
       "publishedAt": "2026-02-18",
       "referencePeriod": "10月2日8:30雇用統計、14日8:30 CPI、20日10:00州別雇用。時刻は米東部時間",
-      "retrievedAt": "2026-09-15",
-      "contentVerifiedAt": "2026-09-15",
+      "retrievedAt": "2026-10-19",
+      "contentVerifiedAt": "2026-10-19",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -2882,7 +3108,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-09-15T00:06:44.507Z"
+      "lastSuccessAt": "2026-10-19T00:17:50Z"
     },
     {
       "sourceId": "obs-roster-ak",
@@ -3104,7 +3330,7 @@
       "cadence": "daily",
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
-      "checkStatus": "checked",
+      "checkStatus": "partial",
       "lastSuccessAt": "2026-10-14T00:08:30Z"
     },
     {
@@ -4002,7 +4228,7 @@
       "cadence": "daily",
       "method": "Reuters本文で推薦の有無、共同活動の有無、候補者・党関係者の説明を照合し、党幹部の行動と一般有権者の評価を分ける",
       "alternativeUrl": null,
-      "checkStatus": "checked",
+      "checkStatus": "unavailable",
       "lastSuccessAt": "2026-09-21T00:06:01Z"
     },
     {
@@ -4145,6 +4371,55 @@
     }
   ],
   "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-gop-mi-rally-20261025",
+      "sourceId": "obs-gop-mi-rally-20261025",
+      "locator": "Event Schedule / Remarks Begin / venue",
+      "checkedAt": "2026-10-19",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-gop-sc-rally-20261021",
+      "sourceId": "obs-gop-sc-rally-20261021",
+      "locator": "Event Schedule / Remarks Begin / venue",
+      "checkedAt": "2026-10-19",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-nhpr-pappas-record-20261013",
+      "sourceId": "obs-nhpr-pappas-record-20261013",
+      "locator": "本文の実績批判・双方の回答・Center for Effective Lawmaking研究者の説明。",
+      "checkedAt": "2026-10-19",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-pappas-aarp-20261014",
+      "sourceId": "obs-pappas-aarp-20261014",
+      "locator": "本人の給付削減反対発言。",
+      "checkedAt": "2026-10-19",
+      "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-inklink-nh-aarp-20261014",
+      "sourceId": "obs-inklink-nh-aarp-20261014",
+      "locator": "10月14日のAARP forum、Social Security案と別々の面談形式。",
+      "checkedAt": "2026-10-19",
+      "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-mi-questions-20261014",
+      "sourceId": "obs-rasmussen-mi-questions-20261014",
+      "locator": "設問1と対象・実査日・誤差。",
+      "checkedAt": "2026-10-19",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-mi-20261014",
+      "sourceId": "obs-rasmussen-mi-20261014",
+      "locator": "公開要旨の投票意向・実査期間・標本・方法・誤差。",
+      "checkedAt": "2026-10-19",
+      "kind": "observed"
+    },
     {
       "evidenceId": "ev-obs-gop-ia-rally-20261022",
       "sourceId": "obs-gop-ia-rally-20261022",
@@ -5301,7 +5576,7 @@
             {
               "candidateId": "cand-me-troy-d-jackson",
               "kind": "observed",
-              "text": "ICE廃止を含む政策転換を掲げる。民主党のMills州知事はまだ推薦しておらず、州党は結束を主張する。推薦の有無は党幹部の行動で、一般有権者の支持とは別に見る。",
+              "text": "ICE廃止を含む政策転換を掲げる。9月19日の報道時点では民主党のMills州知事は未推薦で、州党は結束を主張していた。その後の推薦状況は再確認待ち。推薦の有無は党幹部の行動で、一般有権者の支持とは別に見る。",
               "evidenceIds": [
                 "ev-obs-jackson-policy",
                 "ev-obs-reuters-democratic-unity-20260919"
@@ -5383,7 +5658,7 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-14",
+      "updatedAt": "2026-10-19",
       "headline": "AI規制の範囲と、データセンターへの評価を分ける",
       "featuredSummary": "El-Sayed氏はfrontier AI停止と連邦監督機関を含む案を発表。Rogers氏も州内データセンターの1年停止を支持しており、対象・期間・権限の違いが比較点になった。",
       "lead": "民主党Abdul El-Sayed氏は10月13日、最先端AIの学習・公開停止、超知能と再帰的自己改良の禁止、閣僚級の独立監督機関、内部告発者保護などを提案した。共和党Mike Rogers氏は8月、Michigan州のデータセンター新設を1年間停止する案を支持している。両者とも『停止』を掲げるが、連邦のAIシステム規制と州内施設の時限停止で範囲は異なる。",
@@ -5417,7 +5692,9 @@
         "ev-obs-reuters-mi-tariff-20261007",
         "ev-obs-ap-mi-rogers-tariff-20261007",
         "ev-obs-yougov-mi-20261007",
-        "ev-obs-ap-mi-debate-20261008"
+        "ev-obs-ap-mi-debate-20261008",
+        "ev-obs-rasmussen-mi-20261014",
+        "ev-obs-rasmussen-mi-questions-20261014"
       ],
       "materials": [
         {
@@ -5442,7 +5719,7 @@
           "meaning": "政権への近さが交渉力になるのか、政策への異論が遅れるのかを、貿易と戦争・燃料価格の別々の案件で比べる。",
           "limit": "広告はNRSCとの7桁規模の共同枠だが、両候補の発言は選挙上の主張。Canada側との合意、関税撤廃、燃料・物価、州内雇用、外交、得票への効果は確認できない。",
           "evidenceIds": [
-          "ev-obs-rogers-trade",
+            "ev-obs-rogers-trade",
             "ev-obs-reuters-canada-tariffs-20260917",
             "ev-obs-reuters-mi-rogers-iran-20260921",
             "ev-obs-rogers-tariff-ad-20261007",
@@ -5566,30 +5843,20 @@
           "cells": [
             {
               "candidateId": "cand-mi-abdul-el-sayed",
-              "kind": "interpretation",
-          "text": "YouGovの9月22日〜10月4日調査で49%、Rogers氏48%。別のNew York Times/Siena調査ではデータセンター対応で11ポイント優位だったが、AI・データセンターを最重要争点とした州有権者は2%。候補支持と争点別評価を混ぜない。",
+              "kind": "observed",
+              "text": "Rasmussenの10月12〜14日調査で46%、Rogers氏44%。投票予定者798人、電話・オンライン、標本誤差±3ポイント。従来のYouGov等との方法差があり、支持の移動や政策の効果、勝敗を断定しない。",
               "evidenceIds": [
-                "ev-obs-wapo-mi-ai-20261013",
-                "ev-obs-cbs-mi-mitchell-20261005",
-                "ev-obs-ssrs",
-                "ev-obs-wapo-mi-rhetoric-20260919",
-                "ev-obs-ap-mi-rogers-coalition-20260921",
-            "ev-obs-bigdata-mi-20260925",
-            "ev-obs-yougov-mi-20261007"
+                "ev-obs-rasmussen-mi-20261014",
+                "ev-obs-rasmussen-mi-questions-20261014"
               ]
             },
             {
               "candidateId": "cand-mi-mike-rogers",
-              "kind": "interpretation",
-          "text": "YouGovの9月22日〜10月4日調査で48%、El-Sayed氏49%。データセンター対応の評価ではEl-Sayed氏を下回ったが、争点別評価だけで上院投票先や1年停止案の効果を断定しない。",
+              "kind": "observed",
+              "text": "Rasmussenの10月12〜14日調査で44%、El-Sayed氏46%。投票予定者798人、電話・オンライン、標本誤差±3ポイント。従来のYouGov等との方法差があり、支持の移動や政策の効果、勝敗を断定しない。",
               "evidenceIds": [
-                "ev-obs-wapo-mi-ai-20261013",
-                "ev-obs-cbs-mi-mitchell-20261005",
-                "ev-obs-ssrs",
-                "ev-obs-wapo-mi-rhetoric-20260919",
-                "ev-obs-ap-mi-rogers-coalition-20260921",
-            "ev-obs-bigdata-mi-20260925",
-            "ev-obs-yougov-mi-20261007"
+                "ev-obs-rasmussen-mi-20261014",
+                "ev-obs-rasmussen-mi-questions-20261014"
               ]
             }
           ]
@@ -5605,8 +5872,8 @@
         {
           "watchId": "mi-watch-1",
           "title": "討論会での直接比較",
-        "what": "10月21日のWXYZ-TV討論会で、両候補が生活費・医療・貿易・外交への説明をどう続けるか。",
-        "how": "主催局の実施確認と発言全文を優先し、初回との一貫性を比べる。応酬や切り抜きだけで有権者評価への効果を決めない。"
+          "what": "10月21日のWXYZ-TV討論会で、両候補が生活費・医療・貿易・外交への説明をどう続けるか。",
+          "how": "主催局の実施確認と発言全文を優先し、初回との一貫性を比べる。応酬や切り抜きだけで有権者評価への効果を決めない。"
         }
       ]
     },
@@ -5895,7 +6162,7 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "observed",
-              "text": "Trumpの関税撤回を掲げる。予備選相手Jasmine Crockett下院議員は支持を表明したが共同選挙運動は断り、下位選挙への支援がTalarico氏にも役立つと説明。党幹部の行動と有権者の支持は分ける。",
+              "text": "Trumpの関税撤回を掲げる。9月19日の報道では予備選相手Jasmine Crockett下院議員は支持を表明したが共同選挙運動を断った。その後の共同活動は再確認待ち。党幹部の行動と有権者の支持は分ける。",
               "evidenceIds": [
                 "ev-obs-talarico-policy",
                 "ev-obs-reuters-democratic-unity-20260919"
@@ -6197,7 +6464,7 @@
     {
       "electionId": "2026-NH-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-09",
+      "updatedAt": "2026-10-19",
       "headline": "生活費と、政権からの独立性をどう評価するか",
       "featuredSummary": "YouGov調査はPappas 51%・Sununu 43%。生活費と医療、減税と独立性をめぐる訴えを、政権評価と候補者評価に分けて見る。",
       "lead": "YouGovの9月28日〜10月5日調査は投票予定者1,520人で、民主党Chris Pappas氏51%、共和党John Sununu氏43%、その他1%、未定4%。10月2〜4日のRasmussen調査は49%対44%、9月9〜11日のco/efficient調査は46%対46%だった。方法が異なるため数値差を同じ有権者の移動とは扱わない。",
@@ -6207,17 +6474,21 @@
         "ev-obs-nh-wbur",
         "ev-obs-coefficient-nh",
         "ev-obs-wapo-nh-profile-20261003",
-        "ev-obs-yougov-nh-20261007"
+        "ev-obs-yougov-nh-20261007",
+        "ev-obs-inklink-nh-aarp-20261014",
+        "ev-obs-pappas-aarp-20261014",
+        "ev-obs-nhpr-pappas-record-20261013"
       ],
       "materials": [
         {
           "materialId": "nh-cost",
-          "title": "生活費・医療と減税への評価",
-          "fact": "Pappasは生活費軽減と医療保障、Sununuは減税・規制削減を訴えている。",
-          "meaning": "政策名の比較にとどめず、誰が州民の負担を改善できると評価されるかを見たい。",
-          "limit": "今回確認した取材は8月11日公表。予備選後の新しい反応は別に確認が必要。",
+          "title": "社会保障を守る財源と改革の具体性",
+          "fact": "10月14日、Pappas氏は給付削減反対と富裕層の負担増を提案。Sununu氏は過去の個人口座案は今に適さないとし、超党派の恒久改革を求めた。",
+          "meaning": "制度保護の賛否だけでなく、財源と新しい具体案を比較する。",
+          "limit": "別々の面談で、直接討論ではない。政策の成立・財政効果・有権者の反応は未確認。",
           "evidenceIds": [
-            "ev-obs-nh-wbur"
+            "ev-obs-inklink-nh-aarp-20261014",
+            "ev-obs-pappas-aarp-20261014"
           ]
         },
         {
@@ -6264,17 +6535,20 @@
             {
               "candidateId": "cand-nh-chris-pappas",
               "kind": "claim",
-              "text": "生活費、公共教育、Medicaid・Social Securityの保護を重視すると語る。",
+              "text": "生活費、公共教育、Medicaid・Social Securityの保護を重視すると語る。 10月14日は給付削減反対と富裕層負担増を提案。",
               "evidenceIds": [
-                "ev-obs-nh-wbur"
+                "ev-obs-nh-wbur",
+                "ev-obs-inklink-nh-aarp-20261014",
+                "ev-obs-pappas-aarp-20261014"
               ]
             },
             {
               "candidateId": "cand-nh-john-e-sununu",
               "kind": "claim",
-              "text": "減税・規制削減と、州のために成果を出す独立した代表を訴える。",
+              "text": "減税・規制削減と、州のために成果を出す独立した代表を訴える。 10月14日は過去の個人口座案は今に適さないとし、超党派の恒久改革を主張。詳細な新案は示していない。",
               "evidenceIds": [
-                "ev-obs-nh-wbur"
+                "ev-obs-nh-wbur",
+                "ev-obs-inklink-nh-aarp-20261014"
               ]
             }
           ]
@@ -6310,9 +6584,10 @@
             {
               "candidateId": "cand-nh-chris-pappas",
               "kind": "observed",
-              "text": "Sununuの実績批判に対し、退役軍人・住宅等の立法を挙げて反論している。",
+              "text": "Sununu氏の「大きな実績がない」との批判に対し、退役軍人や薬価などの立法・採決を挙げて反論。10月13日のNHPR取材では、立法評価の研究者は初任期が期待値相当、続く2任期は期待値超と説明した。法案数・重要性・住民対応は異なる評価軸で、政策効果や支持率とは別。",
               "evidenceIds": [
-                "ev-obs-nh-wbur"
+                "ev-obs-nh-wbur",
+                "ev-obs-nhpr-pappas-record-20261013"
               ]
             },
             {
@@ -6332,23 +6607,23 @@
             {
               "candidateId": "cand-nh-chris-pappas",
               "kind": "observed",
-          "text": "YouGovの9月28日〜10月5日調査で51%、Sununu氏43%。10月2〜4日のRasmussen調査は49%、9月9〜11日のco/efficient調査は46%だった。方法が違うため差を同じ有権者の移動とは扱わない。",
-            "evidenceIds": [
-              "ev-obs-rasmussen-nh-20261005",
+              "text": "YouGovの9月28日〜10月5日調査で51%、Sununu氏43%。10月2〜4日のRasmussen調査は49%、9月9〜11日のco/efficient調査は46%だった。方法が違うため差を同じ有権者の移動とは扱わない。",
+              "evidenceIds": [
+                "ev-obs-rasmussen-nh-20261005",
                 "ev-obs-coefficient-nh",
-            "ev-obs-wapo-nh-profile-20261003",
-            "ev-obs-yougov-nh-20261007"
+                "ev-obs-wapo-nh-profile-20261003",
+                "ev-obs-yougov-nh-20261007"
               ]
             },
             {
               "candidateId": "cand-nh-john-e-sununu",
               "kind": "observed",
-          "text": "YouGovの9月28日〜10月5日調査で43%、Pappas氏51%。10月2〜4日のRasmussen調査は44%、9月9〜11日のco/efficient調査は46%だった。単一調査から勝敗や政権との距離への評価を確定しない。",
-            "evidenceIds": [
-              "ev-obs-rasmussen-nh-20261005",
+              "text": "YouGovの9月28日〜10月5日調査で43%、Pappas氏51%。10月2〜4日のRasmussen調査は44%、9月9〜11日のco/efficient調査は46%だった。単一調査から勝敗や政権との距離への評価を確定しない。",
+              "evidenceIds": [
+                "ev-obs-rasmussen-nh-20261005",
                 "ev-obs-coefficient-nh",
-            "ev-obs-wapo-nh-profile-20261003",
-            "ev-obs-yougov-nh-20261007"
+                "ev-obs-wapo-nh-profile-20261003",
+                "ev-obs-yougov-nh-20261007"
               ]
             }
           ]
@@ -6357,9 +6632,9 @@
       "watchItems": [
         {
           "watchId": "nh-watch-0",
-          "title": "同率から動く条件",
-          "what": "未定9%と、両候補に否定的な評価を持つ層が何を重視するか。",
-          "how": "次の比較可能な調査で支持率・好感度・争点別の解決能力を確認。次回調査の発表日は未確認。"
+          "title": "未定層と投票参加の確認",
+          "what": "9月のco/efficient調査にあった未定9%を現在値とみなさず、調査日・対象ごとに比べる。",
+          "how": "次の比較可能な調査で支持率・好感度・争点別評価を確認。次回調査の発表日は未確認。"
         },
         {
           "watchId": "nh-watch-1",
@@ -6371,6 +6646,78 @@
     }
   ],
   "events": [
+    {
+      "eventId": "mi-trump-rally-2026-10-25",
+      "title": "MI州・Trump大統領のSt. Clair County集会",
+      "date": "2026-10-25",
+      "time": "15:00",
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-10-19",
+      "evidenceIds": [
+        "ev-obs-gop-mi-rally-20261025"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "大統領の発言予定。会場は未発表。上院候補の参加は未確認。",
+          "watch": "実施・中止・延期、上院候補の登壇と発言を確認。参加者の反応を州全体へ一般化しない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
+    },
+    {
+      "eventId": "sc-trump-rally-2026-10-21",
+      "title": "SC州・Trump大統領のPendleton集会",
+      "date": "2026-10-21",
+      "time": "19:00",
+      "timezone": "America/New_York",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-10-19",
+      "evidenceIds": [
+        "ev-obs-gop-sc-rally-20261021"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-SC-2-regular",
+          "why": "大統領の発言予定。Clemson UniversityのT. Ed Garrison Arena（所在地Pendleton）。",
+          "watch": "実施・中止・延期、上院候補の登壇と発言を確認。参加者の反応を州全体へ一般化しない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
+    },
+    {
+      "eventId": "nh-aarp-forum-2026-10-14",
+      "title": "ニューハンプシャー・AARP候補者フォーラム",
+      "date": "2026-10-14",
+      "time": null,
+      "timezone": "America/New_York",
+      "status": "completed",
+      "dateHistory": [],
+      "checkedAt": "2026-10-19",
+      "evidenceIds": [
+        "ev-obs-inklink-nh-aarp-20261014",
+        "ev-obs-pappas-aarp-20261014"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-NH-2-regular",
+          "why": "実施報道から遡って登録。以前から確認済みだった予定ではない。",
+          "watch": "結果記事と具体案・反論を参照。対面討論ではなく別々の面談。",
+          "materialIds": [
+            "nh-cost"
+          ]
+        }
+      ],
+      "resultUpdateId": "obs-update-nh-aarp-2026-10-14",
+      "publicationStatus": "published"
+    },
     {
       "eventId": "ia-trump-rally-2026-10-22",
       "title": "IA州・Trump大統領のSioux City集会",
@@ -6788,7 +7135,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-09-15",
+      "checkedAt": "2026-10-19",
       "evidenceIds": [
         "ev-obs-bls-oct"
       ],
@@ -7138,6 +7485,44 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-mi-rasmussen-2026-10-14",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-14",
+      "updatedAt": "2026-10-19",
+      "title": "ミシガン新調査：El-Sayed 46%・Rogers 44%",
+      "happened": "民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員の上院選。Rasmussenの10月12〜14日調査は投票予定者798人で46%対44%、未定5%。",
+      "meaning": "候補者の政策発言とは別に、投票意向を測った資料。異なる調査との差をそのまま支持の移動とはしない。",
+      "uncertainty": "電話・オンライン調査、標本誤差±3ポイント（95%）。2ポイント差から勝敗は断定できない。公開要旨・6候補の設問は確認したが全クロス集計は未取得。記事の日付は実査終了日。",
+      "evidenceIds": [
+        "ev-obs-rasmussen-mi-20261014",
+        "ev-obs-rasmussen-mi-questions-20261014"
+      ]
+    },
+    {
+      "updateId": "obs-update-nh-aarp-2026-10-14",
+      "status": "published",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "eventId": "nh-aarp-forum-2026-10-14",
+      "newsId": null,
+      "eventDate": "2026-10-14",
+      "updatedAt": "2026-10-19",
+      "title": "ニューハンプシャー：社会保障を守る方法の違い",
+      "happened": "10月14日のAARP主催フォーラムで、民主党クリス・パパス下院議員は年金給付削減に反対し、富裕層の負担増を提案。共和党ジョン・スヌヌ元上院議員は2004年の個人口座案は今には適さないとし、超党派の恒久改革を求めた。",
+      "meaning": "「制度を守る」という共通の訴えに加え、財源と具体案を比べる材料。",
+      "uncertainty": "両候補は同席せず、共通の主要質問に別々に回答した。Sununu氏の新たな詳細案、財政効果と有権者評価は未確認。動画全編の監査ではない。",
+      "evidenceIds": [
+        "ev-obs-inklink-nh-aarp-20261014",
+        "ev-obs-pappas-aarp-20261014"
+      ]
+    },
     {
       "updateId": "obs-update-ak-debate-2026-10-15",
       "status": "published",

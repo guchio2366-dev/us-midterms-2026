@@ -1,0 +1,1610 @@
+{
+  "runId": "daily-20261019",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-19T00:03:43Z",
+  "completedAt": "2026-10-19T00:17:50Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-peltola",
+    "obs-sullivan",
+    "obs-jackson-policy",
+    "obs-jackson-bio",
+    "obs-collins",
+    "obs-rogers-bio",
+    "obs-abdul-ai",
+    "obs-brown-policy",
+    "obs-brown-bio",
+    "obs-husted-bio",
+    "obs-talarico-policy",
+    "obs-paxton-policy",
+    "obs-pappas",
+    "obs-nh-wbur",
+    "obs-talarico-bio",
+    "obs-paxton-bio",
+    "obs-sullivan-endorsements",
+    "obs-guardian-peltola-response-20260924",
+    "obs-jackson-news-20261017",
+    "obs-bls-oct",
+    "obs-sabato-ratings-20261014",
+    "obs-rasmussen-mi-20261014",
+    "obs-rasmussen-mi-questions-20261014",
+    "obs-inklink-nh-aarp-20261014",
+    "obs-pappas-aarp-20261014",
+    "obs-nhpr-pappas-record-20261013",
+    "obs-gop-sc-rally-20261021",
+    "obs-gop-mi-rally-20261025"
+  ],
+  "pendingSourceIds": [
+    "obs-insider-ak-ks-mi-20261011",
+    "obs-cook-ratings-20261006",
+    "obs-alaska-survey-research-20261007",
+    "obs-quantus-ia-20260930",
+    "obs-roster-oh",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924",
+    "obs-white-house",
+    "obs-sabato",
+    "obs-insider-tx-ks-me-20261015",
+    "obs-pressherald-me-debate-20261015",
+    "obs-bgsu-oh-20261016",
+    "obs-ga-trump-result-20261016",
+    "obs-white-house-ga-20261016",
+    "obs-inside",
+    "obs-reuters-democratic-unity-20260919",
+    "obs-cbs-tx-20261018-pending",
+    "obs-vox-me-abortion-20260922",
+    "obs-mainepublic-me-debate-recap-20261016",
+    "obs-maine-public-collins-payout",
+    "obs-jackson-byrne",
+    "obs-reuters-byrne",
+    "obs-maine-debates",
+    "obs-me-manchin-endorsement",
+    "obs-suffolk-me-20261014",
+    "obs-mi-rogers-residency",
+    "obs-mi-advance-rogers-autoworker-20260924",
+    "obs-abdul-ai-control-20261013",
+    "obs-wapo-mi-ai-20261013",
+    "obs-reuters-mi-rogers-iran-20260921",
+    "obs-cbs-detroit-harris-elsayed-20260922",
+    "obs-rogers-trade",
+    "obs-abdul-trade",
+    "obs-ap-mi-convention",
+    "obs-elsayed-piker-statement-20260824",
+    "obs-ap-mi-harris-elsayed-result-20260922",
+    "obs-ap-mi-rogers-coalition-20260921",
+    "obs-hr1-vote",
+    "obs-husted-hr1",
+    "obs-oh-heartland-husted",
+    "obs-reuters-oh-pac-spending-20260918",
+    "obs-reuters-oh-data-centers-20260919",
+    "obs-yougov-oh-20261007",
+    "obs-houston-chronicle-tx-rally-result-20260921",
+    "obs-tribune-tx-qa-20261013",
+    "obs-chron-tx-bush-cornyn-fundraiser-20260922",
+    "obs-paxton-trial",
+    "obs-houston-chronicle-paxton-china-donors-20260922",
+    "obs-emerson-tx-20260917",
+    "obs-reconmr-tx-20260917",
+    "obs-houston-chronicle-tx-ads-20260919",
+    "obs-tpor-tx-20260925",
+    "obs-yougov-tx-20261007",
+    "obs-ak-fisheries-debate",
+    "obs-ap-ak-debate-result-20261015",
+    "obs-ak-bycatch-bill",
+    "obs-commerce-bycatch-20260916",
+    "obs-sullivan-bycatch-committee-20260916",
+    "obs-sullivan-bycatch-floor-20260923",
+    "obs-seafoodsource-bycatch-floor-20260925",
+    "obs-dfp-ak",
+    "obs-coefficient-ak-20260917",
+    "obs-aarp-ak-20260917",
+    "obs-trafalgar-ak-20260925",
+    "obs-siena-five-state-20261003",
+    "obs-alaska-public-peltola-voters-20260929",
+    "obs-wapo-nh-profile-20261003",
+    "obs-rasmussen-nh-20261005",
+    "obs-coefficient-nh",
+    "obs-yougov-nh-20261007"
+  ],
+  "note": "MI調査の公開要旨・設問、NHの社会保障フォーラムと実績への反証、SC/MI大統領予定を確認。6州60比較セルを点検したが全根拠原文・追加7州の全候補者本文は未完了。TX CBS原票、名簿・評価全表等は未確認を明記。D43/R44/未配分13と保存共有・画面は維持。",
+  "reviewMode": "Monday weekly audit, partial primary-source coverage",
+  "baseCommit": "f7705aaab3ac305f49bc4a8ef6f09dbd2f3d1c2e",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-19-poll-forum-weekly",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-peltola",
+      "url": "https://marypeltola.com/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式トップのKuskokwim・漁業・生活費・地元優先の説明を再照合。陣営の主張であり効果ではない。"
+    },
+    {
+      "sourceId": "obs-sullivan",
+      "url": "https://dansullivanforalaska.com/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式トップの2015年就任・海兵隊・国防とエネルギーの説明を再照合。"
+    },
+    {
+      "sourceId": "obs-jackson-policy",
+      "url": "https://www.jacksonformaine.com/priorities",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式政策本文の医療・税・中絶・ICE・労働政策を再照合。成立・効果を意味しない。"
+    },
+    {
+      "sourceId": "obs-jackson-bio",
+      "url": "https://www.jacksonformaine.com/about",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式経歴本文の林業・州議会と州上院議長、給食・地方医療の自己評価を再照合。"
+    },
+    {
+      "sourceId": "obs-collins",
+      "url": "https://www.collins.senate.gov/newsroom/senator-collins-statement-on-the-senate-reconciliation-bill",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "2025年7月1日の財政法案反対声明を再照合。税制への賛意と地方医療への懸念を分離。"
+    },
+    {
+      "sourceId": "obs-rogers-bio",
+      "url": "https://rogersforsenate.com/meet-mike",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式経歴のLivingston、陸軍・FBI・州議会・情報委員長を再照合。後年の批判記事は別確認。"
+    },
+    {
+      "sourceId": "obs-abdul-ai",
+      "url": "https://abdulforsenate.com/2026/09/new-dr-abdul-el-sayed-calls-for-pausing-ai-development/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "9月9日のAI停止提案と公式略歴を再照合。10月13日の追加案全体の再確認ではない。"
+    },
+    {
+      "sourceId": "obs-brown-policy",
+      "url": "https://www.sherrodbrown.com/our-fight/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式政策本文の薬価・公共料金・データセンター費用・議員株取引規制を再照合。"
+    },
+    {
+      "sourceId": "obs-brown-bio",
+      "url": "https://www.sherrodbrown.com/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式トップのMansfield、年金・薬価・退役軍人への自己評価を再照合。"
+    },
+    {
+      "sourceId": "obs-husted-bio",
+      "url": "https://www.jonhustedforsenate.com/bio/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式経歴の州役職・Intel・TechCredの自己評価を再照合。実施効果は未検証。"
+    },
+    {
+      "sourceId": "obs-talarico-policy",
+      "url": "https://jamestalarico.com/issue/taxes-cost-of-living/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式生活費政策の賃金・医療・住宅・関税と州議会実績の主張を再照合。"
+    },
+    {
+      "sourceId": "obs-paxton-policy",
+      "url": "https://www.kenpaxton.com/issues",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式政策本文の減税・国境・送還・Trump政策・暗号資産の主張を再照合。"
+    },
+    {
+      "sourceId": "obs-pappas",
+      "url": "https://chrispappas.org/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式トップのManchester・学校・家業の説明を再照合。寄付募集文の接戦表現は調査としない。"
+    },
+    {
+      "sourceId": "obs-nh-wbur",
+      "url": "https://www.wbur.org/news/2026/08/11/new-hampshire-senate-pappas-sununu",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "8月11日取材の経歴・政策・双方の実績批判と反論、登録ロビイスト記述の訂正を再照合。"
+    },
+    {
+      "sourceId": "obs-talarico-bio",
+      "url": "https://jamestalarico.com/meet-james-talarico/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式経歴の中学校教員・州下院議員を再照合。実績の効果は別途確認。"
+    },
+    {
+      "sourceId": "obs-paxton-bio",
+      "url": "https://www.kenpaxton.com/about",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式経歴の州司法長官・州上下院・弁護士を再照合。訴訟勝利の自己評価は独立検証としない。"
+    },
+    {
+      "sourceId": "obs-sullivan-endorsements",
+      "url": "https://dansullivanforalaska.com/endorsements/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "商工会議所・Alaska Teamsters Local959等の公式推薦一覧を再照合。組合員個々の投票先は不明。"
+    },
+    {
+      "sourceId": "obs-guardian-peltola-response-20260924",
+      "url": "https://www.theguardian.com/us-news/2026/sep/24/mary-peltola-campaign-allegations",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "告発に対する陣営の反論箇所を再確認。個別行為の認定や新しい有権者評価はしていない。"
+    },
+    {
+      "sourceId": "obs-jackson-news-20261017",
+      "url": "https://www.jacksonformaine.com/news",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式ニュース一覧の10月13日から10月6日までを発見用に確認。勝利宣言を独立した討論評価としない。個別記事全件照合ではない。"
+    },
+    {
+      "sourceId": "obs-bls-oct",
+      "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式月次予定の10月20日10:00 ET州別雇用統計を再照合。公表結果はまだ確認していない。"
+    },
+    {
+      "sourceId": "obs-sabato-ratings-20261014",
+      "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "10月14日の公式記事本文を再照合。現行全35選挙表の再照合とは区別し、評価基準日は維持。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "url": "https://www.ohiosos.gov/elections/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式選挙入口は取得。最新の印刷・記名候補全員の原票再照合は未完了。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "url": "https://www.sos.nh.gov/elections",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式選挙入口は403。過去の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "url": "https://insideelections.com/ratings/senate",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-16T00:09:31Z",
+      "contentVerifiedAt": "2026-10-16",
+      "scope": "公式評価ページを取得したが、現行全35選挙の表を再照合できていない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-15T00:05:35Z",
+      "contentVerifiedAt": "2026-10-15",
+      "scope": "10月14日の公式記事は確認したが、全35選挙の現行評価表は未確認。記事専用sourceに成功を記録。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-14T00:08:30Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "Briefings & Statements先頭一覧を確認。確認済み集会はGOP主催者ページに基づき、政府の完全な大統領日程を確認したとは扱わない。"
+    },
+    {
+      "sourceId": "obs-reuters-democratic-unity-20260919",
+      "url": "https://www.reuters.com/legal/government/lingering-feuds-threaten-democrats-bid-reclaim-us-congress-2026-09-19/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "unavailable",
+      "lastSuccessAt": "2026-09-21T00:06:01Z",
+      "contentVerifiedAt": "2026-09-21",
+      "scope": "元記事はInternal Error。9月19日報道という時点を明示し、現在も同じ状態と断定しない。"
+    },
+    {
+      "sourceId": "obs-rasmussen-mi-20261014",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_michigan_senate",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公開要旨と別ページの質問文を照合。10月12〜14日、Michigan LV798人、電話・オンライン、Pulse Opinion Research実査、95%標本誤差±3ポイント。ページ公開日は本文表示で未確認。全クロス集計とNatural Law候補の個別値は未取得。"
+    },
+    {
+      "sourceId": "obs-rasmussen-mi-questions-20261014",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/questions/questions_michigan_senate_october_12_14_2026",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "公式設問1は今日上院選があれば誰へ投票するかを6候補で質問。798人、実査日、誤差を公開要旨と照合。"
+    },
+    {
+      "sourceId": "obs-inklink-nh-aarp-20261014",
+      "url": "https://manchester.inklink.news/pappas-sununu-pledge-to-protect-social-security-differ-on-solutions/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "現地取材の実施日・場所・両候補の発言・別々の面談形式を照合。Sununuの在任期数に不正確な記述があるため採用しない。動画全編・財政効果は未監査。"
+    },
+    {
+      "sourceId": "obs-pappas-aarp-20261014",
+      "url": "https://chrispappas.org/2026/10/at-aarp-candidate-forum-chris-pappas-makes-it-clear-that-he-stands-with-seniors-will-always-protect-social-security/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "陣営発表の給付削減反対を照合。対立候補の政策に関する批判は陣営の評価であり独立認定ではない。"
+    },
+    {
+      "sourceId": "obs-nhpr-pappas-record-20261013",
+      "url": "https://www.nhpr.org/nh-news/2026-10-13/pappas-senate-race-nh-newhampshire-midterm-2026-record-congress",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "本文のSununuによる実績批判、Pappasの反論、立法評価研究者の評価を照合。法案数そのものの原票再集計や政策効果の確認ではない。"
+    },
+    {
+      "sourceId": "obs-cbs-tx-20261018-pending",
+      "url": "https://www.cbsnews.com/news/texas-senate-talarico-paxton-poll/",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "記事本文の方法注記は一度取得。再取得はInternal Error。詳細原票・設問・LV標本と数値の照合未完了につき新規調査値は公開しない。"
+    },
+    {
+      "sourceId": "obs-gop-sc-rally-20261021",
+      "url": "https://events.gop.com/events/midterm-rally-in-clemson-sc-president-donald-j-trump-djt47",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "主催者の開催日・Remarks Begin時刻・場所を照合。Clemson UniversityのT. Ed Garrison Arena（所在地Pendleton）。 政府の公務日程とは区別。"
+    },
+    {
+      "sourceId": "obs-gop-mi-rally-20261025",
+      "url": "https://events.gop.com/events/midterm-rally-in-st-clair-mi-president-donald-j-trump-djt47",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "contentVerifiedAt": "2026-10-19",
+      "scope": "主催者の開催日・Remarks Begin時刻・場所を照合。会場は未発表。上院候補の参加は未確認。 政府の公務日程とは区別。"
+    }
+  ],
+  "discoveryChecks": [
+    {
+      "url": "https://rogersforsenate.com/news",
+      "status": "checked",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "scope": "10月15日から10月2日まで一覧を発見用に閲覧。広告の攻撃や討論勝利宣言は独立確認していない。"
+    },
+    {
+      "url": "https://www.jonhustedforsenate.com/press/",
+      "status": "checked",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": "2026-10-19T00:17:50Z",
+      "scope": "公式一覧の先頭は7月21日。10月に発表が無いことを意味しない。"
+    },
+    {
+      "url": "https://marypeltola.com/press-releases/",
+      "status": "unavailable",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "Internal Error。新規発表全件の確認は未完了。"
+    },
+    {
+      "url": "https://www.sherrodbrown.com/news/",
+      "status": "unavailable",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "Internal Error。新規発表全件の確認は未完了。"
+    },
+    {
+      "url": "https://fox23maine.com/news/beyond-the-podium/gov-mills-says-maine-doesnt-need-a-flamethrower-like-bobby-charles-politics-republican-gubernatorial-candidate-democrats-troy-jackson-hannah-pingree?teaserSource=trending",
+      "status": "unavailable",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "10月16日の検索候補。本文はInternal Error、Millsの推薦状況の更新根拠に採用しない。"
+    },
+    {
+      "url": "https://www.wmur.com/article/pappas-sununu-social-security-aarp-forum-101426/74138225",
+      "status": "unavailable",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "500 / tollbitへの転送。別媒体の現地原文を照合し、このページの成功に代用しない。"
+    },
+    {
+      "url": "https://apnews.com/article/648b1abd8cc3c58f59ac3bce91c95138",
+      "status": "reviewing",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "Iowa農村部記事を検索で発見。原文未照合、支持変化と判断しない。"
+    },
+    {
+      "url": "https://www.reuters.com/legal/litigation/roy-coopers-north-carolina-playbook-is-working-can-other-democrats-copy-it-2026-10-18/",
+      "status": "reviewing",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "North Carolina記事を検索で発見。原文照合未完了。"
+    },
+    {
+      "url": "https://www.washingtonpost.com/politics/2026/10/18/why-kansas-other-red-states-remain-an-uphill-battle-democrats/",
+      "status": "reviewing",
+      "attemptedAt": "2026-10-19T00:17:50Z",
+      "lastSuccessAt": null,
+      "scope": "Kansasの反証候補を検索で発見。本文未照合につき掲載しない。"
+    }
+  ],
+  "comparisonAudit": [
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-troy-d-jackson",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-jackson-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-susan-m-collins",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-collins"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-troy-d-jackson",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-jackson-policy"
+      ],
+      "pendingSourceIds": [
+        "obs-vox-me-abortion-20260922",
+        "obs-pressherald-me-debate-20261015",
+        "obs-mainepublic-me-debate-recap-20261016"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-susan-m-collins",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-collins"
+      ],
+      "pendingSourceIds": [
+        "obs-maine-public-collins-payout",
+        "obs-jackson-byrne",
+        "obs-reuters-byrne",
+        "obs-vox-me-abortion-20260922",
+        "obs-pressherald-me-debate-20261015",
+        "obs-mainepublic-me-debate-recap-20261016"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-troy-d-jackson",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-jackson-policy"
+      ],
+      "pendingSourceIds": [
+        "obs-reuters-democratic-unity-20260919"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-susan-m-collins",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-collins"
+      ],
+      "pendingSourceIds": [
+        "obs-maine-public-collins-payout"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-troy-d-jackson",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-jackson-bio"
+      ],
+      "pendingSourceIds": [
+        "obs-maine-debates"
+      ],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-susan-m-collins",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-maine-debates",
+        "obs-me-manchin-endorsement"
+      ],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-troy-d-jackson",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-suffolk-me-20261014"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "candidateId": "cand-me-susan-m-collins",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-suffolk-me-20261014"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-abdul-el-sayed",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-abdul-ai"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-mike-rogers",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-rogers-bio"
+      ],
+      "pendingSourceIds": [
+        "obs-mi-rogers-residency",
+        "obs-mi-advance-rogers-autoworker-20260924"
+      ],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-abdul-el-sayed",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-abdul-ai"
+      ],
+      "pendingSourceIds": [
+        "obs-abdul-ai-control-20261013",
+        "obs-wapo-mi-ai-20261013",
+        "obs-reuters-mi-rogers-iran-20260921",
+        "obs-cbs-detroit-harris-elsayed-20260922"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-mike-rogers",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-wapo-mi-ai-20261013",
+        "obs-rogers-trade",
+        "obs-reuters-mi-rogers-iran-20260921"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-abdul-el-sayed",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-abdul-trade",
+        "obs-ap-mi-convention",
+        "obs-elsayed-piker-statement-20260824",
+        "obs-reuters-democratic-unity-20260919",
+        "obs-ap-mi-harris-elsayed-result-20260922"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-mike-rogers",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-rogers-trade",
+        "obs-ap-mi-convention",
+        "obs-ap-mi-rogers-coalition-20260921",
+        "obs-reuters-mi-rogers-iran-20260921",
+        "obs-cbs-detroit-harris-elsayed-20260922"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-abdul-el-sayed",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-abdul-ai"
+      ],
+      "pendingSourceIds": [
+        "obs-abdul-ai-control-20261013",
+        "obs-wapo-mi-ai-20261013"
+      ],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-mike-rogers",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-rogers-bio"
+      ],
+      "pendingSourceIds": [
+        "obs-mi-advance-rogers-autoworker-20260924",
+        "obs-wapo-mi-ai-20261013"
+      ],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-abdul-el-sayed",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-rasmussen-mi-20261014",
+        "obs-rasmussen-mi-questions-20261014"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "candidateId": "cand-mi-mike-rogers",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-rasmussen-mi-20261014",
+        "obs-rasmussen-mi-questions-20261014"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-sherrod-brown",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-brown-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-jon-husted",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-husted-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-sherrod-brown",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-brown-policy"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-jon-husted",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-husted-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-sherrod-brown",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-brown-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-jon-husted",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-hr1-vote",
+        "obs-husted-hr1"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-sherrod-brown",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-brown-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-jon-husted",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-husted-bio"
+      ],
+      "pendingSourceIds": [
+        "obs-oh-heartland-husted"
+      ],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-sherrod-brown",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-reuters-oh-pac-spending-20260918",
+        "obs-reuters-oh-data-centers-20260919",
+        "obs-yougov-oh-20261007"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "candidateId": "cand-oh-jon-husted",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-reuters-oh-pac-spending-20260918",
+        "obs-axios-nrsc-spending-20260918",
+        "obs-reuters-oh-data-centers-20260919",
+        "obs-yougov-oh-20261007"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-james-talarico",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-talarico-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-ken-paxton",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-paxton-bio"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-james-talarico",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-talarico-policy"
+      ],
+      "pendingSourceIds": [
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-tribune-tx-qa-20261013"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-ken-paxton",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-paxton-policy"
+      ],
+      "pendingSourceIds": [
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-tribune-tx-qa-20261013"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-james-talarico",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-talarico-policy"
+      ],
+      "pendingSourceIds": [
+        "obs-reuters-democratic-unity-20260919"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-ken-paxton",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-paxton-policy"
+      ],
+      "pendingSourceIds": [
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-chron-tx-bush-cornyn-fundraiser-20260922"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-james-talarico",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-talarico-policy"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-ken-paxton",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-paxton-trial",
+        "obs-houston-chronicle-paxton-china-donors-20260922"
+      ],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-james-talarico",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-emerson-tx-20260917",
+        "obs-reconmr-tx-20260917",
+        "obs-houston-chronicle-tx-ads-20260919",
+        "obs-tpor-tx-20260925",
+        "obs-yougov-tx-20261007"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "candidateId": "cand-tx-ken-paxton",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-emerson-tx-20260917",
+        "obs-reconmr-tx-20260917",
+        "obs-houston-chronicle-tx-ads-20260919",
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-tpor-tx-20260925",
+        "obs-yougov-tx-20261007"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-mary-peltola",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-peltola"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-dan-s-sullivan",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-sullivan"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-mary-peltola",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-peltola"
+      ],
+      "pendingSourceIds": [
+        "obs-ak-fisheries-debate",
+        "obs-ap-ak-debate-result-20261015"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-dan-s-sullivan",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-sullivan"
+      ],
+      "pendingSourceIds": [
+        "obs-ak-bycatch-bill",
+        "obs-commerce-bycatch-20260916",
+        "obs-sullivan-bycatch-committee-20260916",
+        "obs-sullivan-bycatch-floor-20260923",
+        "obs-seafoodsource-bycatch-floor-20260925",
+        "obs-ap-ak-debate-result-20261015"
+      ],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-mary-peltola",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-peltola"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-dan-s-sullivan",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-hr1-vote"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-mary-peltola",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-peltola",
+        "obs-guardian-peltola-response-20260924"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-dan-s-sullivan",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-sullivan-endorsements"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-mary-peltola",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-dfp-ak",
+        "obs-coefficient-ak-20260917",
+        "obs-aarp-ak-20260917",
+        "obs-trafalgar-ak-20260925",
+        "obs-siena-five-state-20261003",
+        "obs-alaska-public-peltola-voters-20260929"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "candidateId": "cand-ak-dan-s-sullivan",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-dfp-ak",
+        "obs-coefficient-ak-20260917",
+        "obs-aarp-ak-20260917",
+        "obs-trafalgar-ak-20260925",
+        "obs-siena-five-state-20261003"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-chris-pappas",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-pappas",
+        "obs-nh-wbur"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-john-e-sununu",
+      "field": "career",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-nh-wbur"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "本人経歴と実績効果を分離。学歴・職歴の独立原票まで全件再照合したものではない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-chris-pappas",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-nh-wbur",
+        "obs-inklink-nh-aarp-20261014",
+        "obs-pappas-aarp-20261014"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-john-e-sununu",
+      "field": "policy",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-nh-wbur",
+        "obs-inklink-nh-aarp-20261014"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "公約・採決・成立・施行と家計への効果を分離。相手の政策への陣営評価を独立認定しない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-chris-pappas",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-nh-wbur"
+      ],
+      "pendingSourceIds": [
+        "obs-wapo-nh-profile-20261003"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-john-e-sununu",
+      "field": "president",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [
+        "obs-nh-wbur"
+      ],
+      "pendingSourceIds": [
+        "obs-wapo-nh-profile-20261003"
+      ],
+      "counterevidenceReview": "党推薦・共同登壇と案件別の賛否を区別。過去の推薦・未推薦を現在の状態へ一般化しない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-chris-pappas",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-nh-wbur",
+        "obs-nhpr-pappas-record-20261013"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-john-e-sununu",
+      "field": "record",
+      "copyReviewed": true,
+      "sourceStatus": "checked-scoped",
+      "freshSourceIds": [
+        "obs-nh-wbur"
+      ],
+      "pendingSourceIds": [],
+      "counterevidenceReview": "自己評価と相手の批判・反論を併記。疑惑を行為の確定や有罪としない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-chris-pappas",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-rasmussen-nh-20261005",
+        "obs-coefficient-nh",
+        "obs-wapo-nh-profile-20261003",
+        "obs-yougov-nh-20261007"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "candidateId": "cand-nh-john-e-sununu",
+      "field": "voters",
+      "copyReviewed": true,
+      "sourceStatus": "partial",
+      "freshSourceIds": [],
+      "pendingSourceIds": [
+        "obs-rasmussen-nh-20261005",
+        "obs-coefficient-nh",
+        "obs-wapo-nh-profile-20261003",
+        "obs-yougov-nh-20261007"
+      ],
+      "counterevidenceReview": "調査日・母集団・設問・方法・誤差を区別。団体推薦、集会反応、広告量を支持率としない。"
+    }
+  ],
+  "additionalStateAudit": [
+    {
+      "electionId": "2026-IA-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    },
+    {
+      "electionId": "2026-NC-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    },
+    {
+      "electionId": "2026-GA-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    },
+    {
+      "electionId": "2026-KS-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    },
+    {
+      "electionId": "2026-MN-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    },
+    {
+      "electionId": "2026-NE-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    },
+    {
+      "electionId": "2026-SC-2-regular",
+      "status": "partial",
+      "scope": "Fresh searches for polls, candidates and local reporting; no complete revalidation of all candidate paragraphs and original evidence. Existing rating/analysis dates retained."
+    }
+  ],
+  "notCheckedSourceIds": [
+    "obs-gop-ia-rally-20261022",
+    "obs-gop-nc-rally-20261020",
+    "obs-gop-ks-rally-20261019",
+    "obs-mpr-mn-debate-result-20261016",
+    "obs-wxyz-mi-debate-20261021",
+    "obs-mainepublic-me-debate-recap-20261016",
+    "obs-gpb-ga-trump-result-20261016",
+    "obs-ap-ak-debate-result-20261015",
+    "obs-suffolk-me-20261014",
+    "obs-tribune-tx-qa-20261013",
+    "obs-bgsu-oh-20261016",
+    "obs-alaska-debate-result-20261015",
+    "obs-ga-trump-result-20261016",
+    "obs-white-house-ga-20261016",
+    "obs-insider-tx-ks-me-20261015",
+    "obs-pressherald-me-debate-20261015",
+    "obs-bls-cpi-20261014",
+    "obs-inside-ratings-20261015",
+    "obs-ut-texas-poll-20261013",
+    "obs-gpb-ga-debate-result-20261014",
+    "obs-reuters-ak-rally-result-20261014",
+    "obs-ap-ak-rally-result-20261013",
+    "obs-radioiowa-ia-debate-result-20261014",
+    "obs-abdul-ai-control-20261013",
+    "obs-wapo-mi-ai-20261013",
+    "obs-wapo-debates-live-20261013",
+    "obs-sherrod-obama-rally-20261024",
+    "obs-ideastream-oh-obama-rally-20261013",
+    "obs-white-house-midterm-travel-20261013",
+    "obs-cbs-ga-trump-rally-20261016",
+    "obs-gpb-ga-debate-20261013",
+    "obs-newscentermaine-debate-20261015",
+    "obs-rasmussen-me-20261009",
+    "obs-trafalgar-tx-20261009",
+    "obs-insider-ak-ks-mi-20261011",
+    "obs-ap-tx-fact-check-20261012",
+    "obs-wabi-me-debate-20261013",
+    "obs-emerson-ia-20261009",
+    "obs-iowa-pbs-debate-20261007",
+    "obs-iowa-capital-dispatch-debate-20261007",
+    "obs-nexstar-ia-debate-20261013",
+    "obs-ap-mi-uaw-20261010",
+    "obs-wapo-ks-republicans-20261010",
+    "obs-nexstar-ks-debate-20261021",
+    "obs-wapo-schar-me-20261009",
+    "obs-wmtw-me-debate-result-20261008",
+    "obs-maine-morning-star-debate-20261008",
+    "obs-ajc-ga-debate-20261008",
+    "obs-gop-ak-trump-rally-20261013",
+    "obs-alaska-public-media-trump-rally-20261008",
+    "obs-ap-mi-debate-20261008",
+    "obs-ap-tx-debate-20261008",
+    "obs-yougov-seven-state-20261007",
+    "obs-yougov-ks-20261007",
+    "obs-yougov-nh-20261007",
+    "obs-yougov-mi-20261007",
+    "obs-yougov-ne-20261007",
+    "obs-yougov-oh-20261007",
+    "obs-yougov-tx-20261007",
+    "obs-wmtw-me-debate-20261008",
+    "obs-marist-me-20261006",
+    "obs-suffolk-ia-20261007",
+    "obs-quantus-mi-20261007",
+    "obs-rogers-tariff-ad-20261007",
+    "obs-reuters-mi-tariff-20261007",
+    "obs-ap-tx-mi-live-20261007",
+    "obs-white-house-tx-20261007",
+    "obs-alaska-survey-research-20261007",
+    "obs-wgme-me-debate-20261006",
+    "obs-cook-ratings-20261006",
+    "obs-wapo-cook-ratings-20261006",
+    "obs-reuters-oh-early-voting-20261006",
+    "obs-reuters-northeast-heating-20261006",
+    "obs-mysa-tx-rally-confirmation-20261006",
+    "obs-rasmussen-nh-20261005",
+    "obs-cbs-mi-mitchell-20261005",
+    "obs-mi-democrats-obama-20261005",
+    "obs-doe-ak-transmission-20261005",
+    "obs-reuters-ak-vance-20261005",
+    "obs-ap-ne-trump-rally-20261005",
+    "obs-siena-five-state-20261003",
+    "obs-alaska-public-peltola-voters-20260929",
+    "obs-wapo-nh-profile-20261003",
+    "obs-wapo-nc-profile-20261004",
+    "obs-fox-tx-20261001",
+    "obs-quantus-ak-20261002",
+    "obs-reuters-oh-rally-20261003",
+    "obs-alaska-public-spending-20261002",
+    "obs-cbs-me-20261002",
+    "obs-bls-jobs-20261002",
+    "obs-axios-tx-denton-20261002",
+    "obs-texas-tribune-tx-san-antonio-20261002",
+    "obs-cbs-slf-ks-nc-20261002",
+    "obs-factbase-trump-calendar-20261003",
+    "obs-fox-ia-20261001",
+    "obs-aarp-me-20261001",
+    "obs-suffolk-oh-20261001",
+    "obs-gop-trump-oh-event-20261003",
+    "obs-quantus-ia-20260930",
+    "obs-fox-mi-20260930",
+    "obs-ap-ak-ia-projects-20260930",
+    "obs-white-house-ia-steel-20260928",
+    "obs-reuters-ia-cancer-20260929",
+    "obs-wapo-me-corporate-pac-20260930",
+    "obs-senate-hr9340-vote-20260930",
+    "obs-husted-hr9340-20260930",
+    "obs-houston-tx-debate-20260929",
+    "obs-reuters-tx-paxton-audio-20260930",
+    "obs-ap-gop-senate-spending-20260929",
+    "obs-quantus-oh-20260924",
+    "obs-bigdata-tx-20260927",
+    "obs-aarp-nc-20260928",
+    "obs-alaska-public-lower48-20260928",
+    "obs-spectrum-me-trump-20260928",
+    "obs-nhpr-nh-outside-spending-20260928",
+    "obs-houston-chronicle-paxton-data-centers-20260928",
+    "obs-bigdata-mi-20260925",
+    "obs-trafalgar-ak-20260925",
+    "obs-tpor-tx-20260925",
+    "obs-hpu-nc-20260924",
+    "obs-mi-advance-rogers-autoworker-20260924",
+    "obs-houston-chronicle-paxton-china-donors-20260922",
+    "obs-alaska-public-debate-schedule-20260922",
+    "obs-wlns-mi-debates-20260905",
+    "obs-marist-ia-20260922",
+    "obs-marist-tx-20260923",
+    "obs-unh-nh-20260924",
+    "obs-nyt-siena-nh-20260924",
+    "obs-texas-tribune-talarico-tribfest-20260924",
+    "obs-ssrs",
+    "obs-emerson-tx",
+    "obs-dfp-ak",
+    "obs-maine-debates",
+    "obs-rogers-trade",
+    "obs-roster-ak",
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-tx",
+    "obs-270towin-sabato-20260922",
+    "obs-local-ak",
+    "obs-local-mi",
+    "obs-local-oh",
+    "obs-local-tx",
+    "obs-hr1-vote",
+    "obs-husted-hr1",
+    "obs-abdul-trade",
+    "obs-paxton-trial",
+    "obs-ap-mi-convention",
+    "obs-mi-rogers-residency",
+    "obs-texas-tribune-spending",
+    "obs-maine-public-collins-payout",
+    "obs-ak-fisheries-debate",
+    "obs-ak-bycatch-bill",
+    "obs-commerce-bycatch-20260916",
+    "obs-me-manchin-endorsement",
+    "obs-coefficient-nh",
+    "obs-texas-tribune-paxton-ads",
+    "obs-oh-heartland-husted",
+    "obs-jackson-byrne",
+    "obs-reuters-byrne",
+    "obs-fox2-mi-debates",
+    "obs-sullivan-bycatch-committee-20260916",
+    "obs-sullivan-bycatch-floor-20260923",
+    "obs-seafoodsource-bycatch-floor-20260925",
+    "obs-ap-harris-el-sayed-20260922",
+    "obs-ap-mi-harris-elsayed-result-20260922",
+    "obs-cbs-detroit-harris-elsayed-20260922",
+    "obs-coefficient-ak-20260917",
+    "obs-ak-public-bycatch-20260916",
+    "obs-emerson-mi-20260917",
+    "obs-wapo-mi-20260917",
+    "obs-emerson-tx-20260917",
+    "obs-reconmr-tx-20260917",
+    "obs-trafalgar-oh-20260917",
+    "obs-ap-oh-economy-20260917",
+    "obs-reuters-canada-tariffs-20260917",
+    "obs-aarp-ak-20260917",
+    "obs-quantus-me-20260917",
+    "obs-reuters-oh-pac-spending-20260918",
+    "obs-axios-nrsc-spending-20260918",
+    "obs-axios-mi-piker-20260918",
+    "obs-elsayed-piker-statement-20260824",
+    "obs-elsayed-morning-joe-20260918",
+    "obs-reuters-oh-data-centers-20260919",
+    "obs-wapo-mi-rhetoric-20260919",
+    "obs-houston-chronicle-tx-ads-20260919",
+    "obs-ap-mi-rogers-coalition-20260921",
+    "obs-houston-chronicle-tx-events-20260920",
+    "obs-houston-chronicle-tx-rally-result-20260921",
+    "obs-reuters-mi-rogers-iran-20260921",
+    "obs-reuters-ipsos-national-20260921",
+    "obs-vox-me-abortion-20260922",
+    "obs-chron-tx-bush-cornyn-fundraiser-20260922"
+  ],
+  "searchCoverage": [
+    "AK/ME/MI/OH-special/TX/NH plus IA/NC/GA/KS/MN/NE/SC: fresh polling, candidate statements, local reporting, event changes and presidential schedule searches. Search absence is not proof of no change.",
+    "All 60 original-six-state comparison cells editorially reviewed, with per-cell fresh/pending evidence and counterevidence checks. This is not a complete primary-source re-audit.",
+    "SC/MI new rally times from event organizers, not speculative speaking schedules. NH forum retrospectively entered as completed and cross-linked; date-only because start time unverified.",
+    "CBS TX original details still pending. BGSU OH PDF403 and other old pending originals were not silently cleared.",
+    "Supplementary 7-state full narrative/source audit remains incomplete. No claims of unchanged or full weekly completion."
+  ],
+  "eventChecks": [
+    {
+      "eventId": "mi-trump-rally-2026-10-25",
+      "status": "scheduled",
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "sc-trump-rally-2026-10-21",
+      "status": "scheduled",
+      "resultUpdateId": null
+    },
+    {
+      "eventId": "nh-aarp-forum-2026-10-14",
+      "status": "completed",
+      "resultUpdateId": "obs-update-nh-aarp-2026-10-14"
+    },
+    {
+      "eventId": "bls-state-jobs-2026-10-20",
+      "status": "scheduled",
+      "resultUpdateId": null
+    }
+  ],
+  "changes": [
+    "obs-update-mi-rasmussen-2026-10-14",
+    "obs-update-nh-aarp-2026-10-14"
+  ],
+  "preserved": [
+    "D43/R44/unallocated13 and historical scenario/share baselines",
+    "UI and candidate selection",
+    "AK/OH analysis dates; ME/TX analysis dates retained for historical-date qualification only",
+    "unverified CBS TX poll values withheld"
+  ],
+  "validation": {
+    "initialTestAttempt": "465 passed, 2 failed before any publication: missing timing-note wording and expected event-order fixture not yet extended. Restored the timing note and added the three verified event IDs to the fixture; no runtime/UI relaxation.",
+    "npmCi": "passed",
+    "npmTest": "passed: 467 tests / 34 files at 2026-10-19T00:19:44Z",
+    "npmBuild": "passed: tsc and Vite; existing chunk-size advisory only; JS index-j79XinYY.js, CSS index-Dsomt5uB.css",
+    "localPreview": "Not launched: data-only change and managed Sites preview has no control-browser skill. Public Pages content verification is performed separately after deployment."
+  },
+  "deployment": {
+    "status": "pending"
+  }
+}
