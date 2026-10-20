@@ -2,7 +2,7 @@
   "runId": "daily-20261020",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-20T00:01:37Z",
-  "completedAt": "2026-10-20T00:10:47Z",
+  "completedAt": "2026-10-20T00:16:37Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-hobby-tx-20261019",
@@ -183,7 +183,7 @@
   "note": "TX/OH/AKの3調査を原報告・設問・全体集計と照合して追加。KS集会結果、CBS TX原票、評価全表、未訪問情報源は未確認。ME/MI/NHの分析日は維持。D43/R44/未配分13、保存共有・画面は変更しない。",
   "reviewMode": "daily; Tuesday; Monday's 60-cell partial audit remains in daily-20261019.json",
   "baseCommit": "b665da6ff29182e5a55b4d2d66e1d823d8e60b0c",
-  "publishedCommit": null,
+  "publishedCommit": "1012f004292e464026e25a85c37927892dc8c271",
   "revision": "observation-2026-10-20-three-state-polls",
   "sourceChecks": [
     {
@@ -726,8 +726,12 @@
     "initialTestAttempt": "468 passed / 3 failed before publication: partial-source retrieval dates must retain last verified snapshot, feed counts needed +3, new test used incorrect literal for existing pending label. Corrected metadata and assertions without weakening runtime validation. No publish attempted."
   },
   "deployment": {
-    "status": "not_started",
-    "pagesRunUrl": null,
-    "publicContentVerifiedAt": null
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39346429608",
+    "publicContentVerifiedAt": "2026-10-20T00:16:37Z",
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "verified": ["Published JS index-Cui6bTgY.js", "D43/R44/unallocated13 unchanged", "TX 48/46, LV 2000 and method/uncertainty in public article", "OH 49/47, LV 901 and contradictory YouGov result retained", "AK first preference 44/42, LV 775 and final-transfer withholding visible", "KS October 19 rally under elapsed/result-pending, not certified occurred"],
+    "publicationMethod": "Six explicit source/docs/test paths; parent equals latest main; update_ref expected_sha with force=false. No dist or unrelated UI paths published.",
+    "verificationFollowup": "This record is a docs-only follow-up to the verified content commit; its own workflow is checked after publication."
   }
 }
