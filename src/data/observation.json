@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-19-poll-forum-weekly",
+  "revision": "observation-2026-10-20-three-state-polls",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,122 +8,345 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-19T00:17:50Z",
+    "lastCompletedAt": "2026-10-20T00:10:47Z",
     "latestRun": {
-      "runId": "daily-20261019",
+      "runId": "daily-20261020",
       "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
-      "startedAt": "2026-10-19T00:03:43Z",
-      "completedAt": "2026-10-19T00:17:50Z",
+      "startedAt": "2026-10-20T00:01:37Z",
+      "completedAt": "2026-10-20T00:10:47Z",
       "outcome": "partial",
       "checkedSourceIds": [
+        "obs-hobby-tx-20261019",
+        "obs-hobby-tx-release-20261019",
+        "obs-rasmussen-oh-20261014",
+        "obs-rasmussen-oh-questions-20261014",
+        "obs-rasmussen-oh-crosstabs-20261014",
+        "obs-rasmussen-ak-20261015",
+        "obs-rasmussen-ak-questions-20261015",
+        "obs-rasmussen-ak-crosstabs-20261015",
+        "obs-sabato-ratings-20261014",
+        "obs-gop-nc-rally-20261020",
+        "obs-gop-ks-rally-20261019",
+        "obs-wxyz-mi-debate-20261021",
         "obs-peltola",
         "obs-sullivan",
-        "obs-jackson-policy",
-        "obs-jackson-bio",
-        "obs-collins",
-        "obs-rogers-bio",
-        "obs-abdul-ai",
-        "obs-brown-policy",
-        "obs-brown-bio",
-        "obs-husted-bio",
-        "obs-talarico-policy",
-        "obs-paxton-policy",
-        "obs-pappas",
-        "obs-nh-wbur",
-        "obs-talarico-bio",
-        "obs-paxton-bio",
-        "obs-sullivan-endorsements",
-        "obs-guardian-peltola-response-20260924",
         "obs-jackson-news-20261017",
-        "obs-bls-oct",
-        "obs-sabato-ratings-20261014",
-        "obs-rasmussen-mi-20261014",
-        "obs-rasmussen-mi-questions-20261014",
-        "obs-inklink-nh-aarp-20261014",
-        "obs-pappas-aarp-20261014",
-        "obs-nhpr-pappas-record-20261013",
-        "obs-gop-sc-rally-20261021",
-        "obs-gop-mi-rally-20261025"
+        "obs-bls-oct"
       ],
       "pendingSourceIds": [
-        "obs-insider-ak-ks-mi-20261011",
-        "obs-cook-ratings-20261006",
-        "obs-alaska-survey-research-20261007",
-        "obs-quantus-ia-20260930",
-        "obs-roster-oh",
-        "obs-roster-nh",
-        "obs-quantus-me-20260917",
-        "obs-axios-nrsc-spending-20260918",
-        "obs-unh-nh-20260924",
-        "obs-nyt-siena-nh-20260924",
-        "obs-white-house",
-        "obs-sabato",
-        "obs-insider-tx-ks-me-20261015",
-        "obs-pressherald-me-debate-20261015",
+        "obs-gop-mi-rally-20261025",
+        "obs-gop-sc-rally-20261021",
+        "obs-cbs-tx-20261018-pending",
+        "obs-nhpr-pappas-record-20261013",
+        "obs-pappas-aarp-20261014",
+        "obs-inklink-nh-aarp-20261014",
+        "obs-rasmussen-mi-questions-20261014",
+        "obs-rasmussen-mi-20261014",
+        "obs-gop-ia-rally-20261022",
+        "obs-mpr-mn-debate-result-20261016",
+        "obs-mainepublic-me-debate-recap-20261016",
+        "obs-gpb-ga-trump-result-20261016",
+        "obs-ap-ak-debate-result-20261015",
+        "obs-suffolk-me-20261014",
+        "obs-tribune-tx-qa-20261013",
         "obs-bgsu-oh-20261016",
+        "obs-alaska-debate-result-20261015",
         "obs-ga-trump-result-20261016",
         "obs-white-house-ga-20261016",
-        "obs-inside",
-        "obs-reuters-democratic-unity-20260919",
-        "obs-cbs-tx-20261018-pending",
-        "obs-vox-me-abortion-20260922",
-        "obs-mainepublic-me-debate-recap-20261016",
-        "obs-maine-public-collins-payout",
-        "obs-jackson-byrne",
-        "obs-reuters-byrne",
-        "obs-maine-debates",
-        "obs-me-manchin-endorsement",
-        "obs-suffolk-me-20261014",
-        "obs-mi-rogers-residency",
-        "obs-mi-advance-rogers-autoworker-20260924",
-        "obs-abdul-ai-control-20261013",
-        "obs-wapo-mi-ai-20261013",
-        "obs-reuters-mi-rogers-iran-20260921",
-        "obs-cbs-detroit-harris-elsayed-20260922",
-        "obs-rogers-trade",
-        "obs-abdul-trade",
-        "obs-ap-mi-convention",
-        "obs-elsayed-piker-statement-20260824",
-        "obs-ap-mi-harris-elsayed-result-20260922",
-        "obs-ap-mi-rogers-coalition-20260921",
-        "obs-hr1-vote",
-        "obs-husted-hr1",
-        "obs-oh-heartland-husted",
-        "obs-reuters-oh-pac-spending-20260918",
-        "obs-reuters-oh-data-centers-20260919",
+        "obs-rasmussen-me-20261009",
+        "obs-trafalgar-tx-20261009",
+        "obs-insider-ak-ks-mi-20261011",
+        "obs-ap-tx-fact-check-20261012",
+        "obs-emerson-ia-20261009",
+        "obs-ap-mi-uaw-20261010",
+        "obs-wapo-ks-republicans-20261010",
+        "obs-yougov-seven-state-20261007",
+        "obs-yougov-ks-20261007",
+        "obs-yougov-nh-20261007",
+        "obs-yougov-mi-20261007",
+        "obs-yougov-ne-20261007",
         "obs-yougov-oh-20261007",
-        "obs-houston-chronicle-tx-rally-result-20260921",
-        "obs-tribune-tx-qa-20261013",
-        "obs-chron-tx-bush-cornyn-fundraiser-20260922",
-        "obs-paxton-trial",
-        "obs-houston-chronicle-paxton-china-donors-20260922",
-        "obs-emerson-tx-20260917",
-        "obs-reconmr-tx-20260917",
-        "obs-houston-chronicle-tx-ads-20260919",
-        "obs-tpor-tx-20260925",
         "obs-yougov-tx-20261007",
+        "obs-marist-me-20261006",
+        "obs-suffolk-ia-20261007",
+        "obs-quantus-mi-20261007",
+        "obs-rogers-tariff-ad-20261007",
+        "obs-reuters-mi-tariff-20261007",
+        "obs-alaska-survey-research-20261007",
+        "obs-cook-ratings-20261006",
+        "obs-rasmussen-nh-20261005",
+        "obs-cbs-mi-mitchell-20261005",
+        "obs-siena-five-state-20261003",
+        "obs-alaska-public-peltola-voters-20260929",
+        "obs-guardian-peltola-response-20260924",
+        "obs-wapo-nh-profile-20261003",
+        "obs-wapo-nc-profile-20261004",
+        "obs-fox-tx-20261001",
+        "obs-quantus-ak-20261002",
+        "obs-reuters-oh-rally-20261003",
+        "obs-alaska-public-spending-20261002",
+        "obs-cbs-me-20261002",
+        "obs-bls-jobs-20261002",
+        "obs-axios-tx-denton-20261002",
+        "obs-texas-tribune-tx-san-antonio-20261002",
+        "obs-cbs-slf-ks-nc-20261002",
+        "obs-factbase-trump-calendar-20261003",
+        "obs-fox-ia-20261001",
+        "obs-aarp-me-20261001",
+        "obs-suffolk-oh-20261001",
+        "obs-gop-trump-oh-event-20261003",
+        "obs-quantus-ia-20260930",
+        "obs-fox-mi-20260930",
+        "obs-ap-ak-ia-projects-20260930",
+        "obs-white-house-ia-steel-20260928",
+        "obs-reuters-ia-cancer-20260929",
+        "obs-wapo-me-corporate-pac-20260930",
+        "obs-senate-hr9340-vote-20260930",
+        "obs-husted-hr9340-20260930",
+        "obs-houston-tx-debate-20260929",
+        "obs-reuters-tx-paxton-audio-20260930",
+        "obs-ap-gop-senate-spending-20260929",
+        "obs-quantus-oh-20260924",
+        "obs-bigdata-tx-20260927",
+        "obs-aarp-nc-20260928",
+        "obs-alaska-public-lower48-20260928",
+        "obs-spectrum-me-trump-20260928",
+        "obs-nhpr-nh-outside-spending-20260928",
+        "obs-houston-chronicle-paxton-data-centers-20260928",
+        "obs-bigdata-mi-20260925",
+        "obs-trafalgar-ak-20260925",
+        "obs-tpor-tx-20260925",
+        "obs-hpu-nc-20260924",
+        "obs-mi-advance-rogers-autoworker-20260924",
+        "obs-houston-chronicle-paxton-china-donors-20260922",
+        "obs-marist-ia-20260922",
+        "obs-marist-tx-20260923",
+        "obs-unh-nh-20260924",
+        "obs-nyt-siena-nh-20260924",
+        "obs-texas-tribune-talarico-tribfest-20260924",
+        "obs-ssrs",
+        "obs-emerson-tx",
+        "obs-dfp-ak",
+        "obs-collins",
+        "obs-maine-debates",
+        "obs-nh-wbur",
+        "obs-roster-ak",
+        "obs-roster-me",
+        "obs-roster-mi",
+        "obs-roster-oh",
+        "obs-roster-tx",
+        "obs-roster-nh",
+        "obs-sabato",
+        "obs-270towin-sabato-20260922",
+        "obs-inside",
+        "obs-white-house",
+        "obs-local-ak",
+        "obs-local-mi",
+        "obs-local-oh",
+        "obs-local-tx",
+        "obs-ap-mi-convention",
+        "obs-texas-tribune-spending",
+        "obs-maine-public-collins-payout",
         "obs-ak-fisheries-debate",
-        "obs-ap-ak-debate-result-20261015",
         "obs-ak-bycatch-bill",
         "obs-commerce-bycatch-20260916",
+        "obs-me-manchin-endorsement",
+        "obs-coefficient-nh",
+        "obs-texas-tribune-paxton-ads",
+        "obs-oh-heartland-husted",
+        "obs-jackson-byrne",
+        "obs-reuters-byrne",
+        "obs-fox2-mi-debates",
         "obs-sullivan-bycatch-committee-20260916",
         "obs-sullivan-bycatch-floor-20260923",
         "obs-seafoodsource-bycatch-floor-20260925",
-        "obs-dfp-ak",
+        "obs-ap-harris-el-sayed-20260922",
+        "obs-ap-mi-harris-elsayed-result-20260922",
+        "obs-cbs-detroit-harris-elsayed-20260922",
         "obs-coefficient-ak-20260917",
+        "obs-ak-public-bycatch-20260916",
+        "obs-emerson-mi-20260917",
+        "obs-wapo-mi-20260917",
+        "obs-emerson-tx-20260917",
+        "obs-reconmr-tx-20260917",
+        "obs-trafalgar-oh-20260917",
+        "obs-ap-oh-economy-20260917",
+        "obs-reuters-canada-tariffs-20260917",
         "obs-aarp-ak-20260917",
-        "obs-trafalgar-ak-20260925",
-        "obs-siena-five-state-20261003",
-        "obs-alaska-public-peltola-voters-20260929",
-        "obs-wapo-nh-profile-20261003",
-        "obs-rasmussen-nh-20261005",
-        "obs-coefficient-nh",
-        "obs-yougov-nh-20261007"
+        "obs-quantus-me-20260917",
+        "obs-reuters-oh-pac-spending-20260918",
+        "obs-axios-nrsc-spending-20260918",
+        "obs-axios-mi-piker-20260918",
+        "obs-elsayed-piker-statement-20260824",
+        "obs-elsayed-morning-joe-20260918",
+        "obs-reuters-oh-data-centers-20260919",
+        "obs-wapo-mi-rhetoric-20260919",
+        "obs-houston-chronicle-tx-ads-20260919",
+        "obs-reuters-democratic-unity-20260919",
+        "obs-ap-mi-rogers-coalition-20260921",
+        "obs-houston-chronicle-tx-events-20260920",
+        "obs-houston-chronicle-tx-rally-result-20260921",
+        "obs-reuters-mi-rogers-iran-20260921",
+        "obs-reuters-ipsos-national-20260921",
+        "obs-vox-me-abortion-20260922",
+        "obs-chron-tx-bush-cornyn-fundraiser-20260922"
       ],
-      "note": "MI調査の公開要旨・設問、NHの社会保障フォーラムと実績への反証、SC/MI大統領予定を確認。6州60比較セルを点検したが全根拠原文・追加7州の全候補者本文は未完了。TX CBS原票、名簿・評価全表等は未確認を明記。D43/R44/未配分13と保存共有・画面は維持。"
+      "note": "TX/OH/AKの3調査を原報告・設問・全体集計と照合して追加。KS集会結果、CBS TX原票、評価全表、未訪問情報源は未確認。ME/MI/NHの分析日は維持。D43/R44/未配分13、保存共有・画面は変更しない。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-rasmussen-ak-crosstabs-20261015",
+      "title": "alaska Senate demographics",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/public_surveys/crosstabs_2_alaska_senate_october_12_15_2026",
+      "publishedAt": null,
+      "referencePeriod": "公開クロス表の第一希望全体列44/42/4/3/6を本文と照合。第2選択とFinal ballotの記述差は未解消につき最終値は不採用。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公開クロス表の第一希望全体列44/42/4/3/6を本文と照合。第2選択とFinal ballotの記述差は未解消につき最終値は不採用。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-ak-questions-20261015",
+      "title": "alaska Senate survey questions",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/questions/questions_alaska_senate_october_12_15_2026",
+      "publishedAt": null,
+      "referencePeriod": "設問1の4候補名・調査期間・母集団と誤差を照合。設問2は第2選択と記載。最終再配分とは区別。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "設問1の4候補名・調査期間・母集団と誤差を照合。設問2は第2選択と記載。最終再配分とは区別。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-ak-20261015",
+      "title": "Election 2026: alaska Senate",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_alaska_senate",
+      "publishedAt": null,
+      "referencePeriod": "10月12〜15日、LV 775、電話・オンライン、±3ポイント95%。公開本文の全体投票意向を照合。第2選択の本文表現と最終再配分表の対応・本文の経歴誤記は未解消。第一希望のみ採用。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "10月12〜15日、LV 775、電話・オンライン、±3ポイント95%。公開本文の全体投票意向を照合。第2選択の本文表現と最終再配分表の対応・本文の経歴誤記は未解消。第一希望のみ採用。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-oh-crosstabs-20261014",
+      "title": "ohio Senate demographics",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/public_surveys/crosstabs_2_ohio_senate_october_12_14_2026",
+      "publishedAt": null,
+      "referencePeriod": "公開クロス表の全体列: Brown47/Husted49/Redpath1/Levy1/未定2を設問・本文と照合。下位集団の因果分析はしていない。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "公開クロス表の全体列: Brown47/Husted49/Redpath1/Levy1/未定2を設問・本文と照合。下位集団の因果分析はしていない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-oh-questions-20261014",
+      "title": "ohio Senate survey questions",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/questions/questions_ohio_senate_october_12_14_2026",
+      "publishedAt": null,
+      "referencePeriod": "設問1の4候補名・調査期間・母集団と誤差を照合。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "設問1の4候補名・調査期間・母集団と誤差を照合。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-rasmussen-oh-20261014",
+      "title": "Election 2026: ohio Senate",
+      "publisher": "Rasmussen Reports",
+      "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_ohio_senate",
+      "publishedAt": null,
+      "referencePeriod": "10月12〜14日、LV 901、電話・オンライン、±3ポイント95%。公開本文の全体投票意向を照合。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "10月12〜14日、LV 901、電話・オンライン、±3ポイント95%。公開本文の全体投票意向を照合。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-hobby-tx-release-20261019",
+      "title": "Hobby School Survey: Talarico Holds Narrow Lead Over Paxton",
+      "publisher": "University of Houston",
+      "url": "https://www.uh.edu/news-events/stories/2026/october/10192026-hobby-texas-races.php",
+      "publishedAt": "2026-10-19",
+      "referencePeriod": "10月19日公表日・上院48/46/3/3と研究ページへの原リンクを照合。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "10月19日公表日・上院48/46/3/3と研究ページへの原リンクを照合。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
+    {
+      "sourceId": "obs-hobby-tx-20261019",
+      "title": "Texas Votes 2026: Statewide Races, Favorability & Election Administration",
+      "publisher": "University of Houston Hobby School",
+      "url": "https://www.uh.edu/hobby/texas2026/statewide26.pdf",
+      "publishedAt": "2026-10-19",
+      "referencePeriod": "Report 1 pp.1,5: 10/10–14、LV 2,000、SMS→英西オンライン、人口・選挙履歴・地域で重み付け、±2.19。投票意向48/46/3/3。全設問票・個票は未取得。",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "Report 1 pp.1,5: 10/10–14、LV 2,000、SMS→英西オンライン、人口・選挙履歴・地域で重み付け、±2.19。投票意向48/46/3/3。全設問票・個票は未取得。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
+    },
     {
       "sourceId": "obs-gop-mi-rally-20261025",
       "title": "President Trump rally in St. Clair County",
@@ -169,7 +392,7 @@
       "url": "https://www.cbsnews.com/news/texas-senate-talarico-paxton-poll/",
       "publishedAt": "2026-10-18",
       "referencePeriod": "記事本文の方法注記は一度取得。再取得はInternal Error。詳細原票・設問・LV標本と数値の照合未完了につき新規調査値は公開しない。",
-      "retrievedAt": "2026-10-19",
+      "retrievedAt": "2026-10-20",
       "contentVerifiedAt": null,
       "electionIds": [
         "2026-TX-2-regular"
@@ -302,8 +525,8 @@
       "url": "https://events.gop.com/events/midterm-rally-in-greenville-north-carolina-president-donald-j-trump-djtnc",
       "publishedAt": null,
       "referencePeriod": "主催者の日時・場所をFactba.se日程表とも照合。Pitt-Greenville Airport。開場時刻は本文15時と見出し15時30分で不一致のため採用しない。",
-      "retrievedAt": "2026-10-18",
-      "contentVerifiedAt": "2026-10-18",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-NC-2-regular"
       ],
@@ -312,7 +535,7 @@
       "method": "主催者の日時・場所をFactba.se日程表とも照合。Pitt-Greenville Airport。開場時刻は本文15時と見出し15時30分で不一致のため採用しない。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-18T00:10:09Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-gop-ks-rally-20261019",
@@ -321,8 +544,8 @@
       "url": "https://events.gop.com/events/midterm-rally-in-park-city-kansas-president-donald-j-trump-ks",
       "publishedAt": null,
       "referencePeriod": "主催者の日時・場所をFactba.se日程表とも照合。Heartland Credit Union Arena。プログラム開始16時30分と大統領発言18時を区別。",
-      "retrievedAt": "2026-10-18",
-      "contentVerifiedAt": "2026-10-18",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-KS-2-regular"
       ],
@@ -331,7 +554,7 @@
       "method": "主催者の日時・場所をFactba.se日程表とも照合。Heartland Credit Union Arena。プログラム開始16時30分と大統領発言18時を区別。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-18T00:10:09Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-mpr-mn-debate-result-20261016",
@@ -359,8 +582,8 @@
       "url": "https://www.wxyz.com/news/national-politics/america-votes/wxyz-tv-to-host-u-s-senate-debate-between-mike-rogers-and-abdul-el-sayed",
       "publishedAt": null,
       "referencePeriod": "主催局本文で10月21日19時、DetroitのBroadcast House、両候補の同意を確認。公開日表示は空欄。",
-      "retrievedAt": "2026-10-18",
-      "contentVerifiedAt": "2026-10-18",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-MI-2-regular"
       ],
@@ -369,7 +592,7 @@
       "method": "主催局本文で10月21日19時、DetroitのBroadcast House、両候補の同意を確認。公開日表示は空欄。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-18T00:10:09Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-mainepublic-me-debate-recap-20261016",
@@ -549,8 +772,8 @@
       "url": "https://www.jacksonformaine.com/news",
       "publishedAt": null,
       "referencePeriod": "公式ニュース一覧の先頭10月13日分から10月6日分まで確認。陣営の討論勝利宣言は中立的な勝敗評価としない。個別記事・全期間の照合完了を意味しない。",
-      "retrievedAt": "2026-10-19",
-      "contentVerifiedAt": "2026-10-19",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-ME-2-regular"
       ],
@@ -559,7 +782,7 @@
       "method": "公式ニュース一覧の先頭10月13日分から10月6日分まで確認。陣営の討論勝利宣言は中立的な勝敗評価としない。個別記事・全期間の照合完了を意味しない。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-19T00:17:50Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-insider-tx-ks-me-20261015",
@@ -673,7 +896,9 @@
       "referencePeriod": "9月25日〜10月5日のTexas州投票予定者861人の上院投票意向と候補者評価。",
       "retrievedAt": "2026-10-15",
       "contentVerifiedAt": "2026-10-15",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "event-driven",
       "method": "大学の調査本文と279ページのクロス集計原票で設問、投票予定者標本、YouGovオンラインパネル、誤差を照合。単一調査を勝敗予測にしない。",
@@ -688,8 +913,8 @@
       "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
       "publishedAt": "2026-10-14",
       "referencePeriod": "Kansas、Nebraska、New Hampshire、Minnesota、Mississippiの上院評価を変更。Sabato単独では民主方向49・共和方向46・Toss-up 5。",
-      "retrievedAt": "2026-10-19",
-      "contentVerifiedAt": "2026-10-19",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-KS-2-regular",
         "2026-NE-2-regular",
@@ -702,7 +927,7 @@
       "method": "10月14日の公式記事本文を再確認。現行全表リンクは取得失敗。記事の成功と全表未確認を区別。",
       "alternativeUrl": "https://centerforpolitics.org/crystalball/five-senate-rating-changes-as-close-battle-for-majority-control-rages/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-19T00:17:50Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-gpb-ga-debate-result-20261014",
@@ -713,7 +938,9 @@
       "referencePeriod": "10月13日のAtlanta Press Club主催Georgia上院候補討論会の実施と主要発言。",
       "retrievedAt": "2026-10-15",
       "contentVerifiedAt": "2026-10-15",
-      "electionIds": ["2026-GA-2-regular"],
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "category": "local-reporting",
       "cadence": "event-driven",
       "method": "州内公共メディアの現場取材で実施と発言を確認。候補者主張と効果・事実認定を区別。",
@@ -730,7 +957,9 @@
       "referencePeriod": "10月13日WasillaのTrump・Sullivan集会、燃料費・Iran戦争・石油開発をめぐる発言。",
       "retrievedAt": "2026-10-15",
       "contentVerifiedAt": "2026-10-15",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "現地取材で集会実施と両氏の発言を照合。集会参加者の発言は州全体の世論として扱わない。",
@@ -747,7 +976,9 @@
       "referencePeriod": "Wasilla集会の終了とAlaska LNGのTaiwan契約をめぐるTrump氏の発言および未確認事項。",
       "retrievedAt": "2026-10-15",
       "contentVerifiedAt": "2026-10-15",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "ライブ記事で終了と大統領発言を確認。Taiwan側・White Houseの契約確認がない点を明記。",
@@ -764,7 +995,9 @@
       "referencePeriod": "10月13日WHO 13主催Iowa上院候補討論会の実施と政策発言。",
       "retrievedAt": "2026-10-15",
       "contentVerifiedAt": "2026-10-15",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "local-reporting",
       "cadence": "event-driven",
       "method": "州内放送取材で実施、ロシア産ディーゼル・データセンター・移民政策に関する候補者発言を確認。",
@@ -781,7 +1014,9 @@
       "referencePeriod": "El-Sayed氏が発表したfrontier AI開発停止、独立規制機関、内部告発者保護、事故報告・緊急対応などの政策案。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "official",
       "cadence": "event-driven",
       "method": "候補者陣営の原文で提案内容を確認し、陣営による対立候補への批判、実施済み政策、効果を分ける",
@@ -798,7 +1033,9 @@
       "referencePeriod": "El-Sayed氏のAI政策、Rogers氏のMichigan州データセンター1年停止案、New York Times/Siena調査の争点評価。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "候補者案の範囲、実施方法の未確定点、対立候補の別の停止案、争点別評価と投票先を分けて照合",
@@ -815,7 +1052,11 @@
       "referencePeriod": "10月13日のMaine上院候補討論会の実施と、Collins氏・Jackson氏のIran戦争、上院手続き、超党派実績に関する発言。Georgia・Iowaの同日討論予定。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-ME-2-regular", "2026-GA-2-regular", "2026-IA-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-GA-2-regular",
+        "2026-IA-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "ライブ取材でMaine討論の開始・発言を確認し、Georgiaは確認時点で進行中、Iowaは開始前として結果を先取りしない",
@@ -832,7 +1073,9 @@
       "referencePeriod": "Obama元大統領が10月24日にClevelandでBrown氏と行う選挙集会。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "official",
       "cadence": "event-driven",
       "method": "候補者陣営の発表で日付・都市・登壇者を確認し、時刻・会場・実施結果は別途確認する",
@@ -849,7 +1092,9 @@
       "referencePeriod": "10月24日のCleveland集会とBrown氏、Acton氏、Obama元大統領の参加。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "州内公共メディアが候補者陣営に確認した日付・都市・参加者を照合し、推薦・共同登壇・得票効果を分ける",
@@ -885,7 +1130,9 @@
       "referencePeriod": "10月16日のDalton Municipal Airport集会。13時30分開始、15時にTrump大統領発言予定。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-GA-2-regular"],
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "category": "schedule",
       "cadence": "event-driven",
       "method": "州内局の記事と主催者リンクで日時・会場・大統領発言時刻を照合し、上院候補の参加は未確認として残す",
@@ -902,7 +1149,9 @@
       "referencePeriod": "10月13日20時（米東部時間）のGeorgia上院候補討論会の公式配信。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-GA-2-regular"],
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "category": "calendar",
       "cadence": "event-driven",
       "method": "主催公共局の番組ページで日付・配信を確認。確認時点は開始直後のため、終了・発言内容は未確認",
@@ -919,7 +1168,9 @@
       "referencePeriod": "10月15日19時（米東部時間）のMaine上院候補討論会ライブ配信。",
       "retrievedAt": "2026-10-14",
       "contentVerifiedAt": "2026-10-14",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "calendar",
       "cadence": "event-driven",
       "method": "主催局の配信ページで日付・時刻・参加候補を確認し、従来記録の20時を19時に訂正",
@@ -936,7 +1187,9 @@
       "referencePeriod": "10月5〜8日のMaine州投票予定者804人。上院候補支持、未定、電話・オンライン調査、誤差と実査機関。",
       "retrievedAt": "2026-10-13",
       "contentVerifiedAt": "2026-10-13",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式本文・設問・クロス集計で候補値、未定、標本、実査期間、誤差、収集方法を照合",
@@ -953,7 +1206,9 @@
       "referencePeriod": "10月6〜8日のTexas州投票予定者1,086人。全候補、未定、標本、回答率、誤差、信頼水準。",
       "retrievedAt": "2026-10-13",
       "contentVerifiedAt": "2026-10-13",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査会社の公式PDFで質問文、全候補、未定、標本、実査期間、回答率、誤差を照合",
@@ -991,7 +1246,9 @@
       "referencePeriod": "Texas州上院候補James Talarico氏の9日間の対面活動休止と、Ohio州の施設で治療を受けたとする主張の検証。",
       "retrievedAt": "2026-10-13",
       "contentVerifiedAt": "2026-10-13",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "施設の否定、候補者・陣営の説明、日程と画像、公開行事を照合し、虚偽主張と健康回復の自己説明、選挙効果を分ける",
@@ -1008,7 +1265,9 @@
       "referencePeriod": "10月13日19時（米東部時間）のMaine上院候補討論会。参加候補、主催局、放送・配信。",
       "retrievedAt": "2026-10-13",
       "contentVerifiedAt": "2026-10-13",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "calendar",
       "cadence": "event-driven",
       "method": "主催局の記事で日付・時刻・参加候補・放送とオンライン配信を再確認",
@@ -1025,7 +1284,9 @@
       "referencePeriod": "10月5〜6日のIowa州投票予定者650人。上院候補支持、最重要争点、Trump大統領評価と調査方法。",
       "retrievedAt": "2026-10-11",
       "contentVerifiedAt": "2026-10-11",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式発表と全回答表で全候補、未定、質問文、標本、実査期間、混合収集、信頼区間を照合",
@@ -1042,7 +1303,9 @@
       "referencePeriod": "10月7日に実施したIowa上院候補Ashley Hinson氏とJosh Turek氏の初回本選討論会。",
       "retrievedAt": "2026-10-11",
       "contentVerifiedAt": "2026-10-11",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "official",
       "cadence": "weekly",
       "method": "主催局の番組ページで実施日、参加候補、全編公開を確認",
@@ -1059,7 +1322,9 @@
       "referencePeriod": "Iowa初回討論会の立法記録、Iran戦争、関税、生活費と倫理をめぐる発言・反論。",
       "retrievedAt": "2026-10-11",
       "contentVerifiedAt": "2026-10-11",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "reporting",
       "cadence": "weekly",
       "method": "州内取材を主催局の全編と照合し、候補者の相互批判と確認済みの投票記録を分ける",
@@ -1076,7 +1341,9 @@
       "referencePeriod": "10月13日21〜22時（米中部時間）のIowa上院候補討論会。参加候補、主催、会場、放送・配信局。",
       "retrievedAt": "2026-10-13",
       "contentVerifiedAt": "2026-10-13",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "calendar",
       "cadence": "weekly",
       "method": "主催社の公式発表で日時、参加候補、会場、放送・配信方法を再確認",
@@ -1093,7 +1360,9 @@
       "referencePeriod": "UAWのEl-Sayed氏支持、Macomb郡での戸別訪問、組合員の生活費への関心と党派の分裂。",
       "retrievedAt": "2026-10-11",
       "contentVerifiedAt": "2026-10-11",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "APの組合員・組合・両陣営取材を照合し、推薦、動員、個々の組合員の投票先、州全体の評価を分ける",
@@ -1110,7 +1379,9 @@
       "referencePeriod": "共和党の元Kansas知事Mike Hayden、Bill Graves両氏のHamilton氏支持と、両党の広告投資。",
       "retrievedAt": "2026-10-11",
       "contentVerifiedAt": "2026-10-11",
-      "electionIds": ["2026-KS-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "本文で推薦理由、未推薦の元知事、両党の支出、Marshall陣営の未回答を照合し、推薦と有権者支持を分ける",
@@ -1146,7 +1417,9 @@
       "referencePeriod": "9月30日〜10月5日のMaine州投票予定者800人。候補支持、争点別の信頼、生活費負担、Trump・候補者評価。",
       "retrievedAt": "2026-10-10",
       "contentVerifiedAt": "2026-10-10",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "poll",
       "cadence": "event-driven",
       "method": "原票PDFの質問文、標本、混合調査方式、誤差を照合。調査期間が両討論会より前であることを明記",
@@ -1163,7 +1436,9 @@
       "referencePeriod": "10月8日のMaine上院候補第2回討論会の実施と、生活費・Iran戦争・中絶をめぐる両候補の応酬。",
       "retrievedAt": "2026-10-10",
       "contentVerifiedAt": "2026-10-10",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "主催局の実施後記事で討論会の完了と主要発言を確認し、主張と検証済み効果を分ける",
@@ -1180,7 +1455,9 @@
       "referencePeriod": "10月8日の第2回討論会での暖房・電力費、Trump政権との距離、Iran戦争をめぐる発言。",
       "retrievedAt": "2026-10-10",
       "contentVerifiedAt": "2026-10-10",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "州内取材で主催局の記事を相互照合し、候補者の批判と政策効果を分ける",
@@ -1197,7 +1474,9 @@
       "referencePeriod": "10月8日のGeorgia上院候補第1回討論会の実施と、経済・移民・Iran戦争・データセンター・医療をめぐる発言。",
       "retrievedAt": "2026-10-10",
       "contentVerifiedAt": "2026-10-10",
-      "electionIds": ["2026-GA-2-regular"],
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "州内紙の実施後記事と放送局の全編動画・要約を照合し、応酬を有権者評価へ置き換えない",
@@ -1214,7 +1493,9 @@
       "referencePeriod": "10月13日にWasillaで予定されるTrump大統領の選挙集会。開場、開始、演説予定時刻と会場。",
       "retrievedAt": "2026-10-13",
       "contentVerifiedAt": "2026-10-13",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "official-schedule",
       "cadence": "event-driven",
       "method": "共和党の公式イベント登録ページで日時・会場を確認。White Houseの公務日程とは別の選挙行事として扱う",
@@ -1231,7 +1512,9 @@
       "referencePeriod": "共和党側が10月13日のWasilla集会をSullivan上院議員とBegich下院議員の支援行事と説明。",
       "retrievedAt": "2026-10-10",
       "contentVerifiedAt": "2026-10-10",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "州内公共メディアで行事の目的と演説予定時刻を相互照合",
@@ -1248,7 +1531,9 @@
       "referencePeriod": "10月8日のMichigan上院候補討論会の実施、両候補のTrump政権・Iran戦争・Canada関税・Israel支援・移民政策への回答。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "APの実施後記事で両候補の発言と応酬を照合し、候補者の主張、政策効果、有権者評価を分ける",
@@ -1265,7 +1550,9 @@
       "referencePeriod": "Trump大統領の討論要求、Talarico氏の受諾、Paxton氏の未回答、日時・会場・主催者が未合意であること。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "AP本文で各当事者の発言と、討論会が未設定であることを照合。提案を予定として掲載しない",
@@ -1282,7 +1569,14 @@
       "referencePeriod": "9月18日〜10月5日に7州で実施した投票予定者調査の全体方法。対象州ごとの原票PDFを別に照合。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-KS-2-regular", "2026-NH-2-regular", "2026-MI-2-regular", "2026-NE-2-regular", "2026-OH-3-special", "2026-TX-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NH-2-regular",
+        "2026-MI-2-regular",
+        "2026-NE-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "YouGov公式概要で投票予定者モデルと州別標本範囲を確認し、候補値・標本・実査期間・誤差は各州原票で照合",
@@ -1299,7 +1593,9 @@
       "referencePeriod": "9月24日〜10月4日のKansas州投票予定者2,255人。Hamilton 48%、Marshall 45%、その他1%、未定5%。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-KS-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式PDFで標本、実査期間、誤差±3.2ポイント、質問文、未定者の再質問・配分方法を照合",
@@ -1316,7 +1612,9 @@
       "referencePeriod": "9月28日〜10月5日のNew Hampshire州投票予定者1,520人。Pappas 51%、Sununu 43%、その他1%、未定4%。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-NH-2-regular"],
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式PDFで標本、実査期間、誤差±3.9ポイント、質問文、未定者の再質問・配分方法を照合",
@@ -1333,7 +1631,9 @@
       "referencePeriod": "9月22日〜10月4日のMichigan州投票予定者3,949人。El-Sayed 49%、Rogers 48%、その他1%、未定2%。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式PDFで標本、実査期間、誤差±2.5ポイント、質問文、未定者の再質問・配分方法を照合",
@@ -1350,7 +1650,9 @@
       "referencePeriod": "9月24日〜10月3日のNebraska州投票予定者1,809人。Osborn 48%、Ricketts 47%、その他0%、未定3%。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-NE-2-regular"],
+      "electionIds": [
+        "2026-NE-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式PDFで標本、実査期間、誤差±3.3ポイント、質問文、未定者の再質問・配分方法を照合",
@@ -1367,7 +1669,9 @@
       "referencePeriod": "9月18〜30日のOhio州投票予定者3,780人。Brown 49%、Husted 45%、その他2%、未定4%。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式PDFで標本、実査期間、誤差±2.5ポイント、質問文、未定者の再質問・配分方法を照合",
@@ -1384,7 +1688,9 @@
       "referencePeriod": "9月28日〜10月5日のTexas州投票予定者3,625人。Talarico 50%、Paxton 44%、その他2%、未定3%。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式PDFで標本、実査期間、誤差±3ポイント、質問文、未定者の再質問・配分方法を照合",
@@ -1401,7 +1707,9 @@
       "referencePeriod": "10月8日20時（米東部時間）のMaine上院候補討論会、Collins・Jackson両氏の参加、放送・配信方法。",
       "retrievedAt": "2026-10-09",
       "contentVerifiedAt": "2026-10-09",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "schedule",
       "cadence": "event-driven",
       "method": "主催局の案内で日時・候補者・配信方法を再確認。確認時点は開始直後のため、完了と発言結果は後続確認まで更新しない",
@@ -1418,7 +1726,9 @@
       "referencePeriod": "10月1〜4日のMaine州登録有権者1,505人調査。上院投票先、勝者予想、Trump大統領の影響、家計評価と方法を照合。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Marist公式本文で対象、標本、実査期間、電話・テキスト・オンライン併用、誤差±3.8ポイントを確認し、候補支持と勝者予想を別設問として扱う",
@@ -1435,7 +1745,9 @@
       "referencePeriod": "10月1〜4日のIowa州投票予定者500人調査。全3候補、未定、家計負担、候補者評価、方法を原票で確認。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Suffolk公式PDFと方法ページで質問文、全候補、標本、実査期間、電話調査、誤差±4.4ポイントを照合",
@@ -1452,7 +1764,9 @@
       "referencePeriod": "10月5〜6日のMichigan州投票予定者762人調査。初回回答、leaner込み、未定、候補者評価、方法を確認。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Quantus公式本文で標本、実査期間、初回回答47.6対46.5、leaner込み48.4対47.2、候補差の誤差約±7.8ポイントを照合",
@@ -1469,7 +1783,9 @@
       "referencePeriod": "対Canada関税戦争の即時終結を求める広告、超党派で物価を下げるとの主張、NRSCとの7桁規模の共同広告枠。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "candidate",
       "cadence": "daily",
       "method": "陣営公式発表と広告の全文を確認し、広告額・政策効果・対立候補への税負担批判はいずれも陣営の主張として記録",
@@ -1486,7 +1802,9 @@
       "referencePeriod": "Rogers氏の新広告、9月までの関税支持、El-Sayed氏の反論、Michiganの越境供給網への影響を照合。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "現在の広告、過去発言、対立候補の反論、産業界の警告を照合し、立場の変更と政策・得票効果を分ける",
@@ -1503,7 +1821,10 @@
       "referencePeriod": "San Antonio集会でのPaxton氏の発言とTrump大統領の支援、MichiganのRogers氏のCanada関税広告への大統領の説明。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-TX-2-regular", "2026-MI-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular",
+        "2026-MI-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "APライブ本文で候補者と大統領の実際の発言を確認し、友好的な会場反応と州全体の有権者評価を分ける",
@@ -1520,7 +1841,9 @@
       "referencePeriod": "White Houseが10月7日のTrump大統領のTexas再訪を公式発表。政策実績の列挙は政権の自己評価として扱う。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": "2026-10-08",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "official",
       "cadence": "event-driven",
       "method": "White House公式発表で当日のTexas訪問を確認。発表内の政策効果は独立検証済みとは扱わない",
@@ -1537,7 +1860,9 @@
       "referencePeriod": "集計表示では10月1〜3日、最終再配分でPeltola 51%、Dan S. Sullivan 49%とされるが、調査原文、標本、質問文、方法を取得できていない。",
       "retrievedAt": "2026-10-08",
       "contentVerifiedAt": null,
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査機関の原文で第1順位、再配分、実査期間、対象、標本数、質問文、方法、誤差を照合してから掲載する",
@@ -1554,7 +1879,9 @@
       "referencePeriod": "10月6日19時に実施されたCollins・Jackson両氏の初回討論会。冒頭発言、生活費、連邦と州の責任を扱う関連記事を照合。",
       "retrievedAt": "2026-10-07",
       "contentVerifiedAt": "2026-10-07",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "州内局の討論会記事2本で実施、候補者発言、司会質問を照合。候補者の自己評価を政策効果や有権者評価とは扱わない",
@@ -1571,7 +1898,11 @@
       "referencePeriod": "KansasをLean RepublicanからToss Up、New HampshireをToss UpからLean Democratic、North CarolinaをLean DemocraticからLikely Democraticへ変更。",
       "retrievedAt": "2026-10-07",
       "contentVerifiedAt": null,
-      "electionIds": ["2026-KS-2-regular", "2026-NH-2-regular", "2026-NC-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NH-2-regular",
+        "2026-NC-2-regular"
+      ],
       "category": "rating",
       "cadence": "daily",
       "method": "公式検索表示で変更の存在を確認したが本文は403。Washington Postの同日報道と照合し、公式本文未取得を部分確認として残す",
@@ -1588,7 +1919,11 @@
       "referencePeriod": "Cook Political ReportによるKansas・New Hampshire・North Carolina上院評価の変更を報道。",
       "retrievedAt": "2026-10-07",
       "contentVerifiedAt": "2026-10-07",
-      "electionIds": ["2026-KS-2-regular", "2026-NH-2-regular", "2026-NC-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NH-2-regular",
+        "2026-NC-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "同日報道で変更前後と対象3州を照合。サイトの統合議席配分は従来どおりSabatoとInside Electionsのみを使用",
@@ -1605,7 +1940,9 @@
       "referencePeriod": "10月6日に始まったOhio期日前投票とMedina郡初日の党派別投票、現地有権者取材。",
       "retrievedAt": "2026-10-07",
       "contentVerifiedAt": "2026-10-07",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "実施確認、1郡1日分の投票数、過去同日との比較、現地取材を照合。州全体の投票参加・支持率へ一般化しない",
@@ -1622,7 +1959,10 @@
       "referencePeriod": "New Englandの暖房油価格上昇と、Collins・King両上院議員らによる北東部暖房油備蓄放出要請。",
       "retrievedAt": "2026-10-07",
       "contentVerifiedAt": "2026-10-07",
-      "electionIds": ["2026-ME-2-regular", "2026-NH-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-NH-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "価格背景、利用世帯、議員の要請、備蓄量、DOEの回答状況を照合。要請を実施済み政策や価格効果とは扱わない",
@@ -1639,7 +1979,9 @@
       "referencePeriod": "10月7日のSan Antonio訪問、Freeman Coliseum、Secret Service・FAAによる準備、大統領発言見込み。",
       "retrievedAt": "2026-10-07",
       "contentVerifiedAt": "2026-10-07",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "州内報道で訪問準備と発言見込みを照合。公開開始時刻は先行資料の16時30分と州内報道の14時30分が相違するため確定扱いしない",
@@ -1656,7 +1998,9 @@
       "referencePeriod": "10月2〜4日のNew Hampshire州投票予定者調査。候補者選択、標本、実査期間、誤差、電話・オンライン併用方法を公表ページと質問表で照合。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
-      "electionIds": ["2026-NH-2-regular"],
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式記事と質問表を照合。主要2候補、Laplante氏、未定の公表値を収録し、記事に個別値が出ない他の候補を0%と補完しない",
@@ -1673,7 +2017,9 @@
       "referencePeriod": "Mitchell Research & Communicationsが10月1日に実施したMichigan州投票予定者調査。候補別公表値と誤差、党派構成を確認したが、標本数・収集方法・質問文の原票は未取得。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "CBS Detroit本文の公表値を確認。原票の標本数、収集モード、質問文を取得できないため構造化Pollには追加せず部分確認とする",
@@ -1690,7 +2036,9 @@
       "referencePeriod": "10月24日にDetroitでObama元大統領、El-Sayed上院候補、Benson知事候補らが行う集会の公式発表。時刻・会場は未公表。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "official",
       "cadence": "event-driven",
       "method": "州民主党の発表で日付、都市、参加予定者を照合。時刻・会場・参加規模・支持への効果は補完しない",
@@ -1707,7 +2055,9 @@
       "referencePeriod": "Alaska Energy AuthorityのBeluga–Healy送電計画へ最大1.5億ドルのDPA資金を充てる意向。非連邦資金2.68億ドルと合わせた計画総額4.18億ドル、223マイル。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "official",
       "cadence": "event-driven",
       "method": "DOE公式発表で金額、距離、資金の性質を照合。「intent」「planned」「once complete」を、支出済み・完成済み・効果実現と扱わない",
@@ -1724,7 +2074,9 @@
       "referencePeriod": "Vance副大統領のAlaska訪問と、DOEの送電計画への資金意向を上院選の文脈で取材。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "連邦資金の公式発表と選挙運動の文脈を分離し、訪問や発表を候補者支持の変化とは扱わない",
@@ -1741,7 +2093,9 @@
       "referencePeriod": "10月5日のGrand Island訪問・集会、Ricketts氏への支援、物価・燃料・牛肉輸入をめぐる州内背景。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
-      "electionIds": ["2026-NE-2-regular"],
+      "electionIds": [
+        "2026-NE-2-regular"
+      ],
       "category": "reporting",
       "cadence": "event-driven",
       "method": "APの現地更新で訪問・集会の実施を確認。候補者支援、政策発言、友好的な会場反応、州全体の評価を分ける",
@@ -1758,7 +2112,13 @@
       "referencePeriod": "Alaska、Iowa、Kansas、Ohio、Texasの上院選について、Siena公式ページが投票予定者の公表値を掲載。調査期間、標本、誤差、質問文を含む詳細toplineとcross-tabは取得できず部分確認。",
       "retrievedAt": "2026-10-05",
       "contentVerifiedAt": "2026-10-05",
-      "electionIds": ["2026-AK-2-regular", "2026-IA-2-regular", "2026-KS-2-regular", "2026-OH-3-special", "2026-TX-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-IA-2-regular",
+        "2026-KS-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Siena公式公表ページの候補別数値のみ照合。詳細topline・cross-tabを取得できないため、未定割合、実査期間、標本、誤差、leaner処理を推測せず、構造化調査値と評価変更には使用しない",
@@ -1775,7 +2135,9 @@
       "referencePeriod": "元職員による職場環境の告発報道を受けたPeltola支持者への州内取材。失望と投票継続の理由を聞いたが、無作為・代表標本ではない。",
       "retrievedAt": "2026-10-05",
       "contentVerifiedAt": "2026-10-05",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "州内公共メディアの本文で、告発内容、Peltola陣営の反応、支持者取材を区別。取材対象の反応を州全体の有権者評価や支持率へ一般化しない",
@@ -1811,7 +2173,9 @@
       "referencePeriod": "New Hampshire州内3郡での有権者取材、両候補への取材、Sununu氏のTrump政権との一致・相違、Pappas氏の党内での位置付け。",
       "retrievedAt": "2026-10-05",
       "contentVerifiedAt": "2026-10-05",
-      "electionIds": ["2026-NH-2-regular"],
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "候補者の発言・政策記録・取材した有権者の反応を分離。数十人の取材を州全体の代表調査とは扱わず、記事が参照する未取得の調査原票も構造化値へ転用しない",
@@ -1828,7 +2192,9 @@
       "referencePeriod": "North Carolina上院選で、Cooper氏の超党派実績・医療拡大、Whatley氏のTrump政権との関係、治安広告と反論、投票参加への警戒を取材。",
       "retrievedAt": "2026-10-05",
       "contentVerifiedAt": "2026-10-05",
-      "electionIds": ["2026-NC-2-regular"],
+      "electionIds": [
+        "2026-NC-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "候補者の実績、攻撃広告、反論、支出判断、有権者の受け止めを区別。報道上の有利・不利を当選確率や確定的な勝敗予測へ置き換えない",
@@ -1845,7 +2211,9 @@
       "referencePeriod": "9月24〜28日のTexas州調査。登録有権者と投票予定者の候補支持、支持の確実さ、生活費、候補評価、方法を原票で照合。",
       "retrievedAt": "2026-10-04",
       "contentVerifiedAt": "2026-10-04",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公式topline PDFの設問3、方法欄、LV・RV別集計を照合。未定者へのleaner追質問を含むため初回回答とは区別し、LVとRVを混ぜない",
@@ -1862,7 +2230,9 @@
       "referencePeriod": "9月28〜30日のAlaska州調査。第1順位、2候補設問、leaner込み集計、候補者評価、方法を確認。",
       "retrievedAt": "2026-10-04",
       "contentVerifiedAt": "2026-10-04",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Quantusの公表本文で、全758人と上院設問回答737人、第1順位、2候補設問、leaner込みを分けて確認。順位選択投票の最終集計を測る調査ではない",
@@ -1879,7 +2249,9 @@
       "referencePeriod": "10月3日のVandalia集会、Husted氏の登壇・発言、集会参加者への取材。",
       "retrievedAt": "2026-10-04",
       "contentVerifiedAt": "2026-10-04",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "Reutersの現地取材で予定の実施と候補者発言を確認。候補者の主張、友好的な集会参加者の反応、州全体の有権者評価を分ける",
@@ -1896,7 +2268,9 @@
       "referencePeriod": "8月予備選後のAlaska上院選における独立支出と広告の内訳。",
       "retrievedAt": "2026-10-04",
       "contentVerifiedAt": "2026-10-04",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "州内公共メディアがFEC独立支出報告を集計した記事を確認。支出額、支持・反対の対象、候補者陣営の資金、広告効果を区別する",
@@ -1913,7 +2287,9 @@
       "referencePeriod": "9月23日〜10月1日のMaine州調査。投票予定者の候補支持、登録有権者の政権・候補者評価、方法を原票PDFで照合。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "CBS本文と46ページの公式原票PDFを照合。本文の標本1,114人と原票方法欄の登録有権者1,144人が一致しないため、原票値を採用し不一致を明示",
@@ -1930,7 +2306,14 @@
       "referencePeriod": "9月の非農業部門雇用者数、失業率、労働参加率、主要産業別雇用。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-AK-2-regular", "2026-ME-2-regular", "2026-MI-2-regular", "2026-OH-3-special", "2026-TX-2-regular", "2026-NH-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular"
+      ],
       "category": "official",
       "cadence": "daily",
       "method": "BLS公表本文と表の全国値を確認し、州別支持・候補者の功績や責任へ直接置き換えない",
@@ -1947,7 +2330,9 @@
       "referencePeriod": "10月1日のDenton・Peterbilt Motors訪問とTrump大統領のPaxton氏支持発言。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "州内報道と大統領公開日程を照合し、演説、企業側の雇用説明、政策効果を分ける",
@@ -1964,7 +2349,9 @@
       "referencePeriod": "10月7日のSan Antonio集会。RNC当局者が会場、開始時刻、Trump・Paxton両氏の登壇を確認。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "schedule",
       "cadence": "daily",
       "method": "RNC当局者に基づく州内報道で日時・会場・登壇者を照合し、実施結果は当日後に確認",
@@ -1981,7 +2368,10 @@
       "referencePeriod": "Senate Leadership FundのKansas広告予約とNorth Carolinaでの支出・今後の停止。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-KS-2-regular", "2026-NC-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NC-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "AdImpact予約額、FECに基づく既支出、関係者に基づく今後の停止を区別し、支持率や勝敗へ直接換算しない",
@@ -1998,7 +2388,10 @@
       "referencePeriod": "10月3日のOhio州Vandalia訪問と19時の大統領発言予定、10月1日のDenton訪問実績。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-OH-3-special", "2026-TX-2-regular"],
+      "electionIds": [
+        "2026-OH-3-special",
+        "2026-TX-2-regular"
+      ],
       "category": "schedule",
       "cadence": "daily",
       "method": "掲載されたWhite House公式日程の移動先・時刻を確認。主催者の開演時刻と大統領発言時刻を区別する",
@@ -2015,7 +2408,9 @@
       "referencePeriod": "9月24〜28日のIowa州調査。登録有権者1,204人、投票予定者1,008人。投票先、候補者への懸念、確信度、生活費評価を照合。",
       "retrievedAt": "2026-10-02",
       "contentVerifiedAt": "2026-10-02",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Fox News本文の方法、標本、誤差、LV・RV別集計を照合し、同社6月RV調査との比較とLVの新規値を区別する",
@@ -2032,7 +2427,9 @@
       "referencePeriod": "9月20〜22日のMaine州投票予定者982人調査。全体と50歳以上の投票先、未定を確認。調査原票PDFは今回取得できず、公式記事・公式発表と州内報道を相互照合。",
       "retrievedAt": "2026-10-02",
       "contentVerifiedAt": "2026-10-02",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "AARP公式記事と発表、Maine Public・Bangor Daily Newsの報道で実査期間、標本、全体値、年齢差を照合。PDF未取得を部分確認として残す",
@@ -2049,7 +2446,9 @@
       "referencePeriod": "9月23〜27日のOhio州投票予定者500人調査。投票用紙4候補、Trump氏との関係、好感度、方法を原票で確認。",
       "retrievedAt": "2026-10-02",
       "contentVerifiedAt": "2026-10-02",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "Suffolk公式PDFと方法ページで設問、全候補、標本、実査期間、誤差±4.4ポイントを照合",
@@ -2066,7 +2465,9 @@
       "referencePeriod": "10月3日17時30分（米東部時間）、VandaliaのButler-Vandalia Student Activity CenterでのTrump大統領の集会予定。",
       "retrievedAt": "2026-10-03",
       "contentVerifiedAt": "2026-10-03",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "schedule",
       "cadence": "daily",
       "method": "主催者の登録ページで日付・時刻・会場を照合し、実施・中止・延期とHusted氏の参加・発言は結果確認まで未確定とする",
@@ -2998,8 +3399,8 @@
       "url": "https://marypeltola.com/",
       "publishedAt": null,
       "referencePeriod": "Kuskokwim川流域での漁業経験、生活費と漁業、党派より州の利益を優先する主張",
-      "retrievedAt": "2026-10-19",
-      "contentVerifiedAt": "2026-10-19",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -3008,7 +3409,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-19T00:17:50Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-sullivan",
@@ -3017,8 +3418,8 @@
       "url": "https://dansullivanforalaska.com/",
       "publishedAt": null,
       "referencePeriod": "2015年上院就任、海兵隊での勤務、減税・エネルギー開発・防衛の実績についての本人説明",
-      "retrievedAt": "2026-10-19",
-      "contentVerifiedAt": "2026-10-19",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-AK-2-regular"
       ],
@@ -3027,7 +3428,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-19T00:17:50Z"
+      "lastSuccessAt": "2026-10-20T00:08:36Z"
     },
     {
       "sourceId": "obs-sullivan-endorsements",
@@ -3093,8 +3494,8 @@
       "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
       "publishedAt": "2026-02-18",
       "referencePeriod": "10月2日8:30雇用統計、14日8:30 CPI、20日10:00州別雇用。時刻は米東部時間",
-      "retrievedAt": "2026-10-19",
-      "contentVerifiedAt": "2026-10-19",
+      "retrievedAt": "2026-10-20",
+      "contentVerifiedAt": "2026-10-20",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -3108,7 +3509,7 @@
       "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-19T00:17:50Z"
+      "lastSuccessAt": "2026-10-20T00:10:47Z"
     },
     {
       "sourceId": "obs-roster-ak",
@@ -3876,7 +4277,9 @@
       "referencePeriod": "9月14〜17日、投票予定者799人。4候補の第1選択は共和党現職Dan S. Sullivan 48%、民主党Mary Peltola 46%、Daniel J. Sullivan Jr. 1%、Gerald Heikes 1%、未定4%。携帯テキスト・固定電話、誤差±3.45ポイント。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査原文で実査日、標本、方法、質問別結果、依頼関係の説明を照合",
@@ -3893,7 +4296,9 @@
       "referencePeriod": "S.4938の委員会通過、民主党委員7人の反対、賛否双方の漁業関係者の説明、下院日程上の制約を州内取材で確認。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "州内報道で採決の内訳、法案への批判と反論、次の立法段階を照合",
@@ -3910,7 +4315,9 @@
       "referencePeriod": "9月12〜14日、投票予定者1,000人。民主党El-Sayed 48%、共和党Rogers 46%、未定4%。確度区間±3ポイント、英語、Nexstar依頼。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査原文で実査日、標本、方法、依頼主、全体と学歴別結果を照合",
@@ -3927,7 +4334,9 @@
       "referencePeriod": "9月10〜14日、有権者名簿から抽出した投票予定者803人。民主党El-Sayed 48%、共和党Rogers 45%。電話・テキスト経由オンライン、誤差±3.9ポイント。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公表記事と方法説明で実査日、抽出、方法、全体と部分標本の区別を照合",
@@ -3944,7 +4353,9 @@
       "referencePeriod": "9月12〜14日、投票予定者1,000人。民主党Talarico 47%、共和党Paxton 46%、Libertarian Ted Brown 2%、未定4%。確度区間±3ポイント、英語、Nexstar依頼。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査原文で実査日、標本、方法、依頼主、候補者評価と争点を照合",
@@ -3961,7 +4372,9 @@
       "referencePeriod": "9月8〜11日、投票予定者614人。民主党Talarico 49%、共和党Paxton 43%、その他・投票しない4%、未定4%。電話とテキスト経由オンライン、英語・スペイン語、誤差±4.3ポイント。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査PDFで実査日、標本、方法、言語、全体結果と質問順を照合",
@@ -3978,7 +4391,9 @@
       "referencePeriod": "9月14〜16日、投票予定者1,085人。民主党Brown 45.4%、共和党現職Husted 41.5%、その他6.0%、未定7.1%。誤差±2.9ポイント、回答率5.4%。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "調査PDFで実査日、標本、回答率、全体結果を照合。依頼主はPDFで確認できず留保",
@@ -3995,7 +4410,9 @@
       "referencePeriod": "BrownとHustedの特別選挙、Youngstown周辺の党派変化、対カナダ貿易、データセンターと電力料金をめぐる双方の主張を州内取材で確認。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "AP本文で地域背景、候補者の経歴、双方の主張と広告支出を照合し、因果効果とは分ける",
@@ -4012,7 +4429,10 @@
       "referencePeriod": "対カナダ関税をめぐり、メーン州の共和党Collinsと民主党Jackson、ミシガン州の共和党Rogersと民主党El-Sayedの異なる主張を比較。州別の貿易依存と全国調査も確認。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
-      "electionIds": ["2026-ME-2-regular", "2026-MI-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-MI-2-regular"
+      ],
       "category": "reporting",
       "cadence": "daily",
       "method": "Reuters本文で関税措置、州別貿易、候補者発言、全国調査を照合し、発言と効果を分ける",
@@ -4029,7 +4449,9 @@
       "referencePeriod": "9月8〜11日、Alaska州の投票予定者800人。電話55%・SMSからウェブ45%。第1順位はPeltola 46%、Dan S. Sullivan 41%、最終再配分は53%対47%。誤差±3.5ポイント。AARP依頼、Fabrizio Ward（共和党系）とImpact Research（民主党系）が実施。",
       "retrievedAt": "2026-09-20",
       "contentVerifiedAt": "2026-09-20",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "原PDF21ページを取得し、質問結果、順位再配分、標本、実査期間、方法、依頼主を照合",
@@ -4046,7 +4468,9 @@
       "referencePeriod": "集計サイトで新調査の掲載を確認したが、原文がタイムアウトし方法・質問文を照合できず非掲載。",
       "retrievedAt": "2026-09-28",
       "contentVerifiedAt": null,
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "category": "poll",
       "cadence": "daily",
       "method": "公表元原文の取得と方法・質問文の照合待ち",
@@ -4372,6 +4796,62 @@
   ],
   "evidenceRefs": [
     {
+      "evidenceId": "ev-obs-rasmussen-ak-crosstabs-20261015",
+      "sourceId": "obs-rasmussen-ak-crosstabs-20261015",
+      "locator": "公開クロス表の第一希望全体列44/42/4/3/6を本文と照合。第2選択とFinal ballotの記述差は未解消につき最終値は不採用。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-ak-questions-20261015",
+      "sourceId": "obs-rasmussen-ak-questions-20261015",
+      "locator": "設問1の4候補名・調査期間・母集団と誤差を照合。設問2は第2選択と記載。最終再配分とは区別。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-ak-20261015",
+      "sourceId": "obs-rasmussen-ak-20261015",
+      "locator": "10月12〜15日、LV 775、電話・オンライン、±3ポイント95%。公開本文の全体投票意向を照合。第2選択の本文表現と最終再配分表の対応・本文の経歴誤記は未解消。第一希望のみ採用。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-oh-crosstabs-20261014",
+      "sourceId": "obs-rasmussen-oh-crosstabs-20261014",
+      "locator": "公開クロス表の全体列: Brown47/Husted49/Redpath1/Levy1/未定2を設問・本文と照合。下位集団の因果分析はしていない。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-oh-questions-20261014",
+      "sourceId": "obs-rasmussen-oh-questions-20261014",
+      "locator": "設問1の4候補名・調査期間・母集団と誤差を照合。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-oh-20261014",
+      "sourceId": "obs-rasmussen-oh-20261014",
+      "locator": "10月12〜14日、LV 901、電話・オンライン、±3ポイント95%。公開本文の全体投票意向を照合。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-hobby-tx-release-20261019",
+      "sourceId": "obs-hobby-tx-release-20261019",
+      "locator": "10月19日公表日・上院48/46/3/3と研究ページへの原リンクを照合。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-hobby-tx-20261019",
+      "sourceId": "obs-hobby-tx-20261019",
+      "locator": "Report 1 pp.1,5: 10/10–14、LV 2,000、SMS→英西オンライン、人口・選挙履歴・地域で重み付け、±2.19。投票意向48/46/3/3。全設問票・個票は未取得。",
+      "checkedAt": "2026-10-20",
+      "kind": "observed"
+    },
+    {
       "evidenceId": "ev-obs-gop-mi-rally-20261025",
       "sourceId": "obs-gop-mi-rally-20261025",
       "locator": "Event Schedule / Remarks Begin / venue",
@@ -4518,70 +4998,454 @@
       "checkedAt": "2026-10-16",
       "kind": "observed"
     },
-    {"evidenceId":"ev-obs-ut-texas-poll-20261013","sourceId":"obs-ut-texas-poll-20261013","locator":"9月25日〜10月5日のTexas州投票予定者861人でTalarico氏50%、Paxton氏47%、自由党Brown氏1%、その他2%。標本誤差±3.34ポイント。YouGovオンラインパネルの登録有権者1,200人から投票予定者を抽出。3ポイント差は誤差内で、単一調査から勝敗・支持移動を断定しない。","checkedAt":"2026-10-15","kind":"observed"},
-    {"evidenceId":"ev-obs-sabato-ratings-20261014","sourceId":"obs-sabato-ratings-20261014","locator":"公式配信本文はKansasをLean R→Toss-up、NebraskaをLikely R→Lean R、New HampshireをLean D→Likely D、MinnesotaをLikely D→Lean D、MississippiをSafe R→Likely Rへ変更。Sabato単独の議席方向49D・46R・5Toss-upは統合配分とは異なる。","checkedAt":"2026-10-15","kind":"observed"},
-    {"evidenceId":"ev-obs-gpb-ga-debate-result-20261014","sourceId":"obs-gpb-ga-debate-result-20261014","locator":"GPBは10月13日の1時間の討論を取材。Ossoff氏は関税・Medicaid削減撤回とIran戦争終結を訴え、Collins氏は関税擁護、国内エネルギー増産、ACA批判を表明。主張の効果と有権者評価は未確認。","checkedAt":"2026-10-15","kind":"reported"},
-    {"evidenceId":"ev-obs-reuters-ak-rally-result-20261014","sourceId":"obs-reuters-ak-rally-result-20261014","locator":"Reuters現地取材は10月13日のWasilla集会を確認。Sullivan氏はIran紛争を一時的とし民主党の石油・ガス政策を攻撃。Trump氏は戦争の早期終結と燃料価格下落を予告。発言は事実・効果の確定ではない。","checkedAt":"2026-10-15","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-ak-rally-result-20261013","sourceId":"obs-ap-ak-rally-result-20261013","locator":"APは集会の終了を確認。Trump氏がTaiwanによるAlaska LNG購入・40億ドル超投資を発表したが、記事時点でTaiwan側・White Houseからの独立確認はない。契約成立や事業効果として扱わない。","checkedAt":"2026-10-15","kind":"reported"},
-    {"evidenceId":"ev-obs-radioiowa-ia-debate-result-20261014","sourceId":"obs-radioiowa-ia-debate-result-20261014","locator":"Radio Iowaは10月13日21〜22時の第2回・最終討論実施を報道。両候補はロシア産ディーゼル輸入とデータセンター建設の連邦一時停止に反対、立地は地元判断とした。移民政策で違い。発言と実施効果を区別。","checkedAt":"2026-10-15","kind":"reported"},
-    {"evidenceId":"ev-obs-abdul-ai-control-20261013","sourceId":"obs-abdul-ai-control-20261013","locator":"El-Sayed氏はfrontier AIの学習・公開停止、超知能と再帰的自己改良の禁止、閣僚級の独立監督機関、内部告発者保護、事故報告と国家緊急対応を提案。候補者案であり、成立・執行・安全や雇用への効果は未確認。","checkedAt":"2026-10-14","kind":"claim"},
-    {"evidenceId":"ev-obs-wapo-mi-ai-20261013","sourceId":"obs-wapo-mi-ai-20261013","locator":"Rogers氏は8月にMichigan州のデータセンター新設を1年間停止する案を支持。New York Times/Siena調査ではAI・データセンターを最重要争点とした州有権者は2%、データセンター対応の評価はEl-Sayed氏が11ポイント上回った。争点別評価は上院投票先ではない。","checkedAt":"2026-10-14","kind":"reported"},
-    {"evidenceId":"ev-obs-wapo-debates-live-20261013","sourceId":"obs-wapo-debates-live-20261013","locator":"10月13日19時（米東部時間）にMaineの第3回討論会が始まり、Collins氏は超党派の薬価・住宅法案を挙げ、Trump大統領にIran戦争の十分な計画がなかったと述べた。Jackson氏はCollins氏が戦費を止めず政権に立ち向かわないと批判。候補者発言と政策効果・有権者評価を分ける。","checkedAt":"2026-10-14","kind":"reported"},
-    {"evidenceId":"ev-obs-sherrod-obama-rally-20261024","sourceId":"obs-sherrod-obama-rally-20261024","locator":"Brown陣営はObama元大統領が10月24日にClevelandでBrown氏と集会を行うと発表。時刻・会場、実施結果、支持への効果は未確認。","checkedAt":"2026-10-14","kind":"scheduled"},
-    {"evidenceId":"ev-obs-ideastream-oh-obama-rally-20261013","sourceId":"obs-ideastream-oh-obama-rally-20261013","locator":"IdeastreamはBrown陣営への確認に基づき、10月24日のCleveland集会にObama元大統領、Brown氏、Ohio州知事候補Amy Acton氏が参加すると報道。推薦・共同登壇を有権者支持へ置き換えない。","checkedAt":"2026-10-14","kind":"reported"},
-    {"evidenceId":"ev-obs-white-house-midterm-travel-20261013","sourceId":"obs-white-house-midterm-travel-20261013","locator":"White House報道官は中間選挙日程にGeorgia、Kentucky、Floridaが加わったと発表。州内の日付・時刻・会場・候補者同席は別資料で確認する。","checkedAt":"2026-10-14","kind":"scheduled"},
-    {"evidenceId":"ev-obs-cbs-ga-trump-rally-20261016","sourceId":"obs-cbs-ga-trump-rally-20261016","locator":"10月16日、Dalton Municipal Airportで13時30分に集会開始、15時にTrump大統領の発言予定。RNCは記事掲載時点で同席候補を発表しておらず、Mike Collins氏の参加を先取りしない。","checkedAt":"2026-10-14","kind":"scheduled"},
-    {"evidenceId":"ev-obs-gpb-ga-debate-20261013","sourceId":"obs-gpb-ga-debate-20261013","locator":"Georgia Public Broadcastingの公式番組ページはAtlanta Press Clubの上院討論会を10月13日20時（米東部時間）から配信。確認時点は開始直後で、終了・発言内容は未確認。","checkedAt":"2026-10-14","kind":"scheduled"},
-    {"evidenceId":"ev-obs-newscentermaine-debate-20261015","sourceId":"obs-newscentermaine-debate-20261015","locator":"News Center Maine公式配信ページはCollins氏とJackson氏の討論会を10月15日19時（米東部時間）と案内。従来記録の20時を19時へ訂正し、実施結果は当日後に確認する。","checkedAt":"2026-10-14","kind":"scheduled"},
-    {"evidenceId":"ev-obs-rasmussen-me-20261009","sourceId":"obs-rasmussen-me-20261009","locator":"10月5〜8日のMaine州投票予定者804人でJackson氏49%、Collins氏47%、未定4%。標本誤差±3ポイント、電話・オンライン併用、実査はPulse Opinion Research。2ポイント差は誤差内で、単一調査から勝敗や支持移動を確定しない。","checkedAt":"2026-10-13","kind":"observed"},
-    {"evidenceId":"ev-obs-trafalgar-tx-20261009","sourceId":"obs-trafalgar-tx-20261009","locator":"10月6〜8日のTexas州投票予定者1,086人。Talarico氏47.1%、Paxton氏43.6%、Ted Brown氏1.8%、未定7.6%。回答率5.4%、標本誤差±2.9ポイント、信頼水準95%。単一調査から情勢評価を変更しない。","checkedAt":"2026-10-13","kind":"observed"},
-    {"evidenceId":"ev-obs-insider-ak-ks-mi-20261011","sourceId":"obs-insider-ak-ks-mi-20261011","locator":"10月9〜10日の各州投票予定者1,200人で、見出し値はAlaskaがPeltola氏50%・Sullivan氏48%、KansasがHamilton氏48%・Marshall氏47%、MichiganがEl-Sayed氏48%・Rogers氏46%。誤差±2.83ポイント、年齢・人種・性別・党派で重み付け。公式サイト障害で質問文、全選択肢、収集方法、Alaskaの順位選択投票の段階を取得できず、部分確認。","checkedAt":"2026-10-13","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-tx-fact-check-20261012","sourceId":"obs-ap-tx-fact-check-20261012","locator":"Talarico氏がOhio州のLindner Center of Hopeで治療を受けたとの主張を施設が否定し、APは提示された時系列が公開行事・画像と一致しないことを確認。本人と陣営は自宅でインフルエンザから回復していたと説明。Paxton氏とTrump大統領の『missing』発言は確認できるが、虚偽情報の拡散による支持への効果は未確認。","checkedAt":"2026-10-13","kind":"reported"},
-    {"evidenceId":"ev-obs-wabi-me-debate-20261013","sourceId":"obs-wabi-me-debate-20261013","locator":"WABI/WAGMは10月13日19時（米東部時間）からCollins氏とJackson氏の上院候補討論会を局内で行い、放送とオンライン配信を予定。確認時点は実施前で、発言や結果を先取りしない。","checkedAt":"2026-10-13","kind":"scheduled"},
-    {"evidenceId":"ev-obs-emerson-ia-20261009","sourceId":"obs-emerson-ia-20261009","locator":"10月5〜6日のIowa州投票予定者650人。共和党Hinson氏46.6%（公式丸め47%）、民主党Turek氏45.0%、自由党Laehn氏1.5%、未定7.0%、信頼区間±3.8ポイント。経済42%、医療18%が上位争点。混合収集・英語のみで、単一調査から支持移動を確定しない。","checkedAt":"2026-10-11","kind":"observed"},
-    {"evidenceId":"ev-obs-iowa-pbs-debate-20261007","sourceId":"obs-iowa-pbs-debate-20261007","locator":"Iowa PBSは10月7日にHinson氏とTurek氏の初回本選討論会を実施し、全編を公開。参加・実施は主催局で確認した。","checkedAt":"2026-10-11","kind":"observed"},
-    {"evidenceId":"ev-obs-iowa-capital-dispatch-debate-20261007","sourceId":"obs-iowa-capital-dispatch-debate-20261007","locator":"初回討論会で両候補は立法記録、生活費、Iran戦争、関税、倫理を争った。Hinson氏側の資産売却説明、Turek氏側の投票参加率説明、相互批判は、確認済み記録と候補者の評価を分けて扱う。","checkedAt":"2026-10-11","kind":"reported"},
-    {"evidenceId":"ev-obs-nexstar-ia-debate-20261013","sourceId":"obs-nexstar-ia-debate-20261013","locator":"Nexstarは10月13日21〜22時（米中部時間）、WHO 13のDes MoinesスタジオからHinson氏とTurek氏の討論会を生放送・配信すると公式発表。","checkedAt":"2026-10-11","kind":"scheduled"},
-    {"evidenceId":"ev-obs-ap-mi-uaw-20261010","sourceId":"obs-ap-mi-uaw-20261010","locator":"UAWはEl-Sayed氏を支持しMacomb郡などで戸別訪問を実施。取材された組合員は生活費を重視する一方、投票先は分裂。組合の推薦・動員は確認できるが、組合員全体や州全体の候補支持を示さない。","checkedAt":"2026-10-11","kind":"reported"},
-    {"evidenceId":"ev-obs-wapo-ks-republicans-20261010","sourceId":"obs-wapo-ks-republicans-20261010","locator":"共和党の元Kansas知事Mike Hayden氏とBill Graves氏が民主党Hamilton氏を支持。100人超の共和党員による支援組織も発足した一方、他の共和党元知事は支持を表明せず、Marshall陣営は記事掲載時点で回答しなかった。推薦を有権者の支持転換とは扱わない。","checkedAt":"2026-10-11","kind":"reported"},
-    {"evidenceId":"ev-obs-nexstar-ks-debate-20261021","sourceId":"obs-nexstar-ks-debate-20261021","locator":"Nexstarは10月21日19〜20時（米中部時間）、WDAF-TV FOX4でMarshall氏とHamilton氏の討論会を放送・配信すると発表。単独発表は曜日をTuesdayと誤記するが、2026年10月21日は水曜で、9月29日の同社公式一覧もWednesdayとするため日付・時刻を掲載し曜日不一致を記録。","checkedAt":"2026-10-11","kind":"scheduled"},
-    {"evidenceId":"ev-obs-wapo-schar-me-20261009","sourceId":"obs-wapo-schar-me-20261009","locator":"9月30日〜10月5日のMaine州投票予定者800人でJackson氏50%、Collins氏46%、誤差±3.6ポイント。Collins氏は連邦資金獲得と超党派性、Jackson氏は中絶、汚職、Maine理解、生活費、医療で相対的な信頼を得た。調査は両討論会前で、候補差は誤差内。","checkedAt":"2026-10-10","kind":"observed"},
-    {"evidenceId":"ev-obs-wmtw-me-debate-result-20261008","sourceId":"obs-wmtw-me-debate-result-20261008","locator":"10月8日のWMTW討論会は実施。両候補は中絶、関税、Iran戦争、Collins氏のTrump政権との投票一致率を争った。WMTW・PolitiFactは個別主張を検証しており、討論会発言を事実認定や有権者評価へ置き換えない。","checkedAt":"2026-10-10","kind":"reported"},
-    {"evidenceId":"ev-obs-maine-morning-star-debate-20261008","sourceId":"obs-maine-morning-star-debate-20261008","locator":"第2回討論会では暖房油などエネルギー費が中心争点。両候補はLIHEAP拡大を支持し、Collins氏はweatherization拡大と政権への働きかけ、Jackson氏はIran戦争と費用負担を結び付けた。Jackson氏はCollins夫妻の投資利益を主張しCollins氏は否定。記事は戦争権限採決の時期差も確認した。","checkedAt":"2026-10-10","kind":"reported"},
-    {"evidenceId":"ev-obs-ajc-ga-debate-20261008","sourceId":"obs-ajc-ga-debate-20261008","locator":"10月8日、民主党現職Ossoff氏と共和党Collins氏はAtlanta News First主催の1時間の初回討論会を実施。Iran戦争、移民、選挙の信頼、Israel、生活費のほか、互いの経歴・関係者への批判を応酬した。次回Atlanta Press Club討論会は10月13日予定。","checkedAt":"2026-10-10","kind":"reported"},
-    {"evidenceId":"ev-obs-gop-ak-trump-rally-20261013","sourceId":"obs-gop-ak-trump-rally-20261013","locator":"共和党公式イベントページは10月13日、WasillaのMenard Memorial Sports Centerで正午開場、14時開始、Trump大統領の演説を15時30分と案内。選挙行事でありWhite Houseの公務日程とは別に扱う。","checkedAt":"2026-10-10","kind":"scheduled"},
-    {"evidenceId":"ev-obs-alaska-public-media-trump-rally-20261008","sourceId":"obs-alaska-public-media-trump-rally-20261008","locator":"Alaska Public MediaはRNC発表に基づき、10月13日のWasilla集会が共和党現職Dan Sullivan氏の再選支援を目的とすると報道。演説予定時刻・会場を公式登録と相互照合した。","checkedAt":"2026-10-10","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-mi-debate-20261008","sourceId":"obs-ap-mi-debate-20261008","locator":"10月8日のMichigan上院候補討論会は実施。Rogers氏はIran戦争の早期終結とCanada関税戦争の終結を重ねて主張し、MinnesotaでのICE対応を『おそらく適切でなかった』と述べた。El-Sayed氏はTrump氏への追随を批判し、海外の戦争への資金拠出に反対した。激しい応酬や発言は政策効果・有権者評価を示さない。","checkedAt":"2026-10-09","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-tx-debate-20261008","sourceId":"obs-ap-tx-debate-20261008","locator":"Trump大統領はTalarico氏とPaxton氏に討論を要求し、Talarico氏は賛同。Paxton氏は確認時点で公に回答しておらず、日時・会場・主催者が合意された討論会はない。提案を予定として掲載しない。","checkedAt":"2026-10-09","kind":"reported"},
-    {"evidenceId":"ev-obs-yougov-ks-20261007","sourceId":"obs-yougov-ks-20261007","locator":"9月24日〜10月4日のKansas州投票予定者2,255人。Hamilton氏48%、Marshall氏45%、その他1%、未定5%、誤差±3.2ポイント。未定者は希望を再質問して配分した方式で、単一調査から勝敗や支持移動を確定しない。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-yougov-nh-20261007","sourceId":"obs-yougov-nh-20261007","locator":"9月28日〜10月5日のNew Hampshire州投票予定者1,520人。Pappas氏51%、Sununu氏43%、その他1%、未定4%、誤差±3.9ポイント。未定者は希望を再質問して配分した。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-yougov-mi-20261007","sourceId":"obs-yougov-mi-20261007","locator":"9月22日〜10月4日のMichigan州投票予定者3,949人。El-Sayed氏49%、Rogers氏48%、その他1%、未定2%、誤差±2.5ポイント。未定者は希望を再質問して配分し、1ポイント差から勝敗を確定しない。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-yougov-ne-20261007","sourceId":"obs-yougov-ne-20261007","locator":"9月24日〜10月3日のNebraska州投票予定者1,809人。無所属Osborn氏48%、共和党Ricketts氏47%、その他0%、未定3%、誤差±3.3ポイント。未定者は希望を再質問して配分した。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-yougov-oh-20261007","sourceId":"obs-yougov-oh-20261007","locator":"9月18〜30日のOhio州投票予定者3,780人。Brown氏49%、Husted氏45%、その他2%、未定4%、誤差±2.5ポイント。未定者は希望を再質問して配分し、候補差の誤差を個別候補の誤差と同一視しない。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-yougov-tx-20261007","sourceId":"obs-yougov-tx-20261007","locator":"9月28日〜10月5日のTexas州投票予定者3,625人。Talarico氏50%、Paxton氏44%、その他2%、未定3%、誤差±3ポイント。未定者は希望を再質問して配分し、単一調査から情勢評価を変更しない。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-yougov-method-20261007","sourceId":"obs-yougov-seven-state-20261007","locator":"YouGovは過去の投票、人口属性、自己申告の投票見込みを使って投票予定者を定義。州別標本は1,520〜3,949人、誤差は±2.5〜3.9ポイント。各州の候補値は州別原票で照合した。","checkedAt":"2026-10-09","kind":"observed"},
-    {"evidenceId":"ev-obs-wmtw-me-debate-20261008","sourceId":"obs-wmtw-me-debate-20261008","locator":"主催局WMTWはCollins氏とJackson氏の討論会を10月8日20時（米東部時間）から1時間、放送・配信すると確認。10月9日09時08分（日本時間）の照合時点は開始直後で、完了と発言結果は未確認。","checkedAt":"2026-10-09","kind":"scheduled"},
-    {"evidenceId":"ev-obs-marist-me-20261006","sourceId":"obs-marist-me-20261006","locator":"10月1〜4日の登録有権者1,505人で民主党Jackson氏51%、共和党現職Collins氏47%、誤差±3.8ポイント。一方、勝者予想はCollins氏57%、Jackson氏41%。支持先と勝者予想は別設問で、単一調査から勝敗や理由を確定しない。","checkedAt":"2026-10-08","kind":"observed"},
-    {"evidenceId":"ev-obs-suffolk-ia-20261007","sourceId":"obs-suffolk-ia-20261007","locator":"10月1〜4日の投票予定者500人で民主党Turek氏48.0%、共和党Hinson氏43.6%、自由党Laehn氏2.2%、未定5.6%。誤差±4.4ポイントで主要候補差は誤差内。8月調査との差を同じ有権者の支持移動とは扱わない。","checkedAt":"2026-10-08","kind":"observed"},
-    {"evidenceId":"ev-obs-quantus-mi-20261007","sourceId":"obs-quantus-mi-20261007","locator":"10月5〜6日の投票予定者762人で初回回答はEl-Sayed氏47.6%、Rogers氏46.5%、未定4.2%。leaner込み48.4%対47.2%。候補差の誤差は約±7.8ポイントとされ、統計上の同率。","checkedAt":"2026-10-08","kind":"observed"},
-    {"evidenceId":"ev-obs-rogers-tariff-ad-20261007","sourceId":"obs-rogers-tariff-ad-20261007","locator":"Rogers陣営は10月7日、Canadaとの関税戦争を直ちに終えると訴える広告を公表。NRSCとの7桁規模の共同広告枠と説明した。物価低下、超党派での解決、El-Sayed氏の税負担への批判はいずれも陣営の主張。","checkedAt":"2026-10-08","kind":"claimed"},
-    {"evidenceId":"ev-obs-reuters-mi-tariff-20261007","sourceId":"obs-reuters-mi-tariff-20261007","locator":"ReutersはRogers氏が9月までCanada関税を必要と擁護していたこと、新広告で即時終結を求めたこと、El-Sayed氏が選挙向けの転換と批判したことを照合。立場変更による政策・雇用・得票効果は未確認。","checkedAt":"2026-10-08","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-tx-rally-20261007","sourceId":"obs-ap-tx-mi-live-20261007","locator":"San Antonio集会でPaxton氏は7分間登壇し、Talarico氏をgender・石油ガス政策で主流から外れると批判した。Trump大統領はPaxton氏を支持し、推薦に後悔はないと述べた。友好的な会場反応を州全体の評価とは扱わない。","checkedAt":"2026-10-08","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-mi-rogers-tariff-20261007","sourceId":"obs-ap-tx-mi-live-20261007","locator":"APはRogers氏の広告と過去の関税擁護を照合。Trump大統領は、広告を自身への離反ではなくCanadaへ合意を迫る趣旨と見たと説明した。大統領の解釈と候補者の政策効果は別に確認する。","checkedAt":"2026-10-08","kind":"reported"},
-    {"evidenceId":"ev-obs-white-house-tx-20261007","sourceId":"obs-white-house-tx-20261007","locator":"White Houseは10月7日、Trump大統領がTexasへ再訪すると公式発表した。発表に並ぶ税・治安・国境・投資の成果は政権の自己評価で、独立した効果検証ではない。","checkedAt":"2026-10-08","kind":"observed"},
-    {"evidenceId":"ev-obs-wgme-me-debate-opening-20261006","sourceId":"obs-wgme-me-debate-20261006","locator":"10月6日19時のWGME討論会は実施。Collins氏は歳出委員会でMaineの672事業に15億ドルを確保したと主張し、Jackson氏はKavanaugh承認票とRoe撤廃を批判し、林業労働者・州議会での経歴を訴えた。金額と評価は候補者の発言で、政策効果や有権者評価の確認ではない。","checkedAt":"2026-10-07","kind":"reported"},
-    {"evidenceId":"ev-obs-wgme-me-debate-affordability-20261006","sourceId":"obs-wgme-me-debate-20261006","locator":"生活費ではCollins氏が州政による電気・住宅・固定資産税負担を、Jackson氏がTrump政権とCollins氏による予算、SNAP・暖房支援、Iran戦争、関税を責任として挙げた。Collins氏はインスリン・後発薬・住宅の取組を訴えた。いずれも討論会での主張で、因果効果は未検証。","checkedAt":"2026-10-07","kind":"reported"},
-    {"evidenceId":"ev-obs-cook-ratings-20261006","sourceId":"obs-cook-ratings-20261006","locator":"公式検索表示はKansasをLean RからToss Up、New HampshireをToss UpからLean D、North CarolinaをLean DからLikely Dへ変更したと示すが、公式本文は403で未取得。","checkedAt":"2026-10-07","kind":"reported"},
-    {"evidenceId":"ev-obs-wapo-cook-ratings-20261006","sourceId":"obs-wapo-cook-ratings-20261006","locator":"Washington PostはCookの10月6日評価変更3件を同じ変更前後で報道。第三の評価機関による見通しであり、SabatoとInside Electionsを使う当サイトの統合配分は変更しない。","checkedAt":"2026-10-07","kind":"reported"},
-    {"evidenceId":"ev-obs-reuters-oh-early-voting-20261006","sourceId":"obs-reuters-oh-early-voting-20261006","locator":"Ohioの期日前投票は10月6日に開始。Medina郡初日は民主党登録499、共和党374、無所属291で、2024年初日の共和党702、民主党369、無所属433と異なる。1郡1日分で、州全体の投票率・候補支持を示さない。","checkedAt":"2026-10-07","kind":"reported"},
-    {"evidenceId":"ev-obs-reuters-northeast-heating-20261006","sourceId":"obs-reuters-northeast-heating-20261006","locator":"Reutersは紛争後に暖房油価格が約60%上がり、今冬の1世帯負担が約600ドル増えるとの推計、New Englandの約3分の1が暖房油を使うと報道。Collins氏とKing氏らは約100万バレルの北東部備蓄放出を要請したが、DOEの回答と価格効果は未確認。","checkedAt":"2026-10-07","kind":"reported"},
-    {"evidenceId":"ev-obs-mysa-tx-rally-confirmation-20261006","sourceId":"obs-mysa-tx-rally-confirmation-20261006","locator":"州内報道は10月7日のFreeman Coliseum訪問、Secret Service調整、FAAの飛行制限、大統領発言見込み18時を確認。イベント開始は14時30分としており、先行するTexas Tribune/RNC資料の16時30分と相違するため開始時刻は確定しない。","checkedAt":"2026-10-07","kind":"scheduled"},
-    {"evidenceId":"ev-obs-rasmussen-nh-20261005","sourceId":"obs-rasmussen-nh-20261005","locator":"10月2〜4日、New Hampshire州の投票予定者979人。Pappas 49%、Sununu 44%、Laplante 3%、未定4%。標本誤差±3ポイント。電話とオンラインを併用。記事に個別値がない他候補を0%とは扱わない。","checkedAt":"2026-10-06","kind":"observed"},
-    {"evidenceId":"ev-obs-cbs-mi-mitchell-20261005","sourceId":"obs-cbs-mi-mitchell-20261005","locator":"10月1日のMichigan州投票予定者調査はEl-Sayed 45.6%、Rogers 41.4%、他候補はいずれも3%以下、未定6%、公表誤差±3.8ポイント。標本数、収集方法、質問文の原票は未取得のため部分確認。","checkedAt":"2026-10-06","kind":"observed"},
-    {"evidenceId":"ev-obs-mi-democrats-obama-20261005","sourceId":"obs-mi-democrats-obama-20261005","locator":"州民主党は10月24日にDetroitでObama元大統領、El-Sayed上院候補、Benson知事候補らの集会を行うと発表。時刻・会場は未公表で、共同登壇は支持・投票参加の効果を示さない。","checkedAt":"2026-10-06","kind":"claim"},
-    {"evidenceId":"ev-obs-doe-ak-transmission-20261005","sourceId":"obs-doe-ak-transmission-20261005","locator":"DOEはBeluga–Healy送電計画へ最大1.5億ドルを充てる意向を発表。非連邦資金2.68億ドルと合わせた計画総額4.18億ドル、223マイル。『計画』『完成後』の説明で、支出・完成・料金や信頼性の効果は未実現。","checkedAt":"2026-10-06","kind":"observed"},
-    {"evidenceId":"ev-obs-reuters-ak-vance-20261005","sourceId":"obs-reuters-ak-vance-20261005","locator":"ReutersはVance副大統領のAlaska訪問を上院選の文脈で報道。訪問と連邦資金発表は確認できるが、Sullivan氏の支持や投票参加への効果は未確認。","checkedAt":"2026-10-06","kind":"reported"},
-    {"evidenceId":"ev-obs-ap-ne-trump-rally-20261005","sourceId":"obs-ap-ne-trump-rally-20261005","locator":"Trump大統領は10月5日にGrand IslandでRicketts氏を支援する集会を実施。物価、燃料、牛肉輸入への州内の不満も報じられた。集会実施と友好的な反応を州全体の支持へ置き換えない。","checkedAt":"2026-10-06","kind":"reported"},
+    {
+      "evidenceId": "ev-obs-ut-texas-poll-20261013",
+      "sourceId": "obs-ut-texas-poll-20261013",
+      "locator": "9月25日〜10月5日のTexas州投票予定者861人でTalarico氏50%、Paxton氏47%、自由党Brown氏1%、その他2%。標本誤差±3.34ポイント。YouGovオンラインパネルの登録有権者1,200人から投票予定者を抽出。3ポイント差は誤差内で、単一調査から勝敗・支持移動を断定しない。",
+      "checkedAt": "2026-10-15",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-sabato-ratings-20261014",
+      "sourceId": "obs-sabato-ratings-20261014",
+      "locator": "公式配信本文はKansasをLean R→Toss-up、NebraskaをLikely R→Lean R、New HampshireをLean D→Likely D、MinnesotaをLikely D→Lean D、MississippiをSafe R→Likely Rへ変更。Sabato単独の議席方向49D・46R・5Toss-upは統合配分とは異なる。",
+      "checkedAt": "2026-10-15",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-gpb-ga-debate-result-20261014",
+      "sourceId": "obs-gpb-ga-debate-result-20261014",
+      "locator": "GPBは10月13日の1時間の討論を取材。Ossoff氏は関税・Medicaid削減撤回とIran戦争終結を訴え、Collins氏は関税擁護、国内エネルギー増産、ACA批判を表明。主張の効果と有権者評価は未確認。",
+      "checkedAt": "2026-10-15",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-ak-rally-result-20261014",
+      "sourceId": "obs-reuters-ak-rally-result-20261014",
+      "locator": "Reuters現地取材は10月13日のWasilla集会を確認。Sullivan氏はIran紛争を一時的とし民主党の石油・ガス政策を攻撃。Trump氏は戦争の早期終結と燃料価格下落を予告。発言は事実・効果の確定ではない。",
+      "checkedAt": "2026-10-15",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-ak-rally-result-20261013",
+      "sourceId": "obs-ap-ak-rally-result-20261013",
+      "locator": "APは集会の終了を確認。Trump氏がTaiwanによるAlaska LNG購入・40億ドル超投資を発表したが、記事時点でTaiwan側・White Houseからの独立確認はない。契約成立や事業効果として扱わない。",
+      "checkedAt": "2026-10-15",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-radioiowa-ia-debate-result-20261014",
+      "sourceId": "obs-radioiowa-ia-debate-result-20261014",
+      "locator": "Radio Iowaは10月13日21〜22時の第2回・最終討論実施を報道。両候補はロシア産ディーゼル輸入とデータセンター建設の連邦一時停止に反対、立地は地元判断とした。移民政策で違い。発言と実施効果を区別。",
+      "checkedAt": "2026-10-15",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-abdul-ai-control-20261013",
+      "sourceId": "obs-abdul-ai-control-20261013",
+      "locator": "El-Sayed氏はfrontier AIの学習・公開停止、超知能と再帰的自己改良の禁止、閣僚級の独立監督機関、内部告発者保護、事故報告と国家緊急対応を提案。候補者案であり、成立・執行・安全や雇用への効果は未確認。",
+      "checkedAt": "2026-10-14",
+      "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-mi-ai-20261013",
+      "sourceId": "obs-wapo-mi-ai-20261013",
+      "locator": "Rogers氏は8月にMichigan州のデータセンター新設を1年間停止する案を支持。New York Times/Siena調査ではAI・データセンターを最重要争点とした州有権者は2%、データセンター対応の評価はEl-Sayed氏が11ポイント上回った。争点別評価は上院投票先ではない。",
+      "checkedAt": "2026-10-14",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-debates-live-20261013",
+      "sourceId": "obs-wapo-debates-live-20261013",
+      "locator": "10月13日19時（米東部時間）にMaineの第3回討論会が始まり、Collins氏は超党派の薬価・住宅法案を挙げ、Trump大統領にIran戦争の十分な計画がなかったと述べた。Jackson氏はCollins氏が戦費を止めず政権に立ち向かわないと批判。候補者発言と政策効果・有権者評価を分ける。",
+      "checkedAt": "2026-10-14",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-sherrod-obama-rally-20261024",
+      "sourceId": "obs-sherrod-obama-rally-20261024",
+      "locator": "Brown陣営はObama元大統領が10月24日にClevelandでBrown氏と集会を行うと発表。時刻・会場、実施結果、支持への効果は未確認。",
+      "checkedAt": "2026-10-14",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-ideastream-oh-obama-rally-20261013",
+      "sourceId": "obs-ideastream-oh-obama-rally-20261013",
+      "locator": "IdeastreamはBrown陣営への確認に基づき、10月24日のCleveland集会にObama元大統領、Brown氏、Ohio州知事候補Amy Acton氏が参加すると報道。推薦・共同登壇を有権者支持へ置き換えない。",
+      "checkedAt": "2026-10-14",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-white-house-midterm-travel-20261013",
+      "sourceId": "obs-white-house-midterm-travel-20261013",
+      "locator": "White House報道官は中間選挙日程にGeorgia、Kentucky、Floridaが加わったと発表。州内の日付・時刻・会場・候補者同席は別資料で確認する。",
+      "checkedAt": "2026-10-14",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-cbs-ga-trump-rally-20261016",
+      "sourceId": "obs-cbs-ga-trump-rally-20261016",
+      "locator": "10月16日、Dalton Municipal Airportで13時30分に集会開始、15時にTrump大統領の発言予定。RNCは記事掲載時点で同席候補を発表しておらず、Mike Collins氏の参加を先取りしない。",
+      "checkedAt": "2026-10-14",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-gpb-ga-debate-20261013",
+      "sourceId": "obs-gpb-ga-debate-20261013",
+      "locator": "Georgia Public Broadcastingの公式番組ページはAtlanta Press Clubの上院討論会を10月13日20時（米東部時間）から配信。確認時点は開始直後で、終了・発言内容は未確認。",
+      "checkedAt": "2026-10-14",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-newscentermaine-debate-20261015",
+      "sourceId": "obs-newscentermaine-debate-20261015",
+      "locator": "News Center Maine公式配信ページはCollins氏とJackson氏の討論会を10月15日19時（米東部時間）と案内。従来記録の20時を19時へ訂正し、実施結果は当日後に確認する。",
+      "checkedAt": "2026-10-14",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-me-20261009",
+      "sourceId": "obs-rasmussen-me-20261009",
+      "locator": "10月5〜8日のMaine州投票予定者804人でJackson氏49%、Collins氏47%、未定4%。標本誤差±3ポイント、電話・オンライン併用、実査はPulse Opinion Research。2ポイント差は誤差内で、単一調査から勝敗や支持移動を確定しない。",
+      "checkedAt": "2026-10-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-trafalgar-tx-20261009",
+      "sourceId": "obs-trafalgar-tx-20261009",
+      "locator": "10月6〜8日のTexas州投票予定者1,086人。Talarico氏47.1%、Paxton氏43.6%、Ted Brown氏1.8%、未定7.6%。回答率5.4%、標本誤差±2.9ポイント、信頼水準95%。単一調査から情勢評価を変更しない。",
+      "checkedAt": "2026-10-13",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-insider-ak-ks-mi-20261011",
+      "sourceId": "obs-insider-ak-ks-mi-20261011",
+      "locator": "10月9〜10日の各州投票予定者1,200人で、見出し値はAlaskaがPeltola氏50%・Sullivan氏48%、KansasがHamilton氏48%・Marshall氏47%、MichiganがEl-Sayed氏48%・Rogers氏46%。誤差±2.83ポイント、年齢・人種・性別・党派で重み付け。公式サイト障害で質問文、全選択肢、収集方法、Alaskaの順位選択投票の段階を取得できず、部分確認。",
+      "checkedAt": "2026-10-13",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-tx-fact-check-20261012",
+      "sourceId": "obs-ap-tx-fact-check-20261012",
+      "locator": "Talarico氏がOhio州のLindner Center of Hopeで治療を受けたとの主張を施設が否定し、APは提示された時系列が公開行事・画像と一致しないことを確認。本人と陣営は自宅でインフルエンザから回復していたと説明。Paxton氏とTrump大統領の『missing』発言は確認できるが、虚偽情報の拡散による支持への効果は未確認。",
+      "checkedAt": "2026-10-13",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-wabi-me-debate-20261013",
+      "sourceId": "obs-wabi-me-debate-20261013",
+      "locator": "WABI/WAGMは10月13日19時（米東部時間）からCollins氏とJackson氏の上院候補討論会を局内で行い、放送とオンライン配信を予定。確認時点は実施前で、発言や結果を先取りしない。",
+      "checkedAt": "2026-10-13",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-emerson-ia-20261009",
+      "sourceId": "obs-emerson-ia-20261009",
+      "locator": "10月5〜6日のIowa州投票予定者650人。共和党Hinson氏46.6%（公式丸め47%）、民主党Turek氏45.0%、自由党Laehn氏1.5%、未定7.0%、信頼区間±3.8ポイント。経済42%、医療18%が上位争点。混合収集・英語のみで、単一調査から支持移動を確定しない。",
+      "checkedAt": "2026-10-11",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-iowa-pbs-debate-20261007",
+      "sourceId": "obs-iowa-pbs-debate-20261007",
+      "locator": "Iowa PBSは10月7日にHinson氏とTurek氏の初回本選討論会を実施し、全編を公開。参加・実施は主催局で確認した。",
+      "checkedAt": "2026-10-11",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-iowa-capital-dispatch-debate-20261007",
+      "sourceId": "obs-iowa-capital-dispatch-debate-20261007",
+      "locator": "初回討論会で両候補は立法記録、生活費、Iran戦争、関税、倫理を争った。Hinson氏側の資産売却説明、Turek氏側の投票参加率説明、相互批判は、確認済み記録と候補者の評価を分けて扱う。",
+      "checkedAt": "2026-10-11",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-nexstar-ia-debate-20261013",
+      "sourceId": "obs-nexstar-ia-debate-20261013",
+      "locator": "Nexstarは10月13日21〜22時（米中部時間）、WHO 13のDes MoinesスタジオからHinson氏とTurek氏の討論会を生放送・配信すると公式発表。",
+      "checkedAt": "2026-10-11",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-ap-mi-uaw-20261010",
+      "sourceId": "obs-ap-mi-uaw-20261010",
+      "locator": "UAWはEl-Sayed氏を支持しMacomb郡などで戸別訪問を実施。取材された組合員は生活費を重視する一方、投票先は分裂。組合の推薦・動員は確認できるが、組合員全体や州全体の候補支持を示さない。",
+      "checkedAt": "2026-10-11",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-ks-republicans-20261010",
+      "sourceId": "obs-wapo-ks-republicans-20261010",
+      "locator": "共和党の元Kansas知事Mike Hayden氏とBill Graves氏が民主党Hamilton氏を支持。100人超の共和党員による支援組織も発足した一方、他の共和党元知事は支持を表明せず、Marshall陣営は記事掲載時点で回答しなかった。推薦を有権者の支持転換とは扱わない。",
+      "checkedAt": "2026-10-11",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-nexstar-ks-debate-20261021",
+      "sourceId": "obs-nexstar-ks-debate-20261021",
+      "locator": "Nexstarは10月21日19〜20時（米中部時間）、WDAF-TV FOX4でMarshall氏とHamilton氏の討論会を放送・配信すると発表。単独発表は曜日をTuesdayと誤記するが、2026年10月21日は水曜で、9月29日の同社公式一覧もWednesdayとするため日付・時刻を掲載し曜日不一致を記録。",
+      "checkedAt": "2026-10-11",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-schar-me-20261009",
+      "sourceId": "obs-wapo-schar-me-20261009",
+      "locator": "9月30日〜10月5日のMaine州投票予定者800人でJackson氏50%、Collins氏46%、誤差±3.6ポイント。Collins氏は連邦資金獲得と超党派性、Jackson氏は中絶、汚職、Maine理解、生活費、医療で相対的な信頼を得た。調査は両討論会前で、候補差は誤差内。",
+      "checkedAt": "2026-10-10",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-wmtw-me-debate-result-20261008",
+      "sourceId": "obs-wmtw-me-debate-result-20261008",
+      "locator": "10月8日のWMTW討論会は実施。両候補は中絶、関税、Iran戦争、Collins氏のTrump政権との投票一致率を争った。WMTW・PolitiFactは個別主張を検証しており、討論会発言を事実認定や有権者評価へ置き換えない。",
+      "checkedAt": "2026-10-10",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-maine-morning-star-debate-20261008",
+      "sourceId": "obs-maine-morning-star-debate-20261008",
+      "locator": "第2回討論会では暖房油などエネルギー費が中心争点。両候補はLIHEAP拡大を支持し、Collins氏はweatherization拡大と政権への働きかけ、Jackson氏はIran戦争と費用負担を結び付けた。Jackson氏はCollins夫妻の投資利益を主張しCollins氏は否定。記事は戦争権限採決の時期差も確認した。",
+      "checkedAt": "2026-10-10",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ajc-ga-debate-20261008",
+      "sourceId": "obs-ajc-ga-debate-20261008",
+      "locator": "10月8日、民主党現職Ossoff氏と共和党Collins氏はAtlanta News First主催の1時間の初回討論会を実施。Iran戦争、移民、選挙の信頼、Israel、生活費のほか、互いの経歴・関係者への批判を応酬した。次回Atlanta Press Club討論会は10月13日予定。",
+      "checkedAt": "2026-10-10",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-gop-ak-trump-rally-20261013",
+      "sourceId": "obs-gop-ak-trump-rally-20261013",
+      "locator": "共和党公式イベントページは10月13日、WasillaのMenard Memorial Sports Centerで正午開場、14時開始、Trump大統領の演説を15時30分と案内。選挙行事でありWhite Houseの公務日程とは別に扱う。",
+      "checkedAt": "2026-10-10",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-alaska-public-media-trump-rally-20261008",
+      "sourceId": "obs-alaska-public-media-trump-rally-20261008",
+      "locator": "Alaska Public MediaはRNC発表に基づき、10月13日のWasilla集会が共和党現職Dan Sullivan氏の再選支援を目的とすると報道。演説予定時刻・会場を公式登録と相互照合した。",
+      "checkedAt": "2026-10-10",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-mi-debate-20261008",
+      "sourceId": "obs-ap-mi-debate-20261008",
+      "locator": "10月8日のMichigan上院候補討論会は実施。Rogers氏はIran戦争の早期終結とCanada関税戦争の終結を重ねて主張し、MinnesotaでのICE対応を『おそらく適切でなかった』と述べた。El-Sayed氏はTrump氏への追随を批判し、海外の戦争への資金拠出に反対した。激しい応酬や発言は政策効果・有権者評価を示さない。",
+      "checkedAt": "2026-10-09",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-tx-debate-20261008",
+      "sourceId": "obs-ap-tx-debate-20261008",
+      "locator": "Trump大統領はTalarico氏とPaxton氏に討論を要求し、Talarico氏は賛同。Paxton氏は確認時点で公に回答しておらず、日時・会場・主催者が合意された討論会はない。提案を予定として掲載しない。",
+      "checkedAt": "2026-10-09",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-ks-20261007",
+      "sourceId": "obs-yougov-ks-20261007",
+      "locator": "9月24日〜10月4日のKansas州投票予定者2,255人。Hamilton氏48%、Marshall氏45%、その他1%、未定5%、誤差±3.2ポイント。未定者は希望を再質問して配分した方式で、単一調査から勝敗や支持移動を確定しない。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-nh-20261007",
+      "sourceId": "obs-yougov-nh-20261007",
+      "locator": "9月28日〜10月5日のNew Hampshire州投票予定者1,520人。Pappas氏51%、Sununu氏43%、その他1%、未定4%、誤差±3.9ポイント。未定者は希望を再質問して配分した。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-mi-20261007",
+      "sourceId": "obs-yougov-mi-20261007",
+      "locator": "9月22日〜10月4日のMichigan州投票予定者3,949人。El-Sayed氏49%、Rogers氏48%、その他1%、未定2%、誤差±2.5ポイント。未定者は希望を再質問して配分し、1ポイント差から勝敗を確定しない。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-ne-20261007",
+      "sourceId": "obs-yougov-ne-20261007",
+      "locator": "9月24日〜10月3日のNebraska州投票予定者1,809人。無所属Osborn氏48%、共和党Ricketts氏47%、その他0%、未定3%、誤差±3.3ポイント。未定者は希望を再質問して配分した。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-oh-20261007",
+      "sourceId": "obs-yougov-oh-20261007",
+      "locator": "9月18〜30日のOhio州投票予定者3,780人。Brown氏49%、Husted氏45%、その他2%、未定4%、誤差±2.5ポイント。未定者は希望を再質問して配分し、候補差の誤差を個別候補の誤差と同一視しない。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-tx-20261007",
+      "sourceId": "obs-yougov-tx-20261007",
+      "locator": "9月28日〜10月5日のTexas州投票予定者3,625人。Talarico氏50%、Paxton氏44%、その他2%、未定3%、誤差±3ポイント。未定者は希望を再質問して配分し、単一調査から情勢評価を変更しない。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-yougov-method-20261007",
+      "sourceId": "obs-yougov-seven-state-20261007",
+      "locator": "YouGovは過去の投票、人口属性、自己申告の投票見込みを使って投票予定者を定義。州別標本は1,520〜3,949人、誤差は±2.5〜3.9ポイント。各州の候補値は州別原票で照合した。",
+      "checkedAt": "2026-10-09",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-wmtw-me-debate-20261008",
+      "sourceId": "obs-wmtw-me-debate-20261008",
+      "locator": "主催局WMTWはCollins氏とJackson氏の討論会を10月8日20時（米東部時間）から1時間、放送・配信すると確認。10月9日09時08分（日本時間）の照合時点は開始直後で、完了と発言結果は未確認。",
+      "checkedAt": "2026-10-09",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-marist-me-20261006",
+      "sourceId": "obs-marist-me-20261006",
+      "locator": "10月1〜4日の登録有権者1,505人で民主党Jackson氏51%、共和党現職Collins氏47%、誤差±3.8ポイント。一方、勝者予想はCollins氏57%、Jackson氏41%。支持先と勝者予想は別設問で、単一調査から勝敗や理由を確定しない。",
+      "checkedAt": "2026-10-08",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-suffolk-ia-20261007",
+      "sourceId": "obs-suffolk-ia-20261007",
+      "locator": "10月1〜4日の投票予定者500人で民主党Turek氏48.0%、共和党Hinson氏43.6%、自由党Laehn氏2.2%、未定5.6%。誤差±4.4ポイントで主要候補差は誤差内。8月調査との差を同じ有権者の支持移動とは扱わない。",
+      "checkedAt": "2026-10-08",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-quantus-mi-20261007",
+      "sourceId": "obs-quantus-mi-20261007",
+      "locator": "10月5〜6日の投票予定者762人で初回回答はEl-Sayed氏47.6%、Rogers氏46.5%、未定4.2%。leaner込み48.4%対47.2%。候補差の誤差は約±7.8ポイントとされ、統計上の同率。",
+      "checkedAt": "2026-10-08",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rogers-tariff-ad-20261007",
+      "sourceId": "obs-rogers-tariff-ad-20261007",
+      "locator": "Rogers陣営は10月7日、Canadaとの関税戦争を直ちに終えると訴える広告を公表。NRSCとの7桁規模の共同広告枠と説明した。物価低下、超党派での解決、El-Sayed氏の税負担への批判はいずれも陣営の主張。",
+      "checkedAt": "2026-10-08",
+      "kind": "claimed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-mi-tariff-20261007",
+      "sourceId": "obs-reuters-mi-tariff-20261007",
+      "locator": "ReutersはRogers氏が9月までCanada関税を必要と擁護していたこと、新広告で即時終結を求めたこと、El-Sayed氏が選挙向けの転換と批判したことを照合。立場変更による政策・雇用・得票効果は未確認。",
+      "checkedAt": "2026-10-08",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-tx-rally-20261007",
+      "sourceId": "obs-ap-tx-mi-live-20261007",
+      "locator": "San Antonio集会でPaxton氏は7分間登壇し、Talarico氏をgender・石油ガス政策で主流から外れると批判した。Trump大統領はPaxton氏を支持し、推薦に後悔はないと述べた。友好的な会場反応を州全体の評価とは扱わない。",
+      "checkedAt": "2026-10-08",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-mi-rogers-tariff-20261007",
+      "sourceId": "obs-ap-tx-mi-live-20261007",
+      "locator": "APはRogers氏の広告と過去の関税擁護を照合。Trump大統領は、広告を自身への離反ではなくCanadaへ合意を迫る趣旨と見たと説明した。大統領の解釈と候補者の政策効果は別に確認する。",
+      "checkedAt": "2026-10-08",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-white-house-tx-20261007",
+      "sourceId": "obs-white-house-tx-20261007",
+      "locator": "White Houseは10月7日、Trump大統領がTexasへ再訪すると公式発表した。発表に並ぶ税・治安・国境・投資の成果は政権の自己評価で、独立した効果検証ではない。",
+      "checkedAt": "2026-10-08",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-wgme-me-debate-opening-20261006",
+      "sourceId": "obs-wgme-me-debate-20261006",
+      "locator": "10月6日19時のWGME討論会は実施。Collins氏は歳出委員会でMaineの672事業に15億ドルを確保したと主張し、Jackson氏はKavanaugh承認票とRoe撤廃を批判し、林業労働者・州議会での経歴を訴えた。金額と評価は候補者の発言で、政策効果や有権者評価の確認ではない。",
+      "checkedAt": "2026-10-07",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-wgme-me-debate-affordability-20261006",
+      "sourceId": "obs-wgme-me-debate-20261006",
+      "locator": "生活費ではCollins氏が州政による電気・住宅・固定資産税負担を、Jackson氏がTrump政権とCollins氏による予算、SNAP・暖房支援、Iran戦争、関税を責任として挙げた。Collins氏はインスリン・後発薬・住宅の取組を訴えた。いずれも討論会での主張で、因果効果は未検証。",
+      "checkedAt": "2026-10-07",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-cook-ratings-20261006",
+      "sourceId": "obs-cook-ratings-20261006",
+      "locator": "公式検索表示はKansasをLean RからToss Up、New HampshireをToss UpからLean D、North CarolinaをLean DからLikely Dへ変更したと示すが、公式本文は403で未取得。",
+      "checkedAt": "2026-10-07",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-cook-ratings-20261006",
+      "sourceId": "obs-wapo-cook-ratings-20261006",
+      "locator": "Washington PostはCookの10月6日評価変更3件を同じ変更前後で報道。第三の評価機関による見通しであり、SabatoとInside Electionsを使う当サイトの統合配分は変更しない。",
+      "checkedAt": "2026-10-07",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-oh-early-voting-20261006",
+      "sourceId": "obs-reuters-oh-early-voting-20261006",
+      "locator": "Ohioの期日前投票は10月6日に開始。Medina郡初日は民主党登録499、共和党374、無所属291で、2024年初日の共和党702、民主党369、無所属433と異なる。1郡1日分で、州全体の投票率・候補支持を示さない。",
+      "checkedAt": "2026-10-07",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-northeast-heating-20261006",
+      "sourceId": "obs-reuters-northeast-heating-20261006",
+      "locator": "Reutersは紛争後に暖房油価格が約60%上がり、今冬の1世帯負担が約600ドル増えるとの推計、New Englandの約3分の1が暖房油を使うと報道。Collins氏とKing氏らは約100万バレルの北東部備蓄放出を要請したが、DOEの回答と価格効果は未確認。",
+      "checkedAt": "2026-10-07",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-mysa-tx-rally-confirmation-20261006",
+      "sourceId": "obs-mysa-tx-rally-confirmation-20261006",
+      "locator": "州内報道は10月7日のFreeman Coliseum訪問、Secret Service調整、FAAの飛行制限、大統領発言見込み18時を確認。イベント開始は14時30分としており、先行するTexas Tribune/RNC資料の16時30分と相違するため開始時刻は確定しない。",
+      "checkedAt": "2026-10-07",
+      "kind": "scheduled"
+    },
+    {
+      "evidenceId": "ev-obs-rasmussen-nh-20261005",
+      "sourceId": "obs-rasmussen-nh-20261005",
+      "locator": "10月2〜4日、New Hampshire州の投票予定者979人。Pappas 49%、Sununu 44%、Laplante 3%、未定4%。標本誤差±3ポイント。電話とオンラインを併用。記事に個別値がない他候補を0%とは扱わない。",
+      "checkedAt": "2026-10-06",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-cbs-mi-mitchell-20261005",
+      "sourceId": "obs-cbs-mi-mitchell-20261005",
+      "locator": "10月1日のMichigan州投票予定者調査はEl-Sayed 45.6%、Rogers 41.4%、他候補はいずれも3%以下、未定6%、公表誤差±3.8ポイント。標本数、収集方法、質問文の原票は未取得のため部分確認。",
+      "checkedAt": "2026-10-06",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-mi-democrats-obama-20261005",
+      "sourceId": "obs-mi-democrats-obama-20261005",
+      "locator": "州民主党は10月24日にDetroitでObama元大統領、El-Sayed上院候補、Benson知事候補らの集会を行うと発表。時刻・会場は未公表で、共同登壇は支持・投票参加の効果を示さない。",
+      "checkedAt": "2026-10-06",
+      "kind": "claim"
+    },
+    {
+      "evidenceId": "ev-obs-doe-ak-transmission-20261005",
+      "sourceId": "obs-doe-ak-transmission-20261005",
+      "locator": "DOEはBeluga–Healy送電計画へ最大1.5億ドルを充てる意向を発表。非連邦資金2.68億ドルと合わせた計画総額4.18億ドル、223マイル。『計画』『完成後』の説明で、支出・完成・料金や信頼性の効果は未実現。",
+      "checkedAt": "2026-10-06",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-ak-vance-20261005",
+      "sourceId": "obs-reuters-ak-vance-20261005",
+      "locator": "ReutersはVance副大統領のAlaska訪問を上院選の文脈で報道。訪問と連邦資金発表は確認できるが、Sullivan氏の支持や投票参加への効果は未確認。",
+      "checkedAt": "2026-10-06",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ap-ne-trump-rally-20261005",
+      "sourceId": "obs-ap-ne-trump-rally-20261005",
+      "locator": "Trump大統領は10月5日にGrand IslandでRicketts氏を支援する集会を実施。物価、燃料、牛肉輸入への州内の不満も報じられた。集会実施と友好的な反応を州全体の支持へ置き換えない。",
+      "checkedAt": "2026-10-06",
+      "kind": "reported"
+    },
     {
       "evidenceId": "ev-obs-siena-five-state-20261003",
       "sourceId": "obs-siena-five-state-20261003",
@@ -5880,11 +6744,11 @@
     {
       "electionId": "2026-OH-3-special",
       "status": "published",
-      "updatedAt": "2026-10-09",
+      "updatedAt": "2026-10-20",
       "headline": "家計への支援と、投資・雇用の実績をどう評価するか",
-      "featuredSummary": "YouGovの投票予定者調査はBrown 49%・Husted 45%。広告戦に加え、データセンターを誰が決め、電力・税負担を誰が負うかが具体的な争点になっている。",
-      "lead": "JD Vance氏の副大統領就任で空いた残り2年の議席を、民主党Sherrod Brown元上院議員と共和党現職Jon Husted上院議員が争う。YouGovの9月18〜30日調査はBrown氏49%、Husted氏45%。Brown氏はデータセンターの地元決定権を、Husted氏は事業者に発電・送電増強費を負担させる法案を訴えている。",
-      "uncertainty": "YouGovの誤差は±2.5ポイントで、4ポイントの数値上の先行を勝敗確定とは扱わない。BGSU調査で州民の71%が新設の一時停止を支持したとの報道は争点の広がりを示すが、上院選の投票先ではない。両候補の対策が料金・税収・雇用へ及ぼす効果は未確認。",
+      "featuredSummary": "Rasmussenの10月12〜14日調査はHusted 49%・Brown 47%。既存のYouGov調査とは先頭候補が異なり、調査間の違いも判断材料にする。",
+      "lead": "JD Vance氏の副大統領就任で空いた残り2年の議席を、民主党Sherrod Brown元上院議員と共和党現職Jon Husted上院議員が争う。Rasmussenの10月12〜14日調査はHusted氏49%、Brown氏47%。既存のYouGov（9月18〜30日）はBrown氏49%、Husted氏45%で、先頭候補が一致しない。Brown氏はデータセンターの地元決定権を、Husted氏は事業者に発電・送電増強費を負担させる法案を訴えている。",
+      "uncertainty": "Rasmussenは投票予定者901人、電話・オンライン、誤差±3ポイント。2ポイント差も調査機関間の違いも勝敗や支持の逆転を証明しない。争点への賛否と候補者支持、法案と料金・雇用への効果を分ける。",
       "evidenceIds": [
         "ev-obs-brown-policy",
         "ev-obs-husted-bio",
@@ -5892,7 +6756,10 @@
         "ev-obs-trafalgar-oh-20260917",
         "ev-obs-ap-oh-economy-20260917",
         "ev-obs-reuters-oh-data-centers-20260919",
-        "ev-obs-yougov-oh-20261007"
+        "ev-obs-yougov-oh-20261007",
+        "ev-obs-rasmussen-oh-20261014",
+        "ev-obs-rasmussen-oh-questions-20261014",
+        "ev-obs-rasmussen-oh-crosstabs-20261014"
       ],
       "materials": [
         {
@@ -5902,7 +6769,7 @@
           "meaning": "開発の可否、電力費、税優遇、地元の決定権を分け、どの仕組みが家計と雇用を両立できるかを比べる。",
           "limit": "双方の説明は政策主張で、住民活動家には両党への懐疑もある。料金低下や雇用増加、上院選での得票効果は確認できない。",
           "evidenceIds": [
-          "ev-obs-brown-policy",
+            "ev-obs-brown-policy",
             "ev-obs-ap-oh-economy-20260917",
             "ev-obs-reuters-oh-data-centers-20260919"
           ]
@@ -6013,27 +6880,28 @@
           "key": "voters",
           "label": "有権者の受け止め",
           "cells": [
-        {
-          "candidateId": "cand-oh-sherrod-brown",
-          "kind": "pending",
-          "text": "YouGovの9月18〜30日調査で49%、Husted氏45%。最近の複数調査で数値上先行し、資金調達額も上回るが、単一調査やデータセンターの一時停止支持をBrown氏個人への確定的支持とは扱わない。",
+            {
+              "candidateId": "cand-oh-sherrod-brown",
+              "kind": "observed",
+              "text": "Rasmussenの10月12〜14日調査で47%、Husted氏49%。既存YouGovの49%対45%とは先頭候補が異なる。異なる調査間の比較を支持の逆転としない。",
               "evidenceIds": [
-                "ev-obs-reuters-oh-pac-spending-20260918",
-            "ev-obs-reuters-oh-data-centers-20260919",
-            "ev-obs-yougov-oh-20261007"
-          ]
-        },
-        {
-          "candidateId": "cand-oh-jon-husted",
-          "kind": "pending",
-          "text": "YouGovの9月18〜30日調査で45%、Brown氏49%。共和党側は広告を増やし、事業者に電力網増強費を負担させる法案を反論に挙げるが、広告額も法案提出も料金低下や得票効果の証明ではない。",
-          "evidenceIds": [
-            "ev-obs-reuters-oh-pac-spending-20260918",
-                "ev-obs-axios-nrsc-spending-20260918",
-            "ev-obs-reuters-oh-data-centers-20260919",
-            "ev-obs-yougov-oh-20261007"
-          ]
-        }
+                "ev-obs-rasmussen-oh-20261014",
+                "ev-obs-rasmussen-oh-questions-20261014",
+                "ev-obs-rasmussen-oh-crosstabs-20261014",
+                "ev-obs-yougov-oh-20261007"
+              ]
+            },
+            {
+              "candidateId": "cand-oh-jon-husted",
+              "kind": "observed",
+              "text": "同じRasmussen調査で49%、Brown氏47%。投票予定者901人・誤差±3ポイントで確定的な優位ではない。広告や法案の効果を直接測った数字ではない。",
+              "evidenceIds": [
+                "ev-obs-rasmussen-oh-20261014",
+                "ev-obs-rasmussen-oh-questions-20261014",
+                "ev-obs-rasmussen-oh-crosstabs-20261014",
+                "ev-obs-yougov-oh-20261007"
+              ]
+            }
           ]
         }
       ],
@@ -6055,11 +6923,11 @@
     {
       "electionId": "2026-TX-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-17",
+      "updatedAt": "2026-10-20",
       "headline": "経済・移民への評価と、支持層の投票参加",
-      "featuredSummary": "YouGovの投票予定者調査はTalarico 50%・Paxton 44%。Trump大統領も討論を求め、Talaricoは受諾したが、双方合意の日程はない。",
-      "lead": "民主党James Talarico州下院議員と共和党Ken Paxton州司法長官が争う。YouGovの9月28日〜10月5日調査はTalarico氏50%、Paxton氏44%。Trump大統領は両候補に討論を求め、Talarico氏は賛同したが、Paxton氏は確認時点で公に回答していない。日時・会場・主催者が合意された討論会はない。",
-      "uncertainty": "YouGovの誤差は±3ポイントで、単一調査の6ポイント差から情勢評価を変更しない。未定者への再質問・配分を含む方式で、他調査とは母集団や方法が異なる。大統領の要求と一候補の受諾は討論会の開催決定ではなく、支持への効果も未確認。",
+      "featuredSummary": "Hobby Schoolの10月10〜14日調査はTalarico 48%・Paxton 46%。第三候補・未定を残す数字で、別機関との差を支持移動とはしない。",
+      "lead": "民主党James Talarico州下院議員と共和党Ken Paxton州司法長官が争う。Hobby Schoolの10月10〜14日調査は48%対46%、第三候補3%、未定3%。既存のYouGov調査とは母集団・質問処理・実査期間が異なる。討論会については10月17日の確認時点で双方合意の日時・主催者は確認できておらず、その後の合意は再確認待ち。",
+      "uncertainty": "Hobby SchoolはSMSからオンラインへ誘導した投票予定者2,000人の調査、公表誤差±2.19ポイント。単一調査の2ポイント差から勝敗・政策効果を断定せず、別機関との数値差を支持変化とはしない。全設問票・個票、討論会の新合意は未確認。",
       "evidenceIds": [
         "ev-obs-emerson-tx",
         "ev-obs-texas-tribune-spending",
@@ -6074,20 +6942,24 @@
         "ev-obs-houston-chronicle-paxton-china-donors-20260922",
         "ev-obs-yougov-tx-20261007",
         "ev-obs-ap-tx-debate-20261008",
-        "ev-obs-tribune-tx-qa-20261013"
+        "ev-obs-tribune-tx-qa-20261013",
+        "ev-obs-hobby-tx-20261019",
+        "ev-obs-hobby-tx-release-20261019"
       ],
       "materials": [
         {
           "materialId": "tx-turnout",
           "title": "支持が実際の投票になるか",
-          "fact": "9月24〜28日のFox調査はLVでTalarico 51%・Paxton 49%、RVで53%・46%。先行するEmerson、ReconMR、Texas Public Opinion Researchとも方法、実査期間、言語、標本数、投票参加モデルが異なる。",
+          "fact": "Hobby Schoolの10月10〜14日調査は投票予定者2,000人でTalarico48%・Paxton46%・Ted Brown3%・未定3%。既存のYouGov調査は50%・44%だが、実査期間と未定者への再質問・配分方式が異なる。",
           "meaning": "一つの数字で決めず、候補者評価、争点、無党派層、実際の投票参加が後続調査でも再現するかを見る。",
           "limit": "異なる調査やFoxのLV・RVの差は、同じ人の支持率上昇・低下を示さない。党派・年齢・人種別の部分標本は州全体より不確か。",
           "evidenceIds": [
             "ev-obs-emerson-tx-20260917",
             "ev-obs-reconmr-tx-20260917",
             "ev-obs-tpor-tx-20260925",
-            "ev-obs-fox-tx-20261001"
+            "ev-obs-fox-tx-20261001",
+            "ev-obs-hobby-tx-20261019",
+            "ev-obs-yougov-tx-20261007"
           ]
         },
         {
@@ -6210,26 +7082,19 @@
             {
               "candidateId": "cand-tx-james-talarico",
               "kind": "observed",
-              "text": "YouGovの9月28日〜10月5日調査で50%、Paxton氏44%。9月の他調査でも数値上競り合うが、広告を『競争力の証拠』とする本人の解釈と、代表調査による有権者評価を分ける。",
+              "text": "Hobby Schoolの10月10〜14日調査で48%、Paxton氏46%。投票予定者2,000人、公表誤差±2.19。別機関との差は支持の移動ではなく、政策・広告の効果も特定できない。",
               "evidenceIds": [
-                "ev-obs-emerson-tx-20260917",
-                "ev-obs-reconmr-tx-20260917",
-                "ev-obs-houston-chronicle-tx-ads-20260919",
-                "ev-obs-tpor-tx-20260925",
-                "ev-obs-yougov-tx-20261007"
+                "ev-obs-hobby-tx-20261019",
+                "ev-obs-hobby-tx-release-20261019"
               ]
             },
             {
               "candidateId": "cand-tx-ken-paxton",
               "kind": "observed",
-              "text": "YouGovの9月28日〜10月5日調査で44%、Talarico氏50%。9月の他調査でも40%台だった。接戦への本人の説明、集会の拍手、広告支出を州全体の支持変化とは扱わない。",
+              "text": "同じHobby School調査で46%、Talarico氏48%、第三候補3%、未定3%。集会の拍手や広告費を州全体の支持とは扱わず、2ポイント差で勝敗を決めない。",
               "evidenceIds": [
-                "ev-obs-emerson-tx-20260917",
-                "ev-obs-reconmr-tx-20260917",
-                "ev-obs-houston-chronicle-tx-ads-20260919",
-                "ev-obs-houston-chronicle-tx-rally-result-20260921",
-                "ev-obs-tpor-tx-20260925",
-                "ev-obs-yougov-tx-20261007"
+                "ev-obs-hobby-tx-20261019",
+                "ev-obs-hobby-tx-release-20261019"
               ]
             }
           ]
@@ -6253,11 +7118,11 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-18",
+      "updatedAt": "2026-10-20",
       "headline": "漁業と資源開発の利益を、地元へどう戻すか",
-      "featuredSummary": "共和党現職Dan S. Sullivanと民主党Mary Peltolaの接戦。Quantusの第1順位は46.1対45.5。4つの9月調査で先頭と集計段階がそろわない。",
-      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月28〜30日のQuantus調査は、第1順位でSullivan 46.1%、Peltola 45.5%、2候補設問のleaner込みで47.8%、47.2%だった。10月3日のSiena公式公表ページは投票予定者でPeltola 50%、Sullivan 43%としたが、詳細toplineを取得できず方法は部分確認である。元職員によるPeltola氏の職場環境への告発、陣営の反論、州内支持者への取材も確認し、候補者の行動評価と政策・支持率を分けて追う。10月15日の討論は実施され、戦争とエネルギー負担への対応を論じた。",
-      "uncertainty": "Quantusの候補差は1ポイント未満で、候補差の誤差は約8ポイント。Sienaは公式公表値を確認したが、実査期間、標本、誤差、未定割合、leaner処理は未確認。各調査の数字をそろえず支持移動とは呼べない。元職員の告発、陣営の反論、少数の支持者取材はそれぞれ性質が異なり、行為の確定や州全体の有権者評価には置き換えない。",
+      "featuredSummary": "Rasmussenの10月12〜15日調査は第1希望でPeltola 44%・現職Sullivan 42%。順位再配分の最終結果とは分け、同姓の別候補を混同しない。",
+      "lead": "共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。Rasmussenの10月12〜15日調査は第一希望44%対42%でPeltola氏が数値上先行するが、2ポイント差で勝敗は判断できない。10月15日の討論では戦争とエネルギー負担への対応を論じた。漁業の具体策・立法の進捗と、調査で測る投票意向を分けて見る。",
+      "uncertainty": "Rasmussenは投票予定者775人、電話・オンライン、誤差±3ポイント。第一希望と最終再配分を混ぜない。第2選択とFinal ballotの資料間の表現差は未解消で、最終値は不採用。過去の別機関調査との差を支持移動とはしない。告発と陣営の反論も行為の確定とは区別する。",
       "evidenceIds": [
         "ev-obs-doe-ak-transmission-20261005",
         "ev-obs-reuters-ak-vance-20261005",
@@ -6277,7 +7142,10 @@
         "ev-obs-alaska-public-peltola-voters-20260929",
         "ev-obs-guardian-peltola-response-20260924",
         "ev-obs-alaska-debate-result-20261015",
-        "ev-obs-ap-ak-debate-result-20261015"
+        "ev-obs-ap-ak-debate-result-20261015",
+        "ev-obs-rasmussen-ak-20261015",
+        "ev-obs-rasmussen-ak-questions-20261015",
+        "ev-obs-rasmussen-ak-crosstabs-20261015"
       ],
       "materials": [
         {
@@ -6298,15 +7166,18 @@
         {
           "materialId": "ak-transfer",
           "title": "第1希望と最終的な選択を分ける",
-          "fact": "Quantus調査は第1順位でSullivan 46.1%・Peltola 45.5%、2候補設問のleaner込みで47.8%・47.2%。AARPは第1順位でPeltola 46%・Sullivan 41%、co/efficientは48%・46%、Trafalgarは46.8%・45.5%だった。",
+          "fact": "Rasmussenの10月12〜15日調査は第一希望でPeltola44%・現職Dan S. Sullivan42%、Heikes4%、別候補Daniel J. Sullivan Jr.3%、未定6%。過去のQuantus・AARP等とは時期・方法・集計段階が異なる。",
           "meaning": "一つの先頭候補だけで決めず、質問方法と実査期間、第1順位、他候補からの移転を分けて見る。",
-          "limit": "調査上の再配分や2候補設問は実際の投票・集計ではない。AARP調査では11%が最終的に両主要候補を順位付けせず、4調査は方法も異なる。QuantusとTrafalgarの差はいずれも誤差内。",
+          "limit": "Rasmussenの第2選択とFinal ballotの資料間の表現差は未解消のため最終値は不採用。第一希望の2ポイント差から、順位選択投票の勝者は断定しない。",
           "evidenceIds": [
             "ev-obs-dfp-ak",
             "ev-obs-coefficient-ak-20260917",
             "ev-obs-aarp-ak-20260917",
             "ev-obs-trafalgar-ak-20260925",
-            "ev-obs-quantus-ak-20261002"
+            "ev-obs-quantus-ak-20261002",
+            "ev-obs-rasmussen-ak-20261015",
+            "ev-obs-rasmussen-ak-questions-20261015",
+            "ev-obs-rasmussen-ak-crosstabs-20261015"
           ]
         }
       ],
@@ -6415,26 +7286,21 @@
             {
               "candidateId": "cand-ak-mary-peltola",
               "kind": "observed",
-              "text": "9月8〜11日のAARP調査は第1順位46%・最終再配分53%、9月14〜17日のco/efficient調査は46%、9月22〜24日のTrafalgar調査は45.5%。Siena公式公表ページは50%だが詳細表は未取得。一部の支持者取材は告発への失望と投票継続を同時に示したが、代表調査ではない。",
+              "text": "Rasmussenの10月12〜15日調査の第一希望44%、現職Sullivan氏42%。投票予定者775人・誤差±3ポイント。最終再配分値とは分け、別機関との比較を支持移動としない。",
               "evidenceIds": [
-                "ev-obs-dfp-ak",
-                "ev-obs-coefficient-ak-20260917",
-                "ev-obs-aarp-ak-20260917",
-                "ev-obs-trafalgar-ak-20260925",
-                "ev-obs-siena-five-state-20261003",
-                "ev-obs-alaska-public-peltola-voters-20260929"
+                "ev-obs-rasmussen-ak-20261015",
+                "ev-obs-rasmussen-ak-questions-20261015",
+                "ev-obs-rasmussen-ak-crosstabs-20261015"
               ]
             },
             {
               "candidateId": "cand-ak-dan-s-sullivan",
               "kind": "observed",
-              "text": "9月8〜11日のAARP調査は第1順位41%・最終再配分47%、9月14〜17日のco/efficient調査は48%、9月22〜24日のTrafalgar調査は46.8%。Siena公式公表ページは43%だが詳細表は未取得。同姓のDaniel J. Sullivan Jr.は別候補で、調査方法や表記を混同しない。",
+              "text": "同じRasmussen調査の第一希望42%、Peltola氏44%。同姓の別候補Daniel J. Sullivan Jr.氏は3%。第2選択とFinal ballotの表現差は未解消で、最終値は採用していない。",
               "evidenceIds": [
-                "ev-obs-dfp-ak",
-                "ev-obs-coefficient-ak-20260917",
-                "ev-obs-aarp-ak-20260917",
-                "ev-obs-trafalgar-ak-20260925",
-                "ev-obs-siena-five-state-20261003"
+                "ev-obs-rasmussen-ak-20261015",
+                "ev-obs-rasmussen-ak-questions-20261015",
+                "ev-obs-rasmussen-ak-crosstabs-20261015"
               ]
             }
           ]
@@ -6749,7 +7615,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-10-18",
+      "checkedAt": "2026-10-20",
       "evidenceIds": [
         "ev-obs-gop-nc-rally-20261020"
       ],
@@ -6772,7 +7638,7 @@
       "timezone": "America/Chicago",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-10-18",
+      "checkedAt": "2026-10-20",
       "evidenceIds": [
         "ev-obs-gop-ks-rally-20261019"
       ],
@@ -6844,13 +7710,19 @@
       "status": "scheduled",
       "dateHistory": [],
       "checkedAt": "2026-10-14",
-      "evidenceIds": ["ev-obs-sherrod-obama-rally-20261024", "ev-obs-ideastream-oh-obama-rally-20261013"],
+      "evidenceIds": [
+        "ev-obs-sherrod-obama-rally-20261024",
+        "ev-obs-ideastream-oh-obama-rally-20261013"
+      ],
       "relevance": [
         {
           "electionId": "2026-OH-3-special",
           "why": "Obama元大統領がBrown氏、Ohio州知事候補Amy Acton氏とClevelandで行う確認済みの選挙集会。",
           "watch": "時刻・会場と実施・中止・延期、発言を確認する。推薦・共同登壇・会場反応を投票参加や州全体の支持へ置き換えない。",
-          "materialIds": ["oh-cost", "oh-jobs"]
+          "materialIds": [
+            "oh-cost",
+            "oh-jobs"
+          ]
         }
       ],
       "resultUpdateId": null,
@@ -6865,8 +7737,18 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-15",
-      "evidenceIds": ["ev-obs-nexstar-ia-debate-20261013", "ev-obs-radioiowa-ia-debate-result-20261014"],
-      "relevance": [{"electionId":"2026-IA-2-regular","why":"Hinson氏とTurek氏が移民、燃料、農業、データセンターを同じ場で説明した第2回・最終本選討論会。","watch":"両候補のロシア産ディーゼル輸入反対とデータセンター立地の地元判断が政策に反映されるか、移民政策の違いとともに追う。発言を支持率・価格への効果と混同しない。","materialIds":[]}],
+      "evidenceIds": [
+        "ev-obs-nexstar-ia-debate-20261013",
+        "ev-obs-radioiowa-ia-debate-result-20261014"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-IA-2-regular",
+          "why": "Hinson氏とTurek氏が移民、燃料、農業、データセンターを同じ場で説明した第2回・最終本選討論会。",
+          "watch": "両候補のロシア産ディーゼル輸入反対とデータセンター立地の地元判断が政策に反映されるか、移民政策の違いとともに追う。発言を支持率・価格への効果と混同しない。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": "obs-update-ia-debate-2026-10-13",
       "publicationStatus": "published"
     },
@@ -6902,8 +7784,18 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-11",
-      "evidenceIds": ["ev-obs-iowa-pbs-debate-20261007", "ev-obs-iowa-capital-dispatch-debate-20261007"],
-      "relevance": [{"electionId":"2026-IA-2-regular","why":"Hinson氏とTurek氏が初めて同じ場で立法記録、生活費、Iran戦争、関税、倫理を説明した本選討論会。","watch":"10月13日の次回討論会で回答が一貫するかを確認し、相互批判と検証済み記録を分ける。","materialIds":[]}],
+      "evidenceIds": [
+        "ev-obs-iowa-pbs-debate-20261007",
+        "ev-obs-iowa-capital-dispatch-debate-20261007"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-IA-2-regular",
+          "why": "Hinson氏とTurek氏が初めて同じ場で立法記録、生活費、Iran戦争、関税、倫理を説明した本選討論会。",
+          "watch": "10月13日の次回討論会で回答が一貫するかを確認し、相互批判と検証済み記録を分ける。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": "obs-update-ia-debate-2026-10-07",
       "publicationStatus": "published"
     },
@@ -6916,8 +7808,20 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-15",
-      "evidenceIds": ["ev-obs-gop-ak-trump-rally-20261013", "ev-obs-alaska-public-media-trump-rally-20261008", "ev-obs-reuters-ak-rally-result-20261014", "ev-obs-ap-ak-rally-result-20261013"],
-      "relevance": [{"electionId":"2026-AK-2-regular","why":"Trump大統領が共和党現職Sullivan氏の再選を支援したWasilla選挙集会。","watch":"燃料価格・Iran戦争・州内石油ガス開発への両候補の具体策を追う。Trump氏のTaiwan向けLNG契約発言は独立確認待ち。集会反応を州全体の支持へ置き換えない。","materialIds":[]}],
+      "evidenceIds": [
+        "ev-obs-gop-ak-trump-rally-20261013",
+        "ev-obs-alaska-public-media-trump-rally-20261008",
+        "ev-obs-reuters-ak-rally-result-20261014",
+        "ev-obs-ap-ak-rally-result-20261013"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-AK-2-regular",
+          "why": "Trump大統領が共和党現職Sullivan氏の再選を支援したWasilla選挙集会。",
+          "watch": "燃料価格・Iran戦争・州内石油ガス開発への両候補の具体策を追う。Trump氏のTaiwan向けLNG契約発言は独立確認待ち。集会反応を州全体の支持へ置き換えない。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": "obs-update-ak-trump-rally-2026-10-13",
       "publicationStatus": "published"
     },
@@ -6930,8 +7834,17 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-10",
-      "evidenceIds": ["ev-obs-ajc-ga-debate-20261008"],
-      "relevance": [{"electionId":"2026-GA-2-regular","why":"民主党現職Ossoff氏と共和党Collins氏が同じ場で経済・移民・外交・選挙制度を説明した初回本選討論会。","watch":"10月13日の次回討論会で回答が一貫するかを確認し、応酬を支持率へ置き換えない。","materialIds":[]}],
+      "evidenceIds": [
+        "ev-obs-ajc-ga-debate-20261008"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-GA-2-regular",
+          "why": "民主党現職Ossoff氏と共和党Collins氏が同じ場で経済・移民・外交・選挙制度を説明した初回本選討論会。",
+          "watch": "10月13日の次回討論会で回答が一貫するかを確認し、応酬を支持率へ置き換えない。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": "obs-update-ga-debate-2026-10-08",
       "publicationStatus": "published"
     },
@@ -6944,8 +7857,19 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-15",
-      "evidenceIds": ["ev-obs-ajc-ga-debate-20261008", "ev-obs-gpb-ga-debate-20261013", "ev-obs-gpb-ga-debate-result-20261014"],
-      "relevance": [{"electionId":"2026-GA-2-regular","why":"Ossoff氏とCollins氏の2回目の直接比較機会。Atlanta Press Clubで1時間の討論を実施した。","watch":"関税・医療・Iran戦争についての相反する主張を原票・政策案で検証し、討論会の印象を支持率へ置き換えない。","materialIds":[]}],
+      "evidenceIds": [
+        "ev-obs-ajc-ga-debate-20261008",
+        "ev-obs-gpb-ga-debate-20261013",
+        "ev-obs-gpb-ga-debate-result-20261014"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-GA-2-regular",
+          "why": "Ossoff氏とCollins氏の2回目の直接比較機会。Atlanta Press Clubで1時間の討論を実施した。",
+          "watch": "関税・医療・Iran戦争についての相反する主張を原票・政策案で検証し、討論会の印象を支持率へ置き換えない。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": "obs-update-ga-debate-2026-10-13",
       "publicationStatus": "published"
     },
@@ -6958,8 +7882,17 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-06",
-      "evidenceIds": ["ev-obs-ap-ne-trump-rally-20261005"],
-      "relevance": [{"electionId":"2026-NE-2-regular","why":"Trump大統領が共和党現職Ricketts氏を支援し、投票参加と政権の経済実績を訴えた実施済み集会。","watch":"後続調査で候補支持と物価・燃料・牛肉輸入への評価を確認する。集会反応を州全体の支持へ置き換えない。","materialIds":[]}],
+      "evidenceIds": [
+        "ev-obs-ap-ne-trump-rally-20261005"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-NE-2-regular",
+          "why": "Trump大統領が共和党現職Ricketts氏を支援し、投票参加と政権の経済実績を訴えた実施済み集会。",
+          "watch": "後続調査で候補支持と物価・燃料・牛肉輸入への評価を確認する。集会反応を州全体の支持へ置き換えない。",
+          "materialIds": []
+        }
+      ],
       "resultUpdateId": "obs-update-ne-trump-rally-2026-10-05",
       "publicationStatus": "published"
     },
@@ -6972,8 +7905,19 @@
       "status": "scheduled",
       "dateHistory": [],
       "checkedAt": "2026-10-06",
-      "evidenceIds": ["ev-obs-mi-democrats-obama-20261005"],
-      "relevance": [{"electionId":"2026-MI-2-regular","why":"民主党El-Sayed氏がObama元大統領、Benson知事候補らと、州の対面期日前投票開始日に支持層へ働きかける機会。","watch":"時刻・会場と実施・延期・中止を公式発表で確認し、共同登壇、会場反応、投票参加・候補支持への効果を分ける。","materialIds":["mi-policy"]}],
+      "evidenceIds": [
+        "ev-obs-mi-democrats-obama-20261005"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "民主党El-Sayed氏がObama元大統領、Benson知事候補らと、州の対面期日前投票開始日に支持層へ働きかける機会。",
+          "watch": "時刻・会場と実施・延期・中止を公式発表で確認し、共同登壇、会場反応、投票参加・候補支持への効果を分ける。",
+          "materialIds": [
+            "mi-policy"
+          ]
+        }
+      ],
       "resultUpdateId": null,
       "publicationStatus": "published"
     },
@@ -6986,13 +7930,20 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-04",
-      "evidenceIds": ["ev-obs-gop-trump-oh-event-20261003", "ev-obs-factbase-trump-oh-20261003", "ev-obs-reuters-oh-rally-20261003"],
+      "evidenceIds": [
+        "ev-obs-gop-trump-oh-event-20261003",
+        "ev-obs-factbase-trump-oh-20261003",
+        "ev-obs-reuters-oh-rally-20261003"
+      ],
       "relevance": [
         {
           "electionId": "2026-OH-3-special",
           "why": "Trump大統領と共和党現職Husted氏が登壇し、Husted氏が投票参加、物価、イラン戦争を訴えた実施済み集会。",
           "watch": "後続調査で投票参加意向、物価評価、データセンターへの態度を確認する。友好的な集会と参加者取材の反応を州全体の支持に置き換えない。",
-          "materialIds": ["oh-cost", "oh-jobs"]
+          "materialIds": [
+            "oh-cost",
+            "oh-jobs"
+          ]
         }
       ],
       "resultUpdateId": "obs-update-oh-trump-rally-2026-10-03",
@@ -7061,13 +8012,21 @@
       "status": "completed",
       "dateHistory": [],
       "checkedAt": "2026-10-08",
-      "evidenceIds": ["ev-obs-texas-tribune-tx-san-antonio-20261002", "ev-obs-mysa-tx-rally-confirmation-20261006", "ev-obs-white-house-tx-20261007", "ev-obs-ap-tx-rally-20261007"],
+      "evidenceIds": [
+        "ev-obs-texas-tribune-tx-san-antonio-20261002",
+        "ev-obs-mysa-tx-rally-confirmation-20261006",
+        "ev-obs-white-house-tx-20261007",
+        "ev-obs-ap-tx-rally-20261007"
+      ],
       "relevance": [
         {
           "electionId": "2026-TX-2-regular",
           "why": "Trump大統領と共和党Paxton氏が登壇し、接戦化した上院選でPaxton氏への支持とTalarico氏への批判を訴えた実施済み集会。",
           "watch": "後続調査と実際の投票参加を確認する。候補者・大統領の主張と、友好的な集会の反応を州全体の評価に置き換えない。",
-          "materialIds": ["tx-turnout", "tx-airwaves"]
+          "materialIds": [
+            "tx-turnout",
+            "tx-airwaves"
+          ]
         }
       ],
       "resultUpdateId": "obs-update-tx-trump-rally-2026-10-07",
@@ -7135,7 +8094,7 @@
       "timezone": "America/New_York",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-10-19",
+      "checkedAt": "2026-10-20",
       "evidenceIds": [
         "ev-obs-bls-oct"
       ],
@@ -7330,7 +8289,7 @@
       "timezone": "America/Detroit",
       "status": "scheduled",
       "dateHistory": [],
-      "checkedAt": "2026-10-18",
+      "checkedAt": "2026-10-20",
       "evidenceIds": [
         "ev-obs-wlns-mi-debates-20260905",
         "ev-obs-wxyz-mi-debate-20261021"
@@ -7485,6 +8444,66 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-tx-hobby-2026-10-19",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-19",
+      "updatedAt": "2026-10-20",
+      "title": "テキサス新調査：Talarico 48%・Paxton 46%",
+      "happened": "10月19日公表のヒューストン大学Hobby School調査で、民主党ジェームズ・タラリコ氏48%、共和党ケン・パクストン氏46%、LibertarianのTed Brown氏3%、未定3%。10月10〜14日の投票予定者2,000人への調査。",
+      "meaning": "第三候補と未定を残した投票意向として追加。以前の別機関の数字との差は、そのまま支持の移動とは扱わない。",
+      "uncertainty": "SMSから英語・スペイン語のオンライン回答へ誘導し、人口・選挙履歴・地域で重み付け。公表誤差±2.19ポイント。2ポイント差から勝敗・政策や広告の効果を断定しない。報告本文は照合したが全設問票・個票は未取得。",
+      "evidenceIds": [
+        "ev-obs-hobby-tx-20261019",
+        "ev-obs-hobby-tx-release-20261019"
+      ]
+    },
+    {
+      "updateId": "obs-update-oh-rasmussen-2026-10-14",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-14",
+      "updatedAt": "2026-10-20",
+      "title": "オハイオ新調査：Husted 49%・Brown 47%",
+      "happened": "副大統領JDヴァンス氏の残任期を争う特別選挙。Rasmussenの10月12〜14日調査は投票予定者901人で、共和党現職ジョン・ハステッド氏49%、民主党シェロッド・ブラウン氏47%。他の2候補は各1%、未定2%。",
+      "meaning": "ブラウン氏が数値上先行した既存のYouGov調査とは先頭候補が異なる。調査間の違いも残し、一方の候補に有利な数字だけで判断しない。",
+      "uncertainty": "電話・オンライン調査、標本誤差±3ポイント（95%）。2ポイント差は確定的な優位を示さず、異なる機関・期間の比較を支持の逆転や広告効果とはしない。本文・設問・公開クロス表の全体列を照合。日付は実査終了日。",
+      "evidenceIds": [
+        "ev-obs-rasmussen-oh-20261014",
+        "ev-obs-rasmussen-oh-questions-20261014",
+        "ev-obs-rasmussen-oh-crosstabs-20261014",
+        "ev-obs-yougov-oh-20261007"
+      ]
+    },
+    {
+      "updateId": "obs-update-ak-rasmussen-2026-10-15",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-15",
+      "updatedAt": "2026-10-20",
+      "title": "アラスカ新調査：第1希望はPeltola 44%・Sullivan 42%",
+      "happened": "Rasmussenの10月12〜15日調査は投票予定者775人。第一希望は民主党メアリー・ペルトラ氏44%、共和党現職Dan S. Sullivan氏42%、Gerald Heikes氏4%、同姓の別候補Daniel J. Sullivan Jr.氏3%、未定6%。",
+      "meaning": "第1希望の接戦を示す材料。候補者の同姓による混同を避け、順位選択投票の最終結果とは分けて掲載する。",
+      "uncertainty": "電話・オンライン調査、標本誤差±3ポイント（95%）。公表値は丸めで合計99%。第2選択とFinal ballotの資料間の表現差が未解消のため、最終再配分値は採用しない。実際の投票・勝者予測ではない。日付は実査終了日。",
+      "evidenceIds": [
+        "ev-obs-rasmussen-ak-20261015",
+        "ev-obs-rasmussen-ak-questions-20261015",
+        "ev-obs-rasmussen-ak-crosstabs-20261015"
+      ]
+    },
     {
       "updateId": "obs-update-mi-rasmussen-2026-10-14",
       "status": "published",
@@ -7688,7 +8707,9 @@
     {
       "updateId": "obs-update-tx-ut-poll-2026-10-13",
       "status": "published",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-13",
@@ -7697,12 +8718,20 @@
       "happened": "University of Texas/Texas Politics Projectの9月25日〜10月5日調査では、州内の投票予定者861人の上院投票意向が民主党James Talarico氏50%、共和党Ken Paxton氏47%、自由党Ted Brown氏1%、その他2%だった。標本誤差は±3.34ポイント。",
       "meaning": "Maristなどに続き接戦を示す別の調査原票が増えた。ただしこの調査では両候補の差が誤差内で、サイトの統合評価と暫定議席配分は変えない。",
       "uncertainty": "YouGovの任意参加オンラインパネルを基にした単一調査で、調査間の差や2024年投票先による重み付けの影響にも注意が必要。候補者への好感度や個別争点の評価は上院投票先・実際の投票と別。",
-      "evidenceIds": ["ev-obs-ut-texas-poll-20261013"]
+      "evidenceIds": [
+        "ev-obs-ut-texas-poll-20261013"
+      ]
     },
     {
       "updateId": "obs-update-sabato-ratings-2026-10-14",
       "status": "published",
-      "electionIds": ["2026-KS-2-regular", "2026-NE-2-regular", "2026-NH-2-regular", "2026-MN-2-regular", "2026-MS-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NE-2-regular",
+        "2026-NH-2-regular",
+        "2026-MN-2-regular",
+        "2026-MS-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-14",
@@ -7711,12 +8740,16 @@
       "happened": "SabatoはKansasをLean RからToss-up、NebraskaをLikely RからLean R、New HampshireをLean DからLikely D、MinnesotaをLikely DからLean D、MississippiをSafe RからLikely Rへ変更した。Kansasでは共和党側の多額の投入と接戦調査を挙げつつ、州の共和党寄り傾向にも留保を付けた。",
       "meaning": "KansasはSabato単独で5つ目のToss-upになった。Inside Electionsとの2機関一致を必要とするサイトの統合評価では、Kansasは変更前から未配分。今回も暫定配分は民主43・共和45・未配分12で、議席の実際の移動ではない。",
       "uncertainty": "各評価は分析機関の見立てであり勝敗や支持率ではない。Sabatoの全体集計49D・46R・Toss-up 5はサイトの統合方式の暫定配分と混同しない。Center for Politics本体は取得制限があり、同じ執筆者の公式配信で本文を照合した。",
-      "evidenceIds": ["ev-obs-sabato-ratings-20261014"]
+      "evidenceIds": [
+        "ev-obs-sabato-ratings-20261014"
+      ]
     },
     {
       "updateId": "obs-update-ga-debate-2026-10-13",
       "status": "published",
-      "electionIds": ["2026-GA-2-regular"],
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "eventId": "ga-debate-2026-10-13",
       "newsId": null,
       "eventDate": "2026-10-13",
@@ -7725,12 +8758,16 @@
       "happened": "10月13日のAtlanta Press Club主催討論会は1時間にわたり実施された。民主党現職Jon Ossoff氏は関税と前年のMedicaid削減の撤回、Iran戦争の終結を主張。共和党Mike Collins氏は関税を擁護し、国内エネルギー増産を提案、Affordable Care Actを批判した。",
       "meaning": "生活費への対策を、関税・医療制度・エネルギー供給のどこに求めるかを同じ場で比較できた。両候補が互いの政策を攻撃したことと、費用低下の実証は別である。",
       "uncertainty": "討論会での関税・戦争・医療費への因果主張や相互の個人批判は、独立した証拠による検証と分ける。有権者の評価、候補支持への影響は未確認。",
-      "evidenceIds": ["ev-obs-gpb-ga-debate-result-20261014"]
+      "evidenceIds": [
+        "ev-obs-gpb-ga-debate-result-20261014"
+      ]
     },
     {
       "updateId": "obs-update-ak-trump-rally-2026-10-13",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "eventId": "ak-trump-wasilla-rally-2026-10-13",
       "newsId": null,
       "eventDate": "2026-10-13",
@@ -7739,12 +8776,17 @@
       "happened": "10月13日、Trump大統領はWasillaで共和党現職Dan Sullivan氏を支援した。Sullivan氏はIran紛争を一時的とし民主党の石油・ガス政策を批判。Trump氏は戦争の早期終結と燃料価格下落を約束し、TaiwanによるAlaska LNG購入・投資も発表した。",
       "meaning": "共和党側が燃料費の痛みを認めながら、国内の石油・ガス開発と外交の両面から対処を訴える形になった。民主党Mary Peltola氏も州内開発への支持を表明しており、単純な賛否の二分法では比較できない。",
       "uncertainty": "Trump氏のLNG契約発言は報道時点でTaiwan側・White Houseから独立確認がなく、成立済み契約として扱わない。価格低下、集会による投票参加や支持への効果も未確認。",
-      "evidenceIds": ["ev-obs-reuters-ak-rally-result-20261014", "ev-obs-ap-ak-rally-result-20261013"]
+      "evidenceIds": [
+        "ev-obs-reuters-ak-rally-result-20261014",
+        "ev-obs-ap-ak-rally-result-20261013"
+      ]
     },
     {
       "updateId": "obs-update-ia-debate-2026-10-13",
       "status": "published",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "eventId": "ia-debate-2026-10-13",
       "newsId": null,
       "eventDate": "2026-10-13",
@@ -7753,12 +8795,16 @@
       "happened": "10月13日21〜22時（米中部時間）、共和党Ashley Hinson氏と民主党Josh Turek氏の第2回・最終討論会が実施された。両氏はTrump政権によるロシア産ディーゼル輸入、データセンター建設の連邦一時停止に反対し、立地は地元当局が決めるべきだとした。一方、移民の合法的地位への道筋では異なる立場を示した。",
       "meaning": "生活費とデータセンターへの答えは党派だけでは分かれず、移民政策と候補者の立法記録は比較点として残る。予定段階だった討論会を、州内取材で実施済みと確認した。",
       "uncertainty": "燃料・電気代、移民政策の効果と有権者の評価は未確認。討論会内の資産や欠席数をめぐる応酬は、一次記録を照合するまで事実認定しない。",
-      "evidenceIds": ["ev-obs-radioiowa-ia-debate-result-20261014"]
+      "evidenceIds": [
+        "ev-obs-radioiowa-ia-debate-result-20261014"
+      ]
     },
     {
       "updateId": "obs-update-mi-ai-plan-2026-10-13",
       "status": "published",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-13",
@@ -7775,7 +8821,9 @@
     {
       "updateId": "obs-update-me-debate-2026-10-13",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "eventId": "me-debate-2026-10-13",
       "newsId": null,
       "eventDate": "2026-10-13",
@@ -7792,7 +8840,13 @@
     {
       "updateId": "obs-update-five-state-polls-2026-10-11",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular", "2026-TX-2-regular", "2026-AK-2-regular", "2026-KS-2-regular", "2026-MI-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-TX-2-regular",
+        "2026-AK-2-regular",
+        "2026-KS-2-regular",
+        "2026-MI-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-11",
@@ -7801,12 +8855,18 @@
       "happened": "MaineのRasmussen調査はJackson氏49%・Collins氏47%、TexasのTrafalgar調査はTalarico氏47.1%・Paxton氏43.6%だった。InsiderAdvantageの見出し値はAlaskaでPeltola氏50%・Sullivan氏48%、KansasでHamilton氏48%・Marshall氏47%、MichiganでEl-Sayed氏48%・Rogers氏46%。",
       "meaning": "異なる調査会社の最新値でも、5州で民主党候補が数値上先頭に立った。ただしMaineとAlaska・Kansas・Michiganの差は各調査の公表誤差内で、Texasも未定が7.6%いる。個別の先頭より、複数州で接戦が続いている材料として扱う。",
       "uncertainty": "MaineとTexasは公式原票を取得した一方、InsiderAdvantageはサイト障害で質問文、全選択肢、収集方法、Alaskaの順位選択投票のどの段階かを確認できない。標本・方法・実査期間が違う単独調査を合算せず、統合評価とD43・R45・未配分12は変更しない。",
-      "evidenceIds": ["ev-obs-rasmussen-me-20261009", "ev-obs-trafalgar-tx-20261009", "ev-obs-insider-ak-ks-mi-20261011"]
+      "evidenceIds": [
+        "ev-obs-rasmussen-me-20261009",
+        "ev-obs-trafalgar-tx-20261009",
+        "ev-obs-insider-ak-ks-mi-20261011"
+      ]
     },
     {
       "updateId": "obs-update-tx-talarico-false-rumor-2026-10-12",
       "status": "published",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-12",
@@ -7815,12 +8875,16 @@
       "happened": "民主党James Talarico氏が対面活動を9日間休んだ後、Ohio州の精神医療施設で治療を受けたとの主張が広がった。Lindner Center of Hopeは同氏が患者だったことを否定し、APは提示された時系列がTexas州内の公開行事や自宅で撮影された画像と合わないと確認した。本人と陣営はインフルエンザから回復していたと説明している。",
       "meaning": "共和党Ken Paxton氏はSNSでTalarico氏を『missing』と表現し、Trump大統領も『MISSING IN ACTION』と投稿したが、施設入所という具体的な主張には反証が得られた。候補者の欠席への政治的批判と、確認可能な健康情報を分ける必要がある。",
       "uncertainty": "APが確認したのは施設入所を示す主張が虚偽で、陣営の説明と公開記録が整合すること。本人の医療記録を公開したものではなく、欠席や虚偽情報が支持率・投票参加に与えた効果も未確認。",
-      "evidenceIds": ["ev-obs-ap-tx-fact-check-20261012"]
+      "evidenceIds": [
+        "ev-obs-ap-tx-fact-check-20261012"
+      ]
     },
     {
       "updateId": "obs-update-ks-republican-support-2026-10-10",
       "status": "published",
-      "electionIds": ["2026-KS-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-10",
@@ -7829,12 +8893,16 @@
       "happened": "共和党の元Kansas知事Mike Hayden氏とBill Graves氏が、民主党Adam Hamilton氏への支持を表明した。Hamilton陣営は100人超の共和党員による支援組織を発足。Hayden氏はIran戦争と関税の州内負担を理由に挙げた。",
       "meaning": "共和党優位の歴史が長い州で、Hamilton氏が『共和党支持者にも選択肢になる』と訴える具体的な支持者名簿が加わった。共和党側の上院外部団体と民主党Senate Majority PACも広告投資を始め、接戦への対応が強まっている。",
       "uncertainty": "推薦は2人と支援組織参加者の判断で、共和党有権者全体の支持転換や得票効果を示さない。他の共和党元知事は支持を表明しておらず、Marshall陣営は記事掲載時点で回答していない。",
-      "evidenceIds": ["ev-obs-wapo-ks-republicans-20261010"]
+      "evidenceIds": [
+        "ev-obs-wapo-ks-republicans-20261010"
+      ]
     },
     {
       "updateId": "obs-update-mi-uaw-2026-10-10",
       "status": "published",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-10",
@@ -7843,12 +8911,16 @@
       "happened": "UAWは民主党Abdul El-Sayed氏を支持し、Macomb郡などで戸別訪問と電話活動を進めている。APが取材した組合員は生活費を共通の関心に挙げた一方、民主党・共和党のどちらを支持するかは分かれた。共和党Mike Rogers氏は電気自動車規制への反対を訴えている。",
       "meaning": "労組の推薦だけでなく、約35万人の現役・退職組合員へ実際に接触し投票参加を促す組織力が比較材料になる。同時に、組合員は経済・文化・政権評価を別々に判断しており、組織推薦と個人票を分けて見る必要がある。",
       "uncertainty": "戸別訪問数や予備選での組合員投票は、本選でEl-Sayed氏へ投票する人数を示さない。取材された個人の発言も代表調査ではなく、推薦・動員の得票効果、州全体の支持変化は未確認。",
-      "evidenceIds": ["ev-obs-ap-mi-uaw-20261010"]
+      "evidenceIds": [
+        "ev-obs-ap-mi-uaw-20261010"
+      ]
     },
     {
       "updateId": "obs-update-ia-emerson-2026-10-09",
       "status": "published",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-09",
@@ -7857,12 +8929,18 @@
       "happened": "10月5〜6日の投票予定者650人を対象にしたEmerson College Polling/Nexstar調査は、共和党Ashley Hinson氏46.6%（公式丸め47%）、民主党Josh Turek氏45.0%、自由党Thomas Laehn氏1.5%、未定7.0%だった。経済を最重要争点に挙げた人は42%、医療は18%。",
       "meaning": "Siena調査のHinson氏48%・Turek氏47%と同じく共和党候補が数値上先頭だが、10月1〜4日のSuffolk調査はTurek氏48.0%・Hinson氏43.6%だった。複数調査を並べると、候補差より接戦と方法差を重視すべき状況が続く。",
       "uncertainty": "信頼区間は±3.8ポイントで差は範囲内。混合収集・英語のみのEmersonと電話調査のSuffolkは標本・方法・実査期間が異なり、先頭の違いを支持の逆転や討論会効果とは扱わない。統合評価と配分も変更しない。",
-      "evidenceIds": ["ev-obs-emerson-ia-20261009", "ev-obs-suffolk-ia-20261007", "ev-obs-siena-five-state-20261003"]
+      "evidenceIds": [
+        "ev-obs-emerson-ia-20261009",
+        "ev-obs-suffolk-ia-20261007",
+        "ev-obs-siena-five-state-20261003"
+      ]
     },
     {
       "updateId": "obs-update-ia-debate-2026-10-07",
       "status": "published",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "eventId": "ia-debate-2026-10-07",
       "newsId": null,
       "eventDate": "2026-10-07",
@@ -7871,12 +8949,17 @@
       "happened": "共和党Ashley Hinson氏と民主党Josh Turek氏は10月7日、Iowa PBSの初回本選討論会に出席した。Hinson氏はTrump大統領をIowaに重要な時は支持し、誤りには異論を述べると説明。Turek氏は関税とIran戦争を批判し、移民では大統領と協力できると述べた。両者は資産、議会出席、超党派性も互いに批判した。",
       "meaning": "政権への賛否を一括りにせず、関税、戦争、移民の案件ごとに両候補の距離を比較できた。立法記録についても、候補者の自己評価と確認できる投票・出席記録を分ける確認点が明確になった。",
       "uncertainty": "資産・欠席・超党派性をめぐる応酬には候補者側の説明が含まれ、討論会だけで動機や違反を確定できない。会場での印象や翌日の陣営による『勝利』宣言は有権者評価ではなく、支持への効果も未確認。",
-      "evidenceIds": ["ev-obs-iowa-pbs-debate-20261007", "ev-obs-iowa-capital-dispatch-debate-20261007"]
+      "evidenceIds": [
+        "ev-obs-iowa-pbs-debate-20261007",
+        "ev-obs-iowa-capital-dispatch-debate-20261007"
+      ]
     },
     {
       "updateId": "obs-update-me-wapo-poll-2026-10-09",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-09",
@@ -7885,12 +8968,16 @@
       "happened": "Washington Post–Scharが9月30日〜10月5日に投票予定者800人を調査し、民主党Troy Jackson氏50%、共和党現職Susan Collins氏46%だった。Collins氏は連邦資金獲得と超党派性、Jackson氏は中絶、汚職、Maine理解、生活費、医療で相対的に信頼された。",
       "meaning": "単純な候補支持だけでなく、現職の連邦での実績と、挑戦者の生活費・権利・地元理解への評価を分けて比較できる。",
       "uncertainty": "4ポイント差は誤差±3.6ポイントの範囲内。調査は10月6日と8日の討論会より前で、討論会による支持変化や勝敗は示さない。争点別の信頼も各候補への投票理由そのものではない。",
-      "evidenceIds": ["ev-obs-wapo-schar-me-20261009"]
+      "evidenceIds": [
+        "ev-obs-wapo-schar-me-20261009"
+      ]
     },
     {
       "updateId": "obs-update-me-debate-2026-10-08",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "eventId": "me-debate-2026-10-08",
       "newsId": null,
       "eventDate": "2026-10-08",
@@ -7899,12 +8986,17 @@
       "happened": "10月8日のWMTW討論会は予定どおり実施された。両候補はLIHEAP拡大を支持。Collins氏はweatherization拡大とTrump政権への働きかけを挙げ、Jackson氏はIran戦争と暖房費を結び付けてCollins氏の採決を批判した。中絶、関税、政権との投票一致率も争点になった。",
       "meaning": "同じ家計負担に対し、現職が挙げる行政への働きかけと、対立候補が問う戦争・採決責任を同じ場で比べられた。",
       "uncertainty": "Jackson氏によるCollins夫妻の投資利益への主張とCollins氏の否定は対立したままで、討論会だけでは事実認定できない。各提案の実施・費用効果と有権者の評価も未確認。",
-      "evidenceIds": ["ev-obs-wmtw-me-debate-result-20261008", "ev-obs-maine-morning-star-debate-20261008"]
+      "evidenceIds": [
+        "ev-obs-wmtw-me-debate-result-20261008",
+        "ev-obs-maine-morning-star-debate-20261008"
+      ]
     },
     {
       "updateId": "obs-update-ga-debate-2026-10-08",
       "status": "published",
-      "electionIds": ["2026-GA-2-regular"],
+      "electionIds": [
+        "2026-GA-2-regular"
+      ],
       "eventId": "ga-debate-2026-10-08",
       "newsId": null,
       "eventDate": "2026-10-08",
@@ -7913,12 +9005,16 @@
       "happened": "民主党現職Jon Ossoff氏と共和党Mike Collins氏は10月8日、初の本選討論会を実施した。Ossoff氏はIran戦争の人的・燃料費負担とCollins氏のTrump大統領への追随を批判。Collins氏は攻撃を擁護し、写真付き身分証など選挙制度への不信を取り上げた。移民、Israel、生活費や互いの経歴も争った。",
       "meaning": "統合Toss Up対象のGeorgiaで、外交・選挙制度・生活費について両候補の立場を同じ場で比較できた。10月13日の次回討論会で説明が一貫するかが次の確認点になる。",
       "uncertainty": "討論会は個人的な批判も多く、主張や印象から政策効果・事実関係・支持率は確定できない。次回討論会は時刻を確認できていないため、日付だけを予定として掲載する。",
-      "evidenceIds": ["ev-obs-ajc-ga-debate-20261008"]
+      "evidenceIds": [
+        "ev-obs-ajc-ga-debate-20261008"
+      ]
     },
     {
       "updateId": "obs-update-mi-debate-2026-10-08",
       "status": "published",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "eventId": "mi-debate-2026-10-08",
       "newsId": null,
       "eventDate": "2026-10-08",
@@ -7927,12 +9023,21 @@
       "happened": "民主党Abdul El-Sayed氏と共和党Mike Rogers氏は10月8日、Grand Rapidsで初の本選討論会を実施した。Rogers氏はIran戦争の早期終結とCanada関税戦争の終結を重ねて主張し、MinnesotaでのICE対応を批判。El-Sayed氏はTrump氏への追随を攻撃し、海外の戦争へ米国資金を拠出しない立場を説明した。",
       "meaning": "両候補が同じ場で、Rogers氏の政権との案件別の距離と、El-Sayed氏の外交・軍事支援への立場を直接比較できた。10月21日の次回討論会で説明が一貫するかも確認点になる。",
       "uncertainty": "候補者の発言と激しい応酬は政策の実現可能性・効果や、有権者の評価を示さない。Trump大統領の前日の攻撃、候補者同士の批判、会場での印象を支持率や勝敗へ置き換えない。",
-      "evidenceIds": ["ev-obs-ap-mi-debate-20261008"]
+      "evidenceIds": [
+        "ev-obs-ap-mi-debate-20261008"
+      ]
     },
     {
       "updateId": "obs-update-yougov-six-state-2026-10-07",
       "status": "published",
-      "electionIds": ["2026-KS-2-regular", "2026-NH-2-regular", "2026-MI-2-regular", "2026-NE-2-regular", "2026-OH-3-special", "2026-TX-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NH-2-regular",
+        "2026-MI-2-regular",
+        "2026-NE-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-07",
@@ -7941,12 +9046,22 @@
       "happened": "YouGovの投票予定者調査は、KansasでHamilton氏48%・Marshall氏45%、New HampshireでPappas氏51%・Sununu氏43%、MichiganでEl-Sayed氏49%・Rogers氏48%、Nebraskaで無所属Osborn氏48%・Ricketts氏47%、OhioでBrown氏49%・Husted氏45%、TexasでTalarico氏50%・Paxton氏44%だった。",
       "meaning": "統合Toss Upを含む6州を同一調査機関の投票予定者モデルで比較できる新しい材料。New Hampshire、Ohio、Texasでは民主党候補の数値上の先行が比較的大きく、Kansas、Michigan、Nebraskaは小差だった。",
       "uncertainty": "標本誤差は州ごとに±2.5〜3.9ポイントで、候補差の誤差とは同一ではない。未定者への再質問・配分を含む単一調査群で、別調査との差を支持移動とは扱わず、統合評価とD43・R45・未配分12は変更しない。",
-      "evidenceIds": ["ev-obs-yougov-method-20261007", "ev-obs-yougov-ks-20261007", "ev-obs-yougov-nh-20261007", "ev-obs-yougov-mi-20261007", "ev-obs-yougov-ne-20261007", "ev-obs-yougov-oh-20261007", "ev-obs-yougov-tx-20261007"]
+      "evidenceIds": [
+        "ev-obs-yougov-method-20261007",
+        "ev-obs-yougov-ks-20261007",
+        "ev-obs-yougov-nh-20261007",
+        "ev-obs-yougov-mi-20261007",
+        "ev-obs-yougov-ne-20261007",
+        "ev-obs-yougov-oh-20261007",
+        "ev-obs-yougov-tx-20261007"
+      ]
     },
     {
       "updateId": "obs-update-tx-debate-demand-2026-10-08",
       "status": "published",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-08",
@@ -7955,89 +9070,234 @@
       "happened": "Trump大統領は10月7日夜、民主党James Talarico氏と共和党Ken Paxton氏に討論を求めた。Talarico氏は翌朝に賛同したが、Paxton氏は確認時点で公に回答していない。",
       "meaning": "Talarico氏が従来求めていた直接比較に、Paxton氏を推薦する大統領も賛同した形になった。Paxton氏が応じるか、司会者や条件を含む合意が成立するかを追う。",
       "uncertainty": "日時・会場・主催者は決まっておらず、討論会の予定としては掲載しない。Talarico氏の受諾、Paxton氏の未回答、大統領の要求から開催や有権者への効果を先取りしない。",
-      "evidenceIds": ["ev-obs-ap-tx-debate-20261008"]
+      "evidenceIds": [
+        "ev-obs-ap-tx-debate-20261008"
+      ]
     },
     {
-      "updateId":"obs-update-tx-trump-rally-2026-10-07","status":"published","electionIds":["2026-TX-2-regular"],"eventId":"tx-trump-san-antonio-rally-2026-10-07","newsId":null,"eventDate":"2026-10-07","updatedAt":"2026-10-08",
-      "title":"テキサス州：Trump大統領とPaxton氏が集会――支持固めの効果は未確認",
-      "happened":"Trump大統領と共和党上院候補Ken Paxton州司法長官は10月7日、San Antonioで集会を実施した。Paxton氏は約7分の演説で、民主党James Talarico州下院議員をgender・石油ガス政策でTexasの主流から外れると批判。Trump氏はPaxton氏への推薦に後悔はなく、上院議員にふさわしいと訴えた。",
-      "meaning":"接戦のTexas上院選で、共和党側が大統領との共同登壇を支持層の投票参加と対立候補への争点提示に使った。White House公式発表で大統領のTexas訪問も確認した。",
-      "uncertainty":"Paxton氏の批判とTrump氏の評価は候補者・支援者の主張。友好的な会場での演説、拍手、場外の抗議は州全体の有権者評価や投票参加への効果を示さない。","evidenceIds":["ev-obs-white-house-tx-20261007","ev-obs-ap-tx-rally-20261007"]
+      "updateId": "obs-update-tx-trump-rally-2026-10-07",
+      "status": "published",
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "eventId": "tx-trump-san-antonio-rally-2026-10-07",
+      "newsId": null,
+      "eventDate": "2026-10-07",
+      "updatedAt": "2026-10-08",
+      "title": "テキサス州：Trump大統領とPaxton氏が集会――支持固めの効果は未確認",
+      "happened": "Trump大統領と共和党上院候補Ken Paxton州司法長官は10月7日、San Antonioで集会を実施した。Paxton氏は約7分の演説で、民主党James Talarico州下院議員をgender・石油ガス政策でTexasの主流から外れると批判。Trump氏はPaxton氏への推薦に後悔はなく、上院議員にふさわしいと訴えた。",
+      "meaning": "接戦のTexas上院選で、共和党側が大統領との共同登壇を支持層の投票参加と対立候補への争点提示に使った。White House公式発表で大統領のTexas訪問も確認した。",
+      "uncertainty": "Paxton氏の批判とTrump氏の評価は候補者・支援者の主張。友好的な会場での演説、拍手、場外の抗議は州全体の有権者評価や投票参加への効果を示さない。",
+      "evidenceIds": [
+        "ev-obs-white-house-tx-20261007",
+        "ev-obs-ap-tx-rally-20261007"
+      ]
     },
     {
-      "updateId":"obs-update-mi-tariff-quantus-2026-10-07","status":"published","electionIds":["2026-MI-2-regular"],"eventId":null,"newsId":null,"eventDate":"2026-10-07","updatedAt":"2026-10-08",
-      "title":"ミシガン州：Rogers氏がCanada関税の即時終結を要求――新調査は統計上の同率",
-      "happened":"共和党Mike Rogers元下院議員はCanadaとの関税戦争を直ちに終えると訴える広告を公表した。9月まで一部関税を必要と説明していたため、民主党Abdul El-Sayed氏は選挙向けの転換と批判。Trump大統領はCanadaに合意を促す趣旨と説明した。10月5〜6日のQuantus調査はEl-Sayed氏47.6%、Rogers氏46.5%、未定4.2%だった。",
-      "meaning":"Rogers氏が政権との近さを交渉力と位置付けながら、家計・自動車産業への負担を理由に政策への異論を強めた。新調査は、発言変更と同時点の選挙がなお僅差である一材料になる。",
-      "uncertainty":"候補差の誤差は約±7.8ポイントで統計上の同率。NRSCとの7桁規模の広告枠、発言変更、大統領の解釈から、Canadaとの合意、関税撤廃、物価・雇用、候補支持への効果は確定できない。","evidenceIds":["ev-obs-rogers-tariff-ad-20261007","ev-obs-reuters-mi-tariff-20261007","ev-obs-ap-mi-rogers-tariff-20261007","ev-obs-quantus-mi-20261007"]
+      "updateId": "obs-update-mi-tariff-quantus-2026-10-07",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-07",
+      "updatedAt": "2026-10-08",
+      "title": "ミシガン州：Rogers氏がCanada関税の即時終結を要求――新調査は統計上の同率",
+      "happened": "共和党Mike Rogers元下院議員はCanadaとの関税戦争を直ちに終えると訴える広告を公表した。9月まで一部関税を必要と説明していたため、民主党Abdul El-Sayed氏は選挙向けの転換と批判。Trump大統領はCanadaに合意を促す趣旨と説明した。10月5〜6日のQuantus調査はEl-Sayed氏47.6%、Rogers氏46.5%、未定4.2%だった。",
+      "meaning": "Rogers氏が政権との近さを交渉力と位置付けながら、家計・自動車産業への負担を理由に政策への異論を強めた。新調査は、発言変更と同時点の選挙がなお僅差である一材料になる。",
+      "uncertainty": "候補差の誤差は約±7.8ポイントで統計上の同率。NRSCとの7桁規模の広告枠、発言変更、大統領の解釈から、Canadaとの合意、関税撤廃、物価・雇用、候補支持への効果は確定できない。",
+      "evidenceIds": [
+        "ev-obs-rogers-tariff-ad-20261007",
+        "ev-obs-reuters-mi-tariff-20261007",
+        "ev-obs-ap-mi-rogers-tariff-20261007",
+        "ev-obs-quantus-mi-20261007"
+      ]
     },
     {
-      "updateId":"obs-update-me-ia-polls-2026-10-07","status":"published","electionIds":["2026-ME-2-regular","2026-IA-2-regular"],"eventId":null,"newsId":null,"eventDate":"2026-10-07","updatedAt":"2026-10-08",
-      "title":"メーン・アイオワ州：民主党候補が数値上先行――誤差と勝者予想は別に読む",
-      "happened":"Maristの10月1〜4日Maine登録有権者調査は民主党Troy Jackson氏51%、共和党現職Susan Collins氏47%だが、勝者予想はCollins氏57%、Jackson氏41%だった。同期間のSuffolk Iowa投票予定者調査は民主党Josh Turek氏48.0%、共和党Ashley Hinson氏43.6%、自由党Thomas Laehn氏2.2%、未定5.6%。",
-      "meaning":"二つの接戦州で民主党候補が数値上先行する新しい材料が加わった。Maineでは自分の支持先と誰が勝つと思うかが反対方向を示し、Iowaでは無党派層と生活費が引き続き確認点になる。",
-      "uncertainty":"Maineの誤差は±3.8ポイント、Iowaは±4.4ポイントで、主要候補差はいずれも誤差と同程度か誤差内。別設問・別調査から支持理由や支持移動を推定せず、情勢評価とD43・R45・未配分12も変更しない。","evidenceIds":["ev-obs-marist-me-20261006","ev-obs-suffolk-ia-20261007"]
+      "updateId": "obs-update-me-ia-polls-2026-10-07",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-IA-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-07",
+      "updatedAt": "2026-10-08",
+      "title": "メーン・アイオワ州：民主党候補が数値上先行――誤差と勝者予想は別に読む",
+      "happened": "Maristの10月1〜4日Maine登録有権者調査は民主党Troy Jackson氏51%、共和党現職Susan Collins氏47%だが、勝者予想はCollins氏57%、Jackson氏41%だった。同期間のSuffolk Iowa投票予定者調査は民主党Josh Turek氏48.0%、共和党Ashley Hinson氏43.6%、自由党Thomas Laehn氏2.2%、未定5.6%。",
+      "meaning": "二つの接戦州で民主党候補が数値上先行する新しい材料が加わった。Maineでは自分の支持先と誰が勝つと思うかが反対方向を示し、Iowaでは無党派層と生活費が引き続き確認点になる。",
+      "uncertainty": "Maineの誤差は±3.8ポイント、Iowaは±4.4ポイントで、主要候補差はいずれも誤差と同程度か誤差内。別設問・別調査から支持理由や支持移動を推定せず、情勢評価とD43・R45・未配分12も変更しない。",
+      "evidenceIds": [
+        "ev-obs-marist-me-20261006",
+        "ev-obs-suffolk-ia-20261007"
+      ]
     },
     {
-      "updateId":"obs-update-cook-ratings-2026-10-06","status":"published","electionIds":["2026-AK-2-regular","2026-KS-2-regular","2026-NH-2-regular","2026-NC-2-regular","2026-SC-2-regular"],"eventId":null,"newsId":null,"eventDate":"2026-10-06","updatedAt":"2026-10-07",
-      "title":"評価機関が民主党方向へ変更――SabatoはAlaskaをLean D、CookはKansasをToss Up",
-      "happened":"SabatoはAlaska上院をToss-upからLeans Democratic、South Carolina上院をSafe RepublicanからLikely Republicanへ変更した。Cook Political ReportはKansasをLean RepublicanからToss Up、New HampshireをToss UpからLean Democratic、North CarolinaをLean DemocraticからLikely Democraticへ変更した。",
-      "meaning":"複数の主要評価機関で、Alaska、Kansas、New Hampshire、North Carolinaなどを民主党側に寄せる判断が出た。ただし各機関の尺度と変更理由は同一ではない。",
-      "uncertainty":"Sabato本文は公式Substackで確認したが、Cook公式本文は403で、公式検索表示と同日報道による部分確認。サイトの統合配分はSabatoとInside Electionsの一致を使う既存方式で、InsideはAlaskaをToss-upとしているためD43・R45・未配分12は変更しない。","evidenceIds":["ev-obs-sabato-ak-sc-20261006","ev-obs-cook-ratings-20261006","ev-obs-wapo-cook-ratings-20261006"]
+      "updateId": "obs-update-cook-ratings-2026-10-06",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-KS-2-regular",
+        "2026-NH-2-regular",
+        "2026-NC-2-regular",
+        "2026-SC-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-06",
+      "updatedAt": "2026-10-07",
+      "title": "評価機関が民主党方向へ変更――SabatoはAlaskaをLean D、CookはKansasをToss Up",
+      "happened": "SabatoはAlaska上院をToss-upからLeans Democratic、South Carolina上院をSafe RepublicanからLikely Republicanへ変更した。Cook Political ReportはKansasをLean RepublicanからToss Up、New HampshireをToss UpからLean Democratic、North CarolinaをLean DemocraticからLikely Democraticへ変更した。",
+      "meaning": "複数の主要評価機関で、Alaska、Kansas、New Hampshire、North Carolinaなどを民主党側に寄せる判断が出た。ただし各機関の尺度と変更理由は同一ではない。",
+      "uncertainty": "Sabato本文は公式Substackで確認したが、Cook公式本文は403で、公式検索表示と同日報道による部分確認。サイトの統合配分はSabatoとInside Electionsの一致を使う既存方式で、InsideはAlaskaをToss-upとしているためD43・R45・未配分12は変更しない。",
+      "evidenceIds": [
+        "ev-obs-sabato-ak-sc-20261006",
+        "ev-obs-cook-ratings-20261006",
+        "ev-obs-wapo-cook-ratings-20261006"
+      ]
     },
     {
-      "updateId":"obs-update-me-debate-2026-10-06","status":"published","electionIds":["2026-ME-2-regular"],"eventId":"me-debate-2026-10-06","newsId":null,"eventDate":"2026-10-06","updatedAt":"2026-10-07",
-      "title":"メーン州：初回討論会で連邦の実績と生活費の責任を直接比較",
-      "happened":"共和党現職Susan Collins上院議員と民主党Troy Jackson元州上院議長は10月6日のWGME討論会に出席した。Collins氏は歳出委員会でMaineの672事業に15億ドルを確保したと述べ、薬価・住宅の取組を主張。Jackson氏はKavanaugh判事承認票とRoe撤廃を批判し、予算、SNAP・暖房支援、Iran戦争、関税を生活費の責任として挙げた。",
-      "meaning":"CBS調査が50%対50%を示す選挙で、現職が訴える連邦での実績と、対立候補が問う採決・政権への責任を同じ場で比べられた。残る3回の討論会で説明が一貫するかも確認点になる。",
-      "uncertainty":"事業額、生活費の原因、政策効果はいずれも候補者発言を含み、討論会の実施だけでは独立した効果検証や有権者の評価にならない。支持率や勝敗への影響は未確認。","evidenceIds":["ev-obs-wgme-me-debate-opening-20261006","ev-obs-wgme-me-debate-affordability-20261006"]
+      "updateId": "obs-update-me-debate-2026-10-06",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
+      "eventId": "me-debate-2026-10-06",
+      "newsId": null,
+      "eventDate": "2026-10-06",
+      "updatedAt": "2026-10-07",
+      "title": "メーン州：初回討論会で連邦の実績と生活費の責任を直接比較",
+      "happened": "共和党現職Susan Collins上院議員と民主党Troy Jackson元州上院議長は10月6日のWGME討論会に出席した。Collins氏は歳出委員会でMaineの672事業に15億ドルを確保したと述べ、薬価・住宅の取組を主張。Jackson氏はKavanaugh判事承認票とRoe撤廃を批判し、予算、SNAP・暖房支援、Iran戦争、関税を生活費の責任として挙げた。",
+      "meaning": "CBS調査が50%対50%を示す選挙で、現職が訴える連邦での実績と、対立候補が問う採決・政権への責任を同じ場で比べられた。残る3回の討論会で説明が一貫するかも確認点になる。",
+      "uncertainty": "事業額、生活費の原因、政策効果はいずれも候補者発言を含み、討論会の実施だけでは独立した効果検証や有権者の評価にならない。支持率や勝敗への影響は未確認。",
+      "evidenceIds": [
+        "ev-obs-wgme-me-debate-opening-20261006",
+        "ev-obs-wgme-me-debate-affordability-20261006"
+      ]
     },
     {
-      "updateId":"obs-update-oh-early-voting-2026-10-06","status":"published","electionIds":["2026-OH-3-special"],"eventId":null,"newsId":null,"eventDate":"2026-10-06","updatedAt":"2026-10-07",
-      "title":"オハイオ州特別選挙：期日前投票開始、初日の1郡データは州全体を示さない",
-      "happened":"民主党Sherrod Brown元上院議員と共和党現職Jon Husted上院議員が争うOhioでは10月6日に期日前投票が始まった。ReutersによるとMedina郡初日は民主党登録499人、共和党374人、無所属291人。2024年初日は共和党702人、民主党369人、無所属433人だった。",
-      "meaning":"広告・集会・調査に加え、実際の投票参加を追える段階に入った。ただし党派登録別の初日投票は候補者への投票内容ではなく、2024年とは選挙の種類や参加動機も異なる。",
-      "uncertainty":"一つの郡の1日分であり、州全体の投票率、党派の優勢、Brown氏・Husted氏の得票を推定しない。現地で挙がった物価・Iran戦争・広告への反応も代表調査ではない。","evidenceIds":["ev-obs-reuters-oh-early-voting-20261006"]
+      "updateId": "obs-update-oh-early-voting-2026-10-06",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-06",
+      "updatedAt": "2026-10-07",
+      "title": "オハイオ州特別選挙：期日前投票開始、初日の1郡データは州全体を示さない",
+      "happened": "民主党Sherrod Brown元上院議員と共和党現職Jon Husted上院議員が争うOhioでは10月6日に期日前投票が始まった。ReutersによるとMedina郡初日は民主党登録499人、共和党374人、無所属291人。2024年初日は共和党702人、民主党369人、無所属433人だった。",
+      "meaning": "広告・集会・調査に加え、実際の投票参加を追える段階に入った。ただし党派登録別の初日投票は候補者への投票内容ではなく、2024年とは選挙の種類や参加動機も異なる。",
+      "uncertainty": "一つの郡の1日分であり、州全体の投票率、党派の優勢、Brown氏・Husted氏の得票を推定しない。現地で挙がった物価・Iran戦争・広告への反応も代表調査ではない。",
+      "evidenceIds": [
+        "ev-obs-reuters-oh-early-voting-20261006"
+      ]
     },
     {
-      "updateId":"obs-update-ne-heating-oil-2026-10-06","status":"published","electionIds":["2026-ME-2-regular","2026-NH-2-regular"],"eventId":null,"newsId":null,"eventDate":"2026-10-06","updatedAt":"2026-10-07",
-      "title":"メーン・ニューハンプシャー州：暖房油高騰が家計争点、備蓄放出を要請",
-      "happened":"Reutersは紛争後に暖房油価格が約60%上がり、今冬の1世帯負担が約600ドル増えるとの推計を報じた。New Englandでは約3分の1の世帯が暖房油を使う。Maineの共和党現職Susan Collins氏と無所属Angus King氏らは、Trump政権に約100万バレルの北東部暖房油備蓄を放出するよう要請した。",
-      "meaning":"生活費を争うMaineとNew Hampshireで、抽象的な物価論ではなく地域特有の冬季負担と、現職議員が求める具体策を比べる材料になる。",
-      "uncertainty":"DOEの回答、備蓄放出、価格低下はいずれも未確認。推計負担は個々の世帯で異なり、要請の発表や価格上昇から候補者支持・得票への効果は判断できない。","evidenceIds":["ev-obs-reuters-northeast-heating-20261006"]
+      "updateId": "obs-update-ne-heating-oil-2026-10-06",
+      "status": "published",
+      "electionIds": [
+        "2026-ME-2-regular",
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-06",
+      "updatedAt": "2026-10-07",
+      "title": "メーン・ニューハンプシャー州：暖房油高騰が家計争点、備蓄放出を要請",
+      "happened": "Reutersは紛争後に暖房油価格が約60%上がり、今冬の1世帯負担が約600ドル増えるとの推計を報じた。New Englandでは約3分の1の世帯が暖房油を使う。Maineの共和党現職Susan Collins氏と無所属Angus King氏らは、Trump政権に約100万バレルの北東部暖房油備蓄を放出するよう要請した。",
+      "meaning": "生活費を争うMaineとNew Hampshireで、抽象的な物価論ではなく地域特有の冬季負担と、現職議員が求める具体策を比べる材料になる。",
+      "uncertainty": "DOEの回答、備蓄放出、価格低下はいずれも未確認。推計負担は個々の世帯で異なり、要請の発表や価格上昇から候補者支持・得票への効果は判断できない。",
+      "evidenceIds": [
+        "ev-obs-reuters-northeast-heating-20261006"
+      ]
     },
     {
-      "updateId":"obs-update-nh-rasmussen-2026-10-05","status":"published","electionIds":["2026-NH-2-regular"],"eventId":null,"newsId":null,"eventDate":"2026-10-05","updatedAt":"2026-10-06",
-      "title":"ニューハンプシャー州：Rasmussen調査はPappas氏49%・Sununu氏44%",
-      "happened":"10月2〜4日の投票予定者979人調査で、民主党Chris Pappas氏49%、共和党John Sununu氏44%、憲法党Edmond Laplante氏3%、未定4%だった。電話とオンラインを併用し、標本誤差は±3ポイント。",
-      "meaning":"9月の同率調査に続く新しい州内材料だが、調査機関と方法が異なる。Pappas氏の数値上の先行と、Sununu氏がTrump政権から距離を取る案件別の説明を別々に評価する。",
-      "uncertainty":"単一調査であり、主要候補差から勝敗や支持移動を確定しない。記事に個別値が出ない他候補を0%と補完せず、評価と議席配分も変更しない。","evidenceIds":["ev-obs-rasmussen-nh-20261005"]
+      "updateId": "obs-update-nh-rasmussen-2026-10-05",
+      "status": "published",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-05",
+      "updatedAt": "2026-10-06",
+      "title": "ニューハンプシャー州：Rasmussen調査はPappas氏49%・Sununu氏44%",
+      "happened": "10月2〜4日の投票予定者979人調査で、民主党Chris Pappas氏49%、共和党John Sununu氏44%、憲法党Edmond Laplante氏3%、未定4%だった。電話とオンラインを併用し、標本誤差は±3ポイント。",
+      "meaning": "9月の同率調査に続く新しい州内材料だが、調査機関と方法が異なる。Pappas氏の数値上の先行と、Sununu氏がTrump政権から距離を取る案件別の説明を別々に評価する。",
+      "uncertainty": "単一調査であり、主要候補差から勝敗や支持移動を確定しない。記事に個別値が出ない他候補を0%と補完せず、評価と議席配分も変更しない。",
+      "evidenceIds": [
+        "ev-obs-rasmussen-nh-20261005"
+      ]
     },
     {
-      "updateId":"obs-update-mi-mitchell-obama-2026-10-05","status":"published","electionIds":["2026-MI-2-regular"],"eventId":"mi-obama-elsayed-rally-2026-10-24","newsId":null,"eventDate":"2026-10-05","updatedAt":"2026-10-06",
-      "title":"ミシガン州：新調査はEl-Sayed氏45.6%・Rogers氏41.4%、24日にObama氏と集会",
-      "happened":"Mitchell Researchが10月1日に実施した投票予定者調査はEl-Sayed氏45.6%、Rogers氏41.4%、未定6%。州民主党はObama元大統領が10月24日にDetroitでEl-Sayed氏、Benson知事候補らと集会を行うと発表した。",
-      "meaning":"新調査はEl-Sayed氏が数値上先行する一材料で、共同集会は民主党支持層をまとめる取り組みとして確認できる。調査上の支持と、著名人の共同登壇による効果は別に追う。",
-      "uncertainty":"Mitchellの標本数・収集方法・質問文の原票は未取得。公表誤差±3.8ポイントの単一調査で、Fox調査との差を支持移動とは扱わない。集会の時刻・会場と得票効果も未確認。","evidenceIds":["ev-obs-cbs-mi-mitchell-20261005","ev-obs-mi-democrats-obama-20261005"]
+      "updateId": "obs-update-mi-mitchell-obama-2026-10-05",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": "mi-obama-elsayed-rally-2026-10-24",
+      "newsId": null,
+      "eventDate": "2026-10-05",
+      "updatedAt": "2026-10-06",
+      "title": "ミシガン州：新調査はEl-Sayed氏45.6%・Rogers氏41.4%、24日にObama氏と集会",
+      "happened": "Mitchell Researchが10月1日に実施した投票予定者調査はEl-Sayed氏45.6%、Rogers氏41.4%、未定6%。州民主党はObama元大統領が10月24日にDetroitでEl-Sayed氏、Benson知事候補らと集会を行うと発表した。",
+      "meaning": "新調査はEl-Sayed氏が数値上先行する一材料で、共同集会は民主党支持層をまとめる取り組みとして確認できる。調査上の支持と、著名人の共同登壇による効果は別に追う。",
+      "uncertainty": "Mitchellの標本数・収集方法・質問文の原票は未取得。公表誤差±3.8ポイントの単一調査で、Fox調査との差を支持移動とは扱わない。集会の時刻・会場と得票効果も未確認。",
+      "evidenceIds": [
+        "ev-obs-cbs-mi-mitchell-20261005",
+        "ev-obs-mi-democrats-obama-20261005"
+      ]
     },
     {
-      "updateId":"obs-update-ak-transmission-vance-2026-10-05","status":"published","electionIds":["2026-AK-2-regular"],"eventId":null,"newsId":null,"eventDate":"2026-10-05","updatedAt":"2026-10-06",
-      "title":"アラスカ州：送電計画へ最大1.5億ドルの資金意向――完成・料金効果は未実現",
-      "happened":"DOEはAlaska Energy AuthorityのBeluga–Healy送電計画へDefense Production Act資金を最大1.5億ドル充てる意向を発表した。非連邦資金2.68億ドルと合わせた計画総額は4.18億ドル、距離は223マイル。Vance副大統領は同日に州を訪れ、Sullivan氏を支援した。",
-      "meaning":"連邦政府と現職候補がエネルギー安全保障・インフラを実績や協力の材料にできる一方、資金意向と実際の契約・建設・完成・家計への効果を段階ごとに分けて見る必要がある。",
-      "uncertainty":"DOEの表現は『資金を充てる意向』『計画』『完成後』で、支出済み、完成済み、電気料金低下や信頼性向上の実現を意味しない。副大統領の訪問による支持・投票参加への効果も未確認。","evidenceIds":["ev-obs-doe-ak-transmission-20261005","ev-obs-reuters-ak-vance-20261005"]
+      "updateId": "obs-update-ak-transmission-vance-2026-10-05",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-05",
+      "updatedAt": "2026-10-06",
+      "title": "アラスカ州：送電計画へ最大1.5億ドルの資金意向――完成・料金効果は未実現",
+      "happened": "DOEはAlaska Energy AuthorityのBeluga–Healy送電計画へDefense Production Act資金を最大1.5億ドル充てる意向を発表した。非連邦資金2.68億ドルと合わせた計画総額は4.18億ドル、距離は223マイル。Vance副大統領は同日に州を訪れ、Sullivan氏を支援した。",
+      "meaning": "連邦政府と現職候補がエネルギー安全保障・インフラを実績や協力の材料にできる一方、資金意向と実際の契約・建設・完成・家計への効果を段階ごとに分けて見る必要がある。",
+      "uncertainty": "DOEの表現は『資金を充てる意向』『計画』『完成後』で、支出済み、完成済み、電気料金低下や信頼性向上の実現を意味しない。副大統領の訪問による支持・投票参加への効果も未確認。",
+      "evidenceIds": [
+        "ev-obs-doe-ak-transmission-20261005",
+        "ev-obs-reuters-ak-vance-20261005"
+      ]
     },
     {
-      "updateId":"obs-update-ne-trump-rally-2026-10-05","status":"published","electionIds":["2026-NE-2-regular"],"eventId":"ne-trump-ricketts-rally-2026-10-05","newsId":null,"eventDate":"2026-10-05","updatedAt":"2026-10-06",
-      "title":"ネブラスカ州：Trump大統領がRicketts氏支援集会――物価・燃料・牛肉輸入も争点",
-      "happened":"Trump大統領は10月5日、Grand Islandで共和党Pete Ricketts上院議員を支援する集会を実施した。APは、州内で燃料・食料価格と、牛肉輸入拡大案への牧畜業者の不満が争点になっていると報じた。",
-      "meaning":"大統領の訪問は共和党支持層の投票参加を促す取り組みである一方、Ricketts氏と無所属Dan Osborn氏の比較では、政権との関係と州内の費用負担を同時に見る材料になる。",
-      "uncertainty":"集会の実施や友好的な会場反応は州全体の支持率・投票参加の効果を示さない。Inside ElectionsはLean R、SabatoはLikely Rで、統合基準では未配分のまま。","evidenceIds":["ev-obs-ap-ne-trump-rally-20261005"]
+      "updateId": "obs-update-ne-trump-rally-2026-10-05",
+      "status": "published",
+      "electionIds": [
+        "2026-NE-2-regular"
+      ],
+      "eventId": "ne-trump-ricketts-rally-2026-10-05",
+      "newsId": null,
+      "eventDate": "2026-10-05",
+      "updatedAt": "2026-10-06",
+      "title": "ネブラスカ州：Trump大統領がRicketts氏支援集会――物価・燃料・牛肉輸入も争点",
+      "happened": "Trump大統領は10月5日、Grand Islandで共和党Pete Ricketts上院議員を支援する集会を実施した。APは、州内で燃料・食料価格と、牛肉輸入拡大案への牧畜業者の不満が争点になっていると報じた。",
+      "meaning": "大統領の訪問は共和党支持層の投票参加を促す取り組みである一方、Ricketts氏と無所属Dan Osborn氏の比較では、政権との関係と州内の費用負担を同時に見る材料になる。",
+      "uncertainty": "集会の実施や友好的な会場反応は州全体の支持率・投票参加の効果を示さない。Inside ElectionsはLean R、SabatoはLikely Rで、統合基準では未配分のまま。",
+      "evidenceIds": [
+        "ev-obs-ap-ne-trump-rally-20261005"
+      ]
     },
     {
       "updateId": "obs-update-siena-five-state-2026-10-03",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular", "2026-IA-2-regular", "2026-KS-2-regular", "2026-OH-3-special", "2026-TX-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-IA-2-regular",
+        "2026-KS-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-03",
@@ -8046,12 +9306,16 @@
       "happened": "Siena Research Instituteの公式ページは投票予定者について、Alaskaで民主党Mary Peltola氏50%・共和党Dan Sullivan氏43%、Iowaで共和党Ashley Hinson氏48%・民主党Josh Turek氏47%、Kansasで民主党Adam Hamilton氏45%・共和党Roger Marshall氏45%・自由党David Graham氏3%、Ohioで民主党Sherrod Brown氏49%・共和党Jon Husted氏46%、Texasで民主党James Talarico氏51%・共和党Ken Paxton氏45%と公表した。",
       "meaning": "5州を同じ調査主体が測った公表値として、各州がなお競争的であることを確かめる材料になる。Alaska・Ohio・Texasでは民主党候補が数値上先行し、IowaとKansasは1ポイント差・同率だが、いずれも単一調査である。",
       "uncertainty": "Siena公式ページの候補別数値は確認したが、詳細topline・cross-tabを取得できず、実査期間、標本、誤差、未定割合、質問文、leaner処理は未確認。このため構造化調査値や情勢評価は変更せず、勝敗・支持移動・州間比較を断定しない。",
-      "evidenceIds": ["ev-obs-siena-five-state-20261003"]
+      "evidenceIds": [
+        "ev-obs-siena-five-state-20261003"
+      ]
     },
     {
       "updateId": "obs-update-ak-peltola-workplace-response-2026-09-29",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-29",
@@ -8060,12 +9324,17 @@
       "happened": "元職員はPeltola氏の怒鳴り声、侮蔑語、身体的な扱い等を告発した。陣営は報道が誇張されていると反論し、夫と母を失った後の悲嘆を背景として説明した。Alaska Public Mediaが取材した一部の支持者は失望を語りつつ、投票先は変えないと答えた。",
       "meaning": "政策や漁業法案とは別に、候補者の職場での行動と説明責任が比較材料になった。告発後も支持を続ける理由には候補者への従来の評価やTrump政権への抑制が挙がり、人物評価と党派・政策判断が一致しない例を示す。",
       "uncertainty": "告発と陣営の説明は相反する証言で、今回の資料だけでは個々の行為を確定できない。悲嘆の説明は告発の反証や免責ではない。取材対象は無作為・代表標本ではなく、州全体の支持維持や広告効果を示さない。",
-      "evidenceIds": ["ev-obs-guardian-peltola-response-20260924", "ev-obs-alaska-public-peltola-voters-20260929"]
+      "evidenceIds": [
+        "ev-obs-guardian-peltola-response-20260924",
+        "ev-obs-alaska-public-peltola-voters-20260929"
+      ]
     },
     {
       "updateId": "obs-update-nh-independence-profile-2026-10-03",
       "status": "published",
-      "electionIds": ["2026-NH-2-regular"],
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-03",
@@ -8074,12 +9343,16 @@
       "happened": "Sununu氏はTrump氏の推薦を維持しながらCanada関税とIran戦争を批判し、議会の権限回復を主張した。一方、Trump政権の大型財政法案、関税の基本的考え、Iran攻撃の成果は支持した。Pappas氏はSununu氏を政権の一票と批判し、自身はBiden政権の国境対応への批判を独立性の例に挙げた。",
       "meaning": "両候補とも州を優先する独立性を訴えるため、政党との距離は一つの推薦や発言ではなく、政策ごとの一致・相違と過去の行動で比べる必要がある。州内取材ではTrump政権への反対をPappas支持理由にする声とSununu家への好意の両方があった。",
       "uncertainty": "数十人への州内取材は代表調査ではない。Sununu氏を元知事の弟Chris氏と混同した例もあり、家名の効果は未測定。記事が参照するUNHとNYT/Sienaの原票は取得できず、数値を構造化調査へ追加していない。",
-      "evidenceIds": ["ev-obs-wapo-nh-profile-20261003"]
+      "evidenceIds": [
+        "ev-obs-wapo-nh-profile-20261003"
+      ]
     },
     {
       "updateId": "obs-update-nc-cooper-whatley-profile-2026-10-04",
       "status": "published",
-      "electionIds": ["2026-NC-2-regular"],
+      "electionIds": [
+        "2026-NC-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-04",
@@ -8088,12 +9361,16 @@
       "happened": "民主党Roy Cooper氏は知事時代の超党派協力、Medicaid拡大、生活費対策を実績として訴える。共和党側は治安記録を攻撃し、Cooper陣営は司法長官時代を含む実績で反論している。共和党Michael Whatley氏はTrump氏との連携を強く打ち出す一方、共和党系外部団体はNorth Carolinaの広告支出を縮小した。",
       "meaning": "新たな統合Toss Upでは、候補者の実績、対立陣営の反証、外部団体の資源配分を分けて見る。Cooper氏の中道・実務型の訴えと、Whatley氏の政権との連携が投票参加へどう結び付くかが確認点になる。",
       "uncertainty": "広告支出の縮小は団体の資源配分判断で、有権者の支持移動や勝敗確定を意味しない。Cooper陣営も接戦化と支持者の油断を警戒しており、現在の調査先行を当選確率へ置き換えない。",
-      "evidenceIds": ["ev-obs-wapo-nc-profile-20261004"]
+      "evidenceIds": [
+        "ev-obs-wapo-nc-profile-20261004"
+      ]
     },
     {
       "updateId": "obs-update-tx-fox-poll-2026-10-01",
       "status": "published",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-01",
@@ -8102,12 +9379,16 @@
       "happened": "9月24〜28日のFox News調査で、投票予定者881人の支持は民主党James Talarico氏51%、共和党Ken Paxton氏49%、未定1%だった。登録有権者1,203人では53%対46%。LVではTalarico支持者の89%、Paxton支持者の85%が支持を変えないと答えた。",
       "meaning": "LVの2ポイント差は誤差±3ポイント内で、接戦を示す一つの材料である。登録有権者では7ポイント差だが、投票参加モデルを通したLVでは差が縮むため、候補支持と実際の投票参加を分けて追う。共和党予備選でCornyn氏に投票したLVの20%がTalarico氏を支持したという内訳は、Paxton氏の党内結集を確認する材料になる。",
       "uncertainty": "単一調査で勝者や支持移動は確定しない。7月調査はRVのみで、今回のLVとは直接比較できない。候補支持はleaner追質問込みであり、生活費を重視する回答、Trump大統領への評価、候補支持の理由も別設問である。",
-      "evidenceIds": ["ev-obs-fox-tx-20261001"]
+      "evidenceIds": [
+        "ev-obs-fox-tx-20261001"
+      ]
     },
     {
       "updateId": "obs-update-ak-quantus-poll-2026-10-02",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-02",
@@ -8116,12 +9397,16 @@
       "happened": "9月28〜30日のQuantus Insights調査で、第1順位は共和党現職Dan Sullivan氏46.1%、民主党Mary Peltola氏45.5%、未定5.0%、その他2候補計2.9%だった。2候補だけを示した設問は46.5%対46.2%、leaner込みでも全候補設問46.8%対46.5%、2候補設問47.8%対47.2%だった。",
       "meaning": "どの設問でも候補差は1ポイント未満で、この調査単独では先頭を判断しにくい。AARP、co/efficient、Trafalgarと合わせても先頭候補が一致せず、質問形式、第1順位、2候補設問、leaner込みを分けて読む必要がある。",
       "uncertainty": "調査全体の誤差は±4ポイントで、2候補差の誤差は約8ポイントと公表されている。上院設問は737人で、Alaskaの順位選択投票の全順位や実際の移転を測った最終集計予測ではない。横断調査間の差を同じ有権者の支持移動とは扱わない。",
-      "evidenceIds": ["ev-obs-quantus-ak-20261002"]
+      "evidenceIds": [
+        "ev-obs-quantus-ak-20261002"
+      ]
     },
     {
       "updateId": "obs-update-oh-trump-rally-2026-10-03",
       "status": "published",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "eventId": "oh-trump-vandalia-rally-2026-10-03",
       "newsId": null,
       "eventDate": "2026-10-03",
@@ -8130,12 +9415,18 @@
       "happened": "10月3日、Trump大統領と共和党現職Jon Husted氏がVandaliaの集会に登壇した。Husted氏は支持者へ投票参加を呼びかけ、記者団にイラン戦争を米国の条件で終わらせる必要と、物価引下げに取り組んでいると説明した。",
       "meaning": "確認済み予定を実施結果へ更新した。Husted氏は大統領との共同登壇を、共和党支持層の投票参加と生活費の訴えにつなげた。Reutersが取材した参加者のデータセンターへの意見は賛否が分かれ、党派的な集会内でもこの争点が一様でない例になった。",
       "uncertainty": "候補者の物価・戦争に関する発言は政策効果の実証ではない。友好的な集会の拍手や少数の参加者取材はOhio州全体の有権者評価ではなく、支持率への効果は未確認。Reuters取材時点でBrown陣営の回答はなかった。",
-      "evidenceIds": ["ev-obs-reuters-oh-rally-20261003", "ev-obs-gop-trump-oh-event-20261003", "ev-obs-factbase-trump-oh-20261003"]
+      "evidenceIds": [
+        "ev-obs-reuters-oh-rally-20261003",
+        "ev-obs-gop-trump-oh-event-20261003",
+        "ev-obs-factbase-trump-oh-20261003"
+      ]
     },
     {
       "updateId": "obs-update-ak-outside-spending-2026-10-02",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-02",
@@ -8144,12 +9435,16 @@
       "happened": "Alaska Public MediaがFEC報告から集計したところ、8月予備選後の独立支出は3,100万ドルを超え、約70%が候補への反対広告だった。Sullivan氏を支援する団体は、Peltola氏を支援する団体より約700万ドル多く支出した。",
       "meaning": "接戦州として州外資金が集中し、共和党側の外部団体が支出量で上回っている。どちらの候補を支援・反対する支出か、候補者本人の資金、広告内容を分けて追う。",
       "uncertainty": "独立支出団体は候補者陣営と調整できず、支出額は有権者の支持や広告効果を示さない。候補者陣営の最新収支は10月15日のFEC報告期限後に確認する必要がある。",
-      "evidenceIds": ["ev-obs-alaska-public-spending-20261002"]
+      "evidenceIds": [
+        "ev-obs-alaska-public-spending-20261002"
+      ]
     },
     {
       "updateId": "obs-update-me-cbs-poll-2026-10-02",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-02",
@@ -8158,12 +9453,21 @@
       "happened": "9月23日〜10月1日のCBS News/YouGov調査で、投票予定者の支持は民主党Troy Jackson氏50%、共和党現職Susan Collins氏50%だった。登録有権者の62%はTrump大統領を不支持、53%はCollins氏がTrump氏に同調し過ぎと回答。一方、候補支持者の10%は投票先を変える可能性があるとした。",
       "meaning": "同率でも、候補への投票、政権への評価、州と全国政党のどちらを優先すると見るかは別設問である。Jackson氏はMaineを全国民主党より優先すると56%、Collins氏はMaineを全国共和党より優先すると46%が答えており、現職の独立性と挑戦者の州内重視を同じ質問で比較できる。",
       "uncertainty": "単一調査の50対50は勝者を示さない。公式原票は登録有権者1,144人・誤差±4.7ポイントと記す一方、CBS本文は1,114人としており一致しない。投票予定者数も原票に明記されず、候補支持とTrump氏への評価から個々の投票理由を断定できない。",
-      "evidenceIds": ["ev-obs-cbs-me-20261002"]
+      "evidenceIds": [
+        "ev-obs-cbs-me-20261002"
+      ]
     },
     {
       "updateId": "obs-update-bls-jobs-2026-10-02",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular", "2026-ME-2-regular", "2026-MI-2-regular", "2026-OH-3-special", "2026-TX-2-regular", "2026-NH-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-MI-2-regular",
+        "2026-OH-3-special",
+        "2026-TX-2-regular",
+        "2026-NH-2-regular"
+      ],
       "eventId": "bls-jobs-2026-10-02",
       "newsId": null,
       "eventDate": "2026-10-02",
@@ -8172,12 +9476,16 @@
       "happened": "米労働統計局は10月2日、9月の非農業部門雇用者数が2万9千人増、失業率が4.2%、労働参加率が61.8%だったと公表した。BLSは雇用者数、失業率、主要産業の雇用はいずれも小幅な変化と説明した。",
       "meaning": "生活費、製造業、投資、雇用を訴える接戦州候補の説明を読む全国的な背景になる。10月20日に公表予定の州別雇用・失業統計で、各州の状況を別に確認する。",
       "uncertainty": "全国の単月統計であり、6州の上院候補支持率ではない。政権や個別候補の政策による因果効果、州別の雇用変化、家計の評価はこの公表だけでは分からない。",
-      "evidenceIds": ["ev-obs-bls-jobs-20261002"]
+      "evidenceIds": [
+        "ev-obs-bls-jobs-20261002"
+      ]
     },
     {
       "updateId": "obs-update-tx-trump-denton-2026-10-01",
       "status": "published",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-01",
@@ -8186,12 +9494,17 @@
       "happened": "Trump大統領は10月1日、DentonのPeterbilt Motorsを訪れ、関税と製造業を訴え、共和党Ken Paxton氏への投票を呼びかけた。Paxton氏は出席したが、州内報道によると選出公職者で演説したのはTrump氏だけだった。",
       "meaning": "Paxton氏は大統領の推薦を、広告だけでなく現地訪問での投票参加要請につなげた。10月7日にはSan Antonioで両氏が登壇する予定で、共和党支持層の動員を重ねる動きとして確認する。",
       "uncertainty": "工場側は関税を理由に生産増と1,000人雇用を説明したが、企業側の主張で、関税の雇用効果を独立に証明したものではない。大統領の推薦や訪問がPaxton氏の支持を増やしたかも未確認。",
-      "evidenceIds": ["ev-obs-axios-tx-denton-20261002"]
+      "evidenceIds": [
+        "ev-obs-axios-tx-denton-20261002"
+      ]
     },
     {
       "updateId": "obs-update-ks-nc-slf-spending-2026-10-02",
       "status": "published",
-      "electionIds": ["2026-KS-2-regular", "2026-NC-2-regular"],
+      "electionIds": [
+        "2026-KS-2-regular",
+        "2026-NC-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-02",
@@ -8200,7 +9513,9 @@
       "happened": "CBS Newsによると、共和党系Senate Leadership FundはKansasで980万ドルの広告を予約した。North Carolinaでは今年3,000万ドル超を支出した後、今後の広告支出を停止したと関係者が説明した。",
       "meaning": "共和党側の資金配分が、従来より共和党寄りと見られてきたKansasの防衛にも移っている。North Carolinaからの撤退と断定せず、候補者陣営・他団体の支出、予約の実施、後続調査を確認する。",
       "uncertainty": "Kansasの数字は広告予約で実支出ではなく、North Carolinaの今後の停止は関係者情報である。支出の移動は候補者支持率、広告の説得効果、最終的な勝敗を示さないため、統合評価と暫定配分は変更しない。",
-      "evidenceIds": ["ev-obs-cbs-slf-ks-nc-20261002"]
+      "evidenceIds": [
+        "ev-obs-cbs-slf-ks-nc-20261002"
+      ]
     },
     {
       "updateId": "obs-update-inside-ratings-2026-10-01",
@@ -8222,12 +9537,16 @@
       "happened": "Inside Electionsは10月1日、AlaskaをTilt RからToss Up、MichiganをToss UpからTilt D、TexasをLean RからTilt Rへ変更した。Georgia・North Carolinaは民主党方向を一段強め、MinnesotaはLikely DからLean D、NebraskaはLikely RからLean Rへ変更した。",
       "meaning": "サイトはSabatoとInside Electionsの双方が同じ党をLikely以上とした議席だけを党側へ置く。MinnesotaとNebraskaがこの条件から外れたため、新規案の暫定配分は民主43・共和45・未配分12になる。他の5州は変更前から未配分で、方向や強さは変わっても議席数は変わらない。",
       "uncertainty": "格付けは勝率、世論調査、確定結果ではない。機関の評価変更から個々の有権者の支持移動を推定しない。既存の保存案と共有URLは保存時の議席基準を維持し、自動で新基準へ書き換えない。",
-      "evidenceIds": ["ev-obs-inside-ratings-20261001"]
+      "evidenceIds": [
+        "ev-obs-inside-ratings-20261001"
+      ]
     },
     {
       "updateId": "obs-update-ia-fox-poll-2026-10-01",
       "status": "published",
-      "electionIds": ["2026-IA-2-regular"],
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-01",
@@ -8236,12 +9555,16 @@
       "happened": "Fox Newsが9月24〜28日に行った調査で、投票予定者1,008人は民主党Josh Turek氏49%、共和党Ashley Hinson氏47%。登録有権者1,204人では50%対46%で、同社6月調査と同じだった。",
       "meaning": "投票予定者では差が2ポイントに縮まる一方、Turek支持者の88%が選択に確信、Hinson支持者は77%だった。支持率だけでなく、党内の結集と投票まで支持を維持できるかが確認点になる。",
       "uncertainty": "LVの差は誤差±3ポイント内で、単一調査から勝敗を断定しない。RVが6月と同じでも、同一人物の支持が動かなかったことを意味しない。SabatoはToss Up、Inside ElectionsはTilt Rで統合評価は未配分のまま。",
-      "evidenceIds": ["ev-obs-fox-ia-20261001"]
+      "evidenceIds": [
+        "ev-obs-fox-ia-20261001"
+      ]
     },
     {
       "updateId": "obs-update-me-aarp-poll-2026-10-01",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-01",
@@ -8250,12 +9573,16 @@
       "happened": "AARPが9月20〜22日に行った投票予定者982人調査は、民主党Troy Jackson氏50%、共和党現職Susan Collins氏47%、その他または未定3%。50歳以上ではCollins氏53%、Jackson氏44%だった。",
       "meaning": "全体ではJackson氏が小幅に先頭だが、高齢層ではCollins氏が先頭で、投票参加の年齢構成が重要になる。現職の党派を越えた支持と、民主党候補の若年層での支持を同じ調査内で比べる材料になる。",
       "uncertainty": "全体の差は誤差±3.1ポイント内。調査原票PDFを今回取得できず、公式記事・発表と州内報道を相互照合した部分確認である。年齢別集計の誤差は全体より大きく、統合評価はToss Upのまま。",
-      "evidenceIds": ["ev-obs-aarp-me-20261001"]
+      "evidenceIds": [
+        "ev-obs-aarp-me-20261001"
+      ]
     },
     {
       "updateId": "obs-update-oh-suffolk-poll-2026-10-01",
       "status": "published",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-10-01",
@@ -8264,7 +9591,10 @@
       "happened": "Suffolk UniversityとUSA TODAY Network Ohioが9月23〜27日に行った投票予定者500人調査は、民主党Sherrod Brown氏46.6%、共和党現職Jon Husted氏44.0%、他の2候補3%、未定6%だった。",
       "meaning": "Brown氏が数値上先頭だが差は小さい。同じ調査では48.6%が『Trump大統領の方向を変える票』、28.6%が『方向を支持する票』と回答しており、10月3日の大統領集会がHusted氏の結集と無党派層への広がりのどちらに作用するかが次の確認点になる。",
       "uncertainty": "2.6ポイント差は誤差±4.4ポイント内で、政権への評価と上院候補支持は別設問。集会の開催予定から得票効果を先取りせず、統合評価はToss Upのまま。",
-      "evidenceIds": ["ev-obs-suffolk-oh-20261001", "ev-obs-gop-trump-oh-event-20261003"]
+      "evidenceIds": [
+        "ev-obs-suffolk-oh-20261001",
+        "ev-obs-gop-trump-oh-event-20261003"
+      ]
     },
     {
       "updateId": "obs-update-mi-fox-poll-2026-09-30",
@@ -8921,7 +10251,9 @@
     {
       "updateId": "obs-update-me-rating-tariffs-2026-09-17",
       "status": "published",
-      "electionIds": ["2026-ME-2-regular"],
+      "electionIds": [
+        "2026-ME-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-17",
@@ -8930,12 +10262,17 @@
       "happened": "接戦6州の一つメーン州で、共和党現職スーザン・コリンズ上院議員と民主党トロイ・ジャクソン元州上院議長が争う。Inside Electionsは9月17日、評価をTilt Republican（共和党わずかに優勢）からToss-up（五分）へ変更した。同日報道された対カナダ関税の論争では、Collins氏はTrump政権の貿易戦争を誤りとして反対票や政府への要請を挙げ、Jackson氏は道路用塩の免除だけでは自動車部品や肥料の負担に足りないと批判した。",
       "meaning": "CookとFoxに続き主要評価がToss Upにそろった。政策面では、共和党現職が大統領と異なる立場を取った事実だけでなく、州の負担をどこまで軽減できたかという民主党候補の反論まで比べられる。",
       "uncertainty": "評価変更は勝者の確定でも勝率でもない。候補者発言と議会行動は確認できるが、どの対応が価格・雇用を改善したか、今回の論争で支持が動いたかは未確認。取得できなかったQuantus新調査は方法・質問文を照合できず掲載していない。",
-      "evidenceIds": ["ev-obs-inside-me-20260917", "ev-obs-reuters-canada-tariffs-20260917"]
+      "evidenceIds": [
+        "ev-obs-inside-me-20260917",
+        "ev-obs-reuters-canada-tariffs-20260917"
+      ]
     },
     {
       "updateId": "obs-update-ak-coefficient-2026-09-17",
       "status": "published",
-      "electionIds": ["2026-AK-2-regular"],
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-17",
@@ -8944,12 +10281,16 @@
       "happened": "接戦6州の一つアラスカ州で、共和党現職ダン・サリバン上院議員と民主党メアリー・ペルトラ元下院議員が争う。9月14〜17日のco/efficient調査は、4候補の第1選択でDan S. Sullivan氏48%、Peltola氏46%、同姓だが別人のDaniel J. Sullivan Jr.氏1%、Gerald Heikes氏1%、未定4%だった。",
       "meaning": "差は誤差±3.45ポイントの範囲内で、接戦を確認する一材料になる。アラスカは順位選択投票のため、4候補の第1選択と、下位候補が除外された後の最終集計を分けて追う。",
       "uncertainty": "一つの調査で勝敗は判断しない。標本は65歳以上が44%、18〜34歳が4%で、重み付け後の州全体推計として読む。AARPの別調査は原PDFを取得できず、方法・質問文を照合できないため掲載していない。",
-      "evidenceIds": ["ev-obs-coefficient-ak-20260917"]
+      "evidenceIds": [
+        "ev-obs-coefficient-ak-20260917"
+      ]
     },
     {
       "updateId": "obs-update-mi-polls-tariffs-2026-09-17",
       "status": "published",
-      "electionIds": ["2026-MI-2-regular"],
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-17",
@@ -8958,12 +10299,18 @@
       "happened": "接戦6州の一つミシガン州で、民主党アブドゥル・エルサイード氏と共和党マイク・ロジャース元下院議員が争う。9月中旬のEmerson調査は48%対46%、Washington Post/Schar調査は48%対45%で、いずれもEl-Sayed氏が先頭だが差は公表誤差内だった。カナダの報復関税が9月8日に発効する中、Rogers氏はTrump大統領との近さを交渉力として訴え、El-Sayed氏は負担を認めながら政権に合わせていると批判した。",
       "meaning": "2調査とも接戦を示し、生活費はそれぞれ経済47%、生活費48%と最重要だった。『大統領との協力で条件を変える』というRogers氏の説明と、『政権に異論を言えない』というEl-Sayed氏の批判を同じ貿易問題で比べられる。",
       "uncertainty": "別調査の数字差を支持変化とは呼べず、学歴・人種別の部分標本は全体より不確か。関税への発言が交渉結果、家計、雇用、得票を変えた証拠もまだない。",
-      "evidenceIds": ["ev-obs-emerson-mi-20260917", "ev-obs-wapo-mi-20260917", "ev-obs-reuters-canada-tariffs-20260917"]
+      "evidenceIds": [
+        "ev-obs-emerson-mi-20260917",
+        "ev-obs-wapo-mi-20260917",
+        "ev-obs-reuters-canada-tariffs-20260917"
+      ]
     },
     {
       "updateId": "obs-update-tx-polls-2026-09-17",
       "status": "published",
-      "electionIds": ["2026-TX-2-regular"],
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-17",
@@ -8972,12 +10319,17 @@
       "happened": "接戦6州の一つテキサス州で、民主党ジェームズ・タラリコ州下院議員と共和党ケン・パクストン州司法長官が争う。9月のEmerson調査はTalarico氏47%・Paxton氏46%、ReconMR調査は49%・43%だった。Emersonでは経済が最重要36%で、Talarico氏の好感度は48%・否定42%、Paxton氏は40%・否定48%だった。",
       "meaning": "共和党優勢と見られてきた州でも候補者個人への評価を確認する必要がある。ただし支持率だけでなく、経済・移民の優先度、無党派層、各支持層が実際に投票するかを後続調査で見る。",
       "uncertainty": "Emersonは英語のみで1,000人、ReconMRは英語・スペイン語で614人と方法が異なる。数字の差を支持変化や広告効果と呼ばず、一時点の調査で勝敗を決めない。",
-      "evidenceIds": ["ev-obs-emerson-tx-20260917", "ev-obs-reconmr-tx-20260917"]
+      "evidenceIds": [
+        "ev-obs-emerson-tx-20260917",
+        "ev-obs-reconmr-tx-20260917"
+      ]
     },
     {
       "updateId": "obs-update-oh-poll-economy-2026-09-17",
       "status": "published",
-      "electionIds": ["2026-OH-3-special"],
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
       "eventId": null,
       "newsId": null,
       "eventDate": "2026-09-17",
@@ -8986,7 +10338,10 @@
       "happened": "接戦6州の一つオハイオ州では、Vance副大統領の後任に任命された共和党現職ジョン・ハステッド上院議員へ、2024年に議席を失った民主党シェロッド・ブラウン元上院議員が挑む。9月14〜16日のTrafalgar調査はBrown氏45.4%、Husted氏41.5%、その他6.0%、未定7.1%。APは、かつて民主党が強かったYoungstown周辺で、対カナダ貿易、雇用、データセンターの電力料金が争点になっていると取材した。",
       "meaning": "Brown氏は家計への電力費転嫁を批判し、Husted氏はデータセンター自身に費用を負担させる法案を挙げる。『生活費を下げる』という共通目標の下で、具体策と実績の説明を比較できる。",
       "uncertainty": "支持差は公表誤差±2.9ポイントに近く、調査PDFでは依頼主を確認できなかった。地域の党派変化、広告費、候補者の法案説明だけでは料金・雇用への効果や投票理由を決められない。",
-      "evidenceIds": ["ev-obs-trafalgar-oh-20260917", "ev-obs-ap-oh-economy-20260917"]
+      "evidenceIds": [
+        "ev-obs-trafalgar-oh-20260917",
+        "ev-obs-ap-oh-economy-20260917"
+      ]
     },
     {
       "updateId": "obs-update-ak-bycatch-committee-2026-09-16",

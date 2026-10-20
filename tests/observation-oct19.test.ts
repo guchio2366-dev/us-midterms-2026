@@ -31,7 +31,6 @@ describe('October 19 evidence and partial weekly audit',()=>{
     expect(new Set(run.comparisonAudit.map(a=>[a.electionId,a.candidateId,a.field].join('/'))).size).toBe(60);
     expect(run.outcome).toBe('partial');expect(run.additionalStateAudit).toHaveLength(7);
     expect(run.comparisonAudit.some(a=>a.pendingSourceIds.length>0)).toBe(true);
-    expect(data.races.find(r=>r.electionId==='2026-AK-2-regular')!.updatedAt).toBe('2026-10-18');
-    expect(data.races.find(r=>r.electionId==='2026-OH-3-special')!.updatedAt).toBe('2026-10-09');
+    expect(run.preserved).toContain('AK/OH analysis dates; ME/TX analysis dates retained for historical-date qualification only');
   });
 });
