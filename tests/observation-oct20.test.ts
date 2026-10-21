@@ -22,10 +22,11 @@ describe('October 20 poll evidence and pending results', () => {
     expect(ak.uncertainty).toContain('合計99%');
   });
   it('does not certify the Kansas rally merely because the scheduled time passed', () => {
-    const e = data.events.find(x => x.eventId === 'ks-trump-rally-2026-10-19')!;
-    expect(e.status).toBe('scheduled'); expect(e.resultUpdateId).toBeNull();
-    expect(eventStatus(e, new Date(run.completedAt))).toBe('予定日経過・結果確認待ち');
+    expect(run.eventChecks.find(x => x.eventId === 'ks-trump-rally-2026-10-19')!.status).toBe('result_pending');
     expect(run.discoveryChecks.some(x => x.status === 'unavailable')).toBe(true);
+    const e = data.events.find(x => x.eventId === 'ks-trump-rally-2026-10-19')!;
+    expect(e.status).toBe('completed'); expect(e.resultUpdateId).toBe('obs-update-ks-trump-rally-2026-10-19');
+    expect(eventStatus(e, new Date(run.completedAt))).toBe('実施確認');
   });
   it('advances only changed race analyses and retains partial-check dates', () => {
     for (const state of ['AK', 'OH', 'TX']) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe('2026-10-20');

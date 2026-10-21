@@ -41,11 +41,12 @@ describe('接戦州の編集データ',()=>{
     }
   });
   it('uses presidential remarks times rather than program starts',()=>{
-    for(const state of ['ks','ia']){
-      const e=data.events.find(e=>e.eventId===`${state}-trump-rally-2026-10-${state==='ks'?'19':'22'}`)!;
-      expect(e.time).toBe('18:00');expect(e.timezone).toBe('America/Chicago');
-      expect(e.status).toBe('scheduled');expect(e.resultUpdateId).toBeNull();
-    }
+    const ks=data.events.find(e=>e.eventId==='ks-trump-rally-2026-10-19')!;
+    expect(ks.time).toBe('18:00');expect(ks.timezone).toBe('America/Chicago');
+    expect(ks.status).toBe('completed');expect(ks.resultUpdateId).toBe('obs-update-ks-trump-rally-2026-10-19');
+    const ia=data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!;
+    expect(ia.time).toBe('18:00');expect(ia.timezone).toBe('America/Chicago');
+    expect(ia.status).toBe('scheduled');expect(ia.resultUpdateId).toBeNull();
     expect(data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!.relevance[0].why).toContain('会場は未発表');
     expect(data.events.find(e=>e.eventId==='mi-debate-2026-10-21')!.time).toBe('19:00');
   });

@@ -1,0 +1,197 @@
+{
+  "runId": "daily-20261021",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-21T00:00:19Z",
+  "completedAt": "2026-10-21T00:02:11Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-bls-state-jobs-20261020",
+    "obs-reuters-ks-rally-result-20261020",
+    "obs-ap-nc-rally-live-20261020",
+    "obs-witn-nc-rally-live-20261020",
+    "obs-gop-nc-rally-20261020",
+    "obs-gop-ks-rally-20261019",
+    "obs-bls-oct",
+    "obs-inside",
+    "obs-sabato",
+    "obs-cook-ratings-20261006"
+  ],
+  "pendingSourceIds": [
+    "obs-gop-sc-rally-20261021",
+    "obs-gop-ia-rally-20261022",
+    "obs-gop-mi-rally-20261025",
+    "obs-wxyz-mi-debate-20261021",
+    "obs-nexstar-ks-debate-20261021",
+    "obs-cook-ratings-20261006",
+    "obs-cbs-tx-20261018-pending"
+  ],
+  "note": "BLSの9月州雇用統計とKS集会結果を追加。NC集会は大統領到着・候補者登壇まで確認したが発言全体は進行中のため結果記事化せず、部分確認として記録。6州の分析日は進めず、D43/R44/未配分13、保存共有・画面を維持。",
+  "reviewMode": "daily; Wednesday; Monday full comparison audit not due",
+  "baseCommit": "193009af5b4d43138f82a8d3f6722123f0c84ef4",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-21-jobs-kansas-rally",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-bls-state-jobs-20261020",
+      "url": "https://www.bls.gov/news.release/archives/laus_10202026.htm",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-21T00:02:11Z",
+      "contentVerifiedAt": "2026-10-21",
+      "scope": "本文・表A〜E・技術注を照合。NHの前月比-0.2pt、TXの前年比+154,300、47州/DCの月次雇用は実質横ばい。候補者支持・政策効果には置換しない。"
+    },
+    {
+      "sourceId": "obs-reuters-ks-rally-result-20261020",
+      "url": "https://www.reuters.com/world/us/trump-warns-kansans-that-us-will-burn-like-france-if-democrats-win-2026-10-20/",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-21T00:02:11Z",
+      "contentVerifiedAt": "2026-10-21",
+      "scope": "10/19 Park City集会の実施、Trump・Marshall発言、Hamilton陣営反論、現地の生活費・農業への反応を照合。個別取材を州全体評価としない。"
+    },
+    {
+      "sourceId": "obs-ap-nc-rally-live-20261020",
+      "url": "https://apnews.com/article/a298dcb9327bbad29c0bcc9e61955edb",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "Greenville到着をライブ更新で確認。大統領発言全体・終了後の結果は未収録。成功日時を作らず結果記事化しない。"
+    },
+    {
+      "sourceId": "obs-witn-nc-rally-live-20261020",
+      "url": "https://www.witn.com/2026/10/20/president-trump-holding-midterm-rally-greenville-today/",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "会場写真・ライブ配信・Whatley登壇まで確認。大統領発言全体・終了時刻・効果は未確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "url": "https://insideelections.com/ratings/senate",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-16T00:09:31Z",
+      "contentVerifiedAt": "2026-10-16",
+      "scope": "10/15版以後の公式変更記事は検索で見つからず、全35改選の再照合は未実施。最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-15T00:05:35Z",
+      "contentVerifiedAt": "2026-10-15",
+      "scope": "10/14記事以後の新しい上院評価変更は検索で確認できず、最新全表は未照合。"
+    },
+    {
+      "sourceId": "obs-cook-ratings-20261006",
+      "url": "https://www.cookpolitical.com/analysis/senate/senate-overview/senate-majority-squarely-democrats-sights-kansas-moves-toss-two",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "Washington PostがMN Likely D→Lean D、SC Likely R→Lean Rを報道。Cook公式本文は403で取得できず、サイトのSabato+Inside統合配分には反映しない。"
+    }
+  ],
+  "discoveryChecks": [
+    {
+      "url": "https://www.washingtonpost.com/politics/2026/10/20/gop-has-pulled-north-carolina-money-trump-will-rally-whatley/",
+      "status": "partial",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "lastSuccessAt": null,
+      "scope": "会場入り前後の現地取材。集会終了後の全発言記録ではないためNC結果には使用しない。"
+    },
+    {
+      "url": "https://www.washingtonpost.com/politics/2026/10/20/minnesota-senate-race-democrats-cook-rating/",
+      "status": "checked",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "lastSuccessAt": "2026-10-21T00:02:11Z",
+      "scope": "CookのMN変更を二次報道で確認。公式本文未取得なので評価データへは不採用。"
+    },
+    {
+      "url": "https://www.washingtonpost.com/politics/2026/10/20/south-carolina-senate-cook-rating/",
+      "status": "checked",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "lastSuccessAt": "2026-10-21T00:02:11Z",
+      "scope": "CookのSC変更を二次報道で確認。公式本文未取得なので評価データへは不採用。"
+    },
+    {
+      "url": "https://abdulforsenate.com/press/",
+      "status": "partial",
+      "attemptedAt": "2026-10-21T00:02:11Z",
+      "lastSuccessAt": null,
+      "scope": "公式トップで10/20のRogers氏の支出に関する陣営主張を確認したが、参照された外部原文と反論を未照合のため掲載しない。"
+    }
+  ],
+  "notCheckedSourceIds": [
+    "obs-gop-sc-rally-20261021",
+    "obs-gop-ia-rally-20261022",
+    "obs-gop-mi-rally-20261025",
+    "obs-wxyz-mi-debate-20261021",
+    "obs-nexstar-ks-debate-20261021",
+    "obs-cbs-tx-20261018-pending",
+    "obs-roster-ak",
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-oh",
+    "obs-roster-tx",
+    "obs-roster-nh"
+  ],
+  "searchCoverage": {
+    "targetStates": ["AK", "ME", "MI", "OH-special", "TX", "NH", "IA", "NC", "GA", "KS", "MN", "NE", "SC"],
+    "categories": ["candidate official announcements", "new polls", "local reporting", "scheduled events and outcomes", "presidential schedule", "integrated ratings"],
+    "scope": "対象州と各分類を横断検索。全候補の全発表・全登録情報源の成功を意味しない。原文未取得や進行中の情報はpartial/not checkedとして残す。",
+    "mondayAudit": "Today Wednesday; full candidate comparison audit not due."
+  },
+  "eventChecks": [
+    {
+      "eventId": "ks-trump-rally-2026-10-19",
+      "status": "completed",
+      "scope": "Reuters現地取材で実施・登壇・発言を確認し、結果記事へ相互参照。"
+    },
+    {
+      "eventId": "bls-state-jobs-2026-10-20",
+      "status": "completed",
+      "scope": "BLS公式公表と予定を相互参照。"
+    },
+    {
+      "eventId": "nc-trump-rally-2026-10-20",
+      "status": "in_progress_partial",
+      "scope": "到着・会場・Whatley登壇まで確認。大統領発言全体と終了後結果は未確認のためscheduled/resultUpdateId nullを維持。"
+    },
+    {
+      "eventId": "mi-debate-2026-10-21",
+      "status": "scheduled",
+      "scope": "現地10/21 19時で未実施。結果を先取りしない。"
+    }
+  ],
+  "changes": [
+    "obs-update-bls-state-jobs-2026-10-20",
+    "obs-update-ks-trump-rally-2026-10-19"
+  ],
+  "preserved": [
+    "D43/R44/unallocated13",
+    "all historical scenario/share baselines",
+    "UI/candidate IDs",
+    "all six race analysis dates",
+    "NC result withheld pending full post-event evidence"
+  ],
+  "validation": {
+    "npmCi": "passed: npm ci clean install",
+    "npmTest": "passed: 475 tests in 36 files",
+    "npmBuild": "passed: tsc and Vite; index-BSJTvQkE.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "initialTestAttempt": "vitest was absent before npm ci. After clean install, the first full run had three stale event-order/status assertions; updated them to preserve the October 20 run-log fact while accepting October 21 verified results, then all 475 passed.",
+    "browserVerificationRoute": "Browser skill read; public-site verification pending."
+  },
+  "deployment": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicContentVerifiedAt": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "verified": [],
+    "publicationMethod": "Explicit source/docs/test paths; parent must equal latest main; force=false.",
+    "verificationFollowup": null
+  }
+}

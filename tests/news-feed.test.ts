@@ -12,9 +12,10 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(129);
+    expect(recent).toHaveLength(131);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(115);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(117);
+    for(const id of ['obs-update-bls-state-jobs-2026-10-20','obs-update-ks-trump-rally-2026-10-19']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-tx-hobby-2026-10-19','obs-update-oh-rasmussen-2026-10-14','obs-update-ak-rasmussen-2026-10-15']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-mi-rasmussen-2026-10-14')).toBe(true);
     expect(recent.some(item=>item.sourceId==='obs-update-nh-aarp-2026-10-14')).toBe(true);
@@ -97,7 +98,7 @@ describe('ニュース・予定の共通フィード',()=>{
   it('orders future events by date and resolves legacy update and event links',()=>{
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
     expect(upcoming.map(item=>item.sourceId)).toEqual([
-      'ks-trump-rally-2026-10-19','bls-state-jobs-2026-10-20','nc-trump-rally-2026-10-20','mi-debate-2026-10-21','sc-trump-rally-2026-10-21','ks-debate-2026-10-21','ia-trump-rally-2026-10-22','mi-obama-elsayed-rally-2026-10-24','oh-obama-brown-rally-2026-10-24','mi-trump-rally-2026-10-25','ga-trump-dalton-rally-2026-10-16','mn-mpr-debate-2026-10-16','ak-senate-debate-2026-10-15','me-debate-2026-10-15','bls-cpi-2026-10-14','nh-aarp-forum-2026-10-14','ak-trump-wasilla-rally-2026-10-13','ga-debate-2026-10-13','ia-debate-2026-10-13','me-debate-2026-10-13','ga-debate-2026-10-08','me-debate-2026-10-08','mi-debate-2026-10-08','ia-debate-2026-10-07','tx-trump-san-antonio-rally-2026-10-07','me-debate-2026-10-06','ne-trump-ricketts-rally-2026-10-05','oh-trump-vandalia-rally-2026-10-03','bls-jobs-2026-10-02','tx-talarico-tribune-festival-2026-09-24','mi-harris-el-sayed-2026-09-22','tx-paxton-cruz-rally-2026-09-21','ak-bycatch-markup-2026-09-16',
+      'nc-trump-rally-2026-10-20','mi-debate-2026-10-21','sc-trump-rally-2026-10-21','ks-debate-2026-10-21','ia-trump-rally-2026-10-22','mi-obama-elsayed-rally-2026-10-24','oh-obama-brown-rally-2026-10-24','mi-trump-rally-2026-10-25','bls-state-jobs-2026-10-20','ks-trump-rally-2026-10-19','ga-trump-dalton-rally-2026-10-16','mn-mpr-debate-2026-10-16','ak-senate-debate-2026-10-15','me-debate-2026-10-15','bls-cpi-2026-10-14','nh-aarp-forum-2026-10-14','ak-trump-wasilla-rally-2026-10-13','ga-debate-2026-10-13','ia-debate-2026-10-13','me-debate-2026-10-13','ga-debate-2026-10-08','me-debate-2026-10-08','mi-debate-2026-10-08','ia-debate-2026-10-07','tx-trump-san-antonio-rally-2026-10-07','me-debate-2026-10-06','ne-trump-ricketts-rally-2026-10-05','oh-trump-vandalia-rally-2026-10-03','bls-jobs-2026-10-02','tx-talarico-tribune-festival-2026-09-24','mi-harris-el-sayed-2026-09-22','tx-paxton-cruz-rally-2026-09-21','ak-bycatch-markup-2026-09-16',
     ]);
     expect(legacyObservationFeedKey('2026-MI-2-regular','obs-update-mi-ai-2026-09-09',newsItems,observationData)).toBe('update:obs-update-mi-ai-2026-09-09');
     expect(legacyObservationFeedKey('2026-ME-2-regular','me-debate-2026-10-06',newsItems,observationData)).toBe('event:me-debate-2026-10-06');
