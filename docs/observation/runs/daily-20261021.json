@@ -2,7 +2,7 @@
   "runId": "daily-20261021",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-21T00:00:19Z",
-  "completedAt": "2026-10-21T00:02:11Z",
+  "completedAt": "2026-10-21T00:12:49Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-bls-state-jobs-20261020",
@@ -28,7 +28,7 @@
   "note": "BLSの9月州雇用統計とKS集会結果を追加。NC集会は大統領到着・候補者登壇まで確認したが発言全体は進行中のため結果記事化せず、部分確認として記録。6州の分析日は進めず、D43/R44/未配分13、保存共有・画面を維持。",
   "reviewMode": "daily; Wednesday; Monday full comparison audit not due",
   "baseCommit": "193009af5b4d43138f82a8d3f6722123f0c84ef4",
-  "publishedCommit": null,
+  "publishedCommit": "f7b2d64ac5ceec43e4d448c85fa1775f3f735dd0",
   "revision": "observation-2026-10-21-jobs-kansas-rally",
   "sourceChecks": [
     {
@@ -183,15 +183,21 @@
     "npmTest": "passed: 475 tests in 36 files",
     "npmBuild": "passed: tsc and Vite; index-BSJTvQkE.js / index-Dsomt5uB.css; existing bundle-size advisory only",
     "initialTestAttempt": "vitest was absent before npm ci. After clean install, the first full run had three stale event-order/status assertions; updated them to preserve the October 20 run-log fact while accepting October 21 verified results, then all 475 passed.",
-    "browserVerificationRoute": "Browser skill read; public-site verification pending."
+    "browserVerificationRoute": "Browser skill read. The connected-browser call returned Unknown tool browser.js, so the permitted cloud-browser fallback was used. Public DOM and expanded article text were verified successfully."
   },
   "deployment": {
-    "status": "pending",
-    "pagesRunUrl": null,
-    "publicContentVerifiedAt": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39519631552",
+    "publicContentVerifiedAt": "2026-10-21T00:12:49Z",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "verified": [],
-    "publicationMethod": "Explicit source/docs/test paths; parent must equal latest main; force=false.",
-    "verificationFollowup": null
+    "verified": [
+      "Published bundle index-BSJTvQkE.js loaded from the public URL.",
+      "D43/R44/unallocated13 and the 2026-10-15 ratings baseline remained unchanged.",
+      "BLS article title and expanded NH 2.8%→2.6%, TX +154,300, 47 states/DC monthly-flat caveat were visible.",
+      "Kansas article title and expanded Trump/Marshall/Hamilton facts, campaign-claim distinction, and no-statewide-voter-effect caveat were visible.",
+      "The site still showed one elapsed event awaiting result confirmation; the partial NC event had no result article."
+    ],
+    "publicationMethod": "Created an explicit seven-path Git tree on baseCommit, verified main still equaled that parent, then updated refs/heads/main with expected_sha and force=false. Dist and unrelated UI files were excluded.",
+    "verificationFollowup": "This record is finalized in a documentation-only follow-up commit after the successful content deployment; the follow-up Pages run is checked separately."
   }
 }
