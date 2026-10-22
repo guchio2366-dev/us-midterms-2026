@@ -2,7 +2,7 @@
   "runId": "daily-20261022",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-22T00:00:00Z",
-  "completedAt": "2026-10-22T00:13:00Z",
+  "completedAt": "2026-10-22T00:17:46Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-reuters-tx-spending-20261021",
@@ -26,7 +26,7 @@
   "note": "AK・MI・GAの新調査、TXの広告資金、複数州の期日前投票、NC集会結果を原文照合して追加。AK・MI・TXの候補者比較を更新。MI・SCの10月21日行事とKS討論会は確認時点でライブ更新または開始直後のため完全な結果照合待ち。D43/R44/未配分13、保存案・共有URL・議席基準を維持。",
   "reviewMode": "daily; Thursday; Monday full comparison audit not due",
   "baseCommit": "b25cb534732332f2b01c25f3217aa03f19ab0bf7",
-  "publishedCommit": null,
+  "publishedCommit": "89f19a6c15c962d76df7636ad13c96020597ec17",
   "revision": "observation-2026-10-22-polls-early-vote-nc-rally",
   "sourceChecks": [
     {
@@ -214,14 +214,21 @@
     "npmTest": "passed: 482 tests in 37 files",
     "npmBuild": "passed: tsc and Vite; index-7cMzkb4G.js / index-Dsomt5uB.css; existing bundle-size advisory only",
     "initialTestAttempt": "Direct vitest failed before npm ci because dependencies were absent. After clean install, two stale historical assertions failed after the new NC event result and MI analysis date; both were updated, then the full suite passed.",
-    "browserVerificationRoute": "pending"
+    "browserVerificationRoute": "Browser skill read. The connected-browser tool was unavailable, so the permitted cloud-browser fallback was used. GitHub Actions and the public DOM were verified successfully."
   },
   "deployment": {
-    "status": "pending",
-    "pagesRunUrl": null,
-    "publicContentVerifiedAt": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39698721036",
+    "publicContentVerifiedAt": "2026-10-22T00:17:46Z",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "verified": [],
-    "publicationMethod": "pending normal fast-forward with expected SHA and force=false"
+    "verified": [
+      "GitHub Actions run 159 completed successfully for commit 89f19a6c15c962d76df7636ad13c96020597ec17.",
+      "Public page showed D43/R44/unallocated13 and the 2026-10-15 ratings baseline unchanged.",
+      "Public page showed the new Georgia 48%-40%, Michigan 50%-48%, and Texas spending articles in the outlook.",
+      "Public state feed showed the early-voting article and 2026-10-22 JST source-check timestamp.",
+      "The public page showed three elapsed events awaiting full result confirmation after the NC rally was linked to its result update."
+    ],
+    "publicationMethod": "Created an explicit seven-path Git tree on baseCommit, verified main still equaled that parent, then updated refs/heads/main with expected_sha and force=false. Dist and unrelated UI files were excluded.",
+    "verificationFollowup": "This record is finalized in a documentation-only follow-up commit after the successful content deployment; the follow-up Pages run is checked separately."
   }
 }
