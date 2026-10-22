@@ -25,17 +25,18 @@ describe('October 21 official jobs data and event outcomes', () => {
     expect(update.uncertainty).toContain('効果も未確認');
   });
 
-  it('does not certify the North Carolina rally from an in-progress live page', () => {
+  it('keeps the October 21 live-page limitation while accepting the later verified result', () => {
     const event = data.events.find(x => x.eventId === 'nc-trump-rally-2026-10-20')!;
-    expect(event.status).toBe('scheduled');
-    expect(event.resultUpdateId).toBeNull();
+    expect(event.status).toBe('completed');
+    expect(event.resultUpdateId).toBe('obs-update-nc-trump-rally-2026-10-20');
     expect(data.sources.find(x => x.sourceId === 'obs-ap-nc-rally-live-20261020')!.checkStatus).toBe('partial');
     expect(data.sources.find(x => x.sourceId === 'obs-witn-nc-rally-live-20261020')!.lastSuccessAt).toBeNull();
+    expect(data.sources.find(x => x.sourceId === 'obs-reuters-nc-rally-result-20261021')!.checkStatus).toBe('checked');
   });
 
   it('preserves analysis dates and the allocation baseline on a verification-only day', () => {
     expect(data.races.map(r => r.updatedAt)).toEqual([
-      '2026-10-18', '2026-10-19', '2026-10-20', '2026-10-20', '2026-10-20', '2026-10-19',
+      '2026-10-18', '2026-10-22', '2026-10-20', '2026-10-22', '2026-10-22', '2026-10-19',
     ]);
     expect(run.outcome).toBe('partial');
     expect(run.preserved).toContain('D43/R44/unallocated13');

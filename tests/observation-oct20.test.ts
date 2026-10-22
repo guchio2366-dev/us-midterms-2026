@@ -29,8 +29,10 @@ describe('October 20 poll evidence and pending results', () => {
     expect(eventStatus(e, new Date(run.completedAt))).toBe('実施確認');
   });
   it('advances only changed race analyses and retains partial-check dates', () => {
-    for (const state of ['AK', 'OH', 'TX']) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe('2026-10-20');
-    for (const [state, date] of [['ME', '2026-10-18'], ['MI', '2026-10-19'], ['NH', '2026-10-19']]) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe(date);
+    expect(data.races.find(r => r.electionId.includes('-AK-'))!.updatedAt).toBe('2026-10-22');
+    expect(data.races.find(r => r.electionId.includes('-TX-'))!.updatedAt).toBe('2026-10-22');
+    expect(data.races.find(r => r.electionId.includes('-OH-'))!.updatedAt).toBe('2026-10-20');
+    for (const [state, date] of [['ME', '2026-10-18'], ['MI', '2026-10-22'], ['NH', '2026-10-19']]) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe(date);
     expect(run.outcome).toBe('partial'); expect(run.notCheckedSourceIds.length).toBeGreaterThan(0);
     expect(data.sources.find(s => s.sourceId === 'obs-cbs-tx-20261018-pending')!.lastSuccessAt).toBeNull();
   });

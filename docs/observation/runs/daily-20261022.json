@@ -1,0 +1,227 @@
+{
+  "runId": "daily-20261022",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-22T00:00:00Z",
+  "completedAt": "2026-10-22T00:13:00Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-reuters-tx-spending-20261021",
+    "obs-dataforprogress-ak-20261020",
+    "obs-marist-mi-20261021",
+    "obs-ajc-ga-20261021",
+    "obs-ap-early-vote-20261021",
+    "obs-reuters-nc-rally-result-20261021",
+    "obs-factbase-nc-rally-transcript-20261020"
+  ],
+  "pendingSourceIds": [
+    "obs-gop-sc-rally-20261021",
+    "obs-wxyz-mi-debate-20261021",
+    "obs-nexstar-ks-debate-20261021",
+    "obs-gop-ia-rally-20261022",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house",
+    "obs-gop-mi-rally-20261025"
+  ],
+  "note": "AK・MI・GAの新調査、TXの広告資金、複数州の期日前投票、NC集会結果を原文照合して追加。AK・MI・TXの候補者比較を更新。MI・SCの10月21日行事とKS討論会は確認時点でライブ更新または開始直後のため完全な結果照合待ち。D43/R44/未配分13、保存案・共有URL・議席基準を維持。",
+  "reviewMode": "daily; Thursday; Monday full comparison audit not due",
+  "baseCommit": "b25cb534732332f2b01c25f3217aa03f19ab0bf7",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-22-polls-early-vote-nc-rally",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-reuters-tx-spending-20261021",
+      "url": "https://www.reuters.com/world/us/republicans-bet-musks-millions-can-rescue-texas-paxton-us-senate-race-2026-10-21/",
+      "attemptedAt": "2026-10-22T00:12:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:12:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "広告費5億ドル超、Paxton側外部団体約2.39億ドル、Musk氏のSLF拠出1.58億ドル、Talarico陣営申告6,400万ドルを照合。外部支出と候補調達、広告効果を分離。"
+    },
+    {
+      "sourceId": "obs-dataforprogress-ak-20261020",
+      "url": "https://www.dataforprogress.org/blog/2026/10/20/every-statewide-race-in-alaska-is-close-as-7-in-10-voters-worry-about-affording-gas-and-food",
+      "attemptedAt": "2026-10-22T00:10:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:10:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "第1順位47/44/4/1、調査上の最終51/49、消尽票の追加仮定、694 LV・SMS/web・±4を照合。確定結果や勝敗予測にはしない。"
+    },
+    {
+      "sourceId": "obs-marist-mi-20261021",
+      "url": "https://maristpoll.marist.edu/polls/midterm-elections-in-michigan-october-2026/",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:03:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "10/15〜18、1,185 RV、LV誤差±4.3、上院50/48を照合。勝者予想、Trump評価、家計評価を別設問として記録。"
+    },
+    {
+      "sourceId": "obs-ajc-ga-20261021",
+      "url": "https://www.ajc.com/politics/2026/10/ajc-poll-ossoff-leads-collins-in-georgias-us-senate-race/",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:03:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "UGAの10/7〜15電話調査、1,000 LV、±3.1、訂正後48/40/未定12を照合。職務評価は投票先と分離。"
+    },
+    {
+      "sourceId": "obs-ap-early-vote-20261021",
+      "url": "https://apnews.com/article/election-2026-midterms-voting-early-turnout-44df2c18b387d28022dbb480e99feaba",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:03:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "10/20までのTX+74%、KS 2倍超、ME/NC/OH 30%超と制度・データ差を照合。投票先・候補者支持・最終投票率には置換しない。"
+    },
+    {
+      "sourceId": "obs-reuters-nc-rally-result-20261021",
+      "url": "https://www.reuters.com/world/us/trump-north-carolina-says-republicans-will-defy-midterm-odds-2026-10-21/",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:03:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "10/20 Greenville集会の実施、Whatley登壇、企業投資・国防投資・条件付き給付発言、Sibelco回答を照合。確定決定と分離。"
+    },
+    {
+      "sourceId": "obs-factbase-nc-rally-transcript-20261020",
+      "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-midterm-political-rally-greenville-north-carolina-october-20-2026/",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-22T00:03:00Z",
+      "contentVerifiedAt": "2026-10-22",
+      "scope": "Reuters結果記事と発言時系列を相互照合。演説での主張を政府・企業決定や効果とは扱わない。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "url": "https://insideelections.com/ratings/senate",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-16T00:09:31Z",
+      "contentVerifiedAt": "2026-10-16",
+      "scope": "10/15版以後の公式変更を検索したが新しい全35選挙表は再照合できず、最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-15T00:05:35Z",
+      "contentVerifiedAt": "2026-10-15",
+      "scope": "10/14記事以後の公式変更記事を検索したが新しい全表は再照合できず、最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-14T00:08:30Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "選挙集会は党主催予定と現地報道で確認。White House公務日程の新しい対象州予定は原文確認できず、党行事を公務日程とは扱わない。"
+    }
+  ],
+  "discoveryChecks": [
+    {
+      "url": "https://www.sherrodbrown.com/2026/10/21/in-southeast-ohio-sherrod-brown-meets-with-ohioans-fed-up-with-jon-husted/",
+      "status": "partial",
+      "attemptedAt": "2026-10-22T00:10:00Z",
+      "lastSuccessAt": null,
+      "scope": "Brown陣営の10/21主張を確認したが、引用するHusted氏の採決記録・反論を同時照合できず掲載しない。"
+    },
+    {
+      "url": "https://apnews.com/article/6a5e7f5e97fbba6f45e290dc6ad1a4b4",
+      "status": "partial",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "lastSuccessAt": null,
+      "scope": "SC集会とMI討論のライブ更新を確認。確認時点で進行中で、全発言・終了後の結果記事ではないため公開結果へ未反映。"
+    },
+    {
+      "url": "https://bridgemi.com/michigan-government/watch-live-abdul-el-sayed-mike-rogers-debate-in-michigan-us-senate-race-2/",
+      "status": "partial",
+      "attemptedAt": "2026-10-22T00:03:00Z",
+      "lastSuccessAt": null,
+      "scope": "WXYZ討論会のライブ配信と実施開始を確認。全編要旨・逐語記録は未取得で、予定結果の確定記事化は保留。"
+    }
+  ],
+  "notCheckedSourceIds": [
+    "obs-gop-sc-rally-20261021",
+    "obs-wxyz-mi-debate-20261021",
+    "obs-nexstar-ks-debate-20261021",
+    "obs-gop-ia-rally-20261022",
+    "obs-gop-mi-rally-20261025",
+    "obs-roster-ak",
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-oh",
+    "obs-roster-tx",
+    "obs-roster-nh"
+  ],
+  "searchCoverage": {
+    "targetStates": ["AK", "ME", "MI", "OH-special", "TX", "NH", "IA", "NC", "GA", "KS", "MN", "NE", "SC"],
+    "categories": ["candidate official announcements", "new polls", "local reporting", "scheduled events and outcomes", "presidential schedule", "integrated ratings"],
+    "scope": "対象州と分類を横断検索。全候補の全発表・全登録情報源の成功を意味しない。原文未取得や進行中の情報はpartial/not checkedとして残す。",
+    "mondayAudit": "Today Thursday; full candidate comparison audit not due."
+  },
+  "eventChecks": [
+    {
+      "eventId": "nc-trump-rally-2026-10-20",
+      "status": "completed",
+      "scope": "Reuters現地取材とFactba.se発言記録で実施・登壇・発言を確認し、元予定と結果記事を相互参照。"
+    },
+    {
+      "eventId": "mi-debate-2026-10-21",
+      "status": "in_progress_partial",
+      "scope": "主催局・APライブで実施開始を確認したが、全編結果は未確認。scheduled/resultUpdateId nullを維持。"
+    },
+    {
+      "eventId": "sc-trump-rally-2026-10-21",
+      "status": "in_progress_partial",
+      "scope": "APライブで大統領登壇まで確認したが、演説終了後の全体結果は未確認。scheduled/resultUpdateId nullを維持。"
+    },
+    {
+      "eventId": "ks-debate-2026-10-21",
+      "status": "in_progress_partial",
+      "scope": "確認時点は開始直後。延期・中止報道は見つからないが、全編結果は未確認。"
+    },
+    {
+      "eventId": "ia-trump-rally-2026-10-22",
+      "status": "scheduled",
+      "scope": "現地10/22 18時予定で未実施。結果を先取りしない。"
+    },
+    {
+      "eventId": "mi-trump-rally-2026-10-25",
+      "status": "scheduled",
+      "scope": "現地10/25 15時予定。実施・中止・延期、上院候補の参加は未確認。"
+    }
+  ],
+  "changes": [
+    "obs-update-tx-spending-2026-10-21",
+    "obs-update-ak-dataforprogress-2026-10-20",
+    "obs-update-mi-marist-2026-10-21",
+    "obs-update-ga-ajc-2026-10-21",
+    "obs-update-early-vote-2026-10-21",
+    "obs-update-nc-trump-rally-2026-10-20"
+  ],
+  "preserved": [
+    "D43/R44/unallocated13",
+    "all historical scenario/share baselines",
+    "UI/candidate IDs",
+    "ME/OH/NH race analysis dates",
+    "MI/SC/KS live results withheld pending full post-event evidence"
+  ],
+  "validation": {
+    "npmCi": "passed: npm ci clean install",
+    "npmTest": "passed: 482 tests in 37 files",
+    "npmBuild": "passed: tsc and Vite; index-7cMzkb4G.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "initialTestAttempt": "Direct vitest failed before npm ci because dependencies were absent. After clean install, two stale historical assertions failed after the new NC event result and MI analysis date; both were updated, then the full suite passed.",
+    "browserVerificationRoute": "pending"
+  },
+  "deployment": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicContentVerifiedAt": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "verified": [],
+    "publicationMethod": "pending normal fast-forward with expected SHA and force=false"
+  }
+}
