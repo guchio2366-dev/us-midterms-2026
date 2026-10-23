@@ -1,6 +1,6 @@
 # 現在の実装・公開状況
 
-2026-10-23・日次観測（部分確認）：OhioのFox News調査を原票まで照合し、Brown 52%・Husted 47%を直前のRasmussenと先頭候補が異なる単一調査として追加。Michigan・Kansasの10月21日最終討論とSouth Carolina大統領集会を結果記事へ相互参照した。Iowa大統領集会は実施とHinson氏支援まで映像説明で確認したが、演説全編は照合待ち。D43/R44/未配分13、保存案・共有URL・議席基準を維持。484件のテストと本番ビルドに成功。Pages配備と公開画面確認は実行記録で追記する。[確認範囲・検証・公開結果](docs/observation/runs/daily-20261023.json)。
+2026-10-23・日次観測（部分確認）：OhioのFox News調査を原票まで照合し、Brown 52%・Husted 47%を直前のRasmussenと先頭候補が異なる単一調査として追加。Michigan・Kansasの10月21日最終討論とSouth Carolina大統領集会を結果記事へ相互参照した。Iowa大統領集会は実施とHinson氏支援まで映像説明で確認したが、演説全編は照合待ち。D43/R44/未配分13、保存案・共有URL・議席基準を維持。484件のテストと本番ビルド、[Pages配備](https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39876870238)に成功し、公開画面で議席配分・主要3記事・Ohio記事・情報源確認日を確認した。South Carolina記事は表示上限外のため公開データとテストで確認。[確認範囲・検証・公開結果](docs/observation/runs/daily-20261023.json)。
 
 2026-10-22・日次観測（部分確認）：AlaskaのData for Progress、MichiganのMarist、GeorgiaのAJC/UGA調査を追加し、第1順位・順位再配分・別設問・単一調査の誤差を分離。Texasは広告費5億ドル超を候補陣営調達・外部団体支出・広告効果に分け、AK・MI・TXの候補者比較を更新した。APの期日前投票増は制度差と投票先不明を明記。North Carolina大統領集会はReutersと発言記録で実施結果を元予定へ相互参照した。MI・SC・KSの10月21日行事はライブ／開始直後で全編照合待ち。D43/R44/未配分13、保存案・共有URL・議席基準を維持。482件のテスト、本番ビルド、Pages配備、公開画面での6記事・議席基準・結果待ち件数を確認済み。[確認範囲・検証・公開結果](docs/observation/runs/daily-20261022.json)。
 

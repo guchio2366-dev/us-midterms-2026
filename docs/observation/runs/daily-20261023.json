@@ -25,7 +25,7 @@
   "note": "MI・KS最終討論、SC大統領集会、OH新調査を原文・主催局・現地報道で照合。IA集会は実施とHinson氏同席まで確認し、演説全編は照合待ち。OHはFoxとRasmussenで先頭候補が異なるため勝敗予測に使わない。D43/R44/未配分13、保存案・共有URL・議席基準を維持。",
   "reviewMode": "daily; Friday; Monday full comparison audit not due",
   "baseCommit": "33dbc9c387f0a32effcec6d37572af55cc7cbf29",
-  "publishedCommit": null,
+  "publishedCommit": "bc7aab5cdac0fdcb93731321ce30cc052e65878f",
   "revision": "observation-2026-10-23-debates-rallies-oh-poll",
   "sourceChecks": [
     {
@@ -185,17 +185,22 @@
   "validation": {
     "npmCi": "passed: npm ci clean install",
     "npmTest": "passed: 484 tests in 37 files",
-    "npmBuild": "passed: tsc and Vite; index-CmHtch3w.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "npmBuild": "passed: tsc and Vite; index-BmjljX5f.js / index-Dsomt5uB.css; existing bundle-size advisory only",
     "initialTestAttempt": "Initial suite found one retrieval/verification-date invariant and seven stale current-state assertions. The source retained its last fully verified date, historical tests were pointed to the historical run, current expectations were updated, and the full suite then passed twice.",
-    "browserVerificationRoute": "Pending deployment and public-content verification."
+    "browserVerificationRoute": "Connected-browser DOM verification succeeded for D43/R44/unallocated13, the Iowa/Kansas/Michigan headlines, the Ohio headline after state selection, and the 2026-10-23 source-check date. The South Carolina headline was outside the rendered list limit, so its publication was verified in the published data and automated tests rather than claimed as a visible-page check."
   },
   "deployment": {
-    "status": "pending",
-    "pagesRunUrl": null,
-    "publicContentVerifiedAt": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/39876870238",
+    "publicContentVerifiedAt": "2026-10-23T00:17:18Z",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "verified": [],
-    "publicationMethod": "Pending fast-forward publication with expected parent and force=false; dist and unrelated UI files excluded.",
-    "verificationFollowup": "Pending."
+    "verified": [
+      "Pages run 39876870238 completed successfully for commit bc7aab5cdac0fdcb93731321ce30cc052e65878f.",
+      "The public page displayed D43/R44/unallocated13 and the Iowa, Kansas, Michigan, and Ohio update headlines.",
+      "The public source-check block displayed the 2026-10-23 Japan-time verification date.",
+      "The South Carolina update is present in the published observation data and passed the 484-test suite; it was outside the rendered news-list limit during the visible-page check."
+    ],
+    "publicationMethod": "Uploaded only the nine intended source, test, state, and run-record paths against main 33dbc9c387f0a32effcec6d37572af55cc7cbf29, created commit bc7aab5cdac0fdcb93731321ce30cc052e65878f, and advanced main with the expected parent and force=false. Generated dist files and unrelated UI changes were excluded.",
+    "verificationFollowup": "This documentation-only follow-up records the successful Pages run and public DOM checks; the public data and UI behavior are unchanged."
   }
 }
