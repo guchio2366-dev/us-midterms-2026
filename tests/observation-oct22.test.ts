@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { observationData as data } from '../src/data/observation';
+import run from '../docs/observation/runs/daily-20261022.json';
 
 describe('October 22 polls, early voting, and event outcomes', () => {
   it('keeps Alaska first preferences, simulated transfers, and exhausted-ballot assumptions separate', () => {
@@ -63,9 +64,10 @@ describe('October 22 polls, early voting, and event outcomes', () => {
   });
 
   it('records live or future items as pending instead of no-change confirmations', () => {
-    expect(data.monitor.latestRun.outcome).toBe('partial');
+    expect(run.outcome).toBe('partial');
     for (const id of ['obs-gop-sc-rally-20261021','obs-wxyz-mi-debate-20261021','obs-nexstar-ks-debate-20261021']) {
-      expect(data.monitor.latestRun.pendingSourceIds).toContain(id);
+      expect(run.pendingSourceIds).toContain(id);
     }
+    for (const id of ['sc-trump-rally-2026-10-21','mi-debate-2026-10-21','ks-debate-2026-10-21']) expect(data.events.find(x => x.eventId === id)!.status).toBe('completed');
   });
 });

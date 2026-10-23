@@ -31,7 +31,7 @@ describe('October 20 poll evidence and pending results', () => {
   it('advances only changed race analyses and retains partial-check dates', () => {
     expect(data.races.find(r => r.electionId.includes('-AK-'))!.updatedAt).toBe('2026-10-22');
     expect(data.races.find(r => r.electionId.includes('-TX-'))!.updatedAt).toBe('2026-10-22');
-    expect(data.races.find(r => r.electionId.includes('-OH-'))!.updatedAt).toBe('2026-10-20');
+    expect(data.races.find(r => r.electionId.includes('-OH-'))!.updatedAt).toBe('2026-10-23');
     for (const [state, date] of [['ME', '2026-10-18'], ['MI', '2026-10-22'], ['NH', '2026-10-19']]) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe(date);
     expect(run.outcome).toBe('partial'); expect(run.notCheckedSourceIds.length).toBeGreaterThan(0);
     expect(data.sources.find(s => s.sourceId === 'obs-cbs-tx-20261018-pending')!.lastSuccessAt).toBeNull();

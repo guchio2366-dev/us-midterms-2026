@@ -1,0 +1,201 @@
+{
+  "runId": "daily-20261023",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-23T00:00:00Z",
+  "completedAt": "2026-10-23T00:10:06Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-fox-oh-poll-20261021",
+    "obs-wxyz-mi-debate-result-20261022",
+    "obs-ap-mi-debate-20261022",
+    "obs-ap-ks-debate-20261022",
+    "obs-hppr-ks-debate-20261021",
+    "obs-ap-sc-rally-20261021",
+    "obs-factbase-sc-rally-20261021",
+    "obs-ap-ia-hinson-rally-20261022"
+  ],
+  "pendingSourceIds": [
+    "obs-gop-ia-rally-20261022",
+    "obs-fox-ia-rally-result-20261023",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house",
+    "obs-gop-mi-rally-20261025"
+  ],
+  "note": "MI・KS最終討論、SC大統領集会、OH新調査を原文・主催局・現地報道で照合。IA集会は実施とHinson氏同席まで確認し、演説全編は照合待ち。OHはFoxとRasmussenで先頭候補が異なるため勝敗予測に使わない。D43/R44/未配分13、保存案・共有URL・議席基準を維持。",
+  "reviewMode": "daily; Friday; Monday full comparison audit not due",
+  "baseCommit": "33dbc9c387f0a32effcec6d37572af55cc7cbf29",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-23-debates-rallies-oh-poll",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-fox-oh-poll-20261021",
+      "url": "https://www.foxnews.com/politics/fox-news-poll-gender-gap-pocketbook-pain-shape-ohio-senate-race",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "10月15〜19日、2,005 RV・1,592 LV、LV誤差±2、Brown 52/Husted 47を記事と公式toplineで照合。家計・好感度・大統領評価は別設問。"
+    },
+    {
+      "sourceId": "obs-wxyz-mi-debate-result-20261022",
+      "url": "https://www.wxyz.com/news/michigan-senate-debate-recap-rogers-and-el-sayed-clash-on-tariffs-iran-and-trump-ties",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "10月21日最終討論の実施、関税・自動車産業・生活費・Iranへの回答を主催局動画・要旨で確認。"
+    },
+    {
+      "sourceId": "obs-ap-mi-debate-20261022",
+      "url": "https://apnews.com/article/michigan-senate-debate-final-2cd2f863825211d1e4f620a89280df45",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "政権との関係・過激さをめぐる相互批判を主催局と照合。裏付けのない関係主張は攻撃として記録。"
+    },
+    {
+      "sourceId": "obs-ap-ks-debate-20261022",
+      "url": "https://apnews.com/article/senate-kansas-marshall-hamilton-diesel-ukraine-iran-b7f291bfc4271dd14b07533ca33129bd",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "10月21日最終討論の実施とdiesel・Ukraine・Russian dieselへの回答を確認。原因説明と政策効果を分離。"
+    },
+    {
+      "sourceId": "obs-hppr-ks-debate-20261021",
+      "url": "https://www.hppr.org/2026-10-21/control-of-the-senate-goes-through-kansas-marshall-and-hamilton-clash-at-last-debate",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "州内公共ラジオで上院多数派・生活費・医療の論戦をAPと相互照合。"
+    },
+    {
+      "sourceId": "obs-ap-sc-rally-20261021",
+      "url": "https://apnews.com/article/082387f3dd03803fd4d12fc287d65560",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "Pendleton集会の実施、Graham氏の登壇、大統領の支持・攻撃と両候補の訴えを現地取材で確認。"
+    },
+    {
+      "sourceId": "obs-factbase-sc-rally-20261021",
+      "url": "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-midterm-political-rally-pendleton-south-carolina-october-21-2026/",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:01:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "大統領発言をAP現地取材と相互照合。演説中の主張を政府決定・実績・効果とは扱わない。"
+    },
+    {
+      "sourceId": "obs-ap-ia-hinson-rally-20261022",
+      "url": "https://apnews.com/article/ashley-hinson-trump-iowa-senate-josh-turek-d4db60bf0d0884cef80aecebd00edf87",
+      "attemptedAt": "2026-10-23T00:09:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-23T00:09:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "集会参加予定とHinson・Turek両氏のTrump政権への協力・異論を州内取材で確認。本文は集会前取材のため実施確認には不使用。"
+    },
+    {
+      "sourceId": "obs-fox-ia-rally-result-20261023",
+      "url": "https://www.fox.com/watch/episode/fmc-d8z7yt7kqa5t4xms/trump-rallies-for-ashley-hinson-in-iowa-senate-race",
+      "attemptedAt": "2026-10-23T00:09:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-23T00:09:00Z",
+      "contentVerifiedAt": "2026-10-23",
+      "scope": "3分映像説明でSioux City集会実施とHinson氏への支援を確認。演説全編・逐語録は未取得。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "url": "https://insideelections.com/ratings/senate",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-16T00:09:31Z",
+      "contentVerifiedAt": "2026-10-16",
+      "scope": "10月15日版以後の公式全35選挙表を再取得できず、最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-15T00:05:35Z",
+      "contentVerifiedAt": "2026-10-15",
+      "scope": "10月14日記事以後の公式全表は再照合できず、最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "attemptedAt": "2026-10-23T00:01:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-14T00:08:30Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "党主催集会と公務日程を分離。新しい対象州公務日程の原文を確認できず、最後の成功日時を維持。"
+    }
+  ],
+  "discoveryChecks": [
+    {
+      "url": "https://siouxcityjournal.com/news/local/government-politics/article_812cb1bf-6aee-4117-8650-90c952d34380.html",
+      "status": "partial",
+      "attemptedAt": "2026-10-23T00:09:00Z",
+      "lastSuccessAt": null,
+      "scope": "ライブブログの検索表示は確認したが本文は取得できず、演説内容の根拠には不使用。"
+    }
+  ],
+  "notCheckedSourceIds": [
+    "obs-gop-mi-rally-20261025",
+    "obs-roster-ak",
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-oh",
+    "obs-roster-tx",
+    "obs-roster-nh"
+  ],
+  "searchCoverage": {
+    "targetStates": ["AK", "ME", "MI", "OH-special", "TX", "NH", "IA", "NC", "GA", "KS", "MN", "NE", "SC"],
+    "categories": ["candidate official announcements", "new polls", "local reporting", "scheduled events and outcomes", "presidential schedule", "integrated ratings"],
+    "scope": "対象州と分類を横断検索。全候補の全発表・全登録情報源の成功を意味しない。原文未取得・部分映像・全編未取得はpartial/not checkedとして残す。",
+    "mondayAudit": "Today Friday; full candidate comparison audit not due."
+  },
+  "eventChecks": [
+    {"eventId": "mi-debate-2026-10-21", "status": "completed", "scope": "WXYZ主催局とAPで実施・主要発言を照合し、元予定と結果を相互参照。"},
+    {"eventId": "ks-debate-2026-10-21", "status": "completed", "scope": "APとKansas News Serviceで実施・主要発言を照合し、元予定と結果を相互参照。"},
+    {"eventId": "sc-trump-rally-2026-10-21", "status": "completed", "scope": "AP現地取材と発言記録で実施・登壇・発言を確認し、元予定と結果を相互参照。"},
+    {"eventId": "ia-trump-rally-2026-10-22", "status": "completed_partial", "scope": "映像説明で実施とHinson氏支援を確認して元予定と結果を相互参照。演説全編は照合待ち。"},
+    {"eventId": "mi-trump-rally-2026-10-25", "status": "scheduled", "scope": "現地10月25日15時予定。実施・中止・延期、候補者参加は未確認。"}
+  ],
+  "changes": [
+    "obs-update-ia-trump-rally-2026-10-22",
+    "obs-update-oh-fox-poll-2026-10-21",
+    "obs-update-mi-debate-2026-10-21",
+    "obs-update-ks-debate-2026-10-21",
+    "obs-update-sc-trump-rally-2026-10-21"
+  ],
+  "preserved": [
+    "D43/R44/unallocated13",
+    "all historical scenario/share baselines",
+    "UI/candidate IDs",
+    "AK/ME/MI/TX/NH analysis dates",
+    "saved scenarios and shared URLs"
+  ],
+  "validation": {
+    "npmCi": "passed: npm ci clean install",
+    "npmTest": "passed: 484 tests in 37 files",
+    "npmBuild": "passed: tsc and Vite; index-CmHtch3w.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "initialTestAttempt": "Initial suite found one retrieval/verification-date invariant and seven stale current-state assertions. The source retained its last fully verified date, historical tests were pointed to the historical run, current expectations were updated, and the full suite then passed twice.",
+    "browserVerificationRoute": "Pending deployment and public-content verification."
+  },
+  "deployment": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicContentVerifiedAt": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "verified": [],
+    "publicationMethod": "Pending fast-forward publication with expected parent and force=false; dist and unrelated UI files excluded.",
+    "verificationFollowup": "Pending."
+  }
+}

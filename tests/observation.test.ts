@@ -46,9 +46,35 @@ describe('接戦州の編集データ',()=>{
     expect(ks.status).toBe('completed');expect(ks.resultUpdateId).toBe('obs-update-ks-trump-rally-2026-10-19');
     const ia=data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!;
     expect(ia.time).toBe('18:00');expect(ia.timezone).toBe('America/Chicago');
-    expect(ia.status).toBe('scheduled');expect(ia.resultUpdateId).toBeNull();
-    expect(data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!.relevance[0].why).toContain('会場は未発表');
-    expect(data.events.find(e=>e.eventId==='mi-debate-2026-10-21')!.time).toBe('19:00');
+    expect(ia.status).toBe('completed');expect(ia.resultUpdateId).toBe('obs-update-ia-trump-rally-2026-10-22');
+    expect(data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!.relevance[0].why).toContain('Sioux Gateway Airport');
+    expect(data.events.find(e=>e.eventId==='ia-trump-rally-2026-10-22')!.relevance[0].why).toContain('全編は照合待ち');
+    const miDebate=data.events.find(e=>e.eventId==='mi-debate-2026-10-21')!;
+    expect(miDebate.time).toBe('19:00');expect(miDebate.status).toBe('completed');
+    expect(miDebate.resultUpdateId).toBe('obs-update-mi-debate-2026-10-21');
+  });
+  it('records the October 21 debate and rally results without turning claims into effects',()=>{
+    for(const [eventId,updateId] of [
+      ['mi-debate-2026-10-21','obs-update-mi-debate-2026-10-21'],
+      ['ks-debate-2026-10-21','obs-update-ks-debate-2026-10-21'],
+      ['sc-trump-rally-2026-10-21','obs-update-sc-trump-rally-2026-10-21'],
+      ['ia-trump-rally-2026-10-22','obs-update-ia-trump-rally-2026-10-22'],
+    ]){
+      const event=data.events.find(e=>e.eventId===eventId)!;
+      expect(event.status).toBe('completed');expect(event.resultUpdateId).toBe(updateId);
+      const update=data.updates.find(u=>u.updateId===updateId)!;
+      expect(update.eventId).toBe(eventId);expect(update.uncertainty).toMatch(/効果|支持|評価/);
+    }
+  });
+  it('keeps the new Ohio poll separate from conflicting prior polls and separate questions',()=>{
+    const race=data.races.find(r=>r.electionId==='2026-OH-3-special')!;
+    expect(race.updatedAt).toBe('2026-10-23');
+    expect(race.featuredSummary).toContain('Brown 52%・Husted 47%');
+    expect(race.featuredSummary).toContain('Rasmussen');
+    const update=data.updates.find(u=>u.updateId==='obs-update-oh-fox-poll-2026-10-21')!;
+    expect(update.happened).toContain('投票予定者1,592人');
+    expect(update.uncertainty).toContain('別設問');
+    expect(update.uncertainty).toContain('勝敗');
   });
   it('expands Maine recap without claiming a full recording audit or polling effect',()=>{
     const u=data.updates.find(u=>u.updateId==='obs-update-me-debate-2026-10-15')!;

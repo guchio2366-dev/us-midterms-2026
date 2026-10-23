@@ -23,7 +23,8 @@ describe('October 19 evidence and partial weekly audit',()=>{
     const sc=data.events.find(e=>e.eventId==='sc-trump-rally-2026-10-21')!;
     expect(eventInstant(mi)?.toISOString()).toBe('2026-10-25T19:00:00.000Z');
     expect(eventInstant(sc)?.toISOString()).toBe('2026-10-21T23:00:00.000Z');
-    for(const e of [mi,sc]){expect(e.status).toBe('scheduled');expect(e.resultUpdateId).toBeNull();}
+    expect(mi.status).toBe('scheduled');expect(mi.resultUpdateId).toBeNull();
+    expect(sc.status).toBe('completed');expect(sc.resultUpdateId).toBe('obs-update-sc-trump-rally-2026-10-21');
     expect(mi.relevance[0].why).toContain('会場は未発表');
   });
   it('records every original comparison cell without pretending all sources were rechecked',()=>{
