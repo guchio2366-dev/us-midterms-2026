@@ -20,7 +20,7 @@
   "note": "AKの司法省提訴を訴状・州公式名簿・州内取材・候補者発信で照合し、原告の主張・請求と未判断の法的効果を分離。NHのSaint Anselm調査を原票と方法まで確認。MIの10月25日大統領集会はPort Huronの会場・開場・発言開始を主催者で確認した。D43/R44/未配分13、保存案・共有URL・議席基準を維持。",
   "reviewMode": "daily; Saturday; Monday full comparison audit not due",
   "baseCommit": "0e7ccfa8fb173ba53c643ef95e5501d820b951bb",
-  "publishedCommit": null,
+  "publishedCommit": "afba599cf0536b5ebc1b8e6f4d6735947f99af30",
   "revision": "observation-2026-10-24-ak-lawsuit-nh-poll",
   "sourceChecks": [
     {
@@ -151,14 +151,21 @@
     "npmTest": "passed: 488 tests in 38 files",
     "npmBuild": "passed: tsc and Vite; index-BoyqNBs1.js / index-Dsomt5uB.css; existing bundle-size advisory only",
     "initialTestAttempt": "The first full suite found one stale current-state date assertion in a historical verification test. Its ordering was updated to the current AK/NH analysis dates, and the full 488-test suite then passed.",
-    "browserVerificationRoute": "pending"
+    "browserVerificationRoute": "GitHub Pagesの実DOMをChromeで確認。D43/R44/未配分13、AK・NHの新記事見出し、MI Port Huron集会の会場・時刻・候補参加未確認表示、情報源最終確認日2026/10/24を確認。"
   },
   "deployment": {
-    "status": "pending",
-    "pagesRunUrl": null,
-    "publicContentVerifiedAt": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40043910341",
+    "publicContentVerifiedAt": "2026-10-24T00:16:00Z",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "verified": [],
-    "publicationMethod": "pending"
+    "verified": [
+      "D43/R44/unallocated13",
+      "AK DOJ lawsuit update headline and distinction between complaint, court ruling, and election result",
+      "NH Saint Anselm 50/43 update headline",
+      "MI Port Huron rally venue, timing, and unconfirmed Rogers participation",
+      "source last-check display 2026/10/24 09:22 JST"
+    ],
+    "publicationMethod": "main 0e7ccfa8fb173ba53c643ef95e5501d820b951bbを期待値として、対象9ファイルだけのtreeを作成し、force=falseでafba599cf0536b5ebc1b8e6f4d6735947f99af30へfast-forward。dist生成物は除外。",
+    "verificationFollowup": "公開成功と実DOM確認をこの記録とCURRENT_STATE.mdだけの文書追補へ反映。"
   }
 }
