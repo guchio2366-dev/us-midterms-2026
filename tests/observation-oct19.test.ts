@@ -25,7 +25,7 @@ describe('October 19 evidence and partial weekly audit',()=>{
     expect(eventInstant(sc)?.toISOString()).toBe('2026-10-21T23:00:00.000Z');
     expect(mi.status).toBe('scheduled');expect(mi.resultUpdateId).toBeNull();
     expect(sc.status).toBe('completed');expect(sc.resultUpdateId).toBe('obs-update-sc-trump-rally-2026-10-21');
-    expect(mi.relevance[0].why).toContain('会場は未発表');
+    expect(mi.relevance[0].why).toContain('McMorran Place Arena');
   });
   it('records every original comparison cell without pretending all sources were rechecked',()=>{
     expect(run.comparisonAudit).toHaveLength(60);

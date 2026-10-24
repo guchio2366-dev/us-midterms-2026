@@ -10,7 +10,7 @@ describe('October 22 polls, early voting, and event outcomes', () => {
     expect(update.happened).toContain('44%');
     expect(update.uncertainty).toContain('消尽票');
     expect(update.uncertainty).toContain('勝敗予測とは扱わない');
-    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-22');
+    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-24');
   });
 
   it('separates Texas outside spending, candidate fundraising, and voter effects', () => {

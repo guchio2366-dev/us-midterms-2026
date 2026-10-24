@@ -12,9 +12,10 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(142);
+    expect(recent).toHaveLength(144);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(128);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(130);
+    for(const id of ['obs-update-ak-doj-lawsuit-2026-10-22','obs-update-nh-saint-anselm-2026-10-22']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-ia-trump-rally-2026-10-22','obs-update-oh-fox-poll-2026-10-21','obs-update-mi-debate-2026-10-21','obs-update-ks-debate-2026-10-21','obs-update-sc-trump-rally-2026-10-21']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-tx-spending-2026-10-21','obs-update-ak-dataforprogress-2026-10-20','obs-update-mi-marist-2026-10-21','obs-update-ga-ajc-2026-10-21','obs-update-early-vote-2026-10-21','obs-update-nc-trump-rally-2026-10-20']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-bls-state-jobs-2026-10-20','obs-update-ks-trump-rally-2026-10-19']) expect(recent.some(item=>item.sourceId===id)).toBe(true);

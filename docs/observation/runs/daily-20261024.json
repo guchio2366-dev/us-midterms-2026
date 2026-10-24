@@ -1,0 +1,164 @@
+{
+  "runId": "daily-20261024",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-24T00:00:00Z",
+  "completedAt": "2026-10-24T00:22:00Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-courtlistener-ak-certification-complaint-20261022",
+    "obs-alaska-public-doj-lawsuit-20261023",
+    "obs-peltola-doj-response-20261023",
+    "obs-roster-ak",
+    "obs-saint-anselm-nh-20261022",
+    "obs-gop-mi-rally-20261025"
+  ],
+  "pendingSourceIds": [
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "note": "AKの司法省提訴を訴状・州公式名簿・州内取材・候補者発信で照合し、原告の主張・請求と未判断の法的効果を分離。NHのSaint Anselm調査を原票と方法まで確認。MIの10月25日大統領集会はPort Huronの会場・開場・発言開始を主催者で確認した。D43/R44/未配分13、保存案・共有URL・議席基準を維持。",
+  "reviewMode": "daily; Saturday; Monday full comparison audit not due",
+  "baseCommit": "0e7ccfa8fb173ba53c643ef95e5501d820b951bb",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-24-ak-lawsuit-nh-poll",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-courtlistener-ak-certification-complaint-20261022",
+      "url": "https://storage.courtlistener.com/recap/gov.uscourts.akd.80263/gov.uscourts.akd.80263.1.0_1.pdf",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "contentVerifiedAt": "2026-10-24",
+      "scope": "Case 3:26-cv-00376-SLGの訴状14ページ、提訴日、事実主張、州裁判経緯、NVRA請求、条件付き差止め請求を照合。提訴を裁判所の判断としない。"
+    },
+    {
+      "sourceId": "obs-alaska-public-doj-lawsuit-20261023",
+      "url": "https://alaskapublic.org/news/politics/elections/2026-10-23/trumps-administration-sues-to-block-a-possible-democratic-win-in-the-alaska-u-s-senate-race",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "contentVerifiedAt": "2026-10-24",
+      "scope": "提訴、州裁判所の既存判断、公式投票用紙の識別表示、両主要候補側の反応を訴状・州公式一覧と相互照合。"
+    },
+    {
+      "sourceId": "obs-peltola-doj-response-20261023",
+      "url": "https://marypeltola.substack.com/p/the-department-of-justice-is-trying",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "contentVerifiedAt": "2026-10-24",
+      "scope": "提訴への批判と投票教育へ投資するとの陣営説明を原文確認。法的結論・有権者評価とは扱わない。"
+    },
+    {
+      "sourceId": "obs-roster-ak",
+      "url": "https://www.elections.alaska.gov/candidates/?election=26genr",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "contentVerifiedAt": "2026-10-24",
+      "scope": "本選候補者一覧でDan S. Sullivan、Daniel J. Sullivan Jr.、Mary Peltolaの氏名、登録党派、現職表示を確認。"
+    },
+    {
+      "sourceId": "obs-saint-anselm-nh-20261022",
+      "url": "https://www.anselm.edu/sites/default/files/2026-10/October%2019-20%20Poll%20Results.pdf",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "contentVerifiedAt": "2026-10-24",
+      "scope": "10月19〜20日、LV1,672、web、誤差±2.4、Pappas 50/Sununu 43/Other 5/Unsure 2。好感度・大統領評価・争点優先度は別設問。"
+    },
+    {
+      "sourceId": "obs-gop-mi-rally-20261025",
+      "url": "https://events.gop.com/events/midterm-rally-in-st-clair-mi-president-donald-j-trump-djt47",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "contentVerifiedAt": "2026-10-24",
+      "scope": "Michigan共和党公式ページと主催者登録ページで10月25日、McMorran Place Arena、開場11時30分、発言開始15時ETを確認。上院候補参加は未確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "url": "https://insideelections.com/ratings/senate",
+      "attemptedAt": "2026-10-24T00:06:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-16T00:09:31Z",
+      "contentVerifiedAt": "2026-10-16",
+      "scope": "10月15日版以後の公式全35選挙表を再取得できず、最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
+      "attemptedAt": "2026-10-24T00:06:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-15T00:05:35Z",
+      "contentVerifiedAt": "2026-10-15",
+      "scope": "10月14日記事以後の公式全表は再照合できず、最後の成功日時を維持。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "attemptedAt": "2026-10-24T00:06:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-14T00:08:30Z",
+      "contentVerifiedAt": "2026-10-14",
+      "scope": "党主催集会と公務日程を分離。新しい対象州公務日程の原文を確認できず、最後の成功日時を維持。"
+    }
+  ],
+  "discoveryChecks": [
+    {
+      "url": "https://www.elections.alaska.gov/sample-ballots/",
+      "status": "checked",
+      "attemptedAt": "2026-10-24T00:03:00Z",
+      "lastSuccessAt": "2026-10-24T00:03:00Z",
+      "scope": "2026年本選のsample ballot入口を確認。投票用紙上の具体的表示は訴状添付図と州内記事でも相互照合。"
+    }
+  ],
+  "notCheckedSourceIds": [
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-oh",
+    "obs-roster-tx",
+    "obs-roster-nh"
+  ],
+  "searchCoverage": {
+    "targetStates": ["AK", "ME", "MI", "OH-special", "TX", "NH", "IA", "NC", "GA", "KS", "MN", "NE", "SC"],
+    "categories": ["candidate official announcements", "new polls", "local reporting", "scheduled events and outcomes", "presidential schedule", "integrated ratings"],
+    "scope": "対象州と分類を横断検索。AK訴訟、NH調査、MI予定の原文を採用。他州の既掲載調査・一般的な選挙記事は重複掲載しない。全候補の全発表・全登録情報源の成功を意味しない。",
+    "mondayAudit": "Today Saturday; full candidate comparison audit not due."
+  },
+  "eventChecks": [
+    {
+      "eventId": "mi-trump-rally-2026-10-25",
+      "status": "scheduled",
+      "scope": "Port HuronのMcMorran Place Arena、開場11時30分、発言開始15時ETを確認。実施・中止・延期とMike Rogers氏の参加・発言は未確認。"
+    }
+  ],
+  "changes": [
+    "obs-update-ak-doj-lawsuit-2026-10-22",
+    "obs-update-nh-saint-anselm-2026-10-22",
+    "mi-trump-rally-2026-10-25 venue confirmation"
+  ],
+  "preserved": [
+    "D43/R44/unallocated13",
+    "all historical scenario/share baselines",
+    "UI/candidate IDs",
+    "ME/MI/OH/TX analysis dates",
+    "saved scenarios and shared URLs"
+  ],
+  "validation": {
+    "npmCi": "passed: npm ci clean install",
+    "npmTest": "passed: 488 tests in 38 files",
+    "npmBuild": "passed: tsc and Vite; index-BoyqNBs1.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "initialTestAttempt": "The first full suite found one stale current-state date assertion in a historical verification test. Its ordering was updated to the current AK/NH analysis dates, and the full 488-test suite then passed.",
+    "browserVerificationRoute": "pending"
+  },
+  "deployment": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicContentVerifiedAt": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "verified": [],
+    "publicationMethod": "pending"
+  }
+}
