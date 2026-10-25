@@ -19,7 +19,7 @@
   "note": "MI・IA・OHのInsiderAdvantage調査を公表元で確認し、同一方式の小差3調査として追加。MIとOHの10月24日Obama元大統領集会を州内取材で実施結果へ更新し、元予定と相互参照。AK・ME・NHの暖房油負担と候補者対応をReuters取材で比較した。SabatoとInside Electionsの現行評価、White House公開一覧も再確認。D43/R44/未配分13、保存共有・議席基準は変更しない。",
   "reviewMode": "daily; Sunday; Monday full comparison audit not due",
   "baseCommit": "af43e58ba92b2ac024fa2febc3f48fa6b5f1403d",
-  "publishedCommit": null,
+  "publishedCommit": "addae718dfa690ab0081c77f8e30581d39cfcd0c",
   "revision": "observation-2026-10-25-polls-obama-heating-oil",
   "sourceChecks": [
     {
@@ -141,14 +141,22 @@
     "npmCi": "passed: npm ci clean install",
     "npmTest": "passed: 492 tests in 39 files",
     "npmBuild": "passed: tsc and Vite; index-BMnX3x-g.js / index-Dsomt5uB.css; existing bundle-size advisory only",
-    "browserVerificationRoute": "pending"
+    "browserVerificationRoute": "GitHub Pagesの実DOMをChromeで確認。D43/R44/未配分13、暖房油・MI Obama・OH Obamaの新記事、MI Port Huron集会予定、情報源最終確認2026/10/25 09:05 JSTを確認。"
   },
   "deployment": {
-    "status": "pending",
-    "pagesRunUrl": null,
-    "publicContentVerifiedAt": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40145482043",
+    "publicContentVerifiedAt": "2026-10-25T00:08:46Z",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "verified": [],
-    "publicationMethod": "pending"
+    "verified": [
+      "D43/R44/unallocated13",
+      "AK・ME・NH heating-oil update headline and caveat",
+      "Michigan Obama rally result update headline",
+      "Ohio Obama rally result update headline",
+      "MI Port Huron Trump rally remains scheduled with Rogers participation unconfirmed",
+      "source last-check display 2026/10/25 09:05 JST"
+    ],
+    "publicationMethod": "main af43e58ba92b2ac024fa2febc3f48fa6b5f1403dを期待値として、対象6ファイルだけのtreeを作成し、force=falseでaddae718dfa690ab0081c77f8e30581d39cfcd0cへfast-forward。dist生成物は除外。",
+    "verificationFollowup": "公開成功と実DOM確認をこの記録とCURRENT_STATE.mdだけの文書追補へ反映。"
   }
 }
