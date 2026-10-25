@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-24-ak-lawsuit-nh-poll",
+  "revision": "observation-2026-10-25-polls-obama-heating-oil",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,27 +8,26 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-24T00:22:00Z",
+    "lastCompletedAt": "2026-10-25T00:05:00Z",
     "latestRun": {
-      "runId": "daily-20261024",
+      "runId": "daily-20261025",
       "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
-      "startedAt": "2026-10-24T00:00:00Z",
-      "completedAt": "2026-10-24T00:22:00Z",
+      "startedAt": "2026-10-24T23:57:19Z",
+      "completedAt": "2026-10-25T00:05:00Z",
       "outcome": "partial",
       "checkedSourceIds": [
-        "obs-courtlistener-ak-certification-complaint-20261022",
-        "obs-alaska-public-doj-lawsuit-20261023",
-        "obs-peltola-doj-response-20261023",
-        "obs-roster-ak",
-        "obs-saint-anselm-nh-20261022",
-        "obs-gop-mi-rally-20261025"
-      ],
-      "pendingSourceIds": [
+        "obs-mlive-mi-obama-rally-20261024",
+        "obs-ideastream-oh-obama-rally-result-20261024",
+        "obs-reuters-heating-oil-20261024",
         "obs-sabato",
         "obs-inside",
         "obs-white-house"
       ],
-      "note": "AKでは司法省の10月22日提訴を訴状・州公式名簿・州内取材・候補者発信で照合し、請求内容と未判断の法的主張を分離。NHはSaint Anselmの10月19〜20日調査を原票・方法まで確認。MIの10月25日大統領集会はPort Huronの会場と時刻を主催者で確認した。D43/R44/未配分13、保存共有・画面は変更しない。"
+      "pendingSourceIds": [
+        "obs-roster-nh",
+        "obs-insideradvantage-mi-ia-oh-20261023"
+      ],
+      "note": "MI・IA・OHのInsiderAdvantage調査を公表元で確認し、同一方式の小差3調査として追加。MIとOHの10月24日Obama元大統領集会を州内取材で実施結果へ更新し、元予定と相互参照。AK・ME・NHの暖房油負担と候補者対応をReuters取材で比較した。SabatoとInside Electionsの現行評価、White House公開一覧も再確認。D43/R44/未配分13、保存共有・議席基準は変更しない。"
     }
   },
   "sources": [
@@ -1104,7 +1103,7 @@
       ],
       "category": "poll",
       "cadence": "event-driven",
-      "method": "公式サイト関連記事欄で10月13〜14日、各州LV 1200人、text/panel、誤差2.83%と新調査の存在��確認。記事リンクの取得失敗、全選択肢・質問文・topline未取得のため支持率の掲載は保留。",
+      "method": "公式サイト関連記事欄で10月13〜14日、各州LV 1200人、text/panel、誤差2.83%と新調査の存在を確認。記事リンクの取得失敗、全選択肢・質問文・topline未取得のため支持率の掲載は保留。",
       "alternativeUrl": null,
       "checkStatus": "partial",
       "lastSuccessAt": null
@@ -2299,7 +2298,7 @@
       "publisher": "Rasmussen Reports",
       "url": "https://www.rasmussenreports.com/public_content/politics/elections/election_2026/election_2026_new_hampshire_senate2",
       "publishedAt": "2026-10-05",
-      "referencePeriod": "10月2〜4日のNew Hampshire州投票予定者調査。候補��選択、標本、実査期間、誤差、電話・オンライン併用方法を公表ページと質問表で照合。",
+      "referencePeriod": "10月2〜4日のNew Hampshire州投票予定者調査。候補者選択、標本、実査期間、誤差、電話・オンライン併用方法を公表ページと質問表で照合。",
       "retrievedAt": "2026-10-06",
       "contentVerifiedAt": "2026-10-06",
       "electionIds": [
@@ -3936,8 +3935,8 @@
       "url": "https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close",
       "publishedAt": "2026-10-14",
       "referencePeriod": "KansasをToss-up、NebraskaをLean R、New HampshireをLikely D、MinnesotaをLean D、MississippiをLikely Rに変更。上院全体はD方向49、R方向46、Toss-up 5。",
-      "retrievedAt": "2026-10-15",
-      "contentVerifiedAt": "2026-10-15",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": "2026-10-25",
       "electionIds": [
         "2026-IA-2-regular",
         "2026-NC-2-regular",
@@ -3955,10 +3954,10 @@
       ],
       "category": "rating",
       "cadence": "daily",
-      "method": "Sabato公式Substackの分析本文、変更理由、変更後評価を照合",
+      "method": "Sabato公式の現行評価表と変更履歴を再確認。10月14日以降の上院評価変更がないことを照合。",
       "alternativeUrl": "https://centerforpolitics.org/crystalball/five-senate-rating-changes-as-close-battle-for-majority-control-rages/",
-      "checkStatus": "partial",
-      "lastSuccessAt": "2026-10-15T00:05:35Z"
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-25T00:03:00Z"
     },
     {
       "sourceId": "obs-270towin-sabato-20260922",
@@ -3988,8 +3987,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・10月15日更新。FL・TX・SC・NH・KSの変更5件と全35選挙の現行値を公式APIで確認。",
-      "retrievedAt": "2026-10-16",
-      "contentVerifiedAt": "2026-10-16",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": "2026-10-25",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -4007,10 +4006,10 @@
       ],
       "category": "rating",
       "cadence": "daily",
-      "method": "公式APIの10月15日更新と冒頭7州を確認。全35選挙の再監査は未完了。基準を維持。",
+      "method": "公式APIの10月15日更新と全35選挙の現行値を再確認。統合基準を維持。",
       "alternativeUrl": null,
-      "checkStatus": "partial",
-      "lastSuccessAt": "2026-10-16T00:09:31Z"
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-25T00:03:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -4019,8 +4018,8 @@
       "url": "https://www.whitehouse.gov/briefings-statements/",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・掲載内容",
-      "retrievedAt": "2026-10-14",
-      "contentVerifiedAt": "2026-10-14",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": "2026-10-25",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-IA-2-regular",
@@ -4033,10 +4032,10 @@
       ],
       "category": "official",
       "cadence": "daily",
-      "method": "公開原文を検索・閲覧し、主張の位置と日付を照合",
+      "method": "公式発表一覧とLiveページを10月23日掲載分まで確認。対象州の追加日程は公式一覧で確認できなかったが、不掲載を日程不存在の証明とはしない。",
       "alternativeUrl": null,
       "checkStatus": "partial",
-      "lastSuccessAt": "2026-10-14T00:08:30Z"
+      "lastSuccessAt": "2026-10-25T00:04:00Z"
     },
     {
       "sourceId": "obs-local-ak",
@@ -4730,7 +4729,7 @@
       "publisher": "Reuters",
       "url": "https://www.reuters.com/legal/government/canadian-tariffs-bite-republicans-search-winning-message-2026-09-17/",
       "publishedAt": "2026-09-17",
-      "referencePeriod": "対カナダ関税をめぐり、メーン州の共和党Collinsと民主党Jackson、ミシガン州の共和党Rogersと民主党El-Sayed���異なる主張を比較。州別の貿易依存と全国調査も確認。",
+      "referencePeriod": "対カナダ関税をめぐり、メーン州の共和党Collinsと民主党Jackson、ミシガン州の共和党Rogersと民主党El-Sayedの異なる主張を比較。州別の貿易依存と全国調査も確認。",
       "retrievedAt": "2026-09-18",
       "contentVerifiedAt": "2026-09-18",
       "electionIds": [
@@ -5096,6 +5095,86 @@
       "alternativeUrl": null,
       "checkStatus": "checked",
       "lastSuccessAt": "2026-09-23T00:35:38Z"
+    },
+    {
+      "sourceId": "obs-insideradvantage-mi-ia-oh-20261023",
+      "title": "InsiderAdvantage Senate Surveys: Michigan, Iowa, Ohio",
+      "publisher": "InsiderAdvantage",
+      "url": "https://insideradvantage.com/insideradvantage-senate-surveys-mi-el-sayed-47-rogers-46-ia-hinson-47-turek-45-oh-brown-47-husted-44/",
+      "publishedAt": "2026-10-23",
+      "referencePeriod": "10月21〜22日のMI・IA・OH各州投票予定者1,200人。候補者支持の上位数値と共通方式を確認。",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-MI-2-regular",
+        "2026-IA-2-regular",
+        "2026-OH-3-special"
+      ],
+      "category": "poll",
+      "cadence": "daily",
+      "method": "携帯テキストとオンラインパネルの混合方式。年齢・人種・性別・政治的所属で重み付けし、各州の標本誤差は±2.83ポイント。公表元のtop lineで候補別数値と方法を確認したが、技術的問題により詳細表・質問文は未掲載で、調査資金提供者も確認できない。",
+      "alternativeUrl": "https://insideradvantage.com/top-line-tabs-ohio/",
+      "checkStatus": "partial",
+      "lastSuccessAt": null
+    },
+    {
+      "sourceId": "obs-mlive-mi-obama-rally-20261024",
+      "title": "Barack Obama stumps for El-Sayed, Benson in Detroit",
+      "publisher": "MLive",
+      "url": "https://www.mlive.com/politics/2026/10/barack-obama-stumps-for-el-sayed-benson-in-detroit-it-feels-like-change-is-in-the-air.html",
+      "publishedAt": "2026-10-24",
+      "referencePeriod": "DetroitのCass Technical High Schoolで実施したObama元大統領、El-Sayed氏、Benson氏の集会と発言。",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": "2026-10-25",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "州内取材で会場、登壇者、候補者発言、集会実施を確認。友好的な会場反応を州全体の支持・投票参加効果と扱わない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-25T00:05:00Z"
+    },
+    {
+      "sourceId": "obs-ideastream-oh-obama-rally-result-20261024",
+      "title": "In Cleveland, Obama says road to block Trump's agenda runs through Ohio in midterms",
+      "publisher": "Ideastream Public Media",
+      "url": "https://www.ideastream.org/government-politics/2026-10-24/in-cleveland-obama-says-road-to-block-trumps-agenda-runs-through-ohio-in-midterms",
+      "publishedAt": "2026-10-24",
+      "referencePeriod": "Cleveland Public Auditoriumで実施したObama元大統領、Brown氏、Acton氏の集会と発言。",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": "2026-10-25",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "州内公共メディアの現地取材で会場、登壇者、発言、実施を確認。参加者数と個別の反応を州全体の支持・投票参加効果と扱わない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-25T00:05:00Z"
+    },
+    {
+      "sourceId": "obs-reuters-heating-oil-20261024",
+      "title": "Winter nears, heating oil emerges as hurdle in US Senate races",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/government/winter-nears-heating-oil-emerges-hurdle-republicans-us-senate-races-2026-10-24/",
+      "publishedAt": "2026-10-24",
+      "referencePeriod": "AK・ME・NHの暖房油利用率、価格、候補者対応と15人の有権者・候補者・戦略家への取材。",
+      "retrievedAt": "2026-10-25",
+      "contentVerifiedAt": "2026-10-25",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-NH-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "EIA等の価格・利用率、候補者側の発言、個別有権者の反応を区別。15人への取材を代表調査と扱わず、価格原因・政策効果・候補者評価を分離する。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-25T00:06:00Z"
     }
   ],
   "evidenceRefs": [
@@ -5767,7 +5846,7 @@
     {
       "evidenceId": "ev-obs-yougov-method-20261007",
       "sourceId": "obs-yougov-seven-state-20261007",
-      "locator": "YouGovは過去の��票、人口属性、自己申告の投票見込みを使って投票予定者を定義。州別標本は1,520〜3,949人、誤差は±2.5〜3.9ポイント。各州の候補値は州別原票で照合した。",
+      "locator": "YouGovは過去の投票、人口属性、自己申告の投票見込みを使って投票予定者を定義。州別標本は1,520〜3,949人、誤差は±2.5〜3.9ポイント。各州の候補値は州別原票で照合した。",
       "checkedAt": "2026-10-09",
       "kind": "observed"
     },
@@ -6792,6 +6871,34 @@
       "locator": "Sabato公式Substack本文は10月6日にAlaska上院をToss-upからLeans Democratic、South Carolina上院をSafe RepublicanからLikely Republicanへ変更。上院全体をD方向49、R方向47、Toss-up 4とした。Inside ElectionsはAlaskaをToss-upとしているため統合配分は未配分を維持し、South Carolinaも共和党側配分を維持する。",
       "checkedAt": "2026-10-07",
       "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-insideradvantage-mi-ia-oh-20261023",
+      "sourceId": "obs-insideradvantage-mi-ia-oh-20261023",
+      "locator": "10月21〜22日実査の各州投票予定者1,200人調査。MIはEl-Sayed 47%・Rogers 46%、IAはHinson 47%・Turek 45%、OHはBrown 47%・Husted 44%。携帯テキストとオンラインパネルを併用し、年齢・人種・性別・政治的所属で重み付け、誤差±2.83ポイント。いずれの候補差も誤差内。詳細表・質問文は公表元の技術的問題で未掲載、資金提供者も未確認。",
+      "checkedAt": "2026-10-25",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-mlive-mi-obama-rally-20261024",
+      "sourceId": "obs-mlive-mi-obama-rally-20261024",
+      "locator": "10月24日、DetroitのCass Technical High SchoolでObama元大統領が民主党El-Sayed上院候補とBenson知事候補を支援。Obama氏はEl-Sayed氏を変化のために闘う候補と評価し、El-Sayed氏は自身の名前・信仰への攻撃に触れながら米国への帰属を訴えた。集会実施と発言は確認できるが、友好的な会場反応は州全体の支持や投票参加効果を示さない。",
+      "checkedAt": "2026-10-25",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-ideastream-oh-obama-rally-result-20261024",
+      "sourceId": "obs-ideastream-oh-obama-rally-result-20261024",
+      "locator": "10月24日、Cleveland Public AuditoriumでObama元大統領が民主党Brown上院候補とActon知事候補を支援。Obama氏はTrump政権とHusted氏を生活費・自己利益の観点から批判し、Brown氏はHusted氏とFirstEnergyの関係を批判した。数千人規模との現地報道と参加者の反応は、州全体の支持や得票効果の測定ではない。",
+      "checkedAt": "2026-10-25",
+      "kind": "reported"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-heating-oil-20261024",
+      "sourceId": "obs-reuters-heating-oil-20261024",
+      "locator": "全国の暖房油価格は1年前の約3.50ドルから6ドル超、dieselは6.50ドル超。暖房油利用はNH 43%、AK約30%、ME 54%。NHのPappas氏はエネルギー費が対話の中心と説明し、Sununu陣営は回答なし。AKのSullivan氏はdiesel輸出停止と戦争早期終結を支持し、Peltola陣営は戦争が燃料・食料費を押し上げたと批判。MEのCollins氏はLIHEAP・備蓄放出を働きかけた。候補者発言と15人への取材は、政策効果や州全体の有権者評価を示さない。",
+      "checkedAt": "2026-10-25",
+      "kind": "reported"
     }
   ],
   "races": [
@@ -8215,25 +8322,26 @@
       "date": "2026-10-24",
       "time": null,
       "timezone": "America/New_York",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-10-14",
+      "checkedAt": "2026-10-25",
       "evidenceIds": [
         "ev-obs-sherrod-obama-rally-20261024",
-        "ev-obs-ideastream-oh-obama-rally-20261013"
+        "ev-obs-ideastream-oh-obama-rally-20261013",
+        "ev-obs-ideastream-oh-obama-rally-result-20261024"
       ],
       "relevance": [
         {
           "electionId": "2026-OH-3-special",
-          "why": "Obama元大統領がBrown氏、Ohio州知事候補Amy Acton氏とClevelandで行う確認済みの選挙集会。",
-          "watch": "時刻・会場と実施・中止・延期、発言を確認する。推薦・共同登壇・会場反応を投票参加や州全体の支持へ置き換えない。",
+          "why": "Obama元大統領がBrown氏、Ohio州知事候補Amy Acton氏とCleveland Public Auditoriumで実施した選挙集会。",
+          "watch": "実施と発言を結果記事で確認済み。共同登壇・参加者数・会場反応を投票参加や州全体の支持へ置き換えない。",
           "materialIds": [
             "oh-cost",
             "oh-jobs"
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-oh-obama-rally-2026-10-24",
       "publicationStatus": "published"
     },
     {
@@ -8412,23 +8520,24 @@
       "date": "2026-10-24",
       "time": null,
       "timezone": "America/Detroit",
-      "status": "scheduled",
+      "status": "completed",
       "dateHistory": [],
-      "checkedAt": "2026-10-06",
+      "checkedAt": "2026-10-25",
       "evidenceIds": [
-        "ev-obs-mi-democrats-obama-20261005"
+        "ev-obs-mi-democrats-obama-20261005",
+        "ev-obs-mlive-mi-obama-rally-20261024"
       ],
       "relevance": [
         {
           "electionId": "2026-MI-2-regular",
-          "why": "民主党El-Sayed氏がObama元大統領、Benson知事候補らと、州の対面期日前投票開始日に支持層へ働きかける機会。",
-          "watch": "時刻・会場と実施・延期・中止を公式発表で確認し、共同登壇、会場反応、投票参加・候補支持への効果を分ける。",
+          "why": "民主党El-Sayed氏がObama元大統領、Benson知事候補らと、州の対面期日前投票開始日にDetroitで実施した集会。",
+          "watch": "実施と発言を結果記事で確認済み。共同登壇、会場反応、投票参加・候補支持への効果を分ける。",
           "materialIds": [
             "mi-policy"
           ]
         }
       ],
-      "resultUpdateId": null,
+      "resultUpdateId": "obs-update-mi-obama-rally-2026-10-24",
       "publicationStatus": "published"
     },
     {
@@ -8957,6 +9066,84 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-insider-mi-ia-oh-2026-10-23",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular",
+        "2026-IA-2-regular",
+        "2026-OH-3-special"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-23",
+      "updatedAt": "2026-10-25",
+      "title": "3州同方式調査：MIは1点、IAは2点、OHは3点差――いずれも誤差内",
+      "happened": "InsiderAdvantageが10月21〜22日に各州の投票予定者1,200人を調査した。Michiganは民主党Abdul El-Sayed氏47%・共和党Mike Rogers氏46%、Iowaは共和党Ashley Hinson氏47%・民主党Josh Turek氏45%、Ohio特別選挙は民主党Sherrod Brown氏47%・共和党Jon Husted氏44%だった。",
+      "meaning": "同じ調査主体・期間・標本数・方法で、MichiganとOhioは民主党候補、Iowaは共和党候補が数値上わずかに先行した。ただし州ごとの候補差は全て誤差±2.83ポイントの範囲内で、先頭候補の違いを確定的な州間差や勝敗予測には使えない。",
+      "uncertainty": "公表元で上位候補の数値、標本、実査日、混合方式、重み付け、誤差を確認したが、技術的問題により詳細表・質問文は未掲載で、未定・他候補の内訳、leaner処理、調査資金提供者も確認できない。部分確認の単一調査として掲載し、D43・R44・未配分13と情勢評価は変更しない。",
+      "evidenceIds": [
+        "ev-obs-insideradvantage-mi-ia-oh-20261023"
+      ]
+    },
+    {
+      "updateId": "obs-update-oh-obama-rally-2026-10-24",
+      "status": "published",
+      "electionIds": [
+        "2026-OH-3-special"
+      ],
+      "eventId": "oh-obama-brown-rally-2026-10-24",
+      "newsId": null,
+      "eventDate": "2026-10-24",
+      "updatedAt": "2026-10-25",
+      "title": "オハイオ：Obama氏がBrown氏支援集会――生活費と企業との関係を争点化",
+      "happened": "Obama元大統領は10月24日、Cleveland Public Auditoriumで民主党Sherrod Brown上院候補とAmy Acton知事候補を支援した。Obama氏はTrump政権と共和党Jon Husted氏を生活費・自己利益の観点から批判し、Brown氏はHusted氏とFirstEnergyの関係を批判した。",
+      "meaning": "民主党側が生活費と候補者の企業との関係を結び、期日前投票期の参加を促す選挙運動を実施したことは確認できる。新しい同方式調査ではBrown氏47%・Husted氏44%だが、集会後の調査ではなく、集会効果を示さない。",
+      "uncertainty": "現地報道は数千人規模と伝え、参加者の反応も紹介したが、友好的な会場と個別取材は州全体の有権者評価・投票参加・得票効果を示さない。FirstEnergyをめぐる批判も候補者の主張と独立した認定を分ける。",
+      "evidenceIds": [
+        "ev-obs-ideastream-oh-obama-rally-result-20261024",
+        "ev-obs-insideradvantage-mi-ia-oh-20261023"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-obama-rally-2026-10-24",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": "mi-obama-elsayed-rally-2026-10-24",
+      "newsId": null,
+      "eventDate": "2026-10-24",
+      "updatedAt": "2026-10-25",
+      "title": "ミシガン：Obama氏がEl-Sayed氏支援集会――名前・信仰への攻撃にも応答",
+      "happened": "Obama元大統領は10月24日、DetroitのCass Technical High Schoolで民主党Abdul El-Sayed上院候補とJocelyn Benson知事候補を支援した。Obama氏はEl-Sayed氏を変化のために闘う候補と評価し、El-Sayed氏は自身の名前・信仰への攻撃に触れながら米国への帰属を訴えた。",
+      "meaning": "民主党側が期日前投票の開始日に支持層の参加を促し、El-Sayed氏が政策だけでなく自身への攻撃へ直接応答した機会として確認できる。10月21〜22日の同方式調査はEl-Sayed氏47%・Rogers氏46%だが、集会前の調査である。",
+      "uncertainty": "共同登壇や友好的な会場反応は、州全体の支持・投票参加・集会後の得票効果を示さない。調査の1ポイント差も誤差±2.83ポイント内で、集会と支持率を因果関係で結ばない。",
+      "evidenceIds": [
+        "ev-obs-mlive-mi-obama-rally-20261024",
+        "ev-obs-insideradvantage-mi-ia-oh-20261023"
+      ]
+    },
+    {
+      "updateId": "obs-update-heating-oil-ak-me-nh-2026-10-24",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular",
+        "2026-ME-2-regular",
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-24",
+      "updatedAt": "2026-10-25",
+      "title": "AK・ME・NH：暖房油高騰への候補者対応を比較――家計効果は未確認",
+      "happened": "Reutersによると、全国の暖房油は1年前の約3.50ドルから1ガロン6ドル超へ上昇し、暖房油を使う世帯はNew Hampshire 43%、Alaska約30%、Maine 54%。NHの民主党Chris Pappas氏はエネルギー費が対話の中心と説明し、共和党John Sununu氏陣営は回答しなかった。AKの共和党Dan Sullivan氏はdiesel輸出停止と戦争早期終結を支持し、Mary Peltola氏側は戦争が燃料・食料費を押し上げたと批判。MEの共和党Susan Collins氏は暖房支援・備蓄放出を働きかけた。",
+      "meaning": "3州で暖房油への依存度と候補者の対応を同じ家計争点として比べられる。過去のMaine・New Hampshireの備蓄放出要請に、Alaskaの地域価格と候補者発言、各州の利用率を加えた。",
+      "uncertainty": "価格上昇の原因、輸出停止・備蓄放出・支援策の価格や家計への効果は確定していない。Reutersが取材した有権者・候補者・戦略家15人の反応は代表調査ではなく、候補者支持や得票への影響を示さない。Sununu陣営の無回答も政策不在とは断定しない。",
+      "evidenceIds": [
+        "ev-obs-reuters-heating-oil-20261024"
+      ]
+    },
     {
       "updateId": "obs-update-ak-doj-lawsuit-2026-10-22",
       "status": "published",
@@ -9974,7 +10161,7 @@
       "updatedAt": "2026-10-07",
       "title": "メーン州：初回討論会で連邦の実績と生活費の責任を直接比較",
       "happened": "共和党現職Susan Collins上院議員と民主党Troy Jackson元州上院議長は10月6日のWGME討論会に出席した。Collins氏は歳出委員会でMaineの672事業に15億ドルを確保したと述べ、薬価・住宅の取組を主張。Jackson氏はKavanaugh判事承認票とRoe撤廃を批判し、予算、SNAP・暖房支援、Iran戦争、関税を生活費の責任として挙げた。",
-      "meaning": "CBS調査が50%対50%を示す選挙で、���職が訴える連邦での実績と、対立候補が問う採決・政権への責任を同じ場で比べられた。残る3回の討論会で説明が一貫するかも確認点になる。",
+      "meaning": "CBS調査が50%対50%を示す選挙で、現職が訴える連邦での実績と、対立候補が問う採決・政権への責任を同じ場で比べられた。残る3回の討論会で説明が一貫するかも確認点になる。",
       "uncertainty": "事業額、生活費の原因、政策効果はいずれも候補者発言を含み、討論会の実施だけでは独立した効果検証や有権者の評価にならない。支持率や勝敗への影響は未確認。",
       "evidenceIds": [
         "ev-obs-wgme-me-debate-opening-20261006",

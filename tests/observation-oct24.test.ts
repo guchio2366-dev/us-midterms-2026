@@ -40,6 +40,7 @@ describe('October 24 Alaska lawsuit, New Hampshire poll, and Michigan schedule',
     expect(run.checkedSourceIds).toContain('obs-courtlistener-ak-certification-complaint-20261022');
     expect(run.pendingSourceIds).toEqual(expect.arrayContaining(['obs-sabato', 'obs-inside', 'obs-white-house']));
     expect(run.note).toContain('D43/R44/未配分13');
-    expect(data.monitor.latestRun.runId).toBe('daily-20261024');
+    expect(run.runId).toBe('daily-20261024');
+    expect(data.monitor.latestRun.runId.localeCompare(run.runId)).toBeGreaterThan(0);
   });
 });

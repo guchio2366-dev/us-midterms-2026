@@ -1,0 +1,154 @@
+{
+  "runId": "daily-20261025",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-24T23:57:19Z",
+  "completedAt": "2026-10-25T00:05:00Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-mlive-mi-obama-rally-20261024",
+    "obs-ideastream-oh-obama-rally-result-20261024",
+    "obs-reuters-heating-oil-20261024",
+    "obs-sabato",
+    "obs-inside",
+    "obs-white-house"
+  ],
+  "pendingSourceIds": [
+    "obs-roster-nh",
+    "obs-insideradvantage-mi-ia-oh-20261023"
+  ],
+  "note": "MI・IA・OHのInsiderAdvantage調査を公表元で確認し、同一方式の小差3調査として追加。MIとOHの10月24日Obama元大統領集会を州内取材で実施結果へ更新し、元予定と相互参照。AK・ME・NHの暖房油負担と候補者対応をReuters取材で比較した。SabatoとInside Electionsの現行評価、White House公開一覧も再確認。D43/R44/未配分13、保存共有・議席基準は変更しない。",
+  "reviewMode": "daily; Sunday; Monday full comparison audit not due",
+  "baseCommit": "af43e58ba92b2ac024fa2febc3f48fa6b5f1403d",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-25-polls-obama-heating-oil",
+  "sourceChecks": [
+    {
+      "sourceId": "obs-insideradvantage-mi-ia-oh-20261023",
+      "url": "https://insideradvantage.com/insideradvantage-senate-surveys-mi-el-sayed-47-rogers-46-ia-hinson-47-turek-45-oh-brown-47-husted-44/",
+      "attemptedAt": "2026-10-25T00:02:00Z",
+      "status": "partial",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公表元でMI 47–46、IA 47–45、OH 47–44、各LV1,200、10月21〜22日、混合方式、重み付け、誤差±2.83を確認。技術的問題により詳細表・質問文は未掲載で、資金提供者も未確認。"
+    },
+    {
+      "sourceId": "obs-mlive-mi-obama-rally-20261024",
+      "url": "https://www.mlive.com/politics/2026/10/barack-obama-stumps-for-el-sayed-benson-in-detroit-it-feels-like-change-is-in-the-air.html",
+      "attemptedAt": "2026-10-25T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-25T00:05:00Z",
+      "contentVerifiedAt": "2026-10-25",
+      "scope": "Cass Technical High Schoolでの実施、Obama氏・El-Sayed氏・Benson氏の登壇と発言を確認。会場反応を州全体の支持・投票参加効果と扱わない。"
+    },
+    {
+      "sourceId": "obs-ideastream-oh-obama-rally-result-20261024",
+      "url": "https://www.ideastream.org/government-politics/2026-10-24/in-cleveland-obama-says-road-to-block-trumps-agenda-runs-through-ohio-in-midterms",
+      "attemptedAt": "2026-10-25T00:05:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-25T00:05:00Z",
+      "contentVerifiedAt": "2026-10-25",
+      "scope": "Cleveland Public Auditoriumでの実施、Obama氏・Brown氏・Acton氏の登壇と発言を確認。参加者数・個別反応を州全体の評価と扱わない。"
+    },
+    {
+      "sourceId": "obs-reuters-heating-oil-20261024",
+      "url": "https://www.reuters.com/legal/government/winter-nears-heating-oil-emerges-hurdle-republicans-us-senate-races-2026-10-24/",
+      "attemptedAt": "2026-10-25T00:06:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-25T00:06:00Z",
+      "contentVerifiedAt": "2026-10-25",
+      "scope": "AK・ME・NHの利用率、価格、候補者発言、15人への取材を確認。価格原因、政策効果、代表性、候補支持を分離。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "url": "https://insideelections.com/wp-content/themes/inside-elections/cache/ratings_latest_senate_year=2026_district=all_clean.json",
+      "attemptedAt": "2026-10-25T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-25T00:03:00Z",
+      "contentVerifiedAt": "2026-10-25",
+      "scope": "公式APIの全35選挙と10月15日更新を再確認。後続変更なし。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "url": "https://centerforpolitics.org/crystalball/2026-senate/",
+      "attemptedAt": "2026-10-25T00:03:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-25T00:03:00Z",
+      "contentVerifiedAt": "2026-10-25",
+      "scope": "公式の現行評価表・変更履歴で、10月14日以後の上院評価変更なしを確認。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "url": "https://www.whitehouse.gov/briefings-statements/",
+      "attemptedAt": "2026-10-25T00:04:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-25T00:04:00Z",
+      "contentVerifiedAt": "2026-10-25",
+      "scope": "公式発表一覧とLiveページを10月23日掲載分まで確認。対象州の追加日程を確認できなかったが、不掲載を不存在の証明とはしない。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "url": "https://www.sos.nh.gov/elections",
+      "attemptedAt": "2026-10-25T00:08:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "contentVerifiedAt": null,
+      "scope": "公式本選名簿の原票確認は今回も完了せず。失敗を変化なしと扱わない。"
+    }
+  ],
+  "notCheckedSourceIds": [
+    "obs-roster-me",
+    "obs-roster-mi",
+    "obs-roster-oh",
+    "obs-roster-tx"
+  ],
+  "searchCoverage": {
+    "targetStates": ["AK", "ME", "MI", "OH-special", "TX", "NH", "IA", "NC", "GA", "KS", "MN", "NE", "SC"],
+    "categories": ["candidate official announcements", "new polls", "local reporting", "scheduled events and outcomes", "presidential schedule", "integrated ratings"],
+    "scope": "対象州・統合Toss Upと分類を横断検索。3州調査、MI・OH集会結果、AK・ME・NH暖房油取材を採用。全候補の全発表・全登録情報源の成功を意味しない。",
+    "mondayAudit": "Today Sunday; full candidate comparison audit not due."
+  },
+  "eventChecks": [
+    {
+      "eventId": "mi-obama-elsayed-rally-2026-10-24",
+      "status": "completed",
+      "scope": "Detroitでの実施・会場・登壇者・発言を州内取材で確認し、結果記事へ相互参照。"
+    },
+    {
+      "eventId": "oh-obama-brown-rally-2026-10-24",
+      "status": "completed",
+      "scope": "Clevelandでの実施・会場・登壇者・発言を州内公共メディアで確認し、結果記事へ相互参照。"
+    },
+    {
+      "eventId": "mi-trump-rally-2026-10-25",
+      "status": "scheduled",
+      "scope": "確認時点では現地で実施前。Port Huron、15時ETの予定を維持し、実施・中止・延期・上院候補参加は結果待ち。"
+    }
+  ],
+  "changes": [
+    "obs-update-insider-mi-ia-oh-2026-10-23",
+    "obs-update-oh-obama-rally-2026-10-24",
+    "obs-update-mi-obama-rally-2026-10-24",
+    "obs-update-heating-oil-ak-me-nh-2026-10-24"
+  ],
+  "preserved": [
+    "D43/R44/unallocated13",
+    "all historical scenario/share baselines",
+    "UI/candidate IDs",
+    "all race analysis dates",
+    "saved scenarios and shared URLs"
+  ],
+  "validation": {
+    "npmCi": "passed: npm ci clean install",
+    "npmTest": "passed: 492 tests in 39 files",
+    "npmBuild": "passed: tsc and Vite; index-BMnX3x-g.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "browserVerificationRoute": "pending"
+  },
+  "deployment": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicContentVerifiedAt": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "verified": [],
+    "publicationMethod": "pending"
+  }
+}
