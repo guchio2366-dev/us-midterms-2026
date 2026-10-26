@@ -10,7 +10,7 @@ describe('October 22 polls, early voting, and event outcomes', () => {
     expect(update.happened).toContain('44%');
     expect(update.uncertainty).toContain('消尽票');
     expect(update.uncertainty).toContain('勝敗予測とは扱わない');
-    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-24');
+    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-26');
   });
 
   it('separates Texas outside spending, candidate fundraising, and voter effects', () => {
@@ -21,7 +21,7 @@ describe('October 22 polls, early voting, and event outcomes', () => {
     expect(update.meaning).toContain('6,400万ドル');
     expect(update.uncertainty).toContain('同じ指標ではない');
     expect(update.uncertainty).toContain('金額から勝敗を予測しない');
-    expect(data.races.find(x => x.electionId === '2026-TX-2-regular')!.updatedAt).toBe('2026-10-22');
+    expect(data.races.find(x => x.electionId === '2026-TX-2-regular')!.updatedAt).toBe('2026-10-26');
   });
 
   it('keeps Michigan poll estimates, winner expectations, and presidential approval separate', () => {
@@ -32,7 +32,7 @@ describe('October 22 polls, early voting, and event outcomes', () => {
     expect(update.uncertainty).toContain('±4.3');
     expect(update.uncertainty).toContain('別設問');
     const race = data.races.find(x => x.electionId === '2026-MI-2-regular')!;
-    expect(race.updatedAt).toBe('2026-10-22');
+    expect(race.updatedAt).toBe('2026-10-26');
     expect(race.comparison.find(x => x.key === 'voters')!.cells.every(x => x.evidenceIds.includes('ev-obs-marist-mi-20261021'))).toBe(true);
   });
 

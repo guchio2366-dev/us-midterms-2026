@@ -11,7 +11,7 @@ describe('October 24 Alaska lawsuit, New Hampshire poll, and Michigan schedule',
     expect(update.uncertainty).toContain('差止命令も出ておらず');
     expect(update.uncertainty).toContain('各投票用紙に記された次順位');
     expect(update.evidenceIds).toContain('ev-obs-roster-ak-20261024');
-    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-24');
+    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-26');
   });
 
   it('keeps New Hampshire ballot preference, favorability, and presidential approval separate', () => {
@@ -25,13 +25,13 @@ describe('October 24 Alaska lawsuit, New Hampshire poll, and Michigan schedule',
     expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-24');
   });
 
-  it('records the confirmed Michigan venue but keeps the future event scheduled', () => {
+  it('records the confirmed Michigan venue and completed result', () => {
     const event = data.events.find(x => x.eventId === 'mi-trump-rally-2026-10-25')!;
-    expect(event.status).toBe('scheduled');
-    expect(event.resultUpdateId).toBeNull();
+    expect(event.status).toBe('completed');
+    expect(event.resultUpdateId).toBe('obs-update-mi-trump-rally-2026-10-25');
     expect(event.title).toContain('Port Huron');
     expect(event.relevance[0].why).toContain('McMorran Place Arena');
-    expect(event.relevance[0].why).toContain('参加は未確認');
+    expect(event.relevance[0].why).toContain('Rogers氏も登壇');
     expect(eventInstant(event)?.toISOString()).toBe('2026-10-25T19:00:00.000Z');
   });
 
