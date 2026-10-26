@@ -2,7 +2,7 @@
   "runId": "daily-20261026",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-25T23:58:55Z",
-  "completedAt": "2026-10-26T00:08:00Z",
+  "completedAt": "2026-10-26T00:14:32Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-reuters-mi-trump-rally-20261025",
@@ -35,7 +35,7 @@
   "note": "月曜点検として6州60比較セルと反証を再確認。MIの10月25日Trump大統領集会を実施結果へ更新し、裏付けのない所属攻撃、Rogers氏の発言、会場反応を分離。AKの先住民大会で両候補の具体的実績・政策を比較し、Peltola氏の事故によるFairbanks・Bethel予定延期を元予定と相互参照。TXのRasmussen原票は45%対45%として追加。Sabato・Inside Electionsは変更なし。D43/R44/未配分13、保存共有・議席基準は維持。",
   "reviewMode": "Monday weekly audit; 6 focus races; 60 comparison cells; rebuttals rechecked; partial primary-source coverage",
   "baseCommit": "6daa9b34062542a86e3ac9f5743414f38823d9f3",
-  "publishedCommit": null,
+  "publishedCommit": "1a7ed58abb07d584c65ba24fc1d49c0b8e32f21c",
   "revision": "observation-2026-10-26-mi-rally-ak-native-tx-poll",
   "comparisonAudit": [
     {"electionId":"2026-ME-2-regular","cells":10,"status":"checked-no-analysis-change","scope":"公式経歴・政策、現職採決資料、討論と調査の既存反証を再点検。新しい比較本文変更なし。"},
@@ -84,8 +84,24 @@
     "npmCi": "passed",
     "npmTest": "passed: 496 tests in 40 files",
     "npmBuild": "passed: tsc and Vite; index-CEuDRP9s.js / index-Dsomt5uB.css; existing bundle-size advisory only",
-    "browserVerificationRoute": "pending"
+    "browserVerificationRoute": "GitHub Pagesの実DOMをChromeで確認。D43/R44/未配分13、MI大統領集会記事、AK先住民大会・事故延期記事、TX 45%対45%調査記事、Fairbanks・Bethelの延期表示、情報源最終確認2026/10/26 09:08 JSTを確認。"
   },
-  "publication": null
+  "publication": {
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40248233688",
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicContentVerifiedAt": "2026-10-26T00:14:32Z",
+    "verified": [
+      "D43/R44/unallocated13",
+      "Michigan Trump rally result update headline and unsupported-affiliation caveat",
+      "Alaska Native convention comparison headline",
+      "Peltola crash and Fairbanks/Bethel postponement headline",
+      "Fairbanks and Bethel schedule rows show postponed; new dates pending",
+      "Texas Rasmussen 45%-45% update headline",
+      "source last-check display 2026/10/26 09:08 JST"
+    ],
+    "publicationMethod": "main 6daa9b34062542a86e3ac9f5743414f38823d9f3を期待値として、対象10ファイルだけのtreeを作成し、force=falseで1a7ed58abb07d584c65ba24fc1d49c0b8e32f21cへfast-forward。dist生成物は除外。",
+    "verificationFollowup": "公開成功と実DOM確認をこの実行記録とCURRENT_STATE.mdだけの文書追補へ反映。"
+  }
 }
 
