@@ -38,7 +38,7 @@
   "note": "AKでは同姓別候補Daniel J. Sullivan Jr.氏の登録変更、投票用紙上の識別、司法省訴訟へのMurkowski氏・Peltola陣営等の反対を分離して更新。NHのRasmussen原票はPappas 50%・Sununu 44%で、Saint Anselmとの差を方式差として記録。MEはCanada関税の一部除外を候補者の働きかけ、10月30日発効予定、家計効果に分けた。TX 2会場とOHのTrump大統領集会を主催者原文で予定追加。Sabato・Inside Electionsの統合評価、D43/R44/未配分13、保存共有・議席基準は維持。",
   "reviewMode": "daily source, poll, local reporting, candidate announcement, and confirmed campaign-schedule review; Monday full comparison audit not due",
   "baseCommit": "9a48a521be657e3bb8c66079c8e6c2d1c2d7a3c3",
-  "publishedCommit": null,
+  "publishedCommit": "dceb95717eb8c784d1c467e09d1b13c3964ec852",
   "revision": "observation-2026-10-27-ak-lawsuit-nh-poll-final-rallies",
   "analysisChanges": [
     {"electionId":"2026-AK-2-regular","status":"updated","scope":"別候補の登録区分、投票用紙表示、司法省の主張、Murkowski氏の反対、Peltola陣営等の棄却申立て、裁判所の未判断を分離。"},
@@ -77,15 +77,23 @@
     "npmCi": "passed",
     "npmTest": "passed: 500 tests in 41 files",
     "npmBuild": "passed: tsc and Vite; index-7Zc4ltkN.js / index-Dsomt5uB.css; existing bundle-size advisory only",
-    "browserVerificationRoute": "pending"
+    "browserVerificationRoute": "GitHub Pagesの実DOMをChromeで確認。D43/R44/未配分13、AK訴訟記事、NH 50%対44%記事、ME関税一部除外記事、TX 2予定・OH 1予定の日本時間、情報源最終確認2026/10/27 09:18 JSTを確認。"
   },
   "publication": {
-    "status": "pending",
-    "pagesRunUrl": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40426008854",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "publicContentVerifiedAt": null,
-    "verified": [],
-    "publicationMethod": "pending",
-    "verificationFollowup": "pending"
+    "publicContentVerifiedAt": "2026-10-27T00:24:50Z",
+    "verified": [
+      "D43/R44/unallocated13",
+      "Alaska registration and unresolved-certification-lawsuit update headline",
+      "New Hampshire Rasmussen 50%-44% update headline",
+      "Maine partial tariff-exemption update headline",
+      "Corpus Christi and Lubbock schedule rows with JST October 28 04:00 and 08:00",
+      "Chillicothe schedule row with presidential remarks at JST October 29 08:00",
+      "source last-check display 2026/10/27 09:18 JST"
+    ],
+    "publicationMethod": "main 9a48a521be657e3bb8c66079c8e6c2d1c2d7a3c3を期待値として対象8ファイルのtreeを作成し、force=falseで633b7993b9a759cb75633b992127ffb34ce18345へfast-forward。初回は大容量JSONの転送破損でPagesテストが停止し、旧公開版を維持。ローカルGit blob ef13d66e580b8b980ef1096ee0d161c604c948d0と一致するJSONを再転送し、force=falseでdceb95717eb8c784d1c467e09d1b13c3964ec852へ修正fast-forward。dist生成物は除外。",
+    "verificationFollowup": "初回失敗はhttps://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40425778221、修正後成功はhttps://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40426008854。公開成功と実DOM確認をこの実行記録とCURRENT_STATE.mdだけの文書追補へ反映。"
   }
 }
