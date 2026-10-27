@@ -22,7 +22,7 @@ describe('October 24 Alaska lawsuit, New Hampshire poll, and Michigan schedule',
     expect(update.meaning).toContain('好感度');
     expect(update.meaning).toContain('38%');
     expect(update.uncertainty).toContain('別設問');
-    expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-24');
+    expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-27');
   });
 
   it('records the confirmed Michigan venue and completed result', () => {

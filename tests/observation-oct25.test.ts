@@ -33,16 +33,16 @@ describe('October 25 polls, Obama rallies, and heating-oil comparison', () => {
   });
 
   it('records a partial run without changing the allocation baseline', () => {
-    expect(data.revision).toBe('observation-2026-10-26-mi-rally-ak-native-tx-poll');
-    expect(data.monitor.latestRun.runId).toBe('daily-20261026');
+    expect(data.revision).toBe('observation-2026-10-27-ak-lawsuit-nh-poll-final-rallies');
+    expect(data.monitor.latestRun.runId).toBe('daily-20261027');
     expect(run.outcome).toBe('partial');
     expect(run.pendingSourceIds).toEqual(expect.arrayContaining([
       'obs-roster-nh',
       'obs-insideradvantage-mi-ia-oh-20261023',
     ]));
     expect(run.note).toContain('D43/R44/未配分13');
-    expect(data.sources).toHaveLength(270);
-    expect(data.evidenceRefs).toHaveLength(252);
-    expect(data.updates).toHaveLength(138);
+    expect(data.sources).toHaveLength(279);
+    expect(data.evidenceRefs).toHaveLength(261);
+    expect(data.updates).toHaveLength(141);
   });
 });

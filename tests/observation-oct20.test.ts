@@ -32,7 +32,7 @@ describe('October 20 poll evidence and pending results', () => {
     expect(data.races.find(r => r.electionId.includes('-AK-'))!.updatedAt).toBe('2026-10-26');
     expect(data.races.find(r => r.electionId.includes('-TX-'))!.updatedAt).toBe('2026-10-26');
     expect(data.races.find(r => r.electionId.includes('-OH-'))!.updatedAt).toBe('2026-10-23');
-    for (const [state, date] of [['ME', '2026-10-18'], ['MI', '2026-10-26'], ['NH', '2026-10-24']]) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe(date);
+    for (const [state, date] of [['ME', '2026-10-18'], ['MI', '2026-10-26'], ['NH', '2026-10-27']]) expect(data.races.find(r => r.electionId.includes(`-${state}-`))!.updatedAt).toBe(date);
     expect(run.outcome).toBe('partial'); expect(run.notCheckedSourceIds.length).toBeGreaterThan(0);
     expect(data.sources.find(s => s.sourceId === 'obs-cbs-tx-20261018-pending')!.lastSuccessAt).toBeNull();
   });
