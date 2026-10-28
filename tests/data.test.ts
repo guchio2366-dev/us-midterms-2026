@@ -158,7 +158,7 @@ describe('primary-source verification',() => {
     expect(elections.find(election => election.seatId === 'RI-2')).toMatchObject({primaryDate:'2026-09-09',contestStatus:'general-ballot',candidateResearchStatus:'partial'});
     expect(elections.every(election => election.candidates.length > 0 && election.rating.category !== 'unavailable' && election.rating.organization === "Sabato's Crystal Ball")).toBe(true);
     expect(elections.find(election => election.seatId === 'OH-3')?.rating.category).toBe('Toss Up');
-    expect(elections.find(election => election.seatId === 'NC-2')?.rating.category).toBe('Lean D');
+    expect(elections.find(election => election.seatId === 'NC-2')?.rating.category).toBe('Likely D');
     for (const sourceId of ['census-profile','bls-qcew','bea-state']) {
       const source = sources.find(item => item.sourceId === sourceId)!;
       expect(source.retrievedAt).toBeNull();

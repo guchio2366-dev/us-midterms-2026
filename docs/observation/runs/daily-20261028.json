@@ -1,0 +1,210 @@
+{
+  "runId": "daily-20261028",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の実時刻で成功を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-27T23:55:00Z",
+  "completedAt": "2026-10-28T00:18:00Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-marist-me-20261027",
+    "obs-marist-me-tables-20261027",
+    "obs-reuters-me-final-20261027",
+    "obs-wdiv-mi-20261027",
+    "obs-univision-yougov-tx-20261027",
+    "obs-expressnews-tx-corpus-rally-20261027",
+    "obs-wmur-nh-debate-20261027",
+    "obs-gop-ks-salina-rally-20261031",
+    "obs-roster-oh",
+    "obs-sabato",
+    "obs-inside"
+  ],
+  "pendingSourceIds": [
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-kcbd-tx-lubbock-rally-20261027",
+    "obs-white-house"
+  ],
+  "note": "ME・MI・TXの新調査を原文で確認し、対象母集団・方式・標本誤差を分けて更新。Corpus Christi集会は発言まで確認、Lubbock集会は実施のみ確認し発言照合待ち。NHの10月28日討論、KSの10月31日大統領集会を予定追加。SabatoのNC・SC・FL変更を反映したが、Inside Electionsとの統合基準ではD43/R44/未配分13を維持。Ohio公式投票用紙を確認し、NH公式名簿と過去のQuantus原票は未確認のまま記録。",
+  "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Monday full comparison audit not due",
+  "baseCommit": "32594d4c4d43249247a54898e475050e74ca2631",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-28-final-polls-rallies-ratings",
+  "analysisChanges": [
+    {
+      "electionId": "2026-ME-2-regular",
+      "status": "updated",
+      "scope": "Maristの投票予定者支持49%対47%と勝者予想58%対40%を別設問として追加し、Collins氏の実績主張とJackson氏の反論、未確認の効果を分離。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "status": "updated",
+      "scope": "WDIV／Detroit Newsの投票予定者調査と候補者好感度を別指標として追加。単一調査・誤差範囲を維持。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "status": "updated",
+      "scope": "Univision／YouGovの登録有権者調査を追加し、Corpus Christi・Lubbock両集会の実施結果を元予定へ相互参照。Lubbockの発言は照合待ち。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "status": "checked-no-analysis-change",
+      "scope": "候補者公式発信・州内報道・延期2予定を確認。新日程または分析を変える独立事実なし。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "status": "schedule-only",
+      "scope": "10月28日Chillicothe集会の予定を再確認。実施結果を先取りせず分析日は維持。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "status": "schedule-only",
+      "scope": "10月28日WMUR最終討論の時刻・主催局を確認。実施前のため分析日は維持。"
+    },
+    {
+      "electionId": "integrated-ratings",
+      "status": "updated",
+      "scope": "SabatoのNC Likely D、SC Lean R、FL特別Likely Rを反映。Inside Electionsとの一致基準では議席配分不変。"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-marist-me-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "投票予定者支持、勝者予想、実査期間、対象、標本誤差を公式ページと86ページ表で照合。"
+    },
+    {
+      "sourceId": "obs-reuters-me-final-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "Collins氏の資金・関税実績主張とJackson氏の反論を確認し、政策効果と区別。"
+    },
+    {
+      "sourceId": "obs-wdiv-mi-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "600 LV、電話方式、51.4%対45.1%、誤差±4.0ポイント、好感度別設問を確認。"
+    },
+    {
+      "sourceId": "obs-univision-yougov-tx-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "登録有権者1,000人、オンライン、50%対45%、誤差±3.8ポイントを公式発表で確認。"
+    },
+    {
+      "sourceId": "obs-expressnews-tx-corpus-rally-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "集会実施、大統領の戦争・原油・関税・洪水支援発言、Paxton氏登壇を州内取材で確認。"
+    },
+    {
+      "sourceId": "obs-kcbd-tx-lubbock-rally-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "KCBD写真ページで集会実施のみ確認。Paxton氏参加と発言内容は未照合。"
+    },
+    {
+      "sourceId": "obs-wmur-nh-debate-20261027",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "Pappas氏・Sununu氏の10月28日21時ET討論を主催局で確認。"
+    },
+    {
+      "sourceId": "obs-gop-ks-salina-rally-20261031",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "10月31日Salina集会の会場、開場、開始、大統領発言時刻を主催者原文で確認。候補者参加は未確認。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "10月27日記事と上院評価表でNC・SC・FL特別の3変更を確認。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "現行分類を再確認し、Sabato変更後も統合配分が変わらないことを確認。"
+    },
+    {
+      "sourceId": "obs-roster-oh",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "州指令と公式見本投票用紙で上院特別選挙の候補者を照合。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "scope": "公式本選名簿の原票取得は今回も完了せず。失敗を変化なしと扱わない。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "pending",
+      "lastSuccessAt": null,
+      "scope": "過去調査の原票・設問・資金提供者は未確認のまま。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-28T00:18:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-27T00:18:00Z",
+      "scope": "公務一覧だけでは選挙集会を完全確認できず、主催者イベント原文と州内報道で補完。政府公務と選挙行事を区別。"
+    }
+  ],
+  "eventChecks": [
+    {
+      "eventId": "tx-trump-corpus-rally-2026-10-27",
+      "status": "completed",
+      "scope": "実施・発言・Paxton氏登壇を確認し、結果記事と相互参照。政策効果・州全体の評価は未確認。"
+    },
+    {
+      "eventId": "tx-trump-lubbock-rally-2026-10-27",
+      "status": "completed-partial",
+      "scope": "実施のみ確認して結果記事と相互参照。候補者参加・発言は照合待ち。"
+    },
+    {
+      "eventId": "oh-trump-chillicothe-rally-2026-10-28",
+      "status": "scheduled",
+      "scope": "日本時間10月29日8時に大統領発言予定。実施・候補者参加・発言を追う。"
+    },
+    {
+      "eventId": "nh-wmur-granite-state-debate-2026-10-28",
+      "status": "scheduled",
+      "scope": "日本時間10月29日10時に討論予定。実施と両候補の回答を追う。"
+    },
+    {
+      "eventId": "ks-trump-salina-rally-2026-10-31",
+      "status": "scheduled",
+      "scope": "日本時間11月1日2時に大統領発言予定。候補者参加は未確認。"
+    }
+  ],
+  "validation": {
+    "npmCi": "passed",
+    "npmTest": "passed: 505 tests in 42 files",
+    "npmBuild": "passed: tsc and Vite; index-7EY84da6.js / index-Dsomt5uB.css; existing bundle-size advisory only",
+    "browserVerificationRoute": "publication pending"
+  },
+  "publication": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicContentVerifiedAt": null,
+    "verified": [],
+    "publicationMethod": "latest main rechecked at 32594d4c4d43249247a54898e475050e74ca2631; normal fast-forward pending; dist artifacts excluded",
+    "verificationFollowup": "Pages success and public DOM verification pending"
+  }
+}

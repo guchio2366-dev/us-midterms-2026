@@ -60,7 +60,7 @@ const race = (
 ): SenateRaceDetail => ({seatId,primaryDate,contestStatus,candidates,ratingRaw,rating:rating(ratingRaw),relevance:relevance(ratingRaw,contestStatus),sourceIds:[sourceId,'senate-race-index','sabato-senate-2026']});
 
 export const senateRaceDetails: SenateRaceDetail[] = [
-  race('FL-3','2026-08-18','Safe R','cand-fl',[
+  race('FL-3','2026-08-18','Likely R','cand-fl',[
     candidate('Neil Gillespie','I','Independent','cand-fl'),candidate('Ashley Moody','R','Republican','cand-fl'),candidate('Angie Nixon','D','Democratic','cand-fl'),
   ]),
   race('OH-3','2026-05-05','Tossup','oh-sos-directive-2026-45',[
@@ -151,7 +151,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('NM-2','2026-06-02','Safe D','cand-nm',[
     candidate('Ben Ray Luján','D','Democratic','cand-nm'),candidate('Larry Marker','R','Republican write-in nominee','cand-nm','write-in'),
   ]),
-  race('NC-2','2026-03-03','Lean D (flip)','cand-nc-general-20260930',[
+  race('NC-2','2026-03-03','Likely D (flip)','cand-nc-general-20260930',[
     ...[
       {...candidate('Shannon W. Bray','other','Libertarian','cand-nc','general-ballot','cand-nc-shannon-bray'),personId:'person-shannon-bray'},
       candidate('Roy Cooper','D','Democratic','cand-nc'),candidate('Michael Whatley','R','Republican','cand-nc'),
@@ -171,7 +171,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
     {...candidate('Michael Bahry','I','Independent','cand-ri'),status:'unconfirmed'},
     candidate('Connor Burbridge','D','Democratic','cand-ri','primary-ballot'),candidate('Luis Munoz','D','Democratic','cand-ri','primary-ballot'),
   ]),
-  race('SC-2','2026-06-09','Likely R','cand-sc',[
+  race('SC-2','2026-06-09','Lean R','cand-sc',[
     candidate('Annie Andrews','D','Democratic','cand-sc'),candidate('Darline Graham','R','Republican','cand-sc'),candidate('Mark Hackett','other','Constitution','cand-sc'),candidate('Kasie Whitener','other','Libertarian','cand-sc'),candidate('Catherine Fleming Bruce','D','Democratic write-in','cand-sc','write-in'),
   ]),
   race('SD-2','2026-06-02','Safe R','cand-sd',[
@@ -244,6 +244,6 @@ export const senateRaceSources: Source[] = [
   {sourceId:'cand-ri-ballot-20260930',title:'2026 Rhode Island candidates for Senator in Congress',publisher:'Rhode Island Department of State',url:'https://vote.sos.ri.gov/Candidates/CandidateSearchSummary?Election=18239&OfficeType=620',publishedAt:null,referencePeriod:'9月30日表示のOn Election Ballot欄。John Francis Reed・Raymond T McKayはY、Connor Francis Burbridge・Luis Daniel MunozはN。既存通称・candidateIdを保持。独立候補の全体は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
-  {sourceId:'sabato-senate-2026',title:"Five Senate Rating Changes as Close Battle for Majority Control Rages",publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://sabatoscrystalball.substack.com/p/five-senate-rating-changes-as-close',publishedAt:'2026-10-14',updatedAt:'2026-10-14',referencePeriod:'全35選挙の統一情勢評価。KS Lean R→Toss-up、NE Likely R→Lean R、NH Lean D→Likely D、MN Likely D→Lean D、MS Safe R→Likely R。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-15',contentVerifiedAt:'2026-10-15'},
+  {sourceId:'sabato-senate-2026',title:'Democrats Appear to Hold Narrow Senate Edge with Week to Go; Rating Changes for Senate, House, and Governors',publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://sabatoscrystalball.substack.com/p/democrats-appear-to-hold-narrow-senate',publishedAt:'2026-10-27',updatedAt:'2026-10-27',referencePeriod:'全35選挙の統一情勢評価。NC Lean D→Likely D、SC Likely R→Lean R、FL Safe R→Likely R。上院全体はD方向49、R方向46、Toss-up 5。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-28',contentVerifiedAt:'2026-10-28'},
   {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-10-15',referencePeriod:'10月15日の公式API全35選挙を確認。FL Solid R→Likely R、TX Tilt R→Toss-up、SC Likely R→Lean R、NH Toss-up→Tilt D、KS Likely R→Tilt R。評価理由の会員本文は未取得。',retrievedAt:'2026-10-16',contentVerifiedAt:'2026-10-16'},
 ];

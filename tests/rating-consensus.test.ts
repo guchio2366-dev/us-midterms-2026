@@ -20,7 +20,7 @@ describe('senate rating consensus',() => {
   });
   it('retains source confirmation dates independently of the new method date',()=>{
     expect(RATING_METHOD_VERSION).toBe('unanimous-likely-or-stronger-v2');
-    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-15')).toBe(true);
+    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-28')).toBe(true);
     expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-16')).toBe(true);
   });
   it('normalizes source vocabulary without converting strength into probability',() => {
@@ -65,7 +65,7 @@ describe('senate rating consensus',() => {
     const results = aggregateRatingConsensus(elections.map(election => election.seatId),ratingSnapshotObservations);
     expect(consensusDisplayRating(results.find(result => result.seatId === 'GA-2'))).toBe('Toss Up');
     expect(consensusDisplayRating(results.find(result => result.seatId === 'IA-2'))).toBe('Toss Up');
-    expect(consensusDisplayRating(results.find(result => result.seatId === 'FL-3'))).toBe('Solid R');
+    expect(consensusDisplayRating(results.find(result => result.seatId === 'FL-3'))).toBe('Likely R');
     expect(results.filter(result => / D$/.test(consensusDisplayRating(result)))).toHaveLength(9);
     expect(results.filter(result => / R$/.test(consensusDisplayRating(result)))).toHaveLength(13);
   });

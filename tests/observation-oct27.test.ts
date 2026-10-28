@@ -23,19 +23,18 @@ describe('October 27 Alaska litigation, New Hampshire poll, tariffs, and final-w
     const update = data.updates.find(x => x.updateId === 'obs-update-me-tariff-exemptions-2026-10-23')!;
     expect(update.happened).toContain('10月30日発効予定');
     expect(update.uncertainty).toContain('実測効果は未確認');
-    expect(data.races.find(x => x.electionId === '2026-ME-2-regular')!.updatedAt).toBe('2026-10-18');
+    expect(data.races.find(x => x.electionId === '2026-ME-2-regular')!.updatedAt).toBe('2026-10-28');
   });
 
   it('adds only confirmed presidential campaign schedules without assuming candidate attendance', () => {
-    for (const id of [
-      'tx-trump-corpus-rally-2026-10-27',
-      'tx-trump-lubbock-rally-2026-10-27',
-      'oh-trump-chillicothe-rally-2026-10-28'
-    ]) {
+    for (const id of ['tx-trump-corpus-rally-2026-10-27','tx-trump-lubbock-rally-2026-10-27']) {
       const event = data.events.find(x => x.eventId === id)!;
-      expect(event.status).toBe('scheduled');
-      expect(event.resultUpdateId).toBeNull();
-      expect(event.relevance[0].watch).toMatch(/未確認|先取りしない|実施確認/);
+      expect(event.status).toBe('completed');
+      expect(event.resultUpdateId).not.toBeNull();
+      expect(data.updates.find(x => x.updateId === event.resultUpdateId)!.eventId).toBe(id);
     }
+    const ohio = data.events.find(x => x.eventId === 'oh-trump-chillicothe-rally-2026-10-28')!;
+    expect(ohio.status).toBe('scheduled');
+    expect(ohio.resultUpdateId).toBeNull();
   });
 });

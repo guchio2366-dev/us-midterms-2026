@@ -53,7 +53,7 @@ describe('PC opening overview contract', () => {
     expect(visible).toContain('当選が確定した議席数や、当選確率を計算した結果ではありません');
     expect(visible).toContain('民主党側43議席、共和党側44議席');
     expect(visible).toContain('残る13議席');
-    expect(visible).toContain('Sabato’s Crystal Ball：2026-10-15確認');
+    expect(visible).toContain('Sabato’s Crystal Ball：2026-10-28確認');
     expect(visible).toContain('Inside Elections：2026-10-16確認');
     expect(visible).toContain('非改選 34 ＋ 今回必要 17');
     expect(visible).toContain('非改選 31 ＋ 今回必要 20');

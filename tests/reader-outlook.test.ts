@@ -20,7 +20,7 @@ describe('reader outlook uses current evidence without turning choices into fore
     expect(html).toContain('弱い優勢7・接戦3・評価分裂3');
     expect(html).toContain('利用者が保存した当落案とは別の現在評価');
     expect(html).toContain(`集計基準 ${RATING_SNAPSHOT_AS_OF}`);
-    expect(html).toContain('2026-10-15確認');
+    expect(html).toContain('2026-10-28確認');
     expect(html).toContain('2026-10-16確認');
     expect(html).toContain('評価の変更日ではなく確認日');
     expect(html).not.toMatch(/data-(?:choice|policy-choice|save-scenario|reset)/);
