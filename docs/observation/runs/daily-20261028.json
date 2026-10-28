@@ -26,7 +26,7 @@
   "note": "ME・MI・TXの新調査を原文で確認し、対象母集団・方式・標本誤差を分けて更新。Corpus Christi集会は発言まで確認、Lubbock集会は実施のみ確認し発言照合待ち。NHの10月28日討論、KSの10月31日大統領集会を予定追加。SabatoのNC・SC・FL変更を反映したが、Inside Electionsとの統合基準ではD43/R44/未配分13を維持。Ohio公式投票用紙を確認し、NH公式名簿と過去のQuantus原票は未確認のまま記録。",
   "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Monday full comparison audit not due",
   "baseCommit": "32594d4c4d43249247a54898e475050e74ca2631",
-  "publishedCommit": null,
+  "publishedCommit": "139fad8dceb749a3710514fe20edee1c436349ba",
   "revision": "observation-2026-10-28-final-polls-rallies-ratings",
   "analysisChanges": [
     {
@@ -196,15 +196,24 @@
     "npmCi": "passed",
     "npmTest": "passed: 505 tests in 42 files",
     "npmBuild": "passed: tsc and Vite; index-7EY84da6.js / index-Dsomt5uB.css; existing bundle-size advisory only",
-    "browserVerificationRoute": "publication pending"
+    "browserVerificationRoute": "GitHub Pagesの実DOMをChromeで確認。D43/R44/未配分13、ME・MI・TXの新調査見出し、Sabatoの3変更、Corpus Christi・Lubbock結果記事、OH・NH・KSの予定、情報源最終確認2026/10/28 09:18 JSTを確認。"
   },
   "publication": {
-    "status": "pending",
-    "pagesRunUrl": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40606970154",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "publicContentVerifiedAt": null,
-    "verified": [],
-    "publicationMethod": "latest main rechecked at 32594d4c4d43249247a54898e475050e74ca2631; normal fast-forward pending; dist artifacts excluded",
-    "verificationFollowup": "Pages success and public DOM verification pending"
+    "publicContentVerifiedAt": "2026-10-28T00:11:01Z",
+    "verified": [
+      "D43/R44/unallocated13 and October 27 rating snapshot",
+      "Maine Marist support-versus-winner-expectation update headline",
+      "Michigan WDIV poll update headline",
+      "Texas Univision/YouGov poll update headline",
+      "Corpus Christi completed-event update and Lubbock partial-result update",
+      "Sabato NC/SC/FL rating-change update",
+      "Ohio, New Hampshire, and Kansas upcoming-event rows",
+      "source last-check display 2026/10/28 09:18 JST"
+    ],
+    "publicationMethod": "main 32594d4c4d43249247a54898e475050e74ca2631を期待値として対象18ファイルのGit blobをローカルSHAと照合し、force=falseで139fad8dceb749a3710514fe20edee1c436349baへfast-forward。dist生成物は除外。",
+    "verificationFollowup": "Pages workflow 40606970154のbuild・deploy成功後、公開実DOMで議席配分、主要更新、予定、確認日時を照合。この実行記録とCURRENT_STATE.mdだけの文書追補へ反映。"
   }
 }
