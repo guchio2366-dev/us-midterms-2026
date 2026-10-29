@@ -68,9 +68,9 @@ describe('接戦州の編集データ',()=>{
   });
   it('keeps the new Ohio poll separate from conflicting prior polls and separate questions',()=>{
     const race=data.races.find(r=>r.electionId==='2026-OH-3-special')!;
-    expect(race.updatedAt).toBe('2026-10-23');
-    expect(race.featuredSummary).toContain('Brown 52%・Husted 47%');
-    expect(race.featuredSummary).toContain('Rasmussen');
+    expect(race.updatedAt).toBe('2026-10-29');
+    expect(race.featuredSummary).toContain('Brown 47%・Husted 44%');
+    expect(race.featuredSummary).toContain('誤差±4.4ポイント内');
     const update=data.updates.find(u=>u.updateId==='obs-update-oh-fox-poll-2026-10-21')!;
     expect(update.happened).toContain('投票予定者1,592人');
     expect(update.uncertainty).toContain('別設問');

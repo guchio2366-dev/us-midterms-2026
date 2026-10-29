@@ -27,7 +27,7 @@ describe('October 26 rally, Alaska schedule, Texas poll, and Monday audit', () =
     expect(update.happened).toContain('45%');
     expect(update.happened).toContain('Ted Brown氏5%');
     expect(update.uncertainty).toContain('支持移動とは断定しない');
-    expect(data.races.find(x => x.electionId === '2026-TX-2-regular')!.updatedAt).toBe('2026-10-28');
+    expect(data.races.find(x => x.electionId === '2026-TX-2-regular')!.updatedAt).toBe('2026-10-29');
   });
 
   it('records all sixty focus-race comparison cells for the Monday review', () => {

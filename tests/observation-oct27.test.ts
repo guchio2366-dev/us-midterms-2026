@@ -16,7 +16,7 @@ describe('October 27 Alaska litigation, New Hampshire poll, tariffs, and final-w
     expect(update.happened).toContain('44%');
     expect(update.happened).toContain('Edmond Laplante氏4%');
     expect(update.uncertainty).toContain('支持移動');
-    expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-27');
+    expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-29');
   });
 
   it('keeps tariff implementation and effects separate', () => {
@@ -34,7 +34,7 @@ describe('October 27 Alaska litigation, New Hampshire poll, tariffs, and final-w
       expect(data.updates.find(x => x.updateId === event.resultUpdateId)!.eventId).toBe(id);
     }
     const ohio = data.events.find(x => x.eventId === 'oh-trump-chillicothe-rally-2026-10-28')!;
-    expect(ohio.status).toBe('scheduled');
-    expect(ohio.resultUpdateId).toBeNull();
+    expect(ohio.status).toBe('completed');
+    expect(ohio.resultUpdateId).toBe('obs-update-oh-chillicothe-rally-result-2026-10-28');
   });
 });

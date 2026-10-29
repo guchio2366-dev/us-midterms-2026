@@ -14,23 +14,24 @@ describe('October 28 final polls, rally results, and ratings', () => {
     expect(texas.uncertainty).toContain('集会の効果も示さない');
   });
 
-  it('cross-references both Texas rally results and preserves the partial check', () => {
+  it('cross-references both Texas rally results and records the resolved follow-up', () => {
     for (const id of ['tx-trump-corpus-rally-2026-10-27', 'tx-trump-lubbock-rally-2026-10-27']) {
       const event = data.events.find(x => x.eventId === id)!;
       expect(event.status).toBe('completed');
       expect(data.updates.find(x => x.updateId === event.resultUpdateId)!.eventId).toBe(id);
     }
-    expect(data.sources.find(x => x.sourceId === 'obs-kcbd-tx-lubbock-rally-20261027')!.checkStatus).toBe('partial');
-    expect(data.monitor.latestRun.pendingSourceIds).toContain('obs-kcbd-tx-lubbock-rally-20261027');
+    expect(data.sources.find(x => x.sourceId === 'obs-kcbd-tx-lubbock-rally-20261027')!.checkStatus).toBe('checked');
+    expect(data.monitor.latestRun.pendingSourceIds).not.toContain('obs-kcbd-tx-lubbock-rally-20261027');
   });
 
-  it('adds only confirmed future schedules and leaves Ohio awaiting its result', () => {
+  it('keeps confirmed future schedules and cross-references the completed Ohio event', () => {
     for (const id of ['nh-wmur-granite-state-debate-2026-10-28', 'ks-trump-salina-rally-2026-10-31']) {
       expect(data.events.find(x => x.eventId === id)?.status).toBe('scheduled');
     }
     const ohio = data.events.find(x => x.eventId === 'oh-trump-chillicothe-rally-2026-10-28')!;
-    expect(ohio.status).toBe('scheduled');
-    expect(ohio.resultUpdateId).toBeNull();
+    expect(ohio.status).toBe('completed');
+    expect(ohio.resultUpdateId).toBe('obs-update-oh-chillicothe-rally-result-2026-10-28');
+    expect(data.updates.find(x => x.updateId === ohio.resultUpdateId)?.eventId).toBe(ohio.eventId);
   });
 
   it('records Sabato changes without changing the integrated allocation', () => {
@@ -43,10 +44,10 @@ describe('October 28 final polls, rally results, and ratings', () => {
   it('advances analysis only for races with new verified evidence', () => {
     const dates = Object.fromEntries(data.races.map(race => [race.electionId, race.updatedAt]));
     expect(dates['2026-ME-2-regular']).toBe('2026-10-28');
-    expect(dates['2026-MI-2-regular']).toBe('2026-10-28');
-    expect(dates['2026-TX-2-regular']).toBe('2026-10-28');
-    expect(dates['2026-AK-2-regular']).toBe('2026-10-26');
-    expect(dates['2026-OH-3-special']).toBe('2026-10-23');
-    expect(dates['2026-NH-2-regular']).toBe('2026-10-27');
+    expect(dates['2026-MI-2-regular']).toBe('2026-10-29');
+    expect(dates['2026-TX-2-regular']).toBe('2026-10-29');
+    expect(dates['2026-AK-2-regular']).toBe('2026-10-29');
+    expect(dates['2026-OH-3-special']).toBe('2026-10-29');
+    expect(dates['2026-NH-2-regular']).toBe('2026-10-29');
   });
 });
