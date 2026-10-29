@@ -37,7 +37,7 @@
   "note": "AKの同姓候補勧誘報道を資料・証言と陣営・DSCCの否定に分け、MIとOHの最終盤調査を方法・誤差付きで追加。Chillicothe集会とLubbock集会の候補者登壇・発言を元予定へ相互参照し、NHPRの10月29日フォーラム中止、SCとIAの大統領集会予定を確認。WMURの10月28日21時ET討論は確認時点で開始前。評価とD43/R44/未配分13は維持。",
   "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Monday full comparison audit not due",
   "baseCommit": "37b03fedfa9d7eb0bace7cb4b97c1660072e4d8e",
-  "publishedCommit": null,
+  "publishedCommit": "b5d32627b48da9804921cfc5aebe1c641ab271f0",
   "revision": "observation-2026-10-29-final-week-alaska-ohio-michigan",
   "analysisChanges": [
     {
@@ -238,15 +238,24 @@
     "npmCi": "passed",
     "npmTest": "passed: 510 tests in 43 files",
     "npmBuild": "passed: tsc and Vite; index-Btyc9oVt.js / index-Dsomt5uB.css; existing bundle-size advisory only",
-    "browserVerificationRoute": "publication pending"
+    "browserVerificationRoute": "GitHub Pagesの実DOMをChromeで確認。D43/R44/未配分13、AK・MI・OH・TX・NHの新見出し、SC・KSの確認済み予定、情報源最終確認2026/10/29 09:03 JSTを確認。"
   },
   "publication": {
-    "status": "pending",
-    "pagesRunUrl": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40793082853",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "publicContentVerifiedAt": null,
-    "verified": [],
-    "publicationMethod": "latest mainを期待値にforce=falseでfast-forward予定。dist生成物は除外。",
-    "verificationFollowup": "Pages workflow成功後、公開実DOMで議席配分、主要更新、予定、確認日時を照合し、この記録とCURRENT_STATE.mdへ追補する。"
+    "publicContentVerifiedAt": "2026-10-29T00:18:56Z",
+    "verified": [
+      "D43/R44/unallocated13 and October 27 rating snapshot",
+      "Alaska same-name candidate recruitment report headline with denials separated",
+      "Michigan Mitchell/CBS Detroit 51%-44% poll headline",
+      "Ohio Suffolk 47%-44% poll and completed Chillicothe rally headlines",
+      "Texas Lubbock completed-event update with Paxton appearance verified",
+      "New Hampshire NHPR forum cancellation headline",
+      "South Carolina and Kansas confirmed presidential-event rows",
+      "source last-check display 2026/10/29 09:03 JST"
+    ],
+    "publicationMethod": "main 37b03fedfa9d7eb0bace7cb4b97c1660072e4d8eを期待値として対象13ファイルのGit blobとtreeをローカルSHAに一致させ、force=falseでb5d32627b48da9804921cfc5aebe1c641ab271f0へfast-forward。dist生成物は除外。",
+    "verificationFollowup": "Pages workflow 40793082853のbuild・deploy成功後、公開実DOMで議席配分、AK・MI・OH・TX・NHの更新、確認済み予定、確認日時を照合。この実行記録とCURRENT_STATE.mdだけの文書追補へ反映。"
   }
 }
