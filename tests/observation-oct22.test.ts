@@ -42,7 +42,7 @@ describe('October 22 polls, early voting, and event outcomes', () => {
     expect(update.happened).toContain('40%');
     expect(update.happened).toContain('未定12%');
     expect(update.uncertainty).toContain('単一調査');
-    expect(data.monitor.latestRun.note).toContain('D43/R44/未配分13');
+    expect(data.monitor.latestRun.note).toContain('D44/R44/未配分12');
   });
 
   it('does not turn early-vote volume into candidate support', () => {

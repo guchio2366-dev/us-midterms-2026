@@ -38,7 +38,7 @@ function firstElectionWithBothCaucuses() {
 }
 
 describe('shared scenario state',() => {
-  it('preserves the October 14 D43/R45/U12 baseline and SC allocation in old saved and shared scenarios',()=>{
+  it('preserves a cloned prior baseline after the current rating update and SC allocation in old saved and shared scenarios',()=>{
     const oldBaseline=structuredClone(currentBaseline);
     oldBaseline.snapshotId='senate-ratings-2026-10-14-strong-agreement-v2';
     oldBaseline.asOf='2026-10-14';
@@ -50,7 +50,7 @@ describe('shared scenario state',() => {
     const shared=decodeScenario(payload,seats,elections,houseDistricts,currentBaseline,legacyBaseline);
     for(const preserved of [shared.state,loadDraft(storage,seats,elections,houseDistricts,currentBaseline,legacyBaseline)!.state,loadSavedScenarios(storage,seats,elections,houseDistricts,currentBaseline,legacyBaseline).items[0].state]){
       expect(preserved.senateBaseline).toEqual(oldBaseline);
-      expect(countScenarioSenate(preserved,seats,elections)).toMatchObject({Democratic:43,Republican:45,unassigned:12});
+      expect(countScenarioSenate(preserved,seats,elections)).toMatchObject({Democratic:44,Republican:45,unassigned:11});
     }
     expect(shared.staleBaseline).toBe(true);
   });
@@ -86,9 +86,9 @@ describe('shared scenario state',() => {
     expect(loaded.staleBaseline).toBe(true);
     expect(loaded.state.senateBaseline.methodVersion).toBe('direction-majority-v1');
   });
-  it('starts a new scenario from the rating consensus with thirteen seats unassigned',() => {
+  it('starts a new scenario from the rating consensus with twelve seats unassigned',() => {
     const counts = countScenarioSenate(freshScenario(),seats,elections);
-    expect(counts).toEqual({Democratic:43,Republican:44,none:0,unconfirmed:0,vacant:0,unassigned:13});
+    expect(counts).toEqual({Democratic:44,Republican:44,none:0,unconfirmed:0,vacant:0,unassigned:12});
   });
 
   it('keeps a current candidate choice and resolves its caucus',() => {
@@ -135,7 +135,7 @@ describe('shared scenario state',() => {
     changedBaseline.snapshotId = 'later-snapshot';
     changedBaseline.outcomes['MI-2'] = 'Republican';
     const loaded = decodeScenario(encodeScenario(state),seats,elections,houseDistricts,changedBaseline,legacyBaseline);
-    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:43,Republican:44,none:0,unconfirmed:0,vacant:0,unassigned:13});
+    expect(countScenarioSenate(loaded.state,seats,elections)).toEqual({Democratic:44,Republican:44,none:0,unconfirmed:0,vacant:0,unassigned:12});
     expect(loaded.staleBaseline).toBe(true);
   });
 
@@ -150,11 +150,11 @@ describe('shared scenario state',() => {
     const state = freshScenario();
     const election = elections.find(item => currentBaseline.outcomes[item.seatId] === 'unassigned')!;
     state.senate[election.seatId] = {kind:'caucus',electionId:election.electionId,caucus:'Democratic'};
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:44,Republican:44,unassigned:12});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:45,Republican:44,unassigned:11});
     state.senate[election.seatId] = {kind:'caucus',electionId:election.electionId,caucus:'Republican'};
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:43,Republican:45,unassigned:12});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:44,Republican:45,unassigned:11});
     delete state.senate[election.seatId];
-    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:43,Republican:44,unassigned:13});
+    expect(countScenarioSenate(state,seats,elections)).toMatchObject({Democratic:44,Republican:44,unassigned:12});
   });
 
   it('recovers safely from a corrupt browser draft',() => {
@@ -211,7 +211,7 @@ describe('reverse Senate paths',() => {
     const result = generateSenatePaths({seats,elections,scenario:freshScenario(),caucus:'Democratic',threshold:51,limit:3});
 
     expect(result.status).toBe('reached');
-    expect(result.shortage).toBe(8);
+    expect(result.shortage).toBe(7);
     expect(result.paths).toHaveLength(3);
     expect(result.paths[0].addedSeatIds).toHaveLength(result.shortage);
   });

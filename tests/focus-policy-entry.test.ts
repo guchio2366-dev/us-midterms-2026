@@ -55,10 +55,10 @@ function thirteenReasons():ScenarioState {
 }
 
 describe('thirteen-state policy entry boundary',()=>{
-  it('aligns all thirteen unassigned state entries with resolver, selection parser and reason normalization',()=>{
+  it('keeps all thirteen focus entries while twelve are currently unassigned',()=>{
     expect(policyPrototype.focusElectionIds.slice().sort()).toEqual(expectedFocus.map(election=>election.electionId).sort());
     expect(REASONING_LIMITS.races).toBe(13);
-    expect(elections.filter(election=>currentBaseline.outcomes[election.seatId]==='unassigned').map(election=>election.electionId).sort()).toEqual([...policyPrototype.focusElectionIds].sort());
+    expect(elections.filter(election=>currentBaseline.outcomes[election.seatId]==='unassigned').map(election=>election.electionId).sort()).toEqual(policyPrototype.focusElectionIds.filter(id=>id!=='2026-GA-2-regular').sort());
     let state=fresh();
     for(const election of expectedFocus){
       const before=JSON.stringify(state);

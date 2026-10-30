@@ -25,9 +25,8 @@ describe('October 28 final polls, rally results, and ratings', () => {
   });
 
   it('keeps confirmed future schedules and cross-references the completed Ohio event', () => {
-    for (const id of ['nh-wmur-granite-state-debate-2026-10-28', 'ks-trump-salina-rally-2026-10-31']) {
-      expect(data.events.find(x => x.eventId === id)?.status).toBe('scheduled');
-    }
+    expect(data.events.find(x => x.eventId === 'nh-wmur-granite-state-debate-2026-10-28')?.status).toBe('completed');
+    expect(data.events.find(x => x.eventId === 'ks-trump-salina-rally-2026-10-31')?.status).toBe('canceled');
     const ohio = data.events.find(x => x.eventId === 'oh-trump-chillicothe-rally-2026-10-28')!;
     expect(ohio.status).toBe('completed');
     expect(ohio.resultUpdateId).toBe('obs-update-oh-chillicothe-rally-result-2026-10-28');
