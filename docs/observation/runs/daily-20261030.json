@@ -2,7 +2,7 @@
   "runId": "daily-20261030",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の成功日時を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-29T23:55:00Z",
-  "completedAt": "2026-10-30T00:15:00Z",
+  "completedAt": "2026-10-30T00:18:00Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-inside",
@@ -33,7 +33,7 @@
   "note": "Inside Electionsの10月29日変更を全35選挙で照合し、GAの両機関Likely D一致によりD44/R44/未配分12へ更新。CNN/SSRSのMI・TX・ME・KS調査、NH最終討論、SC集会実施、KS・IA集会中止、AK訴訟・州捜査の続報を追加。",
   "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Friday full comparison audit not due",
   "baseCommit": "2827fb9d4efb24c4b92c0dff61408e32335522a2",
-  "publishedCommit": null,
+  "publishedCommit": "d060e4db38543ddb0e6f68d208532fb15eddd836",
   "revision": "observation-2026-10-30-inside-cnn-debate-rally-changes",
   "analysisChanges": [
     {
@@ -238,18 +238,36 @@
     }
   ],
   "validation": {
-    "npmCi": "pending GitHub Actions",
-    "npmTest": "pending GitHub Actions",
-    "npmBuild": "pending GitHub Actions",
-    "browserVerificationRoute": "pending"
+    "npmCi": "passed in GitHub Actions",
+    "npmTest": "passed: 516 tests in 44 files",
+    "npmBuild": "passed: TypeScript and Vite production build",
+    "browserVerificationRoute": "公開サイトの実画面を操作確認。D44/R44/未配分12と、新規7項目（Inside評価、CNN/SSRS、NH討論、SC集会、KS・IA中止、AK捜査）をNEWS & EVENTSで確認。"
   },
   "publication": {
-    "status": "pending",
-    "pagesRunUrl": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40978459823",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "publicContentVerifiedAt": null,
-    "verified": [],
-    "publicationMethod": "mainへのforce=false fast-forward予定。dist生成物は除外。",
-    "verificationFollowup": "Pages workflow成功後に公開DOMを確認して追記。"
+    "publicContentVerifiedAt": "2026-10-30T00:18:00Z",
+    "verified": [
+      "D44/R44/unallocated12 and October 29 rating snapshot",
+      "Inside Elections nine-state change and Georgia allocation article",
+      "CNN/SSRS four-state poll article",
+      "New Hampshire final debate article",
+      "South Carolina Rock Hill completed-event update",
+      "Kansas and Iowa in-person rally cancellation updates",
+      "Alaska amended-lawsuit and state-investigation update"
+    ],
+    "publicationMethod": "main 2827fb9d4efb24c4b92c0dff61408e32335522a2を起点に、対象データ・テストをforce=falseでd060e4db38543ddb0e6f68d208532fb15eddd836まで通常のfast-forward。dist生成物は除外。",
+    "initialFailures": [
+      {
+        "runUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40977953100",
+        "cause": "情勢変更後の既存テスト期待値とWhite House部分確認の日付規則が未更新でテスト停止。Pages deployは実行されず旧公開版を維持。"
+      },
+      {
+        "runUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/40978265586",
+        "cause": "12州化に伴うbriefing・overviewテスト期待値の残りを検出して停止。Pages deployは実行されず旧公開版を維持。"
+      }
+    ],
+    "verificationFollowup": "Actions build・deploy成功後、公開実画面で議席配分と新規7項目を州選択・全国フィードで照合。"
   }
 }
