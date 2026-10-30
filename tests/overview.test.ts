@@ -35,7 +35,7 @@ describe('PC opening overview contract', () => {
     const tracks = [...html.matchAll(/<div class="seat-composition-track"[^>]*>(.*?)<div class="seat-composition-legend"/gs)];
     expect(tracks).toHaveLength(4);
     const widths = tracks.map(track => [...track[1].matchAll(/style="width:([\d.]+)%"/g)].map(match => Number(match[1])));
-    expect(widths).toEqual([[34,13,22,31],[34,17,18,31],[34,15,20,31],[34,10,13,12,31]]);
+    expect(widths).toEqual([[34,13,22,31],[34,17,18,31],[34,15,20,31],[34,10,12,13,31]]);
     for (const row of widths) expect(row.reduce((sum,n) => sum+n,0)).toBe(100);
     expect(html).toContain('style="left:51%"');
     expect(html).toContain('style="left:49%"');

@@ -40,7 +40,7 @@ describe('October 25 polls, Obama rallies, and heating-oil comparison', () => {
       'obs-roster-nh',
       'obs-insideradvantage-mi-ia-oh-20261023',
     ]));
-    expect(run.note).toContain('D44/R44/未配分12');
+    expect(run.note).toContain('D43/R44/未配分13');
     expect(data.sources).toHaveLength(303);
     expect(data.evidenceRefs).toHaveLength(289);
     expect(data.updates).toHaveLength(158);

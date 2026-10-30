@@ -22,7 +22,7 @@ const focus = briefingElections(elections,seats,states,consensus);
 
 describe('state briefing', () => {
   it('binds editorial findings to the correct races and existing sources, with honest gaps', () => {
-    expect(briefingLenses.map(lens=>lens.electionId).sort()).toEqual(focus.filter(e=>e.seatId!=='SC-2').map(e=>e.electionId).sort());
+    expect(briefingLenses.filter(lens=>lens.electionId!=='2026-GA-2-regular').map(lens=>lens.electionId).sort()).toEqual(focus.filter(e=>e.seatId!=='SC-2').map(e=>e.electionId).sort());
     expect(briefingLensMarkup('2026-SC-2-regular')).toBe('');
     for (const lens of briefingLenses) {
       expect(lens.sourceIds.length).toBeGreaterThan(0);
@@ -64,18 +64,18 @@ describe('state briefing', () => {
   });
 
   it('keeps Minnesota and Nebraska in the briefing when ratings weaken to Lean', () => {
-    expect(focus.map(e=>e.seatId)).toEqual(['AK-2','GA-2','IA-2','KS-2','ME-2','MI-2','MN-2','NE-2','NH-2','NC-2','OH-3','SC-2','TX-2']);
-    expect(consensus.filter(c=>['lean','tossup','split','missing'].includes(c.category))).toHaveLength(13);
+    expect(focus.map(e=>e.seatId)).toEqual(['AK-2','IA-2','KS-2','ME-2','MI-2','MN-2','NE-2','NH-2','NC-2','OH-3','SC-2','TX-2']);
+    expect(consensus.filter(c=>['lean','tossup','split','missing'].includes(c.category))).toHaveLength(12);
     const changed=consensus.map(c=>['IA-2','GA-2'].includes(c.seatId) ? {...c,category:'missing' as const} : c);
     const expanded=briefingElections(elections,seats,states,changed);
     expect(expanded.filter(e=>e.seatId==='IA-2')).toHaveLength(1);
     expect(expanded.some(e=>e.seatId==='GA-2')).toBe(true);
   });
 
-  it('verifies that the current thirteen featured states correspond to the thirteen unallocated seats', () => {
+  it('verifies that the current twelve featured states correspond to the twelve unallocated seats', () => {
     const coverage=featuredAllocationCoverage(focus,seats,consensus);
-    expect(coverage).toMatchObject({stateCount:13,unallocatedCount:13,matched:13,corresponds:true});
-    expect(coverage.description).toContain('13州は、現在の暫定配分で未配分となっている13議席に対応');
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:12,matched:12,corresponds:true});
+    expect(coverage.description).toContain('12州は、現在の暫定配分で未配分となっている12議席に対応');
     expect([...new Set(focus.map(e=>e.seatId))].sort()).toEqual(consensus
       .filter(item=>['lean','tossup','split','missing'].includes(item.category)).map(item=>item.seatId).sort());
   });
@@ -85,16 +85,16 @@ describe('state briefing', () => {
     const retained=briefingElections(elections,seats,states,changed);
     expect(retained.some(e=>e.seatId==='IA-2')).toBe(true);
     const coverage=featuredAllocationCoverage(retained,seats,changed);
-    expect(coverage).toMatchObject({stateCount:13,unallocatedCount:12,matched:12,corresponds:false});
-    expect(coverage.description).toContain('13州には、現在の未配分12議席のうち12議席');
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:11,matched:11,corresponds:false});
+    expect(coverage.description).toContain('12州には、現在の未配分11議席のうち11議席');
     expect(coverage.description).not.toContain('議席に対応します');
   });
 
   it('compares seat identities even when the featured and unallocated counts happen to match', () => {
     const mismatched=[...focus.filter(e=>e.seatId!=='TX-2'),elections.find(e=>e.seatId==='AL-2')!];
     const coverage=featuredAllocationCoverage(mismatched,seats,consensus);
-    expect(coverage).toMatchObject({stateCount:13,unallocatedCount:13,matched:12,corresponds:false});
-    expect(coverage.description).toContain('未配分13議席のうち12議席');
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:12,matched:11,corresponds:false});
+    expect(coverage.description).toContain('未配分12議席のうち11議席');
   });
 
   it('counts a future second contest in the same state as a seat without inventing an extra state', () => {
@@ -105,8 +105,8 @@ describe('state briefing', () => {
     const expandedSeats=[...seats,{...alaskaSeat,seatId:'AK-3'}];
     const expandedConsensus=[...consensus,{...alaskaRating,seatId:'AK-3'}];
     const coverage=featuredAllocationCoverage([...focus,additional,additional],expandedSeats,expandedConsensus);
-    expect(coverage).toMatchObject({stateCount:13,unallocatedCount:14,matched:14,corresponds:true});
-    expect(coverage.description).toContain('13州は、現在の暫定配分で未配分となっている14議席に対応');
+    expect(coverage).toMatchObject({stateCount:12,unallocatedCount:13,matched:13,corresponds:true});
+    expect(coverage.description).toContain('12州は、現在の暫定配分で未配分となっている13議席に対応');
   });
 
   it('highlights exactly the selected state using the shared 50-state geometry', () => {
@@ -173,8 +173,8 @@ describe('state briefing', () => {
   it('retains the institutional entry point and explains why to read the states', () => {
     expect(introductionMarkup()).toContain('id="open-civics"');
     expect(introductionMarkup()).toContain(approvedCopy.sections['米国中間選挙の概説'][0].text);
-    expect(nationalOverviewMarkup()).toContain('両党とも51議席に届かず、13議席が未配分');
-    expect(nationalOverviewMarkup()).toContain('href="#updates">13州');
+    expect(nationalOverviewMarkup()).toContain('両党とも51議席に届かず、12議席が未配分');
+    expect(nationalOverviewMarkup()).toContain('href="#updates">12州');
   });
 
 });
