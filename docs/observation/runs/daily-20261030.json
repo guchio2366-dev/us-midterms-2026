@@ -1,0 +1,255 @@
+{
+  "runId": "daily-20261030",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の成功日時を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-29T23:55:00Z",
+  "completedAt": "2026-10-30T00:15:00Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-inside",
+    "obs-ssrs-cnn-four-state-20261029",
+    "obs-wmur-nh-debate-20261027",
+    "obs-nhpr-nh-wmur-debate-20261029",
+    "obs-ap-trump-rally-changes-20261029",
+    "obs-reuters-ak-lawsuit-amended-20261029",
+    "obs-alaskapublic-ak-investigation-20261029",
+    "obs-gop-sc-rockhill-rally-20261029",
+    "obs-gop-ks-salina-rally-20261031",
+    "obs-gop-ia-dubuque-rally-20261101"
+  ],
+  "pendingSourceIds": [
+    "obs-white-house",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-peltola",
+    "obs-sullivan",
+    "obs-collins",
+    "obs-jackson-policy",
+    "obs-rogers-bio",
+    "obs-abdul-ai",
+    "obs-talarico-policy",
+    "obs-paxton-policy",
+    "obs-pappas"
+  ],
+  "note": "Inside Electionsの10月29日変更を全35選挙で照合し、GAの両機関Likely D一致によりD44/R44/未配分12へ更新。CNN/SSRSのMI・TX・ME・KS調査、NH最終討論、SC集会実施、KS・IA集会中止、AK訴訟・州捜査の続報を追加。",
+  "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Friday full comparison audit not due",
+  "baseCommit": "2827fb9d4efb24c4b92c0dff61408e32335522a2",
+  "publishedCommit": null,
+  "revision": "observation-2026-10-30-inside-cnn-debate-rally-changes",
+  "analysisChanges": [
+    {
+      "electionId": "integrated-ratings",
+      "status": "updated",
+      "scope": "Inside Electionsの公式API9変更を照合。GAが両機関Likely DとなりD44/R44/未配分12へ変更。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "status": "updated",
+      "scope": "CNN/SSRS 49-42を標本・実査・誤差付きで追加。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "status": "updated",
+      "scope": "CNN/SSRS 49-43を標本・実査・誤差付きで追加。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "status": "updated",
+      "scope": "CNN/SSRS 49-45を誤差内の差として追加。"
+    },
+    {
+      "electionId": "2026-KS-2-regular",
+      "status": "updated",
+      "scope": "CNN/SSRS 49-45、対面大統領集会中止を追加。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "status": "updated",
+      "scope": "WMUR最終討論の実施と両候補の発言を比較。"
+    },
+    {
+      "electionId": "2026-SC-2-regular",
+      "status": "updated",
+      "scope": "Rock Hill集会実施・Graham氏登壇を元予定と相互参照。"
+    },
+    {
+      "electionId": "2026-IA-2-regular",
+      "status": "updated",
+      "scope": "Dubuque対面集会中止を元予定と相互参照。"
+    },
+    {
+      "electionId": "2026-AK-2-regular",
+      "status": "updated",
+      "scope": "連邦訴訟修正・州捜査指示を追加し、捜査と違法認定を分離。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "status": "updated",
+      "scope": "Inside評価Toss-upからTilt D。SabatoはToss-upのため未配分維持。"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-30T00:15:00Z",
+      "scope": "公式API全35選挙と9変更を照合。会員向け理由本文は未取得。"
+    },
+    {
+      "sourceId": "obs-ssrs-cnn-four-state-20261029",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-30T00:15:00Z",
+      "scope": "4州の数値、LV標本、実査期間、抽出・実施方式、誤差を照合。"
+    },
+    {
+      "sourceId": "obs-nhpr-nh-wmur-debate-20261029",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-30T00:15:00Z",
+      "scope": "討論実施と生活費・Social Security・Iran・政権との距離の回答を照合。"
+    },
+    {
+      "sourceId": "obs-ap-trump-rally-changes-20261029",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-30T00:15:00Z",
+      "scope": "SC集会実施、KS・IA対面集会中止、電話集会への切替説明を確認。"
+    },
+    {
+      "sourceId": "obs-reuters-ak-lawsuit-amended-20261029",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-30T00:15:00Z",
+      "scope": "司法省の修正訴状・調査拡大と当事者の否定を確認。判決ではない。"
+    },
+    {
+      "sourceId": "obs-alaskapublic-ak-investigation-20261029",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-10-30T00:15:00Z",
+      "scope": "州捜査指示、詳細未公表、否定と専門家見解を照合。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "公式一覧にはIowa予定が残り、より新しいAP・RNC説明と不一致。中止を最新情報として記録し、電話集会の時刻は未確認。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式候補者一覧本文は取得できず前回の部分確認を維持。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "scope": "過去調査原票・質問文・資金提供者は取得できず未掲載。"
+    },
+    {
+      "sourceId": "obs-peltola",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-sullivan",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-collins",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-jackson-policy",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-rogers-bio",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-abdul-ai",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-talarico-policy",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-paxton-policy",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    },
+    {
+      "sourceId": "obs-pappas",
+      "attemptedAt": "2026-10-30T00:15:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "公式発表・予定ページを検索。独立した新事実または中立的な有権者評価を確認できず、分析日を進めない。"
+    }
+  ],
+  "eventChecks": [
+    {
+      "eventId": "nh-wmur-granite-state-debate-2026-10-28",
+      "status": "completed",
+      "scope": "開催後のNHPR記事で実施と両候補の回答を確認し、結果記事と相互参照。"
+    },
+    {
+      "eventId": "sc-trump-rockhill-rally-2026-10-29",
+      "status": "completed",
+      "scope": "Trump大統領とGraham氏の登壇を確認。会場反応を州全体へ一般化しない。"
+    },
+    {
+      "eventId": "ks-trump-salina-rally-2026-10-31",
+      "status": "canceled",
+      "scope": "対面集会中止。電話集会の時刻未確認のため新予定を作らない。"
+    },
+    {
+      "eventId": "ia-trump-dubuque-rally-2026-11-01",
+      "status": "canceled",
+      "scope": "対面集会中止。電話集会の時刻未確認のため新予定を作らない。"
+    }
+  ],
+  "validation": {
+    "npmCi": "pending GitHub Actions",
+    "npmTest": "pending GitHub Actions",
+    "npmBuild": "pending GitHub Actions",
+    "browserVerificationRoute": "pending"
+  },
+  "publication": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicContentVerifiedAt": null,
+    "verified": [],
+    "publicationMethod": "mainへのforce=false fast-forward予定。dist生成物は除外。",
+    "verificationFollowup": "Pages workflow成功後に公開DOMを確認して追記。"
+  }
+}

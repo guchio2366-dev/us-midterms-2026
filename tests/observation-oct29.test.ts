@@ -41,9 +41,9 @@ describe('October 29 final-week evidence and event reconciliation', () => {
   });
 
   it('adds only confirmed presidential schedules and preserves the integrated baseline', () => {
-    expect(data.events.find(x => x.eventId === 'sc-trump-rockhill-rally-2026-10-29')?.status).toBe('scheduled');
-    expect(data.events.find(x => x.eventId === 'ia-trump-dubuque-rally-2026-11-01')?.status).toBe('scheduled');
-    expect(data.monitor.latestRun.note).toContain('D43/R44/未配分13');
-    expect(data.revision).toBe('observation-2026-10-29-final-week-alaska-ohio-michigan');
+    expect(data.events.find(x => x.eventId === 'sc-trump-rockhill-rally-2026-10-29')?.status).toBe('completed');
+    expect(data.events.find(x => x.eventId === 'ia-trump-dubuque-rally-2026-11-01')?.status).toBe('canceled');
+    expect(data.monitor.latestRun.note).toContain('D44/R44/未配分12');
+    expect(data.revision).toBe('observation-2026-10-30-inside-cnn-debate-rally-changes');
   });
 });

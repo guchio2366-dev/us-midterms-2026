@@ -21,7 +21,7 @@ describe('senate rating consensus',() => {
   it('retains source confirmation dates independently of the new method date',()=>{
     expect(RATING_METHOD_VERSION).toBe('unanimous-likely-or-stronger-v2');
     expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-28')).toBe(true);
-    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-16')).toBe(true);
+    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-30')).toBe(true);
   });
   it('normalizes source vocabulary without converting strength into probability',() => {
     expect(normalizeRatingDirection('Safe D')).toBe('D');
@@ -52,10 +52,10 @@ describe('senate rating consensus',() => {
     expect(results.find(item => item.seatId === 'ME-2')?.category).toBe('tossup');
   });
 
-  it('shows the thirteen unallocated seats in the neutral map color, including Minnesota and Nebraska',() => {
+  it('shows the twelve unallocated seats in the neutral map color, including Minnesota and Nebraska',() => {
     const results = aggregateRatingConsensus(elections.map(election => election.seatId),ratingSnapshotObservations);
     const mapSeatIds = results.filter(result => consensusDisplayRating(result) === 'Toss Up').map(result => result.seatId).sort();
-    expect(mapSeatIds).toEqual(['AK-2','GA-2','IA-2','KS-2','ME-2','MI-2','MN-2','NC-2','NE-2','NH-2','OH-3','SC-2','TX-2']);
+    expect(mapSeatIds).toEqual(['AK-2','IA-2','KS-2','ME-2','MI-2','MN-2','NC-2','NE-2','NH-2','OH-3','SC-2','TX-2']);
     const baseline = createRatingSenateBaseline({seats,elections,consensus:results,snapshotId:'test',asOf:'test',methodVersion:'test',seatDataVersion:'test'});
     expect(mapSeatIds).toEqual(Object.entries(baseline.outcomes).filter(([,value]) => value === 'unassigned').map(([seatId]) => seatId).sort());
     expect(elections.find(election => election.seatId === 'NH-2')?.rating.category).toBe('Likely D');
@@ -63,10 +63,10 @@ describe('senate rating consensus',() => {
 
   it('retains Sabato strength only after the direction agrees',() => {
     const results = aggregateRatingConsensus(elections.map(election => election.seatId),ratingSnapshotObservations);
-    expect(consensusDisplayRating(results.find(result => result.seatId === 'GA-2'))).toBe('Toss Up');
+    expect(consensusDisplayRating(results.find(result => result.seatId === 'GA-2'))).toBe('Likely D');
     expect(consensusDisplayRating(results.find(result => result.seatId === 'IA-2'))).toBe('Toss Up');
     expect(consensusDisplayRating(results.find(result => result.seatId === 'FL-3'))).toBe('Likely R');
-    expect(results.filter(result => / D$/.test(consensusDisplayRating(result)))).toHaveLength(9);
+    expect(results.filter(result => / D$/.test(consensusDisplayRating(result)))).toHaveLength(10);
     expect(results.filter(result => / R$/.test(consensusDisplayRating(result)))).toHaveLength(13);
   });
 
