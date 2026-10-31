@@ -36,7 +36,7 @@ describe('October 21 official jobs data and event outcomes', () => {
 
   it('preserves analysis dates and the allocation baseline on a verification-only day', () => {
     expect(data.races.map(r => r.updatedAt)).toEqual([
-      '2026-10-28', '2026-10-29', '2026-10-29', '2026-10-29', '2026-10-29', '2026-10-29',
+      '2026-10-28', '2026-10-31', '2026-10-29', '2026-10-29', '2026-10-31', '2026-10-31',
     ]);
     expect(run.outcome).toBe('partial');
     expect(run.preserved).toContain('D43/R44/unallocated13');

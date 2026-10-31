@@ -49,8 +49,8 @@ describe('ten-state baseline and sourced additions',()=>{
     expect(health.summary).toContain('可決・成立');
     expect(tenStateNews.find(n=>n.relatedElectionIds.includes('2026-GA-2-regular'))!.summary).toContain('無作為');
     expect(tenStateSources.find(s=>s.sourceId==='ten-ks-hamilton-platform')).toMatchObject({publishedAt:null,contentVerifiedAt:'2026-09-30'});
-    expect(sources.find(s=>s.sourceId==='sabato-senate-2026')!.contentVerifiedAt).toBe('2026-10-28');
+    expect(sources.find(s=>s.sourceId==='sabato-senate-2026')!.contentVerifiedAt).toBe('2026-10-31');
     expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.updatedAt).toBe('2026-10-29');
-    expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.contentVerifiedAt).toBe('2026-10-30');
+    expect(sources.find(s=>s.sourceId==='inside-senate-ratings-2026')!.contentVerifiedAt).toBe('2026-10-31');
   });
 });

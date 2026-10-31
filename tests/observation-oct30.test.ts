@@ -7,7 +7,7 @@ describe('October 30 ratings, polling and event reconciliation', () => {
     const update = data.updates.find(x => x.updateId === 'obs-update-ratings-inside-2026-10-29')!;
     expect(update.happened).toContain('GeorgiaをLikely D');
     expect(update.meaning).toContain('D44・R44・未配分12');
-    expect(RATING_SNAPSHOT_AS_OF).toBe('2026-10-29');
+    expect(RATING_SNAPSHOT_AS_OF).toBe('2026-10-30');
     expect(ratingSnapshotObservations.find(x => x.organizationId === 'inside' && x.seatId === 'GA-2')?.ratingRaw).toBe('Likely D');
   });
 
@@ -29,11 +29,13 @@ describe('October 30 ratings, polling and event reconciliation', () => {
     expect(update.uncertainty).toContain('政策効果');
   });
 
-  it('marks South Carolina completed and Kansas and Iowa canceled', () => {
+  it('preserves the cancellations and records the later Kansas and Iowa reinstatements', () => {
     const sc = data.events.find(x => x.eventId === 'sc-trump-rockhill-rally-2026-10-29')!;
     const ks = data.events.find(x => x.eventId === 'ks-trump-salina-rally-2026-10-31')!;
     const ia = data.events.find(x => x.eventId === 'ia-trump-dubuque-rally-2026-11-01')!;
-    expect([sc.status, ks.status, ia.status]).toEqual(['completed', 'canceled', 'canceled']);
+    expect([sc.status, ks.status, ia.status]).toEqual(['completed', 'scheduled', 'scheduled']);
+    expect(ks.dateHistory[0]?.date).toBe('2026-10-31');
+    expect(ia.dateHistory[0]?.date).toBe('2026-11-01');
     for (const event of [sc, ks, ia]) {
       expect(data.updates.find(x => x.updateId === event.resultUpdateId)?.eventId).toBe(event.eventId);
     }

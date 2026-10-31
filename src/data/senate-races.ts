@@ -118,7 +118,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('KY-2','2026-05-19','Safe R','cand-ky',[
     candidate('Andy Barr','R','Republican','cand-ky'),candidate('Charles Booker','D','Democratic','cand-ky'),
   ]),
-  race('LA-2','2026-05-16','Safe R','cand-la',[
+  race('LA-2','2026-05-16','Likely R','cand-la',[
     candidate('Jamie Davis','D','Democratic','cand-la'),candidate('Julia Letlow','R','Republican','cand-la'),
   ]),
   race('ME-2','2026-06-09','Tossup','me-candidate-list-2026',[
@@ -130,7 +130,7 @@ export const senateRaceDetails: SenateRaceDetail[] = [
   race('MI-2','2026-08-04','Lean D','mi-candidate-list-2026',[
     candidate('Lydia Christensen','other','Libertarian','mi-candidate-list-2026','general-ballot','cand-mi-lydia-christensen'),candidate('Abdul El-Sayed','D','Democratic','mi-candidate-list-2026','general-ballot','cand-mi-abdul-el-sayed'),candidate('Tim Long','other','U.S. Taxpayers','mi-candidate-list-2026','general-ballot','cand-mi-tim-long'),candidate('Douglas P. Marsh','other','Green','mi-candidate-list-2026','general-ballot','cand-mi-douglas-p-marsh'),candidate('Mike Rogers','R','Republican','mi-candidate-list-2026','general-ballot','cand-mi-mike-rogers'),candidate('Walter P. Kristy','other','Natural Law','mi-candidate-list-2026','general-ballot','cand-mi-walter-p-kristy'),
   ]),
-  race('MN-2','2026-08-11','Lean D','cand-mn',[
+  race('MN-2','2026-08-11','Likely D','cand-mn',[
     candidate('Peggy Flanagan','D','DFL','cand-mn'),candidate('Michele Tafoya','R','Republican','cand-mn'),
   ]),
   race('MS-2','2026-03-10','Likely R','cand-ms',[
@@ -244,6 +244,6 @@ export const senateRaceSources: Source[] = [
   {sourceId:'cand-ri-ballot-20260930',title:'2026 Rhode Island candidates for Senator in Congress',publisher:'Rhode Island Department of State',url:'https://vote.sos.ri.gov/Candidates/CandidateSearchSummary?Election=18239&OfficeType=620',publishedAt:null,referencePeriod:'9月30日表示のOn Election Ballot欄。John Francis Reed・Raymond T McKayはY、Connor Francis Burbridge・Luis Daniel MunozはN。既存通称・candidateIdを保持。独立候補の全体は未確認',retrievedAt:'2026-09-30',contentVerifiedAt:'2026-09-30'},
   ...officialCandidateSources.map(([abbr,title,publisher,url]) => ({sourceId:`cand-${abbr}`,title,publisher,url,publishedAt:null,referencePeriod:'2026年連邦上院候補者・投票用紙掲載状況',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'})),
   {sourceId:'senate-race-index',title:'2026 United States Senate elections — race summary',publisher:'Wikipedia contributors',url:'https://en.wikipedia.org/wiki/2026_United_States_Senate_elections',publishedAt:null,updatedAt:'2026-09-09',referencePeriod:'各州選挙当局の候補者一覧を横断照合するための二次資料',retrievedAt:'2026-09-09',contentVerifiedAt:'2026-09-09'},
-  {sourceId:'sabato-senate-2026',title:'Democrats Appear to Hold Narrow Senate Edge with Week to Go; Rating Changes for Senate, House, and Governors',publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://sabatoscrystalball.substack.com/p/democrats-appear-to-hold-narrow-senate',publishedAt:'2026-10-27',updatedAt:'2026-10-27',referencePeriod:'全35選挙の統一情勢評価。NC Lean D→Likely D、SC Likely R→Lean R、FL Safe R→Likely R。上院全体はD方向49、R方向46、Toss-up 5。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-28',contentVerifiedAt:'2026-10-28'},
-  {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-10-29',referencePeriod:'10月29日の公式API全35選挙を確認。OH・TXはTilt D、GAはLikely D、IA・KSはToss-up、NE・SCはTilt R、LA・MSはLikely R。評価理由の会員本文は未取得。',retrievedAt:'2026-10-30',contentVerifiedAt:'2026-10-30'},
+  {sourceId:'sabato-senate-2026',title:'A Rating Change Appetizer: Senate Changes in Louisiana and Minnesota',publisher:"Sabato's Crystal Ball, University of Virginia Center for Politics",url:'https://centerforpolitics.org/crystalball/a-rating-change-appetizer-senate-changes-in-louisiana-and-minnesota/',publishedAt:'2026-10-30',updatedAt:'2026-10-30',referencePeriod:'全35選挙の統一情勢評価。LA Safe R→Likely R、MN Lean D→Likely D。上院全体はD方向49、R方向46、Toss-up 5。Safeは表示上Solidへ正規化',retrievedAt:'2026-10-31',contentVerifiedAt:'2026-10-31'},
+  {sourceId:'inside-senate-ratings-2026',title:'2026 Senate Ratings',publisher:'Inside Elections',url:'https://insideelections.com/ratings/senate',publishedAt:null,updatedAt:'2026-10-29',referencePeriod:'10月29日の公式API全35選挙を確認。OH・TXはTilt D、GAはLikely D、IA・KSはToss-up、NE・SCはTilt R、LA・MSはLikely R。評価理由の会員本文は未取得。',retrievedAt:'2026-10-31',contentVerifiedAt:'2026-10-31'},
 ];

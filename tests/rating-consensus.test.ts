@@ -20,8 +20,8 @@ describe('senate rating consensus',() => {
   });
   it('retains source confirmation dates independently of the new method date',()=>{
     expect(RATING_METHOD_VERSION).toBe('unanimous-likely-or-stronger-v2');
-    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-28')).toBe(true);
-    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-30')).toBe(true);
+    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='sabato').every(r=>r.currentConfirmedAt==='2026-10-31')).toBe(true);
+    expect(ratingSnapshotObservations.filter(r=>r.organizationId==='inside').every(r=>r.currentConfirmedAt==='2026-10-31')).toBe(true);
   });
   it('normalizes source vocabulary without converting strength into probability',() => {
     expect(normalizeRatingDirection('Safe D')).toBe('D');

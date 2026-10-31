@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "revision": "observation-2026-10-30-inside-cnn-debate-rally-changes",
+  "revision": "observation-2026-10-31-ratings-probe-polls-rallies",
   "monitor": {
     "state": "scheduled",
     "timezone": "Asia/Tokyo",
@@ -8,43 +8,200 @@
     "weeklyReview": "月曜に候補者比較と反証を再確認",
     "scheduledAt": "2026-09-13T10:32:17.682072+00:00",
     "firstScheduledFor": "2026-09-14T09:00:00+09:00",
-    "lastCompletedAt": "2026-10-30T00:15:00Z",
+    "lastCompletedAt": "2026-10-31T00:18:00Z",
     "latestRun": {
-      "runId": "daily-20261030",
+      "runId": "daily-20261031",
       "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の成功日時を記録し、部分確認・取得失敗では最後の成功日時を維持。",
-      "startedAt": "2026-10-29T23:55:00Z",
-      "completedAt": "2026-10-30T00:15:00Z",
+      "startedAt": "2026-10-31T00:03:00Z",
+      "completedAt": "2026-10-31T00:18:00Z",
       "outcome": "partial",
       "checkedSourceIds": [
+        "obs-sabato",
+        "obs-sabato-final-appetizer-20261030",
         "obs-inside",
-        "obs-ssrs-cnn-four-state-20261029",
-        "obs-wmur-nh-debate-20261027",
-        "obs-nhpr-nh-wmur-debate-20261029",
-        "obs-ap-trump-rally-changes-20261029",
-        "obs-reuters-ak-lawsuit-amended-20261029",
-        "obs-alaskapublic-ak-investigation-20261029",
-        "obs-gop-sc-rockhill-rally-20261029",
-        "obs-gop-ks-salina-rally-20261031",
-        "obs-gop-ia-dubuque-rally-20261101"
+        "obs-ap-final-week-reshuffle-20261030",
+        "obs-alaskapublic-ak-doj-surge-20261030",
+        "obs-uml-nh-poll-20261028",
+        "obs-msu-mi-soss-20261026",
+        "obs-michiganpublic-mi-unity-20261030",
+        "obs-rogers-bus-tour-20261030",
+        "obs-gop-ia-dubuque-rally-20261101",
+        "obs-gop-ks-salina-rally-20261031"
       ],
       "pendingSourceIds": [
         "obs-white-house",
         "obs-roster-nh",
         "obs-quantus-me-20260917",
+        "obs-quantus-tx-20261030",
         "obs-peltola",
         "obs-sullivan",
         "obs-collins",
         "obs-jackson-policy",
-        "obs-rogers-bio",
         "obs-abdul-ai",
         "obs-talarico-policy",
         "obs-paxton-policy",
         "obs-pappas"
       ],
-      "note": "Inside Electionsの10月29日変更を全35選挙で照合し、GAの両機関Likely D一致により統合配分をD44/R44/未配分12へ更新。CNN/SSRSのMI・TX・ME・KS調査、NH最終討論、SC集会実施、KS・IA集会中止、AK訴訟・州捜査の続報を追加。候補者公式ページとWhite House一覧は一部照合待ちとして記録。"
+      "note": "SabatoのMN・LA変更、AK連邦刑事捜査確認、MI・NHの追加調査、MI候補者日程、IA・KS大統領集会の再設定を原文照合。統合配分D44/R44/未配分12、保存案・共有URL・議席基準を維持。候補者公式固定ページ、White House一覧、TX Quantus原報告などは部分確認・照合待ちとして記録。"
     }
   },
   "sources": [
+    {
+      "sourceId": "obs-sabato-final-appetizer-20261030",
+      "title": "A Rating Change Appetizer: Senate Changes in Louisiana and Minnesota",
+      "publisher": "Sabato's Crystal Ball",
+      "url": "https://sabatoscrystalball.substack.com/p/a-rating-change-appetizer-senate",
+      "publishedAt": "2026-10-30",
+      "referencePeriod": "LouisianaをSafe RからLikely R、MinnesotaをLean DからLikely Dへ変更。11月2日に最終評価を公表予定。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-LA-2-regular",
+        "2026-MN-2-regular"
+      ],
+      "category": "rating",
+      "cadence": "event-driven",
+      "method": "Sabato公式本文で変更前後と理由を確認。Inside ElectionsはLA Likely R・MN Lean Dのため、統合基準ではLAの共和党配分、MNの未配分を維持。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-ap-final-week-reshuffle-20261030",
+      "title": "Trump reshuffles plans as early voting surges, Alaska probe widens, and Democrats fight in Michigan",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/31b7ebe427306d192115e9282eabce48",
+      "publishedAt": "2026-10-30",
+      "referencePeriod": "Iowa・Kansas集会の11月1日再設定、Alaska捜査、Michigan民主党内の最終週の動き。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-IA-2-regular",
+        "2026-KS-2-regular",
+        "2026-AK-2-regular",
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "AP本文で中止から再設定までの時系列を確認し、Iowa・Kansasの日時は主催者登録ページで再照合。捜査、候補者の否定、政党内の発言を法的判断・支持効果と分離。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-alaskapublic-ak-doj-surge-20261030",
+      "title": "DOJ launches law enforcement surge in Alaska to investigate ballot-stacking allegations",
+      "publisher": "Alaska Public Media",
+      "url": "https://alaskapublic.org/news/politics/elections/2026-10-30/doj-launches-law-enforcement-surge-in-alaska-to-investigate-ballot-stacking-allegations",
+      "publishedAt": "2026-10-30",
+      "referencePeriod": "Alaska連邦検事とFBIが民事訴訟と潜在的刑事事件の調査資源増強を発表。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "州内公共メディアの会見取材で調査の存在と発言を確認。検事は犯罪の成立を前提にしないと述べ、具体的な違反法令・起訴・裁判所判断は示していない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-uml-nh-poll-20261028",
+      "title": "New England polls: Pappas slightly ahead in U.S. Senate race in N.H.",
+      "publisher": "UMass Lowell Center for Public Opinion / YouGov",
+      "url": "https://www.uml.edu/news/press-releases/2026/102826-new-england-polls.aspx",
+      "publishedAt": "2026-10-28",
+      "referencePeriod": "10月2〜19日、New Hampshire投票予定者600人。Pappas 48%、Sununu 41%、Laplante 4%、未定7%。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "event-driven",
+      "method": "大学公式発表で実査期間、対象、標本数、全選択肢、調整後誤差±5ポイントを確認。後発のSaint Anselm・Rasmussenより実査終了が早い。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-msu-mi-soss-20261026",
+      "title": "MSU Poll Shows Benson with large lead while El-Sayed/Rogers race tight",
+      "publisher": "Michigan State University IPPSR / YouGov",
+      "url": "https://ippsr.msu.edu/news/msu-poll-shows-benson-large-lead-while-el-sayed-roger-race-tight",
+      "publishedAt": "2026-10-26",
+      "referencePeriod": "10月2〜19日。投票予定者のleaner込みでEl-Sayed 48.0%、Rogers 45.5%。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "event-driven",
+      "method": "大学公式発表でYouGov実施、実査期間、Michigan成人1,000人、ACSへのマッチングと重み付けを確認。公式発表に投票予定者部分標本数とその誤差は記載されていない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-michiganpublic-mi-unity-20261030",
+      "title": "El-Sayed and Stevens to make rare joint appearance as Democrats seek unity in Michigan Senate race",
+      "publisher": "Associated Press / Michigan Public",
+      "url": "https://www.michiganpublic.org/politics-government/2026-10-30/el-sayed-and-stevens-to-make-rare-joint-appearance-as-democrats-seek-unity-in-michigan-senate-race",
+      "publishedAt": "2026-10-30",
+      "referencePeriod": "11月1日にDetroitの教会でEl-Sayed・Stevens・Clyburnが共同GOTV行事を予定。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "reporting",
+      "cadence": "event-driven",
+      "method": "AP配信の州内公共メディア本文で日付・都市・参加予定者を確認。時刻と会場名は未公表のため設定しない。共同登壇予定を有権者全体の結集や得票効果と扱わない。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-rogers-bus-tour-20261030",
+      "title": "Mike Rogers We Have a State to Save Bus Tour",
+      "publisher": "Mike Rogers for Senate",
+      "url": "https://rogersforsenate.com/wehaveastatetosavebustour",
+      "publishedAt": null,
+      "referencePeriod": "10月31日、Grand Rapids 9時、Whitmore Lake 12時開始予定。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "category": "calendar",
+      "cadence": "event-driven",
+      "method": "候補者公式予定ページで各会場の開場・開始時刻を確認。発言内容と実施結果は未確認。",
+      "alternativeUrl": null,
+      "checkStatus": "checked",
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
+    },
+    {
+      "sourceId": "obs-quantus-tx-20261030",
+      "title": "Quantus Insights Texas Senate final-wave poll (original report pending)",
+      "publisher": "Quantus Insights",
+      "url": "https://quantusinsights.org/polling",
+      "publishedAt": "2026-10-30",
+      "referencePeriod": "集計サイトは10月26〜28日実査、Paxton 48.7%、Talarico 47.6%と表示。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": null,
+      "electionIds": [
+        "2026-TX-2-regular"
+      ],
+      "category": "poll",
+      "cadence": "event-driven",
+      "method": "調査会社の当該波の原報告・質問文・方式を取得できず、集計サイト表示だけのため数値を公開しない。",
+      "alternativeUrl": "https://votendi.com/election-polls/623/",
+      "checkStatus": "partial",
+      "lastSuccessAt": null
+    },
     {
       "sourceId": "obs-ssrs-cnn-four-state-20261029",
       "title": "Democrats in striking distance: New CNN polls in four states",
@@ -320,20 +477,20 @@
       "sourceId": "obs-gop-ia-dubuque-rally-20261101",
       "title": "Midterm Rally in Dubuque, Iowa featuring President Donald J. Trump",
       "publisher": "Trump 47 Committee / Republican National Committee",
-      "url": "https://events.gop.com/events/midterm-rally-in-dubuque-iowa-president-donald-j-trump-djt47",
+      "url": "https://events.gop.com/events/midterm-rally-in-dubuque-iowa-president-donald-j-trump-djt47-ia",
       "publishedAt": null,
-      "referencePeriod": "11月1日15時CTにFive Flags Event Centerで大統領発言予定。",
-      "retrievedAt": "2026-10-29",
-      "contentVerifiedAt": "2026-10-29",
+      "referencePeriod": "11月1日15時CTにFive Flags Event Centerで大統領発言予定。10月29日の中止発表後、30日に同日開催を再設定。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
       "electionIds": [
         "2026-IA-2-regular"
       ],
       "category": "calendar",
       "cadence": "daily",
-      "method": "主催者登録ページで日付、開場、プログラム開始、大統領発言、会場を確認。候補者参加は未確認として残す。",
+      "method": "主催者登録ページで日付、開場11時30分、プログラム13時30分、大統領発言15時、会場を再確認。候補者参加は未確認。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-29T00:03:00Z"
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
     },
     {
       "sourceId": "obs-marist-me-20261027",
@@ -491,20 +648,20 @@
       "sourceId": "obs-gop-ks-salina-rally-20261031",
       "title": "Midterm Rally in Salina, Kansas featuring President Donald J. Trump",
       "publisher": "Trump 47 Committee / Republican National Committee",
-      "url": "https://events.gop.com/events/midterm-rally-in-ks-president-donald-j-trump-djt47",
+      "url": "https://events.gop.com/events/midterm-rally-in-ks-president-donald-j-trump-djt47-salina-ks",
       "publishedAt": null,
-      "referencePeriod": "10月31日12時CTに大統領発言予定。Salina Regional Airport Hangar 509。",
-      "retrievedAt": "2026-10-28",
-      "contentVerifiedAt": "2026-10-28",
+      "referencePeriod": "10月31日予定を中止後、11月1日19時CTの大統領発言へ再設定。Salina Regional Airport Hangar 509。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
       "electionIds": [
         "2026-KS-2-regular"
       ],
       "category": "calendar",
       "cadence": "daily",
-      "method": "主催者登録ページで開場、プログラム開始、大統領発言を区別。候補者参加と発言は実施確認まで未確定とする。",
-      "alternativeUrl": "https://www.wibw.com/2026/10/27/president-donald-trump-return-kansas-saturday/",
+      "method": "主催者登録ページの更新後表示で開場15時30分、プログラム17時30分、大統領発言19時を確認。AP配信の初報と時刻差があるため最新の主催者表示を採用。候補者参加は未確認。",
+      "alternativeUrl": "https://www.wibw.com/2026/10/30/back-details-released-presidents-rescheduled-kansas-rally/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-28T00:18:00Z"
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
     },
     {
       "sourceId": "obs-reuters-ak-dismissal-motion-20261026",
@@ -4690,13 +4847,13 @@
     },
     {
       "sourceId": "obs-sabato",
-      "title": "Democrats Appear to Hold Narrow Senate Edge with Week to Go; Rating Changes for Senate, House, and Governors",
+      "title": "A Rating Change Appetizer: Senate Changes in Louisiana and Minnesota",
       "publisher": "Sabato's Crystal Ball",
-      "url": "https://sabatoscrystalball.substack.com/p/democrats-appear-to-hold-narrow-senate",
-      "publishedAt": "2026-10-27",
-      "referencePeriod": "North CarolinaをLean DからLikely D、South CarolinaをLikely RからLean R、Florida特別選をSafe RからLikely Rへ変更。上院全体はD方向49、R方向46、Toss-up 5。",
-      "retrievedAt": "2026-10-29",
-      "contentVerifiedAt": "2026-10-29",
+      "url": "https://sabatoscrystalball.substack.com/p/a-rating-change-appetizer-senate",
+      "publishedAt": "2026-10-30",
+      "referencePeriod": "Louisiana Safe R→Likely R、Minnesota Lean D→Likely D。上院全体はD方向49、R方向46、Toss-up 5。",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
       "electionIds": [
         "2026-IA-2-regular",
         "2026-NC-2-regular",
@@ -4714,10 +4871,10 @@
       ],
       "category": "rating",
       "cadence": "daily",
-      "method": "Sabato公式分析本文で変更前後と全体集計を確認。Inside Electionsとの統合基準ではD43/R44/未配分13を維持。",
+      "method": "Sabato公式本文で変更前後と理由を確認。Inside Electionsとの統合基準ではD44/R44/未配分12を維持。",
       "alternativeUrl": "https://centerforpolitics.org/crystalball/",
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-29T00:03:00Z"
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
     },
     {
       "sourceId": "obs-270towin-sabato-20260922",
@@ -4747,8 +4904,8 @@
       "url": "https://insideelections.com/ratings/senate",
       "publishedAt": null,
       "referencePeriod": "2026年上院選・10月29日更新。OH・TX・GA・IA・KS・NE・SC・LA・MSの変更と全35選挙の現行値を公式APIで確認。",
-      "retrievedAt": "2026-10-30",
-      "contentVerifiedAt": "2026-10-30",
+      "retrievedAt": "2026-10-31",
+      "contentVerifiedAt": "2026-10-31",
       "electionIds": [
         "2026-AK-2-regular",
         "2026-ME-2-regular",
@@ -4769,7 +4926,7 @@
       "method": "公式APIの全35選挙を照合。OH・TXはTilt D、GAはLikely D、IA・KSはToss-up、NE・SCはTilt R、LA・MSはLikely R。評価理由の会員本文は未取得。Sabatoとの両機関Likely以上一致基準を再計算し、GAのみ民主党側へ配分。",
       "alternativeUrl": null,
       "checkStatus": "checked",
-      "lastSuccessAt": "2026-10-30T00:15:00Z"
+      "lastSuccessAt": "2026-10-31T00:18:00Z"
     },
     {
       "sourceId": "obs-white-house",
@@ -5938,6 +6095,69 @@
     }
   ],
   "evidenceRefs": [
+    {
+      "evidenceId": "ev-obs-sabato-20261030",
+      "sourceId": "obs-sabato-final-appetizer-20261030",
+      "locator": "10月30日公式本文：Louisiana Safe R→Likely R、Minnesota Lean D→Likely D。全体集計はD方向49・R方向46・Toss-up 5で不変。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ap-final-week-reshuffle-20261030",
+      "sourceId": "obs-ap-final-week-reshuffle-20261030",
+      "locator": "10月30日AP：Iowa・Kansasの対面集会を11月1日に再設定。Alaska刑事捜査とMichigan党内の動きも確認。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-alaskapublic-ak-doj-surge-20261030",
+      "sourceId": "obs-alaskapublic-ak-doj-surge-20261030",
+      "locator": "Alaska連邦検事がFBI等の調査資源増強を発表。犯罪成立を前提にせず、具体的違反法令・起訴は示さなかった。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-uml-nh-poll-20261028",
+      "sourceId": "obs-uml-nh-poll-20261028",
+      "locator": "10月2〜19日、600 LV、Pappas 48%・Sununu 41%・Laplante 4%・未定7%、調整後誤差±5ポイント。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-msu-mi-soss-20261026",
+      "sourceId": "obs-msu-mi-soss-20261026",
+      "locator": "10月2〜19日、投票予定者のleaner込みEl-Sayed 48.0%・Rogers 45.5%。YouGovがMichigan成人1,000人を調査。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-michiganpublic-mi-unity-20261030",
+      "sourceId": "obs-michiganpublic-mi-unity-20261030",
+      "locator": "11月1日、Detroitの教会でEl-Sayed・Stevens・Clyburnが共同GOTV行事予定。時刻・会場名は未公表。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-rogers-bus-tour-20261030",
+      "sourceId": "obs-rogers-bus-tour-20261030",
+      "locator": "10月31日公式予定：Grand Rapids 9時、Whitmore Lake 12時開始。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-gop-ia-rally-reinstated-20261030",
+      "sourceId": "obs-gop-ia-dubuque-rally-20261101",
+      "locator": "更新後の主催者ページ：11月1日、開場11時30分、開始13時30分、大統領発言15時CT、Five Flags Event Center。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-gop-ks-rally-rescheduled-20261030",
+      "sourceId": "obs-gop-ks-salina-rally-20261031",
+      "locator": "更新後の主催者ページ：11月1日、開場15時30分、開始17時30分、大統領発言19時CT、Salina Regional Airport Hangar 509。",
+      "checkedAt": "2026-10-31",
+      "kind": "observed"
+    },
     {
       "evidenceId": "ev-obs-inside-20261029",
       "sourceId": "obs-inside",
@@ -7121,94 +7341,7 @@
       "checkedAt": "2026-10-03",
       "kind": "reported"
     },
-    {
-      "evidenceId": "ev-obs-factbase-trump-oh-20261003",
-      "sourceId": "obs-factbase-trump-calendar-20261003",
-      "locator": "大統領公開日程は10月3日にOhio州Vandaliaへ移動し、Vandalia-Butler High School Student Activity Centerで19時（米東部時間）に発言予定と掲載。主催者登録ページの17時30分は集会開始、19時は大統領発言であり矛盾として扱わない。実施結果とHusted氏の登壇は未確認。",
-      "checkedAt": "2026-10-03",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-inside-ratings-20261001",
-      "sourceId": "obs-inside",
-      "locator": "公式APIのlast_updatedは10月1日13時23分（米中部時間）。AK Tilt R→Toss-up、GA Tilt D→Lean D、MI Toss-up→Tilt D、MN Likely D→Lean D、NC Tilt D→Lean D、NE Likely R→Lean R、TX Lean R→Tilt R。ME・NH・OHはToss-up、IAはTilt Rを維持。評価は支持率・勝率ではない。",
-      "checkedAt": "2026-10-02",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-fox-ia-20261001",
-      "sourceId": "obs-fox-ia-20261001",
-      "locator": "9月24〜28日、州有権者名簿から無作為抽出したRV1,204人（固定電話183、携帯733、SMS経由ウェブ288）、LV1,008人。LVはTurek49・Hinson47、誤差±3。RVは50・46、誤差±2.5で6月同社調査と同じ。候補選択に確信はTurek支持者88%、Hinson支持者77%。",
-      "checkedAt": "2026-10-02",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-aarp-me-20261001",
-      "sourceId": "obs-aarp-me-20261001",
-      "locator": "9月20〜22日、投票予定者982人、全体はJackson50・Collins47・その他または未定3、誤差±3.1。50歳以上はCollins53・Jackson44。公式記事・公式発表と州内2媒体を照合したが、調査原票PDFは今回取得できず部分確認。",
-      "checkedAt": "2026-10-02",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-suffolk-oh-20261001",
-      "sourceId": "obs-suffolk-oh-20261001",
-      "locator": "公式PDF p.2 Q8。9月23〜27日、投票予定者500人、Brown46.6・Husted44.0・Levy1.0・Redpath2.0・未定6.0・拒否0.4、誤差±4.4。p.3 Q12はTrump氏の方向を変える票48.6、支持する票28.6、関係薄い20.4。候補支持と政権評価は別設問。",
-      "checkedAt": "2026-10-02",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-gop-trump-oh-event-20261003",
-      "sourceId": "obs-gop-trump-oh-event-20261003",
-      "locator": "主催者登録ページは10月3日17時30分（米東部時間）開始、16時開場、Butler-Vandalia Student Activity Center（600 S Dixie Dr, Vandalia）と掲載。Trump大統領の出演は確認できるが、Husted氏の登壇者一覧・発言内容・実施結果は未確認。",
-      "checkedAt": "2026-10-02",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-fox-mi-20260930",
-      "sourceId": "obs-fox-mi-20260930",
-      "locator": "9月30日公開PDF p.1 Methodology・p.3 Q3。実査9月24〜28日、LV1,028人はEl-Sayed50・Rogers49・未定1%、標本誤差±3。RV1,203人は51・48・未定1%、標本誤差±2.5。Q3はleaner追質問込み。OtherとWouldn’t voteは各*（0.5%未満）。",
-      "checkedAt": "2026-10-01",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-ap-ak-ia-projects-20260930",
-      "sourceId": "obs-ap-ak-ia-projects-20260930",
-      "locator": "Trump大統領は9月30日にSullivan氏同席でAlaska LNGへの韓国側約540億ドル投資計画を発表。APは資金がどの速さで進むか不明と報道。9月28日のIowa製鉄所発表にはHinson氏が同席。",
-      "checkedAt": "2026-10-01",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-white-house-ia-steel-20260928",
-      "sourceId": "obs-white-house-ia-steel-20260928",
-      "locator": "White HouseはIowa製鉄所について恒久雇用1,750人・建設雇用最大6,000人を見込むと発表。候補者同席の政府発表であり、実現済み雇用ではない。",
-      "checkedAt": "2026-10-01",
-      "kind": "claimed"
-    },
-    {
-      "evidenceId": "ev-obs-reuters-ia-cancer-20260929",
-      "sourceId": "obs-reuters-ia-cancer-20260929",
-      "locator": "Turek氏は連邦法による保険喪失を批判し、KFFは2034年までにIowa州で約10万人が無保険になり得ると推計。Hinson氏は移動検診・マンモグラフィーと水質保全法案を挙げた。水質を上位5争点に挙げた60%は候補支持率ではない。",
-      "checkedAt": "2026-10-01",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-wapo-me-corporate-pac-20260930",
-      "sourceId": "obs-wapo-me-corporate-pac-20260930",
-      "locator": "Jackson氏は現在の上院陣営で企業PAC資金を拒否。一方、2017〜2024年にprincipal officerだった州上院民主党委員会は製薬、たばこ、賭博企業PACから受領し、Jackson氏は複数の意思決定者の一人だったと説明。",
-      "checkedAt": "2026-10-01",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-senate-hr9340-vote-20260930",
-      "sourceId": "obs-senate-hr9340-vote-20260930",
-      "locator": "上院はH.R.9340の審議入り動議に対する討論終結を57対43で否決。60票に届かず、法案は上院通過・成立に至っていない。",
-      "checkedAt": "2026-10-01",
-      "kind": "observed"
-    },
-    {
-      "evidenceId": "ev-obs-husted-hr9340-20260930",
-      "sourceId": "obs-husted-hr9340-20260930",
-      "locator": "Husted氏は法案が大規模需要家向け設備増強の増分費用を当該需要家に負担させる基準を州規制当局に検討させると説明。候補者発表の『負担させる』表現と、法案本文の『検討する連邦基準』を区別。",
+    {��o+^����ם "Husted氏は法案が大規模需要家向け設備増強の増分費用を当該需要家に負担させる基準を州規制当局に検討させると説明。候補者発表の『負担させる』表現と、法案本文の『検討する連邦基準』を区別。",
       "checkedAt": "2026-10-01",
       "kind": "observed"
     },
@@ -8178,10 +8311,10 @@
     {
       "electionId": "2026-MI-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-29",
+      "updatedAt": "2026-10-31",
       "headline": "6.3ポイント差の新調査と、候補者好感度を分ける",
-      "featuredSummary": "最終盤のMitchell調査はEl-Sayed 51%・Rogers 44%。前日のWDIV調査も51.4%・45.1%だが、異なる方式の2調査を勝敗確定とは扱わない。",
-      "lead": "民主党Abdul El-Sayed氏と共和党Mike Rogers氏が引退議席を争う。10月26〜27日のMitchell Research調査は投票予定者636人でEl-Sayed氏51%、Rogers氏44%、未定3%。10月19〜22日のWDIV／Detroit News調査も51.4%対45.1%だった。両調査でEl-Sayed氏が数値上先頭だが、標本・方式・重み付けが異なる。",
+      "featuredSummary": "最終盤のMitchell調査はEl-Sayed 51%・Rogers 44%。実査が早いMSU調査も48.0%・45.5%だが、標本・方式の異なる調査を支持移動や勝敗確定とは扱わない。",
+      "lead": "民主党Abdul El-Sayed氏と共和党Mike Rogers氏が引退議席を争う。10月26〜27日のMitchell調査は51%対44%、10月2〜19日のMichigan State University／YouGov調査はleaner込み48.0%対45.5%。MSU公式発表は投票予定者部分標本数と誤差を示しておらず、後発調査と単純比較しない。",
       "uncertainty": "Mitchellはオンラインパネルと登録有権者携帯へのリンクを使い誤差±3.9ポイント、WDIVはライブ電話で誤差±4.0ポイント。候補差の誤差は各候補値の誤差と同一でなく、調査間の差や過去調査との比較を支持移動・勝敗確定としない。",
       "evidenceIds": [
         "ev-obs-cbs-mi-mitchell-20261028",
@@ -8372,19 +8505,21 @@
             {
               "candidateId": "cand-mi-abdul-el-sayed",
               "kind": "observed",
-              "text": "Mitchellの10月26〜27日調査は投票予定者で51%、Rogers氏44%。WDIVの10月19〜22日調査も51.4%対45.1%。異なる方式の2調査を支持移動や勝敗確定としない。",
+              "text": "Mitchellの10月26〜27日調査は51%、Rogers氏44%。MSU／YouGovの10月2〜19日調査はleaner込み48.0%対45.5%。異なる方式・実査期間の調査を支持移動や勝敗確定としない。",
               "evidenceIds": [
                 "ev-obs-cbs-mi-mitchell-20261028",
-                "ev-obs-wdiv-mi-20261027"
+                "ev-obs-wdiv-mi-20261027",
+                "ev-obs-msu-mi-soss-20261026"
               ]
             },
             {
               "candidateId": "cand-mi-mike-rogers",
               "kind": "observed",
-              "text": "Mitchellの10月26〜27日調査は投票予定者で44%、El-Sayed氏51%。WDIVの10月19〜22日調査は45.1%対51.4%。候補者好感度・党派結集と投票意向は別指標。",
+              "text": "Mitchellの10月26〜27日調査は44%、El-Sayed氏51%。MSU／YouGovの10月2〜19日調査は45.5%対48.0%。MSU公式発表は投票予定者部分標本数と誤差を示していない。",
               "evidenceIds": [
                 "ev-obs-cbs-mi-mitchell-20261028",
-                "ev-obs-wdiv-mi-20261027"
+                "ev-obs-wdiv-mi-20261027",
+                "ev-obs-msu-mi-soss-20261026"
               ]
             }
           ]
@@ -8799,10 +8934,10 @@
     {
       "electionId": "2026-AK-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-29",
+      "updatedAt": "2026-10-31",
       "headline": "先住民大会で、漁業・土地割当・生活費の具体策を比べる",
-      "featuredSummary": "New York Timesが同姓候補などの勧誘を陣営関係者の資料・証言で報道。Peltola陣営とDSCCは関与を否定しており、違法認定や司法判断とは分けて確認する。",
-      "lead": "共和党現職Dan S. Sullivan氏と民主党Mary Peltola氏ら4候補による順位選択投票。New York Timesは10月28日、Peltola陣営関係者、弁護士、DSCCスタッフが同姓のDan J. Sullivan氏などの擁立を検討したと資料・証言に基づき報道した。Peltola陣営は「どちらのSullivan陣営にも関与していない」、DSCCも関与を否定している。公式投票用紙は現職を党派・現職付きのDan S. Sullivan、別候補を無所属のDaniel J. Sullivan Jr.として区別する。",
+      "featuredSummary": "連邦検事が同姓候補の擁立経緯をめぐる刑事捜査と法執行資源の増強を確認。具体的な違反法令・起訴・違法認定はなく、Peltola氏は関与を否定している。",
+      "lead": "共和党現職Dan S. Sullivan氏と民主党Mary Peltola氏ら4候補による順位選択投票。司法省の民事訴訟に加え、Alaska連邦検事は10月30日、FBI等が同姓候補Daniel J. Sullivan Jr.氏の擁立経緯を刑事捜査していると確認した。検事は犯罪成立を前提にしないと述べ、Peltola氏は関与を否定している。",
       "uncertainty": "勧誘を報じたNYTの資料一式と全文は今回直接取得できず、Reuters・AP・Alaska Public Mediaで相互照合した。報道は違法認定、Peltola氏本人の直接関与、投票への効果を確定しない。連邦訴訟の却下判断も未了で、順位選択投票の結果や勝敗を先取りしない。",
       "evidenceIds": [
         "ev-obs-reuters-ak-spoiler-20261028",
@@ -9030,10 +9165,10 @@
     {
       "electionId": "2026-NH-2-regular",
       "status": "published",
-      "updatedAt": "2026-10-29",
+      "updatedAt": "2026-10-31",
       "headline": "2調査でPappas氏が数値上先頭――方式差と第三候補を分ける",
-      "featuredSummary": "Rasmussenの10月20〜23日調査はPappas 50%・Sununu 44%。Saint Anselmの50%対43%と近いが、標本・方式・選択肢が異なるため支持移動とは扱わない。",
-      "lead": "Rasmussenの10月20〜23日調査は投票予定者970人で、民主党Chris Pappas氏50%、共和党John Sununu氏44%、Constitution PartyのEdmond Laplante氏4%、無所属Tim Harris氏1%、未定2%。直前のSaint Anselm調査は50%対43%、その他5%、未定2%だった。",
+      "featuredSummary": "UMass Lowellの10月2〜19日調査はPappas 48%・Sununu 41%。後発のSaint Anselm、RasmussenでもPappas氏が数値上先頭だが、方式・期間が異なる。",
+      "lead": "UMass Lowell／YouGovの10月2〜19日調査は投票予定者600人で、民主党Chris Pappas氏48%、共和党John E. Sununu氏41%、Edmond LaPlante氏4%、未定7%、調整後誤差±5ポイント。実査終了後に行われたSaint AnselmとRasmussenは50%対43〜44%だった。",
       "uncertainty": "Rasmussenは電話・オンライン調査で標本誤差±3ポイント。Saint Anselmは登録有権者標本から携帯電話利用者を抽出したweb調査で誤差±2.4ポイント。1ポイントの差や人口集団別の数値を支持移動とせず、投票意向、好感度、Trump大統領評価、政策の効果を別々に扱う。",
       "evidenceIds": [
         "ev-obs-nhpr-nh-forum-canceled-20261022",
@@ -9176,27 +9311,29 @@
             {
               "candidateId": "cand-nh-chris-pappas",
               "kind": "observed",
-              "text": "Rasmussenの10月20〜23日調査で50%、Sununu氏44%、第三候補計5%、未定2%。Saint Anselmは50%対43%だった。方式が異なり、同じ有権者の移動とは扱わない。",
+              "text": "UMass Lowellの10月2〜19日調査で48%、Sununu氏41%、第三候補4%、未定7%。後発のSaint AnselmとRasmussenは50%対43〜44%だった。方式・期間が異なるため支持移動とは扱わない。",
               "evidenceIds": [
                 "ev-obs-rasmussen-nh-20261005",
                 "ev-obs-coefficient-nh",
                 "ev-obs-wapo-nh-profile-20261003",
                 "ev-obs-yougov-nh-20261007",
                 "ev-obs-saint-anselm-nh-20261022",
-                "ev-obs-rasmussen-nh-20261026"
+                "ev-obs-rasmussen-nh-20261026",
+                "ev-obs-uml-nh-poll-20261028"
               ]
             },
             {
               "candidateId": "cand-nh-john-e-sununu",
               "kind": "observed",
-              "text": "Rasmussenの10月20〜23日調査で44%、Pappas氏50%、第三候補計5%、未定2%。Saint Anselmは43%対50%だった。人口集団別の値や大統領評価を候補者支持の理由と同一視しない。",
+              "text": "UMass Lowellの10月2〜19日調査で41%、Pappas氏48%、第三候補4%、未定7%。調整後誤差±5ポイントの単一調査で、後発調査との差を支持移動や勝敗確定としない。",
               "evidenceIds": [
                 "ev-obs-rasmussen-nh-20261005",
                 "ev-obs-coefficient-nh",
                 "ev-obs-wapo-nh-profile-20261003",
                 "ev-obs-yougov-nh-20261007",
                 "ev-obs-saint-anselm-nh-20261022",
-                "ev-obs-rasmussen-nh-20261026"
+                "ev-obs-rasmussen-nh-20261026",
+                "ev-obs-uml-nh-poll-20261028"
               ]
             }
           ]
@@ -9219,6 +9356,52 @@
     }
   ],
   "events": [
+    {
+      "eventId": "mi-elsayed-stevens-clyburn-gotv-2026-11-01",
+      "title": "El-Sayed・Stevens・Clyburn氏共同GOTV行事",
+      "date": "2026-11-01",
+      "time": null,
+      "timezone": "America/Detroit",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-10-31",
+      "evidenceIds": [
+        "ev-obs-michiganpublic-mi-unity-20261030"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "民主党予備選後の結集をめぐり、El-Sayed氏と元対立候補Stevens氏がDetroitで共同登壇する予定。",
+          "watch": "実施・中止・延期、両者の発言、Clyburn氏の役割を確認する。共同登壇を黒人・ユダヤ系有権者全体の支持や得票効果とみなさない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
+    },
+    {
+      "eventId": "mi-rogers-bus-tour-2026-10-31",
+      "title": "Rogers氏州内バスツアー・Grand Rapids／Whitmore Lake",
+      "date": "2026-10-31",
+      "time": "09:00",
+      "timezone": "America/Detroit",
+      "status": "scheduled",
+      "dateHistory": [],
+      "checkedAt": "2026-10-31",
+      "evidenceIds": [
+        "ev-obs-rogers-bus-tour-20261030"
+      ],
+      "relevance": [
+        {
+          "electionId": "2026-MI-2-regular",
+          "why": "共和党Mike Rogers氏が最終週末にGrand RapidsとWhitmore Lakeで行う候補者公式日程。",
+          "watch": "Grand Rapids 9時、Whitmore Lake 12時の実施・中止・延期と発言を確認する。参加者反応を州全体の支持へ一般化しない。",
+          "materialIds": []
+        }
+      ],
+      "resultUpdateId": null,
+      "publicationStatus": "published"
+    },
     {
       "eventId": "nh-nhpr-senate-forum-2026-10-29",
       "title": "NH州上院候補フォーラム（NHPR・Granite State News Collaborative）",
@@ -9272,22 +9455,34 @@
       "date": "2026-11-01",
       "time": "15:00",
       "timezone": "America/Chicago",
-      "status": "canceled",
-      "dateHistory": [],
-      "checkedAt": "2026-10-30",
+      "status": "scheduled",
+      "dateHistory": [
+        {
+          "date": "2026-11-01",
+          "reason": "10月29日に対面集会を中止し電話集会へ切り替えると発表したが、30日に同じ日・会場での対面集会を再設定。",
+          "evidenceIds": [
+            "ev-obs-ap-ia-rally-canceled-20261029",
+            "ev-obs-ap-final-week-reshuffle-20261030",
+            "ev-obs-gop-ia-rally-reinstated-20261030"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-31",
       "evidenceIds": [
         "ev-obs-gop-ia-dubuque-rally-20261101",
-        "ev-obs-ap-ia-rally-canceled-20261029"
+        "ev-obs-ap-ia-rally-canceled-20261029",
+        "ev-obs-ap-final-week-reshuffle-20261030",
+        "ev-obs-gop-ia-rally-reinstated-20261030"
       ],
       "relevance": [
         {
           "electionId": "2026-IA-2-regular",
-          "why": "評価機関が割れるIowa上院選の投票直前に行う大統領集会。日本時間11月2日6時予定。",
+          "why": "評価機関が割れるIowa上院選の投票直前に、いったん中止後に再設定された大統領集会。日本時間11月2日6時予定。",
           "watch": "実施・中止・延期、Hinson氏の参加、生活費・農業・関税・投票参加への発言を確認する。候補者参加を先取りしない。",
           "materialIds": []
         }
       ],
-      "resultUpdateId": "obs-update-ia-dubuque-rally-canceled-2026-10-29",
+      "resultUpdateId": "obs-update-ia-dubuque-rally-reinstated-2026-10-30",
       "publicationStatus": "published"
     },
     {
@@ -9317,25 +9512,37 @@
     {
       "eventId": "ks-trump-salina-rally-2026-10-31",
       "title": "KS州Salina・Trump大統領集会",
-      "date": "2026-10-31",
-      "time": "12:00",
+      "date": "2026-11-01",
+      "time": "19:00",
       "timezone": "America/Chicago",
-      "status": "canceled",
-      "dateHistory": [],
-      "checkedAt": "2026-10-30",
+      "status": "scheduled",
+      "dateHistory": [
+        {
+          "date": "2026-10-31",
+          "reason": "10月29日に対面集会を中止し電話集会へ切り替えると発表した後、30日に11月1日へ再設定。",
+          "evidenceIds": [
+            "ev-obs-ap-ks-rally-canceled-20261029",
+            "ev-obs-ap-final-week-reshuffle-20261030",
+            "ev-obs-gop-ks-rally-rescheduled-20261030"
+          ]
+        }
+      ],
+      "checkedAt": "2026-10-31",
       "evidenceIds": [
         "ev-obs-gop-ks-salina-rally-20261031",
-        "ev-obs-ap-ks-rally-canceled-20261029"
+        "ev-obs-ap-ks-rally-canceled-20261029",
+        "ev-obs-ap-final-week-reshuffle-20261030",
+        "ev-obs-gop-ks-rally-rescheduled-20261030"
       ],
       "relevance": [
         {
           "electionId": "2026-KS-2-regular",
-          "why": "投票日前の週末にTrump大統領がKansas州内で行うと主催者が確認した2回目の選挙集会。日本時間11月1日2時予定。",
+          "why": "Kansas上院選の投票直前に、10月31日予定をいったん中止後、11月1日に再設定した大統領集会。日本時間11月2日10時予定。",
           "watch": "実施・中止・延期、Marshall氏の参加、Hamilton氏への言及、Iran戦争・diesel高・農業への発言を確認する。候補者参加や得票効果を先取りしない。",
           "materialIds": []
         }
       ],
-      "resultUpdateId": "obs-update-ks-salina-rally-canceled-2026-10-29",
+      "resultUpdateId": "obs-update-ks-salina-rally-rescheduled-2026-10-30",
       "publicationStatus": "published"
     },
     {
@@ -10428,6 +10635,118 @@
     }
   ],
   "updates": [
+    {
+      "updateId": "obs-update-ratings-sabato-2026-10-30",
+      "status": "published",
+      "electionIds": [
+        "2026-LA-2-regular",
+        "2026-MN-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-30",
+      "updatedAt": "2026-10-31",
+      "title": "統合評価：SabatoがMinnesotaをLikely D、LouisianaをLikely Rへ変更",
+      "happened": "Sabato’s Crystal Ballは、民主党が守るMinnesotaをLean DからLikely Dへ、共和党が守るLouisianaをSafe RからLikely Rへ変更した。",
+      "meaning": "Inside ElectionsはMinnesotaをLean D、LouisianaをLikely Rとしている。両機関Likely以上一致の既存基準では、Minnesotaは未配分、Louisianaは共和党側のままで、暫定配分D44・R44・未配分12は変わらない。",
+      "uncertainty": "情勢評価は当選確率や確定結果ではない。Sabatoは11月2日に最終評価を出す予定としており、将来の分類を先取りしない。",
+      "evidenceIds": [
+        "ev-obs-sabato-20261030"
+      ]
+    },
+    {
+      "updateId": "obs-update-ak-doj-criminal-probe-2026-10-30",
+      "status": "published",
+      "electionIds": [
+        "2026-AK-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-30",
+      "updatedAt": "2026-10-31",
+      "title": "Alaska：司法省・FBIが同姓候補をめぐる刑事捜査を確認",
+      "happened": "Alaska連邦検事は、司法省とFBIが同姓候補の擁立経緯について刑事捜査を進め、州内の法執行資源を増強したと発表した。民事の結果認証訴訟も並行する。",
+      "meaning": "「捜査指示」から、連邦検事が刑事捜査の存在を公に確認する段階へ進んだ。一方、Peltola氏は関与を否定しており、捜査と候補者本人の責任は分けて見る必要がある。",
+      "uncertainty": "連邦検事は犯罪成立を前提にしないと述べ、具体的な違反法令、起訴、裁判所の違法認定を示していない。発表時期や捜査から得票・勝敗を推定しない。",
+      "evidenceIds": [
+        "ev-obs-alaskapublic-ak-doj-surge-20261030",
+        "ev-obs-ap-final-week-reshuffle-20261030"
+      ]
+    },
+    {
+      "updateId": "obs-update-nh-uml-poll-2026-10-28",
+      "status": "published",
+      "electionIds": [
+        "2026-NH-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-28",
+      "updatedAt": "2026-10-31",
+      "title": "New Hampshire：UMass Lowell調査はPappas 48%・Sununu 41%",
+      "happened": "UMass Lowell／YouGovの10月2〜19日調査は、投票予定者600人で民主党Chris Pappas氏48%、共和党John E. Sununu氏41%、Constitution PartyのEdmond LaPlante氏4%、未定7%だった。",
+      "meaning": "Saint Anselmの50%対43%、Rasmussenの50%対44%と同じくPappas氏が数値上先頭だが、UMass調査の実査終了日は両調査より早い。",
+      "uncertainty": "調整後誤差は±5ポイント。方式・標本・実査期間の違う調査を支持移動として連結せず、単一調査から勝敗を確定しない。",
+      "evidenceIds": [
+        "ev-obs-uml-nh-poll-20261028"
+      ]
+    },
+    {
+      "updateId": "obs-update-mi-msu-poll-2026-10-26",
+      "status": "published",
+      "electionIds": [
+        "2026-MI-2-regular"
+      ],
+      "eventId": null,
+      "newsId": null,
+      "eventDate": "2026-10-26",
+      "updatedAt": "2026-10-31",
+      "title": "Michigan：MSU調査はEl-Sayed 48.0%・Rogers 45.5%",
+      "happened": "Michigan State University／YouGovの10月2〜19日調査は、投票予定者のleaner込みで民主党Abdul El-Sayed氏48.0%、共和党Mike Rogers氏45.5%だった。",
+      "meaning": "後発のMitchellやWDIV調査と同じ方向だが、MSU調査は実査が早く、Michigan成人1,000人から投票予定者を抽出した別標本である。",
+      "uncertainty": "公式発表は投票予定者部分標本数とその誤差を示していない。別調査の数値差を支持移動や勝敗確定とは扱わない。",
+      "evidenceIds": [
+        "ev-obs-msu-mi-soss-20261026"
+      ]
+    },
+    {
+      "updateId": "obs-update-ia-dubuque-rally-reinstated-2026-10-30",
+      "status": "published",
+      "electionIds": [
+        "2026-IA-2-regular"
+      ],
+      "eventId": "ia-trump-dubuque-rally-2026-11-01",
+      "newsId": null,
+      "eventDate": "2026-10-30",
+      "updatedAt": "2026-10-31",
+      "title": "Iowa：中止発表の大統領集会を11月1日に再設定",
+      "happened": "RNCは10月29日にDubuqueの対面集会を中止したが、30日に方針を戻し、11月1日15時CTのTrump大統領発言として同じ会場で再設定した。",
+      "meaning": "中止記事を削除せず、元予定の履歴に残したうえで現在の予定をscheduledへ戻した。最終週末の共和党側の対面動員機会が復活したことを示す。",
+      "uncertainty": "Hinson氏の参加と発言、実施結果、電話集会との関係、投票参加や候補者支持への効果は未確認。",
+      "evidenceIds": [
+        "ev-obs-ap-final-week-reshuffle-20261030",
+        "ev-obs-gop-ia-rally-reinstated-20261030"
+      ]
+    },
+    {
+      "updateId": "obs-update-ks-salina-rally-rescheduled-2026-10-30",
+      "status": "published",
+      "electionIds": [
+        "2026-KS-2-regular"
+      ],
+      "eventId": "ks-trump-salina-rally-2026-10-31",
+      "newsId": null,
+      "eventDate": "2026-10-30",
+      "updatedAt": "2026-10-31",
+      "title": "Kansas：中止した大統領集会を11月1日へ再設定",
+      "happened": "RNCは10月29日に10月31日のSalina対面集会を中止したが、30日に11月1日へ再設定した。更新後の主催者ページは大統領発言を19時CTとしている。",
+      "meaning": "元の10月31日予定と中止を履歴に残し、現在の予定を11月1日scheduledへ変更した。投票直前の対面動員機会が復活したことを示す。",
+      "uncertainty": "AP配信の初報と主催者の更新後ページで時刻に差があるため、最新の主催者表示を採用した。Marshall氏の参加・発言、実施結果、支持への効果は未確認。",
+      "evidenceIds": [
+        "ev-obs-ap-final-week-reshuffle-20261030",
+        "ev-obs-gop-ks-rally-rescheduled-20261030"
+      ]
+    },
     {
       "updateId": "obs-update-ratings-inside-2026-10-29",
       "status": "published",

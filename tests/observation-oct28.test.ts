@@ -26,7 +26,7 @@ describe('October 28 final polls, rally results, and ratings', () => {
 
   it('keeps confirmed future schedules and cross-references the completed Ohio event', () => {
     expect(data.events.find(x => x.eventId === 'nh-wmur-granite-state-debate-2026-10-28')?.status).toBe('completed');
-    expect(data.events.find(x => x.eventId === 'ks-trump-salina-rally-2026-10-31')?.status).toBe('canceled');
+    expect(data.events.find(x => x.eventId === 'ks-trump-salina-rally-2026-10-31')?.status).toBe('scheduled');
     const ohio = data.events.find(x => x.eventId === 'oh-trump-chillicothe-rally-2026-10-28')!;
     expect(ohio.status).toBe('completed');
     expect(ohio.resultUpdateId).toBe('obs-update-oh-chillicothe-rally-result-2026-10-28');
@@ -43,10 +43,10 @@ describe('October 28 final polls, rally results, and ratings', () => {
   it('advances analysis only for races with new verified evidence', () => {
     const dates = Object.fromEntries(data.races.map(race => [race.electionId, race.updatedAt]));
     expect(dates['2026-ME-2-regular']).toBe('2026-10-28');
-    expect(dates['2026-MI-2-regular']).toBe('2026-10-29');
+    expect(dates['2026-MI-2-regular']).toBe('2026-10-31');
     expect(dates['2026-TX-2-regular']).toBe('2026-10-29');
-    expect(dates['2026-AK-2-regular']).toBe('2026-10-29');
+    expect(dates['2026-AK-2-regular']).toBe('2026-10-31');
     expect(dates['2026-OH-3-special']).toBe('2026-10-29');
-    expect(dates['2026-NH-2-regular']).toBe('2026-10-29');
+    expect(dates['2026-NH-2-regular']).toBe('2026-10-31');
   });
 });

@@ -16,7 +16,7 @@ describe('October 27 Alaska litigation, New Hampshire poll, tariffs, and final-w
     expect(update.happened).toContain('44%');
     expect(update.happened).toContain('Edmond Laplante氏4%');
     expect(update.uncertainty).toContain('支持移動');
-    expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-29');
+    expect(data.races.find(x => x.electionId === '2026-NH-2-regular')!.updatedAt).toBe('2026-10-31');
   });
 
   it('keeps tariff implementation and effects separate', () => {
