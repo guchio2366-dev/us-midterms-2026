@@ -2,7 +2,7 @@
   "runId": "daily-20261031",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の成功日時を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-31T00:03:00Z",
-  "completedAt": "2026-10-31T00:18:00Z",
+  "completedAt": "2026-10-31T00:20:00Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-sabato",
@@ -34,7 +34,7 @@
   "note": "SabatoのMN・LA変更、AK連邦刑事捜査確認、MI・NHの追加調査、MI候補者日程、IA・KS大統領集会の再設定を原文照合。統合配分D44/R44/未配分12、保存案・共有URL・議席基準を維持。候補者公式固定ページ、White House一覧、TX Quantus原報告などは部分確認・照合待ちとして記録。",
   "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Saturday full comparison audit not due",
   "baseCommit": "78e934e888dbe60c7ad8adfcecae1743680f162b",
-  "publishedCommit": null,
+  "publishedCommit": "0963283f3b5fe507bfa1a650405170b2d533a115",
   "revision": "observation-2026-10-31-ratings-probe-polls-rallies",
   "analysisChanges": [
     {"electionId":"integrated-ratings","status":"updated","scope":"SabatoのMN Likely D・LA Likely Rを反映。Insideとの一致基準ではD44/R44/未配分12を維持。"},
@@ -76,6 +76,27 @@
     {"eventId":"mi-elsayed-stevens-clyburn-gotv-2026-11-01","status":"scheduled","scope":"Detroit教会GOTVを確認。時刻・会場名は未確認のまま。"},
     {"eventId":"mi-rogers-bus-tour-2026-10-31","status":"scheduled","scope":"候補者公式日程で2会場・時刻を確認。実施結果は未確認。"}
   ],
-  "validation": {"npmCi":"passed: 59 packages installed from lockfile","npmTest":"passed: 522 tests in 45 files","npmBuild":"passed: TypeScript and Vite production build","browserVerificationRoute":"pending publication"},
-  "publication": {"status":"pending","pagesRunUrl":null,"publicUrl":"https://guchio2366-dev.github.io/us-midterms-2026/","publicContentVerifiedAt":null,"verified":[],"publicationMethod":"pending"}
+  "validation": {"npmCi":"passed locally and in GitHub Actions","npmTest":"passed: 522 tests in 45 files","npmBuild":"passed: TypeScript and Vite production build","browserVerificationRoute":"公開サイトの実画面でD44/R44/未配分12、集計基準2026-10-30、両機関2026-10-31確認、新規記事・予定を確認。"},
+  "publication": {
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/41149330709",
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicContentVerifiedAt": "2026-10-31T00:18:02Z",
+    "verified": [
+      "D44/R44/unallocated12 and October 30 rating snapshot",
+      "Sabato Minnesota and Louisiana rating change article",
+      "Alaska federal criminal investigation update with legal limits",
+      "UMass Lowell New Hampshire and MSU Michigan poll updates",
+      "Iowa and Kansas reinstated presidential rally schedules with cancellation history",
+      "Michigan Democratic GOTV and Rogers bus-tour schedules"
+    ],
+    "publicationMethod": "main 78e934e888dbe60c7ad8adfcecae1743680f162bを起点に、GitHub Git Data APIでforce=false・expected_sha付きの通常fast-forwardを実施。転送修復コミット0963283f3b5fe507bfa1a650405170b2d533a115のtreeはローカル検証済みtree 6c51028340180dfb6e424536bc4a3481289a7484と一致。dist生成物は除外。",
+    "initialFailures": [
+      {
+        "runUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/41149178076",
+        "cause": "大容量JSON blobの初回API転送が途中で破損し、JSON解析でテスト停止。build・deployは実行されず、最後の正常な公開版を維持した。ローカルblob SHAとの不一致を確認し、分割転送で同一SHAへ修復。"
+      }
+    ],
+    "verificationFollowup": "修復後Actionsでnpm test・build・Pages deployが成功し、公開実画面を照合。"
+  }
 }
