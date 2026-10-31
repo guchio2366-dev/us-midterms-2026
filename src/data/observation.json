@@ -7341,7 +7341,94 @@
       "checkedAt": "2026-10-03",
       "kind": "reported"
     },
-    {��o+^����ם "Husted氏は法案が大規模需要家向け設備増強の増分費用を当該需要家に負担させる基準を州規制当局に検討させると説明。候補者発表の『負担させる』表現と、法案本文の『検討する連邦基準』を区別。",
+    {
+      "evidenceId": "ev-obs-factbase-trump-oh-20261003",
+      "sourceId": "obs-factbase-trump-calendar-20261003",
+      "locator": "大統領公開日程は10月3日にOhio州Vandaliaへ移動し、Vandalia-Butler High School Student Activity Centerで19時（米東部時間）に発言予定と掲載。主催者登録ページの17時30分は集会開始、19時は大統領発言であり矛盾として扱わない。実施結果とHusted氏の登壇は未確認。",
+      "checkedAt": "2026-10-03",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-inside-ratings-20261001",
+      "sourceId": "obs-inside",
+      "locator": "公式APIのlast_updatedは10月1日13時23分（米中部時間）。AK Tilt R→Toss-up、GA Tilt D→Lean D、MI Toss-up→Tilt D、MN Likely D→Lean D、NC Tilt D→Lean D、NE Likely R→Lean R、TX Lean R→Tilt R。ME・NH・OHはToss-up、IAはTilt Rを維持。評価は支持率・勝率ではない。",
+      "checkedAt": "2026-10-02",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-fox-ia-20261001",
+      "sourceId": "obs-fox-ia-20261001",
+      "locator": "9月24〜28日、州有権者名簿から無作為抽出したRV1,204人（固定電話183、携帯733、SMS経由ウェブ288）、LV1,008人。LVはTurek49・Hinson47、誤差±3。RVは50・46、誤差±2.5で6月同社調査と同じ。候補選択に確信はTurek支持者88%、Hinson支持者77%。",
+      "checkedAt": "2026-10-02",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-aarp-me-20261001",
+      "sourceId": "obs-aarp-me-20261001",
+      "locator": "9月20〜22日、投票予定者982人、全体はJackson50・Collins47・その他または未定3、誤差±3.1。50歳以上はCollins53・Jackson44。公式記事・公式発表と州内2媒体を照合したが、調査原票PDFは今回取得できず部分確認。",
+      "checkedAt": "2026-10-02",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-suffolk-oh-20261001",
+      "sourceId": "obs-suffolk-oh-20261001",
+      "locator": "公式PDF p.2 Q8。9月23〜27日、投票予定者500人、Brown46.6・Husted44.0・Levy1.0・Redpath2.0・未定6.0・拒否0.4、誤差±4.4。p.3 Q12はTrump氏の方向を変える票48.6、支持する票28.6、関係薄い20.4。候補支持と政権評価は別設問。",
+      "checkedAt": "2026-10-02",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-gop-trump-oh-event-20261003",
+      "sourceId": "obs-gop-trump-oh-event-20261003",
+      "locator": "主催者登録ページは10月3日17時30分（米東部時間）開始、16時開場、Butler-Vandalia Student Activity Center（600 S Dixie Dr, Vandalia）と掲載。Trump大統領の出演は確認できるが、Husted氏の登壇者一覧・発言内容・実施結果は未確認。",
+      "checkedAt": "2026-10-02",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-fox-mi-20260930",
+      "sourceId": "obs-fox-mi-20260930",
+      "locator": "9月30日公開PDF p.1 Methodology・p.3 Q3。実査9月24〜28日、LV1,028人はEl-Sayed50・Rogers49・未定1%、標本誤差±3。RV1,203人は51・48・未定1%、標本誤差±2.5。Q3はleaner追質問込み。OtherとWouldn’t voteは各*（0.5%未満）。",
+      "checkedAt": "2026-10-01",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-ap-ak-ia-projects-20260930",
+      "sourceId": "obs-ap-ak-ia-projects-20260930",
+      "locator": "Trump大統領は9月30日にSullivan氏同席でAlaska LNGへの韓国側約540億ドル投資計画を発表。APは資金がどの速さで進むか不明と報道。9月28日のIowa製鉄所発表にはHinson氏が同席。",
+      "checkedAt": "2026-10-01",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-white-house-ia-steel-20260928",
+      "sourceId": "obs-white-house-ia-steel-20260928",
+      "locator": "White HouseはIowa製鉄所について恒久雇用1,750人・建設雇用最大6,000人を見込むと発表。候補者同席の政府発表であり、実現済み雇用ではない。",
+      "checkedAt": "2026-10-01",
+      "kind": "claimed"
+    },
+    {
+      "evidenceId": "ev-obs-reuters-ia-cancer-20260929",
+      "sourceId": "obs-reuters-ia-cancer-20260929",
+      "locator": "Turek氏は連邦法による保険喪失を批判し、KFFは2034年までにIowa州で約10万人が無保険になり得ると推計。Hinson氏は移動検診・マンモグラフィーと水質保全法案を挙げた。水質を上位5争点に挙げた60%は候補支持率ではない。",
+      "checkedAt": "2026-10-01",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-wapo-me-corporate-pac-20260930",
+      "sourceId": "obs-wapo-me-corporate-pac-20260930",
+      "locator": "Jackson氏は現在の上院陣営で企業PAC資金を拒否。一方、2017〜2024年にprincipal officerだった州上院民主党委員会は製薬、たばこ、賭博企業PACから受領し、Jackson氏は複数の意思決定者の一人だったと説明。",
+      "checkedAt": "2026-10-01",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-senate-hr9340-vote-20260930",
+      "sourceId": "obs-senate-hr9340-vote-20260930",
+      "locator": "上院はH.R.9340の審議入り動議に対する討論終結を57対43で否決。60票に届かず、法案は上院通過・成立に至っていない。",
+      "checkedAt": "2026-10-01",
+      "kind": "observed"
+    },
+    {
+      "evidenceId": "ev-obs-husted-hr9340-20260930",
+      "sourceId": "obs-husted-hr9340-20260930",
+      "locator": "Husted氏は法案が大規模需要家向け設備増強の増分費用を当該需要家に負担させる基準を州規制当局に検討させると説明。候補者発表の『負担させる』表現と、法案本文の『検討する連邦基準』を区別。",
       "checkedAt": "2026-10-01",
       "kind": "observed"
     },
