@@ -2,7 +2,7 @@
   "runId": "daily-20261101",
   "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の成功日時を記録し、部分確認・取得失敗では最後の成功日時を維持。",
   "startedAt": "2026-10-31T23:58:00Z",
-  "completedAt": "2026-11-01T00:08:00Z",
+  "completedAt": "2026-11-01T00:10:00Z",
   "outcome": "partial",
   "checkedSourceIds": [
     "obs-dfp-me-final-20261030",
@@ -36,7 +36,7 @@
   "note": "Data for ProgressのMaine・Michigan・Texas州別原票、Michiganの共同登壇予定変更、Alaska捜査の寄付者聴取と候補者回答を更新。Iowa・Kansasの11月1日大統領集会は主催者ページで予定を再確認したが確認時点では実施前。Sabato・Inside Electionsに後続変更はなく、暫定配分D44/R44/未配分12、保存案・共有URL・議席基準を維持。",
   "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Sunday full comparison audit not due",
   "baseCommit": "44d92008ed0c78811069cdec4f2a75680b051f13",
-  "publishedCommit": null,
+  "publishedCommit": "f1d360754ba561add4431ef329f3c663b3216028",
   "revision": "observation-2026-11-01-dfp-polls-michigan-unity-change",
   "analysisChanges": [
     {
@@ -222,14 +222,19 @@
     "npmCi": "success",
     "npmTest": "526 tests passed across 46 files",
     "npmBuild": "success",
-    "browserVerificationRoute": "pending publication"
+    "browserVerificationRoute": "public GitHub Pages content fetched after deployment; allocation, three new updates, and source date verified"
   },
   "publication": {
-    "status": "pending",
-    "pagesRunUrl": null,
+    "status": "success",
+    "pagesRunUrl": "https://github.com/guchio2366-dev/us-midterms-2026/actions/runs/41255446642",
     "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
-    "publicContentVerifiedAt": null,
-    "verified": [],
-    "publicationMethod": "pending"
+    "publicContentVerifiedAt": "2026-11-01T00:10:00Z",
+    "verified": [
+      "D44/R44/未配分12と暫定配分基準を公開画面で確認",
+      "Data for ProgressのMaine・Michigan・Texas調査記事を公開画面で確認",
+      "Michigan共同登壇不成立とAlaska捜査反証の記事を公開画面で確認",
+      "保存案・共有URL・既存の議席基準を維持"
+    ],
+    "publicationMethod": "Git Data API blob/tree/commit and non-force fast-forward ref update; every uploaded blob SHA matched local git hash-object"
   }
 }
