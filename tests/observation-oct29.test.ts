@@ -44,6 +44,6 @@ describe('October 29 final-week evidence and event reconciliation', () => {
     expect(data.events.find(x => x.eventId === 'sc-trump-rockhill-rally-2026-10-29')?.status).toBe('completed');
     expect(data.events.find(x => x.eventId === 'ia-trump-dubuque-rally-2026-11-01')?.status).toBe('scheduled');
     expect(data.monitor.latestRun.note).toContain('D44/R44/未配分12');
-    expect(data.revision).toBe('observation-2026-10-31-ratings-probe-polls-rallies');
+    expect(data.revision).toBe('observation-2026-11-01-dfp-polls-michigan-unity-change');
   });
 });

@@ -23,7 +23,7 @@ describe('October 27 Alaska litigation, New Hampshire poll, tariffs, and final-w
     const update = data.updates.find(x => x.updateId === 'obs-update-me-tariff-exemptions-2026-10-23')!;
     expect(update.happened).toContain('10月30日発効予定');
     expect(update.uncertainty).toContain('実測効果は未確認');
-    expect(data.races.find(x => x.electionId === '2026-ME-2-regular')!.updatedAt).toBe('2026-10-28');
+    expect(data.races.find(x => x.electionId === '2026-ME-2-regular')!.updatedAt).toBe('2026-11-01');
   });
 
   it('adds only confirmed presidential campaign schedules without assuming candidate attendance', () => {

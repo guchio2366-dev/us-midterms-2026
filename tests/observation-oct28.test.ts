@@ -42,10 +42,10 @@ describe('October 28 final polls, rally results, and ratings', () => {
 
   it('advances analysis only for races with new verified evidence', () => {
     const dates = Object.fromEntries(data.races.map(race => [race.electionId, race.updatedAt]));
-    expect(dates['2026-ME-2-regular']).toBe('2026-10-28');
-    expect(dates['2026-MI-2-regular']).toBe('2026-10-31');
-    expect(dates['2026-TX-2-regular']).toBe('2026-10-29');
-    expect(dates['2026-AK-2-regular']).toBe('2026-10-31');
+    expect(dates['2026-ME-2-regular']).toBe('2026-11-01');
+    expect(dates['2026-MI-2-regular']).toBe('2026-11-01');
+    expect(dates['2026-TX-2-regular']).toBe('2026-11-01');
+    expect(dates['2026-AK-2-regular']).toBe('2026-11-01');
     expect(dates['2026-OH-3-special']).toBe('2026-10-29');
     expect(dates['2026-NH-2-regular']).toBe('2026-10-31');
   });

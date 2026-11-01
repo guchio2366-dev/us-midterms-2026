@@ -11,7 +11,7 @@ describe('October 24 Alaska lawsuit, New Hampshire poll, and Michigan schedule',
     expect(update.uncertainty).toContain('差止命令も出ておらず');
     expect(update.uncertainty).toContain('各投票用紙に記された次順位');
     expect(update.evidenceIds).toContain('ev-obs-roster-ak-20261024');
-    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-10-31');
+    expect(data.races.find(x => x.electionId === '2026-AK-2-regular')!.updatedAt).toBe('2026-11-01');
   });
 
   it('keeps New Hampshire ballot preference, favorability, and presidential approval separate', () => {

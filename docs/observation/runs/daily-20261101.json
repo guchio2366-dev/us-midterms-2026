@@ -1,0 +1,235 @@
+{
+  "runId": "daily-20261101",
+  "timingNote": "実査日・公表日・分析更新日を区別。原文照合後の成功日時を記録し、部分確認・取得失敗では最後の成功日時を維持。",
+  "startedAt": "2026-10-31T23:58:00Z",
+  "completedAt": "2026-11-01T00:08:00Z",
+  "outcome": "partial",
+  "checkedSourceIds": [
+    "obs-dfp-me-final-20261030",
+    "obs-dfp-mi-final-20261030",
+    "obs-dfp-tx-final-20261030",
+    "obs-reuters-mi-stevens-disinvited-20261031",
+    "obs-ap-final-weekend-tx-mi-20261031",
+    "obs-wmtw-me-final-campaign-20261031",
+    "obs-alaska-news-source-peltola-response-20261031",
+    "obs-ap-ak-probe-donors-20261031",
+    "obs-sabato",
+    "obs-inside",
+    "obs-gop-ia-dubuque-rally-20261101",
+    "obs-gop-ks-salina-rally-20261031"
+  ],
+  "pendingSourceIds": [
+    "obs-white-house",
+    "obs-roster-nh",
+    "obs-quantus-me-20260917",
+    "obs-quantus-tx-20261030",
+    "obs-rogers-bus-tour-20261030",
+    "obs-peltola",
+    "obs-sullivan",
+    "obs-collins",
+    "obs-jackson-policy",
+    "obs-abdul-ai",
+    "obs-talarico-policy",
+    "obs-paxton-policy",
+    "obs-pappas"
+  ],
+  "note": "Data for ProgressのMaine・Michigan・Texas州別原票、Michiganの共同登壇予定変更、Alaska捜査の寄付者聴取と候補者回答を更新。Iowa・Kansasの11月1日大統領集会は主催者ページで予定を再確認したが確認時点では実施前。Sabato・Inside Electionsに後続変更はなく、暫定配分D44/R44/未配分12、保存案・共有URL・議席基準を維持。",
+  "reviewMode": "daily source, poll, local reporting, candidate announcement, event-result, and confirmed presidential-schedule review; Sunday full comparison audit not due",
+  "baseCommit": "44d92008ed0c78811069cdec4f2a75680b051f13",
+  "publishedCommit": null,
+  "revision": "observation-2026-11-01-dfp-polls-michigan-unity-change",
+  "analysisChanges": [
+    {
+      "electionId": "2026-AK-2-regular",
+      "status": "updated",
+      "scope": "FBIの寄付者への任意聴取、取材対象寄付者の反証、Peltola氏の関与否定を追加。捜査・個別証言・候補者回答・法的判断を分離。"
+    },
+    {
+      "electionId": "2026-ME-2-regular",
+      "status": "updated",
+      "scope": "Data for Progress原票の50%対45%、652 LV、方式、誤差±4ポイントを追加。Maristの支持先・勝者予想と別指標として整理。"
+    },
+    {
+      "electionId": "2026-MI-2-regular",
+      "status": "updated",
+      "scope": "Data for Progress原票の50%対46%、622 LV、方式、誤差±4ポイントを追加。Stevens氏との共同登壇予定不成立を元予定へ相互参照。"
+    },
+    {
+      "electionId": "2026-OH-3-special",
+      "status": "checked-no-analysis-change",
+      "scope": "最終週末報道、調査、候補者発信、大統領電話集会を検索。新しい原票または分析を変える独立した新事実は確認できず、分析日を維持。"
+    },
+    {
+      "electionId": "2026-TX-2-regular",
+      "status": "updated",
+      "scope": "Data for Progress原票の49%対45%、712 LV、Brown 2%、未定4%、方式、誤差±4ポイントを追加。既存3調査との差を支持移動としない。"
+    },
+    {
+      "electionId": "2026-NH-2-regular",
+      "status": "checked-no-analysis-change",
+      "scope": "最終週末報道、調査、候補者発信、予定を検索。新しい原票または分析を変える独立した新事実は確認できず、分析日を維持。公式名簿本文は未確認。"
+    },
+    {
+      "electionId": "integrated-ratings",
+      "status": "checked-no-change",
+      "scope": "Sabatoの10月30日版とInside Electionsの10月29日版を再確認。後続変更なし。D44/R44/未配分12を維持。Iowa・Kansasの11月1日大統領集会は主催者ページで予定を再確認。"
+    }
+  ],
+  "sourceChecks": [
+    {
+      "sourceId": "obs-dfp-me-final-20261030",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "州別原票で10月23〜27日、652 LV、SMS・ライブ電話・web panel、全選択肢、50%対45%、誤差±4ポイントを照合。"
+    },
+    {
+      "sourceId": "obs-dfp-mi-final-20261030",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "州別原票で10月23〜25日、622 LV、SMS・ライブ電話・web panel、全選択肢、50%対46%、誤差±4ポイントを照合。"
+    },
+    {
+      "sourceId": "obs-dfp-tx-final-20261030",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "州別原票で10月23〜26日、712 LV、SMS・web panel、全選択肢、49%対45%、Brown 2%、未定4%、誤差±4ポイントを照合。"
+    },
+    {
+      "sourceId": "obs-reuters-mi-stevens-disinvited-20261031",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "共同登壇予定、Stevens氏の外部団体広告への批判、El-Sayed陣営の不参加要請、Clyburn氏側の招待継続を確認。"
+    },
+    {
+      "sourceId": "obs-ap-final-weekend-tx-mi-20261031",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "Michigan共同登壇の不確実性と候補者発言、Texas両候補の最終週末、大統領電話集会と翌日の対面予定を確認。"
+    },
+    {
+      "sourceId": "obs-ap-ak-probe-donors-20261031",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "FBIの寄付者への任意聴取と質問内容、取材対象寄付者が支援先を認識していたとの回答を確認。犯罪成立・法的判断とは分離。"
+    },
+    {
+      "sourceId": "obs-alaska-news-source-peltola-response-20261031",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "Peltola氏本人の計画関与否定と元陣営責任者への反論を州内局の直接取材で確認。"
+    },
+    {
+      "sourceId": "obs-wmtw-me-final-campaign-20261031",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "両候補の10月31日行事とJackson氏の最終訴えを確認。行事実施・発言を支持効果と扱わない。"
+    },
+    {
+      "sourceId": "obs-sabato",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "10月30日変更後の現行評価を再確認。11月2日最終評価予定は結果を先取りせず、後続変更なし。"
+    },
+    {
+      "sourceId": "obs-inside",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "10月29日現行分類を再確認。後続変更なし。統合配分D44/R44/未配分12を維持。"
+    },
+    {
+      "sourceId": "obs-gop-ia-dubuque-rally-20261101",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "主催者ページで11月1日15時CT大統領発言、会場、受付終了表示を再確認。確認時点では実施前で、Hinson氏参加は未確認。"
+    },
+    {
+      "sourceId": "obs-gop-ks-salina-rally-20261031",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "checked",
+      "lastSuccessAt": "2026-11-01T00:08:00Z",
+      "scope": "主催者ページで11月1日19時CT大統領発言、会場を再確認。確認時点では実施前で、Marshall氏参加は未確認。"
+    },
+    {
+      "sourceId": "obs-white-house",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-28T00:18:00Z",
+      "scope": "公務一覧だけでは選挙行事と電話集会を完全確認できず、Iowa・Kansasは主催者原文、10月31日電話集会はAPで補完。公式一覧の完全照合は未了。"
+    },
+    {
+      "sourceId": "obs-roster-nh",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-29T00:03:00Z",
+      "scope": "州務長官の候補者一覧本文を取得できず、前回の部分確認を維持。"
+    },
+    {
+      "sourceId": "obs-quantus-me-20260917",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "scope": "過去調査の原票・質問文・資金提供者を取得できず未掲載を継続。取得失敗を変化なしと扱わない。"
+    },
+    {
+      "sourceId": "obs-quantus-tx-20261030",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "unavailable",
+      "lastSuccessAt": null,
+      "scope": "最終波とされる数値の原報告、標本、質問文、方法、資金提供者を取得できず、数値を公開しない。"
+    },
+    {
+      "sourceId": "obs-rogers-bus-tour-20261030",
+      "attemptedAt": "2026-11-01T00:08:00Z",
+      "status": "partial",
+      "lastSuccessAt": "2026-10-31T00:18:00Z",
+      "scope": "候補者公式ページには10月31日のGrand Rapids・Whitmore Lake予定が残るが、実施・中止・延期と発言を確認できる事後原文は未取得。予定を結果扱いしない。"
+    }
+  ],
+  "eventChecks": [
+    {
+      "eventId": "mi-elsayed-stevens-clyburn-gotv-2026-11-01",
+      "status": "scheduled-participant-change",
+      "scope": "Stevens氏との共同登壇予定は不成立。Clyburn氏側の教会招待は継続しており、行事自体の実施結果と実際の登壇者は未確認。元予定へ相互参照。"
+    },
+    {
+      "eventId": "mi-rogers-bus-tour-2026-10-31",
+      "status": "result-unconfirmed",
+      "scope": "予定時刻経過後も事後原文を確認できず、実施済みと扱わない。候補者公式予定の最後の成功日時を維持。"
+    },
+    {
+      "eventId": "ia-trump-dubuque-rally-2026-11-01",
+      "status": "scheduled",
+      "scope": "主催者原文で11月1日15時CT予定を再確認。確認時点では実施前。候補者参加・発言・結果を先取りしない。"
+    },
+    {
+      "eventId": "ks-trump-salina-rally-2026-10-31",
+      "status": "scheduled",
+      "scope": "主催者原文で11月1日19時CT予定を再確認。確認時点では実施前。候補者参加・発言・結果を先取りしない。"
+    }
+  ],
+  "validation": {
+    "npmCi": "success",
+    "npmTest": "526 tests passed across 46 files",
+    "npmBuild": "success",
+    "browserVerificationRoute": "pending publication"
+  },
+  "publication": {
+    "status": "pending",
+    "pagesRunUrl": null,
+    "publicUrl": "https://guchio2366-dev.github.io/us-midterms-2026/",
+    "publicContentVerifiedAt": null,
+    "verified": [],
+    "publicationMethod": "pending"
+  }
+}

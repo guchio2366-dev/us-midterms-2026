@@ -12,9 +12,10 @@ describe('ニュース・予定の共通フィード',()=>{
   it('keeps every public current item and represents a multi-state event once',()=>{
     const recent=buildRecentFeed(newsItems,observationData);
     const upcoming=buildUpcomingFeed(observationData,new Date('2026-09-17T00:00:00Z'));
-    expect(recent).toHaveLength(178);
+    expect(recent).toHaveLength(181);
     expect(recent.filter(item=>item.sourceKind==='news')).toHaveLength(14);
-    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(164);
+    expect(recent.filter(item=>item.sourceKind==='update')).toHaveLength(167);
+    for(const id of ['obs-update-dfp-me-mi-tx-polls-2026-10-30','obs-update-mi-unity-event-change-2026-10-31','obs-update-ak-probe-donors-response-2026-10-31']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-ak-sullivan-registration-lawsuit-2026-10-26','obs-update-nh-rasmussen-2026-10-26','obs-update-me-tariff-exemptions-2026-10-23']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-insider-mi-ia-oh-2026-10-23','obs-update-oh-obama-rally-2026-10-24','obs-update-mi-obama-rally-2026-10-24','obs-update-heating-oil-ak-me-nh-2026-10-24']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
     for(const id of ['obs-update-ak-doj-lawsuit-2026-10-22','obs-update-nh-saint-anselm-2026-10-22']) expect(recent.some(item=>item.sourceId===id)).toBe(true);
